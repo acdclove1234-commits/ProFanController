@@ -32,12 +32,19 @@ public interface IMusicEffect
 /// <param name="Mirror">中央から左右対称にする（中央が「始まり」になる）</param>
 /// <param name="Reverse">向きを逆にする</param>
 /// <param name="Ring">輪になっている（ファンの外周など。最後の LED の隣が最初の LED）</param>
-public readonly record struct LedSegment(int Start, int Count, bool Mirror, bool Reverse, bool Ring = false)
+/// <param name="Span">
+/// ケースの中の場所を決めたゾーンの、帯の長さ（LED の数として数える。0 なら Count から決める）。
+/// 場所を決めたゾーンは、どれもケース全体を 1 本の帯（この長さ）として、その一部を光らせる
+/// </param>
+public readonly record struct LedSegment(int Start, int Count, bool Mirror, bool Reverse, bool Ring = false, float Span = 0)
 {
     /// <summary>
     /// 「始まりから端まで」の LED の数（左右対称なら半分）。メーターや帯の長さはこの数で数える
     /// </summary>
-    public float Ne => Math.Max(1f, Mirror ? Count / 2f : Count);
+    public float Ne => Span > 0 ? Span : Math.Max(1f, Mirror ? Count / 2f : Count);
+
+    /// <summary>ケースの中の場所を決めたゾーン（位置はケース全体での位置）</summary>
+    public bool Placed => Span > 0;
 
     /// <summary>LED が少ない（6 個未満）ので、並びを使う光り方の代わりに全体で光る光り方を使う</summary>
     public bool Small => Count < EffectContext.SmallZoneLeds;

@@ -809,6 +809,15 @@ public sealed class RgbConfig : ObservableObject
     /// （オフなら、遅いデバイス用の光り方で光る。デバイスごとに光り方を選んだデバイスは、選んだ光り方のまま）
     /// </summary>
     public bool MatchSlowDevices { get => _matchSlowDevices; set => Set(ref _matchSlowDevices, value); }
+    /// <summary>
+    /// ケースの中の位置に合わせて光を流す（ゾーンごとに「場所」を選んだ LED は、ケース全体で 1 本の帯として光る。
+    /// 場所を選んでいない LED は、これまでどおりデバイスの中の並びで光る）
+    /// </summary>
+    public bool CaseLayout { get => _caseLayout; set => Set(ref _caseLayout, value); }
+    /// <summary>ケースの中で光が流れる向き（CaseDirections の値）</summary>
+    public string CaseDirection { get => _caseDirection; set { if (!string.IsNullOrEmpty(value)) Set(ref _caseDirection, value); } }
+    private bool _caseLayout;
+    private string _caseDirection = CaseDirections.Up;
     /// <summary>光り方: Temperature / Rainbow / RainbowStatic / Breathing / Static / Music</summary>
     public string Mode { get => _mode; set { if (!string.IsNullOrEmpty(value)) Set(ref _mode, value); } }
     /// <summary>レインボー・呼吸の速さ（0.3〜10 倍）</summary>
@@ -1010,14 +1019,17 @@ public sealed class RgbZoneSettings
     public int GainB { get; set; } = 100;
     /// <summary>このゾーンだけの明るさ（0〜100%）</summary>
     public int Level { get; set; } = 100;
+    /// <summary>ケースの中の場所（CaseLayout の場所の Id。空なら場所を決めていない）</summary>
+    public string Place { get; set; } = "";
 
     [JsonIgnore]
     public bool IsDefault => Effect == SameAsDevice && Mirror is null && Reverse is null
-        && GainR == 100 && GainG == 100 && GainB == 100 && Level == 100;
+        && GainR == 100 && GainG == 100 && GainB == 100 && Level == 100 && string.IsNullOrEmpty(Place);
 
     public void Normalize()
     {
         Name ??= "";
+        Place ??= "";
         if (string.IsNullOrEmpty(Effect)) Effect = SameAsDevice;
         GainR = Math.Clamp(GainR, 0, 100);
         GainG = Math.Clamp(GainG, 0, 100);

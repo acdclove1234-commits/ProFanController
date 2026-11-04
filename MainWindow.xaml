@@ -2232,6 +2232,63 @@
                         </StackPanel>
                     </Border>
 
+                    <!-- ===== ケースの中の配置 ===== -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock Text="ケースの中の配置" Style="{StaticResource H2}"/>
+                            <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Margin="0,4,0,0"
+                                       Text="ファン・グラボ・メモリ・テープなどが、ケースの中のどこにあるかを選ぶと、波・虹・音量メーター・波紋などがデバイスをまたいで、ケース全体で 1 つにつながって流れます。場所を決めていない LED（キーボードなど）は、これまでどおりデバイスの中の並びで光ります"/>
+                            <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding Rgb.CaseLayout}" Margin="0,14,0,0">
+                                <StackPanel>
+                                    <TextBlock Text="ケースの中の位置に合わせて光を流す" FontWeight="SemiBold"/>
+                                    <TextBlock Text="オフにすると、場所を選んであっても、デバイスごとの並びで光ります" Style="{StaticResource Caption}"/>
+                                </StackPanel>
+                            </CheckBox>
+                            <DockPanel Style="{StaticResource LightRow}" Margin="0,12,0,0">
+                                <TextBlock Text="光が流れる向き" Style="{StaticResource RowLabel}"/>
+                                <ComboBox x:Name="CaseDirectionCombo" Width="240" HorizontalAlignment="Left" DisplayMemberPath="Label" SelectedValuePath="Id"
+                                          SelectedValue="{Binding Rgb.CaseDirection}"
+                                          ToolTip="波・虹が流れる向き、音量メーターが伸びる向き、波紋が広がる向きです（ケースを横のガラスから見たとき）"/>
+                            </DockPanel>
+                            <Grid Margin="0,14,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{DynamicResource Inset2Brush}" CornerRadius="10" Padding="12" VerticalAlignment="Top" Margin="0,0,16,0">
+                                    <StackPanel>
+                                        <ctl:CasePreview x:Name="CasePreviewView" Width="300" Loaded="OnCasePreviewLoaded"
+                                                         ToolTip="ケースを横から見た絵です。場所を決めた LED に、最後に送った色を表示します"/>
+                                        <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Width="300" Margin="0,8,0,0"
+                                                   Text="横のガラスから見た絵です（左が背面、右が前面）。「ケースの中の位置に合わせて光を流す」がオンのときに表示します"/>
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock x:Name="CasePlacesEmpty" Style="{StaticResource Caption}" TextWrapping="Wrap"
+                                               Text="デバイスの一覧は、OpenRGB に接続すると表示されます。"/>
+                                    <ItemsControl x:Name="CasePlaceList">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Background="{DynamicResource RowBrush}" CornerRadius="8" Padding="12,8" Margin="0,0,0,6">
+                                                    <StackPanel>
+                                                        <TextBlock TextWrapping="Wrap">
+                                                            <Run Text="{Binding Title, Mode=OneWay}" FontWeight="SemiBold"/>
+                                                            <Run Text="{Binding LedText, Mode=OneWay}" Foreground="{DynamicResource MutedBrush}" FontSize="12"/>
+                                                        </TextBlock>
+                                                        <ComboBox Margin="0,6,0,0" MaxWidth="420" HorizontalAlignment="Left" MinWidth="280"
+                                                                  ItemsSource="{Binding PlaceOptions}" DisplayMemberPath="Label" SelectedValuePath="Id"
+                                                                  SelectedValue="{Binding PlaceId}"
+                                                                  ToolTip="このゾーンの LED がケースの中のどこにあるか。数珠つなぎのファンは「3 つ（上から順）」など、つないだ順を選んでください"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
                     <!-- ===== 詳細 ===== -->
                     <Border Style="{StaticResource Card}" Margin="0,0,0,14">
                         <StackPanel>

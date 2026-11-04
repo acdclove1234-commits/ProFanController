@@ -112,11 +112,12 @@ public sealed class RippleEffect : IMusicEffect
     public void Render(EffectContext c, in LedSegment s, LinColor[] dst)
     {
         if (s.Small) { _small.Render(c, s, dst); return; }
-        float w = Math.Max(0.05f, 1.5f / s.Count);
+        // ケースの中の場所を決めたゾーンは、流れの始まり（位置 0）から輪が広がる（ケース全体で 1 つの輪）
+        float w = Math.Max(0.05f, 1.5f / (s.Placed ? s.Ne : s.Count));
         double t = c.T;
         for (int j = s.Start; j < s.Start + s.Count; j++)
         {
-            float d = Math.Abs(c.P[j] - Center);
+            float d = s.Placed ? c.P[j] * 0.5f : Math.Abs(c.P[j] - Center);
             if (s.Ring) d = Math.Min(d, 1 - d);
             var col = LinColor.Black;
             for (int k = 0; k < MaxRings; k++)

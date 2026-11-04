@@ -1,4 +1,4 @@
-// ==================================================
+﻿// ==================================================
 // DeviceRenderer.cs - デバイス 1 台分の LED の色を 1 コマずつ作る (光り方の選択・切り替えのクロスフェード・
 //                     音が止まったときの光り方・点滅の制限・緊急時の赤点滅・明るさとガンマ補正)
 // Dependencies: .NET 8 (MIT License)
@@ -113,6 +113,7 @@ public sealed class DeviceRenderer
     private int _layoutN = -1;
     private RgbDeviceSettings? _settingsRef;
     private string _layoutKey = "";
+    private string _caseKey = "";
     private double[] _pos = Array.Empty<double>();
     // ゾーンごとの光り方（まとまりごと。null ならデバイスの光り方）と、このコマで使う光り方
     private string?[] _segEffect = Array.Empty<string?>();
@@ -271,7 +272,7 @@ public sealed class DeviceRenderer
         if (n == 0) return;
         var cfg = input.Cfg ?? new RgbConfig();
         var settings = input.Device ?? new RgbDeviceSettings();
-        EnsureLayout(n, settings);
+        EnsureLayout(n, settings, cfg);
         float dt = MeasureDt(input);
         if (!ReferenceEquals(cfg.StaticColor, _staticHex))
         {
@@ -399,14 +400,17 @@ public sealed class DeviceRenderer
     /// 設定のオブジェクトが同じなら何もしない。変わっても、並びの中身が同じなら並びは作り直さない
     /// （明るさなどほかの設定を変えただけで、光り方が最初からにならないように）
     /// </summary>
-    private void EnsureLayout(int n, RgbDeviceSettings settings)
+    private void EnsureLayout(int n, RgbDeviceSettings settings, RgbConfig cfg)
     {
-        if (n == _layoutN && ReferenceEquals(settings, _settingsRef)) return;
+        // ケースの配置（オン・オフと流れる向き）は全体の設定なので、デバイスの設定とは別に見る
+        string caseKey = cfg.CaseLayout ? CaseDirections.Normalize(cfg.CaseDirection) : "";
+        if (n == _layoutN && ReferenceEquals(settings, _settingsRef) && caseKey == _caseKey) return;
         _settingsRef = settings;
+        _caseKey = caseKey;
         RgbEffects.SegmentZones(n, Device.Zones, _segZones);
         var zoneSet = new RgbZoneSettings?[_segZones.Count];
         var key = new System.Text.StringBuilder();
-        key.Append(n).Append('|').Append(settings.Mirror?.ToString() ?? "-").Append('|').Append(settings.Reverse);
+        key.Append(n).Append('|').Append(settings.Mirror?.ToString() ?? "-").Append('|').Append(settings.Reverse).Append('|').Append(caseKey);
         _hasZoneEffects = false;
         if (_segEffect.Length != zoneSet.Length)
         {
@@ -416,9 +420,11 @@ public sealed class DeviceRenderer
         for (int k = 0; k < zoneSet.Length; k++)
         {
             int zone = _segZones[k].Zone;
-            var z = zone >= 0 ? settings.ZoneFor(Device.ZoneName(zone)) : null;
+            // ゾーンの情報がないデバイス（全体で 1 つのまとまり）は、最初のゾーンの名前で設定を探す（ケースの中の場所など）
+            var z = zone >= 0 ? settings.ZoneFor(Device.ZoneName(zone))
+                : _segZones.Count == 1 ? settings.ZoneFor(Device.ZoneName(0)) : null;
             zoneSet[k] = z;
-            key.Append('|').Append(z?.Mirror?.ToString() ?? "-").Append(',').Append(z?.Reverse?.ToString() ?? "-");
+            key.Append('|').Append(z?.Mirror?.ToString() ?? "-").Append(',').Append(z?.Reverse?.ToString() ?? "-").Append(',').Append(z?.Place ?? "");
             string? effect = z is null || z.Effect == RgbZoneSettings.SameAsDevice ? null : z.Effect;
             _segEffect[k] = effect;
             if (effect is not null) _hasZoneEffects = true;
@@ -448,6 +454,24 @@ public sealed class DeviceRenderer
         for (int k = 0; k < _segZones.Count; k++)
         {
             var (start, count, _) = _segZones[k];
+            // ケースの中の場所を決めたゾーン: 位置はケース全体での、光が流れる向きの位置（0〜1）。
+            // どのデバイスも同じ長さの帯の一部として光るので、波・虹・メーターがデバイスをまたいでつながる
+            if (caseKey.Length > 0 && CaseLayout.Find(zoneSet[k]?.Place) is { } place)
+            {
+                var along = CaseLayout.Positions(place, count, caseKey);
+                var placed = new LedSegment(start, count, Mirror: false, Reverse: false, Ring: false, Span: CaseLayout.Span);
+                c.Segments[k] = placed;
+                if (placed.Small) c.HasSmallSegment = true;
+                for (int j = 0; j < count; j++)
+                {
+                    float u = along[j];
+                    c.P[start + j] = u;
+                    c.X[start + j] = u;
+                    c.Jx[start + j] = u * (CaseLayout.Span - 1);
+                    _pos[start + j] = u;
+                }
+                continue;
+            }
             // 左右対称・向き: ゾーンの設定があればそれ、なければデバイスの設定。
             // 左右対称の設定がどちらにもなければ、LED が 30 個以上のゾーンだけ自動でオン（長いテープは中央から）
             bool? mirror = zoneSet[k]?.Mirror ?? settings.Mirror;

@@ -119,6 +119,9 @@ public sealed class RgbZoneVm : ObservableObject
     /// <summary>利用者が値を変えたときに呼ぶ</summary>
     internal Action? Edited { get; set; }
 
+    /// <summary>ケースの中の場所（「ケースの中の配置」の欄で選ぶ。ここでは保存のときに消さないよう持っておくだけ）</summary>
+    internal string Place { get; set; } = "";
+
     /// <summary>設定に保存する形</summary>
     public RgbZoneSettings ToSettings() => new()
     {
@@ -127,6 +130,7 @@ public sealed class RgbZoneVm : ObservableObject
         Mirror = _mirrorId switch { "on" => true, "off" => false, _ => null },
         Reverse = _reverseId switch { "on" => true, "off" => false, _ => null },
         GainR = _gainR, GainG = _gainG, GainB = _gainB, Level = _level,
+        Place = Place,
     };
 
     /// <summary>設定から読んだ値を入れる（このときは Edited を呼ばない）</summary>
@@ -142,6 +146,7 @@ public sealed class RgbZoneVm : ObservableObject
             GainG = z?.GainG ?? 100;
             GainB = z?.GainB ?? 100;
             Level = z?.Level ?? 100;
+            Place = z?.Place ?? "";
         }
         finally
         {
@@ -152,6 +157,54 @@ public sealed class RgbZoneVm : ObservableObject
     private void NotifyEdited()
     {
         if (!_loading) Edited?.Invoke();
+    }
+}
+
+/// <summary>
+/// 「ケースの中の配置」の欄の 1 行（デバイスのゾーン 1 つ分。ゾーンが 1 つしかないデバイスも 1 行）。
+/// 場所を選ぶと、そのゾーンの LED はケース全体での位置で光る
+/// </summary>
+public sealed class CasePlaceVm : ObservableObject
+{
+    public const string NoPlace = "";
+    public static readonly IReadOnlyList<ChoiceOption> PlaceChoices = CreatePlaceChoices();
+
+    private static List<ChoiceOption> CreatePlaceChoices()
+    {
+        var list = new List<ChoiceOption> { new(NoPlace, "決めない（デバイスの中の並びで光る）") };
+        foreach (var p in CaseLayout.Places) list.Add(new ChoiceOption(p.Id, $"{p.Group}: {p.Label}"));
+        return list;
+    }
+
+    private string _placeId = NoPlace;
+    private bool _loading;
+
+    public required string DeviceName { get; init; }
+    public required string ZoneName { get; init; }
+    /// <summary>デバイスの中での、このゾーンの最初の LED の番号</summary>
+    public required int Start { get; init; }
+    public required int Leds { get; init; }
+    /// <summary>ゾーンが 1 つしかないデバイス（ゾーン名は出さない）</summary>
+    public bool SingleZone { get; init; }
+    public string Title => SingleZone ? DeviceName : $"{DeviceName} ・ {ZoneName}";
+    public string LedText => $"LED {Leds} 個";
+    public IReadOnlyList<ChoiceOption> PlaceOptions => PlaceChoices;
+
+    public string PlaceId
+    {
+        get => _placeId;
+        set { if (Set(ref _placeId, value ?? NoPlace) && !_loading) Edited?.Invoke(this); }
+    }
+
+    public CasePlace? Place => CaseLayout.Find(_placeId);
+
+    internal Action<CasePlaceVm>? Edited { get; set; }
+
+    internal void Load(string? place)
+    {
+        _loading = true;
+        try { PlaceId = CaseLayout.Find(place) is null ? NoPlace : place!; }
+        finally { _loading = false; }
     }
 }
 
@@ -501,6 +554,30 @@ internal static class LightingRules
     /// デバイスの設定を一覧に書き込む。既定と違うときだけ項目を作り、すべて既定に戻ったら項目を消す。
     /// この画面では変えない値（遅れ）は、そのまま残す。maxFps が負なら、1 秒に送る回数の上限もそのまま
     /// </summary>
+    /// <summary>デバイスのゾーンの、ケースの中の場所を設定する（空なら外す。何も設定が残らなければ項目ごと消す）</summary>
+    public static void SetZonePlace(List<RgbDeviceSettings> list, string device, string zone, string? place)
+    {
+        place ??= "";
+        var s = list.FirstOrDefault(d => d.Name == device);
+        if (s is null)
+        {
+            if (place.Length == 0) return;
+            s = new RgbDeviceSettings { Name = device };
+            list.Add(s);
+        }
+        s.Zones ??= new();
+        var z = s.Zones.FirstOrDefault(x => x.Name == zone);
+        if (z is null)
+        {
+            if (place.Length == 0) return;
+            z = new RgbZoneSettings { Name = zone };
+            s.Zones.Add(z);
+        }
+        z.Place = place;
+        if (z.IsDefault) s.Zones.Remove(z);
+        if (IsDefault(s)) list.Remove(s);
+    }
+
     public static void UpsertDeviceSettings(List<RgbDeviceSettings> list, string name, string effect, bool? mirror, bool reverse, int maxFps = -1,
         int? latencyMs = null, bool? animateOnGpu = null, Action<RgbDeviceSettings>? apply = null)
     {
@@ -690,6 +767,8 @@ public partial class MainWindow
         ColorSwatches.ItemsSource = _colorChoices;
         OnStopCombo.ItemsSource = StopOptions;
         RgbDevices.ItemsSource = _rgbDeviceRows;
+        CasePlaceList.ItemsSource = _casePlaces;
+        CaseDirectionCombo.ItemsSource = CaseDirections.All.Select(d => new ChoiceOption(d.Id, d.Label)).ToList();
 
         WatchLightingConfig();
         _rgbKnownDevices = CurrentApp.Rgb.Devices;
@@ -1158,6 +1237,68 @@ public partial class MainWindow
         RgbDevicesEmpty.Visibility = VisibleIf(_rgbDeviceRows.Count == 0);
         RefreshRgbDeviceSelection();
         UpdateMissingDevicesText();
+        RebuildCasePlaces();
+    }
+
+    // ----- ケースの中の配置 -----
+
+    private readonly ObservableCollection<CasePlaceVm> _casePlaces = new();
+
+    /// <summary>
+    /// 「ケースの中の配置」の行を作る（デバイスのゾーンごと。ゾーンの情報がないデバイスは 1 行）。
+    /// 並びは DeviceRenderer のゾーンの分け方（RgbEffects.SegmentZones）と同じにする
+    /// </summary>
+    private void RebuildCasePlaces()
+    {
+        foreach (var p in _casePlaces) p.Edited = null;
+        _casePlaces.Clear();
+        var rgb = Config.Rgb;
+        var seen = new HashSet<string>();
+        foreach (var d in _rgbKnownDevices)
+        {
+            if (d.LedCount <= 0 || !seen.Add(d.Name)) continue;
+            var s = rgb.SettingsFor(d.Name);
+            var segments = new List<(int Start, int Length, int Zone)>();
+            RgbEffects.SegmentZones(d.LedCount, d.Zones, segments);
+            foreach (var (start, length, zone) in segments)
+            {
+                if (zone < 0 && segments.Count > 1) continue;
+                string zoneName = d.ZoneName(Math.Max(0, zone));
+                var vm = new CasePlaceVm { DeviceName = d.Name, ZoneName = zoneName, Start = start, Leds = length, SingleZone = segments.Count == 1 };
+                vm.Load(s.ZoneFor(zoneName)?.Place);
+                vm.Edited = OnCasePlaceEdited;
+                _casePlaces.Add(vm);
+            }
+        }
+        CasePlacesEmpty.Visibility = VisibleIf(_casePlaces.Count == 0);
+    }
+
+    /// <summary>ゾーンの場所を選んだとき: 設定に書き込み、ゾーンの行（色合わせ・ゾーンごとの設定）にも入れておく</summary>
+    private void OnCasePlaceEdited(CasePlaceVm vm)
+    {
+        var rgb = Config.Rgb;
+        var row = _rgbDeviceRows.FirstOrDefault(r => r.Name == vm.DeviceName);
+        var zoneRow = row?.Zones.FirstOrDefault(z => z.Name == vm.ZoneName);
+        if (zoneRow is not null) zoneRow.Place = vm.PlaceId;
+        LightingRules.SetZonePlace(rgb.DeviceSettings, vm.DeviceName, vm.ZoneName, vm.PlaceId);
+        LightingListsChanged();
+    }
+
+    private void OnCasePreviewLoaded(object sender, RoutedEventArgs e) => UpdateCasePreview();
+
+    /// <summary>ケースの絵に、場所を決めた LED の、最後に送った色を描く</summary>
+    private void UpdateCasePreview()
+    {
+        if (!Config.Rgb.CaseLayout || CasePreviewView is null || !CasePreviewView.IsVisible) return;
+        var sync = CurrentApp.Rgb;
+        bool enabled = Config.Rgb.Enabled;
+        var items = new List<CasePreview.Item>();
+        foreach (var p in _casePlaces)
+        {
+            if (p.Place is not { } place) continue;
+            items.Add(new CasePreview.Item(place, p.Start, p.Leds, enabled ? sync.GetLastFrame(p.DeviceName) : null));
+        }
+        CasePreviewView.SetItems(items, Config.Rgb.Gamma);
     }
 
     /// <summary>「すべてのデバイス」と各行のチェックを、いまの設定に合わせる</summary>
@@ -1577,6 +1718,7 @@ public partial class MainWindow
             var vm = _rgbDeviceRows[i];
             vm.Preview?.SetColors(enabled ? sync.GetLastFrame(vm.Name) : null, gamma);
         }
+        UpdateCasePreview();
     }
 
     /// <summary>文字の表示（接続の状態・デバイスごとの状態・テンポ・音量・取り込みの状態）。1 秒に 4 回</summary>
