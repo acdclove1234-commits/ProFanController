@@ -1214,7 +1214,7 @@ public sealed class FanEngine : IDisposable
                 }
                 continue;
             }
-            double req = ev.Evaluate(temp.Value);
+            double req = ev.Evaluate(temp.Value, _tickDt);
             curveStatuses.Add(new CurveStatus(ev.Config.Name, temp.Value, ev.EffectiveTemp, req, false));
             demand = Math.Max(demand, req);
         }
@@ -1316,7 +1316,8 @@ public sealed class FanEngine : IDisposable
             // ただし緊急全開・GPU 保護・ポンプ保護・続いているセンサー異常は、最初の周期から一気に全開にする
             double cur = f.Duty ?? hwDuty ?? demand;
             bool direct = FanSafety.IsDirect(state, cfg.Mode, f.ErrorTicks);
-            next = FanSafety.Slew(cur, demand, cfg.MaxStepUpPerTick, cfg.MaxStepDownPerTick, direct);
+            // 上げ・下げの速さは「1 秒あたり」（画面の表示どおり）。実際に経った時間ぶんだけ動かすので、更新間隔を変えても速さは同じ
+            next = FanSafety.Slew(cur, demand, cfg.MaxStepUpPerTick * _tickDt, cfg.MaxStepDownPerTick * _tickDt, direct);
             if (state != FanState.Manual)
             {
                 // ゆっくり変化している途中でも、共振回避帯の中には留まらず一気に通り過ぎる
@@ -1984,7 +1985,9 @@ public readonly struct PiController
     /// <param name="currentDuty">今の回転（初回だけ使う。切り替えた瞬間に回転が跳ねないように）</param>
     public double Step(double rawTemp, double dt, double currentDuty, PiState s)
     {
-        s.Ema = s.Ema is null ? rawTemp : EmaAlpha * rawTemp + (1 - EmaAlpha) * s.Ema.Value;
+        // ならし具合は 1 秒あたり（更新間隔を変えても時定数 約 10 秒のまま）
+        double alpha = CurveMath.AlphaFor(EmaAlpha, dt);
+        s.Ema = s.Ema is null ? rawTemp : alpha * rawTemp + (1 - alpha) * s.Ema.Value;
         double error = s.Ema.Value - _target;
         if (!s.Ready)
         {
