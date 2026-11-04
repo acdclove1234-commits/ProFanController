@@ -108,6 +108,8 @@ public sealed class FanEngine : IDisposable
         public float? LastSent;
         /// <summary>書き込んだ値の読み戻しの確認状態</summary>
         public ReadbackCheck Readback;
+        /// <summary>回り始めの後押しの状態</summary>
+        public SpinUpState SpinUp;
         /// <summary>センサー異常が続いている周期の数</summary>
         public int ErrorTicks;
         /// <summary>このファンの処理で例外が続いた回数</summary>
@@ -1321,6 +1323,9 @@ public sealed class FanEngine : IDisposable
                 next = PassThroughBands(cfg, cur, next, floor);
                 // 下限（ポンプの最低 Duty を含む）は、ゆっくり上げている途中でも守る
                 next = Math.Max(next, floor);
+                // 止まっているファンは、回り始める回転まで少しの間だけ上げる（測ってあるファンだけ）
+                if (_cfg.FindCalibration(cfg.ControlId) is { } cal)
+                    next = FanSafety.SpinUp(ref f.SpinUp, next, rpm, cal.StartDuty, cal.StopDuty, nowMs);
             }
             if (f.PumpFailsafe) next = 100;
         }
@@ -1721,6 +1726,15 @@ public enum ReadbackAction
     Recovered,
 }
 
+/// <summary>回り始めの後押しの状態（ファンごとに 1 つ）</summary>
+public struct SpinUpState
+{
+    /// <summary>この時刻（ミリ秒）まで、回り始める回転で回す（0 なら後押ししていない）</summary>
+    public long UntilMs;
+    /// <summary>後押ししても回らなかったとき、この時刻までは次の後押しをしない</summary>
+    public long RetryAfterMs;
+}
+
 /// <summary>書き込んだ値の読み戻しの確認状態（ファンごとに 1 つ）</summary>
 public struct ReadbackCheck
 {
@@ -1788,6 +1802,43 @@ public static class FanSafety
         FanState.Active => mode == FanModes.Follow,
         _ => false,
     };
+
+    /// <summary>回り始めの後押しで、回り始める回転にのせる余裕（%）</summary>
+    public const double SpinUpMargin = 3;
+    /// <summary>回り始めの後押しを続ける長さの上限（ミリ秒）。回り出したら、すぐに指示どおりに戻す</summary>
+    public const long SpinUpMaxMs = 3000;
+    /// <summary>後押ししても回らなかったとき、次に試すまでの間（ミリ秒。壊れたファンで上げ下げを繰り返さないように）</summary>
+    public const long SpinUpRetryMs = 30000;
+
+    /// <summary>
+    /// 回り始めの後押し: ファンは「止まる回転（stopDuty）」より「回り始める回転（startDuty）」のほうが高い。
+    /// 止まっている（0 rpm）ファンに、その間（stopDuty 以上・startDuty 未満）の指示を出すと、回り出さずに止まったままになるので、
+    /// 回り出すまで（長くても 3 秒）startDuty + 3% で回す。回り出せば、指示が stopDuty 以上なら回り続ける。
+    /// stopDuty 未満の指示（止めたい）・回転数が読めない・測っていないファンは何もしない
+    /// </summary>
+    public static double SpinUp(ref SpinUpState s, double next, double? rpm, double startDuty, double stopDuty, long nowMs)
+    {
+        double kick = Math.Min(100, startDuty + SpinUpMargin);
+        if (rpm is not double r || startDuty <= 0 || next >= kick)
+        {
+            s.UntilMs = 0;
+            return next;
+        }
+        bool stopped = r < 1;
+        if (s.UntilMs > 0)
+        {
+            if (stopped && nowMs < s.UntilMs) return kick;
+            if (stopped) s.RetryAfterMs = nowMs + SpinUpRetryMs;   // 後押ししても回らなかった（配線・故障。止まっているファンの警告に任せる）
+            s.UntilMs = 0;
+            return next;
+        }
+        if (stopped && next >= stopDuty && next > 0 && nowMs >= s.RetryAfterMs)
+        {
+            s.UntilMs = nowMs + SpinUpMaxMs;
+            return kick;
+        }
+        return next;
+    }
 
     /// <summary>今の Duty から要求 Duty へ 1 周期分だけ近づける（上げは maxUp、下げは maxDown まで。direct なら要求値そのもの）</summary>
     public static double Slew(double current, double demand, double maxUp, double maxDown, bool direct)

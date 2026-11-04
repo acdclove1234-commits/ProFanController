@@ -29,10 +29,11 @@ public sealed class SpectrumView : FrameworkElement
     /// <summary>下の目盛りの文字のための余白（ピクセル）</summary>
     private const double LabelHeight = 14;
 
-    private static readonly Brush BgBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x10, 0x12, 0x1A)));
-    private static readonly Pen GridPen = Freeze(new Pen(Freeze(new SolidColorBrush(Color.FromRgb(0x23, 0x26, 0x36))), 1));
-    private static readonly Brush PeakBrush = Freeze(new SolidColorBrush(Color.FromArgb(0xCC, 0xFF, 0xFF, 0xFF)));
-    private static readonly Brush LabelBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x6B, 0x71, 0x8A)));
+    // 背景・目盛り・文字・ピークの線は、いまのテーマの色（ThemePalette）を使う
+    private static Brush BgBrush => ThemePalette.ChartBg;
+    private static Pen GridPen => ThemePalette.ChartGrid;
+    private static Brush PeakBrush => ThemePalette.Cached("spectrum.peak", c => new SolidColorBrush(ThemeManager.WithAlpha(c.Text, 0xCC)));
+    private static Brush LabelBrush => ThemePalette.ChartLabel;
     /// <summary>帯ごとの色（低音 = ピンク → 中音 = 紫 → 高音 = 水色）。太い棒は少し透かす</summary>
     private static readonly Brush[] BarBrushes = CreateBandBrushes(0xB0);
     /// <summary>中の細い棒（立ち上がり）は不透明で明るく</summary>
@@ -194,7 +195,7 @@ public sealed class BeatLamp : FrameworkElement
     /// <summary>この差より小さい変化では描き直さない（ほとんど見分けがつかないため）</summary>
     private const double RedrawStep = 0.004;
 
-    private static readonly Brush OffBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x2A, 0x2E, 0x42)));
+    private static Brush OffBrush => ThemePalette.Track;
     private static readonly Brush KickBrush = Freeze(new SolidColorBrush(Color.FromRgb(0xF4, 0x72, 0xB6)));
     private static readonly Brush HaloBrush = Freeze(new SolidColorBrush(Color.FromArgb(0x55, 0xF4, 0x72, 0xB6)));
     private static readonly Brush ClickBrush = Freeze(new SolidColorBrush(Colors.White));

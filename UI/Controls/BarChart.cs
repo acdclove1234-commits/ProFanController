@@ -15,13 +15,14 @@ public sealed record BarItem(string Label, double Value, string Tip);
 
 public sealed class BarChart : FrameworkElement
 {
-    private static readonly Brush BgBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x12, 0x14, 0x1F)));
-    private static readonly Pen GridPen = Freeze(new Pen(new SolidColorBrush(Color.FromRgb(0x23, 0x26, 0x36)), 1));
-    private static readonly Brush LabelBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x6B, 0x71, 0x8A)));
-    private static readonly Brush BarBrush = Freeze(new LinearGradientBrush(Color.FromRgb(0x22, 0xC7, 0xFF), Color.FromRgb(0x7C, 0x5C, 0xFF), 90));
+    // 背景・目盛り・文字・棒の色は、いまのテーマの色（ThemePalette）を使う
+    private static Brush BgBrush => ThemePalette.ChartBg;
+    private static Pen GridPen => ThemePalette.ChartGrid;
+    private static Brush LabelBrush => ThemePalette.ChartLabel;
+    private static Brush BarBrush => ThemePalette.Cached("bar.fill", c => new LinearGradientBrush(c.Accent2, c.Accent, 90));
     private static readonly Brush HoverBrush = Freeze(new SolidColorBrush(Color.FromRgb(0xF4, 0x72, 0xB6)));
-    private static readonly Brush TipBg = Freeze(new SolidColorBrush(Color.FromArgb(0xF0, 0x1D, 0x20, 0x30)));
-    private static readonly Brush TextBrush = Freeze(new SolidColorBrush(Color.FromRgb(0xEC, 0xEE, 0xF6)));
+    private static Brush TipBg => ThemePalette.TipBg;
+    private static Brush TextBrush => ThemePalette.Text;
     private const double PadL = 44, PadR = 12, PadT = 12, PadB = 26;
 
     private IReadOnlyList<BarItem> _items = Array.Empty<BarItem>();

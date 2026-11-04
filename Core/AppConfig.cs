@@ -57,6 +57,8 @@ public sealed class AppConfig : ObservableObject
     /// <summary>ダッシュボード上部の温度カード。空のときは CPU/GPU などを自動で選ぶ</summary>
     public ObservableCollection<DashboardCard> DashboardCards { get; set; } = new();
     public WidgetConfig Widget { get; set; } = new();
+    /// <summary>見た目（テーマ・アクセント色・フォント・文字の大きさ）</summary>
+    public AppearanceConfig Appearance { get; set; } = new();
     public QuickConfig Quick { get; set; } = new();
     public AdvisorConfig Advisor { get; set; } = new();
     public WebConfig Web { get; set; } = new();
@@ -118,6 +120,8 @@ public sealed class AppConfig : ObservableObject
         DashboardCards ??= new();
         DeviceImages ??= new();
         Widget ??= new();
+        Appearance ??= new();
+        Appearance.Normalize();
         Quick ??= new();
         Advisor ??= new();
         Web ??= new();
@@ -1047,6 +1051,58 @@ public sealed class SensorLabel
     /// <summary>LHM の HardwareType（Cpu / GpuAmd / GpuNvidia / SuperIO など）</summary>
     public string HardwareType { get; set; } = "";
     public string SensorType { get; set; } = "";
+}
+
+/// <summary>テーマの選び方</summary>
+public static class AppThemes
+{
+    /// <summary>Windows の「アプリ モード」（ダーク／ライト）に合わせる</summary>
+    public const string System = "System";
+    public const string Dark = "Dark";
+    public const string Light = "Light";
+    public static readonly string[] All = { System, Dark, Light };
+}
+
+/// <summary>見た目の設定</summary>
+public sealed class AppearanceConfig : ObservableObject
+{
+    /// <summary>アクセント色: この値なら Windows のアクセント色に合わせる</summary>
+    public const string SystemAccent = "System";
+    /// <summary>アクセント色: この値ならアプリの既定（紫）</summary>
+    public const string DefaultAccent = "Default";
+    public const int MinTextScale = 85, MaxTextScale = 130;
+    /// <summary>背景色: この値ならテーマの既定の背景</summary>
+    public const string DefaultBackground = "Default";
+    /// <summary>背景色: 候補の番号の前につける文字（"bg0"〜"bg63"）</summary>
+    public const string BackgroundPrefix = "bg";
+
+    private string _theme = AppThemes.Dark;
+    private string _accent = DefaultAccent;
+    private string _background = DefaultBackground;
+    private string _fontFamily = "";
+    private int _textScale = 100;
+
+    /// <summary>"System" / "Dark" / "Light"</summary>
+    public string Theme { get => _theme; set { if (!string.IsNullOrEmpty(value)) Set(ref _theme, value); } }
+    /// <summary>"Default" / "System" / "#RRGGBB"</summary>
+    public string Accent { get => _accent; set { if (!string.IsNullOrEmpty(value)) Set(ref _accent, value); } }
+    /// <summary>"Default" / "bg0"〜"bg63"（候補の番号。同じ番号でもダークでは暗い色・ライトでは明るい色）</summary>
+    public string Background { get => _background; set { if (!string.IsNullOrEmpty(value)) Set(ref _background, value); } }
+    /// <summary>画面の文字のフォント（空ならアプリの既定: 英数字 Montserrat・日本語 ProFan Maru）</summary>
+    public string FontFamily { get => _fontFamily; set => Set(ref _fontFamily, value ?? ""); }
+    /// <summary>文字と画面の大きさ（%）</summary>
+    public int TextScale { get => _textScale; set => Set(ref _textScale, Math.Clamp(value, MinTextScale, MaxTextScale)); }
+
+    public void Normalize()
+    {
+        if (!AppThemes.All.Contains(Theme)) Theme = AppThemes.Dark;
+        if (Accent != SystemAccent && Accent != DefaultAccent && !System.Text.RegularExpressions.Regex.IsMatch(Accent, "^#[0-9A-Fa-f]{6}$"))
+            Accent = DefaultAccent;
+        if (Background != DefaultBackground && !System.Text.RegularExpressions.Regex.IsMatch(Background, "^bg([0-9]|[1-5][0-9]|6[0-3])$"))
+            Background = DefaultBackground;
+        FontFamily ??= "";
+        TextScale = Math.Clamp(TextScale, MinTextScale, MaxTextScale);
+    }
 }
 
 public sealed class WidgetConfig

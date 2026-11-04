@@ -23,12 +23,13 @@ public sealed class ChartSeries
 
 public sealed class HistoryChart : FrameworkElement
 {
-    private static readonly Brush BgBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x12, 0x14, 0x1F)));
-    private static readonly Pen GridPen = Freeze(new Pen(new SolidColorBrush(Color.FromRgb(0x23, 0x26, 0x36)), 1));
-    private static readonly Brush LabelBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x6B, 0x71, 0x8A)));
-    private static readonly Pen CursorPen = Freeze(new Pen(new SolidColorBrush(Color.FromArgb(0x88, 0xEC, 0xEE, 0xF6)), 1));
-    private static readonly Brush TipBg = Freeze(new SolidColorBrush(Color.FromArgb(0xF0, 0x1D, 0x20, 0x30)));
-    private static readonly Brush TextBrush = Freeze(new SolidColorBrush(Color.FromRgb(0xEC, 0xEE, 0xF6)));
+    // 背景・目盛り・文字は、いまのテーマの色（ThemePalette）を使う
+    private static Brush BgBrush => ThemePalette.ChartBg;
+    private static Pen GridPen => ThemePalette.ChartGrid;
+    private static Brush LabelBrush => ThemePalette.ChartLabel;
+    private static Pen CursorPen => ThemePalette.Cached("history.cursor", c => new Pen(new SolidColorBrush(ThemeManager.WithAlpha(c.Text, 0x88)), 1));
+    private static Brush TipBg => ThemePalette.TipBg;
+    private static Brush TextBrush => ThemePalette.Text;
     private static readonly FontFamily UiFont = UiFonts.Family;
 
     private double? _mouseX;

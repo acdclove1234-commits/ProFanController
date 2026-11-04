@@ -164,6 +164,21 @@ public partial class App : Application
         tray.LightingState = () => controller.Config.Rgb;
         // エンジンの健康状態が変わったら知らせる（読めない部品がある・BIOS 制御で復旧を待っている など）
         engine.HealthChanged += (health, reason) => Dispatcher.InvokeAsync(() => OnEngineHealth(health, reason));
+        // 見た目（テーマ・アクセント色・フォント）は画面を作る前に当てる。画面ができるたびに、タイトルバーと文字の大きさも当てる
+        ThemeManager.Apply(controller.Config.Appearance);
+        EventManager.RegisterClassHandler(typeof(Window), FrameworkElement.LoadedEvent,
+            new RoutedEventHandler((s, _) => { if (s is Window w) ThemeManager.ApplyToWindow(w, _controller?.Config.Appearance ?? new AppearanceConfig()); }));
+        WatchAppearance(controller);
+        SystemEvents.UserPreferenceChanged += (_, e) =>
+        {
+            // Windows のダーク／ライト・アクセント色が変わったとき（「Windows に合わせる」を選んでいるときだけ当て直す）
+            if (e.Category is not (UserPreferenceCategory.General or UserPreferenceCategory.Color or UserPreferenceCategory.VisualStyle)) return;
+            Dispatcher.InvokeAsync(() =>
+            {
+                var a = _controller?.Config.Appearance;
+                if (a is not null && (a.Theme == AppThemes.System || a.Accent == AppearanceConfig.SystemAccent)) ThemeManager.Apply(a);
+            });
+        };
         var window = new MainWindow(controller, tray.CreateWindowIcon());
         _window = window;
         window.HiddenToTray += (_, _) =>
@@ -228,6 +243,8 @@ public partial class App : Application
         controller.QuickChanged += UpdateQuickStatus;
         controller.ConfigReplaced += () =>
         {
+            WatchAppearance(controller);
+            ThemeManager.Apply(controller.Config.Appearance);
             // ウィジェットは新しい設定の位置で開き直す
             if (_widget is not null) { CloseWidget(save: false); ShowWidget(); }
             UpdateHotkeys();
@@ -366,6 +383,21 @@ public partial class App : Application
             Logger.Warn($"{InstallCheck.RecommendedFolder} へ移せませんでした: {ex}");
             window.ShowAlert($"{InstallCheck.RecommendedFolder} へ移せませんでした: {ex.Message}", AlertLevel.Warning);
         }
+    }
+
+    private AppearanceConfig? _watchedAppearance;
+
+    /// <summary>見た目の設定を変えたら、すぐに当てる（元に戻す・設定の読み込みで丸ごと入れ替わったときは見張り直す）</summary>
+    private void WatchAppearance(AppController controller)
+    {
+        if (_watchedAppearance is not null) _watchedAppearance.PropertyChanged -= OnAppearanceChanged;
+        _watchedAppearance = controller.Config.Appearance;
+        _watchedAppearance.PropertyChanged += OnAppearanceChanged;
+    }
+
+    private void OnAppearanceChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (sender is AppearanceConfig a) ThemeManager.Apply(a);
     }
 
     private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)

@@ -8,8 +8,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="セットアップ - ProFanController" Width="900" Height="680" MinWidth="820" MinHeight="600"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
-        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}"
-        FontFamily="{StaticResource UiFont}" FontSize="14" UseLayoutRounding="True"
+        Background="{DynamicResource BgBrush}" Foreground="{DynamicResource TextBrush}"
+        FontFamily="{DynamicResource UiFont}" FontSize="14" UseLayoutRounding="True"
         TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="ClearType" FontWeight="Medium">
     <Grid Margin="36,28,36,24">
         <Grid.RowDefinitions>
@@ -66,7 +66,7 @@
                                         <TextBlock Text="{Binding Control.Name}" FontWeight="SemiBold"/>
                                         <TextBlock Text="{Binding Control.HardwareName}" Style="{StaticResource Caption}" FontSize="12"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Column="1" Text="{Binding RpmText}" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="{StaticResource Accent2Brush}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding RpmText}" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="{DynamicResource Accent2Brush}"/>
                                     <TextBox Grid.Column="2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0"/>
                                     <ComboBox Grid.Column="3" SelectedValuePath="Tag" SelectedValue="{Binding Role}" Margin="0,0,10,0">
                                         <ComboBoxItem Content="ファン" Tag="Fan"/>

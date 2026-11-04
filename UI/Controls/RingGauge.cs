@@ -36,10 +36,11 @@ public sealed class RingGauge : FrameworkElement
 
     private const double StartAngle = 135;  // 左下から
     private const double SweepAngle = 270;  // 右下まで
-    private static readonly Pen TrackPen = CreatePen(new SolidColorBrush(Color.FromRgb(0x2A, 0x2E, 0x42)));
-    private static readonly Brush TextBrush = Frozen(new SolidColorBrush(Color.FromRgb(0xEC, 0xEE, 0xF6)));
-    private static readonly Brush SubBrush = Frozen(new SolidColorBrush(Color.FromRgb(0x8B, 0x91, 0xA8)));
-    private static readonly Brush DefaultStroke = Frozen(new LinearGradientBrush(Color.FromRgb(0x7C, 0x5C, 0xFF), Color.FromRgb(0x22, 0xC7, 0xFF), 0));
+    // 輪の下地・文字・既定の色は、いまのテーマの色（ThemePalette）を使う
+    private static Pen TrackPen => ThemePalette.Cached("ring.track", c => CreatePen(new SolidColorBrush(c.Track)));
+    private static Brush TextBrush => ThemePalette.Text;
+    private static Brush SubBrush => ThemePalette.SubText;
+    private static Brush DefaultStroke => ThemePalette.Cached("ring.stroke", c => new LinearGradientBrush(c.Accent, c.Accent2, 0));
 
     /// <summary>モニターの倍率が変わった（別のモニターへ移した）ら、文字をその倍率で描き直す</summary>
     protected override void OnDpiChanged(DpiScale oldDpi, DpiScale newDpi)

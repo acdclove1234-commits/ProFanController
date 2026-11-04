@@ -21,14 +21,15 @@ public sealed class CurveEditor : FrameworkElement
 {
     private const double HitRadius = 12;
 
-    private static readonly Brush BgBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x12, 0x14, 0x1F)));
-    private static readonly Pen GridPen = Freeze(new Pen(new SolidColorBrush(Color.FromRgb(0x23, 0x26, 0x36)), 1));
-    private static readonly Brush LabelBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x6B, 0x71, 0x8A)));
-    private static readonly Brush RpmLabelBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x22, 0xC7, 0xFF)));
-    private static readonly Color Accent = Color.FromRgb(0x7C, 0x5C, 0xFF);
-    private static readonly Color Accent2 = Color.FromRgb(0x22, 0xC7, 0xFF);
+    // 背景・目盛り・文字・アクセント色は、いまのテーマの色（ThemePalette）を使う
+    private static Brush BgBrush => ThemePalette.ChartBg;
+    private static Pen GridPen => ThemePalette.ChartGrid;
+    private static Brush LabelBrush => ThemePalette.ChartLabel;
+    private static Brush RpmLabelBrush => ThemePalette.Cached("curve.rpm", c => new SolidColorBrush(c.Accent2));
+    private static Color Accent => ThemePalette.Accent;
+    private static Color Accent2 => ThemePalette.Accent2;
     private static readonly Pen CurvePen = Freeze(new Pen(new LinearGradientBrush(Accent, Accent2, 0), 3) { LineJoin = PenLineJoin.Round });
-    private static readonly Brush FillBrush = Freeze(new LinearGradientBrush(Color.FromArgb(0x55, 0x7C, 0x5C, 0xFF), Color.FromArgb(0x00, 0x22, 0xC7, 0xFF), 90));
+    private static Brush FillBrush => ThemePalette.Cached("curve.fill", c => new LinearGradientBrush(ThemeManager.WithAlpha(c.Accent, 0x55), ThemeManager.WithAlpha(c.Accent2, 0x00), 90));
     private static readonly Pen LivePen = Freeze(new Pen(new SolidColorBrush(Color.FromRgb(0x34, 0xD3, 0x99)), 1.5) { DashStyle = DashStyles.Dash });
     private static readonly Brush LiveBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x34, 0xD3, 0x99)));
     private static readonly Brush LiveGlow = Freeze(new SolidColorBrush(Color.FromArgb(0x44, 0x34, 0xD3, 0x99)));
@@ -37,7 +38,7 @@ public sealed class CurveEditor : FrameworkElement
     private static readonly Brush StopZone = Freeze(new SolidColorBrush(Color.FromArgb(0x18, 0xFB, 0xBF, 0x24)));
     // 日本語（「現在」など）を確実に表示できるよう、和文フォントへのフォールバックを明示する
     private static readonly FontFamily UiFont = UiFonts.Family;
-    private static readonly Brush TipBg = Freeze(new SolidColorBrush(Color.FromRgb(0x1D, 0x20, 0x30)));
+    private static Brush TipBg => ThemePalette.TipBg;
     private static readonly Brush BandBrush = Freeze(new SolidColorBrush(Color.FromArgb(0x26, 0xF4, 0x72, 0xB6)));
     private static readonly Pen BandPen = Freeze(new Pen(new SolidColorBrush(Color.FromArgb(0x88, 0xF4, 0x72, 0xB6)), 1) { DashStyle = DashStyles.Dash });
     private static readonly Brush BandLabel = Freeze(new SolidColorBrush(Color.FromRgb(0xF4, 0x72, 0xB6)));
@@ -248,7 +249,7 @@ public sealed class CurveEditor : FrameworkElement
             dc.DrawEllipse(Brushes.White, PointPen, p, active ? 8 : 6, active ? 8 : 6);
             if (active)
             {
-                DrawTip(dc, $"{_points[i].Temp:F0}°C / {_points[i].Duty:F0}%{RpmSuffix(_points[i].Duty)}", p, dpi, Brushes.White);
+                DrawTip(dc, $"{_points[i].Temp:F0}°C / {_points[i].Duty:F0}%{RpmSuffix(_points[i].Duty)}", p, dpi, ThemePalette.Text);
             }
         }
     }

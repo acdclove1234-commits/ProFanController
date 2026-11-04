@@ -89,7 +89,7 @@ public partial class MainWindow : Window
             "ハードウェアアクセス: LibreHardwareMonitor + PawnIO\n" +
             $"設定ファイル: {ConfigStore.FilePath}";
 
-        SourceInitialized += (_, _) => ApplyDarkTitleBar();
+        SourceInitialized += (_, _) => ThemeManager.ApplyTitleBar(this);
         Loaded += async (_, _) =>
         {
             // schtasks・powercfg の問い合わせは少し時間がかかるので画面表示を止めない
@@ -160,6 +160,7 @@ public partial class MainWindow : Window
         Watch(Config.Energy);
         Watch(Config.Rgb);
         Watch(Config.Rgb.Music);
+        Watch(Config.Appearance);
         foreach (var profile in Config.Profiles)
         {
             Watch(profile);
@@ -571,15 +572,4 @@ public partial class MainWindow : Window
     }
 
     /// <summary>Windows 11 のタイトルバーをダークにして、背景色と合わせる</summary>
-    private void ApplyDarkTitleBar()
-    {
-        var hwnd = new WindowInteropHelper(this).Handle;
-        int dark = 1;
-        DwmSetWindowAttribute(hwnd, 20, ref dark, sizeof(int));        // DWMWA_USE_IMMERSIVE_DARK_MODE
-        int caption = 0x00120C0B;                                      // #0B0C12 (COLORREF は BGR 順)
-        DwmSetWindowAttribute(hwnd, 35, ref caption, sizeof(int));     // DWMWA_CAPTION_COLOR（Windows 11 のみ有効）
-    }
-
-    [DllImport("dwmapi.dll")]
-    private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attribute, ref int value, int size);
 }

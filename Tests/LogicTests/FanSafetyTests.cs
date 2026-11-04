@@ -304,6 +304,29 @@ public static class FanSafetyTests
         T.Check(!flagged, "readback slowly approaching the target (0.5%/tick) is not a mismatch");
     }
 
+    /// <summary>回り始めの後押し: 止まっているファンに、止まる回転と回り始める回転の間の指示を出したら、少しの間だけ回り始める回転にする</summary>
+    public static void TestSpinUpKick()
+    {
+        const double start = 38, stop = 22;   // 38% で回り始め、22% 未満で止まるファン
+        var s = new SpinUpState();
+        T.Near(FanSafety.SpinUp(ref s, 30, 0, start, stop, 1000), start + FanSafety.SpinUpMargin, 1e-9, "stopped fan asked for 30% (between stop and start) → kicked to start + 3%");
+        T.Near(FanSafety.SpinUp(ref s, 30, 0, start, stop, 2000), start + FanSafety.SpinUpMargin, 1e-9, "kick holds while still stopped");
+        T.Near(FanSafety.SpinUp(ref s, 30, 450, start, stop, 2500), 30, 1e-9, "spinning → back to the asked duty at once");
+        T.Near(FanSafety.SpinUp(ref s, 30, 450, start, stop, 3000), 30, 1e-9, "a spinning fan is never kicked");
+
+        var low = new SpinUpState();
+        T.Near(FanSafety.SpinUp(ref low, 15, 0, start, stop, 1000), 15, 1e-9, "below the stop duty (meant to stop): no kick");
+        T.Near(FanSafety.SpinUp(ref low, 50, 0, start, stop, 1000), 50, 1e-9, "already above the start duty: nothing to do");
+        T.Near(FanSafety.SpinUp(ref low, 30, null, start, stop, 1000), 30, 1e-9, "no RPM reading: no kick");
+        T.Near(FanSafety.SpinUp(ref low, 30, 0, 0, 0, 1000), 30, 1e-9, "not calibrated: no kick");
+
+        var dead = new SpinUpState();
+        FanSafety.SpinUp(ref dead, 30, 0, start, stop, 0);
+        T.Near(FanSafety.SpinUp(ref dead, 30, 0, start, stop, FanSafety.SpinUpMaxMs + 1), 30, 1e-9, "still stopped after 3 s: give up (stall warning takes over)");
+        T.Near(FanSafety.SpinUp(ref dead, 30, 0, start, stop, FanSafety.SpinUpMaxMs + 1000), 30, 1e-9, "no immediate retry");
+        T.Near(FanSafety.SpinUp(ref dead, 30, 0, start, stop, FanSafety.SpinUpMaxMs + FanSafety.SpinUpRetryMs + 2), start + FanSafety.SpinUpMargin, 1e-9, "retried after 30 s");
+    }
+
     // =====================================================================
     // エンジン全体（偽物のハードウェア）
     // =====================================================================

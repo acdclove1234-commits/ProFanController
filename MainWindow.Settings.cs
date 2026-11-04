@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using ProFanController.UI;
 
 namespace ProFanController;
@@ -362,8 +363,100 @@ public partial class MainWindow
     }
 
     /// <summary>変更通知を持たない設定（Quick / Web / Advisor など）を画面に反映する</summary>
+    // ----- 見た目 -----
+
+    private readonly ObservableCollection<LightingChoiceVm> _accentChoices = new();
+    private readonly ObservableCollection<LightingChoiceVm> _backgroundChoices = new();
+    private bool _appearanceReady;
+
+    /// <summary>見た目の欄の選択肢を作る（テーマ・アクセント色 64 色・フォント）。フォントの一覧は 1 回だけ作る</summary>
+    private void InitAppearance()
+    {
+        if (!_appearanceReady)
+        {
+            _appearanceReady = true;
+            ThemeCombo.ItemsSource = new[]
+            {
+                new ChoiceOption(AppThemes.System, "Windows に合わせる"),
+                new ChoiceOption(AppThemes.Dark, "ダーク"),
+                new ChoiceOption(AppThemes.Light, "ライト"),
+            };
+            foreach (var hex in ThemeManager.AccentPalette)
+            {
+                var brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(hex));
+                brush.Freeze();
+                _accentChoices.Add(new LightingChoiceVm { Kind = LightingChoiceKind.Accent, Id = hex, Label = hex, Tip = hex, Swatch = brush });
+            }
+            AccentSwatches.ItemsSource = _accentChoices;
+            BackgroundSwatches.ItemsSource = _backgroundChoices;
+            var fonts = new List<ChoiceOption>
+            {
+                new("", "既定（英数字 Montserrat・日本語 ProFan Maru）"),
+                new(ThemeManager.BundledMaruId, "ProFan Maru（同梱の丸ゴシック）"),
+            };
+            var lang = System.Windows.Markup.XmlLanguage.GetLanguage("ja-jp");
+            foreach (var f in Fonts.SystemFontFamilies
+                         .Select(f => (Id: f.Source, Label: f.FamilyNames.TryGetValue(lang, out var ja) ? ja : f.Source))
+                         .Where(f => !f.Id.Contains('#'))
+                         .DistinctBy(f => f.Id)
+                         .OrderBy(f => f.Label, StringComparer.CurrentCulture))
+                fonts.Add(new ChoiceOption(f.Id, f.Label == f.Id ? f.Id : $"{f.Label}（{f.Id}）"));
+            FontCombo.ItemsSource = fonts;
+        }
+        RefreshAppearanceUi();
+    }
+
+    /// <summary>選ばれているアクセント色の印と、フォントの見本を、いまの設定に合わせる</summary>
+    private void RefreshAppearanceUi()
+    {
+        var a = Config.Appearance;
+        foreach (var c in _accentChoices) c.IsSelected = string.Equals(c.Id, a.Accent, StringComparison.OrdinalIgnoreCase);
+        AccentDefaultButton.FontWeight = a.Accent == AppearanceConfig.DefaultAccent ? FontWeights.Bold : FontWeights.Normal;
+        AccentSystemButton.FontWeight = a.Accent == AppearanceConfig.SystemAccent ? FontWeights.Bold : FontWeights.Normal;
+        if (_backgroundChoices.Count == 0)
+        {
+            // 見本は、実際の背景色ではなく、色合いと濃さが分かるはっきりした色で塗る（ダーク・ライト共通）
+            string[] rows = { "控えめ", "やや控えめ", "やや濃い", "濃い" };
+            for (int i = 0; i < ThemeManager.BackgroundCount; i++)
+            {
+                var brush = new SolidColorBrush(ThemeManager.BackgroundDisplay(i));
+                brush.Freeze();
+                string name = i % 16 == 15 ? "灰色" : $"色相 {i % 16 * 24}°";
+                _backgroundChoices.Add(new LightingChoiceVm
+                {
+                    Kind = LightingChoiceKind.Background, Id = AppearanceConfig.BackgroundPrefix + i, Label = name,
+                    Tip = $"{name}・{rows[i / 16]}", Swatch = brush,
+                });
+            }
+        }
+        foreach (var c in _backgroundChoices) c.IsSelected = c.Id == a.Background;
+        BackgroundDefaultButton.FontWeight = a.Background == AppearanceConfig.DefaultBackground ? FontWeights.Bold : FontWeights.Normal;
+        FontPreview.FontFamily = ThemeManager.FontFor(a.FontFamily);
+        // 元の値が一覧にない（ほかの PC で選んだフォントなど）ときは、選択欄が空にならないよう既定として表示する
+        if (FontCombo.ItemsSource is IEnumerable<ChoiceOption> list && !list.Any(o => o.Id == a.FontFamily)) FontCombo.SelectedIndex = 0;
+    }
+
+    private void OnAccentDefaultClick(object sender, RoutedEventArgs e)
+    {
+        Config.Appearance.Accent = AppearanceConfig.DefaultAccent;
+        RefreshAppearanceUi();
+    }
+
+    private void OnBackgroundDefaultClick(object sender, RoutedEventArgs e)
+    {
+        Config.Appearance.Background = AppearanceConfig.DefaultBackground;
+        RefreshAppearanceUi();
+    }
+
+    private void OnAccentSystemClick(object sender, RoutedEventArgs e)
+    {
+        Config.Appearance.Accent = AppearanceConfig.SystemAccent;
+        RefreshAppearanceUi();
+    }
+
     private void LoadPlainSettings()
     {
+        InitAppearance();
         RestorePlanSwitch.IsChecked = Config.RestorePowerPlanOnExit;
         HotkeysSwitch.IsChecked = Config.Quick.HotkeysEnabled;
         QuietProfileCombo.ItemsSource = Config.Profiles;

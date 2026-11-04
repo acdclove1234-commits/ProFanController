@@ -55,6 +55,12 @@ public static class Program
         }
         Console.WriteLine($"\n{T.Passed} passed, {T.Failed} failed ({tests.Count} test methods)");
         foreach (var f in T.Failures) Console.WriteLine("  FAILED: " + f);
+        // 絞り込みに 1 件も当たらないときは失敗にする（dotnet run の余分な引数が絞り込みとして渡ったときに気づけるように）
+        if (tests.Count == 0)
+        {
+            Console.WriteLine($"NO TESTS MATCHED (filter: \"{filter}\")");
+            return 1;
+        }
         Console.WriteLine(T.Failed == 0 ? "ALL PASS" : "SOME FAILED");
         return T.Failed == 0 ? 0 : 1;
     }

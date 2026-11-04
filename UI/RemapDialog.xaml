@@ -8,12 +8,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ProFanController" Width="860" Height="680" MinWidth="760" MinHeight="520"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
-        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}"
-        FontFamily="{StaticResource UiFont}" FontSize="14" UseLayoutRounding="True"
+        Background="{DynamicResource BgBrush}" Foreground="{DynamicResource TextBrush}"
+        FontFamily="{DynamicResource UiFont}" FontSize="14" UseLayoutRounding="True"
         TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="ClearType" FontWeight="Medium">
     <Window.Resources>
         <DataTemplate x:Key="RowTemplate">
-            <Border Background="{StaticResource InputBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
+            <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -25,7 +25,7 @@
                         <TextBlock Text="{Binding UsageText}" Style="{StaticResource Caption}" FontSize="12" TextTrimming="CharacterEllipsis"
                                    TextWrapping="NoWrap" ToolTip="{Binding UsageText}"/>
                     </StackPanel>
-                    <TextBlock Grid.Column="1" Text="&#xE72A;" FontFamily="{StaticResource IconFont}" Foreground="{StaticResource Accent2Brush}"
+                    <TextBlock Grid.Column="1" Text="&#xE72A;" FontFamily="{StaticResource IconFont}" Foreground="{DynamicResource Accent2Brush}"
                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <StackPanel Grid.Column="2" VerticalAlignment="Center">
                         <ComboBox ItemsSource="{Binding Options}" DisplayMemberPath="Display" SelectedValuePath="Id" SelectedValue="{Binding Choice}"/>
@@ -47,7 +47,7 @@
 
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Border Width="36" Height="36" CornerRadius="10" Background="{StaticResource AccentGradient}" Margin="0,0,14,0">
+                <Border Width="36" Height="36" CornerRadius="10" Background="{DynamicResource AccentGradient}" Margin="0,0,14,0">
                     <TextBlock x:Name="HeaderIcon" Text="&#xE7F4;" FontFamily="{StaticResource IconFont}" FontSize="18" Foreground="White"
                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
@@ -58,7 +58,7 @@
 
         <!-- 部品の変化 / 読み込みの設定 -->
         <StackPanel Grid.Row="1" Margin="0,14,0,0">
-            <Border x:Name="ChangesCard" Background="#157C5CFF" BorderBrush="#447C5CFF" BorderThickness="1" CornerRadius="10" Padding="14,10"
+            <Border x:Name="ChangesCard" Background="{DynamicResource AccentTintBrush}" BorderBrush="{DynamicResource AccentLineBrush}" BorderThickness="1" CornerRadius="10" Padding="14,10"
                     Margin="0,0,0,10" Visibility="Collapsed">
                 <ItemsControl x:Name="ChangesList">
                     <ItemsControl.ItemTemplate>

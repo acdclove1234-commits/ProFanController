@@ -38,6 +38,10 @@ public enum LightingChoiceKind
     Idle,
     /// <summary>色の候補（RgbConfig.StaticColor）</summary>
     Color,
+    /// <summary>画面のアクセント色（AppearanceConfig.Accent）</summary>
+    Accent,
+    /// <summary>画面の背景色（AppearanceConfig.Background）</summary>
+    Background,
 }
 
 /// <summary>コンボボックスの選択肢（Id = 設定に保存する値、Label = 画面に出す言葉）</summary>
@@ -941,6 +945,14 @@ public partial class MainWindow
             case LightingChoiceKind.Color:
                 rgb.StaticColor = c.Id;
                 break;
+            case LightingChoiceKind.Accent:
+                Config.Appearance.Accent = c.Id;
+                RefreshAppearanceUi();
+                return;
+            case LightingChoiceKind.Background:
+                Config.Appearance.Background = c.Id;
+                RefreshAppearanceUi();
+                return;
         }
         RefreshLightingUi();
     }

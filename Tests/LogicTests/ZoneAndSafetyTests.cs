@@ -229,6 +229,48 @@ public static class ZoneAndSafetyTests
         }
     }
 
+    public static void TestAppearanceSettings()
+    {
+        var a = new AppearanceConfig();
+        T.Check(a.Theme == AppThemes.Dark && a.Accent == AppearanceConfig.DefaultAccent && a.FontFamily == "" && a.TextScale == 100,
+            "defaults: dark, default accent, default font, 100%");
+        a.TextScale = 300;
+        T.Check(a.TextScale == AppearanceConfig.MaxTextScale, "text size clamped to 130%");
+        var broken = new AppearanceConfig { Theme = "Neon", Accent = "purple" };
+        broken.Normalize();
+        T.Check(broken.Theme == AppThemes.Dark && broken.Accent == AppearanceConfig.DefaultAccent, "unknown theme / bad color → defaults");
+        var ok = new AppearanceConfig { Theme = AppThemes.Light, Accent = "#22C7FF" };
+        ok.Normalize();
+        T.Check(ok.Theme == AppThemes.Light && ok.Accent == "#22C7FF", "valid choices kept");
+        var cfg = AppConfig.FromJson("{\"SchemaVersion\":2}");
+        T.Check(cfg.Appearance is not null && cfg.Appearance.Theme == AppThemes.Dark, "old config files get the default appearance");
+        T.Check(cfg.Appearance!.Background == AppearanceConfig.DefaultBackground, "old config files get the default background");
+        foreach (var (value, kept) in new[] { ("bg0", true), ("bg63", true), ("bg27", true), ("bg64", false), ("bg-1", false), ("#112233", false), ("bg", false) })
+        {
+            var b = new AppearanceConfig { Background = value };
+            b.Normalize();
+            T.Check((b.Background == value) == kept, $"background '{value}' {(kept ? "kept" : "→ default")}");
+        }
+    }
+
+    public static void TestCardGridWidens()
+    {
+        // 3 枚・下限 354・上限 620
+        var narrow = CardGrid.Layout(1080, 3, 354, 620);
+        T.Check(narrow.Columns == 3 && Math.Abs(narrow.Slot - 360) < 0.01, "1080 px → 3 columns of 360");
+        var wide = CardGrid.Layout(1650, 3, 354, 620);
+        T.Check(wide.Columns == 3 && Math.Abs(wide.Slot - 550) < 0.01, "wider window → the same 3 cards get wider (550)");
+        var huge = CardGrid.Layout(3000, 3, 354, 620);
+        T.Check(huge.Columns == 3 && huge.Slot == 620, "very wide → capped at the max width");
+        var many = CardGrid.Layout(1650, 10, 258, 400);
+        T.Check(many.Columns == 6 && Math.Abs(many.Slot - 275) < 0.01, "many cards → more columns as the window grows");
+        var tiny = CardGrid.Layout(300, 4, 354, 620);
+        T.Check(tiny.Columns == 1 && tiny.Slot == 300, "narrower than one card → one column that fits");
+        var unbounded = CardGrid.Layout(double.PositiveInfinity, 4, 354, 620);
+        T.Check(unbounded.Columns == 4 && unbounded.Slot == 354, "unbounded width → one row at the min width");
+        T.Check(CardGrid.Layout(800, 0, 354, 620).Columns == 1, "no cards → no crash");
+    }
+
     public static void TestDirectGpuAutoLatency()
     {
         T.Check(RgbDeviceChannel.AutoDirectLatencyMs(null, 8) == 8, "not measured yet → default");

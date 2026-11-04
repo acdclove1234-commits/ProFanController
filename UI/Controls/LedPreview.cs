@@ -24,8 +24,9 @@ public sealed class LedPreview : FrameworkElement
     /// <summary>角の丸み（ピクセル）</summary>
     private const double Corner = 3;
 
-    private static readonly Brush EmptyBrush = Freeze(new SolidColorBrush(Color.FromRgb(0x1D, 0x20, 0x30)));
-    private static readonly Pen GapPen = Freeze(new Pen(Freeze(new SolidColorBrush(Color.FromArgb(0xB0, 0x10, 0x11, 0x1A))), 1));
+    // 何も送っていないときの色と、LED の間のすき間は、いまのテーマの色（ThemePalette）を使う
+    private static Brush EmptyBrush => ThemePalette.Input;
+    private static Pen GapPen => ThemePalette.Cached("led.gap", c => new Pen(new SolidColorBrush(ThemeManager.WithAlpha(c.Card, 0xB0)), 1));
     /// <summary>ガンマ補正（2.2 乗）の逆: LED に送った値 → 画面で同じくらいに見える値</summary>
     private static readonly byte[] InverseGamma = CreateInverseGamma();
 

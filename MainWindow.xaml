@@ -11,8 +11,8 @@
         xmlns:ui="clr-namespace:ProFanController.UI"
         Title="ProFanController" Width="1360" Height="900" MinWidth="1120" MinHeight="700"
         WindowStartupLocation="CenterScreen"
-        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}"
-        FontFamily="{StaticResource UiFont}" FontSize="14"
+        Background="{DynamicResource BgBrush}" Foreground="{DynamicResource TextBrush}"
+        FontFamily="{DynamicResource UiFont}" FontSize="14"
         UseLayoutRounding="True" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="ClearType" FontWeight="Medium"
         KeyDown="OnWindowKeyDown">
 
@@ -95,7 +95,7 @@
             <Setter Property="Padding" Value="7,1"/>
             <Setter Property="Margin" Value="8,0,0,0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Background" Value="{StaticResource AccentGradient}"/>
+            <Setter Property="Background" Value="{DynamicResource AccentGradient}"/>
         </Style>
         <!-- LED の光り方ごとに表示する設定 -->
         <Style x:Key="RgbTempOnly" TargetType="FrameworkElement">
@@ -142,7 +142,7 @@
         </Style>
         <!-- 選択肢のチップ（プリセット・強さ・パレット・テンポなど）。選ばれているもの（IsSelected）は色が付く -->
         <Style x:Key="ChoiceChip" TargetType="Button">
-            <Setter Property="Foreground" Value="{StaticResource SubTextBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource SubTextBrush}"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Margin" Value="0,0,6,6"/>
@@ -150,16 +150,16 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="Bd" Background="{StaticResource InputBrush}" CornerRadius="14" Padding="12,5">
+                        <Border x:Name="Bd" Background="{DynamicResource InputBrush}" CornerRadius="14" Padding="12,5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource TrackBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource TrackBrush}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
                             </Trigger>
                             <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource AccentGradient}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AccentGradient}"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </DataTrigger>
                             <Trigger Property="IsEnabled" Value="False">
@@ -172,7 +172,7 @@
         </Style>
         <!-- 音楽の表現のギャラリー（名前と説明のカード） -->
         <Style x:Key="EffectTile" TargetType="Button">
-            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Margin" Value="0,0,8,8"/>
             <Setter Property="Width" Value="200"/>
@@ -181,17 +181,17 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="Bd" Background="{StaticResource InputBrush}" BorderBrush="{StaticResource BorderBrush}"
+                        <Border x:Name="Bd" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource BorderBrush}"
                                 BorderThickness="2" CornerRadius="12" Padding="12,9">
                             <ContentPresenter/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource MutedBrush}"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MutedBrush}"/>
                             </Trigger>
                             <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource CardHoverBrush}"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource CardHoverBrush}"/>
                             </DataTrigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="Bd" Property="Opacity" Value="0.45"/>
@@ -203,13 +203,13 @@
         </Style>
         <!-- オン・オフで色が変わるボタン（同期テスト・詳しい設定） -->
         <Style x:Key="ToggleChip" TargetType="ToggleButton">
-            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">
-                        <Border x:Name="Bd" Background="{StaticResource InputBrush}" BorderBrush="{StaticResource BorderBrush}"
+                        <Border x:Name="Bd" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource BorderBrush}"
                                 BorderThickness="1" CornerRadius="8" Padding="12,5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
@@ -218,7 +218,7 @@
                                 <Setter TargetName="Bd" Property="Opacity" Value="0.85"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource AccentGradient}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AccentGradient}"/>
                                 <Setter TargetName="Bd" Property="BorderThickness" Value="0"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
@@ -245,7 +245,7 @@
             <Setter Property="Padding" Value="7,1"/>
             <Setter Property="Margin" Value="8,0,0,0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Background" Value="#33FBBF24"/>
+            <Setter Property="Background" Value="{DynamicResource WarnFillBrush}"/>
         </Style>
 
         <DataTemplate x:Key="ChoiceChipTemplate">
@@ -267,7 +267,7 @@
                     <TextBlock Text="{Binding Label}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
                     <TextBlock Text="{Binding Description}" Style="{StaticResource Caption}" FontSize="12" Margin="0,3,0,0"
                                MaxHeight="44" TextTrimming="CharacterEllipsis"/>
-                    <TextBlock Text="{Binding Warning}" FontSize="12" Foreground="{StaticResource WarnBrush}" Margin="0,2,0,0"
+                    <TextBlock Text="{Binding Warning}" FontSize="12" Foreground="{DynamicResource WarnBrush}" Margin="0,2,0,0"
                                TextTrimming="CharacterEllipsis" Visibility="{Binding HasWarning, Converter={StaticResource BoolToVis}}"/>
                 </StackPanel>
             </Button>
@@ -278,8 +278,8 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid Width="30" Height="30" Background="Transparent">
-                            <Ellipse x:Name="Ring" Stroke="{StaticResource MutedBrush}" StrokeThickness="2" Visibility="Collapsed"/>
-                            <Ellipse Width="22" Height="22" Fill="{Binding Swatch}" Stroke="{StaticResource BorderBrush}" StrokeThickness="1"/>
+                            <Ellipse x:Name="Ring" Stroke="{DynamicResource MutedBrush}" StrokeThickness="2" Visibility="Collapsed"/>
+                            <Ellipse Width="22" Height="22" Fill="{Binding Swatch}" Stroke="{DynamicResource BorderBrush}" StrokeThickness="1"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -287,7 +287,29 @@
                             </Trigger>
                             <DataTrigger Binding="{Binding IsSelected}" Value="True">
                                 <Setter TargetName="Ring" Property="Visibility" Value="Visible"/>
-                                <Setter TargetName="Ring" Property="Stroke" Value="White"/>
+                                <Setter TargetName="Ring" Property="Stroke" Value="{DynamicResource TextBrush}"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </DataTemplate>
+        <!-- 背景色の候補: 角の丸い四角を、色合いと濃さが分かる色で塗る -->
+        <DataTemplate x:Key="BackgroundSwatchTemplate">
+            <Button Click="OnLightingChoiceClick" Cursor="Hand" Margin="0,0,4,4" ToolTip="{Binding Tip}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Width="34" Height="30" Background="Transparent">
+                            <Border x:Name="Ring" CornerRadius="8" BorderBrush="{DynamicResource MutedBrush}" BorderThickness="2" Visibility="Collapsed"/>
+                            <Border Width="28" Height="24" CornerRadius="6" Background="{Binding Swatch}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Ring" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                <Setter TargetName="Ring" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource TextBrush}"/>
                             </DataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -303,13 +325,13 @@
         </Grid.ColumnDefinitions>
 
         <!-- ================= サイドバー ================= -->
-        <Border Background="{StaticResource SidebarBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
+        <Border Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,1,0">
             <DockPanel LastChildFill="True">
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="24,28,0,30">
                     <Image x:Name="LogoImage" Width="34" Height="34"/>
                     <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
                         <TextBlock Text="ProFan" FontSize="18" FontWeight="Bold"/>
-                        <TextBlock Text="CONTROLLER" FontSize="11" Foreground="{StaticResource SubTextBrush}" Margin="1,-2,0,0"/>
+                        <TextBlock Text="CONTROLLER" FontSize="11" Foreground="{DynamicResource SubTextBrush}" Margin="1,-2,0,0"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -317,11 +339,11 @@
                 <Border DockPanel.Dock="Bottom" Margin="16,0,16,20" Style="{StaticResource Card}" Padding="16">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Ellipse x:Name="StatusDot" Width="9" Height="9" Fill="{StaticResource MutedBrush}" VerticalAlignment="Center"/>
+                            <Ellipse x:Name="StatusDot" Width="9" Height="9" Fill="{DynamicResource MutedBrush}" VerticalAlignment="Center"/>
                             <TextBlock x:Name="StatusText" Text="初期化中…" Margin="8,0,0,0" FontWeight="SemiBold"/>
                         </StackPanel>
                         <TextBlock x:Name="StatusSub" Style="{StaticResource Caption}" Margin="0,6,0,12" Text="ハードウェアを検出しています"/>
-                        <TextBlock x:Name="QuickStatusText" Style="{StaticResource Caption}" Foreground="{StaticResource Accent2Brush}"
+                        <TextBlock x:Name="QuickStatusText" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}"
                                    FontWeight="SemiBold" Margin="0,-6,0,12" Visibility="Collapsed"/>
                         <Button x:Name="PauseButton" Style="{StaticResource GhostButton}" Content="一時停止（BIOS に戻す）"
                                 Click="OnPauseClick" FontSize="13" Padding="10,7"/>
@@ -333,7 +355,7 @@
                     <StackPanel>
                         <TextBlock Text="プロファイル" Style="{StaticResource Caption}" Margin="0,0,0,8"/>
                         <ComboBox x:Name="SidebarProfileCombo" DisplayMemberPath="Name" SelectionChanged="OnSidebarProfileChanged"/>
-                        <TextBlock x:Name="AutoSwitchText" Style="{StaticResource Caption}" Margin="0,8,0,0" Foreground="{StaticResource Accent2Brush}"
+                        <TextBlock x:Name="AutoSwitchText" Style="{StaticResource Caption}" Margin="0,8,0,0" Foreground="{DynamicResource Accent2Brush}"
                                    Visibility="Collapsed"/>
                     </StackPanel>
                 </Border>
@@ -393,16 +415,16 @@
                         <Button x:Name="CancelQuickButton" Style="{StaticResource DangerButton}" Content="解除" Click="OnCancelQuickClick"
                                 Padding="14,7" Margin="0,0,16,0" Visibility="Collapsed" ToolTip="ワンタッチ操作を解除 (Ctrl+Alt+N)"/>
                         <ToggleButton x:Name="EditCardsToggle" Content="カードを編集" Click="OnEditCardsClick" Margin="0,0,8,0"
-                                      Foreground="{StaticResource TextBrush}" Cursor="Hand">
+                                      Foreground="{DynamicResource TextBrush}" Cursor="Hand">
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="ToggleButton">
-                                    <Border x:Name="Bd" Background="{StaticResource InputBrush}" BorderBrush="{StaticResource BorderBrush}"
+                                    <Border x:Name="Bd" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource BorderBrush}"
                                             BorderThickness="1" CornerRadius="8" Padding="14,7">
                                         <ContentPresenter HorizontalAlignment="Center"/>
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked" Value="True">
-                                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource AccentGradient}"/>
+                                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AccentGradient}"/>
                                             <Setter TargetName="Bd" Property="BorderThickness" Value="0"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
@@ -443,16 +465,16 @@
 
             <!-- 警告バナー -->
             <Border x:Name="AlertBanner" Grid.Row="1" Margin="36,0,36,16" CornerRadius="12" Padding="18,12"
-                    Background="#22F87171" BorderBrush="#66F87171" BorderThickness="1" Visibility="Collapsed">
+                    Background="{DynamicResource DangerTintBrush}" BorderBrush="{DynamicResource DangerLineBrush}" BorderThickness="1" Visibility="Collapsed">
                 <DockPanel>
                     <Button DockPanel.Dock="Right" Style="{StaticResource IconButton}" Content="&#xE711;"
-                            Foreground="{StaticResource SubTextBrush}" Click="OnDismissAlert" ToolTip="閉じる"/>
+                            Foreground="{DynamicResource SubTextBrush}" Click="OnDismissAlert" ToolTip="閉じる"/>
                     <Button x:Name="AlertActionButton" DockPanel.Dock="Right" Style="{StaticResource AccentButton}" Padding="14,6" FontSize="13"
                             Margin="12,0,8,0" VerticalAlignment="Center" Click="OnAlertActionClick" Visibility="Collapsed"/>
                     <TextBlock Text="&#xE7BA;" FontFamily="{StaticResource IconFont}" FontSize="18" x:Name="AlertIcon"
-                               Foreground="{StaticResource DangerBrush}" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                               Foreground="{DynamicResource DangerBrush}" VerticalAlignment="Center" Margin="0,0,14,0"/>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock x:Name="AlertTitle" FontWeight="SemiBold" Foreground="{StaticResource DangerBrush}"/>
+                        <TextBlock x:Name="AlertTitle" FontWeight="SemiBold" Foreground="{DynamicResource DangerBrush}"/>
                         <TextBlock x:Name="AlertText" TextWrapping="Wrap" Margin="0,2,0,0"/>
                     </StackPanel>
                 </DockPanel>
@@ -464,12 +486,12 @@
                     <ItemsControl x:Name="TempCards">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel/>
+                                <ctl:AdaptiveWrapPanel ItemMinWidth="258" ItemMaxWidth="400"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Style="{StaticResource Card}" Margin="0,0,14,14" Height="168" Width="244">
+                                <Border Style="{StaticResource Card}" Margin="0,0,14,14" Height="168">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
@@ -486,11 +508,11 @@
                                         </DockPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,8,0,0">
                                             <TextBlock Text="{Binding ValueText}" Style="{StaticResource BigNumber}" Foreground="{Binding LevelBrush}"/>
-                                            <TextBlock Text="°C" FontSize="16" Foreground="{StaticResource SubTextBrush}" VerticalAlignment="Bottom" Margin="4,0,0,8"/>
+                                            <TextBlock Text="°C" FontSize="16" Foreground="{DynamicResource SubTextBrush}" VerticalAlignment="Bottom" Margin="4,0,0,8"/>
                                         </StackPanel>
                                         <ctl:Sparkline Grid.Row="2" Values="{Binding Values}" Stroke="{Binding LevelBrush}" Margin="0,6,0,0"/>
                                         <!-- 編集モード -->
-                                        <Border Grid.RowSpan="3" Background="#CC161824" CornerRadius="10" Margin="-8"
+                                        <Border Grid.RowSpan="3" Background="{DynamicResource ScrimBrush}" CornerRadius="10" Margin="-8"
                                                 Visibility="{Binding Editing, Converter={StaticResource BoolToVis}}">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Button Style="{StaticResource GhostButton}" Content="&#xE76B;" FontFamily="{StaticResource IconFont}"
@@ -519,12 +541,12 @@
                     <ItemsControl x:Name="MetricTiles">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel/>
+                                <ctl:AdaptiveWrapPanel ItemMinWidth="258" ItemMaxWidth="400"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Style="{StaticResource Card}" Margin="0,0,14,14" Width="244" Padding="18,14">
+                                <Border Style="{StaticResource Card}" Margin="0,0,14,14" Padding="18,14">
                                     <StackPanel>
                                         <TextBlock Text="{Binding Title}" Style="{StaticResource Caption}" FontSize="13" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
                                         <TextBlock Text="{Binding ValueText}" FontSize="26" FontWeight="SemiBold" Margin="0,2,0,0"/>
@@ -568,12 +590,12 @@
                     <ItemsControl x:Name="FanCards">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel/>
+                                <ctl:AdaptiveWrapPanel ItemMinWidth="354" ItemMaxWidth="620"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border x:Name="Card" Style="{StaticResource Card}" Width="340" Margin="0,0,14,14" Cursor="Hand"
+                                <Border x:Name="Card" Style="{StaticResource Card}" Margin="0,0,14,14" Cursor="Hand"
                                         Tag="{Binding ControlId}" MouseLeftButtonUp="OnFanCardClick">
                                     <StackPanel>
                                         <Grid>
@@ -597,7 +619,7 @@
                                                 </TextBlock>
                                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                                     <TextBlock Text="{Binding RpmText}" FontSize="34" FontWeight="SemiBold"/>
-                                                    <TextBlock Text="RPM" FontSize="13" Foreground="{StaticResource SubTextBrush}" VerticalAlignment="Bottom" Margin="6,0,0,8"/>
+                                                    <TextBlock Text="RPM" FontSize="13" Foreground="{DynamicResource SubTextBrush}" VerticalAlignment="Bottom" Margin="6,0,0,8"/>
                                                 </StackPanel>
                                             </StackPanel>
                                             <!-- 円形ゲージ: 弧 = Duty、中央 = 温度 -->
@@ -615,7 +637,7 @@
                                 </Border>
                                 <DataTemplate.Triggers>
                                     <Trigger SourceName="Card" Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Card" Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                        <Setter TargetName="Card" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
                                     </Trigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>
@@ -629,36 +651,36 @@
                 <ItemsControl x:Name="DeviceCards">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel/>
+                            <ctl:AdaptiveWrapPanel ItemMinWidth="454" ItemMaxWidth="760"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border x:Name="Card" Style="{StaticResource Card}" Width="440" Margin="0,0,14,14" Padding="14">
+                            <Border x:Name="Card" Style="{StaticResource Card}" Margin="0,0,14,14" Padding="14">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="130"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Border Width="130" Height="130" CornerRadius="10" Background="#0E1018" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                                    <Border Width="130" Height="130" CornerRadius="10" Background="{DynamicResource InsetBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
                                         <ctl:DeviceArt Kind="{Binding Kind}" Source="{Binding Image}" Margin="8"/>
                                     </Border>
                                     <DockPanel Grid.Column="1" Margin="16,2,0,0">
                                         <DockPanel DockPanel.Dock="Bottom">
-                                            <Border DockPanel.Dock="Right" CornerRadius="8" Background="{StaticResource AccentGradient}" MinWidth="44" Padding="12,6"
+                                            <Border DockPanel.Dock="Right" CornerRadius="8" Background="{DynamicResource AccentGradient}" MinWidth="44" Padding="12,6"
                                                     Visibility="{Binding HasBadge, Converter={StaticResource BoolToVis}}" ToolTip="回転中のファンの数">
                                                 <TextBlock Text="{Binding BadgeText}" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                                             </Border>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                <Button Style="{StaticResource IconButton}" Content="&#xE91B;" FontSize="16" Foreground="{StaticResource SubTextBrush}"
+                                                <Button Style="{StaticResource IconButton}" Content="&#xE91B;" FontSize="16" Foreground="{DynamicResource SubTextBrush}"
                                                         Tag="{Binding}" Click="OnDeviceImageClick" ToolTip="画像を変更"/>
-                                                <Button Style="{StaticResource IconButton}" Content="&#xE9D9;" FontSize="16" Foreground="{StaticResource SubTextBrush}"
+                                                <Button Style="{StaticResource IconButton}" Content="&#xE9D9;" FontSize="16" Foreground="{DynamicResource SubTextBrush}"
                                                         Click="OnDeviceSensorsClick" ToolTip="センサーを表示" Margin="4,0,0,0"/>
                                             </StackPanel>
                                         </DockPanel>
                                         <StackPanel>
                                             <TextBlock Text="{Binding Name}" Style="{StaticResource H2}" FontSize="16" TextWrapping="Wrap" MaxHeight="44" TextTrimming="CharacterEllipsis"/>
-                                            <TextBlock Text="{Binding KindText}" Style="{StaticResource Caption}" Margin="0,4,0,0" Foreground="{StaticResource Accent2Brush}"/>
+                                            <TextBlock Text="{Binding KindText}" Style="{StaticResource Caption}" Margin="0,4,0,0" Foreground="{DynamicResource Accent2Brush}"/>
                                             <TextBlock Text="{Binding DetailText}" Style="{StaticResource Caption}" FontSize="12" Margin="0,4,0,0"/>
                                         </StackPanel>
                                     </DockPanel>
@@ -666,7 +688,7 @@
                             </Border>
                             <DataTemplate.Triggers>
                                 <Trigger SourceName="Card" Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Card" Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                                    <Setter TargetName="Card" Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
                                 </Trigger>
                             </DataTemplate.Triggers>
                         </DataTemplate>
@@ -708,7 +730,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextBrush}"/>
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="{DynamicResource TextBrush}"/>
                                     <TextBlock Style="{StaticResource Caption}">
                                         <Run Text="{Binding Role, Mode=OneWay}"/>
                                         <Run Text=" · "/>
@@ -761,9 +783,9 @@
                                 </CheckBox>
 
                                 <Border Style="{StaticResource GpuOnly}" Margin="0,14,0,0" CornerRadius="10" Padding="14,10"
-                                        Background="#15FBBF24" BorderBrush="#44FBBF24" BorderThickness="1">
+                                        Background="{DynamicResource WarnTintBrush}" BorderBrush="{DynamicResource WarnLineBrush}" BorderThickness="1">
                                     <StackPanel>
-                                        <TextBlock Text="GPU のファン（試験的）" FontWeight="SemiBold" Foreground="{StaticResource WarnBrush}"/>
+                                        <TextBlock Text="GPU のファン（試験的）" FontWeight="SemiBold" Foreground="{DynamicResource WarnBrush}"/>
                                         <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,0" TextWrapping="Wrap"
                                                    Text="制御している間は、GPU ドライバーの自動制御（アイドル時に止まる 0 RPM モードなど）が止まります。カーブには GPU の温度を使ってください。GPU 温度が 85°C（Hot Spot は 100°C）を超えると、設定に関係なく 100% にします。"/>
                                     </StackPanel>
@@ -803,9 +825,9 @@
 
                                 <!-- 目標温度モード -->
                                 <Border Style="{StaticResource TargetOnly}" Margin="0,16,0,0" CornerRadius="10" Padding="14"
-                                        Background="#157C5CFF" BorderBrush="#447C5CFF" BorderThickness="1">
+                                        Background="{DynamicResource AccentTintBrush}" BorderBrush="{DynamicResource AccentLineBrush}" BorderThickness="1">
                                     <StackPanel>
-                                        <TextBlock Text="目標温度モード" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}"/>
+                                        <TextBlock Text="目標温度モード" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}"/>
                                         <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,12"
                                                    Text="選んだ温度が目標を超えないよう、できるだけ低い回転で自動調整します。カーブを考える必要はありません。目標より高い状態が続くほど、少しずつ回転を上げます。"/>
                                         <Grid>
@@ -834,9 +856,9 @@
 
                                 <!-- 連動モード（ファングループ） -->
                                 <Border Style="{StaticResource FollowOnly}" Margin="0,16,0,0" CornerRadius="10" Padding="14"
-                                        Background="#1522C7FF" BorderBrush="#4422C7FF" BorderThickness="1">
+                                        Background="{DynamicResource Accent2TintBrush}" BorderBrush="{DynamicResource Accent2LineBrush}" BorderThickness="1">
                                     <StackPanel>
-                                        <TextBlock Text="連動モード（ファングループ）" FontWeight="SemiBold" Foreground="{StaticResource Accent2Brush}"/>
+                                        <TextBlock Text="連動モード（ファングループ）" FontWeight="SemiBold" Foreground="{DynamicResource Accent2Brush}"/>
                                         <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,12"
                                                    Text="選んだファン（リーダー）と同じ回転にします。前面の吸気ファン同士など、同じ役割のファンを揃えると「ウォンウォン」といううなりを防げます。"/>
                                         <Grid>
@@ -892,7 +914,7 @@
                                     <Slider Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding MinDuty}" IsSnapToTickEnabled="True" TickFrequency="1"/>
                                     <TextBlock Grid.Column="2" Style="{StaticResource Value}" Text="{Binding MinDuty, StringFormat={}{0:F0}%}"/>
                                     <TextBlock x:Name="MinDutyWarning" Grid.Row="1" Grid.Column="1" Style="{StaticResource Caption}"
-                                               Foreground="{StaticResource WarnBrush}" Margin="0,0,0,6" Visibility="Collapsed"/>
+                                               Foreground="{DynamicResource WarnBrush}" Margin="0,0,0,6" Visibility="Collapsed"/>
 
                                     <TextBlock Grid.Row="2" Text="上昇の速さ / 秒" Style="{StaticResource Label}"/>
                                     <Slider Grid.Row="2" Grid.Column="1" Minimum="1" Maximum="30" Value="{Binding MaxStepUpPerTick}" IsSnapToTickEnabled="True" TickFrequency="0.5"/>
@@ -905,9 +927,9 @@
 
                                 <!-- ポンプ専用 -->
                                 <Border Style="{StaticResource PumpOnly}" Margin="0,16,0,0" CornerRadius="10" Padding="14"
-                                        Background="#1522C7FF" BorderBrush="#4422C7FF" BorderThickness="1">
+                                        Background="{DynamicResource Accent2TintBrush}" BorderBrush="{DynamicResource Accent2LineBrush}" BorderThickness="1">
                                     <StackPanel>
-                                        <TextBlock Text="ポンプ保護" FontWeight="SemiBold" Foreground="{StaticResource Accent2Brush}"/>
+                                        <TextBlock Text="ポンプ保護" FontWeight="SemiBold" Foreground="{DynamicResource Accent2Brush}"/>
                                         <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,10"
                                                    Text="どの設定でも 40% 未満にはなりません。回転数が警告値を 3 秒続けて下回ると、BIOS 制御中でも 100% にして通知します。"/>
                                         <Grid>
@@ -942,7 +964,7 @@
                                         </StackPanel>
                                     </DockPanel>
                                     <ProgressBar x:Name="CalibrationProgressBar" Style="{StaticResource DutyBar}" Margin="0,14,0,0" Visibility="Collapsed"/>
-                                    <TextBlock x:Name="CalibrationText" Margin="0,10,0,0" TextWrapping="Wrap" Foreground="{StaticResource SubTextBrush}"/>
+                                    <TextBlock x:Name="CalibrationText" Margin="0,10,0,0" TextWrapping="Wrap" Foreground="{DynamicResource SubTextBrush}"/>
                                 </StackPanel>
                             </Border>
                         </Border>
@@ -960,7 +982,7 @@
                                         </StackPanel>
                                     </DockPanel>
 
-                                    <Border Background="#0FFFFFFF" CornerRadius="10" Padding="14" Margin="0,14,0,0">
+                                    <Border Background="{DynamicResource OverlayBrush}" CornerRadius="10" Padding="14" Margin="0,14,0,0">
                                         <StackPanel>
                                             <TextBlock Text="回転数を試す" FontWeight="SemiBold"/>
                                             <TextBlock Style="{StaticResource Caption}" Margin="0,2,0,10" TextWrapping="Wrap"
@@ -976,7 +998,7 @@
                                                 <Slider x:Name="ListenSlider" Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"
                                                         ValueChanged="OnListenChanged"/>
                                                 <TextBlock x:Name="ListenDutyText" Grid.Column="1" Style="{StaticResource Value}" Text="--"/>
-                                                <TextBlock x:Name="ListenRpmText" Grid.Column="2" Style="{StaticResource Value}" Foreground="{StaticResource Accent2Brush}" Text=""/>
+                                                <TextBlock x:Name="ListenRpmText" Grid.Column="2" Style="{StaticResource Value}" Foreground="{DynamicResource Accent2Brush}" Text=""/>
                                                 <Button Grid.Column="3" Style="{StaticResource SmallGhost}" Content="ここを避ける" Click="OnAvoidHereClick" Margin="8,0,0,0"/>
                                                 <Button x:Name="StopListenButton" Grid.Column="4" Style="{StaticResource SmallGhost}" Content="元に戻す" Click="OnStopListenClick"
                                                         Margin="6,0,0,0" Visibility="Collapsed"/>
@@ -987,7 +1009,7 @@
                                     <ItemsControl x:Name="BandList" ItemsSource="{Binding AvoidBands}" Margin="0,12,0,0">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Border Background="{StaticResource InputBrush}" CornerRadius="8" Padding="12,6" Margin="0,0,0,6">
+                                                <Border Background="{DynamicResource InputBrush}" CornerRadius="8" Padding="12,6" Margin="0,0,0,6">
                                                     <DockPanel>
                                                         <Button DockPanel.Dock="Right" Style="{StaticResource DangerButton}" Content="削除" Tag="{Binding}"
                                                                 Click="OnRemoveBandClick" Padding="10,4" FontSize="13"/>
@@ -1076,7 +1098,7 @@
                                             </ItemsControl.ItemsPanel>
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Border Background="{StaticResource InputBrush}" CornerRadius="8" Padding="8,6" Margin="0,0,8,8">
+                                                    <Border Background="{DynamicResource InputBrush}" CornerRadius="8" Padding="8,6" Margin="0,0,8,8">
                                                         <StackPanel Orientation="Horizontal">
                                                             <TextBox Style="{StaticResource SmallInput}" Width="52" Text="{Binding Temp, StringFormat={}{0:F0}}" LostFocus="OnPointEdited"/>
                                                             <TextBlock Text="°C →" Style="{StaticResource Label}" Margin="6,0"/>
@@ -1116,7 +1138,7 @@
                 </ScrollViewer>
 
                 <!-- 初期化中・未選択の表示 -->
-                <Border x:Name="CurvesPlaceholder" Grid.ColumnSpan="2" Background="{StaticResource BgBrush}">
+                <Border x:Name="CurvesPlaceholder" Grid.ColumnSpan="2" Background="{DynamicResource BgBrush}">
                     <TextBlock x:Name="CurvesPlaceholderText" Text="ハードウェアを初期化しています…" Style="{StaticResource Caption}" FontSize="15"
                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
@@ -1138,7 +1160,7 @@
                                         <StackPanel Orientation="Horizontal">
                                             <Border Width="10" Height="3" CornerRadius="1.5" Background="{Binding Brush}" VerticalAlignment="Center" Margin="0,0,6,0"/>
                                             <TextBlock Text="{Binding Name}" FontSize="13"/>
-                                            <TextBlock Text="{Binding Unit}" FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="4,0,0,0"/>
+                                            <TextBlock Text="{Binding Unit}" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="4,0,0,0"/>
                                         </StackPanel>
                                     </CheckBox>
                                 </DataTemplate>
@@ -1172,7 +1194,7 @@
                             <ItemsControl x:Name="FindingsList" Margin="0,14,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="{StaticResource InputBrush}" CornerRadius="10" Margin="0,0,0,8">
+                                        <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Margin="0,0,0,8">
                                             <DockPanel>
                                                 <Border DockPanel.Dock="Left" Width="4" CornerRadius="10,0,0,10" Background="{Binding LevelBrush}"/>
                                                 <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Content="{Binding ActionLabel}" Tag="{Binding}"
@@ -1186,7 +1208,7 @@
                                                         <TextBlock Text="{Binding Title}" FontWeight="SemiBold" Margin="8,0,0,0" TextWrapping="Wrap"/>
                                                     </StackPanel>
                                                     <TextBlock Text="{Binding Detail}" Style="{StaticResource Caption}" Margin="0,6,0,0"/>
-                                                    <TextBlock Text="{Binding ResultText}" Foreground="{StaticResource OkBrush}" FontSize="13" Margin="0,6,0,0"/>
+                                                    <TextBlock Text="{Binding ResultText}" Foreground="{DynamicResource OkBrush}" FontSize="13" Margin="0,6,0,0"/>
                                                 </StackPanel>
                                             </DockPanel>
                                         </Border>
@@ -1289,7 +1311,7 @@
                                             <CheckBox Style="{StaticResource Check}" IsChecked="{Binding Selected}" Margin="0,4,20,4" ToolTip="{Binding Hint}">
                                                 <TextBlock>
                                                     <Run Text="{Binding Name, Mode=OneWay}"/>
-                                                    <Run Text="{Binding Hint, Mode=OneWay}" Foreground="{StaticResource MutedBrush}" FontSize="12"/>
+                                                    <Run Text="{Binding Hint, Mode=OneWay}" Foreground="{DynamicResource MutedBrush}" FontSize="12"/>
                                                 </TextBlock>
                                             </CheckBox>
                                         </DataTemplate>
@@ -1331,7 +1353,7 @@
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                     <TextBlock x:Name="TuneNeedText" FontSize="18" FontWeight="SemiBold" Margin="0,12,0,0" TextWrapping="Wrap"/>
-                                    <TextBlock x:Name="TuneAbortText" Style="{StaticResource Caption}" Foreground="{StaticResource WarnBrush}" Margin="0,6,0,0" TextWrapping="Wrap"/>
+                                    <TextBlock x:Name="TuneAbortText" Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" Margin="0,6,0,0" TextWrapping="Wrap"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="2">
                                     <TextBlock Text="作られるカーブ（上の目標温度を動かすと、測り直さずに作り直せます）" Style="{StaticResource Caption}"/>
@@ -1432,7 +1454,7 @@
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Text="今月の見込み" Style="{StaticResource Caption}"/>
-                                    <TextBlock x:Name="EnergyForecast" Text="--" FontSize="26" FontWeight="SemiBold" Foreground="{StaticResource Accent2Brush}"/>
+                                    <TextBlock x:Name="EnergyForecast" Text="--" FontSize="26" FontWeight="SemiBold" Foreground="{DynamicResource Accent2Brush}"/>
                                     <TextBlock x:Name="EnergyForecastSub" Style="{StaticResource Caption}" FontSize="12"/>
                                 </StackPanel>
                             </UniformGrid>
@@ -1454,13 +1476,13 @@
                                     <TextBlock Text="ファンの劣化・ホコリのチェック" Style="{StaticResource H2}"/>
                                     <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap"
                                                Text="1 分ごとの記録を保存して、「同じ回転の指示なのに回転数が下がっていないか（軸受けの劣化・ホコリ）」「同じ消費電力なのに温度が上がっていないか（フィルター・ラジエーターの目詰まり）」を、以前と比べます。"/>
-                                    <TextBlock x:Name="HealthInfo" Style="{StaticResource Caption}" Foreground="{StaticResource Accent2Brush}" Margin="0,6,0,0"/>
+                                    <TextBlock x:Name="HealthInfo" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}" Margin="0,6,0,0"/>
                                 </StackPanel>
                             </DockPanel>
                             <ItemsControl x:Name="HealthList" Margin="0,14,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="{StaticResource InputBrush}" CornerRadius="10" Margin="0,0,0,8">
+                                        <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Margin="0,0,0,8">
                                             <DockPanel>
                                                 <Border DockPanel.Dock="Left" Width="4" CornerRadius="10,0,0,10" Background="{Binding LevelBrush}"/>
                                                 <TextBlock DockPanel.Dock="Right" Text="{Binding ChangeText}" FontSize="18" FontWeight="SemiBold" Foreground="{Binding LevelBrush}"
@@ -1497,7 +1519,7 @@
                             <ItemsControl x:Name="RecordsList" Margin="0,14,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="{StaticResource InputBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
+                                        <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
                                             <DockPanel>
                                                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
                                                     <Button Style="{StaticResource SmallGhost}" Content="概要" Tag="{Binding}" Click="OnShowRecordClick" Margin="0,0,6,0"/>
@@ -1532,17 +1554,17 @@
                             <ItemsControl x:Name="VirtualList">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="{StaticResource InputBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
+                                        <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
                                             <DockPanel>
                                                 <Button DockPanel.Dock="Right" Style="{StaticResource DangerButton}" Content="削除" Tag="{Binding Config}"
                                                         Click="OnRemoveVirtualClick" Padding="12,5" FontSize="13"/>
                                                 <TextBlock DockPanel.Dock="Right" Text="{Binding ValueText}" FontWeight="SemiBold" FontSize="16"
-                                                           VerticalAlignment="Center" Margin="0,0,18,0" Foreground="{StaticResource Accent2Brush}"/>
+                                                           VerticalAlignment="Center" Margin="0,0,18,0" Foreground="{DynamicResource Accent2Brush}"/>
                                                 <StackPanel>
                                                     <TextBlock>
                                                         <Run Text="{Binding Config.Name, Mode=OneWay}" FontWeight="SemiBold"/>
                                                         <Run Text="  "/>
-                                                        <Run Text="{Binding Config.KindText, Mode=OneWay}" Foreground="{StaticResource Accent2Brush}"/>
+                                                        <Run Text="{Binding Config.KindText, Mode=OneWay}" Foreground="{DynamicResource Accent2Brush}"/>
                                                     </TextBlock>
                                                     <TextBlock Text="{Binding SourcesText}" Style="{StaticResource Caption}" Margin="0,2,0,0"/>
                                                 </StackPanel>
@@ -1552,7 +1574,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
 
-                            <Border Background="#0FFFFFFF" CornerRadius="10" Padding="14" Margin="0,6,0,0">
+                            <Border Background="{DynamicResource OverlayBrush}" CornerRadius="10" Padding="14" Margin="0,6,0,0">
                                 <StackPanel>
                                     <TextBlock Text="新しい仮想センサー" FontWeight="SemiBold"/>
                                     <Grid Margin="0,10,0,0">
@@ -1623,7 +1645,7 @@
                                                         <TextBlock Grid.Column="1" Text="{Binding Name}"/>
                                                         <TextBlock Grid.Column="2" Text="{Binding ValueText}" FontWeight="SemiBold" HorizontalAlignment="Right" Margin="0,0,24,0"/>
                                                         <TextBox Grid.Column="3" Text="{Binding Id, Mode=OneWay}" IsReadOnly="True" BorderThickness="0"
-                                                                 Background="Transparent" Foreground="{StaticResource MutedBrush}" Padding="0" FontSize="13"/>
+                                                                 Background="Transparent" Foreground="{DynamicResource MutedBrush}" Padding="0" FontSize="13"/>
                                                     </Grid>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
@@ -1639,14 +1661,14 @@
             <!-- ================= ライティング（OpenRGB 連携） ================= -->
             <!-- DataContext は設定（AppConfig）。MainWindow.Lighting.cs の InitLighting で設定する -->
             <ScrollViewer x:Name="LightingPage" Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="36,0,36,30" Visibility="Collapsed">
-                <StackPanel MaxWidth="900" HorizontalAlignment="Left">
+                <StackPanel>
 
                     <!-- ===== 接続 ===== -->
                     <Border Style="{StaticResource Card}" Margin="0,0,0,14">
                         <StackPanel>
                             <DockPanel>
-                                <Border x:Name="RgbSwatch" DockPanel.Dock="Right" Width="30" Height="30" CornerRadius="15" Background="#5B6178"
-                                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" VerticalAlignment="Top"
+                                <Border x:Name="RgbSwatch" DockPanel.Dock="Right" Width="30" Height="30" CornerRadius="15" Background="{DynamicResource MutedBrush}"
+                                        BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" VerticalAlignment="Top"
                                         ToolTip="いま LED に送っている色（LED ごとに違うときは先頭の色）"/>
                                 <StackPanel Margin="0,0,16,0">
                                     <TextBlock Text="接続" Style="{StaticResource H2}"/>
@@ -1746,7 +1768,7 @@
                                            Text="PC から出ている音を分析して、ドラムの瞬間・テンポ・音の高さに合わせて光らせます。まずはプリセットを選び、気になるところだけ下で調整してください。"/>
 
                                 <!-- いまの音（この画面が見えている間だけ動く） -->
-                                <Border Background="#0D0F16" CornerRadius="12" Padding="14" Margin="0,14,0,0">
+                                <Border Background="{DynamicResource InsetBrush}" CornerRadius="12" Padding="14" Margin="0,14,0,0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
@@ -1876,10 +1898,10 @@
                                         <Slider Minimum="-100" Maximum="400" Value="{Binding Rgb.Music.AudioDelayMs}" IsSnapToTickEnabled="True" TickFrequency="5"
                                                 ToolTip="光が音より早いときは + に、遅いときは − にします。Bluetooth のイヤホンやスピーカー、テレビ（HDMI）は音が遅れて聞こえるので + にします"/>
                                     </DockPanel>
-                                    <TextBlock x:Name="SyncTestHelp" Style="{StaticResource Caption}" Foreground="{StaticResource Accent2Brush}" Margin="170,0,0,6"
+                                    <TextBlock x:Name="SyncTestHelp" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}" Margin="170,0,0,6"
                                                Visibility="Collapsed"/>
                                     <StackPanel x:Name="BluetoothHint" Orientation="Horizontal" Margin="170,0,0,6" Visibility="Collapsed">
-                                        <TextBlock Style="{StaticResource Caption}" Foreground="{StaticResource WarnBrush}" VerticalAlignment="Center"
+                                        <TextBlock Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" VerticalAlignment="Center"
                                                    Text="Bluetooth は音が遅れるので +150〜200 ms がおすすめ"/>
                                         <Button Style="{StaticResource SmallGhost}" Content="+180 ms にする" Click="OnBluetoothDelayClick" Margin="10,0,0,0" Padding="9,3"
                                                 ToolTip="音の遅れの補正を +180 ミリ秒にします（あとで同期テストで微調整できます）"/>
@@ -1892,7 +1914,7 @@
                                             <TextBlock Text="強い点滅を 1 秒に 3 回までにします。オフにすると「ストロボ」が選べるようになります" Style="{StaticResource Caption}"/>
                                         </StackPanel>
                                     </CheckBox>
-                                    <TextBlock x:Name="FlashWarning" Style="{StaticResource Caption}" Foreground="{StaticResource WarnBrush}" Margin="0,6,0,0" Visibility="Collapsed"
+                                    <TextBlock x:Name="FlashWarning" Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" Margin="0,6,0,0" Visibility="Collapsed"
                                                Text="⚠ 激しく点滅することがあります。光の点滅で気分が悪くなったら、すぐに「激しい点滅を抑える」をオンに戻してください。"/>
 
                                     <!-- テンポ -->
@@ -2010,14 +2032,14 @@
                                                 </ItemsPanelTemplate>
                                             </ItemsControl.ItemsPanel>
                                         </ItemsControl>
-                                        <Ellipse x:Name="CurrentColorDot" Width="22" Height="22" Margin="10,0,0,0" Stroke="White" StrokeThickness="2"
+                                        <Ellipse x:Name="CurrentColorDot" Width="22" Height="22" Margin="10,0,0,0" Stroke="{DynamicResource TextBrush}" StrokeThickness="2"
                                                  VerticalAlignment="Center" ToolTip="いま選んでいる色"/>
                                         <TextBox x:Name="HexColorBox" Width="96" Margin="8,0,0,0" VerticalAlignment="Center"
                                                  TextChanged="OnHexColorChanged" LostFocus="OnHexColorLostFocus" KeyDown="OnHexColorKeyDown"
                                                  ToolTip="#RRGGBB の形で色を入力できます（例: #6A00FF）。左の丸から選んでも構いません"/>
                                     </StackPanel>
                                 </DockPanel>
-                                <TextBlock x:Name="HexColorError" Style="{StaticResource Caption}" Foreground="{StaticResource DangerBrush}" Margin="170,0,0,6"
+                                <TextBlock x:Name="HexColorError" Style="{StaticResource Caption}" Foreground="{DynamicResource DangerBrush}" Margin="170,0,0,6"
                                            Visibility="Collapsed" Text="#RRGGBB の形で入力してください（例: #6A00FF）。0〜9 と A〜F の 6 文字です"/>
                             </StackPanel>
                             <DockPanel Style="{StaticResource LightRow}" Margin="0,4,0,0">
@@ -2049,13 +2071,13 @@
                                     <TextBlock Text="色合わせのとき、全部のデバイスを同じ白にします（この画面を離れると戻ります）" Style="{StaticResource Caption}"/>
                                 </StackPanel>
                             </CheckBox>
-                            <TextBlock x:Name="RgbDeviceHint" Style="{StaticResource Caption}" Foreground="{StaticResource WarnBrush}" Margin="0,8,0,0" Visibility="Collapsed"/>
+                            <TextBlock x:Name="RgbDeviceHint" Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" Margin="0,8,0,0" Visibility="Collapsed"/>
                             <TextBlock x:Name="RgbDevicesEmpty" Style="{StaticResource Caption}" Margin="0,12,0,0"
                                        Text="デバイスの一覧は、OpenRGB に接続すると表示されます（上の「接続テスト」でも読み込めます）。"/>
                             <ItemsControl x:Name="RgbDevices" Margin="0,12,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="#10121A" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
+                                        <Border Background="{DynamicResource RowBrush}" CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
                                             <StackPanel>
                                                 <DockPanel>
                                                     <TextBlock DockPanel.Dock="Right" Text="{Binding StatusText}" Style="{StaticResource Caption}" VerticalAlignment="Center"
@@ -2064,18 +2086,18 @@
                                                               ToolTip="チェックしたデバイスの色を変えます（「すべてのデバイスの色を変える」がオンのときは全部が対象です）">
                                                         <TextBlock>
                                                             <Run Text="{Binding Name, Mode=OneWay}" FontWeight="SemiBold"/>
-                                                            <Run Text="{Binding LedText, Mode=OneWay}" Foreground="{StaticResource MutedBrush}" FontSize="12"/>
+                                                            <Run Text="{Binding LedText, Mode=OneWay}" Foreground="{DynamicResource MutedBrush}" FontSize="12"/>
                                                         </TextBlock>
                                                     </CheckBox>
                                                     <Border Style="{StaticResource SoftBadge}" HorizontalAlignment="Left"
                                                             Visibility="{Binding IsSlow, Converter={StaticResource BoolToVis}}"
                                                             ToolTip="{Binding SlowBadgeTip, Mode=OneWay}">
-                                                        <TextBlock Text="{Binding SlowBadgeText, Mode=OneWay}" FontSize="11" Foreground="{StaticResource WarnBrush}"/>
+                                                        <TextBlock Text="{Binding SlowBadgeText, Mode=OneWay}" FontSize="11" Foreground="{DynamicResource WarnBrush}"/>
                                                     </Border>
                                                 </DockPanel>
                                                 <ctl:LedPreview Height="12" Margin="24,8,0,0" Loaded="OnLedPreviewLoaded" Unloaded="OnLedPreviewUnloaded"
                                                                 ToolTip="このデバイスに最後に送った色（画面の色に近づけて表示しています）"/>
-                                                <TextBlock Text="{Binding ErrorText}" Style="{StaticResource Caption}" Foreground="{StaticResource DangerBrush}" Margin="24,4,0,0"
+                                                <TextBlock Text="{Binding ErrorText}" Style="{StaticResource Caption}" Foreground="{DynamicResource DangerBrush}" Margin="24,4,0,0"
                                                            Visibility="{Binding HasError, Converter={StaticResource BoolToVis}}"/>
                                                 <WrapPanel Margin="24,8,0,0">
                                                     <StackPanel Orientation="Horizontal" Margin="0,0,18,4" Visibility="{Binding ShowEffect, Converter={StaticResource BoolToVis}}">
@@ -2106,20 +2128,20 @@
                                                     <CheckBox Style="{StaticResource Check}" IsChecked="{Binding AnimateOnGpu}" Margin="0,4,18,4"
                                                               Visibility="{Binding ShowAnimateOnGpu, Converter={StaticResource BoolToVis}}"
                                                               ToolTip="オフ（おすすめ）: グラボは、レインボー（流れる）を止まった虹に、呼吸を固定色にします。グラボは LED を 1 個ずつ書き込むため、動かし続けるとちかちかしやすいからです。オンにすると、グラボも流れ・呼吸します">
-                                                        <TextBlock Text="虹・呼吸も動かす" FontSize="13" Foreground="{StaticResource SubTextBrush}"/>
+                                                        <TextBlock Text="虹・呼吸も動かす" FontSize="13" Foreground="{DynamicResource SubTextBrush}"/>
                                                     </CheckBox>
                                                     <CheckBox Style="{StaticResource Check}" IsChecked="{Binding Reverse}" Margin="0,4,18,4"
                                                               ToolTip="LED の並びを逆向きにします（流れる向きや、低音・高音の並びが逆に見えるとき）">
-                                                        <TextBlock Text="逆向き" FontSize="13" Foreground="{StaticResource SubTextBrush}"/>
+                                                        <TextBlock Text="逆向き" FontSize="13" Foreground="{DynamicResource SubTextBrush}"/>
                                                     </CheckBox>
                                                     <CheckBox Style="{StaticResource Check}" IsChecked="{Binding SwapRedGreen}" Margin="0,4,0,4"
                                                               ToolTip="水色がピンクに、緑が赤に見えるときにオンにします（色の並び順が逆のデバイス用）">
-                                                        <TextBlock Text="赤と緑を入れ替える" FontSize="13" Foreground="{StaticResource SubTextBrush}"/>
+                                                        <TextBlock Text="赤と緑を入れ替える" FontSize="13" Foreground="{DynamicResource SubTextBrush}"/>
                                                     </CheckBox>
                                                 </WrapPanel>
                                                 <CheckBox Style="{StaticResource Check}" IsChecked="{Binding ShowDetails}" Margin="24,4,0,0"
                                                           ToolTip="このデバイスの色味・明るさを合わせたり、マザーボードの端子（ゾーン）ごとに光り方・向き・色味を変えたりします">
-                                                    <TextBlock Text="色合わせ・ゾーンごとの設定を開く" FontSize="13" Foreground="{StaticResource SubTextBrush}"/>
+                                                    <TextBlock Text="色合わせ・ゾーンごとの設定を開く" FontSize="13" Foreground="{DynamicResource SubTextBrush}"/>
                                                 </CheckBox>
                                                 <StackPanel Margin="24,8,0,0" Visibility="{Binding ShowDetails, Converter={StaticResource BoolToVis}}">
                                                     <TextBlock Text="色合わせ（このデバイス全体）" FontWeight="SemiBold" FontSize="13"/>
@@ -2151,11 +2173,11 @@
                                                     <ItemsControl ItemsSource="{Binding Zones}">
                                                         <ItemsControl.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Border Background="#0B0D14" CornerRadius="8" Padding="12,8" Margin="0,0,0,6">
+                                                                <Border Background="{DynamicResource Inset2Brush}" CornerRadius="8" Padding="12,8" Margin="0,0,0,6">
                                                                     <StackPanel>
                                                                         <TextBlock>
                                                                             <Run Text="{Binding Name, Mode=OneWay}" FontWeight="SemiBold"/>
-                                                                            <Run Text="{Binding LedText, Mode=OneWay}" Foreground="{StaticResource MutedBrush}" FontSize="12"/>
+                                                                            <Run Text="{Binding LedText, Mode=OneWay}" Foreground="{DynamicResource MutedBrush}" FontSize="12"/>
                                                                         </TextBlock>
                                                                         <WrapPanel Margin="0,6,0,0">
                                                                             <StackPanel Orientation="Horizontal" Margin="0,0,18,4" Visibility="{Binding ShowEffect, Converter={StaticResource BoolToVis}}">
@@ -2226,7 +2248,7 @@
                             <CheckBox Style="{StaticResource Check}" IsChecked="{Binding Rgb.MatchSlowDevices}" Margin="0,8,0,0"
                                       Content="音楽連動で、グラボ・メモリなど更新の遅いデバイスは、ほかのデバイスの色に合わせる"
                                       ToolTip="グラボやメモリは 1 秒に 4〜8 回しか色を変えられないので、スペクトラム・音量メーターなどの細かい動きは出せません。オンにすると、ファンなど速いデバイスがいま光っている色の平均に合わせて光るので、色がそろって見えます。デバイスごとに光り方を選んだデバイスは、選んだ光り方のままです"/>
-                            <TextBlock x:Name="SmbusWarning" Style="{StaticResource Caption}" Foreground="{StaticResource WarnBrush}" TextWrapping="Wrap"
+                            <TextBlock x:Name="SmbusWarning" Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" TextWrapping="Wrap"
                                        Margin="0,10,0,0" Visibility="Collapsed"/>
                             <DockPanel Style="{StaticResource LightRow}" Margin="0,8,0,0">
                                 <TextBlock Text="止めるときの LED" Style="{StaticResource RowLabel}"
@@ -2242,7 +2264,7 @@
 
             <!-- ================= 設定 ================= -->
             <ScrollViewer x:Name="SettingsPage" Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="36,0,36,30" Visibility="Collapsed">
-                <StackPanel MaxWidth="860" HorizontalAlignment="Left">
+                <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
                         <RadioButton x:Name="SetTabGeneral" Style="{StaticResource Segment}" Content="一般" GroupName="SettingsTab" IsChecked="True" Checked="OnSettingsTabChanged"/>
                         <RadioButton x:Name="SetTabAuto" Style="{StaticResource Segment}" Content="プロファイル・自動化" GroupName="SettingsTab" Checked="OnSettingsTabChanged"/>
@@ -2273,6 +2295,61 @@
                                         <TextBlock Text="常に最前面に温度と回転数を表示します。ドラッグで移動、右クリックで不透明度を変更できます" Style="{StaticResource Caption}"/>
                                     </StackPanel>
                                 </CheckBox>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- 見た目 -->
+                        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                            <StackPanel>
+                                <TextBlock Text="見た目" Style="{StaticResource H2}"/>
+                                <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Margin="0,4,0,0"
+                                           Text="テーマ・アクセント色・背景色・フォント・文字の大きさを変えられます。変えるとすぐに反映されます"/>
+                                <DockPanel Style="{StaticResource LightRow}" Margin="0,14,0,0">
+                                    <TextBlock Text="テーマ" Style="{StaticResource RowLabel}"/>
+                                    <ComboBox x:Name="ThemeCombo" Width="240" HorizontalAlignment="Left" DisplayMemberPath="Label" SelectedValuePath="Id"
+                                              SelectedValue="{Binding Appearance.Theme}"
+                                              ToolTip="「Windows に合わせる」なら、Windows の設定（個人用設定 → 色 → アプリ モード）のダーク／ライトに合わせます"/>
+                                </DockPanel>
+                                <TextBlock Text="アクセント色" Style="{StaticResource Label}" Margin="0,12,0,6"/>
+                                <WrapPanel Margin="0,0,0,6">
+                                    <Button x:Name="AccentDefaultButton" Style="{StaticResource SmallGhost}" Content="既定（紫）" Margin="0,0,8,0" Click="OnAccentDefaultClick"/>
+                                    <Button x:Name="AccentSystemButton" Style="{StaticResource SmallGhost}" Content="Windows の色に合わせる" Click="OnAccentSystemClick"
+                                            ToolTip="Windows の設定（個人用設定 → 色 → アクセント カラー）の色を使います"/>
+                                </WrapPanel>
+                                <ItemsControl x:Name="AccentSwatches" ItemTemplate="{StaticResource SwatchTemplate}" MaxWidth="640" HorizontalAlignment="Left">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                                <TextBlock Text="背景色" Style="{StaticResource Label}" Margin="0,12,0,2"/>
+                                <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Margin="0,0,0,6"
+                                           Text="背景・サイドバー・カードをまとめて染めます。ダークでは暗い色、ライトでは明るい色になり、テーマを替えても色合いは同じです"/>
+                                <WrapPanel Margin="0,0,0,6">
+                                    <Button x:Name="BackgroundDefaultButton" Style="{StaticResource SmallGhost}" Content="既定" Click="OnBackgroundDefaultClick"/>
+                                </WrapPanel>
+                                <ItemsControl x:Name="BackgroundSwatches" ItemTemplate="{StaticResource BackgroundSwatchTemplate}" MaxWidth="640" HorizontalAlignment="Left">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                                <DockPanel Style="{StaticResource LightRow}" Margin="0,12,0,0">
+                                    <TextBlock Text="フォント" Style="{StaticResource RowLabel}"/>
+                                    <ComboBox x:Name="FontCombo" Width="440" HorizontalAlignment="Left" DisplayMemberPath="Label" SelectedValuePath="Id"
+                                              SelectedValue="{Binding Appearance.FontFamily}" IsTextSearchEnabled="True"
+                                              ToolTip="画面の文字のフォント。日本語の文字がないフォントでは、日本語は Yu Gothic UI で表示します"/>
+                                </DockPanel>
+                                <TextBlock x:Name="FontPreview" Text="あいうえお 温度とファン ABC 123 °C" FontSize="16" Margin="170,6,0,0"
+                                           Foreground="{DynamicResource SubTextBrush}"/>
+                                <DockPanel Style="{StaticResource LightRow}" Margin="0,8,0,0">
+                                    <TextBlock Text="文字の大きさ" Style="{StaticResource RowLabel}"/>
+                                    <TextBlock Style="{StaticResource RowValue}" Text="{Binding Appearance.TextScale, StringFormat={}{0}%}"/>
+                                    <Slider Minimum="85" Maximum="130" Value="{Binding Appearance.TextScale}" IsSnapToTickEnabled="True" TickFrequency="5"
+                                            ToolTip="画面全体（文字・ボタン・グラフ）を拡大・縮小します"/>
+                                </DockPanel>
                             </StackPanel>
                         </Border>
 
@@ -2396,9 +2473,9 @@
                                                     <ComboBoxItem Content="週末" Tag="Weekends"/>
                                                 </ComboBox>
                                                 <TextBox Grid.Column="1" Text="{Binding Start}" Margin="8,0,0,0" ToolTip="開始時刻（例: 23:00）"/>
-                                                <TextBlock Grid.Column="2" Text="〜" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource SubTextBrush}"/>
+                                                <TextBlock Grid.Column="2" Text="〜" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource SubTextBrush}"/>
                                                 <TextBox Grid.Column="3" Text="{Binding End}" ToolTip="終了時刻（例: 7:00）。開始より前なら翌日の時刻"/>
-                                                <TextBlock Grid.Column="4" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource SubTextBrush}"/>
+                                                <TextBlock Grid.Column="4" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource SubTextBrush}"/>
                                                 <ComboBox Grid.Column="5" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding ProfileName}"
                                                           ItemsSource="{Binding DataContext.Profiles, RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
                                                 <Button Grid.Column="6" Style="{StaticResource DangerButton}" Content="削除" Tag="{Binding}" Click="OnRemoveScheduleClick"
@@ -2416,7 +2493,7 @@
                                 <TextBlock Text="プロファイルの自動切り替え" Style="{StaticResource H2}"/>
                                 <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,0"
                                            Text="指定したアプリが起動している間、プロファイルを自動で切り替えます。上にあるルールほど優先されます。終了すると「普段使う」プロファイルに戻ります。"/>
-                                <TextBlock x:Name="AutoSwitchStatus" Style="{StaticResource Caption}" Foreground="{StaticResource Accent2Brush}" Margin="0,8,0,0"/>
+                                <TextBlock x:Name="AutoSwitchStatus" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}" Margin="0,8,0,0"/>
                                 <ItemsControl x:Name="RulesList" Margin="0,12,0,0" ItemsSource="{Binding AutoSwitchRules}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
@@ -2428,7 +2505,7 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBox Text="{Binding ProcessName}"/>
-                                                <TextBlock Grid.Column="1" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource SubTextBrush}"/>
+                                                <TextBlock Grid.Column="1" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource SubTextBrush}"/>
                                                 <ComboBox Grid.Column="2" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding ProfileName}"
                                                           ItemsSource="{Binding DataContext.Profiles, RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
                                                 <Button Grid.Column="3" Style="{StaticResource DangerButton}" Content="削除" Tag="{Binding}" Click="OnRemoveRuleClick"
@@ -2437,7 +2514,7 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-                                <Border Background="#0FFFFFFF" CornerRadius="10" Padding="14" Margin="0,6,0,0">
+                                <Border Background="{DynamicResource OverlayBrush}" CornerRadius="10" Padding="14" Margin="0,6,0,0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
@@ -2453,7 +2530,7 @@
                                         </Grid.RowDefinitions>
                                         <TextBox x:Name="NewRuleProcess" ToolTip="プロセス名（例: eldenring）。.exe は付けても付けなくても構いません"/>
                                         <Button Grid.Column="2" Style="{StaticResource SmallGhost}" Content="実行中のアプリから選ぶ ▾" Click="OnPickRunningAppClick"/>
-                                        <TextBlock Grid.Column="3" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource SubTextBrush}"/>
+                                        <TextBlock Grid.Column="3" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource SubTextBrush}"/>
                                         <ComboBox x:Name="NewRuleProfile" Grid.Column="4" DisplayMemberPath="Name"/>
                                         <Button Grid.Column="5" Style="{StaticResource AccentButton}" Content="追加" Click="OnAddRuleClick" Margin="10,0,0,0"/>
                                     </Grid>
@@ -2517,7 +2594,7 @@
                                     <StackPanel Grid.Column="1" Margin="16,0,0,0">
                                         <TextBlock Text="スマホのカメラで QR コードを読むか、次の URL を開いてください" Style="{StaticResource Caption}"/>
                                         <TextBox x:Name="WebUrls" IsReadOnly="True" TextWrapping="Wrap" Margin="0,8,0,0" FontSize="13" VerticalContentAlignment="Top"/>
-                                        <TextBlock Style="{StaticResource Caption}" Margin="0,8,0,0" Foreground="{StaticResource WarnBrush}"
+                                        <TextBlock Style="{StaticResource Caption}" Margin="0,8,0,0" Foreground="{DynamicResource WarnBrush}"
                                                    Text="URL にはアクセス用の鍵が含まれています。他の人に教えないでください"/>
                                     </StackPanel>
                                 </Grid>
@@ -2568,7 +2645,7 @@
                                             <TextBlock Grid.Row="1" Text="サーバー" Style="{StaticResource Label}"/>
                                             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Notify.NtfyServer}" LostFocus="OnNotifySettingLostFocus"/>
                                         </Grid>
-                                        <TextBlock Style="{StaticResource Caption}" Foreground="{StaticResource WarnBrush}" Margin="0,6,0,0" TextWrapping="Wrap"
+                                        <TextBlock Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" Margin="0,6,0,0" TextWrapping="Wrap"
                                                    Text="トピック名を知っている人は誰でも通知を読めます。推測されにくい今の名前のまま使ってください"/>
                                     </StackPanel>
                                 </Grid>
