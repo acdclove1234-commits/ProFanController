@@ -26,7 +26,7 @@ A fan control and monitoring tool for Windows. It drives motherboard fan headers
 
 ## 使い方（配布用の zip）
 
-1. `ProFanController_配布用_v<版>.zip` を展開し、`ProFanController` フォルダーを `C:\Tools\ProFanController` など動かさない場所に置く
+1. [Releases](../../releases) から `ProFanController-<版>-windows-x64.zip` をダウンロードして展開し、`ProFanController` フォルダーを `C:\Tools\ProFanController` など動かさない場所に置く
 2. 「1_PawnIO をインストール.bat」を右クリック →「管理者として実行」
 3. `ProFanController.exe` を起動し、セットアップの案内に沿ってファン端子に名前を付ける
 

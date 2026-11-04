@@ -1,5 +1,6 @@
 ﻿# ==================================================
-# make-dist.ps1 - 配布用の zip（ProFanController_配布用_v<版>.zip）を作る
+# make-dist.ps1 - 配布用の zip（ProFanController-<版>-windows-x64.zip）を作る
+#   名前は英数字だけにする（GitHub のリリースは、ファイル名の日本語を「.」に置き換えるため）
 #   1. .NET ランタイムごと exe 1 つに発行する（Portable の発行プロファイル。.NET が入っていない PC でも動く）
 #   2. この Distribution フォルダーの説明書・バッチ・ライセンスと一緒に ProFanController フォルダーへまとめる
 #   3. リポジトリの一番上に zip を作る（設定・ログ・記録は入れない）
@@ -24,7 +25,7 @@ try {
     # このスクリプト自身は入れない
     Get-ChildItem $PSScriptRoot | Where-Object { $_.Name -ne 'make-dist.ps1' } | Copy-Item -Destination $package -Recurse
 
-    $zip = Join-Path $root "ProFanController_配布用_v$version.zip"
+    $zip = Join-Path $root "ProFanController-$version-windows-x64.zip"
     if (Test-Path $zip) { Remove-Item $zip }
     # 日本語のファイル名を正しく入れ、区切りを「/」にするため、1 つずつ入れる（ProFanController フォルダーごと）
     Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
