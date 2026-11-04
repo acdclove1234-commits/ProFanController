@@ -1,0 +1,99 @@
+{
+  "DryRun": false,
+  "PollingIntervalMs": 1000,
+  "EmergencyTemperature": 100,
+  "StartMinimized": false,
+  "Fans": [
+    {
+      "Name": "Radiator",
+      "ControlId": "/lpc/nct6686d/0/control/2",
+      "RpmSensorId": "/lpc/nct6686d/0/fan/2",
+      "Role": "Fan",
+      "Enabled": true,
+      "UseFixedDuty": false,
+      "FixedDuty": 60,
+      "MinDuty": 30,
+      "MaxStepUpPerTick": 5,
+      "MaxStepDownPerTick": 1.5,
+      "PumpAlertRpm": 1000,
+      "Curves": [
+        {
+          "Name": "CPU-Pkg",
+          "SensorId": "/intelcpu/0/temperature/16",
+          "HysteresisCelsius": 5,
+          "EmaAlpha": 0.1,
+          "Points": [
+            { "Temp": 50, "Duty": 30 },
+            { "Temp": 65, "Duty": 45 },
+            { "Temp": 80, "Duty": 70 },
+            { "Temp": 90, "Duty": 100 }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "CaseFan",
+      "ControlId": "/lpc/nct6686d/0/control/3",
+      "RpmSensorId": "/lpc/nct6686d/0/fan/3",
+      "Role": "Fan",
+      "Enabled": true,
+      "UseFixedDuty": false,
+      "FixedDuty": 60,
+      "MinDuty": 25,
+      "MaxStepUpPerTick": 8,
+      "MaxStepDownPerTick": 2,
+      "PumpAlertRpm": 1000,
+      "Curves": [
+        {
+          "Name": "GPU-HS",
+          "SensorId": "/gpu-amd/0/temperature/7",
+          "HysteresisCelsius": 4,
+          "EmaAlpha": 0.2,
+          "Points": [
+            { "Temp": 60, "Duty": 25 },
+            { "Temp": 75, "Duty": 45 },
+            { "Temp": 88, "Duty": 75 },
+            { "Temp": 95, "Duty": 100 }
+          ]
+        },
+        {
+          "Name": "CPU-Pkg",
+          "SensorId": "/intelcpu/0/temperature/16",
+          "HysteresisCelsius": 5,
+          "EmaAlpha": 0.1,
+          "Points": [
+            { "Temp": 60, "Duty": 25 },
+            { "Temp": 80, "Duty": 50 },
+            { "Temp": 95, "Duty": 80 }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Pump",
+      "ControlId": "/lpc/nct6686d/0/control/7",
+      "RpmSensorId": "/lpc/nct6686d/0/fan/7",
+      "Role": "Pump",
+      "Enabled": false,
+      "UseFixedDuty": true,
+      "FixedDuty": 70,
+      "MinDuty": 40,
+      "MaxStepUpPerTick": 10,
+      "MaxStepDownPerTick": 2,
+      "PumpAlertRpm": 1000,
+      "Curves": [
+        {
+          "Name": "CPU-Pkg",
+          "SensorId": "/intelcpu/0/temperature/16",
+          "HysteresisCelsius": 5,
+          "EmaAlpha": 0.1,
+          "Points": [
+            { "Temp": 50, "Duty": 50 },
+            { "Temp": 70, "Duty": 70 },
+            { "Temp": 85, "Duty": 100 }
+          ]
+        }
+      ]
+    }
+  ]
+}

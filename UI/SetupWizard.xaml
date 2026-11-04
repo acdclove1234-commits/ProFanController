@@ -1,0 +1,173 @@
+<!-- ==================================================
+     SetupWizard.xaml - 初回セットアップウィザード (端子の識別 → 冷却方針 → プロファイル自動生成)
+     Dependencies: WPF / .NET 8 (MIT License)
+     See CREDITS.txt for full license details.
+     ================================================== -->
+<Window x:Class="ProFanController.UI.SetupWizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="セットアップ - ProFanController" Width="900" Height="680" MinWidth="820" MinHeight="600"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}"
+        FontFamily="{StaticResource UiFont}" FontSize="14" UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="ClearType" FontWeight="Medium">
+    <Grid Margin="36,28,36,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- ステップ表示 -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+            <Border x:Name="Step1Dot" CornerRadius="12" Padding="12,4" Margin="0,0,8,0"><TextBlock Text="1  ようこそ" FontSize="13"/></Border>
+            <Border x:Name="Step2Dot" CornerRadius="12" Padding="12,4" Margin="0,0,8,0"><TextBlock Text="2  端子の識別" FontSize="13"/></Border>
+            <Border x:Name="Step3Dot" CornerRadius="12" Padding="12,4" Margin="0,0,8,0"><TextBlock Text="3  冷却方針" FontSize="13"/></Border>
+            <Border x:Name="Step4Dot" CornerRadius="12" Padding="12,4"><TextBlock Text="4  完了" FontSize="13"/></Border>
+        </StackPanel>
+
+        <!-- 1. ようこそ -->
+        <StackPanel x:Name="Step1" Grid.Row="1">
+            <TextBlock Text="ProFanController へようこそ" Style="{StaticResource H1}"/>
+            <TextBlock Style="{StaticResource Caption}" FontSize="15" Margin="0,10,0,24" LineHeight="24"
+                       Text="このウィザードでは、マザーボードのファン端子に何がつながっているかを確認し、&#10;あなたの PC に合わせたファンカーブとプロファイル（静音／標準／パフォーマンス）を自動で作成します。"/>
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="準備" Style="{StaticResource H2}"/>
+                    <TextBlock x:Name="PawnIoStatus" Margin="0,10,0,0"/>
+                    <TextBlock Style="{StaticResource Caption}" Margin="0,8,0,0" LineHeight="20"
+                               Text="・ケースの横で、ファンの音や回転が分かるようにしておいてください。&#10;・重い処理（ゲームなど）は終了しておいてください。&#10;・現在の設定は上書きされますが、完了後に「元に戻す」で戻せます。"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- 2. 端子の識別 -->
+        <DockPanel x:Name="Step2" Grid.Row="1" Visibility="Collapsed">
+            <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+                <TextBlock Text="ファン端子の識別" Style="{StaticResource H1}"/>
+                <TextBlock Style="{StaticResource Caption}" FontSize="14" Margin="0,6,0,0"
+                           Text="「テスト」を押すと 8 秒間だけ全開になります。速くなったファンを確認して、名前と種類を付けてください。0 rpm の端子は何もつながっていません。"/>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="ChannelList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Card}" Padding="16,12" Margin="0,0,0,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="170"/>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Control.Name}" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding Control.HardwareName}" Style="{StaticResource Caption}" FontSize="12"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1" Text="{Binding RpmText}" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="{StaticResource Accent2Brush}"/>
+                                    <TextBox Grid.Column="2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0"/>
+                                    <ComboBox Grid.Column="3" SelectedValuePath="Tag" SelectedValue="{Binding Role}" Margin="0,0,10,0">
+                                        <ComboBoxItem Content="ファン" Tag="Fan"/>
+                                        <ComboBoxItem Content="ポンプ（簡易水冷）" Tag="Pump"/>
+                                        <ComboBoxItem Content="使わない" Tag="Unused"/>
+                                    </ComboBox>
+                                    <ComboBox Grid.Column="4" SelectedValuePath="Tag" SelectedValue="{Binding Source}" Margin="0,0,10,0"
+                                              ToolTip="このファンを何の温度に合わせて回すか">
+                                        <ComboBoxItem Content="CPU に連動" Tag="CPU"/>
+                                        <ComboBoxItem Content="GPU に連動" Tag="GPU"/>
+                                        <ComboBoxItem Content="CPU と GPU" Tag="Both"/>
+                                    </ComboBox>
+                                    <Button Grid.Column="5" Style="{StaticResource GhostButton}" Content="テスト" Click="OnTest" Tag="{Binding}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </DockPanel>
+
+        <!-- 3. 冷却方針 -->
+        <ScrollViewer x:Name="Step3" Grid.Row="1" Visibility="Collapsed" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="冷却方針" Style="{StaticResource H1}"/>
+                <TextBlock Style="{StaticResource Caption}" FontSize="14" Margin="0,6,0,16"
+                           Text="3 つのプロファイルはすべて作成されます。ここでは普段使うものを選んでください。あとからトレイのメニューでいつでも切り替えられます。"/>
+                <UniformGrid Rows="1">
+                    <RadioButton x:Name="PresetSilent" Style="{StaticResource OptionCard}" GroupName="Preset">
+                        <StackPanel>
+                            <TextBlock Text="静音" Style="{StaticResource H2}"/>
+                            <TextBlock Text="できるだけ静かに。高負荷時だけしっかり回す" Style="{StaticResource Caption}" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton x:Name="PresetBalanced" Style="{StaticResource OptionCard}" GroupName="Preset" IsChecked="True">
+                        <StackPanel>
+                            <TextBlock Text="標準（おすすめ）" Style="{StaticResource H2}"/>
+                            <TextBlock Text="静かさと冷却のバランス" Style="{StaticResource Caption}" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton x:Name="PresetPerformance" Style="{StaticResource OptionCard}" GroupName="Preset" Margin="0">
+                        <StackPanel>
+                            <TextBlock Text="パフォーマンス" Style="{StaticResource H2}"/>
+                            <TextBlock Text="温度を低く保つことを優先" Style="{StaticResource Caption}" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </RadioButton>
+                </UniformGrid>
+
+                <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="44"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="CPU の温度センサー" Style="{StaticResource Label}"/>
+                        <ComboBox x:Name="CpuSensorCombo" Grid.Column="1" DisplayMemberPath="Display"/>
+                        <TextBlock Grid.Row="1" Text="GPU の温度センサー" Style="{StaticResource Label}"/>
+                        <ComboBox x:Name="GpuSensorCombo" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Display"/>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,12,0,0">
+                    <CheckBox x:Name="PumpControlSwitch" Style="{StaticResource Switch}">
+                        <StackPanel>
+                            <TextBlock Text="ポンプをこのツールで制御する（固定 70%）" FontWeight="SemiBold"/>
+                            <TextBlock Text="オフのときは BIOS に任せ、回転数の監視と異常時の保護だけを行います（おすすめ）" Style="{StaticResource Caption}"/>
+                        </StackPanel>
+                    </CheckBox>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- 4. 完了 -->
+        <StackPanel x:Name="Step4" Grid.Row="1" Visibility="Collapsed">
+            <TextBlock Text="準備ができました" Style="{StaticResource H1}"/>
+            <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                <TextBlock x:Name="SummaryText" LineHeight="22" TextWrapping="Wrap"/>
+            </Border>
+            <Border Style="{StaticResource Card}" Margin="0,12,0,0">
+                <CheckBox x:Name="StartNowSwitch" Style="{StaticResource Switch}" IsChecked="True">
+                    <StackPanel>
+                        <TextBlock Text="すぐに制御を開始する" FontWeight="SemiBold"/>
+                        <TextBlock Text="オフにすると DRY RUN（計算だけでファンには書き込まない）で始まります" Style="{StaticResource Caption}"/>
+                    </StackPanel>
+                </CheckBox>
+            </Border>
+            <TextBlock Style="{StaticResource Caption}" Margin="0,12,0,0"
+                       Text="ヒント: 完了後、ファンカーブ画面の「自動キャリブレーション」で各ファンの最低回転数を測定すると、より静かに設定できます。"/>
+        </StackPanel>
+
+        <!-- ナビゲーション -->
+        <DockPanel Grid.Row="2" Margin="0,20,0,0">
+            <Button x:Name="CancelButton" Style="{StaticResource GhostButton}" Content="キャンセル" Click="OnCancel"/>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BackButton" Style="{StaticResource GhostButton}" Content="戻る" Click="OnBack" Margin="0,0,8,0" MinWidth="100"/>
+                <Button x:Name="NextButton" Style="{StaticResource AccentButton}" Content="次へ" Click="OnNext" MinWidth="120"/>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

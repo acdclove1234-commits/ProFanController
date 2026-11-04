@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <!-- LHM の x64 ランタイム版 DLL を使うため 64bit に固定 -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <UseWPF>true</UseWPF>
+    <!-- タスクトレイ (NotifyIcon) のためだけに WinForms を併用 -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- 起動時に UAC で管理者権限を要求する -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- 画面は WPF なので、高 DPI の設定は app.manifest に書く（WinForms 用の ApplicationHighDpiMode を勧める警告は出さない） -->
+    <NoWarn>$(NoWarn);WFAC010</NoWarn>
+    <AssemblyName>ProFanController</AssemblyName>
+    <Version>6.4.6</Version>
+    <Product>ProFanController</Product>
+    <!-- exe のアイコン（エクスプローラー・デスクトップのショートカットに表示される） -->
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WPF と WinForms の型名衝突 (Application, MessageBox など) を避ける -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+    <!-- WPF では既定で外されている System.IO を戻す -->
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- ロジックテストは別のプロジェクト（Tests/LogicTests）。本体には含めない -->
+    <Compile Remove="Tests/**" />
+    <None Remove="Tests/**" />
+    <Page Remove="Tests/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
+    <!-- スマホ監視の URL を QR コードにする -->
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <!-- 音楽連動: PC から出ている音を取り込む（WASAPI ループバック）・アプリごとの音量メーター -->
+    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 柔らかい印象のフォントを exe に埋め込む（どちらも SIL OFL）
+         英数字: Montserrat ／ 日本語: ProFan Maru（Zen Maru Gothic の、かな・記号の文字幅を詰めた改変版） -->
+    <Resource Include="Assets\Fonts\Montserrat-Regular.ttf;Assets\Fonts\Montserrat-Medium.ttf;Assets\Fonts\Montserrat-SemiBold.ttf;Assets\Fonts\Montserrat-Bold.ttf" />
+    <Resource Include="Assets\Fonts\ProFanMaru-Regular.ttf;Assets\Fonts\ProFanMaru-Medium.ttf;Assets\Fonts\ProFanMaru-Bold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <!-- 発行先の設定（使っている本番の設定）を上書きしない -->
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

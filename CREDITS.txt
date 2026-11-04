@@ -1,0 +1,65 @@
+﻿ProFanController
+================
+
+ProFanController 本体: MIT License（LICENSE）
+Copyright (c) 2026 ProFanController contributors
+
+このリポジトリのソースの先頭にある「See CREDITS.txt」は、このファイルのことです。
+使っている部品と、そのライセンスは次のとおりです（配布用の zip には licenses フォルダーに同じものを入れています）。
+
+ProFanController が使用しているソフトウェア
+============================================
+
+LibreHardwareMonitorLib 0.9.6
+  License: Mozilla Public License 2.0（MPL-2.0）
+  Source : https://github.com/LibreHardwareMonitor/LibreHardwareMonitor
+  ※ 改変せずに使用しています。ソースコードは上記リポジトリで公開されています。
+  依存: HidSharp (Apache-2.0), DiskInfoToolkit, RAMSPDToolkit-NDD
+
+NAudio.Wasapi / NAudio.Core 2.2.1（音楽連動の音の取り込み）
+  License: MIT License
+  Source : https://github.com/naudio/NAudio
+  Copyright 2020 Mark Heath
+
+QRCoder 1.6.0
+  License: MIT License
+  Source : https://github.com/codebude/QRCoder
+  Copyright (c) 2013-2018 Raffael Herrmann
+
+.NET Runtime / WPF / Windows Forms / System.Text.Json
+  License: MIT License
+  Source : https://github.com/dotnet/runtime ・ https://github.com/dotnet/wpf ・ https://github.com/dotnet/winforms
+  Copyright (c) .NET Foundation and Contributors
+
+Montserrat（フォント）
+  License: SIL Open Font License 1.1（Montserrat-OFL.txt）
+  Source : https://github.com/JulietaUla/Montserrat
+  Copyright 2011 The Montserrat Project Authors
+
+ProFan Maru（フォント・Zen Maru Gothic の改変版）
+  License: SIL Open Font License 1.1（ZenMaruGothic-OFL.txt / ProFanMaru-README.txt）
+  Source : https://github.com/googlefonts/zen-marugothic
+  Copyright 2021 The Zen Maru Gothic Project Authors
+
+PawnIO（ドライバ・別途インストール）
+  https://pawnio.eu/
+
+Ollama（AI 機能を使う場合のみ・別途インストール）
+  License: MIT License  https://github.com/ollama/ollama
+
+OpenRGB（LED 連携を使う場合のみ・別途インストール）
+  License: GPL-2.0  https://gitlab.com/CalcProgrammer1/OpenRGB
+  ※ OpenRGB のコードは含んでいません。起動中の OpenRGB と、公開されている SDK のネットワーク
+     プロトコル（TCP）で通信するだけです。
+  ※ PNY のグラボの LED は、NVIDIA のドライバーに入っている NvAPI（nvapi64.dll）で直接書き込みます。
+     書き込む場所（レジスタ）の情報は OpenRGB を参考にしましたが、OpenRGB のコードは使っていません。
+
+NVIDIA NvAPI（PNY のグラボの LED を直接光らせる場合のみ・グラボのドライバーに含まれる）
+  ※ nvapi64.dll は含んでいません。インストール済みのドライバーのものを呼び出すだけです。
+
+ntfy（スマホ通知を使う場合のみ・外部サービス）
+  https://ntfy.sh/  （アプリ: Apache-2.0 / GPL-2.0 のデュアルライセンス）
+  ※ コードは含んでいません。HTTP で通知を送るだけです。
+
+Discord Webhook（スマホ通知を使う場合のみ・外部サービス）
+  https://discord.com/

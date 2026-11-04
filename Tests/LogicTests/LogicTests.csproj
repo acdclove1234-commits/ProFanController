@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- ロジックテスト（画面・ハードウェアを使わない部分だけ）。実行: dotnet run (Tests/LogicTests フォルダーで。引数に名前の一部を渡すと絞り込み) -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>CA1416;CS8321</NoWarn>
+    <RootNamespace>LogicTests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(NuGetPackageRoot)librehardwaremonitorlib/0.9.6/runtimes/win-x64/lib/net8.0/LibreHardwareMonitorLib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../../Core/**/*.cs" Link="Core/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>
