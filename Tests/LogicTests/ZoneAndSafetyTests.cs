@@ -251,6 +251,13 @@ public static class ZoneAndSafetyTests
             b.Normalize();
             T.Check((b.Background == value) == kept, $"background '{value}' {(kept ? "kept" : "→ default")}");
         }
+        T.Check(cfg.Appearance.TextColor == AppearanceConfig.DefaultTextColor, "old config files get the default text color");
+        foreach (var (value, kept) in new[] { ("tx0", true), ("tx63", true), ("tx64", false), ("bg3", false), ("#FFFFFF", false) })
+        {
+            var t = new AppearanceConfig { TextColor = value };
+            t.Normalize();
+            T.Check((t.TextColor == value) == kept, $"text color '{value}' {(kept ? "kept" : "→ default")}");
+        }
     }
 
     public static void TestCardGridWidens()

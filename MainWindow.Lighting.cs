@@ -42,6 +42,8 @@ public enum LightingChoiceKind
     Accent,
     /// <summary>画面の背景色（AppearanceConfig.Background）</summary>
     Background,
+    /// <summary>画面の文字色（AppearanceConfig.TextColor）</summary>
+    TextColor,
 }
 
 /// <summary>コンボボックスの選択肢（Id = 設定に保存する値、Label = 画面に出す言葉）</summary>
@@ -951,6 +953,10 @@ public partial class MainWindow
                 return;
             case LightingChoiceKind.Background:
                 Config.Appearance.Background = c.Id;
+                RefreshAppearanceUi();
+                return;
+            case LightingChoiceKind.TextColor:
+                Config.Appearance.TextColor = c.Id;
                 RefreshAppearanceUi();
                 return;
         }

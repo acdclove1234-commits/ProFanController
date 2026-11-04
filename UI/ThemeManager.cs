@@ -146,8 +146,9 @@ public static class ThemeManager
     {
         index = Math.Clamp(index, 0, BackgroundCount - 1);
         int row = index / 16, col = index % 16;
-        float[] darkL = { 0.14f, 0.18f, 0.22f, 0.26f }, darkC = { 0.022f, 0.036f, 0.05f, 0.064f };
-        float[] lightL = { 0.985f, 0.965f, 0.94f, 0.915f }, lightC = { 0.012f, 0.024f, 0.036f, 0.048f };
+        // 1 段目でも既定（ほぼ無彩色）との違いが分かるよう、いちばん控えめな段にも色をはっきりのせる
+        float[] darkL = { 0.16f, 0.195f, 0.23f, 0.265f }, darkC = { 0.04f, 0.055f, 0.07f, 0.085f };
+        float[] lightL = { 0.965f, 0.94f, 0.915f, 0.89f }, lightC = { 0.04f, 0.06f, 0.08f, 0.10f };
         float l = light ? lightL[row] : darkL[row];
         float c = col == 15 ? 0.004f : (light ? lightC[row] : darkC[row]);
         float h = (float)((col == 15 ? 260 : col * 24) * Math.PI / 180);
@@ -163,7 +164,7 @@ public static class ThemeManager
     {
         index = Math.Clamp(index, 0, BackgroundCount - 1);
         int row = index / 16, col = index % 16;
-        float[] l = { 0.86f, 0.78f, 0.69f, 0.60f }, c = { 0.05f, 0.085f, 0.12f, 0.15f };
+        float[] l = { 0.80f, 0.73f, 0.66f, 0.58f }, c = { 0.085f, 0.11f, 0.135f, 0.16f };
         float chroma = col == 15 ? 0.006f : c[row];
         float h = (float)((col == 15 ? 260 : col * 24) * Math.PI / 180);
         var rgb = OkLab.ToRgb(OkLab.FitGamut(Lab.FromLch(l[row], chroma, h)));
@@ -171,9 +172,49 @@ public static class ThemeManager
     }
 
     /// <summary>背景色の設定値（"bg12" など）→ 候補の番号。既定・読めない値なら null</summary>
-    public static int? BackgroundIndex(string? setting) =>
-        setting is { Length: > 2 } s && s.StartsWith(AppearanceConfig.BackgroundPrefix, StringComparison.Ordinal)
-        && int.TryParse(s.AsSpan(AppearanceConfig.BackgroundPrefix.Length), out int i) && i >= 0 && i < BackgroundCount ? i : null;
+    public static int? BackgroundIndex(string? setting) => PaletteIndex(setting, AppearanceConfig.BackgroundPrefix);
+
+    /// <summary>文字色の設定値（"tx12" など）→ 候補の番号。既定・読めない値なら null</summary>
+    public static int? TextColorIndex(string? setting) => PaletteIndex(setting, AppearanceConfig.TextColorPrefix);
+
+    private static int? PaletteIndex(string? setting, string prefix) =>
+        setting is { } s && s.Length > prefix.Length && s.StartsWith(prefix, StringComparison.Ordinal)
+        && int.TryParse(s.AsSpan(prefix.Length), out int i) && i >= 0 && i < BackgroundCount ? i : null;
+
+    /// <summary>
+    /// 文字色の候補（index 0〜63）。16 個ずつ 4 段: 色相を 24° ずつ 15 色 ＋ 灰色。上の段ほど白（黒）に近く、下の段ほど色が濃い。
+    /// 同じ番号でも、ダークなら明るい色・ライトなら暗い色になる（どの背景の上でも読める明るさに収める）
+    /// </summary>
+    public static Color TextSwatch(int index, bool light)
+    {
+        index = Math.Clamp(index, 0, BackgroundCount - 1);
+        int row = index / 16, col = index % 16;
+        float[] darkL = { 0.95f, 0.91f, 0.87f, 0.83f }, lightL = { 0.33f, 0.38f, 0.43f, 0.47f };
+        // ライトは暗い色ほど色合いが見えにくいので、明るさは白い背景に対して十分読める範囲（明暗の差 4.5:1 前後）まで上げ、鮮やかさも強める
+        float[] darkC = { 0.035f, 0.065f, 0.095f, 0.125f }, lightC = { 0.08f, 0.11f, 0.14f, 0.16f };
+        float l = light ? lightL[row] : darkL[row];
+        float c = col == 15 ? 0.006f : (light ? lightC[row] : darkC[row]);
+        float h = (float)((col == 15 ? 260 : col * 24) * Math.PI / 180);
+        var rgb = OkLab.ToRgb(OkLab.FitGamut(Lab.FromLch(l, c, h)));
+        return Color.FromRgb(rgb.R, rgb.G, rgb.B);
+    }
+
+    /// <summary>
+    /// 文字色を替えたテーマ: ふつうの文字を選んだ色にし、補足の文字・薄い文字・グラフの目盛りの文字は、
+    /// 選んだ色を背景へ寄せて作る（色合いはそろい、文字の濃淡の段差は元のテーマと同じくらいに保つ）
+    /// </summary>
+    public static ThemeColors WithText(ThemeColors b, Color text)
+    {
+        Color Mix(double towardBg)
+        {
+            var t = OkLab.FromRgb(new Rgb(text.R, text.G, text.B));
+            var bg = OkLab.FromRgb(new Rgb(b.Card.R, b.Card.G, b.Card.B));
+            float k = (float)towardBg;
+            var rgb = OkLab.ToRgb(OkLab.FitGamut(new Lab(t.L + (bg.L - t.L) * k, t.A + (bg.A - t.A) * k, t.B + (bg.B - t.B) * k)));
+            return Color.FromRgb(rgb.R, rgb.G, rgb.B);
+        }
+        return b with { Text = text, SubText = Mix(0.36), Muted = Mix(0.56), ChartLabel = Mix(0.48) };
+    }
 
     /// <summary>
     /// 背景色を替えたテーマ: 面の色（背景・サイドバー・カード・枠・入力欄など）を、元のテーマとの明るさの差は保ったまま、
@@ -235,6 +276,7 @@ public static class ThemeManager
         bool light = a.Theme == AppThemes.Light || (a.Theme == AppThemes.System && SystemUsesLight());
         var baseColors = light ? ThemeColors.Light : ThemeColors.Dark;
         if (BackgroundIndex(a.Background) is int bgIndex) baseColors = WithBackground(baseColors, BackgroundSwatch(bgIndex, light));
+        if (TextColorIndex(a.TextColor) is int txIndex) baseColors = WithText(baseColors, TextSwatch(txIndex, light));
         Color? accent = a.Accent switch
         {
             AppearanceConfig.SystemAccent => SystemAccentColor(),

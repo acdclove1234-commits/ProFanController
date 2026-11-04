@@ -367,6 +367,8 @@ public partial class MainWindow
 
     private readonly ObservableCollection<LightingChoiceVm> _accentChoices = new();
     private readonly ObservableCollection<LightingChoiceVm> _backgroundChoices = new();
+    private readonly ObservableCollection<LightingChoiceVm> _textColorChoices = new();
+    private bool? _textSwatchesLight;
     private bool _appearanceReady;
 
     /// <summary>見た目の欄の選択肢を作る（テーマ・アクセント色 64 色・フォント）。フォントの一覧は 1 回だけ作る</summary>
@@ -389,6 +391,9 @@ public partial class MainWindow
             }
             AccentSwatches.ItemsSource = _accentChoices;
             BackgroundSwatches.ItemsSource = _backgroundChoices;
+            TextColorSwatches.ItemsSource = _textColorChoices;
+            // 文字色の見本は、ダーク／ライトで色が変わるので、テーマを入れ替えたら作り直す
+            ThemeManager.Changed += () => Dispatcher.BeginInvoke(RefreshAppearanceUi);
             var fonts = new List<ChoiceOption>
             {
                 new("", "既定（英数字 Montserrat・日本語 ProFan Maru）"),
@@ -430,6 +435,27 @@ public partial class MainWindow
             }
         }
         foreach (var c in _backgroundChoices) c.IsSelected = c.Id == a.Background;
+        bool light = ThemeManager.Current.IsLight;
+        if (_textSwatchesLight != light)
+        {
+            _textSwatchesLight = light;
+            _textColorChoices.Clear();
+            string[] rows = { "白に近い", "淡い", "やや濃い", "濃い" };
+            if (light) rows = new[] { "黒に近い", "淡い", "やや濃い", "濃い" };
+            for (int i = 0; i < ThemeManager.BackgroundCount; i++)
+            {
+                var brush = new SolidColorBrush(ThemeManager.TextSwatch(i, light));
+                brush.Freeze();
+                string name = i % 16 == 15 ? "灰色" : $"色相 {i % 16 * 24}°";
+                _textColorChoices.Add(new LightingChoiceVm
+                {
+                    Kind = LightingChoiceKind.TextColor, Id = AppearanceConfig.TextColorPrefix + i, Label = name,
+                    Tip = $"{name}・{rows[i / 16]}", Swatch = brush,
+                });
+            }
+        }
+        foreach (var c in _textColorChoices) c.IsSelected = c.Id == a.TextColor;
+        TextColorDefaultButton.FontWeight = a.TextColor == AppearanceConfig.DefaultTextColor ? FontWeights.Bold : FontWeights.Normal;
         BackgroundDefaultButton.FontWeight = a.Background == AppearanceConfig.DefaultBackground ? FontWeights.Bold : FontWeights.Normal;
         FontPreview.FontFamily = ThemeManager.FontFor(a.FontFamily);
         // 元の値が一覧にない（ほかの PC で選んだフォントなど）ときは、選択欄が空にならないよう既定として表示する
@@ -439,6 +465,12 @@ public partial class MainWindow
     private void OnAccentDefaultClick(object sender, RoutedEventArgs e)
     {
         Config.Appearance.Accent = AppearanceConfig.DefaultAccent;
+        RefreshAppearanceUi();
+    }
+
+    private void OnTextColorDefaultClick(object sender, RoutedEventArgs e)
+    {
+        Config.Appearance.TextColor = AppearanceConfig.DefaultTextColor;
         RefreshAppearanceUi();
     }
 

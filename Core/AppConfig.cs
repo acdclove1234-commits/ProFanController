@@ -1075,10 +1075,15 @@ public sealed class AppearanceConfig : ObservableObject
     public const string DefaultBackground = "Default";
     /// <summary>背景色: 候補の番号の前につける文字（"bg0"〜"bg63"）</summary>
     public const string BackgroundPrefix = "bg";
+    /// <summary>文字色: この値ならテーマの既定の文字色</summary>
+    public const string DefaultTextColor = "Default";
+    /// <summary>文字色: 候補の番号の前につける文字（"tx0"〜"tx63"）</summary>
+    public const string TextColorPrefix = "tx";
 
     private string _theme = AppThemes.Dark;
     private string _accent = DefaultAccent;
     private string _background = DefaultBackground;
+    private string _textColor = DefaultTextColor;
     private string _fontFamily = "";
     private int _textScale = 100;
 
@@ -1088,6 +1093,8 @@ public sealed class AppearanceConfig : ObservableObject
     public string Accent { get => _accent; set { if (!string.IsNullOrEmpty(value)) Set(ref _accent, value); } }
     /// <summary>"Default" / "bg0"〜"bg63"（候補の番号。同じ番号でもダークでは暗い色・ライトでは明るい色）</summary>
     public string Background { get => _background; set { if (!string.IsNullOrEmpty(value)) Set(ref _background, value); } }
+    /// <summary>"Default" / "tx0"〜"tx63"（候補の番号。同じ番号でもダークでは明るい色・ライトでは暗い色）</summary>
+    public string TextColor { get => _textColor; set { if (!string.IsNullOrEmpty(value)) Set(ref _textColor, value); } }
     /// <summary>画面の文字のフォント（空ならアプリの既定: 英数字 Montserrat・日本語 ProFan Maru）</summary>
     public string FontFamily { get => _fontFamily; set => Set(ref _fontFamily, value ?? ""); }
     /// <summary>文字と画面の大きさ（%）</summary>
@@ -1100,6 +1107,8 @@ public sealed class AppearanceConfig : ObservableObject
             Accent = DefaultAccent;
         if (Background != DefaultBackground && !System.Text.RegularExpressions.Regex.IsMatch(Background, "^bg([0-9]|[1-5][0-9]|6[0-3])$"))
             Background = DefaultBackground;
+        if (TextColor != DefaultTextColor && !System.Text.RegularExpressions.Regex.IsMatch(TextColor, "^tx([0-9]|[1-5][0-9]|6[0-3])$"))
+            TextColor = DefaultTextColor;
         FontFamily ??= "";
         TextScale = Math.Clamp(TextScale, MinTextScale, MaxTextScale);
     }
