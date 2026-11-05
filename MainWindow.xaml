@@ -2257,9 +2257,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Border Background="{DynamicResource Inset2Brush}" CornerRadius="10" Padding="12" VerticalAlignment="Top" Margin="0,0,16,0">
                                     <StackPanel>
-                                        <ctl:CasePreview x:Name="CasePreviewView" Width="300" Loaded="OnCasePreviewLoaded"
+                                        <ctl:CasePreview x:Name="CasePreviewView" Width="340" Loaded="OnCasePreviewLoaded"
                                                          ToolTip="ケースを横から見た絵です。場所を決めた LED に、最後に送った色を表示します"/>
-                                        <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Width="300" Margin="0,8,0,0"
+                                        <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Width="340" Margin="0,8,0,0"
                                                    Text="横のガラスから見た絵です（左が背面、右が前面）。「ケースの中の位置に合わせて光を流す」がオンのときに表示します"/>
                                     </StackPanel>
                                 </Border>
