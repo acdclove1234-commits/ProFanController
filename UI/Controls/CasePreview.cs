@@ -84,7 +84,7 @@ public sealed class CasePreview : FrameworkElement
                     double u = rings <= 1 ? 0 : r / (double)(rings - 1);
                     var c = At(place.X1 + (place.X2 - place.X1) * u, place.Y1 + (place.Y2 - place.Y1) * u);
                     double rx = place.Radius * area.Width, ry = place.Radius * area.Height;
-                    dc.DrawEllipse(body, null, c, rx * 1.3, ry * 1.3);
+                    dc.DrawEllipse(body, null, c, rx * 1.2, ry * 1.2);
                     dc.DrawEllipse(hub, null, c, rx * 0.4, ry * 0.4);
                 }
             }

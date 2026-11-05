@@ -66,6 +66,9 @@ public sealed class BeatTracker
     /// （仕様書 A7 の判定は「半分にする」向きだけなので、キックが毎拍鳴る 174 BPM が 87 BPM になるのを防ぐために足した）
     /// </summary>
     private const double OctaveUpRatio = 0.75;
+    /// <summary>倍のテンポにするには、拍の中間のうちこの割合以上で、拍の位置の平均の OctaveUpHitLevel 倍以上の低音が必要</summary>
+    private const double OctaveUpHitShare = 0.7;
+    private const double OctaveUpHitLevel = 0.4;
     /// <summary>「今のテンポに近い」とみなす差（対数の比。±6%）</summary>
     private const double CloseLogRatio = 0.06;
     /// <summary>ロック中に無視するテンポの差（対数の比。±2%）</summary>
@@ -94,6 +97,20 @@ public sealed class BeatTracker
     private const double BaseFloor = 0.05;
     /// <summary>確かさの計算に使う直近の拍の数</summary>
     private const int HistLen = 8;
+    /// <summary>音楽が鳴っているのに、今のテンポでこの秒数ロックできなければ、別のテンポを試す</summary>
+    private const double StuckSec = 4.5;
+    /// <summary>試して合わなかったテンポに掛ける重み（くし形のフィルターの結果に掛ける）と、抑える幅（対数の比。±4%）</summary>
+    private const double VetoFloor = 0.15;
+    private const double VetoLogWidth = 0.04;
+    /// <summary>抑えたテンポが元に戻るまでの時間（秒。曲が変わったときに、また選べるように）</summary>
+    private const double VetoRecoverSec = 20.0;
+    /// <summary>予測からこの秒数より離れた山は、その拍の音とみなさない（ずれた音・別の音）</summary>
+    private const double OutlierSec = 0.035;
+    /// <summary>そのような山で位置を直すときの強さ（ふつうの何倍か）</summary>
+    private const double OutlierGain = 0.25;
+    /// <summary>直近の拍のうち、音のあった拍の割合がこれ以下なら確かさ 0、HitShareFull 以上なら満点（その間は比例）</summary>
+    private const double HitShareZero = 0.4;
+    private const double HitShareFull = 0.74;
 
     // ===== 確かさとロック
     /// <summary>この確かさ以上が LockBeats 拍続いたらロック</summary>
@@ -142,6 +159,11 @@ public sealed class BeatTracker
     private double _period;                 // 周期（コマ。0 = まだない）
     private double _candidate;
     private int _candidateCount;
+    // 試して合わなかったテンポを抑える重み（1 = 抑えない）
+    private readonly double[] _veto;
+    private readonly int _stuckLimit;
+    private readonly double _vetoRecover;
+    private int _stuckFrames;
 
     // ビートの位置
     private bool _hasGrid;
@@ -152,6 +174,7 @@ public sealed class BeatTracker
     private int _pendCount;
     private readonly double[] _errHist = new double[HistLen];
     private readonly double[] _ratioHist = new double[HistLen];
+    private readonly bool[] _hitHist = new bool[HistLen];
     private int _histCount, _histHead;
     private double _phaseConf, _conf;
     private BeatLock _lock;
@@ -201,6 +224,9 @@ public sealed class BeatTracker
         _post = new double[_m];
         _tmp = new double[_m];
         _prior = new double[_m];
+        _veto = new double[_m];
+        _stuckLimit = (int)Math.Round(StuckSec * frameRate);
+        _vetoRecover = UpdateSec / VetoRecoverSec;
         _trans = new double[_m * _m];
         _phaseScore = new double[_tauMax * 2 + 4];
         _span = new double[_len];
@@ -212,7 +238,10 @@ public sealed class BeatTracker
             double oct = Math.Log2(tau / (PriorCentreSec * frameRate));
             _prior[j] = Math.Exp(-0.5 * oct * oct);
         }
-        // テンポの移り変わりやすさ: 近いテンポほど移りやすい（各行の合計を 1 にする）
+        // テンポの移り変わりやすさ: 近いテンポほど移りやすい。
+        // どの行も同じ数で割る（行ごとに合計を 1 にすると、範囲の端のテンポ（181・69 BPM）は片側にしか隣がないぶん
+        // 「その場にとどまる」重みが約 2 倍になり、一度そこに入ると抜け出せなくなるため）
+        double rowMax = 0;
         for (int i = 0; i < _m; i++)
         {
             double sum = 0;
@@ -223,8 +252,9 @@ public sealed class BeatTracker
                 _trans[i * _m + j] = a;
                 sum += a;
             }
-            for (int j = 0; j < _m; j++) _trans[i * _m + j] /= sum;
+            rowMax = Math.Max(rowMax, sum);
         }
+        for (int k = 0; k < _trans.Length; k++) _trans[k] /= rowMax;
         Reset();
     }
 
@@ -237,6 +267,14 @@ public sealed class BeatTracker
     public double PhaseConfidence => _phaseConf;
     /// <summary>テンポの倍率を掛ける前の周期（秒。まだなければ 0）</summary>
     public double PeriodSec => _period > 0 ? _period / _f : 0;
+    /// <summary>くし形のフィルターの結果（テスト・調査用。添え字 j が周期 TauMin + j コマ）</summary>
+    internal double[] CombScores => _r;
+    internal int TauMin => _tauMin;
+    /// <summary>最後にくし形のフィルターが選んだ周期（コマ）と、倍・半分の直し（−1 = 周期を倍、1 = 半分、0 = なし。調査用）</summary>
+    internal double DiagCombTau { get; private set; }
+    internal int DiagOctave { get; private set; }
+    internal Action<string>? DiagLog;
+    internal double FrameRate => _f;
     /// <summary>小節の頭の拍の番号の余り（0〜3。倍率を掛ける前）</summary>
     public int Downbeat => _downbeat;
 
@@ -249,6 +287,8 @@ public sealed class BeatTracker
         _count = 0;
         _sinceUpdate = 0;
         for (int j = 0; j < _m; j++) _post[j] = 1.0 / _m;
+        Array.Fill(_veto, 1.0);
+        _stuckFrames = 0;
         _tempoConf = 0;
         _period = 0;
         _candidate = 0;
@@ -334,6 +374,13 @@ public sealed class BeatTracker
             }
         }
 
+        // 音楽が鳴っているのに、今のテンポでロックできないまま StuckSec 続いたら、そのテンポをしばらく抑えて別の候補を試す
+        if (_hasGrid && _lock == BeatLock.Unlocked && gateOpen && _n - _lastLowOnset <= _noOnsetFrames)
+        {
+            if (++_stuckFrames >= _stuckLimit) VetoCurrentTempo();
+        }
+        else if (_lock != BeatLock.Unlocked) _stuckFrames = 0;
+
         // 2 秒間、低音の立ち上がりがなければロックを外す
         if (_lock != BeatLock.Unlocked && _n - _lastLowOnset > _noOnsetFrames)
         {
@@ -351,6 +398,7 @@ public sealed class BeatTracker
 
     private void UpdateTempo()
     {
+        RecoverVeto();
         double tf = EstimateTempo();
         if (tf <= 0) return;
         if (_period > 0 && Math.Abs(Math.Log(tf / _period)) < CloseLogRatio)
@@ -360,6 +408,13 @@ public sealed class BeatTracker
             {
                 SetPeriodKeepLast(_period + FollowGain * (tf - _period));
             }
+            _candidateCount = 0;
+        }
+        else if (_lock == BeatLock.Locked && _phaseConf >= 0.5)
+        {
+            // ロック中で、今の拍の並びが実際の音とよく合っている: 別のテンポの候補には乗り換えない
+            // （くし形のフィルターは拍でない繰り返し（3 連の刻みなど）も拾うので。本当に曲のテンポが変われば、
+            //   拍が合わなくなって確かさが下がり、ロックが外れてから乗り換える）
             _candidateCount = 0;
         }
         else
@@ -380,6 +435,7 @@ public sealed class BeatTracker
                 _candidateCount = 0;
                 _period = tf;
                 AcquirePhase(allowGlide: false);
+                _stuckFrames = 0;
                 return;
             }
         }
@@ -473,7 +529,7 @@ public sealed class BeatTracker
         double obsSum = 0;
         for (int j = 0; j < _m; j++)
         {
-            _obs[j] = _r[j] * _prior[j];
+            _obs[j] = _r[j] * _prior[j] * _veto[j];
             obsSum += _obs[j];
         }
         if (obsSum <= 1e-12)
@@ -523,8 +579,12 @@ public sealed class BeatTracker
         }
 
         // 6. 倍・半分のテンポの取り違えを、低音の立ち上がりの強さで確かめる
-        if (OctaveDown(tf)) tf *= 2;
-        else if (OctaveUp(tf)) tf /= 2;
+        DiagCombTau = tf;
+        DiagOctave = 0;
+        if (OctaveDown(tf)) { tf *= 2; DiagOctave = -1; }
+        else if (OctaveUp(tf)) { tf /= 2; DiagOctave = 1; }
+        // 試して合わなかったテンポ（抑えているテンポ）には、倍・半分の直しで戻さない
+        if (DiagOctave != 0 && VetoAt(tf) < 0.5) { tf = DiagCombTau; DiagOctave = 0; }
 
         // 7. テンポの確かさ: 周期での一致度と、くし形の結果の飛び抜け具合（z スコア）
         double meanR = sumR / _m;
@@ -577,7 +637,11 @@ public sealed class BeatTracker
         return mx > 1e-9 && Math.Min(even, odd) / mx < OctaveDownRatio;
     }
 
-    /// <summary>追加の判定: 拍の中間にも拍と同じくらいの低音があれば、本当の周期は半分</summary>
+    /// <summary>
+    /// 追加の判定: 拍の中間にも拍と同じくらいの低音があれば、本当の周期は半分。
+    /// 平均だけでなく、拍の中間の多く（OctaveUpHitShare 以上）で低音が鳴っていることも確かめる
+    /// （ヒップホップのように 1 小節に 1 回だけ裏拍にキックがある曲を、倍のテンポにしないため）
+    /// </summary>
     private bool OctaveUp(double tau)
     {
         double half = tau / 2;
@@ -586,12 +650,17 @@ public sealed class BeatTracker
         double on = 0, off = 0;
         for (int k = 0; k < beats; k++)
         {
-            long i = _n - phi - (long)Math.Round(k * tau);
-            on += Math.Max(LowAt(i - 1), Math.Max(LowAt(i), LowAt(i + 1)));
-            long j = _n - phi - (long)Math.Round((k + 0.5) * tau);
-            off += Math.Max(LowAt(j - 1), Math.Max(LowAt(j), LowAt(j + 1)));
+            on += Max3(_n - phi - (long)Math.Round(k * tau));
+            off += Max3(_n - phi - (long)Math.Round((k + 0.5) * tau));
         }
-        return on > 1e-9 && off / on >= OctaveUpRatio;
+        if (on <= 1e-9 || off / on < OctaveUpRatio) return false;
+        double need = OctaveUpHitLevel * on / beats;
+        int hits = 0;
+        for (int k = 0; k < beats; k++)
+            if (Max3(_n - phi - (long)Math.Round((k + 0.5) * tau)) >= need) hits++;
+        return hits >= OctaveUpHitShare * beats;
+
+        double Max3(long i) => Math.Max(LowAt(i - 1), Math.Max(LowAt(i), LowAt(i + 1)));
     }
 
     // ================================================================
@@ -624,6 +693,7 @@ public sealed class BeatTracker
     /// <summary>今の周期で、ビートの位置を取り直す</summary>
     private void AcquirePhase(bool allowGlide)
     {
+        DiagLog?.Invoke($"acquire glide={allowGlide} t {_tNow:F2} period {60 * _f / _period:F1}");
         int p = PhaseScores(_period);
         int best = 0;
         for (int i = 1; i < p; i++) if (_phaseScore[i] > _phaseScore[best]) best = i;
@@ -713,33 +783,51 @@ public sealed class BeatTracker
         double baseV = Math.Max(median, BaseFloor);
         double meanAll = Math.Max(sum / span, 1e-6);
         double s = Math.Clamp(mx / (2 * baseV) - 0.5, 0, 1);
+        // 予測から OutlierSec より離れた山は、その拍の音ではなく近くの別の音（拍の少し前のキックなど）とみなす:
+        // 「音のない拍」として数え、位置の修正も弱くする（スウィングやシンコペーションで 1 小節に 1 回ずれた音に引っぱられないように）
+        bool outlier = Math.Abs(e) > OutlierSec * _f;
+        double gain = outlier ? s * OutlierGain : s;
 
         // 位置と周期の修正（比例・積分）。公開する位置は、なめらかに追いつかせる
         double oldLast = _nextBeat - _period;
-        _nextBeat += PhaseGain * s * e;
-        double newPeriod = Math.Clamp(_period + PeriodGain * s * e, _tauMin * 0.9, _tauMax * 1.1);
+        _nextBeat += PhaseGain * gain * e;
+        double newPeriod = Math.Clamp(_period + PeriodGain * gain * e, _tauMin * 0.9, _tauMax * 1.1);
         _period = newPeriod;
         _glide -= (_nextBeat - _period - oldLast) / _f;
 
-        AddHist(s > 0.2 ? e : w, (segSum / (2 * w + 1)) / meanAll);
+        AddHist(e, (segSum / (2 * w + 1)) / meanAll, s > 0.2 && !outlier);
+        DiagLog?.Invoke($"beat {idx} t {_tNow:F2} e {e * 1000 / _f:F0}ms s {s:F2} ratio {(segSum / (2 * w + 1)) / meanAll:F2} w {w * 1000 / _f:F0}ms{(outlier ? " outlier" : "")}");
         UpdateConfidence();
         UpdateLock();
         UpdateDownbeat(idx, c, w);
     }
 
+    /// <summary>
+    /// 確かさ = 時刻のずれ（音があった拍だけで測る）× 拍の位置の強さ × 音のあった拍の割合。
+    /// 音のない拍を「いちばん大きなずれ」として数えると、1 小節に 1 拍だけ音のない曲（ヒップホップ・ドラムンベースなど）で
+    /// いつまでもロックできないので、音のない拍は割合（HitShareFull 以上で満点）でだけ見る
+    /// </summary>
     private void UpdateConfidence()
     {
         if (_histCount == 0) return;
         double e2 = 0, ratio = 0;
+        int hits = 0;
         for (int i = 0; i < _histCount; i++)
         {
-            e2 += _errHist[i] * _errHist[i];
             ratio += _ratioHist[i];
+            if (!_hitHist[i]) continue;
+            e2 += _errHist[i] * _errHist[i];
+            hits++;
         }
-        double rmsMs = Math.Sqrt(e2 / _histCount) * 1000 / _f;
-        double cErr = Math.Clamp((40 - rmsMs) / 30, 0, 1);
+        double cErr = 0;
+        if (hits > 0)
+        {
+            double rmsMs = Math.Sqrt(e2 / hits) * 1000 / _f;
+            cErr = Math.Clamp((40 - rmsMs) / 30, 0, 1);
+        }
         double cRatio = Math.Clamp((ratio / _histCount - 1) / 0.5, 0, 1);
-        _phaseConf = cErr * cRatio;
+        double cHit = Math.Clamp((hits / (double)_histCount - HitShareZero) / (HitShareFull - HitShareZero), 0, 1);
+        _phaseConf = cErr * cRatio * cHit;
         _conf = _phaseConf * (0.5 + 0.5 * _tempoConf);
     }
 
@@ -780,6 +868,53 @@ public sealed class BeatTracker
         if (_sdb[best] > 1e-9 && (_sdb[best] - second) / _sdb[best] > DownbeatClear) _downbeat = best;
     }
 
+    /// <summary>
+    /// 今のテンポでロックできないまま時間がたった: そのテンポ（±4%）をしばらく抑え、テンポの記録を半分忘れて、
+    /// 次に強い候補を試せるようにする（シンコペーションの多い曲で、拍ではない繰り返しのテンポに張りつかないように）
+    /// </summary>
+    private void VetoCurrentTempo()
+    {
+        _stuckFrames = 0;
+        if (_period <= 0) return;
+        DiagLog?.Invoke($"stuck: veto {60 * _f / _period:F1} BPM");
+        for (int j = 0; j < _m; j++)
+            if (Math.Abs(Math.Log((_tauMin + j) / _period)) < VetoLogWidth) _veto[j] = Math.Min(_veto[j], VetoFloor);
+        _candidateCount = 0;
+        // ロックできない原因でいちばん多いのは倍・半分の取り違えなので、まず倍のテンポ、次に半分のテンポを試す
+        double up = _period / 2, down = _period * 2;
+        double next = up >= _tauMin * 0.97 && VetoAt(up) >= 0.5 ? up : down <= _tauMax * 1.03 && VetoAt(down) >= 0.5 ? down : 0;
+        if (next > 0)
+        {
+            // 試すテンポに、テンポの記録を寄せる（すぐに元の候補へ戻らず、ロックできるか確かめる時間をとる）
+            double sum = 0;
+            for (int j = 0; j < _m; j++)
+            {
+                double d = Math.Log((_tauMin + j) / next) / TransitionSigma;
+                _post[j] = Math.Exp(-0.5 * d * d) + 1e-6;
+                sum += _post[j];
+            }
+            for (int j = 0; j < _m; j++) _post[j] /= sum;
+            DiagLog?.Invoke($"stuck: try {60 * _f / next:F1} BPM");
+            _period = next;
+            AcquirePhase(allowGlide: false);
+            return;
+        }
+        for (int j = 0; j < _m; j++) _post[j] = 0.3 * _post[j] + 0.7 / _m;
+    }
+
+    /// <summary>抑えたテンポを少しずつ元に戻す（テンポを求め直すたびに呼ぶ）</summary>
+    private void RecoverVeto()
+    {
+        for (int j = 0; j < _m; j++) _veto[j] += (1 - _veto[j]) * _vetoRecover;
+    }
+
+    /// <summary>周期 tau（コマ）のテンポを抑えている重み（範囲の外なら 1）</summary>
+    private double VetoAt(double tau)
+    {
+        int j = (int)Math.Round(tau) - _tauMin;
+        return j >= 0 && j < _m ? _veto[j] : 1;
+    }
+
     private void SilenceReset()
     {
         _silenceDone = true;
@@ -792,6 +927,7 @@ public sealed class BeatTracker
         _candidateCount = 0;
         _glide = 0;
         for (int j = 0; j < _m; j++) _post[j] = 0.5 * _post[j] + 0.5 / _m;
+        _stuckFrames = 0;
     }
 
     // ================================================================
@@ -877,10 +1013,11 @@ public sealed class BeatTracker
         _pendCount--;
     }
 
-    private void AddHist(double err, double ratio)
+    private void AddHist(double err, double ratio, bool hit)
     {
         _errHist[_histHead] = err;
         _ratioHist[_histHead] = ratio;
+        _hitHist[_histHead] = hit;
         _histHead = (_histHead + 1) % HistLen;
         if (_histCount < HistLen) _histCount++;
     }

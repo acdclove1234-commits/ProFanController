@@ -178,6 +178,9 @@ public sealed class AudioEngine
         private set => Volatile.Write(ref _beat, value);
     }
 
+    /// <summary>テンポの追跡（テスト・調査用）</summary>
+    internal BeatTracker Tracker => _tracker;
+
     /// <summary>テンポの追跡の状態（ロック中・予測を続けている・つかんでいない。表示・テスト用）</summary>
     public BeatLock BeatLock => _tracker.Lock;
     /// <summary>今がブレイク（曲の静かな部分）の中か（表示・テスト用）</summary>
