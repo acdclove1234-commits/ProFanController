@@ -273,7 +273,7 @@ public sealed class BeatTracker
     /// <summary>最後にくし形のフィルターが選んだ周期（コマ）と、倍・半分の直し（−1 = 周期を倍、1 = 半分、0 = なし。調査用）</summary>
     internal double DiagCombTau { get; private set; }
     internal int DiagOctave { get; private set; }
-    internal Action<string>? DiagLog;
+    internal Action<string>? DiagLog { get; set; }
     internal double FrameRate => _f;
     /// <summary>小節の頭の拍の番号の余り（0〜3。倍率を掛ける前）</summary>
     public int Downbeat => _downbeat;
