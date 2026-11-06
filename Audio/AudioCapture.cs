@@ -1,12 +1,14 @@
 // ==================================================
 // AudioCapture.cs - 音楽連動のための音の取り込み (スピーカー／ヘッドホンに出ている音を WASAPI ループバックで読み取る。
 //                   音が届いた合図ですぐ読み取り、出力先の切り替え・抜き差し・スリープ復帰に自動で追従する。
-//                   「特定のアプリだけ」はアプリごとの音量メーターで判定する)
+//                   「特定のアプリだけ」は、そのアプリの音だけを直接取り込む（Windows 11 など）。
+//                   できないときは、アプリごとの音量メーターで判定する)
 // Dependencies: NAudio.Wasapi (MIT License), .NET 8 (MIT License)
 // See CREDITS.txt for full license details.
 // ==================================================
 
-using System.Diagnostics;
+using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 using NAudio.Wave;
@@ -20,7 +22,10 @@ namespace ProFanController;
 ///   ・何も再生していないとき Windows は音を送ってこないので、その間は無音（0）を自分で足して時間を進める
 ///     （テンポの記録や、光がゆっくり消えていく動きが途切れないように）
 ///   ・出力先の切り替え・抜き差しは Windows からの知らせで、止まってしまったときは自動で取り込み直す
-/// 「特定のアプリだけ」のときは、全体の音量のうちそのアプリの音量の割合を反応の強さに掛ける。
+/// 「特定のアプリだけ」のときは、そのアプリ（とその子プロセス）の音だけを直接取り込む（ProcessLoopbackCapture）。
+///   ・アプリが起動していない・この Windows が対応していない・取り込みに失敗したときは、出力先の音をすべて取り込み、
+///     全体の音量のうちそのアプリの音量の割合を反応の強さに掛ける（以前からの方式。理由は 1 回だけ記録に残す）
+///   ・アプリが起動した・起動し直したときは、3 秒以内に気づいて、そのアプリの音だけの取り込みに切り替える
 /// </summary>
 public sealed class AudioCapture : IDisposable
 {
@@ -32,6 +37,10 @@ public sealed class AudioCapture : IDisposable
     private const double StallAfter = 1.5;
     /// <summary>アプリの音の割合をならす時定数（秒）</summary>
     private const double AppGateTau = 0.08;
+    /// <summary>アプリの音のセッション・プロセスを調べ直す間隔（秒）</summary>
+    private const double AppScanEvery = 3;
+    /// <summary>アプリの音だけの取り込み口ができるまで待つ時間</summary>
+    private static readonly TimeSpan ActivateTimeout = TimeSpan.FromSeconds(3);
 
     private readonly object _feedGate = new();
     private readonly AutoResetEvent _wake = new(false);
@@ -52,6 +61,14 @@ public sealed class AudioCapture : IDisposable
     private double _lastPeak;
     /// <summary>合図での読み取りが止まった出力先（次からは一定間隔で読む）</summary>
     private readonly HashSet<string> _pollingEndpoints = new();
+    /// <summary>「特定のアプリだけ」で、直接取り込むか・以前からの方式に戻すかの判断（取り込みスレッドだけが使う）</summary>
+    private readonly AppCapturePlanner _planner = new();
+    /// <summary>直前に記録した、取り込み方の理由（同じ理由を何度も記録しない）</summary>
+    private string _planLogged = "";
+    /// <summary>出力先の取り込み中に準備できた、アプリの音だけの取り込み（次の回で使う）</summary>
+    private OpenedApp? _pending;
+    /// <summary>アプリの音だけの取り込みで、最後に 0 でない音が届いた時刻（一時停止中も 0 の音は届き続けるので、届いた時刻とは別に見る）</summary>
+    private double _lastSound = double.NegativeInfinity;
 
     /// <summary>分析エンジン（出力先のサンプリング周波数が変わると作り直す。使うたびにこのプロパティから読む）</summary>
     public AudioEngine Engine { get; private set; } = new() { StatsLogging = true };
@@ -63,6 +80,8 @@ public sealed class AudioCapture : IDisposable
     public string EndpointId { get; private set; } = "";
     /// <summary>音が届いた合図で読み取っている（false なら一定間隔で読みに行く方式）</summary>
     public bool EventDriven { get; private set; }
+    /// <summary>選んだアプリの音だけを直接取り込んでいる（false なら出力先の音をすべて取り込んでいる）</summary>
+    public bool AppOnly { get; private set; }
     public bool Running => _thread is not null;
 
     /// <summary>同期テストのクリック音を記録させる（エンジンを作り直しても引き継ぐ）</summary>
@@ -75,9 +94,8 @@ public sealed class AudioCapture : IDisposable
     /// <summary>反応する音（空ならすべて、アプリ名ならそのアプリだけ）と分析の設定を変える。すぐに反映する</summary>
     public void Configure(string source, AudioEngineSettings settings)
     {
-        string s = (source ?? "").Trim();
         // "Spotify.exe" のように拡張子付きで入力されても探せるように
-        if (s.EndsWith(".exe", StringComparison.OrdinalIgnoreCase)) s = Path.GetFileNameWithoutExtension(s);
+        string s = AppAudioTarget.NormalizeName(source);
         var engine = Engine;
         bool tempoChanged = engine.Settings.TempoFactor != settings.TempoFactor || engine.Settings.TempoMode != settings.TempoMode;
         _source = s;
@@ -106,6 +124,7 @@ public sealed class AudioCapture : IDisposable
         Status = "停止中";
         EndpointName = "";
         EndpointId = "";
+        AppOnly = false;
     }
 
     /// <summary>取り込みをやり直す（スリープからの復帰後・出力先の切り替えなど）。止まっていれば何もしない</summary>
@@ -135,7 +154,10 @@ public sealed class AudioCapture : IDisposable
                         try { enumerator.RegisterEndpointNotificationCallback(n); notifier = n; }
                         catch (Exception ex) { Log($"音楽連動: 出力先の切り替えの知らせを受け取れません（5 秒ごとに確認します）: {ex.Message}"); }
                     }
-                    var result = CaptureOnce(enumerator);
+                    // 「特定のアプリだけ」: できればそのアプリの音だけを取り込む（できなければ出力先の音をすべて）
+                    var app = _pending ?? OpenForSource(enumerator);
+                    _pending = null;
+                    var result = app is not null ? CaptureApp(enumerator, app) : CaptureOnce(enumerator);
                     _failures = 0;
                     if (result == CaptureResult.SwitchToPolling && EndpointId.Length > 0 && _pollingEndpoints.Add(EndpointId))
                         Log($"音楽連動: 音が届いた合図が来ないため、この出力先（{EndpointName}）は一定間隔で読み取ります");
@@ -155,6 +177,8 @@ public sealed class AudioCapture : IDisposable
         }
         finally
         {
+            _pending?.Dispose();
+            _pending = null;
             if (notifier is not null)
             {
                 try { enumerator?.UnregisterEndpointNotificationCallback(notifier); } catch { /* 終了時は無視 */ }
@@ -217,13 +241,11 @@ public sealed class AudioCapture : IDisposable
         Status = $"音を取り込み中: {device.FriendlyName}";
         Log($"音楽連動: 取り込み開始（{device.FriendlyName}・{format.SampleRate} Hz・{channels} ch・{kind}・{(polling ? "一定間隔" : "合図で読み取り")}）");
 
+        AppOnly = false;
         var result = CaptureResult.Normal;
-        var sessions = new List<AudioSessionControl>();
-        var sessionDevices = new List<MMDevice>();
+        using var scan = new AppScan();
         double appMissingSince = double.NaN;
         bool appMissingLogged = false;
-        string sessionsFor = "";
-        double sessionsAt = double.NegativeInfinity;
         double deviceCheckAt = AudioClock.Now;
         double meterAt = double.NegativeInfinity;
         double started = AudioClock.Now;
@@ -269,27 +291,21 @@ public sealed class AudioCapture : IDisposable
                 if (source.Length == 0)
                 {
                     target = 1;
+                    ForgetApp();
                 }
                 else
                 {
-                    if (source != sessionsFor || now - sessionsAt > 3)
+                    if (scan.Due(source, now))
                     {
-                        sessionsAt = now;
-                        sessionsFor = source;
-                        DisposeAll(sessions);
-                        DisposeDevices(sessionDevices);
-                        sessions = FindSessions(enumerator, device, source, sessionDevices);
+                        scan.Refresh(enumerator, device, source, now);
+                        // アプリが起動した・試し直す時刻になった: そのアプリの音だけの取り込みを準備できたら切り替える
+                        if (TryPrepareApp(scan, source, now)) break;
                     }
                     double total = device.AudioMeterInformation.MasterPeakValue;
-                    double app = 0;
-                    foreach (var s in sessions)
-                    {
-                        try { app = Math.Max(app, s.AudioMeterInformation.MasterPeakValue); }
-                        catch { /* アプリが終了した */ }
-                    }
+                    double app = scan.Peak();
                     target = total < 0.001 ? 0 : Math.Clamp(app / total, 0, 1);
                     // 音は鳴っているのに、選んだアプリの音がどの出力先にも見つからない状態が続いたら、1 回だけ記録に残す
-                    if (total > 0.01 && sessions.Count == 0)
+                    if (total > 0.01 && scan.Sessions.Count == 0)
                     {
                         if (double.IsNaN(appMissingSince)) appMissingSince = now;
                         else if (!appMissingLogged && now - appMissingSince > 10)
@@ -306,8 +322,6 @@ public sealed class AudioCapture : IDisposable
         }
         finally
         {
-            DisposeAll(sessions);
-            DisposeDevices(sessionDevices);
             try { capture.StopRecording(); } catch { /* 止まっている */ }
         }
 
@@ -318,6 +332,262 @@ public sealed class AudioCapture : IDisposable
             _wake.WaitOne(500);
         }
         return result;
+    }
+
+    // =====================================================================
+    // 「特定のアプリだけ」: そのアプリの音だけを直接取り込む
+    // =====================================================================
+
+    /// <summary>準備のできた、アプリの音だけの取り込み（まだ始めていない）と、終了を確かめるためのプロセス</summary>
+    private sealed class OpenedApp : IDisposable
+    {
+        public OpenedApp(ProcessLoopbackCapture capture, SafeProcessHandle process, string source)
+        {
+            Capture = capture;
+            Process = process;
+            Source = source;
+        }
+
+        public ProcessLoopbackCapture Capture { get; }
+        public SafeProcessHandle Process { get; }
+        public string Source { get; }
+        public int Pid => Capture.ProcessId;
+
+        public void Dispose()
+        {
+            try { Capture.Dispose(); } catch { /* 終了時は無視 */ }
+            Process.Dispose();
+        }
+    }
+
+    /// <summary>取り込みを始める前に: アプリを選んでいれば、そのアプリの音だけの取り込みを準備する（できなければ null）</summary>
+    private OpenedApp? OpenForSource(MMDeviceEnumerator enumerator)
+    {
+        string source = _source;
+        double now = AudioClock.Now;
+        if (source.Length == 0)
+        {
+            ForgetApp();
+            return null;
+        }
+        if (!enumerator.HasDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia)) return null;
+        using var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+        using var scan = new AppScan();
+        scan.Refresh(enumerator, device, source, now);
+        var decision = Plan(scan, source, now);
+        return decision.Mode == AppCaptureMode.Process ? TryOpenApp(source, decision.Pid, now) : null;
+    }
+
+    /// <summary>選ぶアプリを外した: 前のアプリの失敗・記録した理由は持ち越さない（配列などを作らない）</summary>
+    private void ForgetApp()
+    {
+        _planner.Decide("", false, 0, 0);
+        _planLogged = "";
+    }
+
+    /// <summary>出力先の取り込み中に（3 秒ごと）: アプリの音だけを取り込めるようになっていれば準備して true（呼んだ側は今の取り込みを終える）</summary>
+    private bool TryPrepareApp(AppScan scan, string source, double now)
+    {
+        var decision = Plan(scan, source, now);
+        if (decision.Mode != AppCaptureMode.Process) return false;
+        _pending = TryOpenApp(source, decision.Pid, now);
+        return _pending is not null;
+    }
+
+    /// <summary>取り込み方を決め、以前からの方式になる理由が変わったときだけ記録に残す</summary>
+    private AppCaptureDecision Plan(AppScan scan, string source, double now)
+    {
+        int target = AppAudioTarget.ChooseTarget(scan.Procs, source, scan.Entries);
+        var decision = _planner.Decide(source, ProcessLoopbackCapture.IsSupported, target, now);
+        string key = $"{source}|{decision.Mode}|{decision.Why}";
+        if (key != _planLogged)
+        {
+            _planLogged = key;
+            if (decision.Why == AppCaptureWhy.Unsupported)
+                Log($"音楽連動: この Windows（ビルド {Environment.OSVersion.Version.Build}）は、アプリの音だけを取り込む機能に対応していないため、全体の音のうち {source} の音の割合で反応します（Windows 11 または Windows 10 ビルド {AppAudioTarget.ProcessLoopbackMinBuild} 以降で対応）");
+            else if (decision.Why == AppCaptureWhy.NotRunning)
+                Log($"音楽連動: {source} が起動していないため、全体の音のうち {source} の音の割合で反応します（起動すると、{source} の音だけを取り込みます）");
+            // 失敗したとき（Failed）は、失敗した時点で理由を記録している
+        }
+        return decision;
+    }
+
+    /// <summary>アプリの音だけの取り込みを準備する。失敗したら理由を記録し、試し直すまでは以前からの方式にする</summary>
+    private OpenedApp? TryOpenApp(string source, int pid, double now)
+    {
+        var process = ProcessList.Open(pid, source, out bool gone);
+        if (process is null)
+        {
+            // 調べたあとに終了した: 失敗とはしない（起動し直していれば、次に調べたときに新しいプロセスですぐ試す）
+            if (!gone) AppFailed(source, pid, now, "プロセスを開けません（権限がありません）");
+            return null;
+        }
+        var capture = new ProcessLoopbackCapture(pid, includeTree: true);
+        try
+        {
+            capture.Open(ActivateTimeout);
+            return new OpenedApp(capture, process, source);
+        }
+        catch (Exception ex)
+        {
+            capture.Dispose();
+            process.Dispose();
+            AppFailed(source, pid, now, Message(ex));
+            return null;
+        }
+    }
+
+    /// <summary>アプリの音だけの取り込みがうまくいかなかった: 理由と、次に試す時期を記録する</summary>
+    private void AppFailed(string source, int pid, double now, string why)
+    {
+        double wait = _planner.Failed(pid, now);
+        string retry = double.IsPositiveInfinity(wait)
+            ? $"{source} を起動し直すと、もう一度試します"
+            : $"{(wait >= 60 ? $"{wait / 60:0} 分" : $"{wait:0} 秒")}後にもう一度試します";
+        _planLogged = $"{source}|{AppCaptureMode.EndpointGate}|{AppCaptureWhy.Failed}";
+        Log($"音楽連動: {source}（PID {pid}）の音だけを取り込めないため、全体の音のうち {source} の音の割合で反応します（{retry}）: {why}");
+    }
+
+    /// <summary>
+    /// 選んだアプリ（とその子プロセス）の音だけを取り込む（アプリが終了する・別のプロセスに変わる・止まる・止めるまで戻らない）。
+    /// 出力先の音量メーターは使わず、アプリの音のセッションのメーターで「音が鳴っているか」を判断する
+    /// </summary>
+    private CaptureResult CaptureApp(MMDeviceEnumerator enumerator, OpenedApp app)
+    {
+        using var opened = app;
+        var capture = app.Capture;
+        string source = app.Source;
+        int pid = app.Pid;
+        using var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+        string id = device.ID;
+
+        lock (_feedGate)
+        {
+            if (Engine.SampleRate != ProcessLoopbackCapture.SampleRate)
+            {
+                Engine = new AudioEngine(ProcessLoopbackCapture.SampleRate) { Settings = _settings, ClickDetect = _clickDetect, StatsLogging = true };
+            }
+            else
+            {
+                Engine.Reset(); // 取り込み方が変わった: テンポの記録などを最初から
+            }
+            // ほかのアプリの音は混ざらないので、反応の強さはそのまま（取り込みを始める前に 1 にしておく）
+            Engine.AppGate = 1;
+            _clock = new SampleClock(ProcessLoopbackCapture.SampleRate);
+            _lastArrival = double.NegativeInfinity;
+            _nextSampleT = double.NegativeInfinity;
+        }
+        Volatile.Write(ref _lastSound, double.NegativeInfinity);
+
+        Exception? stopped = null;
+        bool stoppedFlag = false;
+        capture.DataAvailable = (buffer, bytes) =>
+        {
+            // アプリが音を出していなくても 0 の音は届き続けるので、0 でない音が届いた時刻を別に覚える（取り込めているかの確認用）
+            if (MemoryMarshal.Cast<byte, float>(buffer.AsSpan(0, bytes)).IndexOfAnyExcept(0f) >= 0) Volatile.Write(ref _lastSound, AudioClock.Now);
+            Feed(buffer, bytes, PcmKind.Float32, ProcessLoopbackCapture.Channels);
+        };
+        capture.Stopped = ex => { stopped = ex; Volatile.Write(ref stoppedFlag, true); _wake.Set(); };
+        using var scan = new AppScan();
+        scan.Refresh(enumerator, device, source, AudioClock.Now);
+        capture.Start();
+
+        EndpointName = device.FriendlyName;
+        EndpointId = id;
+        EventDriven = true;
+        AppOnly = true;
+        Status = "アプリの音だけを取り込み中";
+        _planLogged = "";
+        Log($"音楽連動: {source} の音だけを取り込み開始（PID {pid} とその子プロセス・{ProcessLoopbackCapture.SampleRate} Hz・{ProcessLoopbackCapture.Channels} ch・{PcmKind.Float32}・聞いている出力先: {device.FriendlyName}）");
+
+        double started = AudioClock.Now;
+        double deviceCheckAt = started;
+        double meterAt = double.NegativeInfinity;
+        double aliveAt = started;
+        bool healthy = false;
+        double appPeak = 0;
+        try
+        {
+            while (!_stop && !_restartRequested && !Volatile.Read(ref stoppedFlag))
+            {
+                _wake.WaitOne(10);
+                double now = AudioClock.Now;
+
+                FillSilence(now, appPeak > AppAudioTarget.SoundingPeak);
+                Engine.AppGate = 1;
+
+                // 選ぶアプリが変わった・外した: 取り込み方を決め直す
+                if (!string.Equals(_source, source, StringComparison.OrdinalIgnoreCase)) break;
+
+                // 出力先が変わっていないか（聞いている出力先の表示のため。知らせを受け取れない環境のための予備。5 秒ごと）
+                if (now - deviceCheckAt > 5)
+                {
+                    deviceCheckAt = now;
+                    using var current = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                    if (current.ID != id) break;
+                }
+
+                // アプリが終了した: 取り込み方を決め直す（起動していなければ以前からの方式で、起動し直したらまたこの方式で）
+                if (now - aliveAt > 0.5)
+                {
+                    aliveAt = now;
+                    if (!ProcessList.IsAlive(app.Process))
+                    {
+                        Log($"音楽連動: {source}（PID {pid}）が終了しました");
+                        break;
+                    }
+                }
+
+                // アプリの音が鳴っている（セッションのメーター）のに、0 の音しか届かない: この方法では取り込めていない
+                if (now - meterAt > 0.1)
+                {
+                    meterAt = now;
+                    appPeak = scan.Peak();
+                    double lastSound = Volatile.Read(ref _lastSound);
+                    double since = now - Math.Max(started, lastSound);
+                    if (since > StallAfter && appPeak > 0.01)
+                    {
+                        AppFailed(source, pid, now, double.IsNegativeInfinity(Volatile.Read(ref _lastArrival))
+                            ? "アプリの音が鳴っているのに、音が届きません"
+                            : "アプリの音が鳴っているのに、無音しか届きません");
+                        break;
+                    }
+                    if (!healthy && !double.IsNegativeInfinity(lastSound) && now - started > AppCapturePlanner.HealthyAfter)
+                    {
+                        healthy = true;
+                        _planner.Healthy(pid);
+                    }
+                }
+
+                // 3 秒ごと: 音を出しているプロセスが、取り込んでいるプロセスの木から別の木に移っていないか
+                if (scan.Due(source, now))
+                {
+                    scan.Refresh(enumerator, device, source, now);
+                    int desired = AppAudioTarget.ChooseTarget(scan.Procs, source, scan.Entries);
+                    bool alive = ProcessList.IsAlive(app.Process);
+                    if (AppAudioTarget.ShouldRetarget(pid, alive, desired,
+                            AppAudioTarget.TreeSounding(scan.Procs, source, pid, scan.Entries),
+                            AppAudioTarget.TreeSounding(scan.Procs, source, desired, scan.Entries)))
+                    {
+                        Log($"音楽連動: {source} の音を出しているプロセスが変わったため、取り込み直します（PID {pid} → {(desired == 0 ? "なし" : desired.ToString())}）");
+                        break;
+                    }
+                }
+            }
+        }
+        finally
+        {
+            AppOnly = false;
+            capture.Stop();
+        }
+
+        if (Volatile.Read(ref stoppedFlag) && stopped is not null)
+        {
+            AppFailed(source, pid, AudioClock.Now, $"取り込みが止まりました: {Message(stopped)}");
+            if (!_stop && !_restartRequested) _wake.Reset();
+            _wake.WaitOne(500);
+        }
+        return CaptureResult.Normal;
     }
 
     /// <summary>届いた音（ふつうは 32bit 浮動小数・2ch）をモノラルにして分析に回す（NAudio の取り込みスレッドから呼ばれる）</summary>
@@ -379,21 +649,77 @@ public sealed class AudioCapture : IDisposable
     }
 
     /// <summary>
+    /// 選んだアプリのプロセスと、その音のセッション（3 秒ごとに調べ直す）。
+    /// セッションのメーターは、出力先の取り込みでは「アプリの音の割合」に、アプリの音だけの取り込みでは「音が鳴っているか」に使う
+    /// </summary>
+    private sealed class AppScan : IDisposable
+    {
+        public readonly List<AudioSessionControl> Sessions = new();
+        public readonly List<SessionEntry> Entries = new();
+        /// <summary>ほかの出力先で見つけたセッションのために開いたままにしている出力先</summary>
+        private readonly List<MMDevice> _devices = new();
+        private readonly HashSet<uint> _pids = new();
+        private string _source = "";
+        private double _at = double.NegativeInfinity;
+
+        /// <summary>選んだ名前のプロセス（PID・親の PID）</summary>
+        public List<ProcEntry> Procs { get; private set; } = new();
+
+        /// <summary>調べ直す時期か（選ぶアプリが変わった・前に調べてから 3 秒たった）</summary>
+        public bool Due(string source, double now) => !string.Equals(source, _source, StringComparison.Ordinal) || now - _at > AppScanEvery;
+
+        public void Refresh(MMDeviceEnumerator enumerator, MMDevice device, string source, double now)
+        {
+            _at = now;
+            _source = source;
+            Clear();
+            Procs = ProcessList.Snapshot(source);
+            if (Procs.Count == 0) return;
+            foreach (var p in Procs) _pids.Add((uint)p.Pid);
+            FindSessions(enumerator, device, _pids, Sessions, _devices);
+            foreach (var s in Sessions)
+            {
+                try
+                {
+                    Entries.Add(new SessionEntry((int)s.GetProcessID, s.State == AudioSessionState.AudioSessionStateActive, s.AudioMeterInformation.MasterPeakValue));
+                }
+                catch { /* アプリが終了した */ }
+            }
+        }
+
+        /// <summary>選んだアプリのセッションの、いまの音の大きさ（いちばん大きいもの。0〜1。配列などを作らない）</summary>
+        public double Peak()
+        {
+            double app = 0;
+            foreach (var s in Sessions)
+            {
+                try { app = Math.Max(app, s.AudioMeterInformation.MasterPeakValue); }
+                catch { /* アプリが終了した */ }
+            }
+            return app;
+        }
+
+        private void Clear()
+        {
+            DisposeAll(Sessions);
+            DisposeDevices(_devices);
+            Entries.Clear();
+            _pids.Clear();
+        }
+
+        public void Dispose() => Clear();
+    }
+
+    /// <summary>
     /// 選んだアプリの音のセッションを探す。取り込んでいる出力先にないときは、ほかの出力先も探す
     /// （SteelSeries Sonar・VB-Audio などの仮想の出力先を通すと、アプリの音はそちらのセッションになり、
     ///   実際に鳴っている出力先には見えないため）。ほかの出力先で見つけたときは、その出力先を extra に入れて開いたままにする
     /// </summary>
-    private static List<AudioSessionControl> FindSessions(MMDeviceEnumerator enumerator, MMDevice device, string processName, List<MMDevice> extra)
+    private static void FindSessions(MMDeviceEnumerator enumerator, MMDevice device, HashSet<uint> pids, List<AudioSessionControl> list, List<MMDevice> extra)
     {
-        var list = new List<AudioSessionControl>();
-        var pids = new HashSet<uint>();
-        foreach (var p in Process.GetProcessesByName(processName))
-        {
-            using (p) pids.Add((uint)p.Id);
-        }
-        if (pids.Count == 0) return list;
+        if (pids.Count == 0) return;
         AddSessions(device, pids, list);
-        if (list.Count > 0) return list;
+        if (list.Count > 0) return;
         try
         {
             foreach (var d in enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active))
@@ -414,7 +740,6 @@ public sealed class AudioCapture : IDisposable
             }
         }
         catch { /* 出力先の一覧を取れない */ }
-        return list;
     }
 
     private static void AddSessions(MMDevice device, HashSet<uint> pids, List<AudioSessionControl> list)
