@@ -30,6 +30,10 @@ public enum EffectVariant
     Mix,
     /// <summary>遅いデバイス用のミックス（暗くなるのに 0.3 秒以上）</summary>
     MixSlow,
+    /// <summary>パーツごとの役割</summary>
+    Role,
+    /// <summary>遅いデバイス用のパーツごとの役割（光の消え方をゆっくり）</summary>
+    RoleSlow,
 }
 
 /// <summary>
@@ -62,6 +66,7 @@ public static class EffectCatalog
                 MusicStyles.Spectrum or MusicStyles.Energy or MusicStyles.Mix => EffectVariant.MixSlow,
                 MusicStyles.Meter => EffectVariant.PulseLoudSlow,
                 MusicStyles.Mood => EffectVariant.Mood,
+                MusicStyles.Role => EffectVariant.RoleSlow,
                 _ => EffectVariant.BeatHueSlow,   // ビートで色替え・流れる波・波紋・きらめき・テンポ追従
             };
         }
@@ -78,6 +83,7 @@ public static class EffectCatalog
             MusicStyles.Chase => EffectVariant.Chase,
             MusicStyles.Mood => EffectVariant.Mood,
             MusicStyles.Strobe => EffectVariant.Strobe,
+            MusicStyles.Role => EffectVariant.Role,
             _ => EffectVariant.BeatHue,
         };
     }
@@ -97,12 +103,13 @@ public static class EffectCatalog
         EffectVariant.Chase => MusicStyles.Chase,
         EffectVariant.Mood => MusicStyles.Mood,
         EffectVariant.Strobe => MusicStyles.Strobe,
+        EffectVariant.Role or EffectVariant.RoleSlow => MusicStyles.Role,
         _ => MusicStyles.BeatHue,
     };
 
     /// <summary>遅いデバイス用の版か（ビートの光の消え方・色の切り替えを遅くする）</summary>
     public static bool IsSlowVariant(EffectVariant v) =>
-        v is EffectVariant.PulseSlow or EffectVariant.PulseLoudSlow or EffectVariant.BeatHueSlow or EffectVariant.MixSlow;
+        v is EffectVariant.PulseSlow or EffectVariant.PulseLoudSlow or EffectVariant.BeatHueSlow or EffectVariant.MixSlow or EffectVariant.RoleSlow;
 
     /// <summary>光り方を作る（デバイスごとに 1 回だけ。毎コマは作らない）</summary>
     public static IMusicEffect Create(EffectVariant v) => v switch
@@ -122,6 +129,8 @@ public static class EffectCatalog
         EffectVariant.Strobe => new StrobeEffect(),
         EffectVariant.Mix => new MixEffect(),
         EffectVariant.MixSlow => new MixEffect(slow: true),
+        EffectVariant.Role => new RoleEffect(),
+        EffectVariant.RoleSlow => new RoleEffect(slow: true),
         _ => new BeatHueEffect(),
     };
 

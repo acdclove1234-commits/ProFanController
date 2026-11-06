@@ -123,15 +123,24 @@ public sealed class ColorPalette
     /// </summary>
     public static ColorPalette Get(string? name, string? staticColor)
     {
-        string n = name is not null && (Stops.ContainsKey(name) || name == Palettes.Mono) ? name : Palettes.Rainbow;
-        string key = n == Palettes.Mono ? (staticColor ?? "") : "";
+        string n = name is not null && (Stops.ContainsKey(name) || Palettes.UsesStaticColor(name)) ? name : Palettes.Rainbow;
+        string key = Palettes.UsesStaticColor(n) ? (staticColor ?? "") : "";
         lock (CacheGate)
         {
             if (Cache.TryGetValue((n, key), out var p)) return p;
-            p = n == Palettes.Mono ? BuildMono(Rgb.Parse(staticColor)) : new ColorPalette(n, Parse(Stops[n]));
+            p = n == Palettes.Mono ? BuildMono(Rgb.Parse(staticColor))
+                : n == Palettes.Solid ? BuildSolid(Rgb.Parse(staticColor))
+                : new ColorPalette(n, Parse(Stops[n]));
             Cache[(n, key)] = p;
             return p;
         }
+    }
+
+    /// <summary>選んだ色だけのパレット（同じ色の見本 2 つ）。どの位置を引いても選んだ色なので、光り方は明るさだけで音に合わせる</summary>
+    private static ColorPalette BuildSolid(Rgb color)
+    {
+        var c = OkLab.FromRgb(color);
+        return new ColorPalette(Palettes.Solid, new[] { c, c });
     }
 
     private static ColorPalette? _meter;

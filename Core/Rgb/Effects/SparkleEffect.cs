@@ -1,5 +1,5 @@
 // ==================================================
-// SparkleEffect.cs - 光り方 E8「きらめき」 (ハイハットやスネアで、ランダムな LED がきらっと光る)
+// SparkleEffect.cs - 光り方 E8「きらめき」 (キックで全体がふわっと明るくなり、スネアでまとまった光、ハイハットで白い粒が光る)
 // Dependencies: .NET 8 (MIT License)
 // See CREDITS.txt for full license details.
 // ==================================================
@@ -7,30 +7,38 @@
 namespace ProFanController;
 
 /// <summary>
-/// きらめき:
-///   下地 = P(t / 20 秒) × Ilin(0.12 + 0.3 × 中音)   … パレットを 20 秒で 1 周
-///   ハイハット（強さ s）: ゾーンの LED のうち n = clamp(round(0.04 × N × s), 1, N/4) 個を選び、
-///                         白と半々に混ぜたパレットの色で光らせる（0.08 秒で消える）
-///   スネア: n = round(0.08 × N × s) 個を、パレットの色で光らせる（0.16 秒で消える）
+/// きらめき: どの音で光ったかが見て分かるように、音ごとに光り方を分ける。
+///   下地 = P(t / 20 秒) × Ilin(0.10 + 0.25 × 中音 + 0.45 × キックの光)   … キックのたびにゾーン全体がふわっと明るくなる（τ 0.25 秒）
+///   スネア（強さ s）: ランダムな位置から続けて並んだ LED（ゾーンの 12%、強いほど長い）が、いまの色の反対側の色で光る（τ 0.18 秒）
+///   ハイハット: 1 個ずつ離れた LED（ゾーンの 2% × s 個。多くても 1/12）が、白に近い色で一瞬だけ光る（τ 0.07 秒）
 ///   LED の色 = 下地 + 粒の色 × exp(−(t − 光った時刻)/τ)
 /// 粒は光った本当の時刻を覚えるので、1 秒間のコマ数が違っても同じ明るさで消えていく。
-/// 乱数（xorshift32）はデバイスごとで、粒を出すときだけ使う。6 個未満のゾーンはハイハットでゾーン全体が 0.5 の明るさで光る
+/// 6 個未満のゾーンは、スネアでゾーン全体が 0.8、ハイハットで 0.4 の明るさで光る
 /// </summary>
 public sealed class SparkleEffect : IMusicEffect
 {
     /// <summary>下地の色がパレットを 1 周する秒数</summary>
     public const double BaseCycleSec = 20;
     /// <summary>ハイハットの粒が消える時定数（秒）</summary>
-    public const float HatTauSec = 0.08f;
-    /// <summary>スネアの粒が消える時定数（秒）</summary>
-    public const float SnareTauSec = 0.16f;
-    /// <summary>小さいゾーンでの、ハイハットの光の明るさ</summary>
-    public const float SmallZoneLevel = 0.5f;
+    public const float HatTauSec = 0.07f;
+    /// <summary>スネアの光が消える時定数（秒）</summary>
+    public const float SnareTauSec = 0.18f;
+    /// <summary>キックで下地が明るくなる光の時定数（秒）</summary>
+    public const double KickTauSec = 0.25;
+    /// <summary>ハイハットの粒を白へ寄せる割合</summary>
+    public const float HatWhiteMix = 0.6f;
+    /// <summary>スネアで光らせる、続けて並んだ LED の長さ（ゾーンに対する割合。強さで 0.6〜1 倍）</summary>
+    public const float SnareLength = 0.12f;
+    /// <summary>小さいゾーンでの、ハイハット・スネアの光の明るさ</summary>
+    public const float SmallHatLevel = 0.4f;
+    public const float SmallSnareLevel = 0.8f;
 
     private double[] _t0 = Array.Empty<double>();
     private float[] _tau = Array.Empty<float>();
     private LinColor[] _col = Array.Empty<LinColor>();
     private LinColor _base;
+    private double _kickT = double.NegativeInfinity;
+    private float _kickS;
 
     public string Name => MusicStyles.Sparkle;
 
@@ -46,6 +54,8 @@ public sealed class SparkleEffect : IMusicEffect
         Array.Fill(_t0, double.NegativeInfinity);
         Array.Fill(_tau, HatTauSec);
         Array.Clear(_col);
+        _kickT = double.NegativeInfinity;
+        _kickS = 0;
     }
 
     public void Update(EffectContext c)
@@ -54,42 +64,64 @@ public sealed class SparkleEffect : IMusicEffect
         for (int i = 0; i < ev.Count; i++)
         {
             var e = ev[i];
-            if (e.Kind == AudioEventKind.Hat) Spawn(c, e.T, e.Strength, hat: true);
-            else if (e.Kind == AudioEventKind.Snare) Spawn(c, e.T, e.Strength, hat: false);
+            if (e.Kind == AudioEventKind.Hat) SpawnHat(c, e.T, e.Strength);
+            else if (e.Kind == AudioEventKind.Snare) SpawnSnare(c, e.T, e.Strength);
+            else if (e.Kind == AudioEventKind.Kick)
+            {
+                _kickT = e.T;
+                _kickS = Math.Clamp(0.6f + 0.2f * e.Strength, 0, 1);
+            }
         }
-        _base = c.PalAt(c.T / BaseCycleSec) * c.Ilin(0.12f + 0.3f * c.Frame.MidE);
+        float kick = _kickS * (float)Math.Exp(-Math.Max(0, c.T - _kickT) / KickTauSec);
+        _base = c.PalAt(c.T / BaseCycleSec) * c.Ilin(0.10f + 0.25f * c.Frame.MidE + 0.45f * kick);
     }
 
-    private void Spawn(EffectContext c, double t0, float strength, bool hat)
+    /// <summary>ハイハット: 離れた LED を 1 個ずつ、白に近い色で</summary>
+    private void SpawnHat(EffectContext c, double t0, float strength)
     {
         for (int k = 0; k < c.SegmentCount; k++)
         {
             var s = c.Segments[k];
             if (s.Small)
             {
-                if (!hat) continue;
-                // 小さいゾーンは全体を 1 つの粒として光らせる
-                var zc = SparkColor(c, true) * SmallZoneLevel;
+                var zc = HatColor(c) * SmallHatLevel;
                 for (int j = s.Start; j < s.Start + s.Count; j++) Set(j, t0, HatTauSec, zc);
                 continue;
             }
-            int n = hat
-                ? Math.Clamp((int)MathF.Round(0.04f * s.Count * strength), 1, Math.Max(1, s.Count / 4))
-                : (int)MathF.Round(0.08f * s.Count * strength);
+            int n = Math.Clamp((int)MathF.Round(0.02f * s.Count * strength), 1, Math.Max(1, s.Count / 12));
             for (int q = 0; q < n; q++)
+                Set(s.Start + c.Rng.NextInt(s.Count), t0, HatTauSec, HatColor(c));
+        }
+    }
+
+    /// <summary>スネア: 続けて並んだ LED のまとまりを、いまの色の反対側の色で</summary>
+    private void SpawnSnare(EffectContext c, double t0, float strength)
+    {
+        var col = c.ColorAt(0.5);
+        for (int k = 0; k < c.SegmentCount; k++)
+        {
+            var s = c.Segments[k];
+            if (s.Small)
             {
-                int j = s.Start + c.Rng.NextInt(s.Count);
-                Set(j, t0, hat ? HatTauSec : SnareTauSec, SparkColor(c, hat));
+                var zc = col * SmallSnareLevel;
+                for (int j = s.Start; j < s.Start + s.Count; j++) Set(j, t0, SnareTauSec, zc);
+                continue;
+            }
+            float scale = Math.Clamp(0.6f + 0.2f * strength, 0.6f, 1f);
+            int len = Math.Clamp((int)MathF.Round(SnareLength * s.Count * scale), 2, s.Count);
+            int start = c.Rng.NextInt(s.Count);
+            for (int q = 0; q < len; q++)
+            {
+                // まとまりの両端を少し暗くして、光の塊に見えるようにする
+                float edge = len <= 2 ? 1f : 1f - 0.5f * MathF.Abs(2f * q / (len - 1) - 1f);
+                Set(s.Start + (start + q) % s.Count, t0, SnareTauSec, col * edge);
             }
         }
     }
 
-    /// <summary>粒の色: パレットのランダムな色（ハイハットは白と半々に混ぜる。OKLab で混ぜる）</summary>
-    private static LinColor SparkColor(EffectContext c, bool hat)
-    {
-        double x = c.Rng.NextFloat();
-        return hat ? OkLab.ToLed(Lab.Lerp(c.Pal.LabAt(x), Lab.White, 0.5f), c.Gamma) : c.PalAt(x);
-    }
+    /// <summary>ハイハットの粒の色: パレットのランダムな色を白へ寄せる（OKLab で混ぜる）</summary>
+    private static LinColor HatColor(EffectContext c)
+        => OkLab.ToLed(Lab.Lerp(c.Pal.LabAt(c.Rng.NextFloat()), Lab.White, HatWhiteMix), c.Gamma);
 
     private void Set(int j, double t0, float tau, LinColor col)
     {

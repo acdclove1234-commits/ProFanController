@@ -37,7 +37,12 @@ public static class Palettes
     public const string Ice = "Ice";
     /// <summary>選んだ色（StaticColor）と、その両隣の色</summary>
     public const string Mono = "Mono";
-    public static readonly string[] All = { Rainbow, Neon, Sunset, Ocean, Fire, Vaporwave, Forest, Ice, Mono };
+    /// <summary>選んだ色（StaticColor）だけ。色は変わらず、明るさだけで音に合わせる</summary>
+    public const string Solid = "Solid";
+    public static readonly string[] All = { Rainbow, Neon, Sunset, Ocean, Fire, Vaporwave, Forest, Ice, Mono, Solid };
+
+    /// <summary>選んだ色（StaticColor）を使うパレットか</summary>
+    public static bool UsesStaticColor(string? id) => id is Mono or Solid;
 
     public static string Label(string id) => id switch
     {
@@ -49,7 +54,8 @@ public static class Palettes
         Vaporwave => "ヴェイパーウェイヴ",
         Forest => "フォレスト",
         Ice => "アイス",
-        Mono => "選んだ色",
+        Mono => "選んだ色と近い色",
+        Solid => "選んだ色だけ（単色）",
         _ => id,
     };
 }
@@ -223,10 +229,81 @@ public static class MusicTuning
         MusicStyles.Energy => ("エナジー", "低音・中音・高音の帯が、それぞれの強さの分だけ伸びる"),
         MusicStyles.Scroll => ("流れる波", "今の音の色が端から流れていく（ウォーターフォール）"),
         MusicStyles.Ripple => ("波紋", "キックのたびに光の輪が広がる"),
-        MusicStyles.Sparkle => ("きらめき", "ハイハットやスネアで、ランダムな LED がきらっと光る"),
+        MusicStyles.Sparkle => ("きらめき", "キックで全体がふわっと、スネアでまとまった光、ハイハットで白い粒が光る"),
+        MusicStyles.Role => ("パーツごとの役割", "ファンは低音、グラボは中音、メモリは高音のように、パーツごとに決まった音で光る（ゾーンの設定「反応する音」で変えられる）"),
         MusicStyles.Chase => ("テンポ追従", "ビートに合わせて光の帯が走る"),
         MusicStyles.Mood => ("ムード", "曲の雰囲気で色がゆっくり変わる（点滅しない）"),
         MusicStyles.Strobe => ("ストロボ", "ビートで強く点滅する（「激しい点滅を抑える」をオフにしたときだけ）"),
         _ => (effect, ""),
     };
+}
+
+/// <summary>ゾーンが音楽のどの音に反応するか（光り方「パーツごとの役割」で使う）</summary>
+public enum MusicRole : byte
+{
+    /// <summary>低音（キック・ベース）</summary>
+    Bass,
+    /// <summary>中音（スネア・ボーカル）</summary>
+    Mid,
+    /// <summary>高音（ハイハット・シンバル）</summary>
+    Treble,
+    /// <summary>音全体（音量）</summary>
+    All,
+}
+
+/// <summary>ゾーンの設定「反応する音」の値と、パーツに合わせた初期値</summary>
+public static class MusicSounds
+{
+    /// <summary>パーツに合わせて決める（ファンは低音、グラボは中音、メモリ・キーボードは高音 など）</summary>
+    public const string Auto = "Auto";
+    public const string Bass = "Bass";
+    public const string Mid = "Mid";
+    public const string Treble = "Treble";
+    public const string All = "All";
+    public static readonly string[] Ids = { Auto, Bass, Mid, Treble, All };
+
+    public static string Label(string id) => id switch
+    {
+        Auto => "パーツに合わせる",
+        Bass => "低音（キック・ベース）",
+        Mid => "中音（スネア・ボーカル）",
+        Treble => "高音（ハイハット）",
+        All => "音全体（音量）",
+        _ => id,
+    };
+
+    public static string Normalize(string? id) => id is not null && Ids.Contains(id) ? id : Auto;
+
+    /// <summary>
+    /// 実際に反応する音。Auto なら、ケースの中の場所（決めてあれば）、なければデバイスの種類から決める:
+    ///   ファン・CPU クーラー・マザーボードの端子 → 低音、グラボ・マザーボード本体の飾り → 中音、
+    ///   メモリ・キーボード・マウス → 高音、テープ・そのほか → 音全体
+    /// </summary>
+    public static MusicRole Resolve(string? id, RgbDevice device, string? zoneName, string? place)
+    {
+        switch (Normalize(id))
+        {
+            case Bass: return MusicRole.Bass;
+            case Mid: return MusicRole.Mid;
+            case Treble: return MusicRole.Treble;
+            case All: return MusicRole.All;
+        }
+        if (CaseLayout.Find(place) is { } p)
+        {
+            if (p.Group == "ファン" || p.Id == "cpu") return MusicRole.Bass;
+            if (p.Id.StartsWith("gpu", StringComparison.Ordinal) || p.Id.StartsWith("board", StringComparison.Ordinal)) return MusicRole.Mid;
+            if (p.Id.StartsWith("ram", StringComparison.Ordinal)) return MusicRole.Treble;
+            return MusicRole.All;
+        }
+        return device.Type switch
+        {
+            RgbDevice.TypeDram => MusicRole.Treble,
+            RgbDevice.TypeGpu => MusicRole.Mid,
+            RgbDevice.TypeKeyboard or RgbDevice.TypeMouse or RgbDevice.TypeMousemat => MusicRole.Treble,
+            RgbDevice.TypeCooler => MusicRole.Bass,
+            RgbDevice.TypeMotherboard => zoneName is not null && zoneName.Contains("Header", StringComparison.OrdinalIgnoreCase)
+                ? MusicRole.Bass : MusicRole.Mid,
+            _ => MusicRole.All,
+        };
+    }
 }

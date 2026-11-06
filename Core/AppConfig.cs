@@ -1019,17 +1019,20 @@ public sealed class RgbZoneSettings
     public int GainB { get; set; } = 100;
     /// <summary>このゾーンだけの明るさ（0〜100%）</summary>
     public int Level { get; set; } = 100;
+    /// <summary>反応する音（MusicSounds。光り方「パーツごとの役割」で使う。Auto ならパーツに合わせる）</summary>
+    public string Sound { get; set; } = MusicSounds.Auto;
     /// <summary>ケースの中の場所（CaseLayout の場所の Id。空なら場所を決めていない）</summary>
     public string Place { get; set; } = "";
 
     [JsonIgnore]
     public bool IsDefault => Effect == SameAsDevice && Mirror is null && Reverse is null
-        && GainR == 100 && GainG == 100 && GainB == 100 && Level == 100 && string.IsNullOrEmpty(Place);
+        && GainR == 100 && GainG == 100 && GainB == 100 && Level == 100 && string.IsNullOrEmpty(Place) && Sound == MusicSounds.Auto;
 
     public void Normalize()
     {
         Name ??= "";
         Place ??= "";
+        Sound = MusicSounds.Normalize(Sound);
         if (string.IsNullOrEmpty(Effect)) Effect = SameAsDevice;
         GainR = Math.Clamp(GainR, 0, 100);
         GainG = Math.Clamp(GainG, 0, 100);

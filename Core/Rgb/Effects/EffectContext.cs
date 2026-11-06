@@ -36,7 +36,7 @@ public interface IMusicEffect
 /// ケースの中の場所を決めたゾーンの、帯の長さ（LED の数として数える。0 なら Count から決める）。
 /// 場所を決めたゾーンは、どれもケース全体を 1 本の帯（この長さ）として、その一部を光らせる
 /// </param>
-public readonly record struct LedSegment(int Start, int Count, bool Mirror, bool Reverse, bool Ring = false, float Span = 0)
+public readonly record struct LedSegment(int Start, int Count, bool Mirror, bool Reverse, bool Ring = false, float Span = 0, MusicRole Role = MusicRole.All)
 {
     /// <summary>
     /// 「始まりから端まで」の LED の数（左右対称なら半分）。メーターや帯の長さはこの数で数える

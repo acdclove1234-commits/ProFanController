@@ -2186,6 +2186,12 @@
                                                                                           SelectedValue="{Binding EffectId}"
                                                                                           ToolTip="このゾーンだけ音楽連動の光り方を変えます（例: ラジエーターのファンは音量メーター、電源はビートで色替え）"/>
                                                                             </StackPanel>
+                                                                            <StackPanel Orientation="Horizontal" Margin="0,0,18,4" Visibility="{Binding ShowEffect, Converter={StaticResource BoolToVis}}">
+                                                                                <TextBlock Text="反応する音" Style="{StaticResource Label}" FontSize="13" Margin="0,0,8,0"/>
+                                                                                <ComboBox Width="190" ItemsSource="{Binding SoundOptions}" DisplayMemberPath="Label" SelectedValuePath="Id"
+                                                                                          SelectedValue="{Binding SoundId}"
+                                                                                          ToolTip="光り方「パーツごとの役割」のとき、このゾーンがどの音で光るか。「パーツに合わせる」なら、ファンは低音・グラボは中音・メモリやキーボードは高音"/>
+                                                                            </StackPanel>
                                                                             <StackPanel Orientation="Horizontal" Margin="0,0,18,4">
                                                                                 <TextBlock Text="左右対称" Style="{StaticResource Label}" FontSize="13" Margin="0,0,8,0"/>
                                                                                 <ComboBox Width="130" ItemsSource="{Binding MirrorOptions}" DisplayMemberPath="Label" SelectedValuePath="Id"

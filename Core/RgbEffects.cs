@@ -47,8 +47,10 @@ public static class MusicStyles
     public const string Mood = "Mood";
     /// <summary>ストロボ: ビートで白く強く点滅する（「激しい点滅を抑える」をオフにしたときだけ）</summary>
     public const string Strobe = "Strobe";
+    /// <summary>パーツごとの役割: ゾーンごとに、低音・中音・高音・音全体のどれかに反応する</summary>
+    public const string Role = "Role";
 
-    public static readonly string[] All = { BeatHue, Pulse, Mix, Meter, Spectrum, Energy, Scroll, Ripple, Sparkle, Chase, Mood, Strobe };
+    public static readonly string[] All = { BeatHue, Pulse, Mix, Meter, Spectrum, Energy, Scroll, Ripple, Sparkle, Role, Chase, Mood, Strobe };
 }
 
 public readonly record struct Rgb(byte R, byte G, byte B)

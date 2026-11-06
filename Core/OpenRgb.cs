@@ -24,6 +24,12 @@ public sealed record RgbDevice(int Index, string Name, int LedCount, int Type = 
 {
     public const int TypeDram = 1;
     public const int TypeGpu = 2;
+    // OpenRGB のデバイスの種類（そのほかの値）
+    public const int TypeMotherboard = 0;
+    public const int TypeCooler = 3;
+    public const int TypeKeyboard = 5;
+    public const int TypeMouse = 6;
+    public const int TypeMousemat = 7;
 
     /// <summary>
     /// OpenRGB を通さず、アプリが直接書き込むグラボ（PnyEpicXGpu。1 色のゾーンは 1 回で書けて速い）。

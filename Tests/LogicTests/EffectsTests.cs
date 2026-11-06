@@ -568,11 +568,11 @@ public static class EffectsTests
         x.Step(1.01, new AudioEvent(1, AudioEventKind.Hat, 1.01, 2f));
         int sparks = 0;
         for (int i = 0; i < 100; i++) if (Max(x.R.LastLight, i) > baseLevel + 0.4f) sparks++;
-        T.Check(sparks >= 4 && sparks <= 8, $"Sparkle: a hat (s=2) lights round(0.04·100·2) = 8 random LEDs ({sparks} distinct)");
+        T.Check(sparks >= 2 && sparks <= 4, $"Sparkle: a hat (s=2) lights round(0.02·100·2) = 4 separate LEDs ({sparks} distinct)");
         x.Step(1.01 + 0.4);
         sparks = 0;
         for (int i = 0; i < 100; i++) if (Max(x.R.LastLight, i) > baseLevel + 0.05f) sparks++;
-        T.Check(sparks == 0, "Sparkle: sparks fade out (τ 80 ms)");
+        T.Check(sparks == 0, "Sparkle: sparks fade out (τ 70 ms)");
 
         // テンポ追従: 偶数拍で帯が伸びる
         var c = new Rig(Strip(40), MusicCfg(gamma: false), Music(MusicStyles.Chase) with { MinBrightness = 0 }, new RgbDeviceSettings { Mirror = false });
@@ -698,6 +698,7 @@ public static class EffectsTests
             (MusicStyles.Meter, EffectVariant.PulseLoudSlow), (MusicStyles.Scroll, EffectVariant.BeatHueSlow),
             (MusicStyles.Ripple, EffectVariant.BeatHueSlow), (MusicStyles.Sparkle, EffectVariant.BeatHueSlow),
             (MusicStyles.Chase, EffectVariant.BeatHueSlow), (MusicStyles.Strobe, EffectVariant.BeatHueSlow), (MusicStyles.Mood, EffectVariant.Mood),
+            (MusicStyles.Role, EffectVariant.RoleSlow),
         };
         bool all = true;
         foreach (var (effect, want) in cases)

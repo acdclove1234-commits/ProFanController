@@ -118,6 +118,7 @@ public sealed class DeviceRenderer
     // ゾーンごとの光り方（まとまりごと。null ならデバイスの光り方）と、このコマで使う光り方
     private string?[] _segEffect = Array.Empty<string?>();
     private EffectVariant[] _segVariant = Array.Empty<EffectVariant>();
+    private MusicRole[] _segRole = Array.Empty<MusicRole>();
     private bool _hasZoneEffects;
     private int _zoneSig;
     // 色合わせ（LED ごとの赤・緑・青の倍率。デバイスとゾーンの色合わせ・明るさを掛けたもの）
@@ -416,6 +417,7 @@ public sealed class DeviceRenderer
         {
             _segEffect = new string?[zoneSet.Length];
             _segVariant = new EffectVariant[zoneSet.Length];
+            _segRole = new MusicRole[zoneSet.Length];
         }
         for (int k = 0; k < zoneSet.Length; k++)
         {
@@ -425,6 +427,9 @@ public sealed class DeviceRenderer
                 : _segZones.Count == 1 ? settings.ZoneFor(Device.ZoneName(0)) : null;
             zoneSet[k] = z;
             key.Append('|').Append(z?.Mirror?.ToString() ?? "-").Append(',').Append(z?.Reverse?.ToString() ?? "-").Append(',').Append(z?.Place ?? "");
+            // 反応する音（光り方「パーツごとの役割」用。設定がなければパーツの種類・ケースの中の場所から決める）
+            _segRole[k] = MusicSounds.Resolve(z?.Sound, Device, Device.ZoneName(Math.Max(0, zone)), z?.Place);
+            key.Append(',').Append((int)_segRole[k]);
             string? effect = z is null || z.Effect == RgbZoneSettings.SameAsDevice ? null : z.Effect;
             _segEffect[k] = effect;
             if (effect is not null) _hasZoneEffects = true;
@@ -459,7 +464,7 @@ public sealed class DeviceRenderer
             if (caseKey.Length > 0 && CaseLayout.Find(zoneSet[k]?.Place) is { } place)
             {
                 var along = CaseLayout.Positions(place, count, caseKey);
-                var placed = new LedSegment(start, count, Mirror: false, Reverse: false, Ring: false, Span: CaseLayout.Span);
+                var placed = new LedSegment(start, count, Mirror: false, Reverse: false, Ring: false, Span: CaseLayout.Span, Role: _segRole[k]);
                 c.Segments[k] = placed;
                 if (placed.Small) c.HasSmallSegment = true;
                 for (int j = 0; j < count; j++)
@@ -476,7 +481,7 @@ public sealed class DeviceRenderer
             // 左右対称の設定がどちらにもなければ、LED が 30 個以上のゾーンだけ自動でオン（長いテープは中央から）
             bool? mirror = zoneSet[k]?.Mirror ?? settings.Mirror;
             bool reverse = zoneSet[k]?.Reverse ?? settings.Reverse;
-            var s = new LedSegment(start, count, mirror ?? count >= EffectContext.AutoMirrorLeds, reverse);
+            var s = new LedSegment(start, count, mirror ?? count >= EffectContext.AutoMirrorLeds, reverse, Role: _segRole[k]);
             c.Segments[k] = s;
             if (s.Small) c.HasSmallSegment = true;
             float ne = s.Ne;

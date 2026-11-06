@@ -93,7 +93,9 @@ public sealed class RgbZoneVm : ObservableObject
         new(SameId, "デバイスと同じ"), new("on", "逆向き"), new("off", "そのまま"),
     };
 
-    private string _effectId = RgbZoneSettings.SameAsDevice, _mirrorId = SameId, _reverseId = SameId;
+    public static readonly IReadOnlyList<ChoiceOption> SoundChoices = MusicSounds.Ids.Select(id => new ChoiceOption(id, MusicSounds.Label(id))).ToList();
+
+    private string _effectId = RgbZoneSettings.SameAsDevice, _mirrorId = SameId, _reverseId = SameId, _soundId = MusicSounds.Auto;
     private int _gainR = 100, _gainG = 100, _gainB = 100, _level = 100;
     private bool _showEffect, _loading;
 
@@ -105,12 +107,15 @@ public sealed class RgbZoneVm : ObservableObject
     public required IReadOnlyList<ChoiceOption> EffectOptions { get; init; }
     public IReadOnlyList<ChoiceOption> MirrorOptions => MirrorChoices;
     public IReadOnlyList<ChoiceOption> ReverseOptions => ReverseChoices;
+    public IReadOnlyList<ChoiceOption> SoundOptions => SoundChoices;
     /// <summary>光り方を表示する（音楽連動のときだけ）</summary>
     public bool ShowEffect { get => _showEffect; set => Set(ref _showEffect, value); }
 
     public string EffectId { get => _effectId; set { if (!string.IsNullOrEmpty(value) && Set(ref _effectId, value)) NotifyEdited(); } }
     public string MirrorId { get => _mirrorId; set { if (!string.IsNullOrEmpty(value) && Set(ref _mirrorId, value)) NotifyEdited(); } }
     public string ReverseId { get => _reverseId; set { if (!string.IsNullOrEmpty(value) && Set(ref _reverseId, value)) NotifyEdited(); } }
+    /// <summary>反応する音（光り方「パーツごとの役割」で使う）</summary>
+    public string SoundId { get => _soundId; set { if (!string.IsNullOrEmpty(value) && Set(ref _soundId, value)) NotifyEdited(); } }
     public int GainR { get => _gainR; set { if (Set(ref _gainR, Math.Clamp(value, 0, 100))) NotifyEdited(); } }
     public int GainG { get => _gainG; set { if (Set(ref _gainG, Math.Clamp(value, 0, 100))) NotifyEdited(); } }
     public int GainB { get => _gainB; set { if (Set(ref _gainB, Math.Clamp(value, 0, 100))) NotifyEdited(); } }
@@ -130,6 +135,7 @@ public sealed class RgbZoneVm : ObservableObject
         Mirror = _mirrorId switch { "on" => true, "off" => false, _ => null },
         Reverse = _reverseId switch { "on" => true, "off" => false, _ => null },
         GainR = _gainR, GainG = _gainG, GainB = _gainB, Level = _level,
+        Sound = _soundId,
         Place = Place,
     };
 
@@ -147,6 +153,7 @@ public sealed class RgbZoneVm : ObservableObject
             GainB = z?.GainB ?? 100;
             Level = z?.Level ?? 100;
             Place = z?.Place ?? "";
+            SoundId = MusicSounds.Normalize(z?.Sound);
         }
         finally
         {
@@ -647,7 +654,7 @@ internal static class LightingRules
     {
         var m = cfg.Music ?? new MusicConfig();
         return cfg.Mode is RgbModes.Static or RgbModes.Breathing
-            || (cfg.Mode == RgbModes.Music && (m.Palette == Palettes.Mono || m.IdleEffect is IdleEffects.Static or IdleEffects.Breathing))
+            || (cfg.Mode == RgbModes.Music && (Palettes.UsesStaticColor(m.Palette) || m.IdleEffect is IdleEffects.Static or IdleEffects.Breathing))
             || cfg.OnStop == RgbStopBehaviors.Static;
     }
 
@@ -809,7 +816,9 @@ public partial class MainWindow
             _paletteChoices.Add(new LightingChoiceVm
             {
                 Kind = LightingChoiceKind.Palette, Id = id, Label = Palettes.Label(id),
-                Tip = id == Palettes.Mono
+                Tip = id == Palettes.Solid
+                    ? "「色と明るさ」で選んだ色だけで光ります。色は変わらず、音に合わせて明るさだけが変わります"
+                    : id == Palettes.Mono
                     ? "「色と明るさ」で選んだ色と、その両隣の色で光ります"
                     : $"{Palettes.Label(id)}の色で光ります。ビートのたびに、この中の次の色へ切り替わります",
                 Swatch = LightingRules.PaletteStops.TryGetValue(id, out var stops) ? GradientBrush(stops) : null,
@@ -950,6 +959,7 @@ public partial class MainWindow
             foreach (var c in _paletteChoices)
             {
                 if (c.Id == Palettes.Mono) c.Swatch = GradientBrush(LightingRules.MonoStops(rgb.StaticColor));
+                else if (c.Id == Palettes.Solid) c.Swatch = GradientBrush(new[] { rgb.StaticColor, rgb.StaticColor });
             }
         }
         if (_colorDotFor != rgb.StaticColor)
