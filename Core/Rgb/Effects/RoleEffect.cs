@@ -36,6 +36,8 @@ public sealed class RoleEffect : IMusicEffect
     /// <summary>出来事の光を満点にする多さ（1 秒あたり）。これより多く鳴る音は √(RefRate / 多さ) 倍に弱める（下限 MinFlashAmp）</summary>
     public const float RefRate = 2f;
     public const float MinFlashAmp = 0.75f;
+    /// <summary>低音以外のパーツにも分けるキックの光の割合</summary>
+    public const float BeatShare = 0.45f;
     /// <summary>出来事の多さをならす割合（1 回ごと）</summary>
     private const float RateFollow = 0.15f;
 
@@ -99,6 +101,9 @@ public sealed class RoleEffect : IMusicEffect
 
         var f = c.Frame;
         bool active = f.Activity > 0.3f;
+        // キックの光（どのパーツにも BeatShare の割合で分ける。役割が分かれすぎず、全体が拍に合わせて動くように）
+        int bi = (int)MusicRole.Bass;
+        float kick = _hitS[bi] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[bi]) / Tau(MusicRole.Bass));
         for (int r = 0; r < Roles; r++)
         {
             var role = (MusicRole)r;
@@ -117,7 +122,8 @@ public sealed class RoleEffect : IMusicEffect
             float level = Math.Clamp(raw / _peak[r], 0, 1);
             // 出来事の光: 多く鳴る音（ハイハットは 1 秒に 8 回など）ほど弱くする（どのパーツも同じくらいの目立ち方にする）
             float amp = Math.Clamp(MathF.Sqrt(RefRate / Math.Max(_rate[r], 0.25f)), MinFlashAmp, 1f);
-            float hit = role == MusicRole.All ? 0f : amp * _hitS[r] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[r]) / tau);
+            float own = role == MusicRole.All ? 0f : amp * _hitS[r] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[r]) / tau);
+            float hit = role == MusicRole.Bass ? own : Math.Max(own, BeatShare * kick);
             _flash[r] = hit;
             // 音が鳴っている間は、どのパーツも下地の明るさ（Body）＋音の強さで光り、出来事でさらに光る（音が止まって門が閉じたら下地は消える）
             float body = active ? BodyLevel + BodyRange * level : 0.6f * level;
@@ -125,8 +131,8 @@ public sealed class RoleEffect : IMusicEffect
             float x = body + hit * (1 - body);
             _glow[r] = Math.Max(x, _glow[r] * EffectContext.Decay(c.Dt, tau));
             double off = role switch { MusicRole.Bass => 0, MusicRole.Mid => 1 / 3.0, MusicRole.Treble => 2 / 3.0, _ => 0.5 };
-            _color[r] = role == MusicRole.Treble && hit > 0.05f
-                ? OkLab.ToLed(Lab.Lerp(c.ColorLabAt(off), Lab.White, HatWhiteMix * hit), c.Gamma)
+            _color[r] = role == MusicRole.Treble && own > 0.05f
+                ? OkLab.ToLed(Lab.Lerp(c.ColorLabAt(off), Lab.White, HatWhiteMix * own), c.Gamma)
                 : c.ColorAt(off);
         }
     }

@@ -131,10 +131,10 @@ public static class MusicTuning
 {
     private static readonly IntensityProfile[] Profiles =
     {
-        new(Intensities.Subtle, 40, 600, 35, 0.2, 30, 4, 600, false, false),
-        new(Intensities.Moderate, 10, 250, 20, 0.5, 50, 2, 250, false, false),
-        new(Intensities.High, 4, 160, 12, 0.85, 65, 1, 80, false, false),
-        new(Intensities.Intense, 0, 90, 4, 1.0, 80, 1, 0, true, true),
+        new(Intensities.Subtle, 40, 500, 25, 0.35, 35, 4, 500, false, false),
+        new(Intensities.Moderate, 6, 200, 10, 0.75, 62, 2, 180, false, false),
+        new(Intensities.High, 3, 150, 6, 0.9, 72, 1, 80, false, false),
+        new(Intensities.Intense, 0, 90, 3, 1.0, 85, 1, 0, true, true),
     };
 
     public static IntensityProfile Profile(string intensity) =>
@@ -158,7 +158,7 @@ public static class MusicTuning
         (string effect, string intensity, string palette) = preset switch
         {
             MusicPresets.Chill => (MusicStyles.Mood, Intensities.Subtle, Palettes.Ocean),
-            MusicPresets.Groove => (MusicStyles.Pulse, Intensities.Moderate, Palettes.Neon),
+            MusicPresets.Groove => (MusicStyles.BeatHue, Intensities.Moderate, Palettes.Neon),
             MusicPresets.Party => (MusicStyles.Ripple, Intensities.High, Palettes.Vaporwave),
             MusicPresets.Club => (MusicStyles.BeatHue, Intensities.Intense, Palettes.Neon),
             MusicPresets.Visualizer => (MusicStyles.Spectrum, Intensities.High, Palettes.Rainbow),

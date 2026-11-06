@@ -82,7 +82,8 @@ public static class MusicRoleTests
         float bass0 = r.Avg(1, 8), treble0 = r.Avg(9, 8);
         r.Step(1.51, new AudioEvent(1, AudioEventKind.Kick, 1.51, 2f));
         float bassK = r.Avg(1, 8), trebleK = r.Avg(9, 8);
-        T.Check(bassK > bass0 + 0.3f && trebleK < treble0 + 0.05f, $"kick lights the bass zone only (bass {bass0:F2} → {bassK:F2}, treble {treble0:F2} → {trebleK:F2})");
+        T.Check(bassK > bass0 + 0.3f && trebleK > treble0 + 0.1f && trebleK - treble0 < 0.7f * (bassK - bass0),
+            $"kick: the bass zone flashes fully, the others share part of the beat (bass {bass0:F2} → {bassK:F2}, treble {treble0:F2} → {trebleK:F2})");
         r.Step(2.5);
         float bass1 = r.Avg(1, 8), treble1 = r.Avg(9, 8);
         r.Step(2.51, new AudioEvent(2, AudioEventKind.Hat, 2.51, 2f));

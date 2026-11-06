@@ -865,10 +865,10 @@ public sealed class MusicConfig : ObservableObject
     private string _intensity = Intensities.Moderate;
     private string _palette = Palettes.Rainbow;
     private double _gainDb = 0;
-    private double _reactionMs = 10;
-    private double _smoothnessMs = 250;
-    private double _punch = 50;
-    private double _minBrightness = 20;
+    private double _reactionMs = 6;
+    private double _smoothnessMs = 200;
+    private double _punch = 62;
+    private double _minBrightness = 10;
     private double _dynamicRangeDb = 40;
     private double _autoBalance = 35;
     private double _trebleTilt = 1.5;
@@ -936,6 +936,29 @@ public sealed class MusicConfig : ObservableObject
         TempoFactor = TempoFactor <= 0.75 ? 0.5 : TempoFactor >= 1.5 ? 2.0 : 1.0;
         if (!IdleEffects.All.Contains(IdleEffect)) IdleEffect = IdleEffects.Mood;
         IdleDelaySec = Math.Clamp(IdleDelaySec, 1, 10);
+        UpgradeOldIntensityDefaults();
+    }
+
+    /// <summary>
+    /// 6.5.1 までの「強さ」の値（反応の速さ・滑らかさ・メリハリ・いちばん暗い明るさ）のまま変えていなければ、
+    /// 今の値（音楽に合っていると分かりやすい、明暗の差の大きい値）にする。1 つでも自分で変えた値があれば、そのまま
+    /// </summary>
+    private void UpgradeOldIntensityDefaults()
+    {
+        (double R, double S, double P, double M)? old = Intensity switch
+        {
+            Intensities.Subtle => (40, 600, 30, 35),
+            Intensities.Moderate => (10, 250, 50, 20),
+            Intensities.High => (4, 160, 65, 12),
+            Intensities.Intense => (0, 90, 80, 4),
+            _ => null,
+        };
+        if (old is not { } o || ReactionMs != o.R || SmoothnessMs != o.S || Punch != o.P || MinBrightness != o.M) return;
+        var p = MusicTuning.Profile(Intensity);
+        ReactionMs = p.ReactionMs;
+        SmoothnessMs = p.SmoothnessMs;
+        Punch = p.Punch;
+        MinBrightness = p.MinBrightness;
     }
 }
 
