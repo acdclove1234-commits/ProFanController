@@ -29,8 +29,9 @@ public sealed class OnsetDetector
     /// <summary>4 つの帯の境目（Hz）: G0 キック・G1 低い中音・G2 中音・G3 ハイハット</summary>
     private static readonly double[] GroupEdgesHz = { 30, 120, 500, 4000 };
     /// <summary>テンポの追跡に使う強さで、4 つの帯に掛ける重み（低音ほど重い）</summary>
-    private static readonly double[] OdfWeights = { 1.0, 0.8, 0.35, 0.15 };
-    private const double OdfWeightSum = 2.3;
+    /// <remarks>実際の曲で合わせるため、テストから変えられるようにしてある（アプリの中では変えない）</remarks>
+    internal static double[] OdfWeights = { 1.0, 0.8, 0.35, 0.15 };
+    private static double OdfWeightSum => OdfWeights[0] + OdfWeights[1] + OdfWeights[2] + OdfWeights[3];
     /// <summary>帯ごとの平均（強さをそろえる基準）の時定数（秒）</summary>
     private const double MeanSec = 3.0;
     /// <summary>
@@ -44,6 +45,21 @@ public sealed class OnsetDetector
     private const double GapSec = 0.107, HatGapSec = 0.064;
     /// <summary>スネアとみなす強さの下限（しきい値の何倍か）</summary>
     private const double SnareMinStrength = 1.2;
+
+    /// <summary>スネアの見分け方の値（実際の曲で合わせるため、テストから変えられるようにしてある。アプリの中では変えない）</summary>
+    internal static class SnareTune
+    {
+        /// <summary>スネア用の立ち上がり検出の、しきい値に足す「ふだんの値」の倍率</summary>
+        internal static double NoiseWeight = 8;
+        /// <summary>スネアとみなす強さの下限（しきい値の何倍か）</summary>
+        internal static double MinStrength = SnareMinStrength;
+        /// <summary>キックと同時でもスネアにする強さ（0 = キックと同時ならスネアにしない）</summary>
+        internal static double KickOverride = 0;
+        /// <summary>ハイハットと同時でも、中音がハイハットの帯のこの倍以上ならスネアにする（0 = 低い中音がなければハイハットの漏れ）</summary>
+        internal static double HatLeakRatio = 0;
+        /// <summary>低い中音で検出していないときに必要な、高音の帯の立ち上がりの強さ（0 = 見ない）</summary>
+        internal static double HiMin = 0;
+    }
     /// <summary>キックと同時（± この秒数）ならスネアにしない</summary>
     private const double SnareKickWindowSec = 0.020;
     /// <summary>
@@ -81,6 +97,8 @@ public sealed class OnsetDetector
     private bool _snareG1;
     private double _snareT;
     private float _snareS;
+    private double _snareMid, _snareHi;
+    private readonly PeakPicker _snarePick1, _snarePick2;
 
     /// <param name="sampleRate">サンプリング周波数（Hz）</param>
     /// <param name="fftSize">使う FFT の大きさ（48 kHz で 2048。窓の長さが約 43 ミリ秒になるように選ぶ）</param>
@@ -154,6 +172,8 @@ public sealed class OnsetDetector
         _pickers[2] = new PeakPicker(hist, gap, frameRate);
         _pickers[3] = new PeakPicker(hist, hatGap, frameRate);
         _combined = new PeakPicker(hist, gap, frameRate);
+        _snarePick1 = new PeakPicker(hist, gap, frameRate, SnareTune.NoiseWeight);
+        _snarePick2 = new PeakPicker(hist, gap, frameRate, SnareTune.NoiseWeight);
         _snareWindow = Math.Max(1, (int)Math.Round(SnareKickWindowSec * frameRate));
     }
 
@@ -185,6 +205,8 @@ public sealed class OnsetDetector
     private readonly double[] _bandNorm = new double[4];
     /// <summary>調査用: スネアの候補を決めたとき（時刻・強さ・低い中音でも検出したか・キックと同時か・ハイハットの漏れとみなしたか）</summary>
     internal Action<double, float, bool, bool, bool>? DiagSnare { get; set; }
+    /// <summary>調査用: 1 回ごとの時刻・立ち上がりの強さ・4 つの帯の強さ（配列は使い回すので、受け取った側で写すこと）</summary>
+    internal Action<double, double, double[]>? DiagHop { get; set; }
 
     public void Reset()
     {
@@ -198,6 +220,8 @@ public sealed class OnsetDetector
             _band[g] = _bandNorm[g] = 0;
         }
         _combined.Reset();
+        _snarePick1.Reset();
+        _snarePick2.Reset();
         _lastKickHop = long.MinValue / 4;
         _lastHatHop = long.MinValue / 4;
         _snareHop = -1;
@@ -254,6 +278,7 @@ public sealed class OnsetDetector
         odf /= OdfWeightSum;
         Odf = odf;
         Low = _bandNorm[0] + 0.8 * _bandNorm[1];
+        DiagHop?.Invoke(tHop, odf, _bandNorm);
 
         // 4. ピーク検出（感度が高いほど δ が小さい）
         double delta = Math.Clamp(0.8 / Math.Max(0.1, s.BeatSensitivity), 0.25, 2.0);
@@ -261,6 +286,9 @@ public sealed class OnsetDetector
         bool g1 = _pickers[1].Step(_bandNorm[1], delta, hop);
         bool g2 = _pickers[2].Step(_bandNorm[2], delta, hop);
         bool hat = _pickers[3].Step(_bandNorm[3], delta, hop);
+        // スネア用（しきい値の「ふだんの値」の倍率だけ別にできる。キック・テンポの追跡に使う検出は変えない）
+        bool s1 = _snarePick1.Step(_bandNorm[1], delta, hop);
+        bool s2 = _snarePick2.Step(_bandNorm[2], delta, hop);
         bool onset = _combined.Step(odf, delta, hop);
 
         // キックは、FFT を使わない包絡線でもはっきり立ち上がっているかを確かめ、その時刻を使う
@@ -300,9 +328,10 @@ public sealed class OnsetDetector
         //    キックの低音は少し遅れて立ち上がることがあるので、2 回（約 21 ミリ秒）待ってから決める。
         //    500 Hz〜4 kHz（G2）だけで検出し、同時にハイハットも検出したときは、ハイハットの音の漏れとみなす
         //    （スネアは胴の音が 120〜500 Hz（G1）にも出る。仕様 A6 にない追加）
+        double minS = SnareTune.MinStrength;
         double snareS = 0;
-        if (g1 && _pickers[1].Strength >= SnareMinStrength) snareS = _pickers[1].Strength;
-        if (g2 && _pickers[2].Strength >= SnareMinStrength) snareS = Math.Max(snareS, _pickers[2].Strength);
+        if (s1 && _snarePick1.Strength >= minS) snareS = _snarePick1.Strength;
+        if (s2 && _snarePick2.Strength >= minS) snareS = Math.Max(snareS, _snarePick2.Strength);
         if (snareS > 0)
         {
             if (_snareHop < 0)
@@ -311,14 +340,27 @@ public sealed class OnsetDetector
                 _snareT = tTrue;
                 _snareS = (float)snareS;
                 _snareG1 = false;
+                _snareMid = _snareHi = 0;
             }
             else _snareS = Math.Max(_snareS, (float)snareS);
-            if (g1 && _pickers[1].Strength >= SnareMinStrength) _snareG1 = true;
+            if (s1 && _snarePick1.Strength >= minS) _snareG1 = true;
+        }
+        if (_snareHop >= 0)
+        {
+            // 決めるまでの間の、中音とハイハットの帯のいちばん強い立ち上がり（ハイハットの漏れか、スネアの響き線かを見分ける）
+            _snareMid = Math.Max(_snareMid, _bandNorm[2]);
+            _snareHi = Math.Max(_snareHi, _bandNorm[3]);
         }
         if (_snareHop >= 0 && hop >= _snareHop + _snareWindow)
         {
             bool kickNear = _lastKickHop >= _snareHop - _snareWindow;
+            // キックと同時でも、中音がとても強ければスネア（2・4 拍目でキックと重なるクラップなど）
+            if (kickNear && SnareTune.KickOverride > 0 && _snareS >= SnareTune.KickOverride) kickNear = false;
             bool hatOnly = !_snareG1 && _lastHatHop >= _snareHop - _snareWindow;
+            // ハイハットと同時でも、中音がハイハットの帯と同じくらい強ければスネア（響き線は高音にも出る。ハイハットの漏れなら中音は弱い）
+            if (hatOnly && SnareTune.HatLeakRatio > 0 && _snareMid >= SnareTune.HatLeakRatio * _snareHi) hatOnly = false;
+            // 中音だけの立ち上がり（低い中音も高音も出ていない）は、ボーカルやギターとみなす（スネアは胴の音か響き線の音が一緒に出る）
+            if (SnareTune.HiMin > 0 && !_snareG1 && _snareHi < SnareTune.HiMin) hatOnly = true;
             DiagSnare?.Invoke(_snareT, _snareS, _snareG1, kickNear, hatOnly);
             if (!kickNear && !hatOnly) events!.Add(AudioEventKind.Snare, _snareT, _snareS);
             _snareHop = -1;
@@ -353,16 +395,19 @@ public sealed class PeakPicker
     private double _prev;
     private long _last, _lastBefore;
     private double _level;
+    private readonly double _noiseWeight;
 
     /// <param name="history">直近何回を見るか</param>
     /// <param name="gap">次に検出するまでの最短の回数</param>
     /// <param name="frameRate">1 秒あたりの回数</param>
-    public PeakPicker(int history, int gap, double frameRate = 93.75)
+    /// <param name="noiseWeight">しきい値に足す「ふだんの値」の倍率（null なら NoiseWeight）</param>
+    public PeakPicker(int history, int gap, double frameRate = 93.75, double? noiseWeight = null)
     {
         _h = new double[history];
         _scratch = new double[history];
         _gap = gap;
         _eta = NoiseTrackPerSec / frameRate;
+        _noiseWeight = noiseWeight ?? NoiseWeight;
         Reset();
     }
 
@@ -400,7 +445,7 @@ public sealed class PeakPicker
         }
         double median = SmallStats.MedianInPlace(_scratch, _count);
         double mean = _count > 0 ? sum / _count : 0;
-        double thr = median + 0.5 * mean + delta + NoiseWeight * _level;
+        double thr = median + 0.5 * mean + delta + _noiseWeight * _level;
         Threshold = thr;
         bool fire = x > thr && x >= _prev && n - _last >= _gap;
         Strength = fire ? x / thr : 0;

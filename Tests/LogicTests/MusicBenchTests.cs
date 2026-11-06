@@ -221,6 +221,7 @@ public static class MusicDiagTests
     public static void TestDiagTrace()
     {
         string? want = Environment.GetEnvironmentVariable("MUSIC_DIAG");
+        if (Environment.GetEnvironmentVariable("BEAT_TUNE") is { } tune) BeatTuneSweepTests.Apply(tune);
         if (string.IsNullOrEmpty(want)) return;
         foreach (var c in MusicBench.Cases().Where(c => c.Name.Contains(want, StringComparison.OrdinalIgnoreCase)))
         {
@@ -295,10 +296,82 @@ public static class MusicWavTests
         return $"p10 {P(0.1):F2} p50 {P(0.5):F2} p90 {P(0.9):F2} mean {a.Average():F2}";
     }
 
+    /// <summary>1 曲を流した結果（物差しとの比べ・スネアの見つけ方）</summary>
+    public sealed record SongResult(string Name, double Seconds, double Kick, double Snare, double Hat, BeatEval Beat,
+        double SnareOnBackbeat, double BackbeatFound, double BackbeatMidRatio, double HalfBeat = 0)
+    {
+        public double Front { get; init; }
+        public double Half { get; init; }
+    }
+
+    /// <summary>曲を流して、物差しの拍と比べる。スネアは、物差しの拍のうちキックの少ないほうの 1 拍おき（2・4 拍目）と比べる</summary>
+    [ThreadStatic] public static double SnareFront, SnareHalf;
+
+    public static SongResult AnalyzeSong(string path, Action<AudioEngine>? setup = null)
+    {
+        var mono = ReadWavMono(path, out int fs);
+        var cfg = new RgbConfig { Mode = RgbModes.Music };
+        var e = new AudioEngine(fs) { Settings = MusicTuning.EngineSettings(cfg) };
+        var hops = new List<(double T, double Odf)>();
+        var bands = new List<double[]>();
+        // 物差しの強さは、アプリの重みを変えて比べるときも同じにする（重みを固定して 4 つの帯から作り直す）
+        e.Onsets.DiagHop = (t, odf, bn) => { hops.Add((t, (1.0 * bn[0] + 0.8 * bn[1] + 0.35 * bn[2] + 0.15 * bn[3]) / 2.3)); bands.Add((double[])bn.Clone()); };
+        setup?.Invoke(e);
+        var run = new EngineRun(e).Feed(mono);
+        var refBeats = BeatReference.Track(hops, out double refBpm);
+        var beat = BeatEvaluator.Evaluate(run, hops, refBeats, refBpm);
+        double halfBeat = BeatEvaluator.HalfBeatShare;
+        double from = run.T0 + 8, secs = Math.Max(1e-9, run.Frames[^1].T - from);
+        double Rate(AudioEventKind k) => run.Events.Count(x => x.Kind == k && x.T >= from) / secs;
+
+        // スネア: 物差しの拍を 1 拍おきに 2 組に分け、キックの多いほうを 1・3 拍目、もう一方を 2・4 拍目とみなす
+        var rb = refBeats.Where(t => t >= from).ToList();
+        var kicks = run.Events.Where(x => x.Kind == AudioEventKind.Kick && x.T >= from).Select(x => x.T).ToList();
+        var snares = run.Events.Where(x => x.Kind == AudioEventKind.Snare && x.T >= from).Select(x => x.T).ToList();
+        bool Near(List<double> xs, double t, double tol) { int k = xs.BinarySearch(t); if (k < 0) k = ~k; return (k < xs.Count && Math.Abs(xs[k] - t) <= tol) || (k > 0 && Math.Abs(xs[k - 1] - t) <= tol); }
+        int kickEven = rb.Where((t, i) => i % 2 == 0).Count(t => Near(kicks, t, 0.05));
+        int kickOdd = rb.Where((t, i) => i % 2 == 1).Count(t => Near(kicks, t, 0.05));
+        int backParity = kickEven >= kickOdd ? 1 : 0;
+        var back = rb.Where((t, i) => i % 2 == backParity).ToList();
+        var front = rb.Where((t, i) => i % 2 != backParity).ToList();
+        double snareOnBack = snares.Count > 0 ? snares.Count(s => Near(back, s, 0.05)) / (double)snares.Count : 0;
+        var mids = rb.Zip(rb.Skip(1), (a, b) => 0.5 * (a + b)).ToList();
+        SnareFront = snares.Count > 0 ? snares.Count(s => Near(front, s, 0.05)) / (double)snares.Count : 0;
+        SnareHalf = snares.Count > 0 ? snares.Count(s => Near(mids, s, 0.05)) / (double)snares.Count : 0;
+        double backFound = back.Count > 0 ? back.Count(t => Near(snares, t, 0.05)) / (double)back.Count : 0;
+        double MidAt(double t)
+        {
+            int k = hops.FindIndex(h => h.T >= t - 0.03);
+            double m = 0;
+            for (int i = Math.Max(0, k); i >= 0 && i < hops.Count && hops[i].T <= t + 0.03; i++) m = Math.Max(m, Math.Max(bands[i][1], bands[i][2]));
+            return m;
+        }
+        double midBack = back.Count > 0 ? back.Average(MidAt) : 0, midFront = front.Count > 0 ? front.Average(MidAt) : 0;
+        return new SongResult(Path.GetFileNameWithoutExtension(path), mono.Length / (double)fs,
+            Rate(AudioEventKind.Kick), Rate(AudioEventKind.Snare), Rate(AudioEventKind.Hat), beat,
+            snareOnBack, backFound, midFront > 1e-9 ? midBack / midFront : 0, halfBeat) { Front = SnareFront, Half = SnareHalf };
+    }
+
+    public static string FormatSong(SongResult r) =>
+        $"{r.Name,-7} {r.Seconds,4:F0}s  kick {r.Kick,3:F1} snare {r.Snare,3:F1} hat {r.Hat,3:F1}/s  {r.Beat.Format()}  " +
+        $"snare: on 2·4 {r.SnareOnBackbeat * 100,3:F0}%, 2·4 found {r.BackbeatFound * 100,3:F0}%, 2·4 mid ×{r.BackbeatMidRatio:F2}";
+
     public static void TestWavAnalysis()
     {
         string? path = Environment.GetEnvironmentVariable("MUSIC_WAV");
         if (string.IsNullOrEmpty(path)) return;
+        // フォルダーなら、中の曲を全部流して 1 曲 1 行にまとめる
+        if (Directory.Exists(path))
+        {
+            var results = Directory.GetFiles(path, "*.wav").OrderBy(f => f).Select(f => AnalyzeSong(f)).ToList();
+            foreach (var res in results) T.Info(FormatSong(res));
+            if (results.Count > 0)
+                T.Info($"average: synced {results.Average(r => r.Beat.SyncedFrac) * 100:F0}% (clear parts {results.Average(r => r.Beat.ClearSyncedFrac) * 100:F0}%), " +
+                       $"on-beat {results.Average(r => r.Beat.OnFrac) * 100:F0}%, wrong-but-synced {results.Average(r => r.Beat.WrongFrac) * 100:F0}%, " +
+                       $"first lock {results.Where(r => !double.IsNaN(r.Beat.FirstLockSec)).Select(r => r.Beat.FirstLockSec).DefaultIfEmpty(double.NaN).Average():F1} s, " +
+                       $"switches {results.Average(r => r.Beat.SwitchesPerMin):F1}/min, snare on 2·4 {results.Average(r => r.SnareOnBackbeat) * 100:F0}%, 2·4 found {results.Average(r => r.BackbeatFound) * 100:F0}%");
+            return;
+        }
         // 「;」で区切ると、つなげて 1 曲として流す（長い時間の動きを見るため）
         var parts = path.Split(';', StringSplitOptions.RemoveEmptyEntries);
         if (!parts.All(File.Exists)) return;

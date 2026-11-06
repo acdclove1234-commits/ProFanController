@@ -37,6 +37,32 @@ public enum BeatLock
 /// </summary>
 public sealed class BeatTracker
 {
+    /// <summary>
+    /// 拍の確かさの決め方の値（実際の曲で合わせるため、テストから変えられるようにしてある。アプリの中では変えない）
+    /// </summary>
+    internal static class Tune
+    {
+        /// <summary>ロックできないまま、別のテンポを試すまでの時間（秒）</summary>
+        internal static double StuckSec = 4.5;
+        /// <summary>予測からこれより離れた山は、その拍の音ではないとみなす（秒）</summary>
+        internal static double OutlierSec = 0.035;
+        /// <summary>音のあった拍の割合: これ以下で 0、これ以上で満点</summary>
+        internal static double HitShareZero = 0.4, HitShareFull = 0.74;
+        /// <summary>時刻のずれ（音のあった拍の二乗平均、ミリ秒）: これ以下で満点、これ以上で 0</summary>
+        internal static double ErrFullMs = 10, ErrZeroMs = 40;
+        /// <summary>拍の位置の音の多さ（直近 2 拍の平均の何倍か）: これ以下で 0、これ以上で満点</summary>
+        internal static double RatioZero = 0.8, RatioFull = 1.2;
+        /// <summary>この確かさ以上が LockBeats 拍続いたらロック</summary>
+        internal static double LockConf = 0.55;
+        internal static int LockBeats = 4;
+        /// <summary>くし形のフィルターで、周期の何倍の自己相関を足すか</summary>
+        internal static int[] CombMultiples = { 1, 2, 3, 4 };
+        /// <summary>拍の位置の取り直しで、ちょうど半拍ずれた位置へ移るのに必要な、そろい方の比（今の位置の何倍か）</summary>
+        internal static double HalfShiftRatio = 3;
+        /// <summary>付点 8 分の刻みの疑い: 4/3 倍の周期のくし形の値が、今の周期のこの倍以上なら疑う（0 = 疑わない）。疑うときの「音の多さ」の基準</summary>
+        internal static double DottedSuspectRatio = 0.6, SuspectRatioZero = 1.0, SuspectRatioFull = 1.5;
+    }
+
     // ===== テンポ
     /// <summary>立ち上がりの強さを覚えておく長さ（秒。48 kHz で 600 コマ）</summary>
     private const double HistorySec = 6.4;
@@ -98,26 +124,26 @@ public sealed class BeatTracker
     /// <summary>確かさの計算に使う直近の拍の数</summary>
     private const int HistLen = 8;
     /// <summary>音楽が鳴っているのに、今のテンポでこの秒数ロックできなければ、別のテンポを試す</summary>
-    private const double StuckSec = 4.5;
+    private static double StuckSec => Tune.StuckSec;
     /// <summary>試して合わなかったテンポに掛ける重み（くし形のフィルターの結果に掛ける）と、抑える幅（対数の比。±4%）</summary>
     private const double VetoFloor = 0.15;
     private const double VetoLogWidth = 0.04;
     /// <summary>抑えたテンポが元に戻るまでの時間（秒。曲が変わったときに、また選べるように）</summary>
     private const double VetoRecoverSec = 20.0;
     /// <summary>予測からこの秒数より離れた山は、その拍の音とみなさない（ずれた音・別の音）</summary>
-    private const double OutlierSec = 0.035;
+    private static double OutlierSec => Tune.OutlierSec;
     /// <summary>そのような山で位置を直すときの強さ（ふつうの何倍か）</summary>
     private const double OutlierGain = 0.25;
     /// <summary>直近の拍のうち、音のあった拍の割合がこれ以下なら確かさ 0、HitShareFull 以上なら満点（その間は比例）</summary>
-    private const double HitShareZero = 0.4;
-    private const double HitShareFull = 0.74;
+    private static double HitShareZero => Tune.HitShareZero;
+    private static double HitShareFull => Tune.HitShareFull;
 
     // ===== 確かさとロック
     /// <summary>この確かさ以上が LockBeats 拍続いたらロック</summary>
-    private const double LockConf = 0.55;
+    private static double LockConf => Tune.LockConf;
     /// <summary>この確かさ未満が LockBeats 拍続いたらロックを外す</summary>
     private const double UnlockConf = 0.30;
-    private const int LockBeats = 4;
+    private static int LockBeats => Tune.LockBeats;
     /// <summary>低音の立ち上がりがこの秒数ないとロックを外す</summary>
     private const double NoOnsetUnlockSec = 2.0;
     /// <summary>無音がこの秒数続いたらテンポの更新を止める</summary>
@@ -156,6 +182,8 @@ public sealed class BeatTracker
     private readonly Fft _acfFft;
     private readonly double[] _x, _cum, _acfRe, _acfIm, _acf, _r, _obs, _post, _tmp, _prior, _trans, _phaseScore, _span;
     private double _tempoConf;
+    /// <summary>今のテンポが、付点 8 分の刻みかもしれない（4/3 倍の周期も強い）</summary>
+    private bool _dottedSuspect;
     private double _period;                 // 周期（コマ。0 = まだない）
     private double _candidate;
     private int _candidateCount;
@@ -274,6 +302,8 @@ public sealed class BeatTracker
     internal double DiagCombTau { get; private set; }
     internal int DiagOctave { get; private set; }
     internal Action<string>? DiagLog { get; set; }
+    /// <summary>調査用: 確かさの 3 つの部分（時刻のずれ・拍の位置の音の多さ・音のあった拍の割合。それぞれ 0〜1）</summary>
+    internal Action<double, double, double>? DiagConf { get; set; }
     internal double FrameRate => _f;
     /// <summary>小節の頭の拍の番号の余り（0〜3。倍率を掛ける前）</summary>
     public int Downbeat => _downbeat;
@@ -455,7 +485,12 @@ public sealed class BeatTracker
             double phi = _n - last;
             phi -= Math.Floor(phi / _period) * _period;
             int cur = (int)Math.Round(phi) % p;
-            if (_phaseScore[best] > ReacquireRatio * Math.Max(1e-9, _phaseScore[cur])) AcquirePhase(allowGlide: true);
+            // ちょうど半拍ずれた位置（裏拍）への取り直しは、より強い根拠があるときだけ（ベースや刻みが裏拍で強くなる区間で、
+            // 裏拍へすべってそのまま居続けないように）
+            double d = Math.Abs(best - cur) / (double)p;
+            d = Math.Min(d, 1 - d);
+            double need = d >= 0.35 ? Math.Max(ReacquireRatio, Tune.HalfShiftRatio) : ReacquireRatio;
+            if (_phaseScore[best] > need * Math.Max(1e-9, _phaseScore[cur])) AcquirePhase(allowGlide: true);
         }
     }
 
@@ -509,16 +544,17 @@ public sealed class BeatTracker
             int tau = _tauMin + j;
             double acc = 0;
             int terms = 0;
-            for (int p = 1; p <= 4; p++)
+            foreach (int p in Tune.CombMultiples)
             {
                 int c = p * tau;
-                if (c + (p - 1) > maxLag) break;
+                int pw = Math.Min(p - 1, 3);
+                if (c + pw > maxLag) break;
                 double s = 0;
-                for (int v = -(p - 1); v <= p - 1; v++) s += _acf[c + v];
-                acc += s / (2 * p - 1);
+                for (int v = -pw; v <= pw; v++) s += _acf[c + v];
+                acc += s / (2 * pw + 1);
                 terms++;
             }
-            double r = terms > 0 ? acc * 4 / terms : 0;
+            double r = terms > 0 ? acc * Tune.CombMultiples.Length / terms : 0;
             if (r < 0) r = 0;
             _r[j] = r;
             sumR += r;
@@ -599,6 +635,15 @@ public sealed class BeatTracker
         double ac = SmallStats.Lerp(_acf, tf, maxLag + 1);
         if (2 * tf <= maxLag) ac = Math.Max(ac, SmallStats.Lerp(_acf, 2 * tf, maxLag + 1));
         _tempoConf = Math.Clamp((ac - 0.05) / 0.20, 0, 1) * Math.Clamp((z - 1.5) / 1.5, 0, 1);
+
+        // 付点 8 分の刻み（本当のテンポの 4/3 倍）の疑い: 今の周期の 4/3 倍（遅いテンポ）にもはっきりした周期があるか。
+        // 疑わしいときは、拍の確かさの「拍の位置の音の多さ」を厳しくする（シンコペーションの強い曲で、刻みにロックしないように）
+        if (_period > 0 && Tune.DottedSuspectRatio > 0)
+        {
+            int jCur = (int)Math.Round(_period) - _tauMin, jSlow = (int)Math.Round(_period * 4 / 3) - _tauMin;
+            _dottedSuspect = jCur >= 0 && jCur < _m && jSlow >= 0 && jSlow < _m && _r[jSlow] >= Tune.DottedSuspectRatio * Math.Max(_r[jCur], 1e-9);
+        }
+        else _dottedSuspect = false;
         return tf;
     }
 
@@ -830,11 +875,13 @@ public sealed class BeatTracker
         if (hits > 0)
         {
             double rmsMs = Math.Sqrt(e2 / hits) * 1000 / _f;
-            cErr = Math.Clamp((40 - rmsMs) / 30, 0, 1);
+            cErr = Math.Clamp((Tune.ErrZeroMs - rmsMs) / (Tune.ErrZeroMs - Tune.ErrFullMs), 0, 1);
         }
-        double cRatio = Math.Clamp((ratio / _histCount - 1) / 0.5, 0, 1);
+        double r0 = _dottedSuspect ? Tune.SuspectRatioZero : Tune.RatioZero, r1 = _dottedSuspect ? Tune.SuspectRatioFull : Tune.RatioFull;
+        double cRatio = Math.Clamp((ratio / _histCount - r0) / (r1 - r0), 0, 1);
         double cHit = Math.Clamp((hits / (double)_histCount - HitShareZero) / (HitShareFull - HitShareZero), 0, 1);
         _phaseConf = cErr * cRatio * cHit;
+        DiagConf?.Invoke(cErr, cRatio, cHit);
         _conf = _phaseConf * (0.5 + 0.5 * _tempoConf);
     }
 
