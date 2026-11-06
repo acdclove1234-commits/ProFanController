@@ -865,10 +865,10 @@ public sealed class MusicConfig : ObservableObject
     private string _intensity = Intensities.Moderate;
     private string _palette = Palettes.Rainbow;
     private double _gainDb = 0;
-    private double _reactionMs = 6;
-    private double _smoothnessMs = 200;
-    private double _punch = 58;
-    private double _minBrightness = 14;
+    private double _reactionMs = 8;
+    private double _smoothnessMs = 220;
+    private double _punch = 55;
+    private double _minBrightness = 17;
     private double _dynamicRangeDb = 40;
     private double _autoBalance = 35;
     private double _trebleTilt = 1.5;
@@ -949,7 +949,7 @@ public sealed class MusicConfig : ObservableObject
         (double R, double S, double P, double M)[] olds = Intensity switch
         {
             Intensities.Subtle => new[] { (40.0, 600.0, 30.0, 35.0), (40.0, 500.0, 35.0, 25.0) },
-            Intensities.Moderate => new[] { (10.0, 250.0, 50.0, 20.0), (6.0, 200.0, 62.0, 10.0) },
+            Intensities.Moderate => new[] { (10.0, 250.0, 50.0, 20.0), (6.0, 200.0, 62.0, 10.0), (6.0, 200.0, 58.0, 14.0) },
             Intensities.High => new[] { (4.0, 160.0, 65.0, 12.0), (3.0, 150.0, 72.0, 6.0) },
             Intensities.Intense => new[] { (0.0, 90.0, 80.0, 4.0) },
             _ => Array.Empty<(double, double, double, double)>(),

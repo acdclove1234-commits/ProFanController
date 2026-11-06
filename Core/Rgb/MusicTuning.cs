@@ -132,7 +132,7 @@ public static class MusicTuning
     private static readonly IntensityProfile[] Profiles =
     {
         new(Intensities.Subtle, 40, 500, 28, 0.3, 32, 4, 500, false, false),
-        new(Intensities.Moderate, 6, 200, 14, 0.65, 58, 2, 180, false, false),
+        new(Intensities.Moderate, 8, 220, 17, 0.55, 55, 2, 200, false, false),
         new(Intensities.High, 3, 150, 8, 0.85, 68, 1, 80, false, false),
         new(Intensities.Intense, 0, 90, 3, 1.0, 85, 1, 0, true, true),
     };
