@@ -183,6 +183,8 @@ public sealed class OnsetDetector
     /// <summary>帯ごとのピーク検出（0〜3 = 帯、4 = 全体。テスト・調査用）</summary>
     public PeakPicker Picker(int g) => g < 4 ? _pickers[g] : _combined;
     private readonly double[] _bandNorm = new double[4];
+    /// <summary>調査用: スネアの候補を決めたとき（時刻・強さ・低い中音でも検出したか・キックと同時か・ハイハットの漏れとみなしたか）</summary>
+    internal Action<double, float, bool, bool, bool>? DiagSnare { get; set; }
 
     public void Reset()
     {
@@ -317,6 +319,7 @@ public sealed class OnsetDetector
         {
             bool kickNear = _lastKickHop >= _snareHop - _snareWindow;
             bool hatOnly = !_snareG1 && _lastHatHop >= _snareHop - _snareWindow;
+            DiagSnare?.Invoke(_snareT, _snareS, _snareG1, kickNear, hatOnly);
             if (!kickNear && !hatOnly) events!.Add(AudioEventKind.Snare, _snareT, _snareS);
             _snareHop = -1;
         }

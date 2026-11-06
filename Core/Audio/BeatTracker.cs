@@ -589,8 +589,15 @@ public sealed class BeatTracker
         // 7. テンポの確かさ: 周期での一致度と、くし形の結果の飛び抜け具合（z スコア）
         double meanR = sumR / _m;
         double std = Math.Sqrt(Math.Max(0, sumR2 / _m - meanR * meanR));
-        double z = std > 1e-12 ? (_r[jStar] - meanR) / std : 0;
+        // 倍・半分のテンポは同じ拍の並びなので、そのどれかの飛び抜け具合で見る（倍のテンポに乗り換えた直後に、
+        // 半分のテンポのほうが高いから「テンポが不確か」として、ロックが遅れたり外れたりしないように）
+        double rFam = _r[jStar];
+        int jHalfTempo = 2 * tauStar - _tauMin, jDoubleTempo = (int)Math.Round(tauStar / 2.0) - _tauMin;
+        if (jHalfTempo < _m) rFam = Math.Max(rFam, _r[jHalfTempo]);
+        if (jDoubleTempo >= 0) rFam = Math.Max(rFam, _r[jDoubleTempo]);
+        double z = std > 1e-12 ? (rFam - meanR) / std : 0;
         double ac = SmallStats.Lerp(_acf, tf, maxLag + 1);
+        if (2 * tf <= maxLag) ac = Math.Max(ac, SmallStats.Lerp(_acf, 2 * tf, maxLag + 1));
         _tempoConf = Math.Clamp((ac - 0.05) / 0.20, 0, 1) * Math.Clamp((z - 1.5) / 1.5, 0, 1);
         return tf;
     }

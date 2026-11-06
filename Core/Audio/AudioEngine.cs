@@ -429,7 +429,7 @@ public sealed class AudioEngine
     /// <summary>音が鳴っている間、1 分ごとに音の統計を記録に書く</summary>
     public bool StatsLogging { get; set; }
     private const double StatsSec = 60;
-    private double _stSec, _stBassE, _stMidE, _stTrebleE, _stLoud, _stBassEMax, _stMidEMax, _stTrebleEMax, _stLocked;
+    private double _stSec, _stBassE, _stMidE, _stTrebleE, _stLoud, _stBassEMax, _stMidEMax, _stTrebleEMax, _stLocked, _stSynced;
     private int _stFrames;
     private readonly long[] _stCount0 = new long[8];
 
@@ -467,6 +467,8 @@ public sealed class AudioEngine
         _stMidEMax = Math.Max(_stMidEMax, f.MidE);
         _stTrebleEMax = Math.Max(_stTrebleEMax, f.TrebleE);
         if (_tracker.Lock == BeatLock.Locked) _stLocked++;
+        // 「ロック」と、確かさが少し下がった間（そのまま拍の並びを続ける）を合わせた割合 = LED が拍に合わせて光っている割合
+        if (_tracker.Lock != BeatLock.Unlocked) _stSynced++;
         if (_stSec < StatsSec) return;
         var c = Events.CountByKind;
         double Rate(AudioEventKind k) => (c[(int)k] - _stCount0[(int)k]) / _stSec;
@@ -474,9 +476,9 @@ public sealed class AudioEngine
         var b = Beat;
         Logger.Info($"音の統計（{_stSec:F0} 秒）: キック {Rate(AudioEventKind.Kick):F1}/秒・スネア {Rate(AudioEventKind.Snare):F1}/秒・ハイハット {Rate(AudioEventKind.Hat):F1}/秒・"
             + $"低音 平均 {_stBassE / n:F2} 最大 {_stBassEMax:F2}・中音 平均 {_stMidE / n:F2} 最大 {_stMidEMax:F2}・高音 平均 {_stTrebleE / n:F2} 最大 {_stTrebleEMax:F2}・"
-            + $"音量 平均 {_stLoud / n:F2}・テンポ {(b.HasTempo ? b.Bpm : 0):F0} BPM（ロック {_stLocked / n * 100:F0}%）");
+            + $"音量 平均 {_stLoud / n:F2}・テンポ {(b.HasTempo ? b.Bpm : 0):F0} BPM（ロック {_stLocked / n * 100:F0}%・拍に合わせて光る {_stSynced / n * 100:F0}%）");
         Array.Copy(c, _stCount0, c.Length);
-        _stSec = _stBassE = _stMidE = _stTrebleE = _stLoud = _stBassEMax = _stMidEMax = _stTrebleEMax = _stLocked = 0;
+        _stSec = _stBassE = _stMidE = _stTrebleE = _stLoud = _stBassEMax = _stMidEMax = _stTrebleEMax = _stLocked = _stSynced = 0;
         _stFrames = 0;
     }
 }

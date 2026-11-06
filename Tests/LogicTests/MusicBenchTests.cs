@@ -16,7 +16,7 @@ public static class MusicBench
 {
     public const double Seconds = 24;
 
-    /// <summary>16 分音符で書いたドラムの並び（1 小節 = 16 マス）。'x' = 鳴らす。swing は 2 つ目の 16 分の遅れ（0〜1/3 拍）</summary>
+    /// <summary>16 分音符で書いたドラムの並び（1 小節 = 16 マス。32 マスなら 2 小節の繰り返し）。'x' = 鳴らす。swing は 2 つ目の 16 分の遅れ（0〜1/3 拍）</summary>
     public static List<double> Pattern(SignalGen g, double bpm, double from, double to, string kick, string snare, string hats,
         double swing = 0, double jitterMs = 0, double driftTo = 0, int seed = 1, double kickAmp = 0.7, double snareAmp = 0.4, double hatAmp = 0.06)
     {
@@ -30,7 +30,7 @@ public static class MusicBench
             // テンポが少しずつ変わる（生演奏）
             double b = driftTo > 0 ? bpm + (driftTo - bpm) * (t - from) / (to - from) : bpm;
             double p = 60 / b;
-            int s = step % 16;
+            int s = step % kick.Length;
             if (s % 4 == 0) beats.Add(t);
             double at = t + (s % 2 == 1 ? swing * p / 2 : 0) + (jitterMs > 0 ? Gauss() * jitterMs / 1000 : 0);
             if (kick[s] == 'x') g.Kick(at, kickAmp);
@@ -132,6 +132,13 @@ public static class MusicBench
             Backing(g, 124, 0.2, Seconds, 0.08);
             return b;
         }, seed: 10);
+        // 速い 8 ビート（2 小節目の最後の拍だけ音がない。実際の曲の形）: 半分のテンポも強く出る。どちらのテンポでも拍の上で光ればよい
+        yield return Make("fast rock 158 with a gap", 158, g =>
+        {
+            var b = Pattern(g, 158, 0.2, Seconds, "x.......x.......x.......x.......", "....x.......x.......x...........", "x.x.x.x.x.x.x.x.x.x.x.x.x.x.....");
+            Backing(g, 158, 0.2, Seconds);
+            return b;
+        }, halfOk: true, seed: 11);
     }
 
     /// <summary>1 曲の結果</summary>
@@ -291,12 +298,32 @@ public static class MusicWavTests
     public static void TestWavAnalysis()
     {
         string? path = Environment.GetEnvironmentVariable("MUSIC_WAV");
-        if (string.IsNullOrEmpty(path) || !File.Exists(path)) return;
-        var mono = ReadWavMono(path, out int fs);
+        if (string.IsNullOrEmpty(path)) return;
+        // 「;」で区切ると、つなげて 1 曲として流す（長い時間の動きを見るため）
+        var parts = path.Split(';', StringSplitOptions.RemoveEmptyEntries);
+        if (!parts.All(File.Exists)) return;
+        int fs = 48000;
+        var mono = parts.SelectMany(p => ReadWavMono(p, out fs)).ToArray();
+        path = string.Join("+", parts.Select(Path.GetFileNameWithoutExtension)) + ".wav";
         var cfg = new RgbConfig { Mode = RgbModes.Music };
         if (Environment.GetEnvironmentVariable("MUSIC_RANGE") is { } r && double.TryParse(r, out double rv)) cfg.Music.DynamicRangeDb = rv;
+        if (Environment.GetEnvironmentVariable("MUSIC_SENS") is { } sv && double.TryParse(sv, out double sens)) cfg.Sensitivity = sens;
         var e = new AudioEngine(fs) { Settings = MusicTuning.EngineSettings(cfg) };
-        var run = new EngineRun(e).Feed(mono);
+        var cands = new List<(double T, float S, bool G1, bool Kick, bool Hat)>();
+        e.Onsets.DiagSnare = (t, s, g1, k, h) => cands.Add((t, s, g1, k, h));
+        var tr = e.Tracker;
+        bool trace = Environment.GetEnvironmentVariable("MUSIC_WAV_TRACE") == "1";
+        if (trace && Environment.GetEnvironmentVariable("MUSIC_DIAG_BEATS") == "1") tr.DiagLog = m => T.Info("   " + m + $" conf {tr.Confidence:F2} pc {tr.PhaseConfidence:F2} {tr.Lock}");
+        double nextPrint = 1;
+        var run = new EngineRun(e).Feed(mono, before: s =>
+        {
+            if (!trace || s < nextPrint) return;
+            nextPrint += 1;
+            var r = tr.CombScores;
+            var top = Enumerable.Range(0, r.Length).OrderByDescending(j => r[j]).Take(4)
+                .Select(j => $"{60 * tr.FrameRate / (tr.TauMin + j):F0}:{r[j]:F2}");
+            T.Info($"{s,5:F1}s bpm {(tr.PeriodSec > 0 ? 60 / tr.PeriodSec : 0),6:F1} tempoConf {tr.TempoConfidence:F2} phaseConf {tr.PhaseConfidence:F2} conf {tr.Confidence:F2} {tr.Lock,-9} pick {(tr.DiagCombTau > 0 ? 60 * tr.FrameRate / tr.DiagCombTau : 0):F0} oct {tr.DiagOctave,2} comb {string.Join(" ", top)}");
+        });
         var fr = run.Frames.Where(f => f.T - run.T0 > 3).ToList();
         double secs = fr.Count * 512.0 / fs;
         T.Info($"{Path.GetFileName(path)}: {mono.Length / (double)fs:F1} s @ {fs} Hz, range {cfg.Music.DynamicRangeDb} dB");
@@ -307,7 +334,57 @@ public static class MusicWavTests
         var ev = run.Events.Where(x => x.T - run.T0 > 3).ToList();
         T.Info($"  events/s: kick {ev.Count(x => x.Kind == AudioEventKind.Kick) / secs:F1} snare {ev.Count(x => x.Kind == AudioEventKind.Snare) / secs:F1} hat {ev.Count(x => x.Kind == AudioEventKind.Hat) / secs:F1} onset {ev.Count(x => x.Kind == AudioEventKind.Onset) / secs:F1}");
         var b = run.Beats[^1];
-        T.Info($"  tempo {b.Bpm:F1} BPM, locked {run.Locks.Skip(run.Locks.Count / 3).Count(l => l == BeatLock.Locked) * 100.0 / (run.Locks.Count - run.Locks.Count / 3):F0}% of the last 2/3");
+        int firstLock = run.Locks.FindIndex(l => l == BeatLock.Locked);
+        double after5 = run.Frames.Count(f => f.T - run.T0 > 5);
+        double locked5 = run.Frames.Select((f, i) => (f, i)).Count(x => x.f.T - run.T0 > 5 && run.Locks[x.i] == BeatLock.Locked);
+        double synced5 = run.Frames.Select((f, i) => (f, i)).Count(x => x.f.T - run.T0 > 5 && run.Locks[x.i] != BeatLock.Unlocked);
+        T.Info($"  tempo {b.Bpm:F1} BPM, locked {run.Locks.Skip(run.Locks.Count / 3).Count(l => l == BeatLock.Locked) * 100.0 / (run.Locks.Count - run.Locks.Count / 3):F0}% of the last 2/3, " +
+               $"{locked5 * 100 / Math.Max(1, after5):F0}% after 5 s (synced {synced5 * 100 / Math.Max(1, after5):F0}%), first lock {(firstLock < 0 ? "never" : $"{run.Frames[firstLock].T - run.T0:F1} s")}");
+        SnareBreakdown(run, cands.Where(c => c.T - run.T0 > 3).ToList(), secs);
+    }
+
+    /// <summary>
+    /// スネアの候補が、なぜ捨てられたかと、拍のどこにあるか（ロック中の拍の位置。2・4 拍目に多ければ本物のスネアらしい）
+    /// </summary>
+    private static void SnareBreakdown(EngineRun run, List<(double T, float S, bool G1, bool Kick, bool Hat)> cands, double secs)
+    {
+        // 候補の時刻のすこし後の拍の状態で、拍の位置（0〜3 拍目と、拍からのずれ）を求める
+        (int Beat, double Off)? Where(double t)
+        {
+            int i = run.Frames.FindIndex(f => f.T >= t + 0.03);
+            if (i < 0) return null;
+            var s = run.Beats[i];
+            if (!s.Locked || s.Period <= 0) return null;
+            double k = (t - s.LastBeatT) / s.Period;
+            long n = (long)Math.Round(k);
+            double off = k - n;
+            int beat = (int)(((s.IndexAtLast + n - s.DownbeatOffset) % 4 + 4) % 4);
+            return (beat, off);
+        }
+        string Row(string name, IEnumerable<(double T, float S, bool G1, bool Kick, bool Hat)> xs)
+        {
+            var l = xs.ToList();
+            var pos = l.Select(c => Where(c.T)).Where(p => p is not null).Select(p => p!.Value).ToList();
+            var on = pos.Where(p => Math.Abs(p.Off) < 0.12).ToList();
+            int back = on.Count(p => p.Beat is 1 or 3);
+            int half = pos.Count(p => Math.Abs(Math.Abs(p.Off) - 0.5) < 0.12);
+            return $"{name,-10} {l.Count / secs,4:F1}/s  G1 {l.Count(c => c.G1) * 100.0 / Math.Max(1, l.Count),3:F0}%  " +
+                   $"locked {pos.Count,3}: on beat {on.Count * 100.0 / Math.Max(1, pos.Count),3:F0}% (2·4 拍目 {back * 100.0 / Math.Max(1, on.Count),3:F0}%)  half-beat {half * 100.0 / Math.Max(1, pos.Count),3:F0}%";
+        }
+        T.Info("  snare candidates:");
+        T.Info("    " + Row("all", cands));
+        T.Info("    " + Row("accepted", cands.Where(c => !c.Kick && !c.Hat)));
+        T.Info("    " + Row("with kick", cands.Where(c => c.Kick)));
+        T.Info("    " + Row("hat leak", cands.Where(c => !c.Kick && c.Hat)));
+        var kicks = run.Events.Where(x => x.Kind == AudioEventKind.Kick && x.T - run.T0 > 3).Select(x => Where(x.T)).Where(p => p is not null).Select(p => p!.Value).ToList();
+        var kOn = kicks.Where(p => Math.Abs(p.Off) < 0.12).ToList();
+        T.Info($"    kicks      locked {kicks.Count,3}: on beat {kOn.Count * 100.0 / Math.Max(1, kicks.Count),3:F0}% (by beat 1-4: {string.Join(" ", Enumerable.Range(0, 4).Select(i => kOn.Count(p => p.Beat == i)))})");
+        if (Environment.GetEnvironmentVariable("SNARE_WAV_DETAIL") == "1")
+            foreach (var c in cands)
+            {
+                var p = Where(c.T);
+                T.Info($"    {c.T - run.T0,6:F2}s S {c.S:F2} G1 {(c.G1 ? 1 : 0)} kick {(c.Kick ? 1 : 0)} hat {(c.Hat ? 1 : 0)} {(p is { } q ? $"beat {q.Beat + 1} off {q.Off:+0.00;-0.00}" : "-")}");
+            }
     }
 }
 
