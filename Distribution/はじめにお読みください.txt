@@ -215,8 +215,11 @@ v6.0 の新機能
       （だめなときは「1_PawnIO をインストール.bat」を管理者として実行して、PC を再起動）
   ・ファンの一覧に何も出ない → マザーボードが未対応の可能性があります
     （そのときは温度・使用率の監視だけになり、ファンには何も書き込みません。BIOS の制御のままです）
-  ・動作を確かめた構成: ASRock B860 Steel Legend WiFi（Nuvoton NCT6686D）・Intel Core Ultra 5 245KF・
-    PNY GeForce RTX 5070 Ti ARGB Epic-X OC・Windows 11 Pro。ほかの構成は確かめていません
+  ・動作確認済みの環境（開発に使っている PC。対応機種の一覧ではなく、確かめた例です）:
+    Windows 11 Pro・ASRock B860 Steel Legend WiFi（Nuvoton NCT6686D）・Intel Core Ultra 5 245KF・
+    PNY GeForce RTX 5070 Ti 16GB ARGB Epic-X OC
+    ほかの部品でも、LibreHardwareMonitor（ファン・温度）と OpenRGB（LED）が対応していれば動きますが、
+    機種ごとの仕様やセンサーの並びで動きが違うことがあります
     （グラボの LED の直接書き込みは、この型番だけ。ほかのグラボは OpenRGB を通して光らせます）
   ・ASRock A-Tuning / ASUS Armoury Crate / MSI Center などのファン制御ソフトが
     入っていると、ぶつかって回転が安定しません。ファン制御機能を止めるか、

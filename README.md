@@ -24,16 +24,18 @@ A fan control and monitoring tool for Windows. It drives motherboard fan headers
 
 ノート PC と、ファン制御に対応していないマザーボードでは使えません。
 
-## 動作を確かめた構成（ベータ版）
+## 動作確認済みの環境（ベータ版）
 
-作者の PC で確かめています。ほかの構成でも動くことはありますが、確かめていません。
+開発と動作確認は、次の PC で行っています（対応機種の一覧ではなく、確かめた例です）。
 
-| 部品 | 確かめた型番 |
+| 部品 | 型番 |
 |---|---|
+| OS | Windows 11 Pro（64bit） |
 | マザーボード | ASRock B860 Steel Legend WiFi（Super I/O: Nuvoton NCT6686D） |
 | CPU | Intel Core Ultra 5 245KF |
-| グラボ | PNY GeForce RTX 5070 Ti ARGB Epic-X OC |
-| OS | Windows 11 Pro（64bit） |
+| グラボ | PNY GeForce RTX 5070 Ti 16GB ARGB Epic-X OC |
+
+ほかのマザーボード・グラボでも、[LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor)（ファン・温度）と OpenRGB（LED）が対応している部品なら動きます。ただし、機種ごとの仕様やセンサーの並びによって、動きが違うことがあります。うまく動かないときは、お使いの部品の型番を添えて知らせてください。
 
 対応していない・確かめていない部品のときの動き:
 
