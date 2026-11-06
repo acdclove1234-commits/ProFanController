@@ -109,6 +109,71 @@ public static class CombinedSafetyTests
         T.Check(!rig2.Last!.Emergency, "sentinel 127°C does not trigger the emergency");
     }
 
+    /// <summary>
+    /// カーブで水温だけを使っていても、CPU の温度と GPU のコア・Hot Spot は緊急全開で見る
+    /// （ポンプの不調などで CPU だけが熱くなったときに、水温の低い回転のままにしない）
+    /// </summary>
+    public static void TestEmergencyWatchesCpuAndGpuWithoutCurves()
+    {
+        const string Water = "/lpc/nct6686d/0/temperature/5";
+        const string CpuPkg = "/intelcpu/0/temperature/16";
+        const string GpuCore = "/gpu-nvidia/0/temperature/0";
+        const string GpuHot = "/gpu-nvidia/0/temperature/2";
+        FakeHardware Hw()
+        {
+            var hw = new FakeHardware();
+            hw.AddControl(Fan0, 30);
+            hw.Values[Water] = 32;
+            hw.Values[CpuPkg] = 60;
+            hw.Values[GpuCore] = 60;
+            hw.Values[GpuHot] = 70;
+            hw.Values[Rpm0] = 900;
+            hw.Temps.Add(new SensorInfo(Water, "Liquid", "Nuvoton NCT6686D", "SuperIO", "Temperature"));
+            hw.Temps.Add(new SensorInfo("/intelcpu/0/temperature/0", "CPU Core #1", "Intel Core Ultra", "Cpu", "Temperature"));
+            hw.Temps.Add(new SensorInfo(CpuPkg, "CPU Package", "Intel Core Ultra", "Cpu", "Temperature"));
+            hw.Temps.Add(new SensorInfo(GpuCore, "GPU Core", "NVIDIA GeForce RTX", "GpuNvidia", "Temperature"));
+            hw.Temps.Add(new SensorInfo(GpuHot, "GPU Hot Spot", "NVIDIA GeForce RTX", "GpuNvidia", "Temperature"));
+            return hw;
+        }
+        AppConfig Cfg()
+        {
+            var cfg = Config(new FanConfig
+            {
+                Name = "Radiator", ControlId = Fan0, RpmSensorId = Rpm0, MinDuty = 20,
+                Curves = { new CurveConfig { Name = "水温", SensorId = Water, Points = new() { new() { Temp = 25, Duty = 30 }, new() { Temp = 45, Duty = 80 } } } },
+            });
+            cfg.EmergencyTemperature = 100;
+            cfg.EmergencyHotspotTemperature = 108;
+            return cfg;
+        }
+
+        var ids = FanEngine.AlwaysWatchedTemps(Hw().Temps).ToList();
+        T.Check(ids.SequenceEqual(new[] { CpuPkg, GpuCore, GpuHot }), $"watched: CPU package, GPU core, GPU hot spot ({string.Join(", ", ids)})");
+
+        // CPU だけが 105°C（水温は 32°C のまま）
+        var hw = Hw();
+        var rig = new Rig(Cfg(), hw);
+        rig.Tick(3);
+        T.Check(!rig.Last!.Emergency, "normal temperatures: no emergency");
+        hw.Values[CpuPkg] = 105;
+        rig.Tick();
+        T.Check(rig.Last!.Emergency && hw.Controls[Fan0].LastWrite == 100, $"CPU 105°C with only a coolant curve → full speed (last write {hw.Controls[Fan0].LastWrite:F0}%)");
+
+        // GPU の Hot Spot は Hot Spot のしきい値（108°C）で見る
+        var hw2 = Hw();
+        var rig2 = new Rig(Cfg(), hw2);
+        rig2.Tick(3);
+        hw2.Values[GpuHot] = 104;
+        rig2.Tick(2);
+        T.Check(!rig2.Last!.Emergency, "GPU hot spot 104°C is under its own limit (108°C)");
+        hw2.Values[GpuHot] = 110;
+        rig2.Tick();
+        T.Check(rig2.Last!.Emergency, "GPU hot spot 110°C → emergency");
+
+        // 温度の一覧がない（部品の名前が分からない）ときは、これまでどおりカーブのセンサーだけ
+        T.Check(!FanEngine.AlwaysWatchedTemps(Array.Empty<SensorInfo>()).Any(), "no catalog → nothing extra");
+    }
+
     /// <summary>測ってあるファンに、回り続けるはずの回転（止まる回転より上）を指示しているのに 0 rpm なら、30% 未満でも止まっていると知らせる</summary>
     public static void TestStallBelow30PercentWhenCalibrated()
     {

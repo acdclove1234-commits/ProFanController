@@ -90,6 +90,8 @@ internal sealed class FakeHardware : IFanHardware
     public readonly HashSet<string> ThrowOnRead = new(StringComparer.OrdinalIgnoreCase);
     public float? GpuCore;
     public float? GpuHotSpot;
+    /// <summary>ハードウェアの一覧に載せる温度センサー（名前・部品の種類。空なら一覧に温度はない）</summary>
+    public readonly List<SensorInfo> Temps = new();
     /// <summary>すべての部品の読み取りに失敗する</summary>
     public bool FailAll;
     public int UpdateCalls;
@@ -119,7 +121,7 @@ internal sealed class FakeHardware : IFanHardware
         return Values.TryGetValue(id, out var v) ? v : null;
     }
 
-    public string? NameOf(string? id) => Exists(id) ? id : null;
+    public string? NameOf(string? id) => Exists(id) ? Temps.FirstOrDefault(t => t.Id == id)?.Name ?? id : null;
     public IFanControl? FindControl(string? id) => id is not null && Controls.TryGetValue(id, out var c) ? c : null;
     public float? LoadFor(string? sensorId) => null;
 
@@ -132,7 +134,7 @@ internal sealed class FakeHardware : IFanHardware
     public Dictionary<string, float?> SnapshotValues() => new(Values, StringComparer.OrdinalIgnoreCase);
 
     public HardwareCatalog BuildCatalog(bool includeGpuFans)
-        => new(new List<DeviceInfo>(), new List<HardwareGroup>(), new List<SensorInfo>(), new List<ControlInfo>(), true);
+        => new(new List<DeviceInfo>(), new List<HardwareGroup>(), Temps, new List<ControlInfo>(), true);
 
     public void Dispose() => Disposed = true;
 }

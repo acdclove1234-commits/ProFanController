@@ -164,6 +164,8 @@ public sealed class FanEngine : IDisposable
     /// <summary>開き直しに成功したら Resumed を知らせる</summary>
     private bool _resumePending;
     private bool _catalogGpuFans;
+    /// <summary>最後に作ったハードウェアの一覧の温度センサー（緊急全開で必ず見る CPU・GPU の温度を探す）</summary>
+    private IReadOnlyList<SensorInfo> _catalogTemps = Array.Empty<SensorInfo>();
     private bool _catalogPublished;
     private volatile TaskCompletionSource<bool>? _suspendWaiter;
 
@@ -676,6 +678,7 @@ public sealed class FanEngine : IDisposable
         _catalogGpuFans = _cfg.Safety.AllowGpuFanControl;
         var catalog = _hub!.BuildCatalog(_catalogGpuFans);
         _catalogPublished = true;
+        _catalogTemps = catalog.Temperatures;
         Logger.Info($"ハードウェア初期化完了: 温度センサー {catalog.Temperatures.Count} 個 / 制御チャネル {catalog.Controls.Count} 個 / PawnIO={catalog.PawnIoInstalled}");
         CatalogReady?.Invoke(catalog);
     }
@@ -799,6 +802,7 @@ public sealed class FanEngine : IDisposable
             .SelectMany(id => _cfg.VirtualSensors.FirstOrDefault(v => Same(v.Id, id)) is { } vs
                 ? (vs.Kind == VirtualSensorKinds.Delta ? Enumerable.Empty<string>() : vs.Sources)
                 : new[] { id })
+            .Concat(AlwaysWatchedTemps(_catalogTemps))
             .Where(id => id.Length > 0)
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
@@ -811,6 +815,23 @@ public sealed class FanEngine : IDisposable
         }
         // 設定から外れたセンサーは、緊急全開を続ける理由にしない
         _emergencyTriggers.RemoveWhere(id => !ids.Contains(id, StringComparer.OrdinalIgnoreCase));
+    }
+
+    /// <summary>
+    /// カーブで使っていなくても緊急全開で見る温度: CPU の温度と、GPU ごとのコア・Hot Spot。
+    /// ラジエーターのファンを水温だけで回す設定などで、ポンプの不調や GPU の高負荷による CPU・GPU の過熱を見逃さないように
+    /// （しきい値はカーブで使っているときと同じ）
+    /// </summary>
+    internal static IEnumerable<string> AlwaysWatchedTemps(IReadOnlyList<SensorInfo> temps)
+    {
+        if (temps.Count == 0) yield break;
+        if (SensorNames.CpuTemperature(temps) is { } cpu) yield return cpu.Id;
+        foreach (var gpu in temps.Where(t => t.HardwareType.StartsWith("Gpu", StringComparison.Ordinal)).Select(t => t.HardwareName).Distinct())
+        {
+            var own = temps.Where(t => t.HardwareName == gpu).ToList();
+            if (SensorNames.GpuCoreTemperature(own, gpu) is { } core) yield return core.Id;
+            if (SensorNames.GpuHotSpotTemperature(own) is { } hot) yield return hot.Id;
+        }
     }
 
     /// <summary>センサーの名前と、そのセンサーの緊急温度を決める（Hot Spot は別のしきい値）</summary>
