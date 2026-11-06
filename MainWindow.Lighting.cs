@@ -1440,11 +1440,37 @@ public partial class MainWindow
 
     private void OnAllSoundsClick(object sender, RoutedEventArgs e) => Config.Rgb.MusicSource = "";
 
-    /// <summary>音を出している（出せる）アプリの一覧から選ぶ。音が出ているアプリを上に並べる</summary>
-    private void OnPickMusicAppClick(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// 音を出している（出せる）アプリの一覧から選ぶ。音が出ているアプリを上に並べる。
+    /// アプリの一覧は別のスレッドで調べ（数百ミリ秒かかることがある）、その間も画面は止めない。メニューはすぐ開いて「探しています」と出す
+    /// </summary>
+    private async void OnPickMusicAppClick(object sender, RoutedEventArgs e)
     {
         var menu = new ContextMenu { PlacementTarget = (UIElement)sender, Placement = PlacementMode.Bottom, MaxHeight = 420 };
-        var apps = ListAudioApps();
+        menu.Items.Add(new MenuItem { Header = "音を出しているアプリを探しています…", IsEnabled = false });
+        menu.IsOpen = true;
+
+        List<(string Name, float Peak, bool Active)> apps;
+        List<string> windows;
+        try
+        {
+            (apps, windows) = await Task.Run(() =>
+            {
+                var found = ListAudioApps();
+                // 音のセッションが取れないときは、ウィンドウのあるアプリから選べるようにする（以前と同じ）
+                return (found, found.Count == 0 ? ProfileSwitcher.RunningApps() : new List<string>());
+            });
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"音を出しているアプリの一覧を取得できません: {ex.Message}");
+            apps = new();
+            windows = new();
+        }
+
+        // ここからは画面のスレッド（await のあとは元のスレッドに戻る）。調べている間にメニューを閉じていたら、開き直さない
+        if (!menu.IsOpen) return;
+        menu.Items.Clear();
         foreach (var (name, peak, active) in apps)
         {
             string state = peak > 0.001f ? "　（音が出ています）" : active ? "　（再生中）" : "";
@@ -1452,23 +1478,19 @@ public partial class MainWindow
             item.Click += (_, _) => Config.Rgb.MusicSource = name;
             menu.Items.Add(item);
         }
-        if (apps.Count == 0)
+        foreach (var app in windows)
         {
-            // 音のセッションが取れないときは、ウィンドウのあるアプリから選べるようにする（以前と同じ）
-            foreach (var app in ProfileSwitcher.RunningApps())
-            {
-                var item = new MenuItem { Header = app };
-                item.Click += (_, _) => Config.Rgb.MusicSource = app;
-                menu.Items.Add(item);
-            }
+            var item = new MenuItem { Header = app };
+            item.Click += (_, _) => Config.Rgb.MusicSource = app;
+            menu.Items.Add(item);
         }
         if (menu.Items.Count == 0) menu.Items.Add(new MenuItem { Header = "アプリが見つかりません。曲を再生してから、もう一度押してください", IsEnabled = false });
-        menu.IsOpen = true;
     }
 
     /// <summary>
     /// いつもの出力先で音のセッションを持っているアプリ（プロセス名・いまの音の大きさ・再生中か）。
-    /// 音が出ているもの → 再生中のもの → 名前の順に並べる。音の取り込み（AudioCapture）と同じく、プロセス名で選ぶ
+    /// 音が出ているもの → 再生中のもの → 名前の順に並べる。音の取り込み（AudioCapture）と同じく、プロセス名で選ぶ。
+    /// 時間がかかることがあるので、画面のスレッドでは呼ばない（OnPickMusicAppClick が別のスレッドで呼ぶ）
     /// </summary>
     private static List<(string Name, float Peak, bool Active)> ListAudioApps()
     {
