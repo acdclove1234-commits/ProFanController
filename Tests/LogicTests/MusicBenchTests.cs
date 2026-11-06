@@ -310,3 +310,49 @@ public static class MusicWavTests
         T.Info($"  tempo {b.Bpm:F1} BPM, locked {run.Locks.Skip(run.Locks.Count / 3).Count(l => l == BeatLock.Locked) * 100.0 / (run.Locks.Count - run.Locks.Count / 3):F0}% of the last 2/3");
     }
 }
+
+/// <summary>スネアの見つけ方: 音の多い曲（キックと同時の 2・4 拍目のスネア、ハイハットとベースが鳴り続ける）で、見つけた割合を表示する</summary>
+public static class SnareDetectionTests
+{
+    public static void TestSnaresFoundUnderHatsAndBass()
+    {
+        foreach (double bpm in new[] { 96.0, 124.0 })
+        {
+            var g = new SignalGen(48000, 16, seed: (int)bpm + 300);
+            g.DenseMix(bpm, 0.3, 16);
+            var run = new EngineRun(new AudioEngine(48000)).Feed(g.Buf);
+            var truth = g.SnareTimes.Where(t => t > 3 && t < 15.5).ToList();
+            var found = run.Kind(AudioEventKind.Snare).Select(e => e.T - run.T0).Where(t => t > 3 && t < 15.6).ToList();
+            int hit = truth.Count(t => found.Any(f => Math.Abs(f - t) < 0.04));
+            int extra = found.Count(f => truth.All(t => Math.Abs(f - t) >= 0.04));
+            T.Info($"dense {bpm} BPM: snares found {hit}/{truth.Count}, extra {extra}");
+            // いまは、キックと同時に鳴るスネア（クラップ）を見つけられない（見つける割合を表示するだけ。実際の曲で調整する予定）
+            T.Check(extra <= 0.2 * truth.Count + 1, $"dense {bpm} BPM: few false snares ({extra})");
+        }
+    }
+}
+
+public static class SnareDiagTests
+{
+    public static void TestSnareDiag()
+    {
+        if (Environment.GetEnvironmentVariable("SNARE_DIAG") != "1") return;
+        var g = new SignalGen(48000, 8, seed: 396);
+        g.DenseMix(96, 0.3, 8);
+        var e = new AudioEngine(48000);
+        var o = e.Onsets;
+        int hop = 512;
+        var snares = g.SnareTimes.Where(t => t > 3 && t < 7).ToList();
+        var kicks = g.KickTimes.Where(t => t > 3 && t < 7).ToList();
+        for (int i = 0; i + hop <= g.Buf.Length; i += hop)
+        {
+            e.Push(new ReadOnlySpan<float>(g.Buf, i, hop), 1000 + i / 48000.0);
+            double t = (i + hop) / 48000.0;
+            bool nearSnare = snares.Any(s => t - s > -0.005 && t - s < 0.06);
+            bool nearKickOnly = !nearSnare && kicks.Any(k => t - k > -0.005 && t - k < 0.06);
+            if (!nearSnare && !nearKickOnly) continue;
+            string P(int k) => $"{o.GroupNorm(k),5:F2}/{o.Picker(k).Threshold,4:F2}";
+            T.Info($"{t:F3} {(nearSnare ? "SNARE" : "kick ")} G0 {P(0)} G1 {P(1)} G2 {P(2)} G3 {P(3)}");
+        }
+    }
+}

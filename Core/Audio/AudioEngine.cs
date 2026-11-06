@@ -181,6 +181,7 @@ public sealed class AudioEngine
 
     /// <summary>テンポの追跡（テスト・調査用）</summary>
     internal BeatTracker Tracker => _tracker;
+    internal OnsetDetector Onsets => _onsets;
 
     /// <summary>テンポの追跡の状態（ロック中・予測を続けている・つかんでいない。表示・テスト用）</summary>
     public BeatLock BeatLock => _tracker.Lock;
