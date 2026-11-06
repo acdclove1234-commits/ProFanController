@@ -103,6 +103,7 @@ public sealed class AudioEngine
     private readonly BeatTracker _tracker;
     private readonly DropDetector _drop;
     private readonly AudioFrame _frame = new();
+    private BeatExpander _expSub, _expBass, _expMid, _expTreble;
     private HysteresisGate _gate;
     private AsymEnv _gateEnv;
     private AsymEnv _appEnv;
@@ -252,6 +253,7 @@ public sealed class AudioEngine
         _quiet = 0;
         _lastT = double.NegativeInfinity;
         _frame.Clear();
+        _expSub = _expBass = _expMid = _expTreble = default;
     }
 
     /// <summary>「特定のアプリだけ」の割合（おかしな値なら 1 = 全部の音）</summary>
@@ -401,11 +403,13 @@ public sealed class AudioEngine
         f.Bass = (float)_bands.GroupDisplay[1];
         f.Mid = (float)_bands.GroupDisplay[2];
         f.Treble = (float)_bands.GroupDisplay[3];
-        f.SubE = (float)_bands.GroupPunch[0];
+        // 強調した値は、それぞれの最近の中央値を基準に広げる（音圧の高い曲では強調した値もいつも 0.8 前後になり、拍が見えないため）
+        bool track = open && activity >= OnsetDetector.MinActivity;
+        f.SubE = _expSub.Apply(_bands.GroupPunch[0], track);
         // 低音の強調した値には、遅れの少ないキックの検出も混ぜる（パルス・ビートで色替えが使う）
-        f.BassE = (float)Math.Max(_bands.GroupPunch[1], KickIntoBass * _kick.KickPunch);
-        f.MidE = (float)_bands.GroupPunch[2];
-        f.TrebleE = (float)_bands.GroupPunch[3];
+        f.BassE = _expBass.Apply(Math.Max(_bands.GroupPunch[1], KickIntoBass * _kick.KickPunch), track);
+        f.MidE = _expMid.Apply(_bands.GroupPunch[2], track);
+        f.TrebleE = _expTreble.Apply(_bands.GroupPunch[3], track);
         f.KickEnv = (float)_kick.KickEnv;
         f.LoudVU = (float)_bands.LoudVU;
         f.LoudDb = (float)Math.Max(-120, _bands.LoudDb);
@@ -416,5 +420,62 @@ public sealed class AudioEngine
         f.GateOpen = open;
         f.Extrapolated = false;
         Features.Write(f);
+        if (StatsLogging) AddStats(f);
+    }
+
+    // ===== 音の統計（記録に残して、実際の曲での光り方の調整に使う）
+
+    /// <summary>音が鳴っている間、15 秒ごとに音の統計を記録に書く</summary>
+    public bool StatsLogging { get; set; }
+    private const double StatsSec = 15;
+    private double _stSec, _stBassE, _stMidE, _stTrebleE, _stLoud, _stBassEMax, _stMidEMax, _stTrebleEMax, _stLocked;
+    private int _stFrames;
+    private readonly long[] _stCount0 = new long[8];
+
+    // 反応しない原因を調べるための値（音が鳴っているかに関係なく、15 秒ごと）
+    private double _dgSec, _dgOpen, _dgActivity, _dgApp, _dgRms;
+    private int _dgFrames;
+
+    private void AddStats(AudioFrame f)
+    {
+        _dgFrames++;
+        _dgSec += _dt;
+        if (f.GateOpen) _dgOpen++;
+        _dgActivity += f.Activity;
+        _dgApp += SafeAppGate();
+        _dgRms += f.RmsDb;
+        if (_dgSec >= StatsSec)
+        {
+            double m = _dgFrames;
+            // 音がある（平均 −60 dBFS 以上）のに、ほとんど反応していないときだけ書く（無音の間は書かない）
+            if (_dgRms / m > -60 && _dgActivity / m < 0.5)
+                Logger.Info($"音楽連動の反応が弱い状態（{_dgSec:F0} 秒）: 音量 平均 {_dgRms / m:F0} dBFS・無音判定の門が開いていた割合 {_dgOpen / m * 100:F0}%・"
+                    + $"選んだアプリの音の割合 平均 {_dgApp / m:F2}・反応の強さ 平均 {_dgActivity / m:F2}");
+            _dgSec = _dgOpen = _dgActivity = _dgApp = _dgRms = 0;
+            _dgFrames = 0;
+        }
+
+        if (!f.GateOpen || f.Activity < OnsetDetector.MinActivity) return;
+        _stFrames++;
+        _stSec += _dt;
+        _stBassE += f.BassE;
+        _stMidE += f.MidE;
+        _stTrebleE += f.TrebleE;
+        _stLoud += f.LoudVU;
+        _stBassEMax = Math.Max(_stBassEMax, f.BassE);
+        _stMidEMax = Math.Max(_stMidEMax, f.MidE);
+        _stTrebleEMax = Math.Max(_stTrebleEMax, f.TrebleE);
+        if (_tracker.Lock == BeatLock.Locked) _stLocked++;
+        if (_stSec < StatsSec) return;
+        var c = Events.CountByKind;
+        double Rate(AudioEventKind k) => (c[(int)k] - _stCount0[(int)k]) / _stSec;
+        double n = _stFrames;
+        var b = Beat;
+        Logger.Info($"音の統計（{_stSec:F0} 秒）: キック {Rate(AudioEventKind.Kick):F1}/秒・スネア {Rate(AudioEventKind.Snare):F1}/秒・ハイハット {Rate(AudioEventKind.Hat):F1}/秒・"
+            + $"低音 平均 {_stBassE / n:F2} 最大 {_stBassEMax:F2}・中音 平均 {_stMidE / n:F2} 最大 {_stMidEMax:F2}・高音 平均 {_stTrebleE / n:F2} 最大 {_stTrebleEMax:F2}・"
+            + $"音量 平均 {_stLoud / n:F2}・テンポ {(b.HasTempo ? b.Bpm : 0):F0} BPM（ロック {_stLocked / n * 100:F0}%）");
+        Array.Copy(c, _stCount0, c.Length);
+        _stSec = _stBassE = _stMidE = _stTrebleE = _stLoud = _stBassEMax = _stMidEMax = _stTrebleEMax = _stLocked = 0;
+        _stFrames = 0;
     }
 }

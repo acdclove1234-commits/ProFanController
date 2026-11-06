@@ -298,3 +298,55 @@ public static class SmallStats
         return d < -0.5 ? -0.5 : d > 0.5 ? 0.5 : d;
     }
 }
+
+/// <summary>
+/// 音量（dB）の「静かなほうの 10%」の位置を追いかける（分位点の追跡）。
+/// 今回の値が L より上なら step × q だけ上げ、下なら step × (1 − q) だけ下げる。これを続けると L は q 分位点に落ち着く。
+/// 音の大きさが一定の曲（いまの音楽の多く）で、明るさに対応させる幅を、その曲の実際の音の上下に合わせるのに使う
+/// </summary>
+public struct LowTracker
+{
+    /// <summary>いまの値（dB）</summary>
+    public double L;
+    public bool Ready;
+
+    public void Update(double x, double stepDb, double q = 0.1)
+    {
+        if (!double.IsFinite(x)) return;
+        if (!Ready)
+        {
+            L = x - 6;
+            Ready = true;
+            return;
+        }
+        L += x > L ? stepDb * q : -stepDb * (1 - q);
+    }
+
+    /// <summary>基準 ceiling から、明るさに対応させる幅（dB）: 静かな側の位置 + margin。minDb〜maxDb に収める</summary>
+    public readonly double Range(double ceiling, double marginDb, double minDb, double maxDb)
+        => !Ready ? maxDb : Math.Clamp(ceiling - L + marginDb, minDb, Math.Max(minDb, maxDb));
+}
+
+/// <summary>
+/// 強調した値（0〜1）を、その値の最近の中央値 m を基準に広げる（エキスパンダー）。
+///   出力 = Keep × x + (1 − Keep) × clamp((x − m) / max(1 − m, 0.15), 0, 1)
+/// 中央値くらいの値は暗く、中央値より強い瞬間（拍）だけが明るくなる。音圧の高い曲でも、静かな曲でも、拍の明暗の差が出る。
+/// 中央値は 1 回ごとに Step だけ上下させて追いかける（約 1 秒で 0〜1 を動ける）
+/// </summary>
+public struct BeatExpander
+{
+    public const float Keep = 0.25f;
+    private const double Step = 0.01;
+    public double M;
+
+    public float Apply(double x, bool track)
+    {
+        if (!double.IsFinite(x)) x = 0;
+        if (track) M += x > M ? Step * 0.5 : -Step * 0.5;
+        if (M < 0) M = 0;
+        double r = (x - M) / Math.Max(1 - M, 0.15);
+        r = r < 0 ? 0 : r > 1 ? 1 : r;
+        double y = Keep * x + (1 - Keep) * r;
+        return (float)(y < 0 ? 0 : y > 1 ? 1 : y);
+    }
+}

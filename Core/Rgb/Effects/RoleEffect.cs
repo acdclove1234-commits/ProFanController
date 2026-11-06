@@ -104,6 +104,10 @@ public sealed class RoleEffect : IMusicEffect
         // キックの光（どのパーツにも BeatShare の割合で分ける。役割が分かれすぎず、全体が拍に合わせて動くように）
         int bi = (int)MusicRole.Bass;
         float kick = _hitS[bi] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[bi]) / Tau(MusicRole.Bass));
+        // ビートの光（テンポをつかんでいれば予測した拍でも光る。キックを検出しそこねた拍でも光るように）。
+        // コマの間の最大値から経過時間だけ減らした値も見る（1 秒間のコマ数が少ないデバイスでも拍を取りこぼさない）
+        float beatFl = Math.Max(c.Fl, c.FlPeak * (float)Math.Exp(-Math.Max(0, c.T - c.FlPeakT) / Tau(MusicRole.Bass)));
+        kick = Math.Max(kick, beatFl);
         for (int r = 0; r < Roles; r++)
         {
             var role = (MusicRole)r;
@@ -112,7 +116,7 @@ public sealed class RoleEffect : IMusicEffect
             float age = (float)Math.Exp(-(c.T - c.FrameTime) / tau);
             float raw = role switch
             {
-                MusicRole.Bass => Math.Max(f.BassE, 0.8f * f.KickEnv),
+                MusicRole.Bass => f.BassE,
                 MusicRole.Mid => f.MidE,
                 MusicRole.Treble => f.TrebleE,
                 _ => f.LoudVU,
@@ -123,7 +127,7 @@ public sealed class RoleEffect : IMusicEffect
             // 出来事の光: 多く鳴る音（ハイハットは 1 秒に 8 回など）ほど弱くする（どのパーツも同じくらいの目立ち方にする）
             float amp = Math.Clamp(MathF.Sqrt(RefRate / Math.Max(_rate[r], 0.25f)), MinFlashAmp, 1f);
             float own = role == MusicRole.All ? 0f : amp * _hitS[r] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[r]) / tau);
-            float hit = role == MusicRole.Bass ? own : Math.Max(own, BeatShare * kick);
+            float hit = role == MusicRole.Bass ? Math.Max(own, kick) : Math.Max(own, BeatShare * kick);
             _flash[r] = hit;
             // 音が鳴っている間は、どのパーツも下地の明るさ（Body）＋音の強さで光り、出来事でさらに光る（音が止まって門が閉じたら下地は消える）
             float body = active ? BodyLevel + BodyRange * level : 0.6f * level;

@@ -238,3 +238,75 @@ public static class MusicDiagTests
         }
     }
 }
+
+/// <summary>調査用: 環境変数 MUSIC_WAV に録音した曲（32 ビット浮動小数点の WAV）を入れたときだけ、実際の曲での分析結果を表示する</summary>
+public static class MusicWavTests
+{
+    public static float[] ReadWavMono(string path, out int fs)
+    {
+        using var br = new BinaryReader(File.OpenRead(path));
+        br.ReadBytes(12);
+        int ch = 2;
+        fs = 48000;
+        int bits = 32;
+        while (br.BaseStream.Position < br.BaseStream.Length)
+        {
+            string id = new string(br.ReadChars(4));
+            int size = br.ReadInt32();
+            if (id == "fmt ")
+            {
+                br.ReadInt16();
+                ch = br.ReadInt16();
+                fs = br.ReadInt32();
+                br.ReadInt32();
+                br.ReadInt16();
+                bits = br.ReadInt16();
+                br.ReadBytes(size - 16);
+            }
+            else if (id == "data")
+            {
+                int n = size / 4 / ch;
+                var mono = new float[n];
+                for (int i = 0; i < n; i++)
+                {
+                    float s = 0;
+                    for (int c = 0; c < ch; c++) s += br.ReadSingle();
+                    mono[i] = s / ch;
+                }
+                return mono;
+            }
+            else br.ReadBytes(size);
+        }
+        return Array.Empty<float>();
+    }
+
+    private static string Dist(IEnumerable<float> xs)
+    {
+        var a = xs.OrderBy(x => x).ToArray();
+        if (a.Length == 0) return "-";
+        float P(double q) => a[(int)Math.Clamp(q * (a.Length - 1), 0, a.Length - 1)];
+        return $"p10 {P(0.1):F2} p50 {P(0.5):F2} p90 {P(0.9):F2} mean {a.Average():F2}";
+    }
+
+    public static void TestWavAnalysis()
+    {
+        string? path = Environment.GetEnvironmentVariable("MUSIC_WAV");
+        if (string.IsNullOrEmpty(path) || !File.Exists(path)) return;
+        var mono = ReadWavMono(path, out int fs);
+        var cfg = new RgbConfig { Mode = RgbModes.Music };
+        if (Environment.GetEnvironmentVariable("MUSIC_RANGE") is { } r && double.TryParse(r, out double rv)) cfg.Music.DynamicRangeDb = rv;
+        var e = new AudioEngine(fs) { Settings = MusicTuning.EngineSettings(cfg) };
+        var run = new EngineRun(e).Feed(mono);
+        var fr = run.Frames.Where(f => f.T - run.T0 > 3).ToList();
+        double secs = fr.Count * 512.0 / fs;
+        T.Info($"{Path.GetFileName(path)}: {mono.Length / (double)fs:F1} s @ {fs} Hz, range {cfg.Music.DynamicRangeDb} dB");
+        T.Info($"  Bass   {Dist(fr.Select(f => f.Bass))}   BassE   {Dist(fr.Select(f => f.BassE))}");
+        T.Info($"  Mid    {Dist(fr.Select(f => f.Mid))}   MidE    {Dist(fr.Select(f => f.MidE))}");
+        T.Info($"  Treble {Dist(fr.Select(f => f.Treble))}   TrebleE {Dist(fr.Select(f => f.TrebleE))}");
+        T.Info($"  LoudVU {Dist(fr.Select(f => f.LoudVU))}   KickEnv {Dist(fr.Select(f => f.KickEnv))}   Activity {Dist(fr.Select(f => f.Activity))}");
+        var ev = run.Events.Where(x => x.T - run.T0 > 3).ToList();
+        T.Info($"  events/s: kick {ev.Count(x => x.Kind == AudioEventKind.Kick) / secs:F1} snare {ev.Count(x => x.Kind == AudioEventKind.Snare) / secs:F1} hat {ev.Count(x => x.Kind == AudioEventKind.Hat) / secs:F1} onset {ev.Count(x => x.Kind == AudioEventKind.Onset) / secs:F1}");
+        var b = run.Beats[^1];
+        T.Info($"  tempo {b.Bpm:F1} BPM, locked {run.Locks.Skip(run.Locks.Count / 3).Count(l => l == BeatLock.Locked) * 100.0 / (run.Locks.Count - run.Locks.Count / 3):F0}% of the last 2/3");
+    }
+}

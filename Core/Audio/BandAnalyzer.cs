@@ -35,6 +35,10 @@ public sealed class BandAnalyzer
 
     /// <summary>自動音量調整の基準の最小値（dBFS）。これより静かな音を最大まで明るくしない</summary>
     public const double CeilingMinDb = -55;
+    /// <summary>自動で狭める幅: 静かな側 10% の位置から余白（dB）、幅の下限（dB）、1 回で動かす量（dB。上へは 1 割、下へは 9 割）</summary>
+    public const double AutoRangeMarginDb = 6;
+    public const double AutoRangeMinDb = 14;
+    public const double LowStepDb = 0.3;
     /// <summary>基準が大きい音に追いつく時定数（秒）</summary>
     private const double CeilingRiseSec = 0.30;
     /// <summary>基準が下がる速さ（dB／秒）</summary>
@@ -87,6 +91,9 @@ public sealed class BandAnalyzer
     private readonly PunchStream[] _punch = new PunchStream[Bands];
     private readonly AsymEnv[] _gDisp = new AsymEnv[GroupCount];
     private readonly PunchStream[] _gPunch = new PunchStream[GroupCount];
+    // 帯ごと・まとめた帯ごとの「静かな側 10% の位置」（明るさに対応させる幅を曲に合わせる）
+    private readonly LowTracker[] _low = new LowTracker[Bands];
+    private readonly LowTracker[] _gLow = new LowTracker[GroupCount];
     private AsymEnv _loudDb;
     private AsymEnv _loudVu;
     private AsymEnv _centroid;
@@ -190,12 +197,14 @@ public sealed class BandAnalyzer
         {
             _ref[k].Reset();
             _disp[k].V = 0;
+            _low[k] = default;
             _punch[k].Reset();
             Display[k] = PunchOut[k] = Power[k] = 0;
         }
         for (int g = 0; g < GroupCount; g++)
         {
             _gDisp[g].V = 0;
+            _gLow[g] = default;
             _gPunch[g].Reset();
             GroupDisplay[g] = GroupPunch[g] = 0;
         }
@@ -270,10 +279,14 @@ public sealed class BandAnalyzer
         double gamma = Math.Clamp(s.Contrast, 0.2, 5);
         double a = Math.Clamp(activity, 0, 1);
 
-        // 4. 帯ごと: 0〜1 にして、平滑化とパンチ
+        // 4. 帯ごと: 0〜1 にして、平滑化とパンチ。
+        //    明るさに対応させる幅は、設定の「音の幅」を上限に、その帯の実際の音の上下（静かな側 10% の位置）に合わせて狭める
+        //    （音の大きさがほぼ一定の曲では、固定の幅だといつも 0.8 くらいに張りついて、拍が見えなくなるため）
         for (int k = 0; k < Bands; k++)
         {
-            double v = Map(_leq[k], gain, c, range, gamma) * a;
+            if (gateOpen) _low[k].Update(_leq[k], LowStepDb);
+            double rk = _low[k].Range(c, AutoRangeMarginDb, AutoRangeMinDb, range);
+            double v = Map(_leq[k], gain, c, rk, gamma) * a;
             double b = _disp[k].StepA(v, _aAtt, _aRel);
             Display[k] = b;
             PunchOut[k] = _punch[k].Step(v, b, _pc);
@@ -286,7 +299,9 @@ public sealed class BandAnalyzer
             int first = GroupFirst[g], last = GroupLast[g];
             for (int k = first; k <= last; k++) sum += DbToPower(_leq[k]);
             double lg = 10 * Math.Log10(sum / (last - first + 1) + PowerFloor);
-            double v = Map(lg, gain, c, range, gamma) * a;
+            if (gateOpen) _gLow[g].Update(lg, LowStepDb);
+            double rg = _gLow[g].Range(c, AutoRangeMarginDb, AutoRangeMinDb, range);
+            double v = Map(lg, gain, c, rg, gamma) * a;
             double b = _gDisp[g].StepA(v, _aAtt, _aRel);
             GroupDisplay[g] = b;
             GroupPunch[g] = _gPunch[g].Step(v, b, _pc);
@@ -356,6 +371,11 @@ public sealed class KickPath
     private double _env;
     private double _hopMax;
     private CeilingTracker _ceil;
+    private LowTracker _lowKick;
+    /// <summary>キックの包絡線の幅を決める位置（中央値）。ベースが鳴り続ける曲では、静かな側 10% だと合間もほとんど明るいままになるため</summary>
+    public const double KickLowQuantile = 0.5;
+    /// <summary>キックの包絡線の幅: 中央値からの余白と、幅の下限（dB）。キックの上がり幅はベースの上に数 dB しかないことが多い</summary>
+    public const double KickMarginDb = 1.5, KickMinRangeDb = 6;
     private PunchStream _punch;
     // 包絡線の直近の値（音 1 個ずつ。キックの立ち上がりの時刻を求めるのに使う）
     private readonly float[] _envRing;
@@ -401,6 +421,7 @@ public sealed class KickPath
         _envPos = 0;
         _kickRefDb = -120;
         _kickRefReady = false;
+        _lowKick = default;
         KickEnv = KickPunch = 0;
     }
 
@@ -480,7 +501,10 @@ public sealed class KickPath
         double db = 20 * Math.Log10(_hopMax + 1e-9);
         HopDb = db;
         if (gateOpen) _ceil.Update(db, ceilAlpha, ceilFallDb, CeilingMinDb);
-        double v = Math.Clamp((db + gainDb - (_ceil.C - RangeDb)) / RangeDb, 0, 1) * Math.Clamp(activity, 0, 1);
+        // 幅は、キックの包絡線の静かな側 10% の位置に合わせて狭める（上限 RangeDb）。キックの合間がちゃんと暗くなるように
+        if (gateOpen) _lowKick.Update(db, BandAnalyzer.LowStepDb, KickLowQuantile);
+        double range = _lowKick.Range(_ceil.C, KickMarginDb, KickMinRangeDb, RangeDb);
+        double v = Math.Clamp((db + gainDb - (_ceil.C - range)) / range, 0, 1) * Math.Clamp(activity, 0, 1);
         KickEnv = v;
         KickPunch = _punch.Step(v, v, pc);
         _hopMax = 0;

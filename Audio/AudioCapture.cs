@@ -54,7 +54,7 @@ public sealed class AudioCapture : IDisposable
     private readonly HashSet<string> _pollingEndpoints = new();
 
     /// <summary>分析エンジン（出力先のサンプリング周波数が変わると作り直す。使うたびにこのプロパティから読む）</summary>
-    public AudioEngine Engine { get; private set; } = new();
+    public AudioEngine Engine { get; private set; } = new() { StatsLogging = true };
     /// <summary>状態（設定画面の表示用）</summary>
     public string Status { get; private set; } = "停止中";
     /// <summary>いま音を取り込んでいる出力先の名前（スピーカー・ヘッドホンなど）</summary>
@@ -194,7 +194,7 @@ public sealed class AudioCapture : IDisposable
         {
             if (Engine.SampleRate != format.SampleRate)
             {
-                Engine = new AudioEngine(format.SampleRate) { Settings = _settings, ClickDetect = _clickDetect };
+                Engine = new AudioEngine(format.SampleRate) { Settings = _settings, ClickDetect = _clickDetect, StatsLogging = true };
             }
             else
             {
@@ -219,6 +219,9 @@ public sealed class AudioCapture : IDisposable
 
         var result = CaptureResult.Normal;
         var sessions = new List<AudioSessionControl>();
+        var sessionDevices = new List<MMDevice>();
+        double appMissingSince = double.NaN;
+        bool appMissingLogged = false;
         string sessionsFor = "";
         double sessionsAt = double.NegativeInfinity;
         double deviceCheckAt = AudioClock.Now;
@@ -274,7 +277,8 @@ public sealed class AudioCapture : IDisposable
                         sessionsAt = now;
                         sessionsFor = source;
                         DisposeAll(sessions);
-                        sessions = FindSessions(device, source);
+                        DisposeDevices(sessionDevices);
+                        sessions = FindSessions(enumerator, device, source, sessionDevices);
                     }
                     double total = device.AudioMeterInformation.MasterPeakValue;
                     double app = 0;
@@ -284,6 +288,17 @@ public sealed class AudioCapture : IDisposable
                         catch { /* アプリが終了した */ }
                     }
                     target = total < 0.001 ? 0 : Math.Clamp(app / total, 0, 1);
+                    // 音は鳴っているのに、選んだアプリの音がどの出力先にも見つからない状態が続いたら、1 回だけ記録に残す
+                    if (total > 0.01 && sessions.Count == 0)
+                    {
+                        if (double.IsNaN(appMissingSince)) appMissingSince = now;
+                        else if (!appMissingLogged && now - appMissingSince > 10)
+                        {
+                            appMissingLogged = true;
+                            Log($"音楽連動: 「特定のアプリだけ」で選んだ {source} の音が見つかりません（ほかの音には反応しません）。アプリが再生中か、選んだアプリが合っているか確認してください");
+                        }
+                    }
+                    else appMissingSince = double.NaN;
                 }
                 gate += (target - gate) * (1 - Math.Exp(-dt / AppGateTau));
                 Engine.AppGate = gate;
@@ -292,6 +307,7 @@ public sealed class AudioCapture : IDisposable
         finally
         {
             DisposeAll(sessions);
+            DisposeDevices(sessionDevices);
             try { capture.StopRecording(); } catch { /* 止まっている */ }
         }
 
@@ -362,7 +378,12 @@ public sealed class AudioCapture : IDisposable
         }
     }
 
-    private static List<AudioSessionControl> FindSessions(MMDevice device, string processName)
+    /// <summary>
+    /// 選んだアプリの音のセッションを探す。取り込んでいる出力先にないときは、ほかの出力先も探す
+    /// （SteelSeries Sonar・VB-Audio などの仮想の出力先を通すと、アプリの音はそちらのセッションになり、
+    ///   実際に鳴っている出力先には見えないため）。ほかの出力先で見つけたときは、その出力先を extra に入れて開いたままにする
+    /// </summary>
+    private static List<AudioSessionControl> FindSessions(MMDeviceEnumerator enumerator, MMDevice device, string processName, List<MMDevice> extra)
     {
         var list = new List<AudioSessionControl>();
         var pids = new HashSet<uint>();
@@ -371,6 +392,33 @@ public sealed class AudioCapture : IDisposable
             using (p) pids.Add((uint)p.Id);
         }
         if (pids.Count == 0) return list;
+        AddSessions(device, pids, list);
+        if (list.Count > 0) return list;
+        try
+        {
+            foreach (var d in enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active))
+            {
+                bool keep = false;
+                try
+                {
+                    if (d.ID != device.ID)
+                    {
+                        int before = list.Count;
+                        AddSessions(d, pids, list);
+                        keep = list.Count > before;
+                    }
+                }
+                catch { /* 途中で外れた出力先 */ }
+                if (keep) extra.Add(d);
+                else d.Dispose();
+            }
+        }
+        catch { /* 出力先の一覧を取れない */ }
+        return list;
+    }
+
+    private static void AddSessions(MMDevice device, HashSet<uint> pids, List<AudioSessionControl> list)
+    {
         var manager = device.AudioSessionManager;
         manager.RefreshSessions();
         var sessions = manager.Sessions;
@@ -385,7 +433,15 @@ public sealed class AudioCapture : IDisposable
             catch { /* 途中で終了したセッション */ }
             finally { s?.Dispose(); }
         }
-        return list;
+    }
+
+    private static void DisposeDevices(List<MMDevice> devices)
+    {
+        foreach (var d in devices)
+        {
+            try { d.Dispose(); } catch { /* 無視 */ }
+        }
+        devices.Clear();
     }
 
     private static void DisposeAll(List<AudioSessionControl> sessions)

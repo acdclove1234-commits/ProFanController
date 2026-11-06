@@ -276,6 +276,9 @@ public sealed class EventRing
     private int _count;
     private int _head;
 
+    /// <summary>種類ごとの、これまでに追加した数（記録の統計用。書くのは分析スレッドだけ）</summary>
+    public readonly long[] CountByKind = new long[8];
+
     /// <summary>これまでに追加した最後の通し番号（まだなければ 0）</summary>
     public long LastId { get { lock (_gate) return _nextId - 1; } }
 
@@ -285,6 +288,8 @@ public sealed class EventRing
         lock (_gate)
         {
             long id = _nextId++;
+            int ki = (int)kind;
+            if (ki >= 0 && ki < CountByKind.Length) CountByKind[ki]++;
             _items[_head] = new AudioEvent(id, kind, t, strength);
             _head = (_head + 1) % Capacity;
             if (_count < Capacity) _count++;
