@@ -82,6 +82,12 @@ public partial class App : Application
             Shutdown();
             return;
         }
+        // お片付けの最後: 本体が終わってから設定・ログ・記録を消すプロセス（App.Uninstall.cs）
+        if (TryRunCleanupHelper(e.Args))
+        {
+            Shutdown();
+            return;
+        }
         bool recovered = e.Args.Contains(Watchdog.RecoveredArgument, StringComparer.OrdinalIgnoreCase);
         bool restarting = e.Args.Contains(RestartArgument, StringComparer.OrdinalIgnoreCase);
 
@@ -422,7 +428,8 @@ public partial class App : Application
     /// <summary>設定が変わったら、見張りプロセス・通知・RGB に反映する</summary>
     private void ApplyServiceSettings()
     {
-        if (_controller is null) return;
+        // お片付けの途中・後は、消したもの（ファイアウォールの許可・見張りプロセス）を作り直さない
+        if (_controller is null || _cleanupStarted) return;
         var cfg = _controller.Config;
         Notifier.Config = cfg.Notify;
 
@@ -455,8 +462,7 @@ public partial class App : Application
     {
         try
         {
-            string exe = Path.GetFileName(Environment.ProcessPath ?? "ProFanController.exe");
-            using var key = Registry.LocalMachine.CreateSubKey($@"SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\{exe}");
+            using var key = Registry.LocalMachine.CreateSubKey(CrashDumpKey); // お片付け（App.Uninstall.cs）で消す
             string folder = Path.Combine(Logger.Directory, "dumps");
             Directory.CreateDirectory(folder);
             key.SetValue("DumpFolder", folder, RegistryValueKind.ExpandString);
@@ -793,7 +799,7 @@ public partial class App : Application
     /// <summary>設定に合わせて Web サーバーを開始・停止する</summary>
     public void UpdateWebServer()
     {
-        if (_controller is null) return;
+        if (_controller is null || _cleanupStarted) return;
         var cfg = _controller.Config.Web;
         _web ??= new WebServer(() => _statusJson, cmd => Dispatcher.Invoke(() => ExecuteCommand(cmd)));
 

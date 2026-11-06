@@ -2902,6 +2902,26 @@
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
+
+                        <!-- ファン制御用のドライバー（PawnIO）: ないときは、ここからインストールできる（MainWindow.Setup.cs） -->
+                        <Border x:Name="PawnIoCard" Style="{StaticResource Card}" Margin="0,0,0,14">
+                            <StackPanel>
+                                <TextBlock Text="ファン制御用のドライバー（PawnIO）" Style="{StaticResource H2}"/>
+                                <ui:PawnIoInstallPanel x:Name="PawnIoPanel" Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- アンインストール（お片付け）（MainWindow.Setup.cs ・ App.Uninstall.cs） -->
+                        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                            <StackPanel>
+                                <TextBlock Text="アンインストール（お片付け）" Style="{StaticResource H2}"/>
+                                <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap" Margin="0,4,0,0" LineHeight="20"
+                                           Text="このアプリを使うのをやめるときに使います。ファンを BIOS の自動制御に戻したことを確かめてから、ライティングの制御・ログオン時の自動起動・ファイアウォールの許可などを片付けて終了します。何を行うかは、次の画面で確かめてから始められます（設定・記録を消すか、PawnIO もアンインストールするかも選べます）"/>
+                                <WrapPanel Margin="0,14,0,0">
+                                    <Button x:Name="CleanUninstallButton" Style="{StaticResource DangerButton}" Content="アンインストール（お片付け）…" Click="OnCleanUninstallClick" Margin="0,0,8,8"/>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Border>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

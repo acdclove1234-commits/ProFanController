@@ -336,10 +336,7 @@ public partial class MainWindow : Window
         Grid.SetColumnSpan(CurvesPlaceholder, 1);
         SelectEditProfile(_controller.EffectiveProfile, null, 0);
 
-        if (!catalog.PawnIoInstalled)
-        {
-            ShowAlert("PawnIO ドライバが見つかりません。管理者 PowerShell で「winget install namazso.PawnIO」を実行してから、再起動してください。", AlertLevel.Danger);
-        }
+        UpdateDriverStatus(catalog); // PawnIO がなければ、インストールの案内を出す（MainWindow.Setup.cs）
     }
 
     public void OnSnapshot(EngineSnapshot s)

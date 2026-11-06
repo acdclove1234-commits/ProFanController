@@ -39,4 +39,26 @@ public static class SystemTool
             WorkingDirectory = Environment.SystemDirectory,
         })?.Dispose();
     }
+
+    /// <summary>
+    /// Web ページを、ふだん使っているブラウザーで開く（エクスプローラー経由なので、ブラウザーは管理者権限にならない）。
+    /// 開くのは https のアドレスだけ（ほかの形の文字列をエクスプローラーに渡さない）
+    /// </summary>
+    public static void OpenUrl(string url)
+    {
+        if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || uri.Scheme != Uri.UriSchemeHttps)
+            throw new ArgumentException($"https のアドレスではありません: {url}", nameof(url));
+        Open(uri.AbsoluteUri);
+    }
+
+    /// <summary>エクスプローラーで、そのファイル・フォルダーが入っているフォルダーを開いて、選んだ状態にする</summary>
+    public static void Reveal(string path)
+    {
+        string explorer = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
+        Process.Start(new ProcessStartInfo(explorer, $"/select,\"{path.TrimEnd(Path.DirectorySeparatorChar)}\"")
+        {
+            UseShellExecute = false,
+            WorkingDirectory = Environment.SystemDirectory,
+        })?.Dispose();
+    }
 }
