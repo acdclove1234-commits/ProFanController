@@ -58,7 +58,7 @@ public sealed class BeatTracker
         /// <summary>くし形のフィルターで、周期の何倍の自己相関を足すか</summary>
         internal static int[] CombMultiples = { 1, 2, 3, 4 };
         /// <summary>拍の位置の取り直しで、ちょうど半拍ずれた位置へ移るのに必要な、そろい方の比（今の位置の何倍か）</summary>
-        internal static double HalfShiftRatio = 3;
+        internal static double HalfShiftRatio = 2;
         /// <summary>付点 8 分の刻みの疑い: 4/3 倍の周期のくし形の値が、今の周期のこの倍以上なら疑う（0 = 疑わない）。疑うときの「音の多さ」の基準</summary>
         internal static double DottedSuspectRatio = 0.6, SuspectRatioZero = 1.0, SuspectRatioFull = 1.5;
     }
