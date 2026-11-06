@@ -2430,7 +2430,7 @@
                                 <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding DryRun}" Margin="0,16,0,0">
                                     <StackPanel>
                                         <TextBlock Text="DRY RUN（テストモード）" FontWeight="SemiBold"/>
-                                        <TextBlock Text="計算結果を表示するだけで、ファンには書き込みません" Style="{StaticResource Caption}"/>
+                                        <TextBlock Text="計算結果を表示するだけで、ファンには書き込みません（ポンプの回転が落ちたときの保護運転と、自分で始めた識別・測定・一時指定だけは書き込みます）" Style="{StaticResource Caption}" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </CheckBox>
                                 <Grid Margin="0,18,0,0">

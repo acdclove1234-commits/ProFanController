@@ -391,7 +391,7 @@ public partial class MainWindow : Window
         else if (s.Paused)
             SetStatus("一時停止中", "BIOS 制御（ポンプ監視は継続）", Palette.Warn);
         else if (s.DryRun)
-            SetStatus("DRY RUN", "計算だけで、ファンには書き込んでいません。下のボタンで制御を始めます", Palette.Warn);
+            SetStatus("DRY RUN", "計算だけで、ファンには書き込んでいません（ポンプ保護は働きます）。下のボタンで制御を始めます", Palette.Warn);
         else if (s.Fans.Any(f => f.State == FanState.SensorMissing))
             SetStatus("制御中（要確認）", "見つからないセンサーがあります（部品の交換など）", Palette.Warn);
         else if (s.Suspects is { Count: > 0 })

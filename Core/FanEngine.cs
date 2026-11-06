@@ -428,6 +428,9 @@ public sealed class FanEngine : IDisposable
             HookGuardEvents();
 
             OpenHardware(ClockMs());
+            // 最初の周期でファンに書き込む前に 1 回知らせる（見張りは最初の合図を受けてから止まりを数えるので、
+            // 最初の周期の途中で止まったときも、安全な回転数にできるように）
+            try { _heartbeat?.Set(); } catch { /* 見張りがいなくても制御は続ける */ }
             long nextTick = ClockMs();
             while (!StopRequested)
             {
@@ -965,6 +968,10 @@ public sealed class FanEngine : IDisposable
         {
             if (!s.NameResolved) ResolveEmergencySensor(s); // 起動が遅れて見つかったセンサーの名前・しきい値を決め直す
             float? t = ReadPhysicalTemp(s.Id);
+            // 保護の判定には、異常値フィルター（急な変化を 1 周期待つ）を通す前の値も使う:
+            // 緊急温度を一気に超える上昇（65 → 105°C など）を、確かめを待たずに最初の周期で全開にするため。
+            // ありえない値（127°C などの読み取りエラーの印）は ReadRawTemp で除かれる
+            if (ReadRawTemp(s.Id) is float raw && raw >= s.Limit && (t is null || raw > t)) t = raw;
             if (t is float v)
             {
                 if (v >= s.Limit && hot is null)
@@ -1026,6 +1033,11 @@ public sealed class FanEngine : IDisposable
         {
             cal.Fail($"温度が {CalibrationAbortTemp:F0}°C を超えたため中止しました。負荷の低い状態で実行してください。");
         }
+        else if (CalibrationTempLost(fan))
+        {
+            // 温度が分からないまま回転を下げ続けるのは危ないので、測定をやめて通常の制御に戻す
+            cal.Fail("温度が読めなくなったため中止しました。センサーを確認してから、もう一度実行してください。");
+        }
         else
         {
             cal.Step(_hub!.Value(fan.Cfg.RpmSensorId), mono);
@@ -1072,6 +1084,35 @@ public sealed class FanEngine : IDisposable
                 if (ReadPhysicalTemp(s.Id) >= CalibrationAbortTemp) return true;
             }
         }
+        return false;
+    }
+
+    /// <summary>
+    /// キャリブレーションの間に見張る温度が読めなくなったか（CalibrationTooHot と同じセンサーを見る）。
+    /// 自分のセンサーがあればそのどれか、なければ緊急全開の判定に使うセンサーがすべて読めないとき
+    /// </summary>
+    private bool CalibrationTempLost(FanRuntime fan)
+    {
+        var cfg = fan.Cfg;
+        bool hasOwn = false;
+        foreach (var c in fan.Curves)
+        {
+            hasOwn = true;
+            if (ReadTemp(c.Config.SensorId) is null) return true;
+        }
+        if (cfg.Mode == FanModes.Target && cfg.TargetSensorId.Length > 0)
+        {
+            hasOwn = true;
+            if (ReadTemp(cfg.TargetSensorId) is null) return true;
+        }
+        if (cfg.IsGpuFan)
+        {
+            hasOwn = true;
+            _hub!.GpuTemps(cfg.ControlId, out float? core, out _);
+            if (!FanSafety.IsPlausibleTemp(core)) return true;
+        }
+        if (!hasOwn && _emergencySensors.Count > 0)
+            return _emergencySensors.All(s => ReadPhysicalTemp(s.Id) is null);
         return false;
     }
 
@@ -1359,7 +1400,11 @@ public sealed class FanEngine : IDisposable
         // --- 3. ファン停止の検知（30%以上を指示しているのに 0rpm が 5 回続いたら警告。キャリブレーション中・起動直後は除く）
         if (!cfg.IsPump && rpm.HasValue && !calibrating)
         {
-            bool stalled = write && next >= 30 && rpm.Value < 1 && nowMs >= _graceUntilMs;
+            // 回っているはずの指示: 測ってあるファンは「回り始める回転 + 5%」以上、測っていないファンは 30% 以上
+            // （測っていないファンは、低い回転で止まる仕様（0 rpm モード）のこともあるので、これまでどおり 30%）
+            double spinExpected = _cfg.FindCalibration(cfg.ControlId) is { StartDuty: > 0 } stallCal
+                ? Math.Min(30, Math.Max(stallCal.StartDuty, stallCal.StopDuty) + 5) : 30;
+            bool stalled = write && next >= spinExpected && rpm.Value < 1 && nowMs >= _graceUntilMs;
             f.StallTicks = stalled ? f.StallTicks + 1 : 0;
             if (f.StallTicks >= 5)
             {
@@ -1546,6 +1591,9 @@ public sealed class FanEngine : IDisposable
         return Math.Clamp(leaderDuty + cfg.FollowOffset, 0, 100);
     }
 
+    /// <summary>テストモード（DRY RUN）中に保護のために書き込んだとき、知らせに添える一文</summary>
+    private string DryRunNote() => _cfg.DryRun ? "（テストモード中ですが、ポンプの保護のため 100% を書き込みました）" : "";
+
     /// <summary>
     /// ポンプの監視（制御しているかどうか・端子が見つかるかどうかに関係なく、毎周期）:
     ///   ・回転数が警告値を 3 回連続で下回ったら、100% に固定して警告する。警告値を 10 回連続で上回ったら解除する。
@@ -1565,7 +1613,7 @@ public sealed class FanEngine : IDisposable
             {
                 f.PumpRpmLost = true;
                 f.PumpFailsafe = true;
-                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が読めません。回っているか確認できないため、100% で保護運転にしています。すぐに確認してください。", AlertLevel.Danger);
+                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が読めません。回っているか確認できないため、100% で保護運転にしています。すぐに確認してください。{DryRunNote()}", AlertLevel.Danger);
             }
             return;
         }
@@ -1582,7 +1630,7 @@ public sealed class FanEngine : IDisposable
             if (++f.PumpLowTicks >= 3 && !f.PumpFailsafe)
             {
                 f.PumpFailsafe = true;
-                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が {rpm:F0} rpm に低下しています。100% で保護運転中です。すぐに確認してください。", AlertLevel.Danger);
+                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が {rpm:F0} rpm に低下しています。100% で保護運転中です。すぐに確認してください。{DryRunNote()}", AlertLevel.Danger);
             }
         }
         else
