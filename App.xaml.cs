@@ -710,16 +710,24 @@ public partial class App : Application
                 _controller.Config.Rgb.Enabled = true;
                 _controller.Commit(recordUndo: false);
                 break;
+            case "lights" when arg is "off" or "on":
+                // 消灯・点灯（連携は続ける）。消灯するときは、連携がオフなら先にオンにする（オフのままだと機器が自分の光り方に戻るため）
+                _controller.Config.Rgb.LightsOff = arg == "off";
+                if (arg == "off") _controller.Config.Rgb.Enabled = true;
+                _controller.Commit(recordUndo: false);
+                break;
             case "music" when MusicStyles.All.Contains(arg):
                 _controller.Config.Rgb.MusicStyle = arg;
                 _controller.Config.Rgb.Mode = RgbModes.Music;
                 _controller.Config.Rgb.Enabled = true;
+                _controller.Config.Rgb.LightsOff = false; // 光り方を選んだら点灯する
                 _controller.Config.Rgb.Music.Preset = MusicPresets.Custom;
                 _controller.Commit(recordUndo: false);
                 break;
             case "led" when arg is RgbModes.Temperature or RgbModes.Rainbow or RgbModes.RainbowStatic or RgbModes.Breathing or RgbModes.Static or RgbModes.Music:
                 _controller.Config.Rgb.Mode = arg;
                 _controller.Config.Rgb.Enabled = true;
+                _controller.Config.Rgb.LightsOff = false; // 光り方を選んだら点灯する
                 _controller.Commit(recordUndo: false);
                 break;
             case "profile" when _controller.Config.FindProfile(arg) is not null:

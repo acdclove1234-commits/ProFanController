@@ -779,6 +779,7 @@ public sealed class RgbConfig : ObservableObject
     private double _highTemp = 85;
     private bool _blinkOnEmergency = true;
     private bool _directGpuWrite = true;
+    private bool _directGpuUnverified;
     private bool _matchSlowDevices = true;
     private string _mode = RgbModes.Temperature;
     private double _speed = 1.0;
@@ -788,8 +789,11 @@ public sealed class RgbConfig : ObservableObject
     private string _musicSource = "";
     private double _sensitivity = 1.0;
     private bool _gamma = true;
+    private bool _lightsOff;
 
     public bool Enabled { get => _enabled; set => Set(ref _enabled, value); }
+    /// <summary>消灯: LED の制御は続けたまま、すべて黒にする（連携をオフにすると、機器が自分の光り方に戻ってしまうため）</summary>
+    public bool LightsOff { get => _lightsOff; set => Set(ref _lightsOff, value); }
     public string Host { get => _host; set => Set(ref _host, value); }
     public int Port { get => _port; set => Set(ref _port, value); }
     /// <summary>色を決める温度センサー（空なら CPU と GPU の高いほう）</summary>
@@ -804,6 +808,8 @@ public sealed class RgbConfig : ObservableObject
     public bool BlinkOnEmergency { get => _blinkOnEmergency; set => Set(ref _blinkOnEmergency, value); }
     /// <summary>対応しているグラボ（PNY ARGB Epic-X）は OpenRGB を通さず直接書き込む（オフなら OpenRGB を通す）</summary>
     public bool DirectGpuWrite { get => _directGpuWrite; set => Set(ref _directGpuWrite, value); }
+    /// <summary>実機で確かめていない型番のグラボ（書き方は同じと分かっているもの）にも、直接書き込む（初期値はオフ）</summary>
+    public bool DirectGpuUnverified { get => _directGpuUnverified; set => Set(ref _directGpuUnverified, value); }
     /// <summary>
     /// 音楽連動で、グラボ・メモリなど更新の遅いデバイスは、ほかの（速い）デバイスがいま光っている色に合わせる
     /// （オフなら、遅いデバイス用の光り方で光る。デバイスごとに光り方を選んだデバイスは、選んだ光り方のまま）

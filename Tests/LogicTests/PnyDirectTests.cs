@@ -129,6 +129,10 @@ public static class PnyDirectTests
         T.Check(PnyEpicXGpu.IsCandidate(Pny(), out int idx) && idx == 0, "5070 Ti Epic-X on NvAPI GPU 0 is a candidate");
         T.Check(PnyEpicXGpu.IsCandidate(Pny(location: "I2C: Nvidia NvAPI I2C on GPU 1, address 0x60"), out idx) && idx == 1, "GPU index is taken from the location");
         T.Check(!PnyEpicXGpu.IsCandidate(Pny(name: "PNY GeForce RTX 5090 ARGB Epic-X OC"), out _), "large variant (5090) is not");
+        T.Check(PnyEpicXGpu.IsVerified(Pny()) && PnyEpicXGpu.Allowed(Pny(), allowUnverified: false), "the verified 5070 Ti is written directly by default");
+        var other = Pny(name: "PNY GeForce RTX 5070 ARGB Epic-X OC");
+        T.Check(PnyEpicXGpu.IsCandidate(other, out _) && !PnyEpicXGpu.Allowed(other, allowUnverified: false) && PnyEpicXGpu.Allowed(other, allowUnverified: true),
+            "an unverified model with the same layout goes through OpenRGB unless the user opts in");
         T.Check(!PnyEpicXGpu.IsCandidate(Pny(zones: new[] { 41 }), out _), "unexpected zones are not");
         T.Check(!PnyEpicXGpu.IsCandidate(Pny(location: "I2C: Nvidia NvAPI I2C on GPU 0, address 0x49"), out _), "other addresses are not");
         T.Check(!PnyEpicXGpu.IsCandidate(Pny(name: "ASUS GeForce RTX 5070Ti"), out _), "other vendors are not");

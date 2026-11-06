@@ -207,6 +207,19 @@ public sealed class PnyEpicXGpu
         return m.Success && int.TryParse(m.Groups[1].Value, out gpuIndex);
     }
 
+    /// <summary>実機で直接書き込みを確かめた型番（名前の一部。空白の有無は問わない）</summary>
+    public static readonly IReadOnlyList<string> VerifiedModels = new[] { "5070Ti" };
+
+    /// <summary>実機で確かめた型番か（それ以外は、設定「確かめていないグラボにも直接書き込む」がオンのときだけ直接書く）</summary>
+    public static bool IsVerified(RgbDevice d)
+    {
+        string name = d.Name.Replace(" ", "", StringComparison.Ordinal);
+        return VerifiedModels.Any(m => name.Contains(m, StringComparison.OrdinalIgnoreCase));
+    }
+
+    /// <summary>直接書いてよいか: 書き方が分かっているグラボで、確かめた型番か、確かめていない型番も使う設定のとき</summary>
+    public static bool Allowed(RgbDevice d, bool allowUnverified) => IsCandidate(d, out _) && (allowUnverified || IsVerified(d));
+
     /// <summary>直接書けるグラボなら開く（同じグラボは前に開いたものを返す）。書けなければ null（OpenRGB を通して送る）</summary>
     public static PnyEpicXGpu? TryOpen(RgbDevice d)
     {

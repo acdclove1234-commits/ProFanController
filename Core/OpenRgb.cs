@@ -982,6 +982,8 @@ public sealed class RgbSync : IDisposable
 {
     /// <summary>全デバイスで共有する音楽連動の色（デバイスごとに色がずれないように）</summary>
     private readonly SharedColor _sharedColor = new();
+    /// <summary>「確かめていない型番なので OpenRGB を通す」と記録したグラボ（1 台につき 1 回だけ書く）</summary>
+    private readonly HashSet<string> _unverifiedLogged = new(StringComparer.Ordinal);
 
     private static readonly (double At, byte R, byte G, byte B)[] Stops =
     {
@@ -1695,14 +1697,16 @@ public sealed class RgbSync : IDisposable
                 if (c.Device.Index == d.Index) { ch = c; break; }
             }
             // 直接書き込みをオフにした・失敗し続けたグラボは、OpenRGB を通すデバイスとして作り直す
-            if (ch?.Direct is { } old && (!cfg.DirectGpuWrite || old.Faulted))
+            if (ch?.Direct is { } old && (!cfg.DirectGpuWrite || old.Faulted || !PnyEpicXGpu.Allowed(d, cfg.DirectGpuUnverified)))
             {
                 old.Flush(StopFlushMs);   // 書きかけのコマを書き終えてから OpenRGB に任せる（同時に書かない）
                 ch = null;
             }
             // 直接書き込みをオンに戻した → OpenRGB を通していたグラボを、直接書くデバイスとして作り直す
-            if (ch is { Direct: null } && cfg.DirectGpuWrite && PnyEpicXGpu.IsCandidate(d, out _)) ch = null;
-            if (ch is null && cfg.DirectGpuWrite && PnyEpicXGpu.TryOpen(d) is { } gpu)
+            if (ch is { Direct: null } && cfg.DirectGpuWrite && PnyEpicXGpu.Allowed(d, cfg.DirectGpuUnverified)) ch = null;
+            if (ch is null && cfg.DirectGpuWrite && !PnyEpicXGpu.Allowed(d, cfg.DirectGpuUnverified) && PnyEpicXGpu.IsCandidate(d, out _) && _unverifiedLogged.Add(d.Name))
+                Logger.Info($"OpenRGB: {d.Name} は直接書き込みを確かめていない型番なので、OpenRGB を通して光らせます（ライティング →「詳細」で直接書き込みを試せます）");
+            if (ch is null && cfg.DirectGpuWrite && PnyEpicXGpu.Allowed(d, cfg.DirectGpuUnverified) && PnyEpicXGpu.TryOpen(d) is { } gpu)
             {
                 // PNY Epic-X のグラボは OpenRGB を通さず NvAPI で直接書く（OpenRGB は LED 1 個ずつ 41 回書くので遅い）。
                 // OpenRGB にはモードも色も送らない（OpenRGB がこのグラボに書き込まないようにする）

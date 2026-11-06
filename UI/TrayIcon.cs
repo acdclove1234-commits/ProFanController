@@ -24,6 +24,7 @@ public sealed class TrayIcon : IDisposable
     private readonly WinForms.ToolStripMenuItem _ledMenu;
     private readonly WinForms.ToolStripMenuItem _musicMenu;
     private readonly WinForms.ToolStripMenuItem _ledToggle;
+    private readonly WinForms.ToolStripMenuItem _lightsOffItem;
     /// <summary>「LED の光り方」の各項目と、その光り方（チェックを付けるため）</summary>
     private readonly List<(WinForms.ToolStripMenuItem Item, string Mode)> _ledModeItems = new();
     /// <summary>「音楽連動の光り方」の各項目と、その光り方</summary>
@@ -68,6 +69,13 @@ public sealed class TrayIcon : IDisposable
         _ledMenu.DropDownItems.Add(new WinForms.ToolStripSeparator());
         _ledToggle = new WinForms.ToolStripMenuItem("LED 連携", null, (_, _) => ToggleLighting());
         _ledMenu.DropDownItems.Add(_ledToggle);
+        // 消灯: 連携は続けたまま黒にする（連携をオフにすると、機器が自分の光り方（レインボーなど）に戻ってしまうため）
+        _lightsOffItem = new WinForms.ToolStripMenuItem("消灯（制御は続ける）", null, (_, _) => _command(CurrentLighting()?.LightsOff == true ? "lights:on" : "lights:off"))
+        {
+            ToolTipText = "LED をすべて消します。連携は続けるので、機器が自分の光り方に戻りません",
+        };
+        _ledMenu.DropDownItems.Add(_lightsOffItem);
+        _ledMenu.DropDown.ShowItemToolTips = true;
         menu.Items.Add(_ledMenu);
 
         _musicMenu = new WinForms.ToolStripMenuItem("音楽連動の光り方");
@@ -142,7 +150,9 @@ public sealed class TrayIcon : IDisposable
         foreach (var (item, mode) in _ledModeItems) item.Checked = enabled && cfg!.Mode == mode;
         _ledToggle.Checked = enabled;
         _ledToggle.Text = enabled ? "LED 連携をオフにする" : "LED 連携をオンにする";
-        _ledMenu.Text = cfg is null ? "LED の光り方" : enabled ? $"LED の光り方: {ModeLabel(cfg.Mode)}" : "LED の光り方: オフ";
+        _lightsOffItem.Checked = enabled && cfg!.LightsOff;
+        _lightsOffItem.Enabled = enabled;
+        _ledMenu.Text = cfg is null ? "LED の光り方" : !enabled ? "LED の光り方: オフ" : cfg.LightsOff ? "LED の光り方: 消灯中" : $"LED の光り方: {ModeLabel(cfg.Mode)}";
 
         bool music = enabled && cfg!.Mode == RgbModes.Music;
         bool reduceFlashing = cfg?.Music?.ReduceFlashing ?? true;

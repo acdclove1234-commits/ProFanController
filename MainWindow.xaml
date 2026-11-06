@@ -1683,6 +1683,14 @@
                                     <TextBlock Text="OpenRGB が対応している LED が対象です。ASRock Polychrome などメーカーの RGB ソフトとは同時に使わないでください（取り合いになってチカチカします）" Style="{StaticResource Caption}"/>
                                 </StackPanel>
                             </CheckBox>
+                            <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding Rgb.LightsOff}" Margin="0,12,0,0"
+                                      IsEnabled="{Binding Rgb.Enabled}"
+                                      ToolTip="LED をすべて消します。連携は続けるので、機器が自分の光り方（レインボーなど）に戻りません。タスクトレイの「LED の光り方」からも切り替えられます">
+                                <StackPanel>
+                                    <TextBlock Text="消灯する（連携は続ける）" FontWeight="SemiBold"/>
+                                    <TextBlock Text="寝るときや画面を暗くしたいときに。設定はそのまま残るので、オフに戻すと同じ光り方で点きます" Style="{StaticResource Caption}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </CheckBox>
                             <DockPanel Style="{StaticResource LightRow}" Margin="0,12,0,0">
                                 <TextBlock Text="接続先" Style="{StaticResource RowLabel}"
                                            ToolTip="OpenRGB の SDK サーバーの場所。同じ PC なら 127.0.0.1 : 6742 のままで大丈夫です"/>
@@ -2308,6 +2316,10 @@
                             <CheckBox Style="{StaticResource Check}" IsChecked="{Binding Rgb.DirectGpuWrite}" Margin="0,8,0,0"
                                       Content="対応しているグラボは OpenRGB を通さず直接光らせる（PNY ARGB Epic-X。ほかの LED と遅れずに光ります）"
                                       ToolTip="OpenRGB は PNY のグラボの LED を 1 個ずつ書くので、色が変わるたびに約 35 ミリ秒かかり、ほかの LED より遅れます。オンにすると、アプリが NVIDIA のドライバーを通して直接書きます。書き込みに失敗し続けたときは、自動で OpenRGB を通す方法に戻ります"/>
+                            <CheckBox Style="{StaticResource Check}" IsChecked="{Binding Rgb.DirectGpuUnverified}" Margin="24,6,0,0"
+                                      IsEnabled="{Binding Rgb.DirectGpuWrite}"
+                                      Content="確かめていない型番のグラボにも直接書き込む（試すときだけ）"
+                                      ToolTip="直接書き込みを実機で確かめたのは RTX 5070 Ti だけです。同じ PNY ARGB Epic-X の別の型番（LED の並びが同じもの）にも試すときにオンにします。色がおかしいときはオフに戻してください"/>
                             <CheckBox Style="{StaticResource Check}" IsChecked="{Binding Rgb.MatchSlowDevices}" Margin="0,8,0,0"
                                       Content="音楽連動で、グラボ・メモリなど更新の遅いデバイスは、ほかのデバイスの色に合わせる"
                                       ToolTip="グラボやメモリは 1 秒に 4〜8 回しか色を変えられないので、スペクトラム・音量メーターなどの細かい動きは出せません。オンにすると、ファンなど速いデバイスがいま光っている色の平均に合わせて光るので、色がそろって見えます。デバイスごとに光り方を選んだデバイスは、選んだ光り方のままです"/>

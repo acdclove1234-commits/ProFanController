@@ -88,6 +88,10 @@ public sealed class DeviceRenderer
     public const double TemperatureTauSec = 0.5;
     /// <summary>更新の遅いデバイスの、音楽連動でいちばん暗いときの明るさ（0〜1）。チカチカを抑える</summary>
     public const double SlowMinBrightness = 0.75;
+    /// <summary>消灯するとき・点灯に戻すときの時定数（秒）</summary>
+    public const double LightsOffSec = 0.25, LightsOnSec = 0.20;
+    /// <summary>消灯の明るさの倍率（1 = ふつう、0 = 消灯。まだ決めていなければ −1）</summary>
+    private float _offLevel = -1f;
     /// <summary>ちかちかしやすいデバイスで、音が止まったときのムードの色を進める間隔（秒。1 分に 3 回まで書く）</summary>
     public const double FlickerProneIdleStepSec = 20;
 
@@ -361,6 +365,12 @@ public sealed class DeviceRenderer
 
         // 4. 明るさ・クロスフェード → 0〜255
         float bri = (float)(Math.Clamp(cfg.Brightness, 0, 100) / 100);
+        // 消灯: 制御は続けたまま、なめらかに黒へ（同期テスト・白で見比べるときは消さない）
+        bool off = cfg.LightsOff && layer is not (Layer.SyncTest or Layer.WhiteTest);
+        if (_offLevel < 0) _offLevel = off ? 0f : 1f;
+        else _offLevel = EffectContext.Follow(_offLevel, off ? 0f : 1f, (float)Math.Clamp(dt, 0, 0.25), LightsOnSec, LightsOffSec);
+        if (_offLevel < 0.01f && off) _offLevel = 0f;
+        bri *= _offLevel;
         if (_hasGain)
         {
             // 色合わせ: LED ごとに赤・緑・青の倍率を掛ける（光の量に掛けるので、白の色味をそのまま合わせられる）
