@@ -425,14 +425,14 @@ public sealed class AudioEngine
 
     // ===== 音の統計（記録に残して、実際の曲での光り方の調整に使う）
 
-    /// <summary>音が鳴っている間、15 秒ごとに音の統計を記録に書く</summary>
+    /// <summary>音が鳴っている間、1 分ごとに音の統計を記録に書く</summary>
     public bool StatsLogging { get; set; }
-    private const double StatsSec = 15;
+    private const double StatsSec = 60;
     private double _stSec, _stBassE, _stMidE, _stTrebleE, _stLoud, _stBassEMax, _stMidEMax, _stTrebleEMax, _stLocked;
     private int _stFrames;
     private readonly long[] _stCount0 = new long[8];
 
-    // 反応しない原因を調べるための値（音が鳴っているかに関係なく、15 秒ごと）
+    // 反応しない原因を調べるための値（音が鳴っているかに関係なく、1 分ごと）
     private double _dgSec, _dgOpen, _dgActivity, _dgApp, _dgRms;
     private int _dgFrames;
 
