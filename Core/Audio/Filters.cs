@@ -335,7 +335,7 @@ public struct LowTracker
 /// </summary>
 public struct BeatExpander
 {
-    public const float Keep = 0.25f;
+    public const float Keep = 0.5f;
     private const double Step = 0.01;
     public double M;
 

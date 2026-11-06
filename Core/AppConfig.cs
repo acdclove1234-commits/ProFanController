@@ -867,8 +867,8 @@ public sealed class MusicConfig : ObservableObject
     private double _gainDb = 0;
     private double _reactionMs = 6;
     private double _smoothnessMs = 200;
-    private double _punch = 62;
-    private double _minBrightness = 10;
+    private double _punch = 58;
+    private double _minBrightness = 14;
     private double _dynamicRangeDb = 40;
     private double _autoBalance = 35;
     private double _trebleTilt = 1.5;
@@ -945,15 +945,16 @@ public sealed class MusicConfig : ObservableObject
     /// </summary>
     private void UpgradeOldIntensityDefaults()
     {
-        (double R, double S, double P, double M)? old = Intensity switch
+        // これまでの版の値（6.5.1 まで、6.5.2 の開発中のいちど目）のどれかと全部同じなら、まだ自分で変えていないとみなす
+        (double R, double S, double P, double M)[] olds = Intensity switch
         {
-            Intensities.Subtle => (40, 600, 30, 35),
-            Intensities.Moderate => (10, 250, 50, 20),
-            Intensities.High => (4, 160, 65, 12),
-            Intensities.Intense => (0, 90, 80, 4),
-            _ => null,
+            Intensities.Subtle => new[] { (40.0, 600.0, 30.0, 35.0), (40.0, 500.0, 35.0, 25.0) },
+            Intensities.Moderate => new[] { (10.0, 250.0, 50.0, 20.0), (6.0, 200.0, 62.0, 10.0) },
+            Intensities.High => new[] { (4.0, 160.0, 65.0, 12.0), (3.0, 150.0, 72.0, 6.0) },
+            Intensities.Intense => new[] { (0.0, 90.0, 80.0, 4.0) },
+            _ => Array.Empty<(double, double, double, double)>(),
         };
-        if (old is not { } o || ReactionMs != o.R || SmoothnessMs != o.S || Punch != o.P || MinBrightness != o.M) return;
+        if (!olds.Any(o => ReactionMs == o.R && SmoothnessMs == o.S && Punch == o.P && MinBrightness == o.M)) return;
         var p = MusicTuning.Profile(Intensity);
         ReactionMs = p.ReactionMs;
         SmoothnessMs = p.SmoothnessMs;
