@@ -20,14 +20,29 @@ public sealed class RoleEffect : IMusicEffect
 {
     public const double BassTauSec = 0.22;
     public const double MidTauSec = 0.18;
-    public const double TrebleTauSec = 0.09;
+    public const double TrebleTauSec = 0.07;
     public const double AllTauSec = 0.30;
     /// <summary>遅いデバイスで消え方に掛ける倍率</summary>
     public const double SlowFactor = 1.8;
     /// <summary>ハイハットの光で白へ寄せる割合（× 光の強さ）</summary>
     public const float HatWhiteMix = 0.35f;
 
+    /// <summary>音が鳴っている間の下地の明るさと、音の強さで足す幅（どのパーツも真っ暗にならないように）</summary>
+    public const float BodyLevel = 0.12f;
+    public const float BodyRange = 0.30f;
+    /// <summary>役割ごとの強さの山が下がっていく時定数（秒）と、山の下限（ほとんど鳴っていない音を拡大しすぎない）</summary>
+    public const double PeakReleaseSec = 4.0;
+    public const float PeakFloor = 0.12f;
+    /// <summary>出来事の光を満点にする多さ（1 秒あたり）。これより多く鳴る音は √(RefRate / 多さ) 倍に弱める（下限 MinFlashAmp）</summary>
+    public const float RefRate = 2f;
+    public const float MinFlashAmp = 0.75f;
+    /// <summary>出来事の多さをならす割合（1 回ごと）</summary>
+    private const float RateFollow = 0.15f;
+
     private const int Roles = 4;
+    private readonly float[] _peak = new float[Roles];
+    private readonly float[] _rate = new float[Roles];
+    private readonly double[] _lastHitT = new double[Roles];
     private readonly bool _slow;
     private readonly double[] _hitT = new double[Roles];
     private readonly float[] _hitS = new float[Roles];
@@ -48,6 +63,9 @@ public sealed class RoleEffect : IMusicEffect
         Array.Clear(_hitS);
         Array.Clear(_glow);
         Array.Clear(_flash);
+        Array.Fill(_peak, PeakFloor);
+        Array.Fill(_rate, RefRate);
+        Array.Fill(_lastHitT, double.NegativeInfinity);
     }
 
     private double Tau(MusicRole r)
@@ -73,26 +91,38 @@ public sealed class RoleEffect : IMusicEffect
             if (r < 0) continue;
             _hitT[r] = e.T;
             _hitS[r] = Math.Clamp(0.55f + 0.25f * e.Strength, 0, 1);
+            // 出来事の多さ（1 秒あたり）: 間隔から求めて、ならしておく
+            double gap = e.T - _lastHitT[r];
+            if (gap > 0.02 && gap < 4) _rate[r] += (1 / (float)gap - _rate[r]) * RateFollow;
+            _lastHitT[r] = e.T;
         }
 
         var f = c.Frame;
+        bool active = f.Activity > 0.3f;
         for (int r = 0; r < Roles; r++)
         {
             var role = (MusicRole)r;
             double tau = Tau(role);
             // 今の分析結果は、本当の時刻からの経過時間だけ減らす（古い値を何度も拾い直さない）
             float age = (float)Math.Exp(-(c.T - c.FrameTime) / tau);
-            float level = role switch
+            float raw = role switch
             {
                 MusicRole.Bass => Math.Max(f.BassE, 0.8f * f.KickEnv),
                 MusicRole.Mid => f.MidE,
                 MusicRole.Treble => f.TrebleE,
                 _ => f.LoudVU,
             } * age;
-            float hit = role == MusicRole.All ? 0f : _hitS[r] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[r]) / tau);
+            // 役割ごとに、最近の強さの山で割ってそろえる（中音はふつう低音より弱いので、そのままだと中音のパーツだけ暗い）
+            _peak[r] = Math.Max(raw, Math.Max(PeakFloor, _peak[r] * EffectContext.Decay(c.Dt, PeakReleaseSec)));
+            float level = Math.Clamp(raw / _peak[r], 0, 1);
+            // 出来事の光: 多く鳴る音（ハイハットは 1 秒に 8 回など）ほど弱くする（どのパーツも同じくらいの目立ち方にする）
+            float amp = Math.Clamp(MathF.Sqrt(RefRate / Math.Max(_rate[r], 0.25f)), MinFlashAmp, 1f);
+            float hit = role == MusicRole.All ? 0f : amp * _hitS[r] * (float)Math.Exp(-Math.Max(0, c.T - _hitT[r]) / tau);
             _flash[r] = hit;
-            // 出来事の光をいちばん強く、音の強さはその 75% までにする（どの音で光ったかが分かるように）
-            float x = Math.Max(hit, 0.75f * level);
+            // 音が鳴っている間は、どのパーツも下地の明るさ（Body）＋音の強さで光り、出来事でさらに光る（音が止まって門が閉じたら下地は消える）
+            float body = active ? BodyLevel + BodyRange * level : 0.6f * level;
+            // 出来事の光は下地に重ねる（下地より弱い光でも、光ったことが分かるように）
+            float x = body + hit * (1 - body);
             _glow[r] = Math.Max(x, _glow[r] * EffectContext.Decay(c.Dt, tau));
             double off = role switch { MusicRole.Bass => 0, MusicRole.Mid => 1 / 3.0, MusicRole.Treble => 2 / 3.0, _ => 0.5 };
             _color[r] = role == MusicRole.Treble && hit > 0.05f

@@ -88,6 +88,7 @@ public static class MusicRoleTests
         r.Step(2.51, new AudioEvent(2, AudioEventKind.Hat, 2.51, 2f));
         float bassH = r.Avg(1, 8), trebleH = r.Avg(9, 8);
         T.Check(trebleH > treble1 + 0.3f && bassH < bass1 + 0.05f, $"hi-hat lights the treble zone only (treble {treble1:F2} → {trebleH:F2}, bass {bass1:F2} → {bassH:F2})");
+        r.In.Frame.Activity = 0; // 音が止まった（門が閉じた）
         r.Step(3.5);
         T.Check(r.Avg(9, 8) < 0.1f && r.Avg(1, 8) < 0.1f, "both fade out when quiet");
     }
@@ -148,5 +149,74 @@ public static class MusicRoleTests
         var dots = Enumerable.Range(0, 100).Where(i => r3.R.LastLight[i].MaxChannel > 0.3f).Select(i => r3.R.LastLight[i]).ToList();
         bool whitish = dots.All(c => Math.Min(c.R, Math.Min(c.G, c.B)) > 0.25f * c.MaxChannel);
         T.Check(dots.Count is >= 1 and <= 8 && whitish, $"hi-hat: a few whitish dots ({dots.Count})");
+    }
+}
+
+public static class MusicRoleBalanceTests
+{
+    private static RgbDevice Board() => new(0, "ASRock B860", 34, RgbDevice.TypeMotherboard, new[] { 1, 8, 8, 8, 9 }, "HID: test")
+    {
+        ZoneNames = new[] { "RGB LED 1 Header", "Addressable Header 1", "Addressable Header 2", "Addressable Header 3", "PCB" },
+    };
+
+    /// <summary>
+    /// ふつうの曲（キック 1 秒に 2 回・スネア 1 回・ハイハット 8 回。低音は強く、中音は弱い）で、
+    /// 低音・中音・高音のゾーンの平均の明るさと、明るさの揺れの大きさが、どれも近いこと
+    /// </summary>
+    public static void TestRolesAreBalanced()
+    {
+        var ds = new RgbDeviceSettings { Name = "ASRock B860" };
+        ds.Zones.Add(new RgbZoneSettings { Name = "Addressable Header 1", Sound = MusicSounds.Bass });
+        ds.Zones.Add(new RgbZoneSettings { Name = "Addressable Header 2", Sound = MusicSounds.Mid });
+        ds.Zones.Add(new RgbZoneSettings { Name = "Addressable Header 3", Sound = MusicSounds.Treble });
+        var m = ResolvedMusic.Default with { Effect = MusicStyles.Role, Palette = Palettes.Neon, MinBrightness = 0, TempoMode = TempoModes.Off };
+        var dev = Board();
+        var r = new DeviceRenderer(dev);
+        var input = new RenderInput { Cfg = new RgbConfig { Mode = RgbModes.Music, Brightness = 100, Gamma = false }, Music = m, Device = ds };
+        input.Frame.GateOpen = true;
+        input.Frame.Activity = 1;
+        var output = new Rgb[dev.LedCount];
+        double fps = 60, last = double.NaN;
+        long id = 0;
+        var sum = new double[3];
+        var sumSq = new double[3];
+        int n = 0;
+        for (double t = 1; t < 21; t += 1 / fps)
+        {
+            input.Events.Clear();
+            double beat = (t - 1) * 2; // 1 秒に 2 拍
+            double prevBeat = double.IsNaN(last) ? -1 : (last - 1) * 2;
+            if (Math.Floor(beat) > Math.Floor(prevBeat)) input.Events.Add(new AudioEvent(++id, AudioEventKind.Kick, t, 2f));
+            if (Math.Floor(beat / 2 + 0.5) > Math.Floor(prevBeat / 2 + 0.5)) input.Events.Add(new AudioEvent(++id, AudioEventKind.Snare, t, 1.3f));
+            if (Math.Floor(beat * 4) > Math.Floor(prevBeat * 4)) input.Events.Add(new AudioEvent(++id, AudioEventKind.Hat, t, 1.2f));
+            double ph = beat - Math.Floor(beat);
+            input.Frame.BassE = (float)(0.9 * Math.Exp(-ph * 4));
+            input.Frame.KickEnv = input.Frame.BassE;
+            input.Frame.MidE = (float)(0.25 + 0.1 * Math.Sin(t * 3));
+            input.Frame.TrebleE = (float)(0.45 + 0.1 * Math.Sin(t * 7));
+            input.Frame.LoudVU = 0.6f;
+            input.T = input.TEval = input.Frame.T = t;
+            input.TPrevEval = double.IsNaN(last) ? t : last;
+            input.Dt = double.IsNaN(last) ? 0 : t - last;
+            r.Render(input, output);
+            last = t;
+            if (t < 6) continue; // 自動の明るさ合わせが落ち着くまで待つ
+            var l = r.LastLight;
+            for (int k = 0; k < 3; k++)
+            {
+                float v = 0;
+                for (int i = 1 + 8 * k; i < 9 + 8 * k; i++) v += l[i].MaxChannel;
+                v /= 8;
+                sum[k] += v;
+                sumSq[k] += v * v;
+            }
+            n++;
+        }
+        var mean = sum.Select(s => s / n).ToArray();
+        var sd = Enumerable.Range(0, 3).Select(k => Math.Sqrt(Math.Max(0, sumSq[k] / n - mean[k] * mean[k]))).ToArray();
+        T.Info($"roles bass/mid/treble: mean {mean[0]:F2}/{mean[1]:F2}/{mean[2]:F2}, swing (sd) {sd[0]:F2}/{sd[1]:F2}/{sd[2]:F2}");
+        T.Check(mean.Max() / mean.Min() < 1.3, "average brightness of bass / mid / treble zones within 1.3×");
+        T.Check(sd.Min() > 0.05 && sd.Max() / sd.Min() < 2.5, "every zone visibly reacts, and none swings 2.5× more than another");
+        T.Check(mean.Min() > 0.2, "no zone stays dark while music plays");
     }
 }
