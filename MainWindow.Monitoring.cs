@@ -31,8 +31,8 @@ public partial class MainWindow
         static float? V(IReadOnlyDictionary<string, float?> v, SensorInfo? s) => s is not null && v.TryGetValue(s.Id, out var x) ? x : null;
 
         // --- CPU
-        var cpuLoad = Find("Cpu", "Load", n => n == "CPU Total");
-        var cpuPower = Find("Cpu", "Power", n => n == "CPU Package");
+        var cpuLoad = SensorNames.Find(all, "Cpu", "Load", SensorNames.CpuLoad);
+        var cpuPower = SensorNames.Find(all, "Cpu", "Power", SensorNames.CpuPower);
         var cpuClocks = all.Where(s => s.HardwareType.StartsWith("Cpu") && s.SensorType == "Clock" && s.Name.Contains("Core") && !s.Name.Contains("Bus")).ToList();
         if (cpuLoad is not null)
         {
@@ -58,8 +58,8 @@ public partial class MainWindow
         }
 
         // --- GPU
-        var gpuLoad = Find("Gpu", "Load", n => n == "GPU Core");
-        var gpuClock = Find("Gpu", "Clock", n => n == "GPU Core");
+        var gpuLoad = SensorNames.Find(all, "Gpu", "Load", SensorNames.GpuLoad);
+        var gpuClock = SensorNames.Find(all, "Gpu", "Clock", SensorNames.GpuClock);
         var gpuPower = Find("Gpu", "Power", n => n.Contains("Package")) ?? Find("Gpu", "Power", _ => true);
         if (gpuLoad is not null)
         {
@@ -85,8 +85,8 @@ public partial class MainWindow
         }
 
         // --- VRAM
-        var vramUsed = Find("Gpu", "SmallData", n => n == "GPU Memory Used");
-        var vramTotal = Find("Gpu", "SmallData", n => n == "GPU Memory Total");
+        var vramUsed = SensorNames.Find(all, "Gpu", "SmallData", SensorNames.VramUsed);
+        var vramTotal = SensorNames.Find(all, "Gpu", "SmallData", SensorNames.VramTotal);
         if (vramUsed is not null && vramTotal is not null)
         {
             _metricTiles.Add(new MetricTileVm

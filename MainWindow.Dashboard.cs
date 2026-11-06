@@ -25,10 +25,10 @@ public partial class MainWindow
         var list = new List<DashboardCard>();
         if (_catalog is null) return list;
         var t = _catalog.Temperatures;
-        var cpu = t.FirstOrDefault(x => x.HardwareType.StartsWith("Cpu") && x.Name is "CPU Package" or "Core (Tctl/Tdie)" or "Core (Tctl)")
+        var cpu = SensorNames.CpuTemperature(t)
                   ?? t.FirstOrDefault(x => x.HardwareType.StartsWith("Cpu"));
-        var gpuCore = t.FirstOrDefault(x => x.HardwareType.StartsWith("Gpu") && x.Name == "GPU Core");
-        var gpuHot = t.FirstOrDefault(x => x.HardwareType.StartsWith("Gpu") && x.Name == "GPU Hot Spot");
+        var gpuCore = SensorNames.GpuCoreTemperature(t);
+        var gpuHot = SensorNames.GpuHotSpotTemperature(t);
         var system = t.FirstOrDefault(x => x.HardwareType == "SuperIO" && x.Name == "System");
 
         if (cpu is not null) list.Add(new DashboardCard { Title = "CPU", SensorId = cpu.Id, Warn = 75, Danger = 90 });

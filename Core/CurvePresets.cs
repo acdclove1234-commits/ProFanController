@@ -87,6 +87,63 @@ public static class CurvePresets
             }
             fans.Add(fan);
         }
-        return new ProfileConfig { Name = name, Fans = fans };
+        return new ProfileConfig { Name = name, Role = ProfileRoles.FromPreset(direction), Fans = fans };
     }
+}
+
+/// <summary>
+/// プロファイルの役割（名前ではなくこれで判断する。名前を変えても、おまかせ調整の目標温度・新しいファンのカーブ・「静音」の一時使用が正しく動くように）
+/// </summary>
+public static class ProfileRoles
+{
+    public const string Silent = "Silent";
+    public const string Balanced = "Balanced";
+    public const string Performance = "Performance";
+    public const string Custom = "Custom";
+    public static readonly string[] All = { Silent, Balanced, Performance, Custom };
+
+    public static string Label(string id) => id switch
+    {
+        Silent => "静音",
+        Balanced => "標準",
+        Performance => "冷却重視",
+        _ => "その他",
+    };
+
+    /// <summary>役割がまだないプロファイル（前の版の設定）は、名前から決める（1 回だけ）</summary>
+    public static string FromName(string? name)
+    {
+        string n = name ?? "";
+        if (n.Contains("静音") || n.Contains("Silent", StringComparison.OrdinalIgnoreCase) || n.Contains("夜")) return Silent;
+        if (n.Contains("パフォーマンス") || n.Contains("冷却") || n.Contains("Performance", StringComparison.OrdinalIgnoreCase) || n.Contains("ゲーム")) return Performance;
+        if (n.Contains("標準") || n.Contains("バランス") || n.Contains("Balanced", StringComparison.OrdinalIgnoreCase)) return Balanced;
+        return Custom;
+    }
+
+    public static string Normalize(string? id) => id is not null && All.Contains(id) ? id : Custom;
+
+    /// <summary>役割 → カーブのプリセット（新しいファンを足すとき）</summary>
+    public static string Preset(string role) => role switch
+    {
+        Silent => CurvePresets.Silent,
+        Performance => CurvePresets.Performance,
+        _ => CurvePresets.Balanced,
+    };
+
+    /// <summary>役割 → おまかせ調整の目標温度のずらし（°C。静音は高め、冷却重視は低め）</summary>
+    public static double TargetOffset(string role) => role switch
+    {
+        Silent => 5,
+        Performance => -5,
+        _ => 0,
+    };
+
+    /// <summary>カーブのプリセット → 役割（プロファイルを作るとき）</summary>
+    public static string FromPreset(string preset) => preset switch
+    {
+        CurvePresets.Silent => Silent,
+        CurvePresets.Performance or CurvePresets.Full => Performance,
+        CurvePresets.Balanced => Balanced,
+        _ => Custom,
+    };
 }

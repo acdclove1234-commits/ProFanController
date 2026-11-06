@@ -89,15 +89,15 @@ public partial class MainWindow
             if (s is not null) roles[role] = s.Id;
         }
         var t = _catalog.Temperatures;
-        Add(StatRoles.CpuTemp, t.FirstOrDefault(x => x.HardwareType.StartsWith("Cpu") && x.Name is "CPU Package" or "Core (Tctl/Tdie)" or "Core (Tctl)")
+        Add(StatRoles.CpuTemp, SensorNames.CpuTemperature(t)
                                ?? t.FirstOrDefault(x => x.HardwareType.StartsWith("Cpu")));
-        Add(StatRoles.GpuTemp, t.FirstOrDefault(x => x.HardwareType.StartsWith("Gpu") && x.Name == "GPU Core"));
+        Add(StatRoles.GpuTemp, SensorNames.GpuCoreTemperature(t));
         Add(StatRoles.Ambient, t.FirstOrDefault(x => x.HardwareType == "SuperIO" && x.Name is "System" or "Motherboard"));
-        Add(StatRoles.CpuPower, all.FirstOrDefault(x => x.HardwareType.StartsWith("Cpu") && x.SensorType == "Power" && x.Name == "CPU Package"));
+        Add(StatRoles.CpuPower, SensorNames.Find(all, "Cpu", "Power", SensorNames.CpuPower));
         Add(StatRoles.GpuPower, all.FirstOrDefault(x => x.HardwareType.StartsWith("Gpu") && x.SensorType == "Power" && x.Name.Contains("Package"))
                                 ?? all.FirstOrDefault(x => x.HardwareType.StartsWith("Gpu") && x.SensorType == "Power"));
-        Add(StatRoles.CpuLoad, all.FirstOrDefault(x => x.HardwareType.StartsWith("Cpu") && x.SensorType == "Load" && x.Name == "CPU Total"));
-        Add(StatRoles.GpuLoad, all.FirstOrDefault(x => x.HardwareType.StartsWith("Gpu") && x.SensorType == "Load" && x.Name == "GPU Core"));
+        Add(StatRoles.CpuLoad, SensorNames.Find(all, "Cpu", "Load", SensorNames.CpuLoad));
+        Add(StatRoles.GpuLoad, SensorNames.Find(all, "Gpu", "Load", SensorNames.GpuLoad));
         return roles;
     }
 
@@ -282,9 +282,12 @@ public partial class MainWindow
 
     // ----- 異常の記録 -----
 
-    private void RefreshRecords()
+    /// <summary>フライトレコーダーの記録の一覧（フォルダの中を読むので別スレッドで。画面を開いた瞬間に止まらないように）</summary>
+    private async void RefreshRecords()
     {
-        var list = FlightRecorder.List();
+        List<FlightRecord> list;
+        try { list = await Task.Run(FlightRecorder.List); }
+        catch (Exception ex) { Logger.Warn($"記録の一覧を読めません: {ex.Message}"); return; }
         RecordsList.ItemsSource = list;
         RecordsEmpty.Visibility = list.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         if (list.Count == 0) RecordSummary.Visibility = Visibility.Collapsed;

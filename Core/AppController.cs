@@ -161,7 +161,7 @@ public sealed class AppController : IDisposable
     public bool StartQuiet(TimeSpan duration)
     {
         string? quiet = Config.FindProfile(Config.Quick.QuietProfile)?.Name
-                        ?? Config.Profiles.FirstOrDefault(p => p.Name.Contains("静音"))?.Name;
+                        ?? Config.Profiles.FirstOrDefault(p => p.Role == ProfileRoles.Silent)?.Name;
         if (quiet is null) return false;
 
         string before = EffectiveProfile;

@@ -144,7 +144,7 @@ public sealed class AppConfig : ObservableObject
         // v1 → v2: ファン一覧をそのまま「標準」にし、静音／パフォーマンスを自動生成する
         if (Profiles.Count == 0 && Fans is { Count: > 0 })
         {
-            var standard = new ProfileConfig { Name = "標準", Fans = new ObservableCollection<FanConfig>(Fans) };
+            var standard = new ProfileConfig { Name = "標準", Role = ProfileRoles.Balanced, Fans = new ObservableCollection<FanConfig>(Fans) };
             Profiles.Add(CurvePresets.DeriveProfile(standard, "静音", CurvePresets.Silent));
             Profiles.Add(standard);
             Profiles.Add(CurvePresets.DeriveProfile(standard, "パフォーマンス", CurvePresets.Performance));
@@ -153,7 +153,9 @@ public sealed class AppConfig : ObservableObject
         }
         Fans = null;
 
-        if (Profiles.Count == 0) Profiles.Add(new ProfileConfig { Name = "標準" });
+        if (Profiles.Count == 0) Profiles.Add(new ProfileConfig { Name = "標準", Role = ProfileRoles.Balanced });
+        // 役割がまだないプロファイル（前の版の設定）は、名前から決める
+        foreach (var p in Profiles) p.Role = string.IsNullOrEmpty(p.Role) ? ProfileRoles.FromName(p.Name) : ProfileRoles.Normalize(p.Role);
 
         // プロファイル名の前後の空白を取り、重複には番号を付けて分ける（ルールの参照先が分からなくならないように）。
         // 名前を変えたら、それを指していた設定（実行中・ルール・静音）も新しい名前に付け替える（最初に出てきたものを優先）
@@ -287,10 +289,13 @@ public sealed class ProfileConfig : ObservableObject
     private string _name = "標準";
 
     private string _powerPlanGuid = "";
+    private string _role = "";
 
     public string Name { get => _name; set => Set(ref _name, value); }
     /// <summary>このプロファイルになったときに切り替える Windows の電源プラン（空なら変更しない）</summary>
     public string PowerPlanGuid { get => _powerPlanGuid; set { if (value is not null) Set(ref _powerPlanGuid, value); } }
+    /// <summary>役割（ProfileRoles。空なら読み込むときに名前から決める）</summary>
+    public string Role { get => _role; set => Set(ref _role, value ?? ""); }
     public ObservableCollection<FanConfig> Fans { get; set; } = new();
 }
 

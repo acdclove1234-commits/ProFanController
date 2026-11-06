@@ -196,8 +196,8 @@ public static class Diagnostics
             }
         }
 
-        var hot = temperatures.FirstOrDefault(t => t.HardwareType.StartsWith("Gpu") && t.Name == "GPU Hot Spot");
-        var core = temperatures.FirstOrDefault(t => t.HardwareType.StartsWith("Gpu") && t.Name == "GPU Core");
+        var hot = SensorNames.GpuHotSpotTemperature(temperatures);
+        var core = SensorNames.GpuCoreTemperature(temperatures);
 
         // --- 6. Hot Spot を基準に回しているケースファン
         //     Hot Spot は GPU チップ内の一点の温度で、変動が激しく、ケースファンを回してもほとんど下がらない。

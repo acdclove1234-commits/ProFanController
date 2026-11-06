@@ -210,13 +210,13 @@ public partial class MainWindow
 
         // 端子は全プロファイル共通。追加直後は BIOS 制御のまま、カーブを確認してからスイッチを入れてもらう
         // GPU のファンは、その GPU の温度（Core）を最初のカーブにする
-        var gpuTemp = ci.IsGpu ? _catalog?.Temperatures.FirstOrDefault(t => t.HardwareName == ci.HardwareName && t.Name == "GPU Core")
+        var gpuTemp = ci.IsGpu && _catalog is not null ? SensorNames.GpuCoreTemperature(_catalog.Temperatures, ci.HardwareName)
                                  ?? _catalog?.Temperatures.FirstOrDefault(t => t.HardwareName == ci.HardwareName) : null;
         var sensor = gpuTemp?.Id ?? DefaultSensorId();
         var kind = FindSensorOption(sensor)?.Kind ?? SensorKind.Cpu;
         foreach (var profile in Config.Profiles)
         {
-            var preset = profile.Name switch { "静音" => CurvePresets.Silent, "パフォーマンス" => CurvePresets.Performance, _ => CurvePresets.Balanced };
+            var preset = ProfileRoles.Preset(profile.Role);
             var fan = new FanConfig { Name = ci.Name, ControlId = ci.Id, RpmSensorId = ci.RpmSensorId, Enabled = false, MinDuty = ci.IsGpu ? 30 : 25 };
             fan.Curves.Add(new CurveConfig { Name = ci.IsGpu ? "GPU" : "CPU 連動", SensorId = sensor, Points = CurvePresets.Create(preset, kind) });
             profile.Fans.Add(fan);

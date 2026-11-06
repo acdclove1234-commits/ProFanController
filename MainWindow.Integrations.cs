@@ -19,12 +19,20 @@ public partial class MainWindow
     private static App CurrentApp => (App)Application.Current;
 
     /// <summary>設定画面の、状態を表す表示（バックアップ・通知・RGB）を最新にする</summary>
-    private void RefreshSettingsInfo()
+    private async void RefreshSettingsInfo()
     {
-        var backups = ConfigStore.ListBackups();
-        BackupInfo.Text = backups.Count == 0
-            ? "まだバックアップはありません"
-            : $"最新のバックアップ: {backups[0].Display} ・ 全部で {backups.Count} 個（{ConfigStore.BackupDirectory}）";
+        // バックアップの一覧はフォルダを読むので別スレッドで（画面を開いた瞬間に止まらないように）
+        try
+        {
+            var backups = await Task.Run(ConfigStore.ListBackups);
+            BackupInfo.Text = backups.Count == 0
+                ? "まだバックアップはありません"
+                : $"最新のバックアップ: {backups[0].Display} ・ 全部で {backups.Count} 個（{ConfigStore.BackupDirectory}）";
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"設定のバックアップの一覧を読めません: {ex.Message}");
+        }
         if (CurrentApp.Notifier.LastResult.Length > 0) NotifyStatus.Text = CurrentApp.Notifier.LastResult;
         UpdateRgbStatus();
         UpdateNtfyQr();
@@ -65,7 +73,12 @@ public partial class MainWindow
     {
         FlushCommit();
         NotifyStatus.Text = "送信しています…";
-        NotifyStatus.Text = await CurrentApp.Notifier.TestAsync(Config.Notify);
+        try { NotifyStatus.Text = await CurrentApp.Notifier.TestAsync(Config.Notify); }
+        catch (Exception ex)
+        {
+            Logger.Warn($"通知のテストに失敗: {ex}");
+            NotifyStatus.Text = $"送れませんでした: {ex.Message}";
+        }
     }
 
     // =====================================================================

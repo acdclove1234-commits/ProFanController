@@ -85,7 +85,7 @@ public static class SensorRemapper
         string name = old?.Name ?? "";
         if (cat == "Gpu")
         {
-            SensorInfo? core = same.FirstOrDefault(t => t.Name == "GPU Core") ?? same.FirstOrDefault();
+            SensorInfo? core = SensorNames.Pick(same, t => t.Name, SensorNames.GpuCoreTemp) ?? same.FirstOrDefault();
             if (name.Contains("Hot Spot", StringComparison.OrdinalIgnoreCase) || name.Contains("Junction", StringComparison.OrdinalIgnoreCase))
             {
                 var hs = same.FirstOrDefault(t => t.Name.Contains("Hot Spot", StringComparison.OrdinalIgnoreCase));

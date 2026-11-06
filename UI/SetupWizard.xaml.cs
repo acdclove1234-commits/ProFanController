@@ -47,11 +47,11 @@ public partial class SetupWizard : Window
 
         var physical = temps.Where(t => !t.Id.StartsWith(VirtualSensorConfig.IdPrefix)).ToList();
         CpuSensorCombo.ItemsSource = physical;
-        CpuSensorCombo.SelectedItem = physical.FirstOrDefault(t => t.Kind == SensorKind.Cpu && t.Name is "CPU Package" or "Core (Tctl/Tdie)" or "Core (Tctl)")
+        CpuSensorCombo.SelectedItem = SensorNames.Pick(physical.Where(t => t.Kind == SensorKind.Cpu).ToList(), t => t.Name, SensorNames.CpuTemp)
                                       ?? physical.FirstOrDefault(t => t.Kind == SensorKind.Cpu) ?? physical.FirstOrDefault();
         GpuSensorCombo.ItemsSource = physical;
         // Hot Spot は変動が激しく、ケースファンでは下げにくいので、GPU 温度（Edge = GPU Core）を初期値にする
-        GpuSensorCombo.SelectedItem = physical.FirstOrDefault(t => t.Kind == SensorKind.Gpu && t.Name == "GPU Core")
+        GpuSensorCombo.SelectedItem = SensorNames.Pick(physical.Where(t => t.Kind == SensorKind.Gpu).ToList(), t => t.Name, SensorNames.GpuCoreTemp)
                                       ?? physical.FirstOrDefault(t => t.Kind == SensorKind.Gpu);
 
         ShowStep();
@@ -170,7 +170,7 @@ public partial class SetupWizard : Window
         cfg.Profiles.Clear();
         foreach (var preset in new[] { CurvePresets.Silent, CurvePresets.Balanced, CurvePresets.Performance })
         {
-            cfg.Profiles.Add(new ProfileConfig { Name = ProfileNameFor(preset), Fans = BuildFans(preset, cpu, gpu, cfg) });
+            cfg.Profiles.Add(new ProfileConfig { Name = ProfileNameFor(preset), Role = ProfileRoles.FromPreset(preset), Fans = BuildFans(preset, cpu, gpu, cfg) });
         }
         cfg.ActiveProfile = ProfileNameFor(SelectedPreset);
         cfg.DashboardCards.Clear();

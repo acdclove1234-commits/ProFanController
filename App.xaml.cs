@@ -114,6 +114,9 @@ public partial class App : Application
         var engine = controller.Engine;
         ConfigStore.Backup("startup");
         Notifier.Config = controller.Config.Notify;
+        // 使われていない古いデバイスの画像を消す（元に戻すの記録は起動し直すと消えるので、起動したときに。画面を待たせないよう別スレッドで）
+        var usedImages = controller.Config.DeviceImages.Select(i => i.FileName).ToList();
+        _ = Task.Run(() => ImageCleanup.Run(Path.Combine(AppContext.BaseDirectory, "images"), usedImages));
 
         // どんな終わり方をしても、ファンを BIOS 制御に戻してから終わる
         DispatcherUnhandledException += (_, a) =>
@@ -528,7 +531,8 @@ public partial class App : Application
         await Task.Delay(TimeSpan.FromSeconds(delay));
         if (_exiting || !_watchdogRunning || gen != _watchdogGeneration) return;
         _watchdogGeneration++;
-        await Task.Run(Watchdog.Launch); // 起動前に少し待つことがあるので、画面を止めないよう別スレッドで
+        try { await Task.Run(Watchdog.Launch); } // 起動前に少し待つことがあるので、画面を止めないよう別スレッドで
+        catch (Exception ex) { Logger.Error($"見張りプロセスを起動し直せません: {ex.Message}"); }
     }
 
     /// <summary>

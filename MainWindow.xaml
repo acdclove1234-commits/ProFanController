@@ -2507,14 +2507,19 @@
                                             <Grid Margin="0,0,0,8">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition/>
+                                                    <ColumnDefinition Width="110"/>
                                                     <ColumnDefinition Width="190"/>
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBox Text="{Binding Name}" Margin="0,0,10,0"/>
-                                                <ComboBox Grid.Column="1" Margin="0,0,10,0" DisplayMemberPath="Name" SelectedValuePath="Guid"
+                                                <ComboBox Grid.Column="1" Margin="0,0,10,0" DisplayMemberPath="Label" SelectedValuePath="Id"
+                                                          SelectedValue="{Binding Role}"
+                                                          ToolTip="このプロファイルの役割。名前を変えても、おまかせ調整（静音は目標温度 +5°C・冷却重視は −5°C）・新しいファンのカーブ・ワンタッチの「静音」が、この役割で正しく動きます"
+                                                          ItemsSource="{Binding ProfileRoleOptions, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                                <ComboBox Grid.Column="2" Margin="0,0,10,0" DisplayMemberPath="Name" SelectedValuePath="Guid"
                                                           SelectedValue="{Binding PowerPlanGuid}" ToolTip="このプロファイルのときに使う Windows の電源プラン"
                                                           ItemsSource="{Binding PowerPlanOptions, RelativeSource={RelativeSource AncestorType=Window}}"/>
-                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                <StackPanel Grid.Column="3" Orientation="Horizontal">
                                                     <Button Style="{StaticResource SmallGhost}" Content="普段使う" Tag="{Binding}" Click="OnUseProfileClick" Margin="0,0,6,0"/>
                                                     <Button Style="{StaticResource SmallGhost}" Content="複製" Tag="{Binding}" Click="OnDuplicateProfileClick" Margin="0,0,6,0"/>
                                                     <Button Style="{StaticResource DangerButton}" Content="削除" Tag="{Binding}" Click="OnDeleteProfileClick" Padding="10,5" FontSize="13"/>

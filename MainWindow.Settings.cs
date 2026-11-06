@@ -79,7 +79,7 @@ public partial class MainWindow
 
     private void AddProfileCopy(ProfileConfig source, string name)
     {
-        var copy = new ProfileConfig { Name = name, Fans = new ObservableCollection<FanConfig>(source.Fans.Select(f => f.DeepCopy())) };
+        var copy = new ProfileConfig { Name = name, Role = source.Role, Fans = new ObservableCollection<FanConfig>(source.Fans.Select(f => f.DeepCopy())) };
         Config.Profiles.Add(copy);
         WatchConfig();
         ScheduleCommit();
@@ -274,9 +274,21 @@ public partial class MainWindow
     {
         bool want = AutoStartSwitch.IsChecked == true;
         AutoStartSwitch.IsEnabled = false;
-        bool ok = await Task.Run(() => want ? AutoStart.Enable() : AutoStart.Disable());
-        AutoStartSwitch.IsChecked = await Task.Run(AutoStart.IsEnabled);
-        AutoStartSwitch.IsEnabled = true;
+        bool ok;
+        try
+        {
+            ok = await Task.Run(() => want ? AutoStart.Enable() : AutoStart.Disable());
+            AutoStartSwitch.IsChecked = await Task.Run(AutoStart.IsEnabled);
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"自動起動の切り替えに失敗: {ex}");
+            ok = false;
+        }
+        finally
+        {
+            AutoStartSwitch.IsEnabled = true;
+        }
 
         if (!ok)
         {
@@ -355,6 +367,8 @@ public partial class MainWindow
 {
     /// <summary>プロファイルごとの電源プランの選択肢（先頭は「変えない」）</summary>
     public ObservableCollection<PowerPlan> PowerPlanOptions { get; } = new() { new PowerPlan("", "電源プランを変えない", false) };
+    /// <summary>プロファイルの役割の選択肢（プロファイルの一覧で選ぶ）</summary>
+    public IReadOnlyList<ChoiceOption> ProfileRoleOptions { get; } = ProfileRoles.All.Select(r => new ChoiceOption(r, ProfileRoles.Label(r))).ToList();
 
     private async Task LoadPowerPlansAsync()
     {

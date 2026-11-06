@@ -254,7 +254,7 @@ public partial class MainWindow
         var lines = new List<string>();
         foreach (var p in Config.Profiles)
         {
-            double t = p.Name.Contains("静音") ? target + 5 : p.Name.Contains("パフォーマンス") || p.Name.Contains("冷却") ? target - 5 : target;
+            double t = target + ProfileRoles.TargetOffset(p.Role);
             ApplyTune(p, t);
             lines.Add($"{p.Name} {t:F0}°C");
         }

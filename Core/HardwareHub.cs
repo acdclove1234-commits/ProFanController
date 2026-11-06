@@ -191,7 +191,7 @@ public sealed class HardwareHub : IFanHardware
             _sensors[id] = s;
             if (failed) _stale.Add(id);
         }
-        var load = hw.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Load && s.Name is "CPU Total" or "GPU Core")
+        var load = SensorNames.Pick(hw.Sensors.Where(s => s.SensorType == SensorType.Load).ToList(), s => s.Name, SensorNames.CpuLoad.Concat(SensorNames.GpuLoad).ToArray())
                    ?? hw.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Load);
         if (load is not null && !failed) _loads[hwId] = load;
         foreach (var sub in hw.SubHardware)

@@ -106,7 +106,8 @@ public partial class MainWindow
     private async void OnRefreshModelsClick(object sender, RoutedEventArgs e)
     {
         OnAdvisorSettingChanged(sender, e);
-        await RefreshModelsAsync(quiet: false);
+        try { await RefreshModelsAsync(quiet: false); }
+        catch (Exception ex) { Logger.Warn($"モデルの一覧を読めません: {ex}"); ShowAlert($"モデルの一覧を読めませんでした: {ex.Message}", AlertLevel.Warning); }
     }
 
     private string BuildAdvisorPrompt(bool includeTest)
@@ -215,7 +216,7 @@ public partial class MainWindow
             MessageBox.Show(this, "おまかせ調整が実行中です。終わってから始めてください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
-        var cpuTemp = _catalog.Temperatures.FirstOrDefault(t => t.HardwareType.StartsWith("Cpu") && t.Name is "CPU Package" or "Core (Tctl/Tdie)" or "Core (Tctl)")
+        var cpuTemp = SensorNames.CpuTemperature(_catalog.Temperatures)
                       ?? _catalog.Temperatures.FirstOrDefault(t => t.HardwareType.StartsWith("Cpu"));
         if (cpuTemp is null)
         {
@@ -232,7 +233,7 @@ public partial class MainWindow
         if (answer != MessageBoxResult.OK) return;
 
         var all = _catalog.AllSensors.ToList();
-        var power = all.FirstOrDefault(s => s.HardwareType.StartsWith("Cpu") && s.SensorType == "Power" && s.Name == "CPU Package");
+        var power = SensorNames.Find(all, "Cpu", "Power", SensorNames.CpuPower);
         var clocks = all.Where(s => s.HardwareType.StartsWith("Cpu") && s.SensorType == "Clock" && s.Name.Contains("Core") && !s.Name.Contains("Bus")).Select(s => s.Id).ToList();
         var fans = (Config.FindProfile(_controller.EffectiveProfile)?.Fans ?? new()).Select(f => (f.ControlId, f.Name)).ToList();
 

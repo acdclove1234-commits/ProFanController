@@ -1604,25 +1604,43 @@ public partial class MainWindow
     }
 
     /// <summary>
-    /// LED を取り合うほかのソフトが動いている・OpenRGB の「SMBus を共有する」がオフ（メモリの温度の読み取りとぶつかる）なら知らせる。
-    /// プロセスの一覧と設定ファイルを見るだけなので、画面を開くたびに確かめる
+    /// ほかの RGB ソフトが動いていないか・OpenRGB の SMBus の共有がオフでないかを調べて、ライティング画面に知らせる。
+    /// 動いているアプリの一覧と設定ファイルを読むので、画面が止まらないよう別スレッドで調べ、結果だけを画面に入れる
     /// </summary>
-    private void CheckOpenRgbSmbus()
+    private async void CheckOpenRgbSmbus()
     {
-        var notes = new List<string>();
-        var conflicts = InstallCheck.FindRunningConflicts();
-        if (conflicts.Count > 0)
-            notes.Add($"{string.Join("・", conflicts)} が動いています。同じ LED を操作するので、色が勝手に戻る・ちらつく・ほかのデバイスとそろわない原因になります。"
-                + "そのソフトの LED の制御（ライティング）を止めるか、終了してください（Lian Li の L-Connect は、ファンの回転だけ使う設定にできます）。");
-        string? path = OpenRgbSettings.FindUnsharedSmbus();
-        if (path is not null)
-            notes.Add("OpenRGB の設定で「Shared SMBus Access」（SMBus をほかのソフトと共有する）がオフになっています。"
-                + "このアプリはメモリの温度を同じ配線（SMBus）で読むので、ぶつかって温度が読めなくなることがあります。"
-                + "OpenRGB の Settings で「Shared SMBus Access」をオンにして、OpenRGB を起動し直してください（または、設定 →「メモリの温度を読む」をオフに）。"
-                + $"\n設定ファイル: {path}");
+        int gen = ++_smbusCheckGen;
+        List<string> notes;
+        try
+        {
+            notes = await Task.Run(() =>
+            {
+                var list = new List<string>();
+                var conflicts = InstallCheck.FindRunningConflicts();
+                if (conflicts.Count > 0)
+                    list.Add($"{string.Join("・", conflicts)} が動いています。同じ LED を操作するので、色が勝手に戻る・ちらつく・ほかのデバイスとそろわない原因になります。"
+                        + "そのソフトの LED の制御（ライティング）を止めるか、終了してください（Lian Li の L-Connect は、ファンの回転だけ使う設定にできます）。");
+                string? path = OpenRgbSettings.FindUnsharedSmbus();
+                if (path is not null)
+                    list.Add("OpenRGB の設定で「Shared SMBus Access」（SMBus をほかのソフトと共有する）がオフになっています。"
+                        + "このアプリはメモリの温度を同じ配線（SMBus）で読むので、ぶつかって温度が読めなくなることがあります。"
+                        + "OpenRGB の Settings で「Shared SMBus Access」をオンにして、OpenRGB を起動し直してください（または、設定 →「メモリの温度を読む」をオフに）。"
+                        + $"\n設定ファイル: {path}");
+                return list;
+            });
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"ほかの RGB ソフト・OpenRGB の設定を確かめられません: {ex.Message}");
+            return;
+        }
+        if (gen != _smbusCheckGen) return; // 調べている間に、もう一度調べ始めた
         SmbusWarning.Visibility = VisibleIf(notes.Count > 0);
         SmbusWarning.Text = string.Join("\n\n", notes);
     }
+
+    /// <summary>CheckOpenRgbSmbus の何回目か（古い結果で上書きしないため）</summary>
+    private int _smbusCheckGen;
 
     private void StartLightingLive()
     {
