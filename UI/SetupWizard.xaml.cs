@@ -1,5 +1,5 @@
 // ==================================================
-// SetupWizard.xaml.cs - セットアップウィザードの動作と、選択内容からの設定生成
+// SetupWizard.xaml.cs - セットアップウィザードの動作と、選択内容からの設定生成（PawnIO がなければ、最初の画面からインストールできる）
 // Dependencies: WPF / .NET 8 (MIT License)
 // See CREDITS.txt for full license details.
 // ==================================================
@@ -24,10 +24,24 @@ public partial class SetupWizard : Window
         _controller = controller;
         _temps = temps;
 
-        PawnIoStatus.Text = catalog.PawnIoInstalled
-            ? $"✔ PawnIO ドライバ検出済み ／ ファン端子 {catalog.Controls.Count} 個を検出しました"
-            : "✖ PawnIO ドライバが見つかりません。「winget install namazso.PawnIO」でインストールしてから再起動してください";
-        PawnIoStatus.Foreground = catalog.PawnIoInstalled ? Palette.Ok : Palette.Danger;
+        if (catalog.PawnIoInstalled)
+        {
+            PawnIoStatus.Text = $"✔ PawnIO ドライバ検出済み ／ ファン端子 {catalog.Controls.Count} 個を検出しました";
+            PawnIoStatus.Foreground = Palette.Ok;
+        }
+        else
+        {
+            // PawnIO がないと端子が見つからない。ここからインストールできるようにする（押したときだけ winget を動かす）
+            PawnIoStatus.Visibility = Visibility.Collapsed;
+            PawnIoPanel.LoadedAtStartup = false;
+            PawnIoPanel.Visibility = Visibility.Visible;
+            PawnIoPanel.RestartRequested += () =>
+            {
+                // ウィザードを閉じてから、アプリを起動し直す（初めてのセットアップなら、起動し直したアプリでもう一度ウィザードが開く）
+                DialogResult = false;
+                Dispatcher.BeginInvoke(() => ((App)Application.Current).RestartApplication());
+            };
+        }
 
         // 既存の設定で名前が付いている端子は、その名前を引き継ぐ
         var existing = controller.Config.Profiles.SelectMany(p => p.Fans)

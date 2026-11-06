@@ -212,6 +212,29 @@ public sealed class WebServer : IDisposable
 
     public static void RemoveFirewall() => Netsh($"advfirewall firewall delete rule name=\"{FirewallRuleName}\"");
 
+    /// <summary>このアプリが追加したファイアウォールの許可が残っているか（netsh は、その名前の規則がないと 0 以外で終わる）</summary>
+    public static bool FirewallRuleExists()
+    {
+        try
+        {
+            var psi = SystemTool.Start("netsh.exe", $"advfirewall firewall show rule name=\"{FirewallRuleName}\"");
+            psi.RedirectStandardOutput = true;
+            psi.RedirectStandardError = true;
+            using var p = Process.Start(psi)!;
+            // 出力を読み捨てる（読まないと、出力がいっぱいになって止まることがある）
+            var outTask = p.StandardOutput.ReadToEndAsync();
+            var errTask = p.StandardError.ReadToEndAsync();
+            if (!p.WaitForExit(10_000)) { try { p.Kill(); } catch { /* 終わっている */ } return false; }
+            Task.WaitAll(new Task[] { outTask, errTask }, 1000);
+            return p.ExitCode == 0;
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"ファイアウォールの許可を確かめられません: {ex.Message}");
+            return false;
+        }
+    }
+
     private static void Netsh(string args)
     {
         try

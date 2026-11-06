@@ -1,11 +1,12 @@
 <!-- ==================================================
-     SetupWizard.xaml - 初回セットアップウィザード (端子の識別 → 冷却方針 → プロファイル自動生成)
+     SetupWizard.xaml - 初回セットアップウィザード (PawnIO の確認・インストール → 端子の識別 → 冷却方針 → プロファイル自動生成)
      Dependencies: WPF / .NET 8 (MIT License)
      See CREDITS.txt for full license details.
      ================================================== -->
 <Window x:Class="ProFanController.UI.SetupWizard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ProFanController.UI"
         Title="セットアップ - ProFanController" Width="900" Height="680" MinWidth="820" MinHeight="600"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
         Background="{DynamicResource BgBrush}" Foreground="{DynamicResource TextBrush}"
@@ -26,20 +27,23 @@
             <Border x:Name="Step4Dot" CornerRadius="12" Padding="12,4"><TextBlock Text="4  完了" FontSize="13"/></Border>
         </StackPanel>
 
-        <!-- 1. ようこそ -->
-        <StackPanel x:Name="Step1" Grid.Row="1">
-            <TextBlock Text="ProFanController へようこそ" Style="{StaticResource H1}"/>
-            <TextBlock Style="{StaticResource Caption}" FontSize="15" Margin="0,10,0,24" LineHeight="24"
-                       Text="このウィザードでは、マザーボードのファン端子に何がつながっているかを確認し、&#10;あなたの PC に合わせたファンカーブとプロファイル（静音／標準／パフォーマンス）を自動で作成します。"/>
-            <Border Style="{StaticResource Card}">
-                <StackPanel>
-                    <TextBlock Text="準備" Style="{StaticResource H2}"/>
-                    <TextBlock x:Name="PawnIoStatus" Margin="0,10,0,0"/>
-                    <TextBlock Style="{StaticResource Caption}" Margin="0,8,0,0" LineHeight="20"
-                               Text="・ケースの横で、ファンの音や回転が分かるようにしておいてください。&#10;・重い処理（ゲームなど）は終了しておいてください。&#10;・現在の設定は上書きされますが、完了後に「元に戻す」で戻せます。"/>
-                </StackPanel>
-            </Border>
-        </StackPanel>
+        <!-- 1. ようこそ（PawnIO がないときは、ここからインストールできる。説明が長くなるのでスクロールできるようにする） -->
+        <ScrollViewer x:Name="Step1" Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="ProFanController へようこそ" Style="{StaticResource H1}"/>
+                <TextBlock Style="{StaticResource Caption}" FontSize="15" Margin="0,10,0,24" LineHeight="24"
+                           Text="このウィザードでは、マザーボードのファン端子に何がつながっているかを確認し、&#10;あなたの PC に合わせたファンカーブとプロファイル（静音／標準／パフォーマンス）を自動で作成します。"/>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <TextBlock Text="準備" Style="{StaticResource H2}"/>
+                        <TextBlock x:Name="PawnIoStatus" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                        <local:PawnIoInstallPanel x:Name="PawnIoPanel" Margin="0,10,0,4" Visibility="Collapsed"/>
+                        <TextBlock Style="{StaticResource Caption}" Margin="0,8,0,0" LineHeight="20"
+                                   Text="・ケースの横で、ファンの音や回転が分かるようにしておいてください。&#10;・重い処理（ゲームなど）は終了しておいてください。&#10;・現在の設定は上書きされますが、完了後に「元に戻す」で戻せます。"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
 
         <!-- 2. 端子の識別 -->
         <DockPanel x:Name="Step2" Grid.Row="1" Visibility="Collapsed">

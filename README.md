@@ -27,10 +27,13 @@ A fan control and monitoring tool for Windows. It drives motherboard fan headers
 ## 使い方（配布用の zip）
 
 1. [Releases](../../releases) から `ProFanController-<版>-windows-x64.zip` をダウンロードして展開し、`ProFanController` フォルダーを `C:\Tools\ProFanController` など動かさない場所に置く
-2. 「1_PawnIO をインストール.bat」を右クリック →「管理者として実行」
-3. `ProFanController.exe` を起動し、セットアップの案内に沿ってファン端子に名前を付ける
+2. `ProFanController.exe` を起動する。PawnIO が入っていなければ、セットアップの最初の画面の「PawnIO をインストール」で入れて（winget を使います）、「アプリを起動し直す」を押す
+   （うまくいかないときは「1_PawnIO をインストール.bat」を右クリック →「管理者として実行」するか、[公式サイト](https://pawnio.eu/)のインストーラーを使う）
+3. セットアップの案内に沿って、ファン端子に名前を付ける
 
 詳しくは、zip に入っている「はじめにお読みください.txt」（このリポジトリでは `Distribution/` の中）を見てください。新しい版への更新は、新しい zip を展開せずにダウンロードフォルダーに置いて「2_更新.bat」を実行します（設定・記録はそのまま）。
+
+使うのをやめるときは、設定 →「安全・バックアップ」→「アンインストール（お片付け）」を使います。ファンを BIOS の自動制御に戻したことを確かめてから、ライティングの制御・ログオン時の自動起動・ファイアウォールの許可などを片付けて終了します（設定・記録の削除と PawnIO のアンインストールは、選んだときだけ）。最後に、アプリのフォルダーを自分で削除します。
 
 ## ソースからのビルド
 
