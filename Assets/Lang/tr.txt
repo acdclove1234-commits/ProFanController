@@ -709,3 +709,103 @@ b6d7dbf8	Otomatik
 ae81cf8d	Elle
 7aebcb13	İçe aktarmadan önce
 44fc16c5	Parça değişikliği eşlemesinden önce
+f32b8618	Geri yüklemeden önce
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Hızlı sessiz
+c7f7bdf4	Otomatik: {0}
+ab7eac67	Güçlendirme (kalan {0})
+9134a95f	Sessiz mod (kalan {0})
+ad045555	FFT boyutu 2'nin kuvveti olmalıdır
+d9602266	Yürütülebilir dosyanın yolu alınamıyor.
+5d8ccfc5	Otomatik ayar  {0:yyyy/MM/dd HH:mm} / sıcaklık sensörü: {1}
+07bdf93a	Boştaki sıcaklık: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	{0:F0}°C hedefine tam hızda bile ulaşılamıyor (tam hızda {1:F1}°C)
+29359893	{0:F0}°C hedefini korumak için gereken devir: yaklaşık %{1:F0}
+0252b580	Boştaki sıcaklık ölçülüyor…
+7c323904	Yük başlatılıyor…
+be843d5e	Bir oyun veya benchmark başlatın (GPU kullanımı %70'i geçince otomatik başlar)
+83a5ad8f	Tam hızda ısınması bekleniyor…
+ac818524	%{0:F0} hızda sıcaklığın oturması bekleniyor… (adım {1} / {2})
+f8650f35	Yük durduruluyor ve normal kontrole dönülüyor…
+882d4f38	Tamamlandı
+9ea783e1	Durduruldu: {0}
+3cf8744b	Sıcaklık sensörü okunamıyor
+9af40572	Acil tam hız nedeniyle durduruldu
+ef174ee8	Sıcaklık {0:F0}°C'ye ulaştığı için durduruldu
+13912a14	GPU yükü kalktığı için durduruldu (oyunu veya benchmark'ı çalıştırmaya devam edin)
+f3ec99ac	Yük uygulanmadığı için durduruldu
+5d76038f	En yüksek devir ölçülüyor…
+966245da	Devir düşürülerek ölçülüyor… (%{0:F0})
+8db302e0	Başlama devri aranıyor… (%{0:F0})
+904b8997	Tamamlandı
+e0f9ce74	Devir sensörü okunamıyor.
+3c9b5c60	%100'de bile dönmüyor. Kabloları kontrol edin.
+0018ad60	ayarlar (config.json), günlükler (logs), kayıtlar (data, records, reports), ayar yedekleri (backups) ve cihaz resimleri (images)
+da1c2ba4	Tüm fanları BIOS'un (anakart) otomatik kontrolüne döndürür ve döndüğünü doğrular (döndüremezse burada durur ve hiçbir şeyi değiştirmez)
+cf1947e1	Fan kontrolünü durdurur ve donanımı (PawnIO sürücüsü) kapatır. Gözetleyici işleme de "düzgün çıkış" olduğunu bildirerek onu da sonlandırır (durdurulan kontrolü arıza sayıp yeniden başlatmasın diye)
+a1e35f8f	Aydınlatma kontrolünü durdurur ve LED cihazlarını (OpenRGB vb.) serbest bırakır; normal çıkıştaki efektle durur
+3958581c	Telefon görünümünü durdurur ve Windows Güvenlik Duvarı'na eklenen izni (ProFanController Web) kaldırır
+62d5ef69	Oturum açılışında başlatmayı (Görev Zamanlayıcı'daki "ProFanController" görevi) kaldırır
+aa1f9cbb	Çökme dökümü ayarını (kayıt defterindeki Windows Error Reporting\\LocalDumps) kaldırır
+7ca65cf7	PawnIO'yu (fan kontrol sürücüsü) winget ile kaldırır
+a6b6b0e5	Uygulamayı kapatır (normal çıkıştaki temizliği yapar; kendiliğinden yeniden başlamaz)
+6a966307	Uygulama kapandıktan sonra {0} silinir (uygulamanın exe dosyası vb. kalır)
+29b5bfe7	Fanlar BIOS kontrolüne döndürülemediği için durduruldu
+585aaebc	Fan kontrolü tamamen durdurulamadı ve PawnIO sürücüsü hâlâ kullanılıyor olabilir, bu yüzden kaldırılmadı (
+0baf8724	)
+1c7ee8b3	Temizlik durduruldu. Hiçbir şey değiştirilmedi.
+9b1d2fd1	Fanlar eskisi gibi bu uygulama tarafından kontrol ediliyor. Bilgisayarı yeniden başlatıp tekrar deneyin.
+628b7bb7	Temizlik tamamlandı. Fanlar BIOS'un (anakart) otomatik kontrolüne döndü.
+891b9617	Temizlik tamamlandı. Bazı şeyler başarısız oldu (aşağıya bakın).
+24b69a8c	• {0}
+c96515c1	• Bilgisayarı yeniden başlatınca her şey eski hâline döner.
+894f5f7e	Kapatınca uygulama sonlanır ve ardından {0} silinir.
+7fadc402	Kapatınca uygulama sonlanır (kendiliğinden yeniden başlamaz). Ayarlar, günlükler ve kayıtlar klasörde kalır.
+2735adba	Uygulamanın kendisi çalışırken silinemez. Kullanmayı bırakacaksanız, kapandıktan sonra bu klasörü silin (Dosya Gezgini'nde açılır):\n{0}
+47bb6afa	Dosya boş.
+c7d09b2f	Bu bir ProFanController ayar dosyası değil.
+59d09ada	Hiç profil içermiyor.
+8f6cc529	Eşleşen konnektör bulunamadı (içe aktarılmaz)
+a63b0e26	Aynı konnektör
+17f329b8	Aynı adlı konnektör
+411bcf86	Aynı sensör
+5c522e51	{0} (içe aktarılan)
+0da8db2c	{0} (içe aktarılan {1})
+6bb3e62c	{0} profil içe aktarıldı ({1} eklendi, {2} değiştirildi)
+03b7c771	. Eşleşen konnektörü olmayan {0} fan içe aktarılmadı
+5e0e7e59	. Güvenlik için içe aktarılan fanlarda "Bu uygulamayla kontrol et" kapatıldı
+2732738f	Durduruldu
+165e874b	Çok iyi
+1b6b7859	İyi
+0b497be2	Biraz yüksek
+6eb7c426	Yetersiz soğutma
+0e60185d	ProFanController soğutma testi  {0:yyyy/MM/dd HH:mm}
+f18a2032	Profil: {0} / yük süresi: {1:F0} dk (tüm CPU çekirdekleri)
+a659e995	Değerlendirme           : {0}
+67316e06	Boştaki CPU sıcaklığı  : {0:F1} °C
+af1c8f16	En yüksek sıcaklık     : {0:F1} °C
+49c4091d	Sabit sıcaklık         : {0:F1} °C (yükün son 60 sn ortalaması)
+94a44622	Isınma süresi          : yaklaşık {0:F0} sn (artışın %90'ı)
+22014e7c	Soğuma süresi          : {0}
+39ecacc7	yaklaşık {0:F0} sn (boştaki sıcaklık +3°C'ye kadar)
+2919e4b9	ölçüm süresi içinde tam soğumadı
+0d251b5a	CPU gücü (ortalama)    : {0:F0} W
+f7640092	CPU saati              : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (düştü: performans ısı nedeniyle düşmüş olabilir)
+ec93ac4d	{0,-12}: en yüksek {1:N0} rpm / yükte ortalama %{2:F0}
+e94f5002	Boştaki sıcaklık ölçülüyor… ({0})
+45a75756	CPU'ya yük veriliyor… (kalan {0})
+c11497ad	Yük durduruldu; soğuma süresi ölçülüyor…
+ec508209	CPU sıcaklığı {0:F0}°C'ye ulaştığı için yük durduruldu
+3b081cd7	Kullanıcı durdurdu
+5218b8e0	Yük uygulanmadan önce sona erdi
+4381cf4c	Diğer
+c3f18a1c	Yeterli kayıt yok
+020e3226	Tanılama için en az 2 dakikalık kayıt gerekir. Bilgisayarı bir süre kullanın (tercihen oyun gibi bir yükten sonra) ve tekrar deneyin.
+f1dcdb81	{0}: pompa devrinin payı az
+02b1a16b	{0:N0} rpm'ye kadar düşüyor ve {1:N0} rpm uyarı değerine yaklaşıyor. Pompa aşınmasını veya BIOS ayarının çok düşük olup olmadığını kontrol edin.
+e61a98f9	{0}: devir sık sık inip çıkıyor
+24a699e7	Devir 10 dakikada yaklaşık {0:F0} kez artış ile azalış arasında değişiyor. Bu, rahatsız edici bir dalgalı uğultuya yol açar.
+5f91ae1b	Tepkiyi yumuşat
+4ce44846	Uygulandı: histerezis +2°C, yumuşatma ×0,6, azalış hızı ×0,7.

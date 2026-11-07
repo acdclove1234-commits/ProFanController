@@ -709,3 +709,103 @@ b6d7dbf8	Auto
 ae81cf8d	Manuale
 7aebcb13	Prima dell'importazione
 44fc16c5	Prima dell'abbinamento dopo la sostituzione dei componenti
+f32b8618	Prima del ripristino
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Silenzioso rapido
+c7f7bdf4	Auto: {0}
+ab7eac67	Boost attivo (restano {0})
+9134a95f	Modalità silenziosa (restano {0})
+ad045555	La dimensione della FFT deve essere una potenza di 2
+d9602266	Impossibile ottenere il percorso dell'eseguibile.
+5d8ccfc5	Regolazione automatica  {0:yyyy/MM/dd HH:mm} / sensore di temperatura: {1}
+07bdf93a	Temperatura a riposo: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	L'obiettivo di {0:F0} °C non si raggiunge nemmeno alla massima velocità ({1:F1} °C alla massima velocità)
+29359893	Velocità necessaria per mantenere l'obiettivo di {0:F0} °C: circa {1:F0}%
+0252b580	Misurazione della temperatura a riposo…
+7c323904	Avvio del carico…
+be843d5e	Avvia un gioco o un benchmark (parte da solo quando l'uso della GPU supera il 70%)
+83a5ad8f	In attesa che si scaldi alla massima velocità…
+ac818524	In attesa che la temperatura si stabilizzi al {0:F0}%… (passo {1} / {2})
+f8650f35	Arresto del carico e ritorno al controllo normale…
+882d4f38	Completato
+9ea783e1	Interrotto: {0}
+3cf8744b	Il sensore di temperatura non si legge
+9af40572	Interrotto per la massima velocità di emergenza
+ef174ee8	Interrotto perché la temperatura ha raggiunto {0:F0} °C
+13912a14	Interrotto perché il carico della GPU è sparito (tieni attivo il gioco o il benchmark)
+f3ec99ac	Interrotto perché non è stato applicato alcun carico
+5d76038f	Misurazione della velocità massima…
+966245da	Misurazione abbassando la velocità… ({0:F0}%)
+8db302e0	Ricerca della velocità di avvio… ({0:F0}%)
+904b8997	Completato
+e0f9ce74	Il sensore di velocità non si legge.
+3c9b5c60	Non gira nemmeno al 100%. Controlla i collegamenti.
+0018ad60	impostazioni (config.json), log (logs), registrazioni (data, records, reports), backup delle impostazioni (backups) e immagini dei dispositivi (images)
+da1c2ba4	Riporta tutte le ventole al controllo automatico del BIOS (scheda madre) e verifica che sia andato a buon fine (altrimenti si ferma qui e non cambia nulla)
+cf1947e1	Ferma il controllo delle ventole e chiude l'hardware (driver PawnIO). Comunica anche al processo watchdog che si tratta di un'uscita regolare, così si chiude anche lui (invece di considerare l'arresto un guasto e riavviare)
+a1e35f8f	Ferma il controllo dell'illuminazione e rilascia i dispositivi LED (OpenRGB e altri), chiudendo con lo stesso effetto di un'uscita normale
+3958581c	Ferma la vista dal telefono e rimuove la regola aggiunta a Windows Firewall (ProFanController Web)
+62d5ef69	Rimuove l'avvio all'accesso (l'attività «ProFanController» nell'Utilità di pianificazione)
+aa1f9cbb	Rimuove l'impostazione dei dump di arresto anomalo (Windows Error Reporting\\LocalDumps nel registro)
+7ca65cf7	Disinstalla PawnIO (il driver per il controllo delle ventole) con winget
+a6b6b0e5	Chiude l'app (con la stessa pulizia di un'uscita normale; non si riavvia da sola)
+6a966307	Dopo la chiusura dell'app, elimina {0} (l'exe dell'app e simili restano)
+29b5bfe7	Interrotto perché le ventole non sono potute tornare al controllo del BIOS
+585aaebc	Non è stato possibile fermare del tutto il controllo delle ventole e il driver PawnIO potrebbe essere ancora in uso, quindi non è stato disinstallato (
+0baf8724	)
+1c7ee8b3	La pulizia è stata interrotta. Non è stato cambiato nulla.
+9b1d2fd1	Le ventole sono ancora controllate da questa app come prima. Riavvia il PC e riprova.
+628b7bb7	La pulizia è terminata. Le ventole sono tornate sotto il controllo automatico del BIOS (scheda madre).
+891b9617	La pulizia è terminata. Alcune cose non sono andate a buon fine (vedi sotto).
+24b69a8c	• {0}
+c96515c1	• Riavviando il PC tutto torna com'era.
+894f5f7e	Chiudendo, l'app termina e poi elimina {0}.
+7fadc402	Chiudendo, l'app termina (non si riavvia da sola). Impostazioni, log e registrazioni restano nella cartella.
+2735adba	L'app non può essere eliminata mentre è in esecuzione. Se smetti di usarla, elimina questa cartella dopo averla chiusa (si apre in Esplora file):\n{0}
+47bb6afa	Il file è vuoto.
+c7d09b2f	Non è un file di impostazioni di ProFanController.
+59d09ada	Non contiene profili.
+8f6cc529	Nessun connettore corrispondente trovato (non importato)
+a63b0e26	Stesso connettore
+17f329b8	Connettore con lo stesso nome
+411bcf86	Stesso sensore
+5c522e51	{0} (importato)
+0da8db2c	{0} (importato {1})
+6bb3e62c	Importati {0} profili ({1} aggiunti, {2} sostituiti)
+03b7c771	. {0} ventole senza connettore corrispondente non sono state importate
+5e0e7e59	. Per sicurezza, per le ventole importate «Controlla con questa app» è disattivato
+2732738f	Interrotto
+165e874b	Ottimo
+1b6b7859	Buono
+0b497be2	Un po' alto
+6eb7c426	Raffreddamento insufficiente
+0e60185d	Test di raffreddamento ProFanController  {0:yyyy/MM/dd HH:mm}
+f18a2032	Profilo: {0} / durata del carico: {1:F0} min (tutti i core della CPU)
+a659e995	Giudizio                  : {0}
+67316e06	Temperatura CPU a riposo  : {0:F1} °C
+af1c8f16	Temperatura massima       : {0:F1} °C
+49c4091d	Temperatura stabile       : {0:F1} °C (media degli ultimi 60 s di carico)
+94a44622	Tempo di riscaldamento    : circa {0:F0} s (90% dell'aumento)
+22014e7c	Tempo di raffreddamento   : {0}
+39ecacc7	circa {0:F0} s (fino alla temperatura a riposo +3 °C)
+2919e4b9	non si è raffreddato del tutto entro il tempo di misura
+0d251b5a	Potenza CPU (media)       : {0:F0} W
+f7640092	Frequenza CPU             : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (calo: le prestazioni potrebbero essere ridotte dal calore)
+ec93ac4d	{0,-12}: max {1:N0} rpm / media sotto carico {2:F0}%
+e94f5002	Misurazione della temperatura a riposo… ({0})
+45a75756	Carico sulla CPU… (restano {0})
+c11497ad	Carico fermato; misurazione del tempo di raffreddamento…
+ec508209	Il carico è stato fermato perché la temperatura della CPU ha raggiunto {0:F0} °C
+3b081cd7	Interrotto dall'utente
+5218b8e0	Terminato prima di applicare il carico
+4381cf4c	Altro
+c3f18a1c	Registrazioni insufficienti
+020e3226	La diagnosi richiede almeno 2 minuti di registrazioni. Usa il PC per un po' (meglio dopo un gioco o un altro carico) e riprova.
+f1dcdb81	{0}: la velocità della pompa ha poco margine
+02b1a16b	Scende fino a {0:N0} rpm, vicino al valore di allarme di {1:N0} rpm. Controlla l'usura della pompa o un'impostazione del BIOS troppo bassa.
+e61a98f9	{0}: la velocità sale e scende di continuo
+24a699e7	La velocità alterna salite e discese circa {0:F0} volte ogni 10 minuti. Questo causa un fastidioso ronzio ondulato.
+5f91ae1b	Rendi la risposta più calma
+4ce44846	Applicato: isteresi +2 °C, smorzamento ×0,6, discesa ×0,7.

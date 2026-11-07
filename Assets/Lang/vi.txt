@@ -709,3 +709,103 @@ b6d7dbf8	Tự động
 ae81cf8d	Thủ công
 7aebcb13	Trước khi nhập
 44fc16c5	Trước khi ghép sau khi thay linh kiện
+f32b8618	Trước khi khôi phục
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Yên tĩnh nhanh
+c7f7bdf4	Tự động: {0}
+ab7eac67	Đang tăng tốc (còn {0})
+9134a95f	Đang ở chế độ yên tĩnh (còn {0})
+ad045555	Kích thước FFT phải là lũy thừa của 2
+d9602266	Không lấy được đường dẫn của tệp thực thi.
+5d8ccfc5	Tự tinh chỉnh  {0:yyyy/MM/dd HH:mm} / cảm biến nhiệt độ: {1}
+07bdf93a	Nhiệt độ khi nghỉ: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	Mục tiêu {0:F0}°C không đạt được kể cả khi chạy tối đa ({1:F1}°C khi chạy tối đa)
+29359893	Tốc độ cần để giữ mục tiêu {0:F0}°C: khoảng {1:F0}%
+0252b580	Đang đo nhiệt độ khi nghỉ…
+7c323904	Đang bắt đầu tạo tải…
+be843d5e	Hãy chạy game hoặc benchmark (tự bắt đầu khi mức dùng GPU vượt 70%)
+83a5ad8f	Đang chờ nóng lên ở tốc độ tối đa…
+ac818524	Đang chờ nhiệt độ ổn định ở {0:F0}%… (bước {1} / {2})
+f8650f35	Đang ngừng tải và trở về điều khiển thường lệ…
+882d4f38	Đã xong
+9ea783e1	Đã dừng: {0}
+3cf8744b	Không đọc được cảm biến nhiệt độ
+9af40572	Đã dừng vì chuyển sang tốc độ tối đa khẩn cấp
+ef174ee8	Đã dừng vì nhiệt độ đạt {0:F0}°C
+13912a14	Đã dừng vì tải GPU không còn (hãy để game hoặc benchmark tiếp tục chạy)
+f3ec99ac	Đã dừng vì không có tải
+5d76038f	Đang đo tốc độ tối đa…
+966245da	Đang đo trong lúc giảm tốc độ… ({0:F0}%)
+8db302e0	Đang tìm tốc độ bắt đầu quay… ({0:F0}%)
+904b8997	Xong
+e0f9ce74	Không đọc được cảm biến tốc độ quay.
+3c9b5c60	Không quay kể cả ở 100%. Hãy kiểm tra dây cắm.
+0018ad60	cài đặt (config.json), nhật ký (logs), bản ghi (data, records, reports), bản sao lưu cài đặt (backups) và hình thiết bị (images)
+da1c2ba4	Trả mọi quạt về chế độ tự điều khiển của BIOS (bo mạch chủ) và kiểm tra đã trả về (nếu không được sẽ dừng ở đây và không thay đổi gì)
+cf1947e1	Dừng điều khiển quạt và đóng phần cứng (driver PawnIO). Cũng báo cho tiến trình giám sát rằng đây là "thoát đúng cách" để nó kết thúc (tránh coi việc dừng là bất thường rồi khởi động lại)
+a1e35f8f	Dừng điều khiển đèn và giải phóng thiết bị LED (OpenRGB…), kết thúc bằng hiệu ứng giống như khi thoát bình thường
+3958581c	Dừng xem trên điện thoại và xóa quy tắc đã thêm vào Tường lửa Windows (ProFanController Web)
+62d5ef69	Xóa tự khởi động khi đăng nhập (tác vụ "ProFanController" trong Task Scheduler)
+aa1f9cbb	Xóa cài đặt ghi lại khi bị lỗi (Windows Error Reporting\\LocalDumps trong registry)
+7ca65cf7	Gỡ PawnIO (driver điều khiển quạt) bằng winget
+a6b6b0e5	Thoát ứng dụng (dọn dẹp như khi thoát bình thường; không tự khởi động lại)
+6a966307	Sau khi ứng dụng thoát, xóa {0} (tệp exe của ứng dụng… vẫn giữ)
+29b5bfe7	Đã dừng vì không trả được quạt về cho BIOS
+585aaebc	Không dừng hẳn được việc điều khiển quạt và driver PawnIO có thể vẫn đang được dùng, nên chưa gỡ (
+0baf8724	)
+1c7ee8b3	Đã dừng việc dọn dẹp. Không thay đổi gì.
+9b1d2fd1	Quạt vẫn do ứng dụng này điều khiển như trước. Hãy khởi động lại PC rồi thử lại.
+628b7bb7	Đã dọn dẹp xong. Quạt đã trở về chế độ tự điều khiển của BIOS (bo mạch chủ).
+891b9617	Đã dọn dẹp xong. Có một số việc không thành công (xem bên dưới).
+24b69a8c	• {0}
+c96515c1	• Khởi động lại PC sẽ đưa mọi thứ về như cũ.
+894f5f7e	Đóng lại thì ứng dụng sẽ thoát, sau đó xóa {0}.
+7fadc402	Đóng lại thì ứng dụng sẽ thoát (không tự khởi động lại). Cài đặt, nhật ký và bản ghi vẫn ở trong thư mục.
+2735adba	Không thể xóa ứng dụng khi đang chạy. Nếu ngừng dùng, hãy xóa thư mục sau sau khi thoát (sẽ mở bằng Explorer):\n{0}
+47bb6afa	Tệp trống.
+c7d09b2f	Đây không phải tệp cài đặt của ProFanController.
+59d09ada	Không có cấu hình nào.
+8f6cc529	Không tìm thấy cổng tương ứng (không nhập)
+a63b0e26	Cùng cổng
+17f329b8	Cổng cùng tên
+411bcf86	Cùng cảm biến
+5c522e51	{0} (đã nhập)
+0da8db2c	{0} (đã nhập {1})
+6bb3e62c	Đã nhập {0} cấu hình (thêm {1}, thay {2})
+03b7c771	. {0} quạt không có cổng tương ứng chưa được nhập
+5e0e7e59	. Để an toàn, các quạt đã nhập được tắt "Điều khiển bằng ứng dụng này"
+2732738f	Đã dừng
+165e874b	Rất tốt
+1b6b7859	Tốt
+0b497be2	Hơi cao
+6eb7c426	Làm mát chưa đủ
+0e60185d	Kiểm tra làm mát ProFanController  {0:yyyy/MM/dd HH:mm}
+f18a2032	Cấu hình: {0} / thời gian tải: {1:F0} phút (toàn bộ nhân CPU)
+a659e995	Đánh giá                : {0}
+67316e06	Nhiệt độ CPU khi nghỉ  : {0:F1} °C
+af1c8f16	Nhiệt độ cao nhất      : {0:F1} °C
+49c4091d	Nhiệt độ ổn định       : {0:F1} °C (trung bình 60 giây cuối của tải)
+94a44622	Thời gian nóng lên     : khoảng {0:F0} giây (90% mức tăng)
+22014e7c	Thời gian nguội        : {0}
+39ecacc7	khoảng {0:F0} giây (đến nhiệt độ nghỉ +3°C)
+2919e4b9	chưa nguội hẳn trong thời gian đo
+0d251b5a	Công suất CPU (TB)     : {0:F0} W
+f7640092	Xung nhịp CPU          : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (có giảm: có thể hiệu năng bị hạ do nhiệt)
+ec93ac4d	{0,-12}: tối đa {1:N0} rpm / trung bình khi tải {2:F0}%
+e94f5002	Đang đo nhiệt độ khi nghỉ… ({0})
+45a75756	Đang tạo tải cho CPU… (còn {0})
+c11497ad	Đã ngừng tải, đang đo thời gian nguội…
+ec508209	Đã ngừng tải vì nhiệt độ CPU đạt {0:F0}°C
+3b081cd7	Người dùng đã dừng
+5218b8e0	Đã kết thúc trước khi tạo tải
+4381cf4c	Khác
+c3f18a1c	Không đủ bản ghi
+020e3226	Chẩn đoán cần ít nhất 2 phút bản ghi. Hãy dùng máy một lúc (tốt nhất là sau khi chơi game hoặc tải nặng) rồi chạy lại.
+f1dcdb81	{0}: tốc độ bơm không còn nhiều dư địa
+02b1a16b	Thấp nhất là {0:N0} rpm, đang gần ngưỡng cảnh báo {1:N0} rpm. Hãy kiểm tra bơm có bị xuống cấp hoặc cài đặt BIOS có quá thấp không.
+e61a98f9	{0}: tốc độ quay lên xuống liên tục
+24a699e7	Khoảng {0:F0} lần mỗi 10 phút tốc độ đổi giữa tăng và giảm. Điều này gây tiếng ù ù dao động khó chịu.
+5f91ae1b	Làm phản ứng êm hơn
+4ce44846	Đã áp dụng: độ trễ +2°C, làm mượt ×0,6, tốc độ giảm ×0,7.

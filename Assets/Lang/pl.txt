@@ -709,3 +709,103 @@ b6d7dbf8	Auto
 ae81cf8d	Ręcznie
 7aebcb13	Przed importem
 44fc16c5	Przed przypisaniem po wymianie części
+f32b8618	Przed przywróceniem
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Szybka cisza
+c7f7bdf4	Auto: {0}
+ab7eac67	Boost (zostało {0})
+9134a95f	Tryb cichy (zostało {0})
+ad045555	Rozmiar FFT musi być potęgą dwójki
+d9602266	Nie można ustalić ścieżki pliku wykonywalnego.
+5d8ccfc5	Automatyczne strojenie  {0:yyyy/MM/dd HH:mm} / czujnik temperatury: {1}
+07bdf93a	Temperatura w spoczynku: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	Celu {0:F0}°C nie da się osiągnąć nawet na pełnej prędkości ({1:F1}°C na pełnej prędkości)
+29359893	Obroty potrzebne do utrzymania celu {0:F0}°C: około {1:F0}%
+0252b580	Pomiar temperatury w spoczynku…
+7c323904	Uruchamianie obciążenia…
+be843d5e	Uruchom grę lub benchmark (start nastąpi automatycznie, gdy użycie GPU przekroczy 70%)
+83a5ad8f	Czekanie na nagrzanie przy pełnej prędkości…
+ac818524	Czekanie na ustabilizowanie temperatury przy {0:F0}%… (krok {1} / {2})
+f8650f35	Zatrzymywanie obciążenia i powrót do zwykłego sterowania…
+882d4f38	Gotowe
+9ea783e1	Przerwano: {0}
+3cf8744b	Nie można odczytać czujnika temperatury
+9af40572	Przerwano z powodu awaryjnej pełnej prędkości
+ef174ee8	Przerwano, bo temperatura osiągnęła {0:F0}°C
+13912a14	Przerwano, bo obciążenie GPU zniknęło (nie zamykaj gry ani benchmarku)
+f3ec99ac	Przerwano, bo nie przyłożono obciążenia
+5d76038f	Pomiar maksymalnych obrotów…
+966245da	Pomiar przy zmniejszaniu obrotów… ({0:F0}%)
+8db302e0	Szukanie obrotów startowych… ({0:F0}%)
+904b8997	Gotowe
+e0f9ce74	Nie można odczytać czujnika obrotów.
+3c9b5c60	Nie kręci się nawet przy 100%. Sprawdź okablowanie.
+0018ad60	ustawienia (config.json), dzienniki (logs), zapisy (data, records, reports), kopie ustawień (backups) i obrazy urządzeń (images)
+da1c2ba4	Oddaje wszystkie wentylatory pod automatyczne sterowanie BIOS (płyty głównej) i sprawdza, czy się udało (jeśli nie, tu się zatrzymuje i niczego nie zmienia)
+cf1947e1	Zatrzymuje sterowanie wentylatorami i zamyka sprzęt (sterownik PawnIO). Informuje też proces nadzorczy o poprawnym zakończeniu, żeby również się zamknął (zamiast uznać zatrzymanie za awarię i uruchomić ponownie)
+a1e35f8f	Zatrzymuje sterowanie podświetleniem i zwalnia urządzenia LED (OpenRGB i inne), kończąc tym samym efektem co przy zwykłym zamknięciu
+3958581c	Zatrzymuje podgląd w telefonie i usuwa dodaną regułę Zapory Windows (ProFanController Web)
+62d5ef69	Usuwa autostart przy logowaniu (zadanie „ProFanController” w Harmonogramie zadań)
+aa1f9cbb	Usuwa ustawienie zrzutów awaryjnych (Windows Error Reporting\\LocalDumps w rejestrze)
+7ca65cf7	Odinstalowuje PawnIO (sterownik wentylatorów) przez winget
+a6b6b0e5	Zamyka aplikację (z tymi samymi porządkami co przy zwykłym zamknięciu; nie uruchamia się ponownie sama)
+6a966307	Po zamknięciu aplikacji usuwa {0} (exe aplikacji itp. zostają)
+29b5bfe7	Przerwano, bo nie udało się oddać wentylatorów pod sterowanie BIOS
+585aaebc	Nie udało się całkowicie zatrzymać sterowania wentylatorami, a sterownik PawnIO może być nadal używany, więc go nie odinstalowano (
+0baf8724	)
+1c7ee8b3	Porządki przerwano. Niczego nie zmieniono.
+9b1d2fd1	Wentylatorami nadal steruje ta aplikacja. Uruchom komputer ponownie i spróbuj jeszcze raz.
+628b7bb7	Porządki zakończone. Wentylatory wróciły pod automatyczne sterowanie BIOS (płyty głównej).
+891b9617	Porządki zakończone. Niektóre rzeczy się nie udały (patrz niżej).
+24b69a8c	• {0}
+c96515c1	• Ponowne uruchomienie komputera przywraca wszystko do poprzedniego stanu.
+894f5f7e	Po zamknięciu aplikacja się zakończy, a potem usunie {0}.
+7fadc402	Po zamknięciu aplikacja się zakończy (nie uruchomi się sama ponownie). Ustawienia, dzienniki i zapisy zostają w folderze.
+2735adba	Samej aplikacji nie można usunąć, gdy działa. Jeśli przestajesz jej używać, po zamknięciu usuń ten folder (otworzy się w Eksploratorze):\n{0}
+47bb6afa	Plik jest pusty.
+c7d09b2f	To nie jest plik ustawień ProFanController.
+59d09ada	Nie zawiera profili.
+8f6cc529	Nie znaleziono pasującego złącza (nie importowane)
+a63b0e26	To samo złącze
+17f329b8	Złącze o tej samej nazwie
+411bcf86	Ten sam czujnik
+5c522e51	{0} (import)
+0da8db2c	{0} (import {1})
+6bb3e62c	Zaimportowano profile: {0} (dodano {1}, zastąpiono {2})
+03b7c771	. Wentylatorów bez pasującego złącza ({0}) nie zaimportowano
+5e0e7e59	. Dla bezpieczeństwa w zaimportowanych wentylatorach wyłączono „Steruj tą aplikacją”
+2732738f	Przerwano
+165e874b	Bardzo dobrze
+1b6b7859	Dobrze
+0b497be2	Nieco wysoko
+6eb7c426	Niewystarczające chłodzenie
+0e60185d	Test chłodzenia ProFanController  {0:yyyy/MM/dd HH:mm}
+f18a2032	Profil: {0} / czas obciążenia: {1:F0} min (wszystkie rdzenie CPU)
+a659e995	Ocena                    : {0}
+67316e06	Temp. CPU w spoczynku   : {0:F1} °C
+af1c8f16	Najwyższa temperatura   : {0:F1} °C
+49c4091d	Temperatura ustalona    : {0:F1} °C (średnia z ostatnich 60 s obciążenia)
+94a44622	Czas nagrzewania        : około {0:F0} s (90% wzrostu)
+22014e7c	Czas schładzania        : {0}
+39ecacc7	około {0:F0} s (do temperatury spoczynku +3°C)
+2919e4b9	nie schłodziło się w pełni w czasie pomiaru
+0d251b5a	Moc CPU (średnia)       : {0:F0} W
+f7640092	Taktowanie CPU          : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (spadek: wydajność może być obniżana przez ciepło)
+ec93ac4d	{0,-12}: maks {1:N0} rpm / średnio pod obciążeniem {2:F0}%
+e94f5002	Pomiar temperatury w spoczynku… ({0})
+45a75756	Obciążanie CPU… (zostało {0})
+c11497ad	Obciążenie zatrzymane; pomiar czasu schładzania…
+ec508209	Obciążenie zatrzymano, bo temperatura CPU osiągnęła {0:F0}°C
+3b081cd7	Przerwane przez użytkownika
+5218b8e0	Zakończono przed przyłożeniem obciążenia
+4381cf4c	Inne
+c3f18a1c	Za mało zapisów
+020e3226	Diagnoza wymaga co najmniej 2 minut zapisów. Poużywaj komputera przez chwilę (najlepiej po grze lub innym obciążeniu) i spróbuj ponownie.
+f1dcdb81	{0}: obroty pompy mają mały zapas
+02b1a16b	Spadają do {0:N0} rpm, blisko progu ostrzeżenia {1:N0} rpm. Sprawdź, czy pompa nie jest zużyta lub czy ustawienie w BIOS nie jest za niskie.
+e61a98f9	{0}: obroty często rosną i spadają
+24a699e7	Wzrost i spadek obrotów zmieniają się około {0:F0} razy na 10 minut. To powoduje irytujące „falowanie” dźwięku.
+5f91ae1b	Uspokój reakcję
+4ce44846	Zastosowano: histereza +2°C, wygładzanie ×0,6, spadek ×0,7.

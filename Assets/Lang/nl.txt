@@ -709,3 +709,103 @@ b6d7dbf8	Auto
 ae81cf8d	Handmatig
 7aebcb13	Vóór import
 44fc16c5	Vóór koppeling na vervangen onderdelen
+f32b8618	Vóór terugzetten
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Snel stil
+c7f7bdf4	Auto: {0}
+ab7eac67	Boost actief (nog {0})
+9134a95f	Stille modus (nog {0})
+ad045555	De FFT-grootte moet een macht van 2 zijn
+d9602266	Kan het pad van het uitvoerbare bestand niet bepalen.
+5d8ccfc5	Automatisch afstemmen  {0:yyyy/MM/dd HH:mm} / temperatuursensor: {1}
+07bdf93a	Temperatuur in rust: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	Het doel van {0:F0} °C is zelfs op volle snelheid niet haalbaar ({1:F1} °C op volle snelheid)
+29359893	Toerental nodig om het doel van {0:F0} °C te halen: ongeveer {1:F0}%
+0252b580	Temperatuur in rust wordt gemeten…
+7c323904	Belasting wordt gestart…
+be843d5e	Start een game of benchmark (begint vanzelf zodra het GPU-gebruik boven 70% komt)
+83a5ad8f	Wachten tot hij op volle snelheid opwarmt…
+ac818524	Wachten tot de temperatuur stabiliseert bij {0:F0}%… (stap {1} / {2})
+f8650f35	Belasting stoppen en terug naar normale regeling…
+882d4f38	Klaar
+9ea783e1	Afgebroken: {0}
+3cf8744b	De temperatuursensor kan niet worden gelezen
+9af40572	Afgebroken vanwege noodvolle snelheid
+ef174ee8	Afgebroken omdat de temperatuur {0:F0} °C bereikte
+13912a14	Afgebroken omdat de GPU-belasting wegviel (laat de game of benchmark doorlopen)
+f3ec99ac	Afgebroken omdat er geen belasting was
+5d76038f	Maximaal toerental wordt gemeten…
+966245da	Meten terwijl het toerental daalt… ({0:F0}%)
+8db302e0	Aanlooptoerental wordt gezocht… ({0:F0}%)
+904b8997	Klaar
+e0f9ce74	De toerentalsensor kan niet worden gelezen.
+3c9b5c60	Draait zelfs op 100% niet. Controleer de bedrading.
+0018ad60	instellingen (config.json), logs (logs), metingen (data, records, reports), back-ups van instellingen (backups) en apparaatafbeeldingen (images)
+da1c2ba4	Geeft alle ventilatoren terug aan de automatische BIOS-regeling (moederbord) en controleert dat dat gelukt is (zo niet, dan stopt het hier en verandert niets)
+cf1947e1	Stopt de ventilatorregeling en sluit de hardware (PawnIO-stuurprogramma). Meldt het watchdog-proces ook dat het een correcte afsluiting is, zodat het ook stopt (in plaats van de stop als storing te zien en te herstarten)
+a1e35f8f	Stopt de lichtregeling en geeft de ledapparaten vrij (OpenRGB e.a.), met hetzelfde effect als bij normaal afsluiten
+3958581c	Stopt de telefoonweergave en verwijdert de toegevoegde Windows Firewall-regel (ProFanController Web)
+62d5ef69	Verwijdert het opstarten bij aanmelden (de taak "ProFanController" in Taakplanner)
+aa1f9cbb	Verwijdert de instelling voor crashdumps (Windows Error Reporting\\LocalDumps in het register)
+7ca65cf7	Verwijdert PawnIO (het stuurprogramma voor ventilatorregeling) met winget
+a6b6b0e5	Sluit de app af (met dezelfde opruiming als bij normaal afsluiten; start niet vanzelf opnieuw)
+6a966307	Wist na het afsluiten van de app de {0} (de exe van de app en dergelijke blijven)
+29b5bfe7	Afgebroken omdat de ventilatoren niet terug konden naar BIOS-regeling
+585aaebc	De ventilatorregeling kon niet volledig worden gestopt en het PawnIO-stuurprogramma is mogelijk nog in gebruik, dus is het niet verwijderd (
+0baf8724	)
+1c7ee8b3	Het opruimen is afgebroken. Er is niets veranderd.
+9b1d2fd1	De ventilatoren worden nog steeds door deze app geregeld. Start de pc opnieuw op en probeer het nog eens.
+628b7bb7	Het opruimen is klaar. De ventilatoren staan weer onder automatische BIOS-regeling (moederbord).
+891b9617	Het opruimen is klaar. Sommige dingen lukten niet (zie hieronder).
+24b69a8c	• {0}
+c96515c1	• Na een herstart van de pc is alles weer zoals voorheen.
+894f5f7e	Als je dit sluit, stopt de app en wist daarna de {0}.
+7fadc402	Als je dit sluit, stopt de app (start niet vanzelf opnieuw). Instellingen, logs en metingen blijven in de map.
+2735adba	De app zelf kan niet worden gewist terwijl hij draait. Stop je ermee, verwijder dan na het afsluiten deze map (Verkenner opent hem):\n{0}
+47bb6afa	Het bestand is leeg.
+c7d09b2f	Dit is geen instellingenbestand van ProFanController.
+59d09ada	Er staan geen profielen in.
+8f6cc529	Geen passende aansluiting gevonden (niet geïmporteerd)
+a63b0e26	Zelfde aansluiting
+17f329b8	Aansluiting met dezelfde naam
+411bcf86	Zelfde sensor
+5c522e51	{0} (geïmporteerd)
+0da8db2c	{0} (geïmporteerd {1})
+6bb3e62c	{0} profielen geïmporteerd ({1} toegevoegd, {2} vervangen)
+03b7c771	. {0} ventilatoren zonder passende aansluiting zijn niet geïmporteerd
+5e0e7e59	. Voor de veiligheid staat "Met deze app regelen" uit bij de geïmporteerde ventilatoren
+2732738f	Afgebroken
+165e874b	Zeer goed
+1b6b7859	Goed
+0b497be2	Wat hoog
+6eb7c426	Onvoldoende koeling
+0e60185d	ProFanController-koeltest  {0:yyyy/MM/dd HH:mm}
+f18a2032	Profiel: {0} / belastingstijd: {1:F0} min (alle CPU-kernen)
+a659e995	Oordeel                  : {0}
+67316e06	CPU-temperatuur in rust  : {0:F1} °C
+af1c8f16	Hoogste temperatuur      : {0:F1} °C
+49c4091d	Stabiele temperatuur     : {0:F1} °C (gemiddelde van de laatste 60 s belasting)
+94a44622	Opwarmtijd               : ongeveer {0:F0} s (90% van de stijging)
+22014e7c	Afkoeltijd               : {0}
+39ecacc7	ongeveer {0:F0} s (tot temperatuur in rust +3 °C)
+2919e4b9	niet volledig afgekoeld binnen de meettijd
+0d251b5a	CPU-vermogen (gemiddeld) : {0:F0} W
+f7640092	CPU-klok                 : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (gedaald: prestaties worden mogelijk door warmte beperkt)
+ec93ac4d	{0,-12}: max {1:N0} rpm / gemiddeld onder belasting {2:F0}%
+e94f5002	Temperatuur in rust wordt gemeten… ({0})
+45a75756	CPU wordt belast… (nog {0})
+c11497ad	Belasting gestopt; afkoeltijd wordt gemeten…
+ec508209	De belasting is gestopt omdat de CPU-temperatuur {0:F0} °C bereikte
+3b081cd7	Gestopt door de gebruiker
+5218b8e0	Beëindigd voordat de belasting begon
+4381cf4c	Overig
+c3f18a1c	Niet genoeg metingen
+020e3226	De diagnose heeft minstens 2 minuten metingen nodig. Gebruik de pc een tijdje (liefst na een game of andere belasting) en probeer het opnieuw.
+f1dcdb81	{0}: het pomptoerental heeft weinig marge
+02b1a16b	Het zakt tot {0:N0} rpm, dicht bij de alarmwaarde van {1:N0} rpm. Controleer op slijtage van de pomp of een te lage BIOS-instelling.
+e61a98f9	{0}: het toerental gaat steeds op en neer
+24a699e7	Het toerental wisselt ongeveer {0:F0} keer per 10 minuten tussen stijgen en dalen. Dat veroorzaakt een hinderlijk zwevend gebrom.
+5f91ae1b	Reactie rustiger maken
+4ce44846	Toegepast: hysterese +2 °C, demping ×0,6, daalsnelheid ×0,7.

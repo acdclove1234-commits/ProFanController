@@ -709,3 +709,103 @@ b6d7dbf8	Auto
 ae81cf8d	Manual
 7aebcb13	Antes de importar
 44fc16c5	Antes de emparejar tras cambiar piezas
+f32b8618	Antes de restaurar
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Silencio rápido
+c7f7bdf4	Auto: {0}
+ab7eac67	Turbo activo (quedan {0})
+9134a95f	Modo silencioso (quedan {0})
+ad045555	El tamaño de la FFT debe ser una potencia de 2
+d9602266	No se puede obtener la ruta del ejecutable.
+5d8ccfc5	Ajuste automático  {0:yyyy/MM/dd HH:mm} / sensor de temperatura: {1}
+07bdf93a	Temperatura en reposo: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	El objetivo de {0:F0} °C no se alcanza ni a velocidad máxima ({1:F1} °C a velocidad máxima)
+29359893	Velocidad necesaria para mantener el objetivo de {0:F0} °C: alrededor del {1:F0} %
+0252b580	Midiendo la temperatura en reposo…
+7c323904	Iniciando la carga…
+be843d5e	Inicia un juego o benchmark (empieza solo cuando el uso de la GPU supere el 70 %)
+83a5ad8f	Esperando a que se caliente a velocidad máxima…
+ac818524	Esperando a que la temperatura se estabilice al {0:F0} %… (paso {1} / {2})
+f8650f35	Deteniendo la carga y volviendo al control normal…
+882d4f38	Listo
+9ea783e1	Interrumpido: {0}
+3cf8744b	No se puede leer el sensor de temperatura
+9af40572	Se detuvo por la velocidad máxima de emergencia
+ef174ee8	Se detuvo porque la temperatura llegó a {0:F0} °C
+13912a14	Se detuvo porque la carga de la GPU desapareció (mantén el juego o benchmark en marcha)
+f3ec99ac	Se detuvo porque no se aplicó carga
+5d76038f	Midiendo la velocidad máxima…
+966245da	Midiendo mientras baja la velocidad… ({0:F0} %)
+8db302e0	Buscando la velocidad de arranque… ({0:F0} %)
+904b8997	Listo
+e0f9ce74	No se puede leer el sensor de velocidad.
+3c9b5c60	No gira ni al 100 %. Revisa el cableado.
+0018ad60	ajustes (config.json), registros (logs), grabaciones (data, records, reports), copias de ajustes (backups) e imágenes de dispositivos (images)
+da1c2ba4	Devuelve todos los ventiladores al control automático de la BIOS (placa base) y comprueba que volvieron (si no, se detiene aquí y no cambia nada)
+cf1947e1	Detiene el control de ventiladores y cierra el hardware (controlador PawnIO). También avisa al proceso vigilante de que es un cierre correcto para que termine (en lugar de tomar la parada como un fallo y reiniciar)
+a1e35f8f	Detiene el control de iluminación y libera los dispositivos LED (OpenRGB y otros), terminando con el mismo efecto que un cierre normal
+3958581c	Detiene la vista móvil y quita la regla que añadió al Firewall de Windows (ProFanController Web)
+62d5ef69	Quita el inicio al iniciar sesión (la tarea «ProFanController» del Programador de tareas)
+aa1f9cbb	Quita el ajuste de volcados por bloqueo (Windows Error Reporting\\LocalDumps del registro)
+7ca65cf7	Desinstala PawnIO (el controlador de ventiladores) con winget
+a6b6b0e5	Cierra la aplicación (con la misma limpieza que un cierre normal; no se reinicia sola)
+6a966307	Cuando la aplicación se cierre, borra los {0} (el exe de la aplicación y demás se mantienen)
+29b5bfe7	Se detuvo porque los ventiladores no pudieron volver al control de la BIOS
+585aaebc	No se pudo detener del todo el control de ventiladores y el controlador PawnIO quizá siga en uso, así que no se desinstaló (
+0baf8724	)
+1c7ee8b3	La limpieza se detuvo. No se cambió nada.
+9b1d2fd1	Los ventiladores siguen controlados por esta aplicación como antes. Reinicia el PC y vuelve a intentarlo.
+628b7bb7	La limpieza terminó. Los ventiladores han vuelto al control automático de la BIOS (placa base).
+891b9617	La limpieza terminó. Algunas cosas no funcionaron (ver abajo).
+24b69a8c	• {0}
+c96515c1	• Al reiniciar el PC, todo vuelve a como estaba.
+894f5f7e	Al cerrar esto, la aplicación se cierra y luego borra los {0}.
+7fadc402	Al cerrar esto, la aplicación se cierra (no se reinicia sola). Ajustes, registros y grabaciones se quedan en la carpeta.
+2735adba	La aplicación no se puede borrar mientras se ejecuta. Si dejas de usarla, borra esta carpeta después de cerrarla (se abre en el Explorador):\n{0}
+47bb6afa	El archivo está vacío.
+c7d09b2f	No es un archivo de ajustes de ProFanController.
+59d09ada	No contiene perfiles.
+8f6cc529	No se encontró un conector correspondiente (no se importa)
+a63b0e26	Mismo conector
+17f329b8	Conector con el mismo nombre
+411bcf86	Mismo sensor
+5c522e51	{0} (importado)
+0da8db2c	{0} (importado {1})
+6bb3e62c	Se importaron {0} perfiles ({1} añadidos, {2} reemplazados)
+03b7c771	. No se importaron {0} ventiladores sin conector correspondiente
+5e0e7e59	. Por seguridad, los ventiladores importados tienen desactivado «Controlar con esta aplicación»
+2732738f	Interrumpido
+165e874b	Muy bueno
+1b6b7859	Bueno
+0b497be2	Algo alto
+6eb7c426	Refrigeración insuficiente
+0e60185d	Prueba de refrigeración de ProFanController  {0:yyyy/MM/dd HH:mm}
+f18a2032	Perfil: {0} / tiempo de carga: {1:F0} min (todos los núcleos de la CPU)
+a659e995	Resultado                     : {0}
+67316e06	Temperatura de la CPU reposo : {0:F1} °C
+af1c8f16	Temperatura máxima           : {0:F1} °C
+49c4091d	Temperatura estable          : {0:F1} °C (media de los últimos 60 s de carga)
+94a44622	Tiempo de calentamiento      : unos {0:F0} s (90 % de la subida)
+22014e7c	Tiempo de enfriamiento       : {0}
+39ecacc7	unos {0:F0} s (hasta la temperatura en reposo +3 °C)
+2919e4b9	no se enfrió del todo en el tiempo de medición
+0d251b5a	Consumo de la CPU (media)    : {0:F0} W
+f7640092	Frecuencia de la CPU         : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (bajada: el calor podría estar reduciendo el rendimiento)
+ec93ac4d	{0,-12}: máx {1:N0} rpm / media con carga {2:F0} %
+e94f5002	Midiendo la temperatura en reposo… ({0})
+45a75756	Cargando la CPU… (quedan {0})
+c11497ad	Carga detenida; midiendo el tiempo de enfriamiento…
+ec508209	Se detuvo la carga porque la temperatura de la CPU llegó a {0:F0} °C
+3b081cd7	Detenido por el usuario
+5218b8e0	Terminó antes de aplicar la carga
+4381cf4c	Otros
+c3f18a1c	No hay suficientes registros
+020e3226	El diagnóstico necesita al menos 2 minutos de registros. Usa el PC un rato (mejor después de un juego u otra carga) y vuelve a intentarlo.
+f1dcdb81	{0}: la velocidad de la bomba tiene poco margen
+02b1a16b	Baja hasta {0:N0} rpm, cerca del valor de alerta de {1:N0} rpm. Revisa si la bomba está desgastada o si el ajuste de la BIOS es demasiado bajo.
+e61a98f9	{0}: la velocidad sube y baja con frecuencia
+24a699e7	La velocidad alterna entre subir y bajar unas {0:F0} veces cada 10 minutos. Eso causa un zumbido ondulante molesto.
+5f91ae1b	Hacer la respuesta más tranquila
+4ce44846	Aplicado: histéresis +2 °C, suavizado ×0,6, bajada ×0,7.

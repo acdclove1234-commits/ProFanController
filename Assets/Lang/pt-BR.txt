@@ -709,3 +709,103 @@ b6d7dbf8	Auto
 ae81cf8d	Manual
 7aebcb13	Antes da importação
 44fc16c5	Antes do pareamento após troca de peças
+f32b8618	Antes de restaurar
+4db25563	{0:yyyy/MM/dd HH:mm} ({1})
+7dc6c4d8	Silêncio rápido
+c7f7bdf4	Auto: {0}
+ab7eac67	Turbo ativo (faltam {0})
+9134a95f	Modo silencioso (faltam {0})
+ad045555	O tamanho da FFT deve ser uma potência de 2
+d9602266	Não foi possível obter o caminho do executável.
+5d8ccfc5	Ajuste automático  {0:yyyy/MM/dd HH:mm} / sensor de temperatura: {1}
+07bdf93a	Temperatura em repouso: {0:F1} °C
+e21bad89	 ({0:N0} rpm)
+d3d56cef	O alvo de {0:F0} °C não é atingido nem na velocidade máxima ({1:F1} °C na velocidade máxima)
+29359893	Rotação necessária para manter o alvo de {0:F0} °C: cerca de {1:F0}%
+0252b580	Medindo a temperatura em repouso…
+7c323904	Iniciando a carga…
+be843d5e	Abra um jogo ou benchmark (começa sozinho quando o uso da GPU passar de 70%)
+83a5ad8f	Esperando esquentar na velocidade máxima…
+ac818524	Esperando a temperatura estabilizar em {0:F0}%… (etapa {1} / {2})
+f8650f35	Parando a carga e voltando ao controle normal…
+882d4f38	Concluído
+9ea783e1	Interrompido: {0}
+3cf8744b	O sensor de temperatura não pode ser lido
+9af40572	Interrompido pela velocidade máxima de emergência
+ef174ee8	Interrompido porque a temperatura chegou a {0:F0} °C
+13912a14	Interrompido porque a carga da GPU sumiu (mantenha o jogo ou benchmark rodando)
+f3ec99ac	Interrompido porque nenhuma carga foi aplicada
+5d76038f	Medindo a rotação máxima…
+966245da	Medindo enquanto baixa a rotação… ({0:F0}%)
+8db302e0	Procurando a rotação de partida… ({0:F0}%)
+904b8997	Concluído
+e0f9ce74	O sensor de rotação não pode ser lido.
+3c9b5c60	Não gira nem a 100%. Verifique a ligação.
+0018ad60	configurações (config.json), logs (logs), registros (data, records, reports), backups das configurações (backups) e imagens dos dispositivos (images)
+da1c2ba4	Devolve todas as ventoinhas ao controle automático da BIOS (placa-mãe) e confirma que voltaram (se não, para aqui e não muda nada)
+cf1947e1	Para o controle das ventoinhas e fecha o hardware (driver PawnIO). Também avisa o processo vigia de que é um encerramento correto para que ele termine (em vez de achar que a parada é uma falha e reiniciar)
+a1e35f8f	Para o controle de iluminação e libera os dispositivos de LED (OpenRGB e outros), terminando com o mesmo efeito de um encerramento normal
+3958581c	Para a visualização no celular e remove a regra adicionada ao Firewall do Windows (ProFanController Web)
+62d5ef69	Remove a inicialização no login (a tarefa "ProFanController" do Agendador de Tarefas)
+aa1f9cbb	Remove a configuração de despejo de falhas (Windows Error Reporting\\LocalDumps no registro)
+7ca65cf7	Desinstala o PawnIO (o driver de controle das ventoinhas) com o winget
+a6b6b0e5	Fecha o app (com a mesma limpeza de um encerramento normal; não reinicia sozinho)
+6a966307	Depois que o app fechar, apaga {0} (o exe do app e afins ficam)
+29b5bfe7	Interrompido porque as ventoinhas não puderam voltar ao controle da BIOS
+585aaebc	Não foi possível parar totalmente o controle das ventoinhas e o driver PawnIO talvez ainda esteja em uso, então ele não foi desinstalado (
+0baf8724	)
+1c7ee8b3	A limpeza foi interrompida. Nada foi alterado.
+9b1d2fd1	As ventoinhas continuam controladas por este app como antes. Reinicie o PC e tente de novo.
+628b7bb7	A limpeza terminou. As ventoinhas voltaram ao controle automático da BIOS (placa-mãe).
+891b9617	A limpeza terminou. Algumas coisas não deram certo (veja abaixo).
+24b69a8c	• {0}
+c96515c1	• Reiniciar o PC deixa tudo como antes.
+894f5f7e	Ao fechar, o app termina e depois apaga {0}.
+7fadc402	Ao fechar, o app termina (não reinicia sozinho). Configurações, logs e registros ficam na pasta.
+2735adba	O app não pode ser apagado enquanto roda. Se parar de usá-lo, apague esta pasta depois de fechá-lo (ela abre no Explorador):\n{0}
+47bb6afa	O arquivo está vazio.
+c7d09b2f	Este não é um arquivo de configurações do ProFanController.
+59d09ada	Não contém perfis.
+8f6cc529	Nenhum conector correspondente encontrado (não importado)
+a63b0e26	Mesmo conector
+17f329b8	Conector com o mesmo nome
+411bcf86	Mesmo sensor
+5c522e51	{0} (importado)
+0da8db2c	{0} (importado {1})
+6bb3e62c	{0} perfis importados ({1} adicionados, {2} substituídos)
+03b7c771	. {0} ventoinhas sem conector correspondente não foram importadas
+5e0e7e59	. Por segurança, "Controlar com este app" foi desligado nas ventoinhas importadas
+2732738f	Interrompido
+165e874b	Muito bom
+1b6b7859	Bom
+0b497be2	Um pouco alto
+6eb7c426	Resfriamento insuficiente
+0e60185d	Teste de resfriamento do ProFanController  {0:yyyy/MM/dd HH:mm}
+f18a2032	Perfil: {0} / tempo de carga: {1:F0} min (todos os núcleos da CPU)
+a659e995	Resultado                   : {0}
+67316e06	Temperatura da CPU repouso : {0:F1} °C
+af1c8f16	Temperatura máxima         : {0:F1} °C
+49c4091d	Temperatura estável        : {0:F1} °C (média dos últimos 60 s de carga)
+94a44622	Tempo para esquentar       : cerca de {0:F0} s (90% da subida)
+22014e7c	Tempo para esfriar         : {0}
+39ecacc7	cerca de {0:F0} s (até a temperatura em repouso +3 °C)
+2919e4b9	não esfriou totalmente dentro do tempo de medição
+0d251b5a	Consumo da CPU (média)     : {0:F0} W
+f7640092	Clock da CPU               : {0:F2} GHz → {1:F2} GHz{2}
+239a13cb	 (caiu: o calor pode estar reduzindo o desempenho)
+ec93ac4d	{0,-12}: máx {1:N0} rpm / média sob carga {2:F0}%
+e94f5002	Medindo a temperatura em repouso… ({0})
+45a75756	Carregando a CPU… (faltam {0})
+c11497ad	Carga parada; medindo o tempo para esfriar…
+ec508209	A carga foi parada porque a temperatura da CPU chegou a {0:F0} °C
+3b081cd7	Interrompido pelo usuário
+5218b8e0	Terminou antes de aplicar a carga
+4381cf4c	Outros
+c3f18a1c	Registros insuficientes
+020e3226	O diagnóstico precisa de pelo menos 2 minutos de registros. Use o PC por um tempo (de preferência depois de um jogo ou outra carga) e tente de novo.
+f1dcdb81	{0}: a rotação da bomba tem pouca folga
+02b1a16b	Ela cai até {0:N0} rpm, perto do valor de alerta de {1:N0} rpm. Verifique se a bomba está gasta ou se a configuração da BIOS está baixa demais.
+e61a98f9	{0}: a rotação sobe e desce com frequência
+24a699e7	A rotação alterna entre subir e descer cerca de {0:F0} vezes a cada 10 minutos. Isso causa um zumbido ondulado incômodo.
+5f91ae1b	Deixar a resposta mais calma
+4ce44846	Aplicado: histerese +2 °C, suavização ×0,6, descida ×0,7.
