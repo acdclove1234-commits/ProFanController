@@ -209,3 +209,103 @@ c8f39b51	Wyłącza wszystkie LED-y. Integracja działa dalej, więc urządzenia 
 5b89ecc9	Port serwera SDK OpenRGB (zwykle 6742)
 1ac6b9e1	Testuj połączenie
 235b3d31	Sprawdza, czy OpenRGB odpowiada, i pokazuje poniżej znalezione urządzenia (nie zmienia kolorów LED)
+342a5300	Połącz ponownie teraz
+f65c9d04	Naciśnij po ponownym uruchomieniu OpenRGB lub podłączeniu/odłączeniu urządzeń, aby od razu połączyć się ponownie bez czekania
+0218f6e9	Efekt
+8221927c	Wybierz, jak świecą LED-y. Wybór jest od razu stosowany do LED-ów.
+4e683b86	Temperatura
+2986bd87	Kolor zmienia się z temperaturą CPU lub GPU: jasnoniebieski (chłodno) → zielony → żółty → czerwony (gorąco)
+d24ecf3b	Tęcza (płynąca)
+5f081b9f	Kolory tęczy powoli płyną wzdłuż LED-ów
+0b164d69	Tęcza (statyczna)
+e584bd69	Kolory tęczy rozłożone wzdłuż LED-ów, bez ruchu
+7eda32b9	Oddychanie
+28f5315f	Wybrany kolor powoli jaśnieje i ciemnieje, jak przy oddechu
+f5b86f25	Stały kolor
+afb96a15	Świeci stale jednym wybranym kolorem
+f8fa9d4d	Synchronizacja z muzyką
+0b622a65	Świeci w rytm dźwięku odtwarzanego na komputerze (tego, co idzie do głośników lub słuchawek). Mikrofon nie jest używany
+c9d8508e	Temperatura dla koloru
+e315f45c	Który czujnik decyduje o kolorze. „Auto” bierze wyższą z temperatur CPU i GPU
+33276084	Temperatura jasnoniebieskiego
+a08b7324	W tej temperaturze i niżej kolor jest jasnoniebieski (chłodno)
+0582db54	Temperatura czerwonego
+74068713	W tej temperaturze i wyżej kolor jest w pełni czerwony (gorąco). Pomiędzy: zielony → żółty
+181b9ba1	Prędkość
+6f30cf75	Tęcza przy 1× robi jedno okrążenie w 30 s (10 s przy 3×, 3 s przy 10×); oddychanie przy 1× trwa 6 s. Dla muzycznej „fali” to prędkość przepływu
+36bcf3d7	{0:F1}×
+f9dafe1e	Analizuje dźwięk z komputera i świeci w rytm uderzeń perkusji, tempa i wysokości dźwięku. Najpierw wybierz ustawienie wstępne, a poniżej popraw tylko to, co przeszkadza.
+581f0311	Bieżący dźwięk podzielony na 24 pasma od basów (lewo) do sopranów (prawo). Jasne słupki w środku to „ataki” np. perkusji, biała linia to niedawny szczyt
+a8d258f0	Zapala się przy każdym wykrytym kicku (stopie). Podczas testu synchronizacji błyska na biało z kliknięciami
+9aa04ac9	Tempo utworu (uderzenia na minutę). Po uchwyceniu tempa przewiduje uderzenia i świeci bez opóźnienia
+8d97f850	Poziom = bieżąca głośność. Odniesienie = głośność, którą automatyczna regulacja uznaje za „najjaśniejszą” (dBFS: 0 to maksimum, im bardziej ujemne, tym ciszej)
+1634d9e9	Bardzo ciche dźwięki (szum) są ignorowane. Gdy nic nie gra, obowiązuje poniższy efekt „Gdy dźwięk ucichnie”
+2f3d51ba	Ustawia efekt, intensywność i paletę na zalecane połączenie. Jeśli sam zmienisz ustawienia poniżej, stanie się „Własne”
+932cdbc7	Styl muzyczny
+2c274961	Jak LED-y podążają za muzyką. Aby wybrać dla każdego urządzenia, użyj „Urządzenia” poniżej
+4d0abffb	„Stroboskop” mocno miga, dlatego można go wybrać tylko przy wyłączonym „Ogranicz miganie” poniżej.
+c87d9699	Intensywność
+541920a5	Jak mocno świeci uderzenie i jak często zmienia się kolor. Wybór ustawia też odpowiednio „Płynność”, „Akcent” i „Minimum” poniżej
+a800602a	Paleta
+5c25c402	Zestaw kolorów synchronizacji z muzyką. Przy każdym uderzeniu następuje kolejny kolor
+758ca518	Wzmocnienie
+ab2026d3	+ sprawia, że nawet ciche dźwięki jasno świecą — do cichych utworów lub niskiej głośności. − daje jasność tylko głośnym dźwiękom
+65d61087	Czułość na uderzenia
+33c9b585	Jak bardzo wychwytywane są „ataki” perkusji itp. Wyżej = reakcja także na ciche uderzenia. Zmniejsz, jeśli reaguje zbyt nerwowo
+2c61a63b	Płynność
+b99839d0	Jak szybko gaśnie światło. Wyżej = miękko i powoli, niżej = żwawo
+86b8ad57	Akcent
+708b0876	Wyżej = mocne błyski tylko przy uderzeniach, poza nimi stonowanie. Niżej = światło wprost podąża za głośnością
+5b2abe07	Minimum
+f59ad0c8	Utrzymuje co najmniej tę jasność nawet przy cichym dźwięku. Przy 0% bez dźwięku wszystko gaśnie
+1b6feb60	Przywróć domyślne
+23e2af21	Przywraca domyślne wartości wzmocnienia, płynności, akcentu i innych (także w „Zaawansowane”). Efekt, intensywność, paleta i opóźnienie dźwięku zostają bez zmian. „Cofnij” w prawym górnym rogu to odwraca
+21444cf4	Opóźnienie dźwięku
+a9eeb51b	+, gdy światło wyprzedza dźwięk, −, gdy się spóźnia. Słuchawki i głośniki Bluetooth oraz telewizory (HDMI) odtwarzają dźwięk z opóźnieniem, więc użyj +. „Test synchronizacji” ułatwia dopasowanie
+a48b2636	Przyspiesza światło o 10 ms
+42e71d61	Opóźnia światło o 10 ms
+7d84f147	Test synchronizacji
+41951cb8	Co 0,6 sekundy odtwarza „klik” i błyska LED-ami na biało. Przesuwaj „Opóźnienie dźwięku”, aż dźwięk i światło się zgrają. Naciśnij ponownie lub opuść stronę, aby zatrzymać
+61644194	+, gdy światło wyprzedza dźwięk, −, gdy się spóźnia. Słuchawki i głośniki Bluetooth oraz telewizory (HDMI) odtwarzają dźwięk z opóźnieniem, więc użyj +
+0e36045a	Bluetooth opóźnia dźwięk; zalecane +150–200 ms
+ece319ca	Ustaw +180 ms
+8101e4b1	Ustawia opóźnienie dźwięku na +180 ms (później można dostroić testem synchronizacji)
+e02412ea	Gdy włączone, mocne błyski są ograniczone do 3 na sekundę (aby chronić oczy i zdrowie osób wrażliwych na światło). Stroboskop również nie jest używany
+ff4e5cc2	Ogranicz miganie
+a2bb37bc	Ogranicza mocne błyski do 3 na sekundę. Po wyłączeniu dostępny staje się „Stroboskop”
+03e1f9ef	⚠ Światła mogą intensywnie migać. Jeśli miganie źle na ciebie wpływa, natychmiast włącz ponownie „Ogranicz miganie”.
+dc8c4f99	Tempo
+9c0a6ff9	Auto: po uchwyceniu tempa przewiduje uderzenia i świeci bez opóźnienia. Tylko stopa: bez przewidywania, świeci tylko przy uderzeniu stopy. Wył.: bez tempa i uderzeń, tylko głośność
+19595ed1	Jeśli wykryte tempo jest dwa razy wyższe niż rzeczywiste (zbyt nerwowe miganie), naciśnij, aby świecić w połowie tempa
+b74e97b3	Jeśli wykryte tempo jest o połowę niższe niż rzeczywiste (świeci co drugie uderzenie), naciśnij, aby świecić w podwójnym tempie
+fbc2bffb	Gdy dźwięk ucichnie
+23bf0707	Efekt, gdy nic nie gra (między utworami, podczas pauzy itp.). Synchronizacja z muzyką wraca, gdy tylko pojawi się dźwięk
+3cc7a5c7	Przełącz po
+47460e62	Ile sekund ciszy przed przełączeniem na efekt „Gdy dźwięk ucichnie”. Wydłuż, jeśli krótkie przerwy w utworach go uruchamiają
+f88e8627	{0:F0} s
+22d9166d	Dźwięk, na który reagować
+500cdc90	Puste = reakcja na cały dźwięk z komputera. Wpisz nazwę aplikacji (np. Spotify), aby reagować tylko, gdy ta aplikacja gra
+bfe1fde6	Puste oznacza cały dźwięk. Wpisz nazwę aplikacji (np. Spotify), aby reagować tylko, gdy ta aplikacja gra
+84a6f5e5	Wybierz z aplikacji odtwarzających dźwięk ▾
+86415147	Wybierz z aplikacji, które odtwarzają (lub mogą odtwarzać) dźwięk. Te, które grają teraz, są na górze
+d120384c	Cały dźwięk
+9905daf4	Reaguje na cały dźwięk z komputera bez wybierania aplikacji
+68010262	Ustawienia zaawansowane
+7f7d168e	Pokazuje szczegółowe ustawienia analizy dźwięku. Zwykle nie trzeba ich zmieniać
+548593da	Ile czasu potrzebuje światło, by pojaśnieć, gdy dźwięk rośnie. 0 jest najszybsze, ale łatwiej migocze
+88a0aec8	Zakres głośności dla jasności
+4ce9ee35	Ile dB poniżej najgłośniejszego dźwięku jest pokazywane jako różnica jasności. Mniej = wyraźny kontrast, więcej = reakcja także na ciche dźwięki
+6986be54	Balans wysokości
+8406bc01	Jak mocno pasma są automatycznie wyrównywane, by wszystkie ładnie świeciły nawet w utworach z przewagą basów lub sopranów. Przy 0% balans utworu jest pokazywany bez zmian
+417793f0	Podbicie sopranów
+69e0667b	O ile większą wagę dostają wysokie dźwięki (dB na oktawę). Zwiększ, aby mocniej reagować na hi-hat i inne wysokie dźwięki
+ed8c6bb1	Kontrast
+a4c8a92f	Wyżej = tylko mocne dźwięki są wyraźnie jasne, słabe ciemniejsze. 1,0 nic nie zmienia
+0c86ccaf	Kolor i jasność
+f645ed15	Kolor
+889d5957	Kolor dla stałego koloru i oddychania. W synchronizacji z muzyką to środkowy kolor palety „Wybrany kolor”
+cfcf25fc	Bieżący kolor
+b2c395cb	Wpisz kolor jako #RRGGBB (np. #6A00FF) albo wybierz jedno z kółek po lewej
+55b1d508	Wpisz w formacie #RRGGBB (np. #6A00FF): sześć znaków z 0–9 i A–F
+743a1e61	Jasność
+26565f26	Ogólna jasność LED-ów. Każdy efekt używa jej jako maksimum

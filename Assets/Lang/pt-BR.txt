@@ -209,3 +209,103 @@ c8f39b51	Apaga todos os LEDs. A integração continua, então os dispositivos n�
 5b89ecc9	Porta do servidor SDK do OpenRGB (normalmente 6742)
 1ac6b9e1	Testar conexão
 235b3d31	Verifica se o OpenRGB responde e lista abaixo os dispositivos encontrados (não muda as cores dos LEDs)
+342a5300	Reconectar agora
+f65c9d04	Pressione depois de reiniciar o OpenRGB ou conectar/desconectar dispositivos para reconectar na hora, sem esperar
+0218f6e9	Efeito
+8221927c	Escolha como os LEDs acendem. A escolha é aplicada aos LEDs na hora.
+4e683b86	Temperatura
+2986bd87	A cor segue a temperatura da CPU ou da GPU: azul-claro (frio) → verde → amarelo → vermelho (quente)
+d24ecf3b	Arco-íris (fluindo)
+5f081b9f	As cores do arco-íris fluem devagar ao longo dos LEDs
+0b164d69	Arco-íris (fixo)
+e584bd69	As cores do arco-íris distribuídas ao longo dos LEDs, sem se mover
+7eda32b9	Respiração
+28f5315f	A cor escolhida clareia e escurece devagar, como uma respiração
+f5b86f25	Cor fixa
+afb96a15	Fica acesa em uma única cor escolhida
+f8fa9d4d	Sincronização com música
+0b622a65	Acende com o som tocando no PC (o que vai para as caixas de som ou fones). O microfone não é usado
+c9d8508e	Temperatura da cor
+e315f45c	Qual sensor define a cor. "Auto" usa a maior entre CPU e GPU
+33276084	Temperatura do azul-claro
+a08b7324	Nesta temperatura ou abaixo, a cor é azul-claro (frio)
+0582db54	Temperatura do vermelho
+74068713	Nesta temperatura ou acima, a cor é vermelho total (quente). No meio passa por verde → amarelo
+181b9ba1	Velocidade
+6f30cf75	O arco-íris em 1× leva 30 s por volta (10 s em 3×, 3 s em 10×); a respiração em 1× leva 6 s. Na "onda" musical é a velocidade do fluxo
+36bcf3d7	{0:F1}×
+f9dafe1e	Analisa o som do PC e acende com as batidas da bateria, o andamento e a altura do som. Escolha primeiro uma predefinição e depois ajuste abaixo só o que incomodar.
+581f0311	O som atual dividido em 24 faixas, dos graves (esquerda) aos agudos (direita). As barras claras de dentro são os "ataques" como a bateria; a linha branca é o pico recente
+a8d258f0	Acende sempre que detecta um bumbo. Durante o teste de sincronia, pisca em branco com os cliques
+9aa04ac9	O andamento da música (batidas por minuto). Quando o capta, antecipa as batidas e acende sem atraso
+8d97f850	Nível = volume atual. Referência = o volume que o ajuste automático considera "o mais claro" (dBFS: 0 é o máximo; quanto mais negativo, mais baixo)
+1634d9e9	Sons muito baixos (ruído) são ignorados. Quando nada toca, vale o efeito "Quando o som para" abaixo
+2f3d51ba	Coloca efeito, intensidade e paleta numa combinação recomendada. Se você mudar as configurações abaixo, vira "Personalizado"
+932cdbc7	Estilo musical
+2c274961	Como os LEDs acompanham a música. Para escolher por dispositivo, use "Dispositivos" abaixo
+4d0abffb	"Estroboscópio" pisca forte, então só pode ser escolhido com "Reduzir piscadas" abaixo desligado.
+c87d9699	Intensidade
+541920a5	A força com que a batida acende e a frequência de troca de cor. Escolher uma também ajusta "Suavidade", "Impacto" e "Mínimo" abaixo
+a800602a	Paleta
+5c25c402	O conjunto de cores da sincronização com música. A cada batida passa para a próxima cor
+758ca518	Ganho
+ab2026d3	+ faz até sons baixos brilharem, para músicas calmas ou volume baixo. − só dá brilho aos sons altos
+65d61087	Sensibilidade à batida
+33c9b585	Quanto dos "ataques" da bateria e afins é captado. Mais alto reage também a batidas leves. Abaixe se reagir de forma agitada demais
+2c61a63b	Suavidade
+b99839d0	A rapidez com que a luz apaga. Mais alto apaga suave e devagar; mais baixo se move de forma ágil
+86b8ad57	Impacto
+708b0876	Mais alto brilha forte só nas batidas e fica discreto no resto. Mais baixo segue diretamente o volume
+5b2abe07	Mínimo
+f59ad0c8	Mantém pelo menos este brilho mesmo com som baixo. Em 0%, sem som tudo apaga
+1b6feb60	Restaurar padrões
+23e2af21	Volta ganho, suavidade, impacto e outros valores (inclusive os de "Avançado") ao padrão. Efeito, intensidade, paleta e atraso de áudio continuam como estão. "Desfazer", no canto superior direito, reverte
+21444cf4	Atraso de áudio
+a9eeb51b	+ se a luz vier antes do som, − se vier depois. Fones e caixas Bluetooth e TVs (HDMI) tocam o som atrasado, então use +. O "Teste de sincronia" facilita o ajuste
+a48b2636	Adianta a luz em 10 ms
+42e71d61	Atrasa a luz em 10 ms
+7d84f147	Teste de sincronia
+41951cb8	Toca um "clique" a cada 0,6 segundo e pisca os LEDs em branco. Ajuste o "Atraso de áudio" até som e luz coincidirem. Pressione de novo ou saia desta página para parar
+61644194	+ se a luz vier antes do som, − se vier depois. Fones e caixas Bluetooth e TVs (HDMI) tocam o som atrasado, então use +
+0e36045a	O Bluetooth atrasa o som; recomenda-se +150–200 ms
+ece319ca	Definir +180 ms
+8101e4b1	Define o atraso de áudio em +180 ms (depois dá para ajustar com o teste de sincronia)
+e02412ea	Enquanto ligado, as piscadas fortes ficam limitadas a 3 por segundo (para proteger os olhos e a saúde de pessoas sensíveis à luz). O estroboscópio também não é usado
+ff4e5cc2	Reduzir piscadas
+a2bb37bc	Limita as piscadas fortes a 3 por segundo. Ao desligar, o "Estroboscópio" fica disponível
+03e1f9ef	⚠ As luzes podem piscar intensamente. Se as piscadas fizerem você se sentir mal, ligue "Reduzir piscadas" de novo imediatamente.
+dc8c4f99	Andamento
+9c0a6ff9	Auto: ao captar o andamento, antecipa as batidas e acende sem atraso. Só bumbo: sem antecipar; acende só quando o bumbo toca. Desligado: sem andamento nem batidas, só o volume
+19595ed1	Se o andamento detectado for o dobro do real (piscadas agitadas demais), pressione para acender na metade do andamento
+b74e97b3	Se o andamento detectado for a metade do real (acende uma batida sim, outra não), pressione para acender no dobro do andamento
+fbc2bffb	Quando o som para
+23bf0707	O efeito enquanto nada toca (entre músicas, em pausa etc.). A sincronização volta assim que o som retorna
+3cc7a5c7	Mudar após
+47460e62	Segundos de silêncio antes de mudar para o efeito "Quando o som para". Aumente se silêncios curtos dentro das músicas o acionarem
+f88e8627	{0:F0} s
+22d9166d	Som a acompanhar
+500cdc90	Vazio reage a todo o som do PC. Digite o nome de um app (ex.: Spotify) para reagir só enquanto esse app toca som
+bfe1fde6	Vazio significa todo o som. Digite o nome de um app (ex.: Spotify) para reagir só enquanto esse app toca som
+84a6f5e5	Escolher entre apps tocando som ▾
+86415147	Escolha entre os apps que tocam (ou podem tocar) som. Os que estão tocando agora aparecem no topo
+d120384c	Todo o som
+9905daf4	Reage a todo o som do PC sem escolher um app
+68010262	Configurações avançadas
+7f7d168e	Mostra os ajustes finos da análise de som. Normalmente não é preciso mudá-los
+548593da	Quanto tempo a luz leva para clarear quando o som aumenta. 0 é o mais rápido, mas cintila com mais facilidade
+88a0aec8	Faixa de volume para o brilho
+4ce9ee35	Quantos dB abaixo do som mais alto viram diferenças de brilho. Menor deixa claro e escuro bem marcados; maior reage também a sons baixos
+6986be54	Equilíbrio de altura
+8406bc01	A força com que as faixas são igualadas para que todas acendam bem, mesmo em músicas carregadas de graves ou agudos. Em 0%, o equilíbrio da música aparece como é
+417793f0	Realce de agudos
+69e0667b	Quanto mais peso os sons agudos recebem (dB a mais por oitava). Aumente para reagir mais a chimbais e outros agudos
+ed8c6bb1	Contraste
+a4c8a92f	Mais alto deixa só os sons fortes nitidamente claros e os fracos mais escuros. 1,0 não muda nada
+0c86ccaf	Cor e brilho
+f645ed15	Cor
+889d5957	Cor para cor fixa e respiração. Na sincronização com música, é a cor central da paleta "Cor escolhida"
+cfcf25fc	Cor atual
+b2c395cb	Digite uma cor como #RRGGBB (ex.: #6A00FF) ou escolha um dos círculos à esquerda
+55b1d508	Digite como #RRGGBB (ex.: #6A00FF): seis caracteres entre 0–9 e A–F
+743a1e61	Brilho
+26565f26	Brilho geral dos LEDs. Todo efeito usa este brilho como máximo

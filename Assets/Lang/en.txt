@@ -209,3 +209,103 @@ c8f39b51	Turns all LEDs off. The integration keeps running, so devices do not fa
 5b89ecc9	Port of OpenRGB's SDK server (usually 6742)
 1ac6b9e1	Test connection
 235b3d31	Checks that OpenRGB can be reached and lists the devices it found below (does not change LED colors)
+342a5300	Reconnect now
+f65c9d04	Press after restarting OpenRGB or plugging devices in or out to reconnect right away instead of waiting
+0218f6e9	Effect
+8221927c	Choose how the LEDs light up. Your choice is applied to the LEDs right away.
+4e683b86	Temperature
+2986bd87	The color follows the CPU or GPU temperature: light blue (cool) → green → yellow → red (hot)
+d24ecf3b	Rainbow (flowing)
+5f081b9f	Rainbow colors flow slowly along the LEDs
+0b164d69	Rainbow (static)
+e584bd69	Rainbow colors laid out along the LEDs, not moving
+7eda32b9	Breathing
+28f5315f	The chosen color slowly brightens and dims, like breathing
+f5b86f25	Static color
+afb96a15	Stays lit in one chosen color
+f8fa9d4d	Music sync
+0b622a65	Lights up with the sound playing on the PC (what goes to your speakers or headphones). The microphone is not used
+c9d8508e	Temperature for the color
+e315f45c	Which sensor's temperature sets the color. "Auto" uses the higher of the CPU and GPU
+33276084	Light-blue temperature
+a08b7324	At or below this temperature the color is light blue (cool)
+0582db54	Red temperature
+74068713	At or above this temperature the color is full red (hot). In between it goes green → yellow
+181b9ba1	Speed
+6f30cf75	Rainbow at 1× takes 30 s per cycle (10 s at 3×, 3 s at 10×); breathing at 1× takes 6 s per breath. For the music "flowing wave" it is the flow speed
+36bcf3d7	{0:F1}×
+f9dafe1e	Analyzes the sound coming from the PC and lights up with the drum hits, the tempo and the pitch. Start by choosing a preset, then adjust only what bothers you below.
+581f0311	The current sound split into 24 bands from bass (left) to treble (right). The bright bars inside are "attacks" such as drums; the white line is the recent peak
+a8d258f0	Lights up whenever a kick (bass drum) is found. During the sync test it flashes white with the clicks
+9aa04ac9	The song's tempo (beats per minute). Once it has the tempo, it predicts the beats and lights up without delay
+8d97f850	Level = how loud the sound is now. Reference = the loudness that the automatic level control treats as "brightest" (dBFS: 0 is the maximum, the more negative the quieter)
+1634d9e9	Very quiet sounds (noise) are ignored. When nothing is playing, the LEDs use the "When the sound stops" effect below
+2f3d51ba	Sets the effect, intensity and palette to a recommended combination. Changing the settings below yourself makes it "Custom"
+932cdbc7	Music style
+2c274961	How the LEDs move with the music. To choose per device, use "Devices" below
+4d0abffb	"Strobe" flashes hard, so it can be chosen only when "Reduce flashing" below is off.
+c87d9699	Intensity
+541920a5	How strongly the beat lights up and how often the color changes. Choosing one also sets "Smoothness", "Punch" and "Darkest" below to match
+a800602a	Palette
+5c25c402	The set of colors used for music sync. On every beat it moves to the next color in the set
+758ca518	Gain
+ab2026d3	+ makes quiet sound light up brightly, for quiet songs or low listening volume. − makes it bright only for loud sound
+65d61087	Beat sensitivity
+33c9b585	How much of the "attack" of drums and the like is picked up. Higher reacts to quieter drums as beats. Lower it if it reacts too busily
+2c61a63b	Smoothness
+b99839d0	How fast the light fades. Higher fades softly and slowly; lower moves crisply
+86b8ad57	Punch
+708b0876	Higher lights up strongly only on drum hits and stays subdued otherwise. Lower follows the loudness directly
+5b2abe07	Darkest
+f59ad0c8	Keeps at least this brightness even when the sound is quiet. At 0% the LEDs go fully dark when there is no sound
+1b6feb60	Reset to defaults
+23e2af21	Resets values such as gain, smoothness and punch (also those under "Advanced") to their defaults. The effect, intensity, palette and audio delay stay as they are. Undo at the top right takes it back
+21444cf4	Audio delay
+a9eeb51b	Use + when the light comes before the sound, − when it comes after. Bluetooth earphones and speakers and TVs (HDMI) play sound late, so use +. The "Sync test" makes it easier to match
+a48b2636	Moves the light 10 ms earlier
+42e71d61	Moves the light 10 ms later
+7d84f147	Sync test
+41951cb8	Plays a "click" every 0.6 seconds and flashes the LEDs white. Adjust "Audio delay" until sound and light match. Press again or leave this page to stop
+61644194	Use + when the light comes before the sound, − when it comes after. Bluetooth earphones and speakers and TVs (HDMI) play sound late, so use +
+0e36045a	Bluetooth plays sound late, so +150–200 ms is recommended
+ece319ca	Set +180 ms
+8101e4b1	Sets the audio delay to +180 ms (you can fine-tune it later with the sync test)
+e02412ea	While on, strong flashes are limited to 3 per second (to protect the eyes and health of people sensitive to light). Strobe is not used either
+ff4e5cc2	Reduce flashing
+a2bb37bc	Limits strong flashes to 3 per second. Turning it off makes "Strobe" available
+03e1f9ef	⚠ The lights may flash intensely. If flashing light makes you feel unwell, turn "Reduce flashing" back on right away.
+dc8c4f99	Tempo
+9c0a6ff9	Auto: once it has the song's tempo, it predicts the beats and lights up without delay. Kick only: no prediction; lights up only when the bass drum hits. Off: uses neither tempo nor beats, only the loudness
+19595ed1	If the tempo is picked up at twice the real one (lights flash too busily), press to light up at half the tempo
+b74e97b3	If the tempo is picked up at half the real one (lights flash on every other beat), press to light up at twice the tempo
+fbc2bffb	When the sound stops
+23bf0707	The effect while nothing is playing (between songs, while paused and so on). Music sync resumes as soon as sound returns
+3cc7a5c7	Switch after
+47460e62	Seconds of silence before switching to the "When the sound stops" effect. Make it longer if short silences within songs trigger it
+f88e8627	{0:F0} s
+22d9166d	Sound to react to
+500cdc90	Empty reacts to all sound from the PC. Enter an app name (e.g. Spotify) to react only while that app is playing sound
+bfe1fde6	Empty means all sound. Enter an app name (e.g. Spotify) to react only while that app is playing sound
+84a6f5e5	Choose from apps playing sound ▾
+86415147	Choose from the apps that are playing (or can play) sound. Apps playing sound now are listed first
+d120384c	All sound
+9905daf4	Reacts to all sound from the PC without choosing an app
+68010262	Advanced settings
+7f7d168e	Shows the fine settings of the sound analysis. You normally do not need to change them
+548593da	How long the light takes to brighten when the sound gets louder. 0 is fastest but flickers more easily
+88a0aec8	Dynamic range for brightness
+4ce9ee35	How many dB below the loudest sound are shown as differences in brightness. Smaller makes light and dark distinct; larger also reacts to quiet sounds
+6986be54	Pitch balance
+8406bc01	How strongly the bands are evened out so that every band lights up nicely even in bass-heavy or treble-heavy songs. At 0% the song's balance is shown as is
+417793f0	Treble boost
+69e0667b	How much more weight higher notes get (dB added per octave). Raise it to react more to hi-hats and other high sounds
+ed8c6bb1	Contrast
+a4c8a92f	Higher makes only strong sounds clearly bright and weak sounds darker. 1.0 leaves it unchanged
+0c86ccaf	Color & brightness
+f645ed15	Color
+889d5957	Color for static and breathing. In music sync, it is the center color of the "Chosen color" palette
+cfcf25fc	Current color
+b2c395cb	Enter a color as #RRGGBB (e.g. #6A00FF), or pick one from the circles on the left
+55b1d508	Enter it as #RRGGBB (e.g. #6A00FF): six characters, 0–9 and A–F
+743a1e61	Brightness
+26565f26	Overall LED brightness. Every effect uses this as its maximum

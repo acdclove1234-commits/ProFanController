@@ -209,3 +209,103 @@ c8f39b51	Tắt toàn bộ LED. Liên kết vẫn tiếp tục nên thiết bị 
 5b89ecc9	Cổng máy chủ SDK của OpenRGB (thường là 6742)
 1ac6b9e1	Kiểm tra kết nối
 235b3d31	Kiểm tra xem có kết nối được OpenRGB không và liệt kê thiết bị tìm thấy ở bên dưới (không đổi màu LED)
+342a5300	Kết nối lại ngay
+f65c9d04	Nhấn sau khi khởi động lại OpenRGB hoặc cắm/rút thiết bị để kết nối lại ngay mà không phải chờ
+0218f6e9	Hiệu ứng
+8221927c	Chọn cách LED phát sáng. Lựa chọn được áp dụng cho LED ngay lập tức.
+4e683b86	Nhiệt độ
+2986bd87	Màu thay đổi theo nhiệt độ CPU hoặc GPU: xanh nhạt (mát) → xanh lá → vàng → đỏ (nóng)
+d24ecf3b	Cầu vồng (chảy)
+5f081b9f	Màu cầu vồng chảy chậm dọc theo dãy LED
+0b164d69	Cầu vồng (cố định)
+e584bd69	Màu cầu vồng xếp dọc theo dãy LED, không chuyển động
+7eda32b9	Nhịp thở
+28f5315f	Màu đã chọn sáng lên rồi tối dần chậm rãi như đang thở
+f5b86f25	Màu cố định
+afb96a15	Sáng liên tục bằng một màu đã chọn
+f8fa9d4d	Đồng bộ nhạc
+0b622a65	Phát sáng theo âm thanh đang phát trên PC (âm thanh ra loa hoặc tai nghe). Không dùng micrô
+c9d8508e	Nhiệt độ quyết định màu
+e315f45c	Dùng nhiệt độ của cảm biến nào để quyết định màu. "Tự động" thì dùng giá trị cao hơn giữa CPU và GPU
+33276084	Nhiệt độ chuyển xanh nhạt
+a08b7324	Bằng hoặc dưới nhiệt độ này, màu là xanh nhạt (mát)
+0582db54	Nhiệt độ chuyển đỏ
+74068713	Bằng hoặc trên nhiệt độ này, màu là đỏ hoàn toàn (nóng). Ở giữa sẽ qua xanh lá → vàng
+181b9ba1	Tốc độ
+6f30cf75	Cầu vồng ở 1× mất 30 giây một vòng (3× là 10 giây, 10× là 3 giây); nhịp thở ở 1× mất 6 giây một lần. Với "sóng chảy" khi đồng bộ nhạc thì đây là tốc độ chảy
+36bcf3d7	{0:F1}×
+f9dafe1e	Phân tích âm thanh phát ra từ PC và phát sáng theo nhịp trống, tiết tấu và cao độ. Hãy chọn cấu hình sẵn trước, rồi chỉ chỉnh bên dưới những chỗ bạn thấy chưa ưng.
+581f0311	Âm thanh hiện tại chia thành 24 dải từ trầm (trái) đến cao (phải). Các thanh sáng bên trong là "tiếng đánh" như trống, đường trắng là đỉnh gần đây
+a8d258f0	Sáng lên mỗi khi phát hiện tiếng kick (trống bass). Trong lúc kiểm tra đồng bộ, đèn nháy trắng theo tiếng click
+9aa04ac9	Tiết tấu của bài (số nhịp mỗi phút). Khi bắt được tiết tấu, đèn dự đoán trước nhịp và sáng không bị trễ
+8d97f850	Âm lượng = độ lớn hiện tại. Mốc = độ lớn mà bộ chỉnh âm lượng tự động coi là "sáng nhất" (dBFS: 0 là tối đa, càng âm càng nhỏ)
+1634d9e9	Không phản ứng với âm rất nhỏ (tiếng ồn). Khi không có âm thanh, dùng hiệu ứng "Khi hết âm thanh" bên dưới
+2f3d51ba	Đặt hiệu ứng, cường độ và bảng màu thành tổ hợp được đề xuất. Tự thay đổi các cài đặt bên dưới sẽ chuyển thành "Tùy chỉnh"
+932cdbc7	Phong cách nhạc
+2c274961	Cách LED chuyển động theo nhạc. Muốn chọn riêng cho từng thiết bị, hãy dùng "Thiết bị" bên dưới
+4d0abffb	"Đèn chớp" nhấp nháy mạnh nên chỉ chọn được khi tắt "Giảm nhấp nháy" bên dưới.
+c87d9699	Cường độ
+541920a5	Độ mạnh khi sáng theo nhịp và tần suất đổi màu. Khi chọn, "Độ mượt", "Độ nhấn" và "Tối nhất" bên dưới cũng được đặt theo cường độ đó
+a800602a	Bảng màu
+5c25c402	Bộ màu dùng khi đồng bộ nhạc. Mỗi nhịp sẽ chuyển sang màu kế tiếp trong bộ
+758ca518	Độ khuếch đại
+ab2026d3	Đặt + để cả âm nhỏ cũng sáng rõ, dành cho bài nhạc nhỏ hoặc khi nghe ở âm lượng thấp. Đặt − để chỉ sáng khi âm lớn
+65d61087	Độ nhạy nhịp
+33c9b585	Mức bắt "tiếng đánh" của trống và các âm tương tự. Càng cao càng phản ứng cả với tiếng trống nhỏ. Giảm xuống nếu phản ứng quá rối
+2c61a63b	Độ mượt
+b99839d0	Tốc độ ánh sáng tắt dần. Càng lớn càng tắt êm và chậm, càng nhỏ càng dứt khoát
+86b8ad57	Độ nhấn
+708b0876	Càng lớn càng chỉ sáng mạnh vào khoảnh khắc trống đánh, còn lại thì dịu. Càng nhỏ càng sáng theo đúng độ lớn âm thanh
+5b2abe07	Tối nhất
+f59ad0c8	Giữ ít nhất độ sáng này kể cả khi âm nhỏ. Đặt 0% thì khi không có âm thanh sẽ tối hẳn
+1b6feb60	Đặt lại mặc định
+23e2af21	Đưa độ khuếch đại, độ mượt, độ nhấn và các giá trị khác (kể cả trong "Nâng cao") về mặc định. Hiệu ứng, cường độ, bảng màu và bù độ trễ âm thanh giữ nguyên. Có thể hủy bằng "Hoàn tác" ở góc trên bên phải
+21444cf4	Bù độ trễ âm thanh
+a9eeb51b	Đặt + khi đèn sáng trước âm thanh, − khi sáng sau. Tai nghe, loa Bluetooth và TV (HDMI) phát âm thanh trễ nên hãy đặt +. Dùng "Kiểm tra đồng bộ" sẽ dễ chỉnh hơn
+a48b2636	Cho đèn sớm hơn 10 ms
+42e71d61	Cho đèn muộn hơn 10 ms
+7d84f147	Kiểm tra đồng bộ
+41951cb8	Cứ 0,6 giây phát một tiếng "tách" và cho LED nháy trắng. Hãy chỉnh "Bù độ trễ âm thanh" cho đến khi âm thanh và ánh sáng khớp nhau. Nhấn lại hoặc rời trang này để dừng
+61644194	Đặt + khi đèn sáng trước âm thanh, − khi sáng sau. Tai nghe, loa Bluetooth và TV (HDMI) phát âm thanh trễ nên hãy đặt +
+0e36045a	Bluetooth làm âm thanh trễ, nên dùng +150–200 ms
+ece319ca	Đặt +180 ms
+8101e4b1	Đặt bù độ trễ âm thanh thành +180 ms (sau đó có thể tinh chỉnh bằng kiểm tra đồng bộ)
+e02412ea	Khi bật, nhấp nháy mạnh bị giới hạn 3 lần mỗi giây (để bảo vệ mắt và sức khỏe của người nhạy cảm với ánh sáng). Cũng không dùng đèn chớp
+ff4e5cc2	Giảm nhấp nháy
+a2bb37bc	Giới hạn nhấp nháy mạnh ở 3 lần mỗi giây. Tắt đi thì có thể chọn "Đèn chớp"
+03e1f9ef	⚠ Đèn có thể nhấp nháy mạnh. Nếu ánh sáng nhấp nháy làm bạn khó chịu, hãy bật lại "Giảm nhấp nháy" ngay.
+dc8c4f99	Tiết tấu
+9c0a6ff9	Tự động: khi bắt được tiết tấu, dự đoán trước nhịp và sáng không trễ. Chỉ kick: không dự đoán, chỉ sáng khi trống bass vang. Không dùng: không dùng tiết tấu hay nhịp, chỉ sáng theo độ lớn âm thanh
+19595ed1	Khi tiết tấu bị bắt gấp đôi thực tế (đèn nháy quá dồn dập), nhấn để sáng theo một nửa tiết tấu
+b74e97b3	Khi tiết tấu bị bắt bằng một nửa thực tế (đèn sáng cách một nhịp), nhấn để sáng theo gấp đôi tiết tấu
+fbc2bffb	Khi hết âm thanh
+23bf0707	Hiệu ứng khi không có âm thanh (giữa các bài, khi tạm dừng…). Âm thanh trở lại là quay về đồng bộ nhạc ngay
+3cc7a5c7	Chuyển sau
+47460e62	Số giây im lặng trước khi chuyển sang hiệu ứng "Khi hết âm thanh". Hãy tăng lên nếu những khoảng lặng ngắn trong bài cũng làm chuyển
+f88e8627	{0:F0} giây
+22d9166d	Âm thanh để phản ứng
+500cdc90	Để trống thì phản ứng với mọi âm thanh từ PC. Nhập tên ứng dụng (VD: Spotify) để chỉ phản ứng khi ứng dụng đó phát âm thanh
+bfe1fde6	Để trống là mọi âm thanh. Nhập tên ứng dụng (VD: Spotify) để chỉ phản ứng khi ứng dụng đó phát âm thanh
+84a6f5e5	Chọn từ ứng dụng đang phát âm thanh ▾
+86415147	Chọn từ danh sách ứng dụng đang (hoặc có thể) phát âm thanh. Ứng dụng đang phát âm thanh nằm ở trên
+d120384c	Mọi âm thanh
+9905daf4	Không chỉ định ứng dụng, phản ứng với mọi âm thanh từ PC
+68010262	Cài đặt chi tiết (nâng cao)
+7f7d168e	Hiển thị các cài đặt chi tiết của việc phân tích âm thanh. Thường không cần thay đổi
+548593da	Thời gian để đèn sáng lên khi âm thanh to dần. Đặt 0 là nhanh nhất nhưng dễ chập chờn
+88a0aec8	Dải âm lượng dùng cho độ sáng
+4ce9ee35	Thể hiện các âm nhỏ hơn âm lớn nhất bao nhiêu dB thành khác biệt độ sáng. Nhỏ thì sáng tối rõ ràng, lớn thì phản ứng cả với âm nhỏ
+6986be54	Cân bằng cao độ
+8406bc01	Mức tự động san đều để mọi dải đều sáng vừa phải, kể cả với bài nhiều âm trầm hoặc nhiều âm cao. Đặt 0% thì giữ nguyên cân bằng âm thanh của bài
+417793f0	Tăng âm cao
+69e0667b	Mức tăng trọng số cho âm cao (cộng bao nhiêu dB mỗi quãng tám). Tăng lên khi muốn phản ứng nhiều hơn với hi-hat và các âm cao khác
+ed8c6bb1	Độ tương phản
+a4c8a92f	Càng lớn càng chỉ âm mạnh mới sáng rõ, âm yếu thì tối hơn. 1,0 là không đổi
+0c86ccaf	Màu và độ sáng
+f645ed15	Màu
+889d5957	Màu cho chế độ màu cố định và nhịp thở. Khi đồng bộ nhạc, đây là màu trung tâm của bảng màu "Màu đã chọn"
+cfcf25fc	Màu đang chọn
+b2c395cb	Có thể nhập màu dạng #RRGGBB (VD: #6A00FF), hoặc chọn từ các vòng tròn bên trái
+55b1d508	Hãy nhập dạng #RRGGBB (VD: #6A00FF): 6 ký tự gồm 0–9 và A–F
+743a1e61	Độ sáng
+26565f26	Độ sáng chung của LED. Mọi hiệu ứng đều lấy độ sáng này làm mức tối đa

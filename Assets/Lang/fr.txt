@@ -209,3 +209,103 @@ c8f39b51	Éteint toutes les LED. L'intégration continue, donc les appareils ne 
 5b89ecc9	Port du serveur SDK d'OpenRGB (généralement 6742)
 1ac6b9e1	Tester la connexion
 235b3d31	Vérifie qu'OpenRGB est joignable et liste ci-dessous les appareils trouvés (ne change pas les couleurs des LED)
+342a5300	Reconnecter maintenant
+f65c9d04	Appuyez après avoir redémarré OpenRGB ou branché/débranché des appareils pour vous reconnecter tout de suite sans attendre
+0218f6e9	Effet
+8221927c	Choisissez comment les LED s'allument. Le choix est appliqué immédiatement aux LED.
+4e683b86	Température
+2986bd87	La couleur suit la température du CPU ou du GPU : bleu clair (froid) → vert → jaune → rouge (chaud)
+d24ecf3b	Arc-en-ciel (défilant)
+5f081b9f	Les couleurs de l'arc-en-ciel défilent lentement le long des LED
+0b164d69	Arc-en-ciel (fixe)
+e584bd69	Les couleurs de l'arc-en-ciel sont réparties le long des LED, sans bouger
+7eda32b9	Respiration
+28f5315f	La couleur choisie s'éclaire et s'assombrit lentement, comme une respiration
+f5b86f25	Couleur fixe
+afb96a15	Reste allumé d'une seule couleur choisie
+f8fa9d4d	Synchro musicale
+0b622a65	S'allume au rythme du son joué sur le PC (ce qui part vers les haut-parleurs ou le casque). Le micro n'est pas utilisé
+c9d8508e	Température pour la couleur
+e315f45c	Quel capteur détermine la couleur. « Auto » prend la plus élevée du CPU et du GPU
+33276084	Température du bleu clair
+a08b7324	À cette température ou en dessous, la couleur est bleu clair (froid)
+0582db54	Température du rouge
+74068713	À cette température ou au-dessus, la couleur est rouge vif (chaud). Entre les deux : vert → jaune
+181b9ba1	Vitesse
+6f30cf75	L'arc-en-ciel à 1× fait un tour en 30 s (10 s à 3×, 3 s à 10×) ; la respiration à 1× dure 6 s. Pour la « vague » musicale, c'est la vitesse de défilement
+36bcf3d7	{0:F1}×
+f9dafe1e	Analyse le son du PC et s'allume avec les frappes de batterie, le tempo et la hauteur. Choisissez d'abord un préréglage, puis ajustez ci-dessous seulement ce qui vous gêne.
+581f0311	Le son actuel découpé en 24 bandes, des graves (gauche) aux aigus (droite). Les barres claires à l'intérieur sont les « attaques » comme la batterie ; la ligne blanche est le pic récent
+a8d258f0	S'allume à chaque grosse caisse détectée. Pendant le test de synchro, clignote en blanc avec les clics
+9aa04ac9	Le tempo du morceau (battements par minute). Une fois le tempo trouvé, les temps sont anticipés et s'allument sans retard
+8d97f850	Niveau = volume actuel. Référence = le volume que le réglage automatique considère comme « le plus lumineux » (dBFS : 0 est le maximum, plus c'est négatif, plus c'est faible)
+1634d9e9	Les sons très faibles (bruit) sont ignorés. Quand rien ne joue, l'effet « Quand le son s'arrête » ci-dessous s'applique
+2f3d51ba	Règle l'effet, l'intensité et la palette sur une combinaison recommandée. Si vous modifiez vous-même les réglages ci-dessous, cela devient « Personnalisé »
+932cdbc7	Style musical
+2c274961	Comment les LED suivent la musique. Pour choisir par appareil, utilisez « Appareils » ci-dessous
+4d0abffb	« Stroboscope » clignote fortement : il n'est disponible que si « Réduire les flashs » ci-dessous est désactivé.
+c87d9699	Intensité
+541920a5	La force des flashs sur le temps et la fréquence des changements de couleur. Le choix règle aussi « Douceur », « Impact » et « Minimum » ci-dessous en conséquence
+a800602a	Palette
+5c25c402	L'ensemble de couleurs de la synchro musicale. À chaque temps, on passe à la couleur suivante
+758ca518	Gain
+ab2026d3	+ rend lumineux même les sons faibles, pour les morceaux calmes ou un volume bas. − n'éclaire que les sons forts
+65d61087	Sensibilité aux temps
+33c9b585	Dans quelle mesure les « attaques » de batterie et autres sont captées. Plus haut réagit aussi aux frappes discrètes. Baissez si la réaction est trop agitée
+2c61a63b	Douceur
+b99839d0	La vitesse à laquelle la lumière s'éteint. Plus haut : extinction douce et lente ; plus bas : mouvements nets
+86b8ad57	Impact
+708b0876	Plus haut : flashs forts seulement sur les frappes, discret le reste du temps. Plus bas : suit directement le volume
+5b2abe07	Minimum
+f59ad0c8	Garde au moins cette luminosité même quand le son est faible. À 0 %, tout s'éteint sans son
+1b6feb60	Réinitialiser
+23e2af21	Ramène aux valeurs par défaut le gain, la douceur, l'impact, etc. (y compris ceux de « Avancé »). L'effet, l'intensité, la palette et le décalage audio ne changent pas. « Annuler » en haut à droite revient en arrière
+21444cf4	Décalage audio
+a9eeb51b	+ si la lumière arrive avant le son, − si elle arrive après. Les écouteurs et enceintes Bluetooth et les téléviseurs (HDMI) jouent le son en retard : utilisez +. Le « Test de synchro » facilite le réglage
+a48b2636	Avance la lumière de 10 ms
+42e71d61	Retarde la lumière de 10 ms
+7d84f147	Test de synchro
+41951cb8	Joue un « clic » toutes les 0,6 seconde et fait clignoter les LED en blanc. Réglez le « Décalage audio » jusqu'à ce que son et lumière coïncident. Appuyez de nouveau ou quittez la page pour arrêter
+61644194	+ si la lumière arrive avant le son, − si elle arrive après. Les écouteurs et enceintes Bluetooth et les téléviseurs (HDMI) jouent le son en retard : utilisez +
+0e36045a	Le Bluetooth retarde le son : +150–200 ms recommandés
+ece319ca	Régler à +180 ms
+8101e4b1	Règle le décalage audio à +180 ms (affinable ensuite avec le test de synchro)
+e02412ea	Tant que c'est activé, les flashs forts sont limités à 3 par seconde (pour protéger les yeux et la santé des personnes sensibles à la lumière). Le stroboscope n'est pas utilisé non plus
+ff4e5cc2	Réduire les flashs
+a2bb37bc	Limite les flashs forts à 3 par seconde. Le désactiver rend « Stroboscope » disponible
+03e1f9ef	⚠ L'éclairage peut clignoter intensément. Si les flashs vous incommodent, réactivez immédiatement « Réduire les flashs ».
+dc8c4f99	Tempo
+9c0a6ff9	Auto : une fois le tempo trouvé, les temps sont anticipés et s'allument sans retard. Grosse caisse seule : pas d'anticipation, s'allume seulement sur la grosse caisse. Désactivé : ni tempo ni temps, seulement le volume
+19595ed1	Si le tempo détecté est le double du vrai (clignotements trop agités), appuyez pour éclairer à la moitié du tempo
+b74e97b3	Si le tempo détecté est la moitié du vrai (un temps sur deux), appuyez pour éclairer au double du tempo
+fbc2bffb	Quand le son s'arrête
+23bf0707	L'effet quand rien ne joue (entre les morceaux, en pause, etc.). La synchro musicale reprend dès que le son revient
+3cc7a5c7	Basculer après
+47460e62	Secondes de silence avant de passer à l'effet « Quand le son s'arrête ». Allongez si de courts silences dans les morceaux le déclenchent
+f88e8627	{0:F0} s
+22d9166d	Son à suivre
+500cdc90	Vide : réagit à tout le son du PC. Saisissez le nom d'une application (ex. Spotify) pour ne réagir que lorsqu'elle joue du son
+bfe1fde6	Vide : tout le son. Saisissez le nom d'une application (ex. Spotify) pour ne réagir que lorsqu'elle joue du son
+84a6f5e5	Choisir parmi les applis qui jouent du son ▾
+86415147	Choisissez parmi les applications qui jouent (ou peuvent jouer) du son. Celles qui jouent en ce moment sont en haut
+d120384c	Tout le son
+9905daf4	Réagit à tout le son du PC sans choisir d'application
+68010262	Réglages avancés
+7f7d168e	Affiche les réglages fins de l'analyse du son. En général, inutile de les modifier
+548593da	Temps nécessaire pour que la lumière s'intensifie quand le son monte. 0 est le plus rapide mais scintille plus facilement
+88a0aec8	Plage de volume pour la luminosité
+4ce9ee35	Combien de dB sous le son le plus fort sont traduits en différences de luminosité. Plus petit : contraste net ; plus grand : réagit aussi aux sons faibles
+6986be54	Équilibre des hauteurs
+8406bc01	Force de l'égalisation automatique des bandes pour que toutes s'allument bien, même dans les morceaux chargés en graves ou en aigus. À 0 %, l'équilibre du morceau est montré tel quel
+417793f0	Rehausse des aigus
+69e0667b	Poids supplémentaire donné aux sons aigus (dB ajoutés par octave). Augmentez pour réagir davantage aux charlestons et autres aigus
+ed8c6bb1	Contraste
+a4c8a92f	Plus haut : seuls les sons forts sont nettement lumineux, les faibles plus sombres. 1,0 ne change rien
+0c86ccaf	Couleur et luminosité
+f645ed15	Couleur
+889d5957	Couleur pour la couleur fixe et la respiration. En synchro musicale, c'est la couleur centrale de la palette « Couleur choisie »
+cfcf25fc	Couleur actuelle
+b2c395cb	Saisissez une couleur au format #RRGGBB (ex. #6A00FF) ou choisissez un rond à gauche
+55b1d508	Saisissez-la au format #RRGGBB (ex. #6A00FF) : six caractères parmi 0–9 et A–F
+743a1e61	Luminosité
+26565f26	Luminosité globale des LED. Chaque effet l'utilise comme maximum

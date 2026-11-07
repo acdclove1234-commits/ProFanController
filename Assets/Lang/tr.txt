@@ -209,3 +209,103 @@ c8f39b51	Tüm LED'leri kapatır. Entegrasyon devam eder, böylece cihazlar kendi
 5b89ecc9	OpenRGB SDK sunucusunun bağlantı noktası (genellikle 6742)
 1ac6b9e1	Bağlantıyı test et
 235b3d31	OpenRGB'ye ulaşılıp ulaşılamadığını kontrol eder ve bulunan cihazları aşağıda listeler (LED renklerini değiştirmez)
+342a5300	Şimdi yeniden bağlan
+f65c9d04	OpenRGB'yi yeniden başlattıktan veya cihaz takıp çıkardıktan sonra beklemeden hemen yeniden bağlanmak için basın
+0218f6e9	Efekt
+8221927c	LED'lerin nasıl yanacağını seçin. Seçiminiz hemen LED'lere uygulanır.
+4e683b86	Sıcaklık
+2986bd87	Renk CPU veya GPU sıcaklığını izler: açık mavi (serin) → yeşil → sarı → kırmızı (sıcak)
+d24ecf3b	Gökkuşağı (akan)
+5f081b9f	Gökkuşağı renkleri LED'ler boyunca yavaşça akar
+0b164d69	Gökkuşağı (sabit)
+e584bd69	Gökkuşağı renkleri LED'ler boyunca dizilir, hareket etmez
+7eda32b9	Nefes
+28f5315f	Seçilen renk nefes alır gibi yavaşça parlar ve söner
+f5b86f25	Sabit renk
+afb96a15	Seçilen tek renkte yanmaya devam eder
+f8fa9d4d	Müzik senkronu
+0b622a65	Bilgisayarda çalan sese (hoparlöre veya kulaklığa giden sese) göre yanar. Mikrofon kullanılmaz
+c9d8508e	Renk için sıcaklık
+e315f45c	Rengi hangi sensörün sıcaklığı belirler. "Otomatik" CPU ve GPU'dan yüksek olanı kullanır
+33276084	Açık mavi sıcaklığı
+a08b7324	Bu sıcaklıkta ve altında renk açık mavidir (serin)
+0582db54	Kırmızı sıcaklığı
+74068713	Bu sıcaklıkta ve üstünde renk tam kırmızıdır (sıcak). Arada yeşil → sarı olur
+181b9ba1	Hız
+6f30cf75	Gökkuşağı 1× hızda bir turu 30 sn'de (3× hızda 10 sn, 10× hızda 3 sn), nefes 1× hızda bir nefesi 6 sn'de tamamlar. Müzikteki "akan dalga"da akış hızıdır
+36bcf3d7	{0:F1}×
+f9dafe1e	Bilgisayardan gelen sesi analiz eder ve davul vuruşlarına, tempoya ve perdeye göre yanar. Önce bir hazır ayar seçin, sonra aşağıda yalnızca rahatsız edeni ayarlayın.
+581f0311	Mevcut ses, bastan (sol) tize (sağ) 24 banda bölünmüş olarak gösterilir. İçerideki parlak çubuklar davul gibi "atak"lar, beyaz çizgi yakın zamandaki tepe değeridir
+a8d258f0	Her kick (bas davul) bulunduğunda yanar. Senkron testi sırasında tıklamalarla beyaz yanıp söner
+9aa04ac9	Şarkının temposu (dakikadaki vuruş). Tempoyu yakaladığında vuruşları önceden tahmin eder ve gecikmeden yanar
+8d97f850	Seviye = şu anki ses yüksekliği. Referans = otomatik seviye ayarının "en parlak" saydığı yükseklik (dBFS: 0 en yüksektir, ne kadar negatifse o kadar kısık)
+1634d9e9	Çok kısık sesler (gürültü) yok sayılır. Hiçbir şey çalmıyorsa aşağıdaki "Ses durduğunda" efekti kullanılır
+2f3d51ba	Efekti, yoğunluğu ve paleti önerilen bir birleşime ayarlar. Aşağıdaki ayarları kendiniz değiştirirseniz "Özel" olur
+932cdbc7	Müzik tarzı
+2c274961	LED'lerin müziğe nasıl eşlik edeceği. Cihaz başına seçmek için aşağıdaki "Cihazlar"ı kullanın
+4d0abffb	"Stroboskop" sert yanıp söndüğü için yalnızca aşağıdaki "Yanıp sönmeyi azalt" kapalıyken seçilebilir.
+c87d9699	Yoğunluk
+541920a5	Vuruşun ne kadar güçlü yanacağı ve rengin ne sıklıkla değişeceği. Seçim, aşağıdaki "Yumuşaklık", "Vurgu" ve "En karanlık" değerlerini de buna göre ayarlar
+a800602a	Palet
+5c25c402	Müzik senkronunda kullanılan renk takımı. Her vuruşta takımdaki bir sonraki renge geçer
+758ca518	Kazanç
+ab2026d3	+ kısık seslerin de parlak yanmasını sağlar; sessiz şarkılar veya düşük ses için. − yalnızca yüksek seslerde parlaklık verir
+65d61087	Vuruş hassasiyeti
+33c9b585	Davul ve benzerlerinin "atak"ının ne kadar yakalanacağı. Yüksek değer kısık vuruşlara da tepki verir. Çok hareketli tepki veriyorsa düşürün
+2c61a63b	Yumuşaklık
+b99839d0	Işığın ne hızda söndüğü. Yüksek değer yumuşak ve yavaş söner, düşük değer keskin hareket eder
+86b8ad57	Vurgu
+708b0876	Yüksek değer yalnızca davul vuruşlarında güçlü yanar, diğer zamanlarda sönük kalır. Düşük değer doğrudan ses yüksekliğini izler
+5b2abe07	En karanlık
+f59ad0c8	Ses kısıkken bile en az bu parlaklığı korur. %0'da ses yoksa tamamen kararır
+1b6feb60	Varsayılanlara dön
+23e2af21	Kazanç, yumuşaklık, vurgu ve diğer değerleri ("Gelişmiş" altındakiler dahil) varsayılana döndürür. Efekt, yoğunluk, palet ve ses gecikmesi aynı kalır. Sağ üstteki "Geri al" ile geri alınabilir
+21444cf4	Ses gecikmesi
+a9eeb51b	Işık sesten önce geliyorsa +, sonra geliyorsa −. Bluetooth kulaklık ve hoparlörler ile TV'ler (HDMI) sesi geç çalar, bu yüzden + kullanın. "Senkron testi" ayarlamayı kolaylaştırır
+a48b2636	Işığı 10 ms öne alır
+42e71d61	Işığı 10 ms geciktirir
+7d84f147	Senkron testi
+41951cb8	Her 0,6 saniyede bir "tık" çalar ve LED'leri beyaz yakar. Ses ve ışık örtüşene kadar "Ses gecikmesi"ni kaydırın. Tekrar basınca veya bu sayfadan çıkınca durur
+61644194	Işık sesten önce geliyorsa +, sonra geliyorsa −. Bluetooth kulaklık ve hoparlörler ile TV'ler (HDMI) sesi geç çalar, bu yüzden + kullanın
+0e36045a	Bluetooth sesi geciktirir; +150–200 ms önerilir
+ece319ca	+180 ms yap
+8101e4b1	Ses gecikmesini +180 ms yapar (sonra senkron testiyle ince ayar yapabilirsiniz)
+e02412ea	Açıkken güçlü yanıp sönmeler saniyede 3 ile sınırlanır (ışığa duyarlı kişilerin gözlerini ve sağlığını korumak için). Stroboskop da kullanılmaz
+ff4e5cc2	Yanıp sönmeyi azalt
+a2bb37bc	Güçlü yanıp sönmeleri saniyede 3 ile sınırlar. Kapatınca "Stroboskop" seçilebilir olur
+03e1f9ef	⚠ Işıklar yoğun şekilde yanıp sönebilir. Yanıp sönen ışık sizi rahatsız ederse hemen "Yanıp sönmeyi azalt"ı tekrar açın.
+dc8c4f99	Tempo
+9c0a6ff9	Otomatik: şarkının temposunu yakalayınca vuruşları önceden tahmin eder ve gecikmeden yanar. Yalnızca kick: tahmin yok; yalnızca bas davul çaldığında yanar. Kapalı: tempo ve vuruş kullanmaz, yalnızca ses yüksekliğine göre yanar
+19595ed1	Tempo gerçeğin iki katı algılandıysa (çok hareketli yanıyorsa) basın; yarı tempoda yanar
+b74e97b3	Tempo gerçeğin yarısı algılandıysa (bir vuruş atlayarak yanıyorsa) basın; iki kat tempoda yanar
+fbc2bffb	Ses durduğunda
+23bf0707	Hiçbir şey çalmazken (şarkı aralarında, duraklatıldığında vb.) kullanılan efekt. Ses geri gelince hemen müzik senkronuna döner
+3cc7a5c7	Şu süre sonra geç
+47460e62	"Ses durduğunda" efektine geçmeden önceki sessizlik süresi (saniye). Şarkı içindeki kısa sessizlikler tetikliyorsa uzatın
+f88e8627	{0:F0} sn
+22d9166d	Tepki verilecek ses
+500cdc90	Boşsa bilgisayardaki tüm seslere tepki verir. Bir uygulama adı (örn. Spotify) girerseniz yalnızca o uygulama ses çalarken tepki verir
+bfe1fde6	Boş tüm sesler demektir. Bir uygulama adı (örn. Spotify) girerseniz yalnızca o uygulama ses çalarken tepki verir
+84a6f5e5	Ses çalan uygulamalardan seç ▾
+86415147	Ses çalan (veya çalabilen) uygulamalar listesinden seçin. Şu anda ses çalanlar en üstte yer alır
+d120384c	Tüm sesler
+9905daf4	Uygulama seçmeden bilgisayardaki tüm seslere tepki verir
+68010262	Gelişmiş ayarlar
+7f7d168e	Ses analizinin ince ayarlarını gösterir. Normalde değiştirmeniz gerekmez
+548593da	Ses yükseldiğinde ışığın parlaması için geçen süre. 0 en hızlısıdır ama daha kolay titrer
+88a0aec8	Parlaklık için ses aralığı
+4ce9ee35	En yüksek sesin kaç dB altına kadarki seslerin parlaklık farkı olarak gösterileceği. Küçük değer aydınlık ve karanlığı belirginleştirir, büyük değer kısık seslere de tepki verir
+6986be54	Perde dengesi
+8406bc01	Bas ağırlıklı veya tiz ağırlıklı şarkılarda bile tüm bantların güzelce yanması için bantların otomatik olarak dengelenme gücü. %0'da şarkının dengesi olduğu gibi gösterilir
+417793f0	Tiz güçlendirme
+69e0667b	Yüksek seslere ne kadar daha fazla ağırlık verileceği (oktav başına eklenen dB). Hi-hat ve diğer yüksek seslere daha çok tepki için artırın
+ed8c6bb1	Kontrast
+a4c8a92f	Yüksek değer yalnızca güçlü sesleri net biçimde parlak, zayıfları daha koyu yapar. 1,0 değiştirmez
+0c86ccaf	Renk ve parlaklık
+f645ed15	Renk
+889d5957	Sabit renk ve nefes için renk. Müzik senkronunda "Seçilen renk" paletinin orta rengidir
+cfcf25fc	Şu anki renk
+b2c395cb	Rengi #RRGGBB biçiminde girin (örn. #6A00FF) veya soldaki dairelerden seçin
+55b1d508	#RRGGBB biçiminde girin (örn. #6A00FF): 0–9 ve A–F'den altı karakter
+743a1e61	Parlaklık
+26565f26	LED'lerin genel parlaklığı. Her efekt bunu üst sınır olarak kullanır

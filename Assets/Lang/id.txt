@@ -209,3 +209,103 @@ c8f39b51	Mematikan semua LED. Integrasi tetap berjalan sehingga perangkat tidak 
 5b89ecc9	Port server SDK OpenRGB (biasanya 6742)
 1ac6b9e1	Uji koneksi
 235b3d31	Memeriksa apakah OpenRGB dapat dijangkau dan menampilkan perangkat yang ditemukan di daftar bawah (tidak mengubah warna LED)
+342a5300	Sambungkan ulang sekarang
+f65c9d04	Tekan setelah memulai ulang OpenRGB atau mencolok/mencabut perangkat untuk langsung tersambung ulang tanpa menunggu
+0218f6e9	Efek
+8221927c	Pilih cara LED menyala. Pilihan langsung diterapkan ke LED.
+4e683b86	Suhu
+2986bd87	Warna mengikuti suhu CPU atau GPU: biru muda (dingin) → hijau → kuning → merah (panas)
+d24ecf3b	Pelangi (mengalir)
+5f081b9f	Warna pelangi mengalir perlahan di sepanjang LED
+0b164d69	Pelangi (diam)
+e584bd69	Warna pelangi berjajar di sepanjang LED, tidak bergerak
+7eda32b9	Napas
+28f5315f	Warna yang dipilih perlahan terang lalu redup, seperti bernapas
+f5b86f25	Warna tetap
+afb96a15	Terus menyala dengan satu warna pilihan
+f8fa9d4d	Sinkron musik
+0b622a65	Menyala mengikuti suara yang diputar di PC (yang keluar ke speaker atau headphone). Mikrofon tidak digunakan
+c9d8508e	Suhu penentu warna
+e315f45c	Suhu sensor mana yang menentukan warna. "Otomatis" memakai yang lebih tinggi antara CPU dan GPU
+33276084	Suhu biru muda
+a08b7324	Pada suhu ini atau di bawahnya, warnanya biru muda (dingin)
+0582db54	Suhu merah
+74068713	Pada suhu ini atau di atasnya, warnanya merah penuh (panas). Di antaranya menjadi hijau → kuning
+181b9ba1	Kecepatan
+6f30cf75	Pelangi pada 1× butuh 30 dtk per putaran (10 dtk pada 3×, 3 dtk pada 10×); napas pada 1× butuh 6 dtk per tarikan. Untuk "gelombang mengalir" musik, ini kecepatan alirnya
+36bcf3d7	{0:F1}×
+f9dafe1e	Menganalisis suara dari PC dan menyala mengikuti pukulan drum, tempo, dan tinggi nada. Pilih preset dulu, lalu sesuaikan di bawah hanya bagian yang mengganggu.
+581f0311	Suara saat ini dibagi menjadi 24 pita dari bas (kiri) ke treble (kanan). Batang terang di dalamnya adalah "serangan" seperti drum; garis putih adalah puncak terkini
+a8d258f0	Menyala setiap kali kick (bass drum) terdeteksi. Saat uji sinkron, berkedip putih mengikuti klik
+9aa04ac9	Tempo lagu (ketukan per menit). Setelah tempo tertangkap, ketukan diprediksi dan lampu menyala tanpa jeda
+8d97f850	Level = kerasnya suara saat ini. Acuan = kekerasan yang dianggap "paling terang" oleh pengatur level otomatis (dBFS: 0 maksimum, makin negatif makin pelan)
+1634d9e9	Suara yang sangat pelan (derau) diabaikan. Saat tidak ada suara, dipakai efek "Saat suara berhenti" di bawah
+2f3d51ba	Menyetel efek, intensitas, dan palet ke kombinasi yang disarankan. Jika Anda sendiri mengubah pengaturan di bawah, jadinya "Kustom"
+932cdbc7	Gaya musik
+2c274961	Cara LED mengikuti musik. Untuk memilih per perangkat, gunakan "Perangkat" di bawah
+4d0abffb	"Strobo" berkedip keras, jadi hanya bisa dipilih jika "Kurangi kedipan" di bawah dimatikan.
+c87d9699	Intensitas
+541920a5	Seberapa kuat ketukan menyala dan seberapa sering warna berganti. Memilihnya juga menyetel "Kelembutan", "Hentakan", dan "Paling redup" di bawah agar sesuai
+a800602a	Palet
+5c25c402	Kumpulan warna untuk sinkron musik. Setiap ketukan berganti ke warna berikutnya
+758ca518	Penguatan
+ab2026d3	+ membuat suara pelan pun menyala terang, untuk lagu pelan atau volume rendah. − hanya memberi terang pada suara keras
+65d61087	Kepekaan ketukan
+33c9b585	Seberapa banyak "serangan" drum dan sejenisnya ditangkap. Makin tinggi makin bereaksi juga pada pukulan pelan. Turunkan jika reaksinya terlalu ramai
+2c61a63b	Kelembutan
+b99839d0	Seberapa cepat cahaya memudar. Makin tinggi memudar lembut dan pelan; makin rendah bergerak tegas
+86b8ad57	Hentakan
+708b0876	Makin tinggi hanya menyala kuat saat pukulan drum dan redup di waktu lain. Makin rendah langsung mengikuti kerasnya suara
+5b2abe07	Paling redup
+f59ad0c8	Tetap menjaga setidaknya kecerahan ini meski suara pelan. Pada 0%, tanpa suara semuanya gelap total
+1b6feb60	Kembalikan ke bawaan
+23e2af21	Mengembalikan penguatan, kelembutan, hentakan, dan nilai lain (termasuk di "Lanjutan") ke bawaan. Efek, intensitas, palet, dan tunda audio tetap. "Urungkan" di kanan atas membatalkannya
+21444cf4	Tunda audio
+a9eeb51b	+ jika cahaya datang sebelum suara, − jika sesudahnya. Earphone dan speaker Bluetooth serta TV (HDMI) memutar suara terlambat, jadi gunakan +. "Uji sinkron" memudahkan penyesuaian
+a48b2636	Majukan cahaya 10 md
+42e71d61	Mundurkan cahaya 10 md
+7d84f147	Uji sinkron
+41951cb8	Memutar bunyi "klik" setiap 0,6 detik dan membuat LED berkedip putih. Geser "Tunda audio" sampai suara dan cahaya pas. Tekan lagi atau tinggalkan halaman ini untuk berhenti
+61644194	+ jika cahaya datang sebelum suara, − jika sesudahnya. Earphone dan speaker Bluetooth serta TV (HDMI) memutar suara terlambat, jadi gunakan +
+0e36045a	Bluetooth membuat suara terlambat; disarankan +150–200 ms
+ece319ca	Setel +180 ms
+8101e4b1	Menyetel tunda audio ke +180 md (nanti bisa disetel halus dengan uji sinkron)
+e02412ea	Selama aktif, kedipan kuat dibatasi 3 kali per detik (untuk melindungi mata dan kesehatan orang yang peka cahaya). Strobo juga tidak digunakan
+ff4e5cc2	Kurangi kedipan
+a2bb37bc	Membatasi kedipan kuat 3 kali per detik. Jika dimatikan, "Strobo" bisa dipilih
+03e1f9ef	⚠ Lampu dapat berkedip hebat. Jika kedipan cahaya membuat Anda tidak nyaman, segera aktifkan lagi "Kurangi kedipan".
+dc8c4f99	Tempo
+9c0a6ff9	Otomatis: setelah menangkap tempo lagu, ketukan diprediksi dan lampu menyala tanpa jeda. Hanya kick: tanpa prediksi; menyala hanya saat bass drum berbunyi. Mati: tidak memakai tempo maupun ketukan, hanya kerasnya suara
+19595ed1	Jika tempo tertangkap dua kali lipat yang sebenarnya (kedipan terlalu ramai), tekan untuk menyala pada setengah tempo
+b74e97b3	Jika tempo tertangkap setengah dari yang sebenarnya (menyala selang satu ketukan), tekan untuk menyala pada dua kali tempo
+fbc2bffb	Saat suara berhenti
+23bf0707	Efek saat tidak ada suara (di antara lagu, saat dijeda, dll.). Begitu suara kembali, langsung kembali ke sinkron musik
+3cc7a5c7	Beralih setelah
+47460e62	Detik hening sebelum beralih ke efek "Saat suara berhenti". Perpanjang jika jeda singkat di dalam lagu memicunya
+f88e8627	{0:F0} dtk
+22d9166d	Suara yang diikuti
+500cdc90	Kosong berarti bereaksi pada semua suara dari PC. Masukkan nama aplikasi (mis. Spotify) agar hanya bereaksi saat aplikasi itu bersuara
+bfe1fde6	Kosong berarti semua suara. Masukkan nama aplikasi (mis. Spotify) agar hanya bereaksi saat aplikasi itu bersuara
+84a6f5e5	Pilih dari aplikasi yang bersuara ▾
+86415147	Pilih dari daftar aplikasi yang sedang (atau bisa) memutar suara. Aplikasi yang sedang bersuara ada di atas
+d120384c	Semua suara
+9905daf4	Bereaksi pada semua suara dari PC tanpa memilih aplikasi
+68010262	Pengaturan lanjutan
+7f7d168e	Menampilkan pengaturan rinci analisis suara. Biasanya tidak perlu diubah
+548593da	Waktu yang dibutuhkan cahaya untuk makin terang saat suara makin keras. 0 paling cepat tetapi lebih mudah berkedip
+88a0aec8	Rentang volume untuk kecerahan
+4ce9ee35	Berapa dB di bawah suara terkeras yang ditampilkan sebagai perbedaan kecerahan. Lebih kecil membuat terang-gelap jelas; lebih besar juga bereaksi pada suara pelan
+6986be54	Keseimbangan nada
+8406bc01	Kekuatan perataan otomatis agar semua pita menyala pas, bahkan pada lagu yang berat di bas atau treble. Pada 0%, keseimbangan lagu ditampilkan apa adanya
+417793f0	Penguatan treble
+69e0667b	Seberapa besar bobot tambahan untuk nada tinggi (dB per oktaf). Naikkan agar lebih bereaksi pada hi-hat dan suara tinggi lainnya
+ed8c6bb1	Kontras
+a4c8a92f	Makin tinggi hanya suara kuat yang terang jelas, suara lemah lebih gelap. 1,0 tidak mengubah apa pun
+0c86ccaf	Warna & kecerahan
+f645ed15	Warna
+889d5957	Warna untuk warna tetap dan napas. Pada sinkron musik, ini warna tengah palet "Warna pilihan"
+cfcf25fc	Warna saat ini
+b2c395cb	Masukkan warna sebagai #RRGGBB (mis. #6A00FF) atau pilih dari lingkaran di kiri
+55b1d508	Masukkan sebagai #RRGGBB (mis. #6A00FF): enam karakter dari 0–9 dan A–F
+743a1e61	Kecerahan
+26565f26	Kecerahan LED secara keseluruhan. Setiap efek memakainya sebagai batas atas

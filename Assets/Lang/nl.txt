@@ -209,3 +209,103 @@ c8f39b51	Zet alle leds uit. De koppeling blijft actief, dus apparaten vallen nie
 5b89ecc9	Poort van de SDK-server van OpenRGB (meestal 6742)
 1ac6b9e1	Verbinding testen
 235b3d31	Controleert of OpenRGB bereikbaar is en toont hieronder de gevonden apparaten (verandert geen ledkleuren)
+342a5300	Nu opnieuw verbinden
+f65c9d04	Druk hierop na het herstarten van OpenRGB of het aan- en afkoppelen van apparaten om meteen opnieuw te verbinden in plaats van te wachten
+0218f6e9	Effect
+8221927c	Kies hoe de leds oplichten. Je keuze wordt meteen op de leds toegepast.
+4e683b86	Temperatuur
+2986bd87	De kleur volgt de CPU- of GPU-temperatuur: lichtblauw (koel) → groen → geel → rood (heet)
+d24ecf3b	Regenboog (stromend)
+5f081b9f	Regenboogkleuren stromen langzaam langs de leds
+0b164d69	Regenboog (vast)
+e584bd69	Regenboogkleuren langs de leds, zonder beweging
+7eda32b9	Ademen
+28f5315f	De gekozen kleur wordt langzaam lichter en donkerder, als ademhalen
+f5b86f25	Vaste kleur
+afb96a15	Blijft branden in één gekozen kleur
+f8fa9d4d	Muzieksynchronisatie
+0b622a65	Licht op met het geluid dat op de pc speelt (wat naar je luidsprekers of koptelefoon gaat). De microfoon wordt niet gebruikt
+c9d8508e	Temperatuur voor de kleur
+e315f45c	Welke sensor de kleur bepaalt. "Auto" neemt de hoogste van CPU en GPU
+33276084	Temperatuur voor lichtblauw
+a08b7324	Bij deze temperatuur of lager is de kleur lichtblauw (koel)
+0582db54	Temperatuur voor rood
+74068713	Bij deze temperatuur of hoger is de kleur volledig rood (heet). Daartussen gaat het via groen → geel
+181b9ba1	Snelheid
+6f30cf75	Regenboog op 1× doet 30 s per ronde (10 s op 3×, 3 s op 10×); ademen op 1× duurt 6 s per ademhaling. Bij de muzikale "golf" is het de stroomsnelheid
+36bcf3d7	{0:F1}×
+f9dafe1e	Analyseert het geluid van de pc en licht op met drumslagen, tempo en toonhoogte. Kies eerst een voorinstelling en pas daarna hieronder alleen aan wat stoort.
+581f0311	Het huidige geluid verdeeld in 24 banden van bas (links) tot hoog (rechts). De heldere balkjes binnenin zijn "aanslagen" zoals drums; de witte lijn is de recente piek
+a8d258f0	Licht op bij elke gevonden kick (basdrum). Tijdens de synchronisatietest flitst hij wit op de klikken
+9aa04ac9	Het tempo van het nummer (slagen per minuut). Zodra het tempo bekend is, worden de slagen voorspeld en licht hij zonder vertraging op
+8d97f850	Niveau = huidige luidheid. Referentie = de luidheid die de automatische niveauregeling als "het helderst" ziet (dBFS: 0 is het maximum, hoe negatiever hoe zachter)
+1634d9e9	Heel zachte geluiden (ruis) worden genegeerd. Als er niets speelt, geldt hieronder het effect "Als het geluid stopt"
+2f3d51ba	Zet effect, intensiteit en palet in één keer op een aanbevolen combinatie. Pas je hieronder zelf iets aan, dan wordt het "Aangepast"
+932cdbc7	Muziekstijl
+2c274961	Hoe de leds met de muziek meebewegen. Kies per apparaat via "Apparaten" hieronder
+4d0abffb	"Stroboscoop" flitst hevig en kan alleen gekozen worden als "Flitsen beperken" hieronder uit staat.
+c87d9699	Intensiteit
+541920a5	Hoe sterk de slag oplicht en hoe vaak de kleur wisselt. Kiezen zet ook "Zachtheid", "Punch" en "Donkerst" hieronder passend
+a800602a	Palet
+5c25c402	De kleurenset voor muzieksynchronisatie. Bij elke slag gaat hij naar de volgende kleur
+758ca518	Versterking
+ab2026d3	+ laat ook zachte geluiden fel oplichten, voor rustige nummers of laag volume. − maakt het alleen bij harde geluiden fel
+65d61087	Slaggevoeligheid
+33c9b585	Hoeveel van de "aanslag" van drums en dergelijke wordt opgepikt. Hoger reageert ook op zachte slagen. Verlaag als hij te druk reageert
+2c61a63b	Zachtheid
+b99839d0	Hoe snel het licht uitdooft. Hoger dooft zacht en langzaam, lager beweegt strak
+86b8ad57	Punch
+708b0876	Hoger licht alleen bij drumslagen sterk op en blijft verder ingetogen. Lager volgt de luidheid direct
+5b2abe07	Donkerst
+f59ad0c8	Houdt minstens deze helderheid aan, ook bij zacht geluid. Bij 0% gaat alles uit als er geen geluid is
+1b6feb60	Standaardwaarden herstellen
+23e2af21	Zet waarden zoals versterking, zachtheid en punch (ook die onder "Geavanceerd") terug naar de standaard. Effect, intensiteit, palet en audiovertraging blijven zoals ze zijn. "Ongedaan maken" rechtsboven draait het terug
+21444cf4	Audiovertraging
+a9eeb51b	+ als het licht voor het geluid komt, − als het erna komt. Bluetooth-oortjes en -luidsprekers en tv's (HDMI) spelen geluid vertraagd af, dus gebruik +. De "Synchronisatietest" maakt afstemmen makkelijker
+a48b2636	Licht 10 ms eerder
+42e71d61	Licht 10 ms later
+7d84f147	Synchronisatietest
+41951cb8	Speelt elke 0,6 seconde een "klik" en laat de leds wit flitsen. Schuif de "Audiovertraging" tot geluid en licht samenvallen. Druk nogmaals of verlaat deze pagina om te stoppen
+61644194	+ als het licht voor het geluid komt, − als het erna komt. Bluetooth-oortjes en -luidsprekers en tv's (HDMI) spelen geluid vertraagd af, dus gebruik +
+0e36045a	Bluetooth vertraagt het geluid; +150–200 ms aanbevolen
+ece319ca	+180 ms instellen
+8101e4b1	Zet de audiovertraging op +180 ms (later fijn af te stellen met de synchronisatietest)
+e02412ea	Zolang dit aan staat, zijn sterke flitsen beperkt tot 3 per seconde (om de ogen en gezondheid van lichtgevoelige mensen te beschermen). Ook de stroboscoop wordt niet gebruikt
+ff4e5cc2	Flitsen beperken
+a2bb37bc	Beperkt sterke flitsen tot 3 per seconde. Uitzetten maakt "Stroboscoop" beschikbaar
+03e1f9ef	⚠ De verlichting kan hevig flitsen. Als je je onwel voelt door het flitsen, zet "Flitsen beperken" dan meteen weer aan.
+dc8c4f99	Tempo
+9c0a6ff9	Auto: zodra het tempo bekend is, worden de slagen voorspeld en licht hij zonder vertraging op. Alleen kick: geen voorspelling; licht alleen op als de basdrum klinkt. Uit: geen tempo of slagen, alleen de luidheid
+19595ed1	Als het tempo dubbel zo hoog wordt herkend als het echte (te druk flitsen), druk dan om op half tempo op te lichten
+b74e97b3	Als het tempo half zo hoog wordt herkend als het echte (licht op elke tweede slag), druk dan om op dubbel tempo op te lichten
+fbc2bffb	Als het geluid stopt
+23bf0707	Het effect terwijl er niets speelt (tussen nummers, bij pauze enz.). Zodra er weer geluid is, gaat de muzieksynchronisatie verder
+3cc7a5c7	Wisselen na
+47460e62	Seconden stilte voordat naar het effect "Als het geluid stopt" wordt gewisseld. Maak het langer als korte stiltes in nummers het al activeren
+f88e8627	{0:F0} s
+22d9166d	Geluid om op te reageren
+500cdc90	Leeg reageert op al het geluid van de pc. Vul een appnaam in (bijv. Spotify) om alleen te reageren als die app geluid afspeelt
+bfe1fde6	Leeg betekent al het geluid. Vul een appnaam in (bijv. Spotify) om alleen te reageren als die app geluid afspeelt
+84a6f5e5	Kiezen uit apps met geluid ▾
+86415147	Kies uit de apps die geluid afspelen (of kunnen afspelen). Apps die nu geluid maken staan bovenaan
+d120384c	Al het geluid
+9905daf4	Reageert op al het geluid van de pc zonder een app te kiezen
+68010262	Geavanceerde instellingen
+7f7d168e	Toont de fijne instellingen van de geluidsanalyse. Meestal hoef je ze niet te wijzigen
+548593da	Hoe lang het licht nodig heeft om feller te worden als het geluid harder wordt. 0 is het snelst, maar flikkert makkelijker
+88a0aec8	Dynamisch bereik voor helderheid
+4ce9ee35	Hoeveel dB onder het hardste geluid nog als helderheidsverschil wordt getoond. Kleiner maakt licht en donker duidelijker, groter reageert ook op zachte geluiden
+6986be54	Toonhoogtebalans
+8406bc01	Hoe sterk de banden automatisch worden gelijkgetrokken zodat alle banden mooi oplichten, ook bij nummers met veel bas of hoog. Bij 0% wordt de balans van het nummer onveranderd getoond
+417793f0	Hoogversterking
+69e0667b	Hoeveel meer gewicht hoge tonen krijgen (dB per octaaf). Verhoog om sterker op hi-hats en andere hoge geluiden te reageren
+ed8c6bb1	Contrast
+a4c8a92f	Hoger maakt alleen sterke geluiden duidelijk helder en zwakke donkerder. 1,0 verandert niets
+0c86ccaf	Kleur & helderheid
+f645ed15	Kleur
+889d5957	Kleur voor vaste kleur en ademen. Bij muzieksynchronisatie is het de middelste kleur van het palet "Gekozen kleur"
+cfcf25fc	Huidige kleur
+b2c395cb	Voer een kleur in als #RRGGBB (bijv. #6A00FF) of kies een van de rondjes links
+55b1d508	Voer in als #RRGGBB (bijv. #6A00FF): zes tekens uit 0–9 en A–F
+743a1e61	Helderheid
+26565f26	Algemene helderheid van de leds. Elk effect gebruikt dit als maximum

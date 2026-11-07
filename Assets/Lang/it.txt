@@ -209,3 +209,103 @@ c8f39b51	Spegne tutti i LED. L'integrazione resta attiva, quindi i dispositivi n
 5b89ecc9	Porta del server SDK di OpenRGB (di solito 6742)
 1ac6b9e1	Prova connessione
 235b3d31	Verifica che OpenRGB sia raggiungibile ed elenca sotto i dispositivi trovati (non cambia i colori dei LED)
+342a5300	Riconnetti ora
+f65c9d04	Premi dopo aver riavviato OpenRGB o collegato/scollegato dispositivi per riconnetterti subito senza attendere
+0218f6e9	Effetto
+8221927c	Scegli come si illuminano i LED. La scelta viene applicata subito ai LED.
+4e683b86	Temperatura
+2986bd87	Il colore segue la temperatura della CPU o della GPU: azzurro (fresco) → verde → giallo → rosso (caldo)
+d24ecf3b	Arcobaleno (scorrevole)
+5f081b9f	I colori dell'arcobaleno scorrono lentamente lungo i LED
+0b164d69	Arcobaleno (fisso)
+e584bd69	I colori dell'arcobaleno disposti lungo i LED, senza muoversi
+7eda32b9	Respiro
+28f5315f	Il colore scelto si illumina e si attenua lentamente, come un respiro
+f5b86f25	Colore fisso
+afb96a15	Resta acceso di un solo colore scelto
+f8fa9d4d	Sincronizzazione musicale
+0b622a65	Si illumina con il suono riprodotto dal PC (ciò che va agli altoparlanti o alle cuffie). Il microfono non viene usato
+c9d8508e	Temperatura per il colore
+e315f45c	Quale sensore decide il colore. «Auto» usa la più alta tra CPU e GPU
+33276084	Temperatura dell'azzurro
+a08b7324	A questa temperatura o sotto, il colore è azzurro (fresco)
+0582db54	Temperatura del rosso
+74068713	A questa temperatura o sopra, il colore è rosso pieno (caldo). In mezzo passa per verde → giallo
+181b9ba1	Velocità
+6f30cf75	L'arcobaleno a 1× fa un giro in 30 s (10 s a 3×, 3 s a 10×); il respiro a 1× dura 6 s. Per l'«onda» musicale è la velocità di scorrimento
+36bcf3d7	{0:F1}×
+f9dafe1e	Analizza il suono del PC e si illumina con i colpi di batteria, il tempo e l'altezza dei suoni. Scegli prima una preimpostazione, poi regola qui sotto solo ciò che ti disturba.
+581f0311	Il suono attuale diviso in 24 bande dai bassi (sinistra) agli acuti (destra). Le barre luminose interne sono gli «attacchi» come la batteria; la linea bianca è il picco recente
+a8d258f0	Si illumina ogni volta che rileva una cassa (grancassa). Durante il test di sincronizzazione lampeggia in bianco con i clic
+9aa04ac9	Il tempo del brano (battiti al minuto). Una volta trovato, anticipa i battiti e si illumina senza ritardo
+8d97f850	Livello = volume attuale. Riferimento = il volume che la regolazione automatica considera «il più luminoso» (dBFS: 0 è il massimo, più è negativo, più è basso)
+1634d9e9	I suoni molto deboli (rumore) vengono ignorati. Quando non suona nulla, si usa l'effetto «Quando il suono si ferma» qui sotto
+2f3d51ba	Imposta effetto, intensità e palette su una combinazione consigliata. Se modifichi da solo le impostazioni sotto, diventa «Personalizzato»
+932cdbc7	Stile musicale
+2c274961	Come i LED seguono la musica. Per scegliere per dispositivo, usa «Dispositivi» qui sotto
+4d0abffb	«Stroboscopio» lampeggia forte, quindi si può scegliere solo con «Riduci i lampeggi» qui sotto disattivato.
+c87d9699	Intensità
+541920a5	Quanto si illumina il battito e ogni quanto cambia il colore. La scelta imposta anche «Morbidezza», «Incisività» e «Minimo» qui sotto
+a800602a	Palette
+5c25c402	L'insieme di colori della sincronizzazione musicale. A ogni battito passa al colore successivo
+758ca518	Guadagno
+ab2026d3	+ fa brillare anche i suoni deboli, per brani tranquilli o volume basso. − dà luce solo ai suoni forti
+65d61087	Sensibilità al battito
+33c9b585	Quanto vengono colti gli «attacchi» di batteria e simili. Più alto reagisce anche ai colpi leggeri. Abbassalo se reagisce in modo troppo frenetico
+2c61a63b	Morbidezza
+b99839d0	Quanto velocemente si spegne la luce. Più alto si spegne morbido e lento; più basso si muove in modo netto
+86b8ad57	Incisività
+708b0876	Più alto brilla forte solo sui colpi e resta tenue il resto del tempo. Più basso segue direttamente il volume
+5b2abe07	Minimo
+f59ad0c8	Mantiene almeno questa luminosità anche con suono basso. Allo 0% senza suono si spegne del tutto
+1b6feb60	Ripristina predefiniti
+23e2af21	Riporta ai valori predefiniti guadagno, morbidezza, incisività e altri (anche quelli in «Avanzate»). Effetto, intensità, palette e ritardo audio restano invariati. «Annulla» in alto a destra lo revoca
+21444cf4	Ritardo audio
+a9eeb51b	+ se la luce arriva prima del suono, − se arriva dopo. Auricolari e altoparlanti Bluetooth e TV (HDMI) riproducono il suono in ritardo, quindi usa +. Il «Test di sincronizzazione» rende più facile la regolazione
+a48b2636	Anticipa la luce di 10 ms
+42e71d61	Ritarda la luce di 10 ms
+7d84f147	Test di sincronizzazione
+41951cb8	Ogni 0,6 secondi suona un «clic» e i LED lampeggiano in bianco. Regola il «Ritardo audio» finché suono e luce coincidono. Premi di nuovo o lascia la pagina per fermarlo
+61644194	+ se la luce arriva prima del suono, − se arriva dopo. Auricolari e altoparlanti Bluetooth e TV (HDMI) riproducono il suono in ritardo, quindi usa +
+0e36045a	Il Bluetooth ritarda il suono: consigliati +150–200 ms
+ece319ca	Imposta +180 ms
+8101e4b1	Imposta il ritardo audio a +180 ms (poi puoi affinarlo con il test di sincronizzazione)
+e02412ea	Quando è attivo, i lampeggi forti sono limitati a 3 al secondo (per proteggere gli occhi e la salute delle persone sensibili alla luce). Anche lo stroboscopio non viene usato
+ff4e5cc2	Riduci i lampeggi
+a2bb37bc	Limita i lampeggi forti a 3 al secondo. Disattivandolo, «Stroboscopio» diventa disponibile
+03e1f9ef	⚠ Le luci possono lampeggiare intensamente. Se i lampeggi ti fanno sentire male, riattiva subito «Riduci i lampeggi».
+dc8c4f99	Tempo
+9c0a6ff9	Auto: una volta trovato il tempo, anticipa i battiti e si illumina senza ritardo. Solo cassa: nessuna previsione, si illumina solo quando suona la grancassa. Disattivato: né tempo né battiti, solo il volume
+19595ed1	Se il tempo rilevato è il doppio di quello reale (lampeggi troppo frenetici), premi per illuminare a metà tempo
+b74e97b3	Se il tempo rilevato è la metà di quello reale (si illumina un battito sì e uno no), premi per illuminare a tempo doppio
+fbc2bffb	Quando il suono si ferma
+23bf0707	L'effetto quando non suona nulla (tra un brano e l'altro, in pausa ecc.). La sincronizzazione musicale riprende appena torna il suono
+3cc7a5c7	Cambia dopo
+47460e62	Secondi di silenzio prima di passare all'effetto «Quando il suono si ferma». Allungalo se brevi silenzi nei brani lo attivano
+f88e8627	{0:F0} s
+22d9166d	Suono da seguire
+500cdc90	Vuoto reagisce a tutto il suono del PC. Inserisci il nome di un'app (es. Spotify) per reagire solo quando quell'app riproduce suono
+bfe1fde6	Vuoto significa tutto il suono. Inserisci il nome di un'app (es. Spotify) per reagire solo quando quell'app riproduce suono
+84a6f5e5	Scegli tra le app che riproducono suono ▾
+86415147	Scegli tra le app che riproducono (o possono riprodurre) suono. Quelle che suonano ora sono in cima
+d120384c	Tutto il suono
+9905daf4	Reagisce a tutto il suono del PC senza scegliere un'app
+68010262	Impostazioni avanzate
+7f7d168e	Mostra le impostazioni fini dell'analisi del suono. Di norma non serve cambiarle
+548593da	Quanto tempo impiega la luce a illuminarsi quando il suono aumenta. 0 è il più rapido ma sfarfalla più facilmente
+88a0aec8	Gamma di volume per la luminosità
+4ce9ee35	Quanti dB sotto il suono più forte vengono resi come differenze di luminosità. Più piccolo rende netto il contrasto; più grande reagisce anche ai suoni deboli
+6986be54	Equilibrio tonale
+8406bc01	Quanto vengono livellate automaticamente le bande perché tutte si illuminino bene anche nei brani pieni di bassi o di acuti. Allo 0% l'equilibrio del brano è mostrato così com'è
+417793f0	Enfasi degli acuti
+69e0667b	Quanto più peso ricevono i suoni acuti (dB aggiunti per ottava). Aumentalo per reagire di più a charleston e altri acuti
+ed8c6bb1	Contrasto
+a4c8a92f	Più alto rende nettamente luminosi solo i suoni forti e più scuri quelli deboli. 1,0 non cambia nulla
+0c86ccaf	Colore e luminosità
+f645ed15	Colore
+889d5957	Colore per colore fisso e respiro. Nella sincronizzazione musicale è il colore centrale della palette «Colore scelto»
+cfcf25fc	Colore attuale
+b2c395cb	Inserisci un colore come #RRGGBB (es. #6A00FF) o scegline uno dai cerchi a sinistra
+55b1d508	Inseriscilo come #RRGGBB (es. #6A00FF): sei caratteri tra 0–9 e A–F
+743a1e61	Luminosità
+26565f26	Luminosità complessiva dei LED. Ogni effetto la usa come massimo

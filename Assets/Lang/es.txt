@@ -209,3 +209,103 @@ c8f39b51	Apaga todos los LED. La integración sigue activa, así que los disposi
 5b89ecc9	Puerto del servidor SDK de OpenRGB (normalmente 6742)
 1ac6b9e1	Probar conexión
 235b3d31	Comprueba si se puede llegar a OpenRGB y muestra abajo los dispositivos encontrados (no cambia los colores de los LED)
+342a5300	Reconectar ahora
+f65c9d04	Púlsalo tras reiniciar OpenRGB o conectar/desconectar dispositivos para reconectar al momento sin esperar
+0218f6e9	Efecto
+8221927c	Elige cómo se iluminan los LED. Tu elección se aplica a los LED al instante.
+4e683b86	Temperatura
+2986bd87	El color sigue la temperatura de la CPU o la GPU: celeste (fresco) → verde → amarillo → rojo (caliente)
+d24ecf3b	Arcoíris (fluyendo)
+5f081b9f	Los colores del arcoíris fluyen despacio a lo largo de los LED
+0b164d69	Arcoíris (fijo)
+e584bd69	Los colores del arcoíris colocados a lo largo de los LED, sin moverse
+7eda32b9	Respiración
+28f5315f	El color elegido se ilumina y atenúa despacio, como respirando
+f5b86f25	Color fijo
+afb96a15	Se mantiene encendido en un solo color elegido
+f8fa9d4d	Sincronización musical
+0b622a65	Se ilumina con el sonido que suena en el PC (lo que va a los altavoces o auriculares). No se usa el micrófono
+c9d8508e	Temperatura del color
+e315f45c	Qué sensor decide el color. «Auto» usa la más alta entre CPU y GPU
+33276084	Temperatura del celeste
+a08b7324	A esta temperatura o por debajo, el color es celeste (fresco)
+0582db54	Temperatura del rojo
+74068713	A esta temperatura o por encima, el color es rojo intenso (caliente). Entre medias pasa por verde → amarillo
+181b9ba1	Velocidad
+6f30cf75	El arcoíris a 1× tarda 30 s por vuelta (10 s a 3×, 3 s a 10×); la respiración a 1× tarda 6 s. En la «ola» musical es la velocidad de avance
+36bcf3d7	{0:F1}×
+f9dafe1e	Analiza el sonido del PC y se ilumina con los golpes de batería, el tempo y el tono. Elige primero un preajuste y luego ajusta abajo solo lo que te moleste.
+581f0311	El sonido actual dividido en 24 bandas de graves (izquierda) a agudos (derecha). Las barras brillantes de dentro son «ataques» como la batería; la línea blanca es el pico reciente
+a8d258f0	Se ilumina cada vez que detecta un bombo. Durante la prueba de sincronización destella en blanco con los clics
+9aa04ac9	El tempo de la canción (pulsos por minuto). Al captarlo, anticipa los pulsos y se ilumina sin retraso
+8d97f850	Nivel = volumen actual. Referencia = el volumen que el control automático considera «el más brillante» (dBFS: 0 es el máximo, cuanto más negativo, más bajo)
+1634d9e9	Los sonidos muy bajos (ruido) se ignoran. Si no suena nada, se usa el efecto «Cuando el sonido se detiene» de abajo
+2f3d51ba	Pone efecto, intensidad y paleta en una combinación recomendada. Si cambias tú los ajustes de abajo, pasa a «Personalizado»
+932cdbc7	Estilo musical
+2c274961	Cómo se mueven los LED con la música. Para elegir por dispositivo, usa «Dispositivos» abajo
+4d0abffb	«Estroboscopio» destella con fuerza, así que solo se puede elegir con «Reducir destellos» de abajo desactivado.
+c87d9699	Intensidad
+541920a5	Con qué fuerza se ilumina el pulso y cada cuánto cambia el color. Elegir una también ajusta «Suavidad», «Contundencia» y «Mínimo» abajo
+a800602a	Paleta
+5c25c402	El juego de colores de la sincronización musical. En cada pulso pasa al siguiente color
+758ca518	Ganancia
+ab2026d3	+ hace que hasta los sonidos bajos brillen, para canciones suaves o volumen bajo. − solo da brillo a los sonidos fuertes
+65d61087	Sensibilidad al pulso
+33c9b585	Cuánto se captan los «ataques» de batería y similares. Más alto reacciona también a golpes suaves. Bájalo si reacciona de forma demasiado agitada
+2c61a63b	Suavidad
+b99839d0	Lo rápido que se apaga la luz. Más alto se apaga suave y despacio; más bajo se mueve con nitidez
+86b8ad57	Contundencia
+708b0876	Más alto destella fuerte solo en los golpes y queda tenue el resto. Más bajo sigue directamente el volumen
+5b2abe07	Mínimo
+f59ad0c8	Mantiene al menos este brillo aunque el sonido sea bajo. Al 0 %, sin sonido se apaga del todo
+1b6feb60	Restablecer valores
+23e2af21	Devuelve a sus valores predeterminados ganancia, suavidad, contundencia y demás (también los de «Avanzado»). El efecto, la intensidad, la paleta y el retraso de audio no cambian. «Deshacer», arriba a la derecha, lo revierte
+21444cf4	Retraso de audio
+a9eeb51b	+ si la luz llega antes que el sonido, − si llega después. Los auriculares y altavoces Bluetooth y los televisores (HDMI) reproducen el sonido con retraso, así que usa +. La «Prueba de sincronización» facilita el ajuste
+a48b2636	Adelanta la luz 10 ms
+42e71d61	Retrasa la luz 10 ms
+7d84f147	Prueba de sincronización
+41951cb8	Suena un «clic» cada 0,6 segundos y los LED destellan en blanco. Mueve el «Retraso de audio» hasta que sonido y luz coincidan. Púlsalo otra vez o sal de esta página para detenerla
+61644194	+ si la luz llega antes que el sonido, − si llega después. Los auriculares y altavoces Bluetooth y los televisores (HDMI) reproducen el sonido con retraso, así que usa +
+0e36045a	El Bluetooth retrasa el sonido; se recomiendan +150–200 ms
+ece319ca	Poner +180 ms
+8101e4b1	Pone el retraso de audio en +180 ms (luego puedes afinarlo con la prueba de sincronización)
+e02412ea	Mientras está activo, los destellos fuertes se limitan a 3 por segundo (para proteger la vista y la salud de las personas sensibles a la luz). Tampoco se usa el estroboscopio
+ff4e5cc2	Reducir destellos
+a2bb37bc	Limita los destellos fuertes a 3 por segundo. Al desactivarlo, «Estroboscopio» pasa a estar disponible
+03e1f9ef	⚠ Las luces pueden destellar con intensidad. Si los destellos te hacen sentir mal, vuelve a activar «Reducir destellos» enseguida.
+dc8c4f99	Tempo
+9c0a6ff9	Auto: al captar el tempo, anticipa los pulsos y se ilumina sin retraso. Solo bombo: sin anticipar; se ilumina solo cuando suena el bombo. Desactivado: sin tempo ni pulsos, solo el volumen
+19595ed1	Si el tempo detectado es el doble del real (destellos demasiado agitados), púlsalo para iluminar a la mitad del tempo
+b74e97b3	Si el tempo detectado es la mitad del real (se ilumina un pulso sí y otro no), púlsalo para iluminar al doble del tempo
+fbc2bffb	Cuando el sonido se detiene
+23bf0707	El efecto mientras no suena nada (entre canciones, en pausa, etc.). La sincronización musical vuelve en cuanto regresa el sonido
+3cc7a5c7	Cambiar tras
+47460e62	Segundos de silencio antes de cambiar al efecto «Cuando el sonido se detiene». Alárgalo si los silencios cortos dentro de las canciones lo activan
+f88e8627	{0:F0} s
+22d9166d	Sonido al que reaccionar
+500cdc90	Vacío reacciona a todo el sonido del PC. Escribe el nombre de una aplicación (p. ej. Spotify) para reaccionar solo mientras esa aplicación suena
+bfe1fde6	Vacío significa todo el sonido. Escribe el nombre de una aplicación (p. ej. Spotify) para reaccionar solo mientras esa aplicación suena
+84a6f5e5	Elegir entre apps que suenan ▾
+86415147	Elige entre las aplicaciones que reproducen (o pueden reproducir) sonido. Las que suenan ahora aparecen arriba
+d120384c	Todo el sonido
+9905daf4	Reacciona a todo el sonido del PC sin elegir aplicación
+68010262	Ajustes avanzados
+7f7d168e	Muestra los ajustes finos del análisis de sonido. Normalmente no hace falta cambiarlos
+548593da	Lo que tarda la luz en subir de brillo cuando el sonido sube. 0 es lo más rápido, pero parpadea con más facilidad
+88a0aec8	Rango de volumen para el brillo
+4ce9ee35	Cuántos dB por debajo del sonido más fuerte se muestran como diferencias de brillo. Más pequeño marca más el contraste; más grande reacciona también a sonidos bajos
+6986be54	Equilibrio tonal
+8406bc01	Fuerza con la que se igualan las bandas para que todas brillen bien incluso en canciones cargadas de graves o agudos. Al 0 % se muestra el equilibrio de la canción tal cual
+417793f0	Realce de agudos
+69e0667b	Cuánto más peso reciben los sonidos agudos (dB añadidos por octava). Súbelo para reaccionar más a los charles y otros agudos
+ed8c6bb1	Contraste
+a4c8a92f	Más alto hace que solo los sonidos fuertes brillen claramente y los débiles se oscurezcan. 1,0 no cambia nada
+0c86ccaf	Color y brillo
+f645ed15	Color
+889d5957	Color para color fijo y respiración. En la sincronización musical es el color central de la paleta «Color elegido»
+cfcf25fc	Color actual
+b2c395cb	Introduce un color como #RRGGBB (p. ej. #6A00FF) o elige uno de los círculos de la izquierda
+55b1d508	Introdúcelo como #RRGGBB (p. ej. #6A00FF): seis caracteres entre 0–9 y A–F
+743a1e61	Brillo
+26565f26	Brillo general de los LED. Todos los efectos lo usan como máximo
