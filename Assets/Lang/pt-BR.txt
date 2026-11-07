@@ -309,3 +309,103 @@ b2c395cb	Digite uma cor como #RRGGBB (ex.: #6A00FF) ou escolha um dos círculos 
 55b1d508	Digite como #RRGGBB (ex.: #6A00FF): seis caracteres entre 0–9 e A–F
 743a1e61	Brilho
 26565f26	Brilho geral dos LEDs. Todo efeito usa este brilho como máximo
+35ab111a	Dispositivos de LED encontrados pelo OpenRGB. A faixa abaixo mostra uma prévia das cores enviadas agora.
+74e00d85	Ligado, colore todos os dispositivos encontrados pelo OpenRGB (inclusive os adicionados depois). Desligado, você pode escolher quais dispositivos colorir
+c01c149b	Colorir todos os dispositivos
+e61331df	Desligado, escolha por dispositivo abaixo
+2c8ea653	Para igualar as cores. Acende todos os dispositivos no mesmo branco (o ajuste de cor e o brilho dos dispositivos e zonas continuam valendo). Volta ao sair desta página
+4dbed8b1	Acender em branco para comparar
+9795e04b	Acende todos os dispositivos no mesmo branco para igualar as cores (volta ao sair desta página)
+082c3f40	A lista de dispositivos aparece depois de conectar ao OpenRGB (também dá para carregá-la com "Testar conexão" acima).
+3922b0ea	fps = quantas vezes por segundo as cores são enviadas · o efeito de sincronização com música em uso
+f3e43b07	Colore os dispositivos marcados (com "Colorir todos os dispositivos" ligado, todos entram)
+5f338e63	Última cor enviada a este dispositivo (mostrada próxima à cor da tela)
+ccf4614e	Muda o efeito de sincronização com música só deste dispositivo. "Auto" usa "Estilo musical" acima (dispositivos lentos recebem automaticamente um efeito suave)
+91935430	Espelhar
+f527b8c5	Acende de forma simétrica a partir do meio da fileira de LEDs (para fitas longas). "Auto" liga em grupos de 30 LEDs ou mais
+2d073419	Envios por segundo
+ec70d216	Máximo de envios de cor por segundo a este dispositivo. Mais é mais suave, mas em placas de vídeo e memórias envios demais podem deixar LEDs sem atualizar e causar cintilação. Aumente só até onde não cintilar
+b4d70ec0	Acender antes
+df7472e3	Adianta as trocas de cor da sincronização com música só deste dispositivo. Aumente se ele parecer atrasado em relação aos outros (para dispositivos que demoram a mostrar a cor, como placas de vídeo). Funciona nas batidas previsíveis pelo andamento. "Auto" é 8 ms para USB, 20 ms para memória e afins e 60 ms para placas de vídeo
+bce10cf7	Desligado (recomendado): nas placas de vídeo, o arco-íris fluindo vira um arco-íris parado e a respiração vira cor fixa. Placas de vídeo escrevem os LEDs um por um, então movimento constante tende a cintilar. Ligado, as placas de vídeo também fluem e respiram
+44f9a4dc	Animar também arco-íris e respiração
+9e24740c	Inverte a ordem dos LEDs (quando a direção do fluxo ou a ordem de graves a agudos parece invertida)
+8ebe842f	Inverter
+b35b1a81	Ligue quando o azul-claro parecer rosa e o verde parecer vermelho (para dispositivos com a ordem das cores trocada)
+96aaf779	Trocar vermelho e verde
+a28e3556	Iguala o tom e o brilho deste dispositivo, ou muda efeito, direção e tom por conector da placa-mãe (zona)
+8847ea7e	Abrir ajuste de cor e configurações por zona
+43c6336e	Ajuste de cor (dispositivo inteiro)
+ee85a976	A mesma cor pode parecer diferente em tom e brilho em LEDs diferentes. Ligue "Acender em branco para comparar" acima e abaixe vermelho, verde e azul até os brancos ficarem iguais (não dá para aumentar, então abaixe as cores fortes demais)
+3bb159a9	Vermelho
+4fc93dd4	Verde
+b0ba1b8f	Azul
+387da053	Brilho
+4cba9eab	Configurações por zona (conector)
+d64827fc	Mude efeito, direção e tom de cada conector da placa-mãe conforme o que estiver ligado (ventoinhas, fonte, bloco do water cooler etc.). "Igual ao dispositivo" mantém as configurações acima. O que estiver encadeado no mesmo conector forma uma zona
+41860c08	Muda o efeito de sincronização com música só desta zona (ex.: medidor de volume nas ventoinhas do radiador, cor no ritmo para a fonte)
+2c70dff2	No efeito "Cada peça no seu papel", a qual som esta zona reage. "Conforme a peça": ventoinhas graves, placa de vídeo médios, memória e teclado agudos
+ed5a9363	Direção
+3d275c1f	Dica: nos conectores ARGB da placa-mãe sem nada ligado, defina o número de LEDs como 0 no OpenRGB em Devices → (placa-mãe) → "Edit Device". Menos dados são enviados e o movimento fica mais suave. Espelhar e Inverter valem para efeitos que usam a ordem dos LEDs (espectro, medidor de volume etc.).
+6a1f71f3	Disposição no gabinete
+337d069f	Escolha onde ficam no gabinete as ventoinhas, a placa de vídeo, as memórias, as fitas etc., e ondas, arco-íris, medidores de volume, ondulações e mais fluem entre os dispositivos como um só por todo o gabinete. LEDs sem posição (como teclados) acendem na própria ordem, como antes
+12ccc5b1	Fluir a luz pela posição no gabinete
+c699ba40	Desligado, acende na ordem de cada dispositivo mesmo com posições definidas
+7f06ca34	Direção do fluxo
+a7b5b016	Para onde fluem ondas e arco-íris, crescem os medidores de volume e se espalham as ondulações (visto pelo vidro lateral do gabinete)
+c99b267f	O gabinete visto de lado. LEDs com posição mostram a última cor enviada
+fa48084e	Visto pelo vidro lateral (à esquerda a traseira, à direita a frente). Aparece com "Fluir a luz pela posição no gabinete" ligado
+b553839d	A lista de dispositivos aparece depois de conectar ao OpenRGB.
+5229dd83	Onde ficam no gabinete os LEDs desta zona. Para ventoinhas encadeadas, escolha a ordem de ligação, como "3 (de cima para baixo)"
+bb048236	Avançado
+90901950	Cores mais intensas (correção gama; desligada, as cores ficam mais claras e pálidas)
+3ccf4c41	Os LEDs acendem também os componentes escuros como são, então parecem mais esbranquiçados do que na tela. Ligada, as cores ficam intensas como na tela e as mudanças de brilho parecem mais suaves aos olhos
+dff98214	Piscar em vermelho na velocidade máxima de emergência (acima de qualquer efeito)
+c447e46b	Quando uma temperatura atinge o limite e as ventoinhas vão ao máximo, os LEDs piscam em vermelho para avisar, seja qual for o efeito escolhido
+6b3a1b39	Acender diretamente as placas de vídeo suportadas, sem o OpenRGB (PNY ARGB Epic-X; fica no tempo dos outros LEDs)
+f6b581bb	O OpenRGB escreve os LEDs das placas PNY um por um, então cada troca de cor leva cerca de 35 ms e atrasa em relação aos outros LEDs. Ligado, o app escreve diretamente pelo driver da NVIDIA. Se a escrita falhar várias vezes, volta automaticamente a usar o OpenRGB
+e36ea0de	Escrever diretamente também em modelos não testados (só para testar)
+a6862cdb	A escrita direta só foi testada em hardware real com a RTX 5070 Ti. Ligue para testar outros modelos PNY ARGB Epic-X com a mesma disposição de LEDs. Desligue se as cores ficarem erradas
+e90d8670	Na sincronização com música, dispositivos lentos como placas de vídeo e memórias seguem a cor dos outros dispositivos
+a64d70bc	Placas de vídeo e memórias só trocam de cor 4–8 vezes por segundo, então não mostram movimentos finos como espectro ou medidor de volume. Ligado, elas acendem na cor média que os dispositivos rápidos (como as ventoinhas) estão mostrando, e as cores ficam consistentes. Dispositivos com efeito próprio escolhido o mantêm
+7b9813d5	LEDs ao parar
+74ebaadf	O que fazer com os LEDs ao desligar a integração, fechar o app ou suspender o PC
+4ba5fb63	O que fazer com os LEDs ao desligar a integração, fechar o app ou suspender o PC. "Manter" para na última cor
+ac0f3749	Geral
+69af1b60	Perfis e automação
+86406a7c	Notificações e integrações
+0dee4b23	Segurança e backup
+ddd59eb1	Inicialização e exibição
+bf6cf977	Iniciar automaticamente ao entrar no Windows
+5699c4fc	Registra no Agendador de Tarefas com "privilégios mais altos" (inicia sem o aviso do UAC)
+5d0a76ce	Iniciar na bandeja também ao abrir manualmente
+aefcd37e	Ao iniciar automaticamente, sempre começa na bandeja. Fechar a janela no × deixa o app rodando na bandeja
+e162bf76	Mostrar o miniwidget
+1b093ce9	Mostra temperaturas e rotações sempre por cima. Arraste para mover; clique com o botão direito para mudar a opacidade
+1483f6b3	Aparência
+07df2653	Mude o idioma, o tema, a cor de destaque, o fundo, a cor do texto, a fonte e o tamanho do texto. As mudanças valem na hora (o idioma muda depois de reiniciar o app)
+b8eab0de	Idioma · Language
+4aaa8fe4	Idioma do texto na tela. "Auto" segue o idioma de exibição do Windows (inglês se não for suportado). Depois de mudar, reinicie o app
+9bb17d53	Tema
+ae52556f	"Igual ao Windows" segue o modo escuro/claro das Configurações do Windows (Personalização → Cores → modo de aplicativo)
+aab63522	Cor de destaque
+d95f93ef	Padrão (roxo)
+2a8cd564	Usar a cor do Windows
+ea89f663	Usa a cor das Configurações do Windows (Personalização → Cores → cor de destaque)
+3170685a	Cor de fundo
+14c3e93f	Tinge juntos o fundo, a barra lateral e os cartões. Escuro no tema escuro e claro no tema claro; o tom continua o mesmo ao trocar de tema
+17ff6b6d	Padrão
+da6bf903	Cor do texto
+793df94e	A cor de todo o texto da tela (notas e escalas dos gráficos no mesmo tom, um pouco mais claras). Clara no tema escuro e escura no tema claro, legível em qualquer fundo
+1843d590	Fonte
+05dc00d5	A fonte do texto na tela. Caracteres que a fonte não tem aparecem numa fonte reserva
+bfea4384	Jovem trovador fez quimeras sobre o kiwi · Temperaturas e ventoinhas ABC 123 °C
+982d7356	Tamanho do texto
+2b8e9d8c	Amplia ou reduz a janela inteira (texto, botões e gráficos)
+00478af8	Controle
+13f4a528	DRY RUN (modo de teste)
+db8eea4d	Só mostra os valores calculados e não escreve nada nas ventoinhas (exceto o modo de proteção quando uma bomba perde rotação, e identificação, medições e ajustes temporários que você mesmo iniciar)
+b373eaee	Intervalo de atualização
+14e1cbc6	Velocidade máxima de emergência (CPU e outros)
+35593dc1	Quando qualquer sensor usado numa curva atinge esta temperatura, todas as ventoinhas vão a 100%
+53ef686b	Velocidade máxima de emergência (Hot Spot da GPU)

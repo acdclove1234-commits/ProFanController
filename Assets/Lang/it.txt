@@ -309,3 +309,103 @@ b2c395cb	Inserisci un colore come #RRGGBB (es. #6A00FF) o scegline uno dai cerch
 55b1d508	Inseriscilo come #RRGGBB (es. #6A00FF): sei caratteri tra 0–9 e A–F
 743a1e61	Luminosità
 26565f26	Luminosità complessiva dei LED. Ogni effetto la usa come massimo
+35ab111a	Dispositivi LED trovati da OpenRGB. La striscia qui sotto mostra un'anteprima dei colori inviati ora.
+74e00d85	Se attivo, colora tutti i dispositivi trovati da OpenRGB (anche quelli aggiunti dopo). Se disattivo, puoi scegliere quali dispositivi colorare
+c01c149b	Colora tutti i dispositivi
+e61331df	Se disattivo, scegli per dispositivo qui sotto
+2c8ea653	Per allineare i colori. Illumina tutti i dispositivi con lo stesso bianco (restano applicati l'allineamento colore e la luminosità di dispositivi e zone). Torna com'era lasciando questa pagina
+4dbed8b1	Illumina di bianco per confrontare
+9795e04b	Illumina tutti i dispositivi con lo stesso bianco per allineare i colori (torna com'era lasciando la pagina)
+082c3f40	L'elenco dei dispositivi compare dopo la connessione a OpenRGB (puoi caricarlo anche con «Prova connessione» qui sopra).
+3922b0ea	fps = quante volte al secondo vengono inviati i colori · l'effetto di sincronizzazione musicale in uso
+f3e43b07	Colora i dispositivi spuntati (con «Colora tutti i dispositivi» attivo, sono inclusi tutti)
+5f338e63	Ultimo colore inviato a questo dispositivo (mostrato vicino al colore a schermo)
+ccf4614e	Cambia l'effetto di sincronizzazione musicale solo per questo dispositivo. «Auto» usa «Stile musicale» qui sopra (i dispositivi lenti ricevono automaticamente un effetto morbido)
+91935430	Specchio
+f527b8c5	Si illumina simmetricamente dal centro della fila di LED (per strisce LED lunghe). «Auto» lo attiva per gruppi di 30 LED o più
+2d073419	Invii al secondo
+ec70d216	Numero massimo di invii di colore al secondo a questo dispositivo. Più è alto, più è fluido, ma su schede video e memorie troppi invii possono lasciare alcuni LED non aggiornati e causare sfarfallio. Alzalo solo finché non sfarfalla
+b4d70ec0	Illumina prima
+df7472e3	Anticipa i cambi di colore della sincronizzazione musicale solo per questo dispositivo. Aumentalo se sembra in ritardo rispetto agli altri (per dispositivi lenti a mostrare un colore, come le schede video). Funziona sui battiti prevedibili dal tempo. «Auto» è 8 ms per USB, 20 ms per memoria e simili, 60 ms per schede video
+bce10cf7	Disattivo (consigliato): sulle schede video l'arcobaleno scorrevole diventa fisso e il respiro un colore fisso. Le schede video scrivono i LED uno alla volta, quindi il movimento continuo tende a sfarfallare. Attivo, anche le schede video scorrono e respirano
+44f9a4dc	Anima anche arcobaleno e respiro
+9e24740c	Inverte l'ordine dei LED (se la direzione di scorrimento o l'ordine bassi-acuti sembra al contrario)
+8ebe842f	Inverti
+b35b1a81	Attivalo se l'azzurro appare rosa e il verde appare rosso (per dispositivi con l'ordine dei colori scambiato)
+96aaf779	Scambia rosso e verde
+a28e3556	Allinea tinta e luminosità di questo dispositivo, oppure cambia effetto, direzione e tinta per connettore della scheda madre (zona)
+8847ea7e	Apri allineamento colore e impostazioni per zona
+43c6336e	Allineamento colore (tutto il dispositivo)
+ee85a976	Lo stesso colore può apparire diverso per tinta e luminosità su LED diversi. Attiva «Illumina di bianco per confrontare» qui sopra e abbassa rosso, verde e blu finché i bianchi coincidono (non si può alzare, quindi abbassa i colori troppo forti)
+3bb159a9	Rosso
+4fc93dd4	Verde
+b0ba1b8f	Blu
+387da053	Luminosità
+4cba9eab	Impostazioni per zona (connettore)
+d64827fc	Cambia effetto, direzione e tinta per ogni connettore della scheda madre in base a ciò che vi è collegato (ventole, alimentatore, testa del liquido ecc.). «Come il dispositivo» mantiene le impostazioni sopra. Ciò che è collegato in serie sullo stesso connettore forma una zona
+41860c08	Cambia l'effetto di sincronizzazione musicale solo per questa zona (es. VU meter per le ventole del radiatore, colore a tempo per l'alimentatore)
+2c70dff2	Con l'effetto «Ogni componente il suo ruolo», a quale suono reagisce questa zona. «In base al componente»: ventole i bassi, scheda video i medi, memoria e tastiera gli acuti
+ed5a9363	Direzione
+3d275c1f	Suggerimento: per i connettori ARGB della scheda madre senza nulla collegato, imposta a 0 il numero di LED in OpenRGB da Devices → (scheda madre) → «Edit Device». Si inviano meno dati e il movimento diventa più fluido. Specchio e Inverti agiscono sugli effetti che usano l'ordine dei LED (spettro, VU meter ecc.).
+6a1f71f3	Disposizione nel case
+337d069f	Indica dove si trovano nel case ventole, scheda video, memorie, strisce ecc., e onde, arcobaleni, VU meter, increspature e altro scorreranno tra i dispositivi come un tutt'uno in tutto il case. I LED senza posizione (come le tastiere) si illuminano nel proprio ordine come prima
+12ccc5b1	Fai scorrere la luce secondo la posizione nel case
+c699ba40	Se disattivo, segue l'ordine di ogni dispositivo anche se le posizioni sono impostate
+7f06ca34	Direzione del flusso
+a7b5b016	La direzione in cui scorrono onde e arcobaleni, crescono i VU meter e si allargano le increspature (vista dal vetro laterale del case)
+c99b267f	Il case visto di lato. I LED con posizione mostrano l'ultimo colore inviato
+fa48084e	Vista dal vetro laterale (a sinistra il retro, a destra il frontale). Mostrata quando «Fai scorrere la luce secondo la posizione nel case» è attivo
+b553839d	L'elenco dei dispositivi compare dopo la connessione a OpenRGB.
+5229dd83	Dove si trovano nel case i LED di questa zona. Per ventole in serie, scegli l'ordine di collegamento, ad esempio «3 (dall'alto in basso)»
+bb048236	Avanzate
+90901950	Colori più intensi (correzione gamma; disattivata, i colori sono più chiari e pallidi)
+3ccf4c41	I LED accendono anche le componenti scure così come sono, quindi appaiono più biancastri che a schermo. Attivata, i colori sono intensi come a schermo e le variazioni di luminosità appaiono più morbide all'occhio
+dff98214	Lampeggia in rosso con la massima velocità di emergenza (prioritario su ogni effetto)
+c447e46b	Quando una temperatura raggiunge il limite e le ventole vanno al massimo, i LED lampeggiano in rosso per avvisarti, qualunque effetto sia scelto
+6b3a1b39	Illumina direttamente le schede video supportate, senza OpenRGB (PNY ARGB Epic-X; resta a tempo con gli altri LED)
+f6b581bb	OpenRGB scrive i LED delle schede PNY uno alla volta, quindi ogni cambio di colore richiede circa 35 ms ed è in ritardo rispetto agli altri LED. Attivo, l'app scrive direttamente tramite il driver NVIDIA. Se la scrittura continua a fallire, torna automaticamente a OpenRGB
+e36ea0de	Scrivi direttamente anche su modelli non verificati (solo per provare)
+a6862cdb	La scrittura diretta è stata provata su hardware reale solo con la RTX 5070 Ti. Attivalo per provare altri modelli PNY ARGB Epic-X con la stessa disposizione dei LED. Disattivalo se i colori sono sbagliati
+e90d8670	Nella sincronizzazione musicale, i dispositivi lenti come schede video e memorie prendono il colore degli altri dispositivi
+a64d70bc	Schede video e memorie possono cambiare colore solo 4–8 volte al secondo e non mostrano movimenti fini come spettro o VU meter. Attivo, si illuminano con il colore medio dei dispositivi veloci (come le ventole), così i colori appaiono coerenti. I dispositivi con un effetto scelto a parte lo mantengono
+7b9813d5	LED all'arresto
+74ebaadf	Cosa fare dei LED quando si disattiva l'integrazione, si chiude l'app o il PC va in sospensione
+4ba5fb63	Cosa fare dei LED quando si disattiva l'integrazione, si chiude l'app o il PC va in sospensione. «Mantieni» si ferma sull'ultimo colore
+ac0f3749	Generale
+69af1b60	Profili e automazione
+86406a7c	Notifiche e integrazioni
+0dee4b23	Sicurezza e backup
+ddd59eb1	Avvio e visualizzazione
+bf6cf977	Avvia automaticamente all'accesso a Windows
+5699c4fc	La registra nell'Utilità di pianificazione con i «privilegi più elevati» (si avvia senza richiesta UAC)
+5d0a76ce	Avvia nell'area di notifica anche all'avvio manuale
+aefcd37e	All'avvio automatico parte sempre nell'area di notifica. Chiudendo la finestra con × continua a funzionare lì
+e162bf76	Mostra il mini widget
+1b093ce9	Mostra temperature e velocità sempre in primo piano. Trascina per spostarlo, clic destro per cambiare l'opacità
+1483f6b3	Aspetto
+07df2653	Cambia lingua, tema, colore di accento, sfondo, colore del testo, carattere e dimensione del testo. Le modifiche si applicano subito (la lingua cambia dopo il riavvio dell'app)
+b8eab0de	Lingua · Language
+4aaa8fe4	Lingua del testo a schermo. «Auto» segue la lingua di visualizzazione di Windows (inglese se non supportata). Dopo averla cambiata, riavvia l'app
+9bb17d53	Tema
+ae52556f	«Come Windows» segue scuro/chiaro delle Impostazioni di Windows (Personalizzazione → Colori → modalità app)
+aab63522	Colore di accento
+d95f93ef	Predefinito (viola)
+2a8cd564	Usa il colore di Windows
+ea89f663	Usa il colore delle Impostazioni di Windows (Personalizzazione → Colori → colore principale)
+3170685a	Colore di sfondo
+14c3e93f	Tinge insieme sfondo, barra laterale e schede. Scuro nel tema scuro, chiaro in quello chiaro; la tonalità resta uguale cambiando tema
+17ff6b6d	Predefinito
+da6bf903	Colore del testo
+793df94e	Il colore di tutto il testo a schermo (didascalie e scale dei grafici nella stessa tonalità, un po' più chiare). Chiaro nel tema scuro e scuro in quello chiaro, leggibile su ogni sfondo
+1843d590	Carattere
+05dc00d5	Il carattere del testo a schermo. I caratteri mancanti nel font vengono mostrati con un font di riserva
+bfea4384	Quel vituperabile xenofobo zelante assaggia il whisky · Temperature e ventole ABC 123 °C
+982d7356	Dimensione del testo
+2b8e9d8c	Ingrandisce o riduce l'intera finestra (testo, pulsanti e grafici)
+00478af8	Controllo
+13f4a528	DRY RUN (modalità di prova)
+db8eea4d	Mostra solo i valori calcolati e non scrive nulla sulle ventole (tranne la modalità di protezione quando una pompa rallenta, e identificazione, misure e impostazioni temporanee che avvii tu)
+b373eaee	Intervallo di aggiornamento
+14e1cbc6	Massima velocità di emergenza (CPU e altro)
+35593dc1	Quando un sensore usato in una curva raggiunge questa temperatura, tutte le ventole vanno al 100%
+53ef686b	Massima velocità di emergenza (Hot Spot GPU)

@@ -309,3 +309,103 @@ b2c395cb	Wpisz kolor jako #RRGGBB (np. #6A00FF) albo wybierz jedno z kółek po 
 55b1d508	Wpisz w formacie #RRGGBB (np. #6A00FF): sześć znaków z 0–9 i A–F
 743a1e61	Jasność
 26565f26	Ogólna jasność LED-ów. Każdy efekt używa jej jako maksimum
+35ab111a	Urządzenia LED znalezione przez OpenRGB. Pasek poniżej to podgląd wysyłanych teraz kolorów.
+74e00d85	Po włączeniu koloruje wszystkie urządzenia znalezione przez OpenRGB (także dodane później). Po wyłączeniu można wybrać, które urządzenia kolorować
+c01c149b	Koloruj wszystkie urządzenia
+e61331df	Po wyłączeniu wybierz urządzenia poniżej
+2c8ea653	Do dopasowania kolorów. Wszystkie urządzenia świecą tą samą bielą (dopasowanie koloru i jasność urządzeń i stref nadal obowiązują). Po opuszczeniu strony wszystko wraca
+4dbed8b1	Świeć na biało do porównania
+9795e04b	Przy dopasowywaniu kolorów wszystkie urządzenia świecą tą samą bielą (wraca po opuszczeniu strony)
+082c3f40	Lista urządzeń pojawi się po połączeniu z OpenRGB (można ją też wczytać przyciskiem „Testuj połączenie” powyżej).
+3922b0ea	fps = ile razy na sekundę wysyłane są kolory · używany efekt synchronizacji z muzyką
+f3e43b07	Koloruje zaznaczone urządzenia (gdy włączone jest „Koloruj wszystkie urządzenia”, objęte są wszystkie)
+5f338e63	Ostatni kolor wysłany do tego urządzenia (pokazany zbliżony do koloru na ekranie)
+ccf4614e	Zmienia efekt synchronizacji z muzyką tylko dla tego urządzenia. „Auto” używa „Stylu muzycznego” powyżej (wolno odświeżane urządzenia automatycznie dostają płynny efekt)
+91935430	Lustro
+f527b8c5	Świeci symetrycznie od środka rzędu LED-ów (do długich taśm LED). „Auto” włącza dla grup od 30 LED-ów
+2d073419	Odświeżeń na sekundę
+ec70d216	Maksymalna liczba wysyłek koloru na sekundę do tego urządzenia. Więcej = płynniej, ale na kartach graficznych i pamięciach zbyt wiele może zostawić część LED-ów niezaktualizowanych i powodować migotanie. Zwiększaj tylko, dopóki nie migocze
+b4d70ec0	Świeć wcześniej
+df7472e3	Przyspiesza zmiany kolorów synchronizacji z muzyką tylko dla tego urządzenia. Zwiększ, jeśli wygląda na spóźnione względem innych (dla urządzeń, którym wyświetlenie koloru zajmuje czas, np. kart graficznych). Działa na uderzeniach przewidywalnych z tempa. „Auto”: USB 8 ms, pamięć itp. 20 ms, karty graficzne 60 ms
+bce10cf7	Wył. (zalecane): na kartach graficznych płynąca tęcza staje się statyczna, a oddychanie stałym kolorem. Karty graficzne zapisują LED-y po kolei, więc ciągły ruch łatwo migocze. Po włączeniu karty graficzne też płyną i oddychają
+44f9a4dc	Animuj także tęczę i oddychanie
+9e24740c	Odwraca kolejność LED-ów (gdy kierunek przepływu lub kolejność od basów do sopranów wygląda odwrotnie)
+8ebe842f	Odwróć
+b35b1a81	Włącz, gdy jasnoniebieski wygląda na różowy, a zielony na czerwony (dla urządzeń z zamienioną kolejnością kolorów)
+96aaf779	Zamień czerwony z zielonym
+a28e3556	Dopasuj odcień i jasność tego urządzenia albo zmieniaj efekt, kierunek i odcień dla każdego złącza płyty głównej (strefy)
+8847ea7e	Otwórz dopasowanie koloru i ustawienia stref
+43c6336e	Dopasowanie koloru (całe urządzenie)
+ee85a976	Ten sam kolor może wyglądać inaczej pod względem odcienia i jasności na różnych LED-ach. Włącz powyżej „Świeć na biało do porównania” i zmniejszaj czerwony, zielony i niebieski, aż biel się zgra (nie da się zwiększać, więc zmniejsz zbyt mocne kolory)
+3bb159a9	Czerwony
+4fc93dd4	Zielony
+b0ba1b8f	Niebieski
+387da053	Jasność
+4cba9eab	Ustawienia stref (złączy)
+d64827fc	Dla każdego złącza płyty głównej możesz zmienić efekt, kierunek i odcień zależnie od podłączonego sprzętu (wentylatory, zasilacz, głowica chłodzenia wodnego itp.). „Jak urządzenie” zachowuje ustawienia powyżej. Elementy połączone szeregowo do jednego złącza tworzą jedną strefę
+41860c08	Zmienia efekt synchronizacji z muzyką tylko dla tej strefy (np. wskaźnik głośności dla wentylatorów chłodnicy, kolor w rytm dla zasilacza)
+2c70dff2	Przy efekcie „Każda część w swojej roli”: na jaki dźwięk reaguje ta strefa. „Zgodnie z częścią”: wentylatory basy, karta graficzna środek, pamięć i klawiatura soprany
+ed5a9363	Kierunek
+3d275c1f	Wskazówka: dla złączy ARGB płyty głównej, do których nic nie jest podłączone, ustaw w OpenRGB liczbę LED-ów na 0 (Devices → (płyta główna) → „Edit Device”). Wysyłanych jest mniej danych, a ruch staje się płynniejszy. Lustro i Odwróć działają przy efektach korzystających z kolejności LED-ów (spektrum, wskaźnik głośności itp.).
+6a1f71f3	Rozmieszczenie w obudowie
+337d069f	Wskaż, gdzie w obudowie są wentylatory, karta graficzna, pamięć, taśmy itp., a fale, tęcze, wskaźniki głośności, kręgi i inne efekty popłyną przez urządzenia jako całość po całej obudowie. LED-y bez miejsca (np. klawiatury) świecą jak dotąd w swojej kolejności
+12ccc5b1	Prowadź światło według położenia w obudowie
+c699ba40	Po wyłączeniu świeci według kolejności każdego urządzenia, nawet jeśli miejsca są ustawione
+7f06ca34	Kierunek przepływu
+a7b5b016	Kierunek, w którym płyną fale i tęcze, rosną wskaźniki głośności i rozchodzą się kręgi (widok przez boczną szybę obudowy)
+c99b267f	Obudowa z boku. LED-y z ustawionym miejscem pokazują ostatnio wysłany kolor
+fa48084e	Widok przez boczną szybę (z lewej tył, z prawej przód). Wyświetlany, gdy włączone jest „Prowadź światło według położenia w obudowie”
+b553839d	Lista urządzeń pojawi się po połączeniu z OpenRGB.
+5229dd83	Gdzie w obudowie znajdują się LED-y tej strefy. Dla wentylatorów połączonych szeregowo wybierz kolejność podłączenia, np. „3 (od góry)”
+bb048236	Zaawansowane
+90901950	Głębsze kolory (korekcja gamma; po wyłączeniu kolory są jaśniejsze i bledsze)
+3ccf4c41	LED-y świecą też ciemnymi składowymi, więc wyglądają bielej niż na ekranie. Po włączeniu kolory są głębokie jak na ekranie, a zmiany jasności wydają się płynniejsze dla oka
+dff98214	Migaj na czerwono przy awaryjnej pełnej prędkości (ważniejsze od każdego efektu)
+c447e46b	Gdy temperatura osiągnie limit i wentylatory przejdą na pełną prędkość, LED-y migają na czerwono, niezależnie od wybranego efektu
+6b3a1b39	Steruj obsługiwanymi kartami graficznymi bezpośrednio, bez OpenRGB (PNY ARGB Epic-X; bez opóźnienia względem innych LED-ów)
+f6b581bb	OpenRGB zapisuje LED-y kart PNY po kolei, więc każda zmiana koloru zajmuje ok. 35 ms i spóźnia się względem innych LED-ów. Po włączeniu aplikacja zapisuje bezpośrednio przez sterownik NVIDIA. Jeśli zapis wciąż się nie udaje, automatycznie wraca do OpenRGB
+e36ea0de	Zapisuj bezpośrednio także do nieprzetestowanych modeli (tylko do prób)
+a6862cdb	Bezpośredni zapis przetestowano na prawdziwym sprzęcie tylko z RTX 5070 Ti. Włącz, aby wypróbować inne modele PNY ARGB Epic-X o tym samym układzie LED-ów. Jeśli kolory są złe, wyłącz
+e90d8670	W synchronizacji z muzyką wolno odświeżane urządzenia, takie jak karty graficzne i pamięć, przejmują kolor innych urządzeń
+a64d70bc	Karty graficzne i pamięć mogą zmieniać kolor tylko 4–8 razy na sekundę, więc nie pokażą drobnego ruchu jak spektrum czy wskaźnik głośności. Po włączeniu świecą średnim kolorem szybkich urządzeń (np. wentylatorów), dzięki czemu kolory są spójne. Urządzenia z osobno wybranym efektem go zachowują
+7b9813d5	LED-y przy zatrzymaniu
+74ebaadf	Co zrobić z LED-ami przy wyłączeniu integracji, zamknięciu aplikacji lub uśpieniu komputera
+4ba5fb63	Co zrobić z LED-ami przy wyłączeniu integracji, zamknięciu aplikacji lub uśpieniu komputera. „Zostaw” zatrzymuje się na ostatnim kolorze
+ac0f3749	Ogólne
+69af1b60	Profile i automatyzacja
+86406a7c	Powiadomienia i integracje
+0dee4b23	Bezpieczeństwo i kopie zapasowe
+ddd59eb1	Uruchamianie i wyświetlanie
+bf6cf977	Uruchamiaj automatycznie po zalogowaniu do Windows
+5699c4fc	Rejestruje w Harmonogramie zadań z „najwyższymi uprawnieniami” (start bez monitu UAC)
+5d0a76ce	Uruchamiaj w zasobniku także przy ręcznym starcie
+aefcd37e	Przy autostarcie zawsze uruchamia się w zasobniku. Zamknięcie okna krzyżykiem zostawia aplikację działającą w zasobniku
+e162bf76	Pokaż miniwidżet
+1b093ce9	Pokazuje temperatury i obroty zawsze na wierzchu. Przeciągnij, aby przenieść; prawy przycisk, aby zmienić przezroczystość
+1483f6b3	Wygląd
+07df2653	Zmień język, motyw, kolor akcentu, tło, kolor tekstu, czcionkę i rozmiar tekstu. Zmiany działają od razu (język zmienia się po ponownym uruchomieniu aplikacji)
+b8eab0de	Język · Language
+4aaa8fe4	Język tekstów na ekranie. „Auto” podąża za językiem wyświetlania Windows (angielski, jeśli nie jest obsługiwany). Po zmianie uruchom aplikację ponownie
+9bb17d53	Motyw
+ae52556f	„Jak w Windows” podąża za trybem ciemnym/jasnym z Ustawień Windows (Personalizacja → Kolory → tryb aplikacji)
+aab63522	Kolor akcentu
+d95f93ef	Domyślny (fioletowy)
+2a8cd564	Kolor Windows
+ea89f663	Używa koloru z Ustawień Windows (Personalizacja → Kolory → kolor wiodący)
+3170685a	Kolor tła
+14c3e93f	Barwi jednocześnie tło, pasek boczny i karty. W ciemnym motywie ciemny odcień, w jasnym jasny; ton pozostaje ten sam po zmianie motywu
+17ff6b6d	Domyślny
+da6bf903	Kolor tekstu
+793df94e	Kolor wszystkich tekstów na ekranie (opisy i skale wykresów w tym samym tonie, nieco jaśniejsze). W ciemnym motywie jasny, w jasnym ciemny, czytelny na każdym tle
+1843d590	Czcionka
+05dc00d5	Czcionka tekstów na ekranie. Znaki, których czcionka nie ma, są wyświetlane czcionką zastępczą
+bfea4384	Pchnąć w tę łódź jeża lub ośm skrzyń fig · Temperatury i wentylatory ABC 123 °C
+982d7356	Rozmiar tekstu
+2b8e9d8c	Powiększa lub pomniejsza całe okno (tekst, przyciski i wykresy)
+00478af8	Sterowanie
+13f4a528	DRY RUN (tryb testowy)
+db8eea4d	Tylko pokazuje obliczone wartości i niczego nie zapisuje do wentylatorów (poza trybem ochronnym przy spadku obrotów pompy oraz uruchomionymi przez ciebie identyfikacją, pomiarami i ustawieniami tymczasowymi)
+b373eaee	Interwał odświeżania
+14e1cbc6	Awaryjna pełna prędkość (CPU i inne)
+35593dc1	Gdy dowolny czujnik użyty w krzywej osiągnie tę temperaturę, wszystkie wentylatory przechodzą na 100%
+53ef686b	Awaryjna pełna prędkość (Hot Spot GPU)

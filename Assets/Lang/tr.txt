@@ -309,3 +309,103 @@ b2c395cb	Rengi #RRGGBB biçiminde girin (örn. #6A00FF) veya soldaki dairelerden
 55b1d508	#RRGGBB biçiminde girin (örn. #6A00FF): 0–9 ve A–F'den altı karakter
 743a1e61	Parlaklık
 26565f26	LED'lerin genel parlaklığı. Her efekt bunu üst sınır olarak kullanır
+35ab111a	OpenRGB'nin bulduğu LED cihazları. Alttaki şerit şu anda gönderilen renklerin önizlemesidir.
+74e00d85	Açıkken OpenRGB'nin bulduğu tüm cihazları (sonradan eklenenler dahil) renklendirir. Kapalıyken renklendirilecek cihazları seçebilirsiniz
+c01c149b	Tüm cihazları renklendir
+e61331df	Kapalıyken aşağıda cihaz başına seçin
+2c8ea653	Renk eşleştirme için. Tüm cihazları aynı beyazla yakar (cihaz ve bölgelerin renk eşleştirmesi ve parlaklığı yine uygulanır). Bu sayfadan çıkınca geri döner
+4dbed8b1	Karşılaştırmak için beyaz yak
+9795e04b	Renk eşleştirirken tüm cihazları aynı beyazla yakar (bu sayfadan çıkınca geri döner)
+082c3f40	Cihaz listesi OpenRGB'ye bağlanınca görünür (yukarıdaki "Bağlantıyı test et" ile de yüklenebilir).
+3922b0ea	fps = saniyede renk gönderme sayısı · kullanılan müzik senkronu efekti
+f3e43b07	İşaretli cihazları renklendirir ("Tüm cihazları renklendir" açıkken tüm cihazlar dahildir)
+5f338e63	Bu cihaza en son gönderilen renk (ekran rengine yakın gösterilir)
+ccf4614e	Müzik senkronu efektini yalnızca bu cihaz için değiştirir. "Otomatik" yukarıdaki "Müzik tarzı"nı kullanır (yavaş güncellenen cihazlar otomatik olarak yumuşak bir efekt alır)
+91935430	Ayna
+f527b8c5	LED dizisinin ortasından simetrik olarak yanar (uzun LED şeritler için). "Otomatik", 30 veya daha fazla LED'li gruplarda açar
+2d073419	Saniyedeki güncelleme
+ec70d216	Bu cihaza saniyede gönderilecek en fazla renk sayısı. Fazlası daha akıcıdır, ancak ekran kartı ve bellekte çok fazlası bazı LED'lerin yazılmamasına ve titremeye yol açabilir. Yalnızca titremediği sürece artırın
+b4d70ec0	Daha erken yak
+df7472e3	Müzik senkronundaki renk geçişlerini yalnızca bu cihaz için öne alır. Diğer cihazlara göre gecikmiş görünüyorsa artırın (ekran kartı gibi rengi göstermesi zaman alan cihazlar için). Tempodan tahmin edilebilen vuruşlarda işe yarar. "Otomatik": USB 8 ms, bellek vb. 20 ms, ekran kartı 60 ms
+bce10cf7	Kapalı (önerilen): ekran kartlarında akan gökkuşağı sabit gökkuşağına, nefes ise sabit renge dönüşür. Ekran kartları LED'leri tek tek yazdığından sürekli hareket titremeye yatkındır. Açıkken ekran kartları da akar ve nefes alır
+44f9a4dc	Gökkuşağı ve nefesi de canlandır
+9e24740c	LED sırasını tersine çevirir (akış yönü veya bastan tize sıra ters görünüyorsa)
+8ebe842f	Ters
+b35b1a81	Açık mavi pembe, yeşil kırmızı görünüyorsa açın (renk sırası ters olan cihazlar için)
+96aaf779	Kırmızı ile yeşili değiştir
+a28e3556	Bu cihazın renk tonunu ve parlaklığını eşleştirin ya da anakart konnektörü (bölge) başına efekti, yönü ve tonu değiştirin
+8847ea7e	Renk eşleştirme ve bölge ayarlarını aç
+43c6336e	Renk eşleştirme (tüm cihaz)
+ee85a976	Aynı renk farklı LED'lerde ton ve parlaklık bakımından farklı görünebilir. Yukarıdaki "Karşılaştırmak için beyaz yak"ı açın ve beyazlar eşleşene kadar kırmızı, yeşil ve maviyi düşürün (artırılamaz, bu yüzden fazla güçlü renkleri düşürün)
+3bb159a9	Kırmızı
+4fc93dd4	Yeşil
+b0ba1b8f	Mavi
+387da053	Parlaklık
+4cba9eab	Bölge (konnektör) ayarları
+d64827fc	Her anakart konnektörü için bağlı olana (fanlar, PSU, su soğutma bloğu vb.) göre efekti, yönü ve tonu değiştirin. "Cihazla aynı" yukarıdaki ayarları korur. Aynı konnektöre zincirleme bağlananlar tek bir bölgedir
+41860c08	Müzik senkronu efektini yalnızca bu bölge için değiştirir (örn. radyatör fanları için ses seviyesi göstergesi, PSU için ritimle renk değiştirme)
+2c70dff2	"Her parça kendi rolünde" efektinde bu bölgenin hangi sese göre yanacağı. "Parçaya göre": fanlar bas, ekran kartı orta, bellek ve klavye tiz
+ed5a9363	Yön
+3d275c1f	İpucu: hiçbir şey bağlı olmayan anakart ARGB konnektörlerinde OpenRGB'de Devices → (anakart) → "Edit Device" ile LED sayısını 0 yapın. Daha az veri gönderilir ve hareket akıcılaşır. Ayna ve Ters, LED sırasını kullanan efektlerde (spektrum, ses seviyesi göstergesi vb.) etkilidir.
+6a1f71f3	Kasa içi yerleşim
+337d069f	Fanların, ekran kartının, belleğin, şeritlerin vb. kasada nerede olduğunu seçin; dalgalar, gökkuşakları, ses seviyesi göstergeleri, halkalar ve daha fazlası cihazlar arasında tüm kasada tek parça halinde akar. Yeri belirlenmemiş LED'ler (klavye gibi) eskisi gibi kendi sıralarında yanar
+12ccc5b1	Işığı kasa içindeki konuma göre akıt
+c699ba40	Kapalıyken, yerler belirlenmiş olsa bile her cihazın kendi sırasında yanar
+7f06ca34	Akış yönü
+a7b5b016	Dalgaların ve gökkuşaklarının aktığı, ses seviyesi göstergelerinin uzadığı ve halkaların yayıldığı yön (kasanın yan camından bakıldığında)
+c99b267f	Kasanın yandan görünümü. Yeri belirlenmiş LED'ler en son gönderilen rengi gösterir
+fa48084e	Yan camdan görünüm (sol arka, sağ ön). "Işığı kasa içindeki konuma göre akıt" açıkken gösterilir
+b553839d	Cihaz listesi OpenRGB'ye bağlanınca görünür.
+5229dd83	Bu bölgenin LED'lerinin kasada nerede olduğu. Zincirleme bağlı fanlar için "3 adet (yukarıdan aşağı)" gibi bağlantı sırasını seçin
+bb048236	Gelişmiş
+90901950	Daha koyu renkler (gama düzeltmesi; kapalıyken renkler daha parlak ve soluk)
+3ccf4c41	LED'ler koyu bileşenleri de olduğu gibi yaktığından ekrandakinden daha beyazımsı görünür. Açıkken renkler ekrandaki gibi koyu olur ve parlaklık değişimleri göze daha yumuşak görünür
+dff98214	Acil tam hızda kırmızı yanıp sön (her efektten önceliklidir)
+c447e46b	Bir sıcaklık sınıra ulaşıp fanlar tam hıza çıktığında, hangi efekt seçili olursa olsun LED'ler sizi uyarmak için kırmızı yanıp söner
+6b3a1b39	Desteklenen ekran kartlarını OpenRGB olmadan doğrudan yak (PNY ARGB Epic-X; diğer LED'lerle gecikmesiz)
+f6b581bb	OpenRGB, PNY kartlarının LED'lerini tek tek yazar; bu yüzden her renk değişimi yaklaşık 35 ms sürer ve diğer LED'lerin gerisinde kalır. Açıkken uygulama doğrudan NVIDIA sürücüsü üzerinden yazar. Yazma sürekli başarısız olursa otomatik olarak OpenRGB yöntemine döner
+e36ea0de	Test edilmemiş kart modellerine de doğrudan yaz (yalnızca denerken)
+a6862cdb	Doğrudan yazma yalnızca RTX 5070 Ti ile gerçek donanımda test edildi. Aynı LED düzenine sahip diğer PNY ARGB Epic-X modellerini denemek için açın. Renkler yanlışsa tekrar kapatın
+e90d8670	Müzik senkronunda ekran kartı ve bellek gibi yavaş güncellenen cihazlar diğer cihazların rengine uyar
+a64d70bc	Ekran kartları ve bellek saniyede yalnızca 4–8 kez renk değiştirebilir, bu yüzden spektrum veya ses seviyesi göstergesi gibi ince hareketleri gösteremez. Açıkken, hızlı cihazların (fanlar gibi) gösterdiği ortalama renkte yanarlar ve renkler uyumlu görünür. Kendi efekti seçilmiş cihazlar onu korur
+7b9813d5	Dururken LED'ler
+74ebaadf	Entegrasyon kapatıldığında, uygulama kapandığında veya bilgisayar uyku moduna geçtiğinde LED'lere ne yapılacağı
+4ba5fb63	Entegrasyon kapatıldığında, uygulama kapandığında veya bilgisayar uyku moduna geçtiğinde LED'lere ne yapılacağı. "Koru" son renkte kalır
+ac0f3749	Genel
+69af1b60	Profiller ve otomasyon
+86406a7c	Bildirimler ve entegrasyonlar
+0dee4b23	Güvenlik ve yedekleme
+ddd59eb1	Başlatma ve görünüm
+bf6cf977	Windows oturumu açılınca otomatik başlat
+5699c4fc	Görev Zamanlayıcı'ya "en yüksek ayrıcalıklarla" kaydeder (UAC onayı olmadan başlar)
+5d0a76ce	Elle başlatınca da sistem tepsisinde başlat
+aefcd37e	Otomatik başlatmada her zaman sistem tepsisinde başlar. Pencereyi × ile kapatsanız da tepside çalışmaya devam eder
+e162bf76	Mini pencere öğesini göster
+1b093ce9	Sıcaklıkları ve devirleri her zaman en üstte gösterir. Taşımak için sürükleyin; saydamlığı değiştirmek için sağ tıklayın
+1483f6b3	Görünüm
+07df2653	Görüntüleme dilini, temayı, vurgu rengini, arka planı, yazı rengini, yazı tipini ve yazı boyutunu değiştirin. Değişiklikler hemen uygulanır (görüntüleme dili uygulama yeniden başlatılınca değişir)
+b8eab0de	Dil · Language
+4aaa8fe4	Ekrandaki metinlerin dili. "Otomatik", Windows görüntüleme dilini izler (desteklenmiyorsa İngilizce). Değiştirdikten sonra uygulamayı yeniden başlatın
+9bb17d53	Tema
+ae52556f	"Windows ile aynı", Windows Ayarları'ndaki koyu/açık modu (Kişiselleştirme → Renkler → uygulama modu) izler
+aab63522	Vurgu rengi
+d95f93ef	Varsayılan (mor)
+2a8cd564	Windows rengini kullan
+ea89f663	Windows Ayarları'ndaki rengi (Kişiselleştirme → Renkler → vurgu rengi) kullanır
+3170685a	Arka plan rengi
+14c3e93f	Arka planı, kenar çubuğunu ve kartları birlikte boyar. Koyu temada koyu, açık temada açık ton olur; tema değişse de renk tonu aynı kalır
+17ff6b6d	Varsayılan
+da6bf903	Yazı rengi
+793df94e	Ekrandaki tüm yazıların rengi (açıklamalar ve grafik ölçekleri aynı tonda, biraz daha açık). Koyu temada açık, açık temada koyu; her arka planda okunur
+1843d590	Yazı tipi
+05dc00d5	Ekrandaki metinlerin yazı tipi. Yazı tipinde olmayan karakterler yedek bir yazı tipiyle gösterilir
+bfea4384	Pijamalı hasta yağız şoföre çabucak güvendi · Sıcaklıklar ve fanlar ABC 123 °C
+982d7356	Yazı boyutu
+2b8e9d8c	Tüm pencereyi (yazı, düğmeler ve grafikler) büyütür veya küçültür
+00478af8	Kontrol
+13f4a528	DRY RUN (test modu)
+db8eea4d	Yalnızca hesaplanan değerleri gösterir ve fanlara hiçbir şey yazmaz (pompa yavaşladığında koruma çalışması ile kendi başlattığınız tanımlama, ölçüm ve geçici ayarlar hariç)
+b373eaee	Güncelleme aralığı
+14e1cbc6	Acil tam hız (CPU ve diğerleri)
+35593dc1	Bir eğride kullanılan herhangi bir sensör bu sıcaklığa ulaşınca tüm fanlar %100'e çıkar
+53ef686b	Acil tam hız (GPU Hot Spot)

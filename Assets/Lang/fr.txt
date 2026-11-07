@@ -309,3 +309,103 @@ b2c395cb	Saisissez une couleur au format #RRGGBB (ex. #6A00FF) ou choisissez un 
 55b1d508	Saisissez-la au format #RRGGBB (ex. #6A00FF) : six caractères parmi 0–9 et A–F
 743a1e61	Luminosité
 26565f26	Luminosité globale des LED. Chaque effet l'utilise comme maximum
+35ab111a	Appareils LED trouvés par OpenRGB. La bande ci-dessous prévisualise les couleurs envoyées en ce moment.
+74e00d85	Activé, colore tous les appareils trouvés par OpenRGB (y compris ceux ajoutés plus tard). Désactivé, vous pouvez choisir les appareils à colorer
+c01c149b	Colorer tous les appareils
+e61331df	Désactivé, choisissez appareil par appareil ci-dessous
+2c8ea653	Pour l'étalonnage des couleurs. Allume tous les appareils du même blanc (l'étalonnage et la luminosité des appareils et zones restent appliqués). Revient en quittant la page
+4dbed8b1	Allumer en blanc pour comparer
+9795e04b	Allume tous les appareils du même blanc pour l'étalonnage (revient en quittant la page)
+082c3f40	La liste des appareils apparaît une fois connecté à OpenRGB (vous pouvez aussi la charger avec « Tester la connexion » ci-dessus).
+3922b0ea	fps = nombre d'envois de couleurs par seconde · l'effet de synchro musicale utilisé
+f3e43b07	Colore les appareils cochés (quand « Colorer tous les appareils » est activé, tous sont concernés)
+5f338e63	Dernière couleur envoyée à cet appareil (affichée proche de la couleur à l'écran)
+ccf4614e	Change l'effet de synchro musicale pour cet appareil seulement. « Auto » utilise « Style musical » ci-dessus (les appareils lents reçoivent automatiquement un effet doux)
+91935430	Miroir
+f527b8c5	S'allume symétriquement depuis le milieu de la rangée de LED (pour les longues bandes). « Auto » l'active pour les groupes de 30 LED ou plus
+2d073419	Envois par seconde
+ec70d216	Nombre maximal d'envois de couleur par seconde vers cet appareil. Plus c'est élevé, plus c'est fluide, mais sur les cartes graphiques et la mémoire, trop d'envois peuvent laisser des LED non mises à jour et faire scintiller. Augmentez seulement tant que ça ne scintille pas
+b4d70ec0	Allumer plus tôt
+df7472e3	Avance les changements de couleur de la synchro musicale pour cet appareil seulement. Augmentez s'il paraît en retard sur les autres (pour les appareils lents à afficher une couleur, comme les cartes graphiques). Agit sur les temps prévisibles d'après le tempo. « Auto » : USB 8 ms, mémoire et similaires 20 ms, cartes graphiques 60 ms
+bce10cf7	Désactivé (recommandé) : sur les cartes graphiques, l'arc-en-ciel défilant devient fixe et la respiration une couleur fixe. Les cartes graphiques écrivent les LED une par une, donc un mouvement constant a tendance à scintiller. Activé, les cartes graphiques défilent et respirent aussi
+44f9a4dc	Animer aussi l'arc-en-ciel et la respiration
+9e24740c	Inverse l'ordre des LED (si le sens de défilement ou l'ordre graves-aigus paraît inversé)
+8ebe842f	Inverser
+b35b1a81	Activez si le bleu clair paraît rose et le vert paraît rouge (pour les appareils à l'ordre des couleurs inversé)
+96aaf779	Échanger rouge et vert
+a28e3556	Ajustez la teinte et la luminosité de cet appareil, ou changez l'effet, le sens et la teinte par connecteur de la carte mère (zone)
+8847ea7e	Ouvrir l'étalonnage et les réglages par zone
+43c6336e	Étalonnage des couleurs (appareil entier)
+ee85a976	Une même couleur peut paraître différente en teinte et en luminosité selon les LED. Activez « Allumer en blanc pour comparer » ci-dessus et baissez le rouge, le vert et le bleu jusqu'à ce que les blancs correspondent (on ne peut pas monter, donc baissez les couleurs trop fortes)
+3bb159a9	Rouge
+4fc93dd4	Vert
+b0ba1b8f	Bleu
+387da053	Luminosité
+4cba9eab	Réglages par zone (connecteur)
+d64827fc	Changez l'effet, le sens et la teinte pour chaque connecteur de la carte mère selon ce qui y est branché (ventilateurs, alimentation, tête de watercooling, etc.). « Comme l'appareil » garde les réglages ci-dessus. Les éléments chaînés sur un même connecteur forment une zone
+41860c08	Change l'effet de synchro musicale pour cette zone seulement (ex. : vumètre pour les ventilateurs du radiateur, couleur au rythme pour l'alimentation)
+2c70dff2	Avec l'effet « Rôles des composants », le son auquel réagit cette zone. « Selon le composant » : ventilateurs graves, carte graphique médiums, mémoire et clavier aigus
+ed5a9363	Sens
+3d275c1f	Astuce : pour les connecteurs ARGB de la carte mère sans rien de branché, mettez le nombre de LED à 0 dans OpenRGB via Devices → (carte mère) → « Edit Device ». Moins de données sont envoyées et les mouvements sont plus fluides. Miroir et Inverser agissent sur les effets qui utilisent l'ordre des LED (spectre, vumètre, etc.).
+6a1f71f3	Disposition dans le boîtier
+337d069f	Indiquez où se trouvent ventilateurs, carte graphique, mémoire, bandes, etc. dans le boîtier : vagues, arcs-en-ciel, vumètres, ondulations et autres traversent alors les appareils comme un tout dans le boîtier. Les LED sans emplacement (comme les claviers) s'allument selon leur propre ordre, comme avant
+12ccc5b1	Faire circuler la lumière selon la position dans le boîtier
+c699ba40	Désactivé, la lumière suit l'ordre de chaque appareil même si des emplacements sont définis
+7f06ca34	Sens du flux
+a7b5b016	Le sens dans lequel les vagues et arcs-en-ciel circulent, les vumètres montent et les ondulations s'étendent (vu par la vitre latérale du boîtier)
+c99b267f	Le boîtier vu de côté. Les LED placées affichent la dernière couleur envoyée
+fa48084e	Vu par la vitre latérale (à gauche l'arrière, à droite l'avant). Affiché quand « Faire circuler la lumière selon la position dans le boîtier » est activé
+b553839d	La liste des appareils apparaît une fois connecté à OpenRGB.
+5229dd83	Où se trouvent les LED de cette zone dans le boîtier. Pour des ventilateurs chaînés, choisissez l'ordre de chaînage, par exemple « 3 (de haut en bas) »
+bb048236	Avancé
+90901950	Couleurs plus profondes (correction gamma ; désactivé, les couleurs sont plus claires et pâles)
+3ccf4c41	Les LED allument aussi leurs composantes sombres, elles paraissent donc plus blanchâtres qu'à l'écran. Activé, les couleurs sont profondes comme à l'écran et les variations de luminosité paraissent plus douces à l'œil
+dff98214	Clignoter en rouge en pleine vitesse d'urgence (prioritaire sur tout effet)
+c447e46b	Quand une température atteint sa limite et que les ventilateurs passent à pleine vitesse, les LED clignotent en rouge pour vous prévenir, quel que soit l'effet choisi
+6b3a1b39	Piloter directement les cartes graphiques prises en charge, sans OpenRGB (PNY ARGB Epic-X ; reste synchronisé avec les autres LED)
+f6b581bb	OpenRGB écrit les LED des cartes PNY une par une : chaque changement de couleur prend environ 35 ms et retarde par rapport aux autres LED. Activé, l'application écrit directement via le pilote NVIDIA. Si l'écriture échoue de façon répétée, elle repasse automatiquement par OpenRGB
+e36ea0de	Écrire aussi directement sur les modèles non testés (seulement pour essayer)
+a6862cdb	L'écriture directe n'a été testée sur du vrai matériel qu'avec la RTX 5070 Ti. Activez pour essayer d'autres modèles PNY ARGB Epic-X à la même disposition de LED. Désactivez si les couleurs sont incorrectes
+e90d8670	En synchro musicale, les appareils lents comme les cartes graphiques et la mémoire prennent la couleur des autres appareils
+a64d70bc	Les cartes graphiques et la mémoire ne peuvent changer de couleur que 4 à 8 fois par seconde et ne peuvent pas montrer des mouvements fins comme le spectre ou le vumètre. Activé, elles s'allument de la couleur moyenne des appareils rapides (comme les ventilateurs), pour des couleurs cohérentes. Les appareils ayant leur propre effet le conservent
+7b9813d5	LED à l'arrêt
+74ebaadf	Que faire des LED quand l'intégration est désactivée, que l'application se ferme ou que le PC se met en veille
+4ba5fb63	Que faire des LED quand l'intégration est désactivée, que l'application se ferme ou que le PC se met en veille. « Conserver » s'arrête sur la dernière couleur
+ac0f3749	Général
+69af1b60	Profils et automatisation
+86406a7c	Notifications et intégrations
+0dee4b23	Sécurité et sauvegarde
+ddd59eb1	Démarrage et affichage
+bf6cf977	Démarrer automatiquement à l'ouverture de session Windows
+5699c4fc	L'inscrit dans le Planificateur de tâches avec les « privilèges les plus élevés » (démarre sans invite UAC)
+5d0a76ce	Démarrer dans la zone de notification même en lancement manuel
+aefcd37e	Au démarrage automatique, il démarre toujours dans la zone de notification. Fermer la fenêtre avec × le laisse tourner dans la zone de notification
+e162bf76	Afficher le mini-widget
+1b093ce9	Affiche températures et vitesses toujours au premier plan. Faites glisser pour déplacer, clic droit pour changer l'opacité
+1483f6b3	Apparence
+07df2653	Changez la langue d'affichage, le thème, la couleur d'accent, le fond, la couleur du texte, la police et la taille du texte. Les changements s'appliquent immédiatement (la langue change après redémarrage de l'application)
+b8eab0de	Langue · Language
+4aaa8fe4	Langue du texte à l'écran. « Auto » suit la langue d'affichage de Windows (anglais si elle n'est pas prise en charge). Après un changement, redémarrez l'application
+9bb17d53	Thème
+ae52556f	« Comme Windows » suit le mode sombre/clair des paramètres Windows (Personnalisation → Couleurs → mode des applications)
+aab63522	Couleur d'accent
+d95f93ef	Par défaut (violet)
+2a8cd564	Couleur de Windows
+ea89f663	Utilise la couleur des paramètres Windows (Personnalisation → Couleurs → couleur d'accentuation)
+3170685a	Couleur de fond
+14c3e93f	Teinte ensemble le fond, la barre latérale et les cartes. Sombre en thème sombre, clair en thème clair ; la teinte reste la même en changeant de thème
+17ff6b6d	Par défaut
+da6bf903	Couleur du texte
+793df94e	La couleur de tout le texte à l'écran (légendes et graduations des graphiques dans la même teinte, un peu plus claires). Clair en thème sombre, foncé en thème clair : lisible sur tout fond
+1843d590	Police
+05dc00d5	Police du texte à l'écran. Les caractères absents de la police sont affichés avec une police de secours
+bfea4384	Portez ce vieux whisky au juge blond qui fume · Températures et ventilateurs ABC 123 °C
+982d7356	Taille du texte
+2b8e9d8c	Agrandit ou réduit toute la fenêtre (texte, boutons et graphiques)
+00478af8	Contrôle
+13f4a528	DRY RUN (mode test)
+db8eea4d	Affiche seulement les valeurs calculées et n'écrit rien aux ventilateurs (sauf le mode de protection quand une pompe ralentit, et l'identification, les mesures et les réglages temporaires que vous lancez vous-même)
+b373eaee	Intervalle de mise à jour
+14e1cbc6	Pleine vitesse d'urgence (CPU et autres)
+35593dc1	Quand un capteur utilisé dans une courbe atteint cette température, tous les ventilateurs passent à 100 %
+53ef686b	Pleine vitesse d'urgence (Hot Spot du GPU)

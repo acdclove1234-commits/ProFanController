@@ -309,3 +309,103 @@ b2c395cb	Farbe als #RRGGBB eingeben (z. B. #6A00FF) oder aus den Kreisen links w
 55b1d508	Bitte als #RRGGBB eingeben (z. B. #6A00FF): sechs Zeichen aus 0–9 und A–F
 743a1e61	Helligkeit
 26565f26	Gesamthelligkeit der LEDs. Jeder Effekt nutzt sie als Obergrenze
+35ab111a	Von OpenRGB gefundene LED-Geräte. Der Streifen unten zeigt eine Vorschau der gerade gesendeten Farben.
+74e00d85	Wenn aktiv, werden alle von OpenRGB gefundenen Geräte gefärbt (auch später hinzugekommene). Wenn aus, können Sie die zu färbenden Geräte auswählen
+c01c149b	Alle Geräte färben
+e61331df	Wenn aus, unten pro Gerät auswählen
+2c8ea653	Zum Farbabgleich. Alle Geräte leuchten im gleichen Weiß (Farbabgleich und Helligkeit von Geräten und Zonen gelten weiter). Beim Verlassen der Seite wird zurückgesetzt
+4dbed8b1	Zum Vergleich weiß leuchten
+9795e04b	Lässt beim Farbabgleich alle Geräte im gleichen Weiß leuchten (beim Verlassen der Seite zurückgesetzt)
+082c3f40	Die Geräteliste erscheint nach der Verbindung mit OpenRGB (auch über „Verbindung testen“ oben ladbar).
+3922b0ea	fps = wie oft pro Sekunde Farben gesendet werden · der verwendete Musikeffekt
+f3e43b07	Färbt die markierten Geräte (bei aktivem „Alle Geräte färben“ sind alle eingeschlossen)
+5f338e63	Zuletzt an dieses Gerät gesendete Farbe (bildschirmnah dargestellt)
+ccf4614e	Ändert den Musikeffekt nur für dieses Gerät. „Auto“ verwendet oben „Musikstil“ (langsam aktualisierende Geräte erhalten automatisch einen weichen Effekt)
+91935430	Spiegeln
+f527b8c5	Leuchtet symmetrisch von der Mitte der LED-Reihe aus (für lange LED-Streifen). „Auto“ schaltet es bei Gruppen ab 30 LEDs ein
+2d073419	Aktualisierungen pro Sekunde
+ec70d216	Höchstzahl der Farbsendungen pro Sekunde an dieses Gerät. Mehr ist flüssiger, aber bei Grafikkarten und Arbeitsspeicher kann zu viel dazu führen, dass manche LEDs nicht beschrieben werden und flackern. Nur so weit erhöhen, wie es nicht flackert
+b4d70ec0	Früher leuchten
+df7472e3	Zieht die Farbwechsel der Musiksynchronisation nur für dieses Gerät vor. Erhöhen, wenn es im Vergleich zu anderen verspätet wirkt (für Geräte, die Zeit zum Anzeigen einer Farbe brauchen, etwa Grafikkarten). Wirkt bei Schlägen, die aus dem Tempo vorhersagbar sind. „Auto“: USB 8 ms, Arbeitsspeicher u. Ä. 20 ms, Grafikkarten 60 ms
+bce10cf7	Aus (empfohlen): Auf Grafikkarten wird der fließende Regenbogen zu einem statischen und Atmen zu einer festen Farbe. Grafikkarten beschreiben LEDs einzeln, daher neigt ständige Bewegung zum Flackern. Ein: Auch Grafikkarten fließen und atmen
+44f9a4dc	Regenbogen und Atmen auch animieren
+9e24740c	Kehrt die LED-Reihenfolge um (wenn Fließrichtung oder Reihenfolge von Bass zu Höhen verkehrt aussieht)
+8ebe842f	Umkehren
+b35b1a81	Einschalten, wenn Hellblau rosa und Grün rot aussieht (für Geräte mit vertauschter Farbreihenfolge)
+96aaf779	Rot und Grün tauschen
+a28e3556	Farbton und Helligkeit dieses Geräts abgleichen oder Effekt, Richtung und Farbton pro Mainboard-Anschluss (Zone) ändern
+8847ea7e	Farbabgleich und Zoneneinstellungen öffnen
+43c6336e	Farbabgleich (ganzes Gerät)
+ee85a976	Dieselbe Farbe kann auf verschiedenen LEDs in Farbton und Helligkeit unterschiedlich aussehen. Schalten Sie oben „Zum Vergleich weiß leuchten“ ein und senken Sie Rot, Grün und Blau, bis das Weiß übereinstimmt (erhöhen geht nicht, also die zu starken Farben senken)
+3bb159a9	Rot
+4fc93dd4	Grün
+b0ba1b8f	Blau
+387da053	Helligkeit
+4cba9eab	Einstellungen pro Zone (Anschluss)
+d64827fc	Ändern Sie Effekt, Richtung und Farbton für jeden Mainboard-Anschluss passend zum Angeschlossenen (Lüfter, Netzteil, Wasserkühlungskopf usw.). „Wie Gerät“ behält die Einstellungen oben. Was am selben Anschluss in Reihe hängt, ist eine Zone
+41860c08	Ändert den Musikeffekt nur für diese Zone (z. B. Pegelanzeige für die Radiatorlüfter, Farbwechsel im Takt für das Netzteil)
+2c70dff2	Beim Effekt „Bauteile in ihren Rollen“: auf welchen Ton diese Zone reagiert. „Zum Bauteil passend“: Lüfter Bass, Grafikkarte Mitten, Arbeitsspeicher und Tastatur Höhen
+ed5a9363	Richtung
+3d275c1f	Tipp: Für ARGB-Anschlüsse des Mainboards ohne angeschlossenes Gerät in OpenRGB unter Devices → (Mainboard) → „Edit Device“ die LED-Anzahl auf 0 setzen. So werden weniger Daten gesendet und Bewegungen werden flüssiger. Spiegeln und Umkehren wirken bei Effekten, die die LED-Reihenfolge nutzen (Spektrum, Pegelanzeige usw.).
+6a1f71f3	Anordnung im Gehäuse
+337d069f	Wählen Sie, wo Lüfter, Grafikkarte, Arbeitsspeicher, Streifen usw. im Gehäuse sitzen, dann fließen Wellen, Regenbogen, Pegelanzeigen, Ringe und mehr geräteübergreifend als Ganzes durch das Gehäuse. LEDs ohne Platz (etwa Tastaturen) leuchten wie bisher in ihrer eigenen Reihenfolge
+12ccc5b1	Licht nach Position im Gehäuse fließen lassen
+c699ba40	Wenn aus, wird in der Reihenfolge jedes Geräts geleuchtet, auch wenn Plätze gesetzt sind
+7f06ca34	Fließrichtung
+a7b5b016	Richtung, in die Wellen und Regenbogen fließen, Pegelanzeigen wachsen und Ringe sich ausbreiten (Blick durch das Seitenfenster des Gehäuses)
+c99b267f	Das Gehäuse von der Seite. LEDs mit Platz zeigen die zuletzt gesendete Farbe
+fa48084e	Blick durch das Seitenfenster (links Rückseite, rechts Front). Wird angezeigt, wenn „Licht nach Position im Gehäuse fließen lassen“ aktiv ist
+b553839d	Die Geräteliste erscheint nach der Verbindung mit OpenRGB.
+5229dd83	Wo sich die LEDs dieser Zone im Gehäuse befinden. Bei in Reihe geschalteten Lüftern die Verkettungsreihenfolge wählen, etwa „3 (von oben nach unten)“
+bb048236	Erweitert
+90901950	Kräftigere Farben (Gammakorrektur; aus: hellere, blassere Farben)
+3ccf4c41	LEDs leuchten auch ihre dunklen Anteile voll, daher wirken sie weißlicher als auf dem Bildschirm. Ein: kräftige Farben wie auf dem Bildschirm, Helligkeitsänderungen wirken für das Auge gleichmäßiger
+dff98214	Bei Notfall-Volllast rot blinken (Vorrang vor jedem Effekt)
+c447e46b	Erreicht eine Temperatur ihre Grenze und die Lüfter gehen auf volle Drehzahl, blinken die LEDs rot – unabhängig vom gewählten Effekt
+6b3a1b39	Unterstützte Grafikkarten direkt ansteuern, ohne OpenRGB (PNY ARGB Epic-X; bleibt synchron mit den anderen LEDs)
+f6b581bb	OpenRGB beschreibt die LEDs von PNY-Karten einzeln, daher dauert jeder Farbwechsel etwa 35 ms und hinkt den anderen LEDs hinterher. Ein: Die App schreibt direkt über den NVIDIA-Treiber. Scheitern die Schreibvorgänge wiederholt, wird automatisch wieder über OpenRGB gearbeitet
+e36ea0de	Auch ungetestete Kartenmodelle direkt beschreiben (nur zum Ausprobieren)
+a6862cdb	Direktes Schreiben wurde nur mit der RTX 5070 Ti an echter Hardware getestet. Einschalten, um andere PNY-ARGB-Epic-X-Modelle mit gleicher LED-Anordnung auszuprobieren. Bei falschen Farben wieder ausschalten
+e90d8670	Bei der Musiksynchronisation übernehmen langsam aktualisierende Geräte wie Grafikkarten und Arbeitsspeicher die Farbe der anderen Geräte
+a64d70bc	Grafikkarten und Arbeitsspeicher können die Farbe nur 4–8-mal pro Sekunde ändern und daher keine feinen Bewegungen wie Spektrum oder Pegelanzeige zeigen. Ein: Sie leuchten in der Durchschnittsfarbe der schnellen Geräte (etwa Lüfter), sodass die Farben einheitlich wirken. Geräte mit eigens gewähltem Effekt behalten diesen
+7b9813d5	LEDs beim Beenden
+74ebaadf	Was mit den LEDs geschieht, wenn die Integration ausgeschaltet wird, die App beendet wird oder der PC in den Ruhezustand geht
+4ba5fb63	Was mit den LEDs geschieht, wenn die Integration ausgeschaltet wird, die App beendet wird oder der PC in den Ruhezustand geht. „Beibehalten“ bleibt bei der letzten Farbe stehen
+ac0f3749	Allgemein
+69af1b60	Profile & Automatisierung
+86406a7c	Benachrichtigungen & Integrationen
+0dee4b23	Sicherheit & Sicherung
+ddd59eb1	Start & Anzeige
+bf6cf977	Bei der Windows-Anmeldung automatisch starten
+5699c4fc	Wird in der Aufgabenplanung mit „höchsten Privilegien“ eingetragen (Start ohne UAC-Abfrage)
+5d0a76ce	Auch bei manuellem Start im Infobereich starten
+aefcd37e	Beim automatischen Start immer im Infobereich. Wird das Fenster mit × geschlossen, läuft die App im Infobereich weiter
+e162bf76	Mini-Widget anzeigen
+1b093ce9	Zeigt Temperaturen und Drehzahlen immer im Vordergrund. Ziehen zum Verschieben, Rechtsklick zum Ändern der Deckkraft
+1483f6b3	Darstellung
+07df2653	Ändern Sie Anzeigesprache, Design, Akzentfarbe, Hintergrund, Textfarbe, Schriftart und Textgröße. Änderungen gelten sofort (die Anzeigesprache wechselt nach einem Neustart der App)
+b8eab0de	Sprache · Language
+4aaa8fe4	Sprache der Bildschirmtexte. „Auto“ folgt der Windows-Anzeigesprache (Englisch, falls nicht unterstützt). Nach einer Änderung die App neu starten
+9bb17d53	Design
+ae52556f	„Wie Windows“ folgt Dunkel/Hell aus den Windows-Einstellungen (Personalisierung → Farben → App-Modus)
+aab63522	Akzentfarbe
+d95f93ef	Standard (Lila)
+2a8cd564	Windows-Farbe verwenden
+ea89f663	Verwendet die Farbe aus den Windows-Einstellungen (Personalisierung → Farben → Akzentfarbe)
+3170685a	Hintergrundfarbe
+14c3e93f	Tönt Hintergrund, Seitenleiste und Karten gemeinsam. Im dunklen Design dunkel, im hellen hell; der Farbton bleibt beim Designwechsel gleich
+17ff6b6d	Standard
+da6bf903	Textfarbe
+793df94e	Die Farbe aller Bildschirmtexte (Beschriftungen und Diagrammskalen im gleichen Farbton, etwas heller). Im dunklen Design hell, im hellen dunkel – auf jedem Hintergrund lesbar
+1843d590	Schriftart
+05dc00d5	Schriftart der Bildschirmtexte. Zeichen, die der Schriftart fehlen, werden in einer Ersatzschrift angezeigt
+bfea4384	Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich · Temperaturen & Lüfter ABC 123 °C
+982d7356	Textgröße
+2b8e9d8c	Vergrößert oder verkleinert das ganze Fenster (Text, Schaltflächen und Diagramme)
+00478af8	Steuerung
+13f4a528	DRY RUN (Testmodus)
+db8eea4d	Zeigt nur die berechneten Werte an und schreibt nichts an die Lüfter (außer dem Schutzbetrieb bei nachlassender Pumpendrehzahl sowie selbst gestarteter Erkennung, Messung und vorübergehender Vorgabe)
+b373eaee	Aktualisierungsintervall
+14e1cbc6	Notfall-Volllast (CPU und andere)
+35593dc1	Erreicht ein in einer Kurve verwendeter Sensor diese Temperatur, laufen alle Lüfter mit 100 %
+53ef686b	Notfall-Volllast (GPU-Hot-Spot)

@@ -309,3 +309,103 @@ b2c395cb	Có thể nhập màu dạng #RRGGBB (VD: #6A00FF), hoặc chọn từ 
 55b1d508	Hãy nhập dạng #RRGGBB (VD: #6A00FF): 6 ký tự gồm 0–9 và A–F
 743a1e61	Độ sáng
 26565f26	Độ sáng chung của LED. Mọi hiệu ứng đều lấy độ sáng này làm mức tối đa
+35ab111a	Các thiết bị LED mà OpenRGB tìm thấy. Dải bên dưới là bản xem trước màu đang được gửi.
+74e00d85	Khi bật, đổi màu mọi thiết bị OpenRGB tìm thấy (kể cả thiết bị thêm sau). Khi tắt, bạn có thể chọn thiết bị cần đổi màu
+c01c149b	Đổi màu mọi thiết bị
+e61331df	Khi tắt, chọn từng thiết bị bên dưới
+2c8ea653	Dùng để chỉnh màu cho khớp. Cho mọi thiết bị sáng cùng một màu trắng (vẫn áp dụng chỉnh màu và độ sáng của thiết bị và vùng). Rời trang này sẽ trở lại như cũ
+4dbed8b1	Sáng trắng để so sánh
+9795e04b	Khi chỉnh màu, cho mọi thiết bị cùng một màu trắng (rời trang này sẽ trở lại)
+082c3f40	Danh sách thiết bị sẽ hiện khi kết nối với OpenRGB (cũng có thể tải bằng "Kiểm tra kết nối" ở trên).
+3922b0ea	fps = số lần gửi màu mỗi giây · hiệu ứng đồng bộ nhạc đang dùng
+f3e43b07	Đổi màu các thiết bị được đánh dấu (khi bật "Đổi màu mọi thiết bị", tất cả đều được áp dụng)
+5f338e63	Màu cuối cùng đã gửi tới thiết bị này (hiển thị gần với màu trên màn hình)
+ccf4614e	Chỉ đổi hiệu ứng đồng bộ nhạc cho thiết bị này. "Tự động" thì dùng "Phong cách nhạc" ở trên (thiết bị cập nhật chậm sẽ tự đổi sang hiệu ứng mượt)
+91935430	Đối xứng
+f527b8c5	Sáng đối xứng từ giữa dãy LED ra hai bên (cho dải LED dài). "Tự động" sẽ bật cho nhóm từ 30 LED trở lên
+2d073419	Số lần gửi mỗi giây
+ec70d216	Giới hạn số lần gửi màu mỗi giây tới thiết bị này. Càng nhiều càng mượt, nhưng với card đồ họa hay RAM, quá nhiều có thể khiến chỉ một phần được ghi và gây nhấp nháy. Hãy tăng trong phạm vi không nhấp nháy
+b4d70ec0	Sáng sớm hơn
+df7472e3	Chỉ làm sớm hơn việc đổi màu theo nhạc cho thiết bị này. Tăng lên khi trông nó chậm hơn thiết bị khác (cho thiết bị cần thời gian để hiện màu như card đồ họa). Có tác dụng với nhịp đoán trước được nhờ bắt được tiết tấu. "Tự động" là USB 8 ms, RAM… 20 ms, card đồ họa 60 ms
+bce10cf7	Tắt (khuyên dùng): trên card đồ họa, cầu vồng (chảy) thành cầu vồng đứng yên, nhịp thở thành màu cố định. Card đồ họa ghi LED từng cái một nên chuyển động liên tục dễ nhấp nháy. Bật thì card đồ họa cũng chảy và thở
+44f9a4dc	Cho cả cầu vồng và nhịp thở chuyển động
+9e24740c	Đảo ngược thứ tự LED (khi hướng chảy hoặc thứ tự trầm–cao trông bị ngược)
+8ebe842f	Đảo ngược
+b35b1a81	Bật khi xanh nhạt trông như hồng, xanh lá trông như đỏ (cho thiết bị có thứ tự màu bị đảo)
+96aaf779	Đổi chỗ đỏ và xanh lá
+a28e3556	Chỉnh tông màu và độ sáng của thiết bị này cho khớp, hoặc đổi hiệu ứng, hướng và tông màu theo từng cổng (vùng) trên bo mạch chủ
+8847ea7e	Mở chỉnh màu và cài đặt theo vùng
+43c6336e	Chỉnh màu (toàn thiết bị)
+ee85a976	Cùng một màu nhưng mỗi LED có thể trông khác về tông và độ sáng. Hãy bật "Sáng trắng để so sánh" ở trên và giảm đỏ, xanh lá, xanh dương cho tới khi màu trắng khớp nhau (không thể tăng, nên hãy giảm màu quá mạnh)
+3bb159a9	Đỏ
+4fc93dd4	Xanh lá
+b0ba1b8f	Xanh dương
+387da053	Độ sáng
+4cba9eab	Cài đặt theo vùng (cổng)
+d64827fc	Có thể đổi hiệu ứng, hướng và tông màu theo từng cổng trên bo mạch chủ cho phù hợp với thứ được cắm (quạt, nguồn, đầu tản nước…). "Giống thiết bị" thì giữ cài đặt ở trên. Những thứ nối tiếp trên cùng một cổng là một vùng
+41860c08	Chỉ đổi hiệu ứng đồng bộ nhạc cho vùng này (VD: quạt két tản nhiệt dùng thanh âm lượng, nguồn dùng đổi màu theo nhịp)
+2c70dff2	Khi hiệu ứng là "Mỗi linh kiện một vai", vùng này sáng theo âm nào. "Theo linh kiện" thì quạt theo âm trầm, card đồ họa theo âm trung, RAM và bàn phím theo âm cao
+ed5a9363	Hướng
+3d275c1f	Mẹo: với cổng ARGB trên bo mạch chủ không cắm gì, hãy đặt số LED về 0 trong OpenRGB tại Devices → (bo mạch chủ) → "Edit Device" để giảm dữ liệu gửi đi và chuyển động mượt hơn. Đối xứng và Đảo ngược có tác dụng với các hiệu ứng dùng thứ tự LED (phổ âm, thanh âm lượng…).
+6a1f71f3	Bố trí trong thùng máy
+337d069f	Chọn vị trí của quạt, card đồ họa, RAM, dải LED… trong thùng máy để sóng, cầu vồng, thanh âm lượng, gợn sóng… chảy liền mạch qua các thiết bị trên toàn thùng máy. LED chưa có vị trí (như bàn phím) vẫn sáng theo thứ tự riêng như trước
+12ccc5b1	Cho ánh sáng chảy theo vị trí trong thùng máy
+c699ba40	Khi tắt, dù đã chọn vị trí, vẫn sáng theo thứ tự của từng thiết bị
+7f06ca34	Hướng chảy của ánh sáng
+a7b5b016	Hướng sóng và cầu vồng chảy, thanh âm lượng dài ra và gợn sóng lan rộng (nhìn qua kính hông thùng máy)
+c99b267f	Hình thùng máy nhìn từ bên hông. LED đã có vị trí hiển thị màu gửi gần nhất
+fa48084e	Hình nhìn qua kính hông (bên trái là mặt sau, bên phải là mặt trước). Hiển thị khi bật "Cho ánh sáng chảy theo vị trí trong thùng máy"
+b553839d	Danh sách thiết bị sẽ hiện khi kết nối với OpenRGB.
+5229dd83	Vị trí trong thùng máy của LED vùng này. Với quạt nối tiếp, hãy chọn theo thứ tự nối, như "3 cái (từ trên xuống)"
+bb048236	Chi tiết
+90901950	Cho màu đậm hơn (hiệu chỉnh gamma; tắt thì màu sáng và nhạt hơn)
+3ccf4c41	LED phát sáng cả thành phần tối nên trông trắng hơn màu trên màn hình. Bật thì màu đậm gần với màn hình và thay đổi độ sáng trông mượt hơn bằng mắt
+dff98214	Nháy đỏ khi chạy tối đa khẩn cấp (ưu tiên hơn mọi hiệu ứng)
+c447e46b	Khi nhiệt độ chạm ngưỡng và quạt chạy tối đa, LED sẽ nháy đỏ để báo, dù đang chọn hiệu ứng nào
+6b3a1b39	Điều khiển trực tiếp card đồ họa được hỗ trợ mà không qua OpenRGB (PNY ARGB Epic-X; không bị trễ so với các LED khác)
+f6b581bb	OpenRGB ghi LED của card PNY từng cái một nên mỗi lần đổi màu mất khoảng 35 ms, trễ hơn các LED khác. Khi bật, ứng dụng ghi trực tiếp qua driver NVIDIA. Nếu ghi thất bại liên tục, sẽ tự quay về cách qua OpenRGB
+e36ea0de	Ghi trực tiếp cả vào card chưa được kiểm chứng (chỉ khi thử)
+a6862cdb	Ghi trực tiếp mới được kiểm chứng trên máy thật với RTX 5070 Ti. Bật khi muốn thử với mẫu PNY ARGB Epic-X khác có cùng bố trí LED. Nếu màu bị sai, hãy tắt lại
+e90d8670	Khi đồng bộ nhạc, thiết bị cập nhật chậm như card đồ họa, RAM sẽ theo màu của các thiết bị khác
+a64d70bc	Card đồ họa và RAM chỉ đổi màu được 4–8 lần mỗi giây nên không thể hiện chuyển động chi tiết như phổ âm hay thanh âm lượng. Khi bật, chúng sáng theo màu trung bình mà các thiết bị nhanh (như quạt) đang hiển thị, nên màu trông đồng nhất. Thiết bị đã chọn hiệu ứng riêng vẫn giữ hiệu ứng đó
+7b9813d5	LED khi dừng
+74ebaadf	LED sẽ ra sao khi tắt liên kết, thoát ứng dụng hoặc khi PC ngủ
+4ba5fb63	LED sẽ ra sao khi tắt liên kết, thoát ứng dụng hoặc khi PC ngủ. "Giữ nguyên" sẽ dừng ở màu cuối cùng
+ac0f3749	Chung
+69af1b60	Cấu hình & tự động hóa
+86406a7c	Thông báo & liên kết
+0dee4b23	An toàn & sao lưu
+ddd59eb1	Khởi động & hiển thị
+bf6cf977	Tự khởi động khi đăng nhập Windows
+5699c4fc	Đăng ký vào Task Scheduler với "quyền cao nhất" (khởi động không cần xác nhận UAC)
+5d0a76ce	Thu vào khay hệ thống cả khi mở thủ công
+aefcd37e	Khi tự khởi động luôn chạy trong khay hệ thống. Đóng cửa sổ bằng × thì vẫn tiếp tục chạy trong khay
+e162bf76	Hiện tiện ích mini
+1b093ce9	Luôn hiển thị nhiệt độ và tốc độ quay trên cùng. Kéo để di chuyển, nhấp phải để đổi độ trong suốt
+1483f6b3	Giao diện
+07df2653	Có thể đổi ngôn ngữ hiển thị, chủ đề, màu nhấn, màu nền, màu chữ, phông chữ và cỡ chữ. Thay đổi được áp dụng ngay (ngôn ngữ hiển thị đổi sau khi khởi động lại ứng dụng)
+b8eab0de	Ngôn ngữ · Language
+4aaa8fe4	Ngôn ngữ của chữ trên màn hình. "Tự động" thì theo ngôn ngữ hiển thị của Windows (tiếng Anh nếu không hỗ trợ). Sau khi đổi, hãy khởi động lại ứng dụng
+9bb17d53	Chủ đề
+ae52556f	"Theo Windows" sẽ theo chế độ tối/sáng trong Cài đặt Windows (Cá nhân hóa → Màu → chế độ ứng dụng)
+aab63522	Màu nhấn
+d95f93ef	Mặc định (tím)
+2a8cd564	Theo màu của Windows
+ea89f663	Dùng màu trong Cài đặt Windows (Cá nhân hóa → Màu → màu nhấn)
+3170685a	Màu nền
+14c3e93f	Nhuộm cùng lúc nền, thanh bên và thẻ. Chủ đề tối dùng màu tối, chủ đề sáng dùng màu sáng; đổi chủ đề thì sắc màu vẫn giữ nguyên
+17ff6b6d	Mặc định
+da6bf903	Màu chữ
+793df94e	Màu của mọi chữ trên màn hình (chú thích và vạch đồ thị cùng sắc, nhạt hơn một chút). Chủ đề tối dùng màu sáng, chủ đề sáng dùng màu tối, đọc được trên mọi nền
+1843d590	Phông chữ
+05dc00d5	Phông chữ trên màn hình. Ký tự mà phông không có sẽ được hiển thị bằng phông dự phòng
+bfea4384	Tiếng Việt có dấu: ạ ả ã ơ ư · Nhiệt độ và quạt ABC 123 °C
+982d7356	Cỡ chữ
+2b8e9d8c	Phóng to hoặc thu nhỏ toàn bộ cửa sổ (chữ, nút và đồ thị)
+00478af8	Điều khiển
+13f4a528	DRY RUN (chế độ thử)
+db8eea4d	Chỉ hiển thị kết quả tính toán, không ghi gì vào quạt (ngoại trừ chế độ bảo vệ khi bơm giảm tốc, và việc nhận diện, đo đạc, chỉ định tạm thời do bạn tự bắt đầu)
+b373eaee	Chu kỳ cập nhật
+14e1cbc6	Tốc độ tối đa khẩn cấp (CPU và khác)
+35593dc1	Khi bất kỳ cảm biến nào dùng trong đường cong đạt nhiệt độ này, mọi quạt sẽ chạy 100%
+53ef686b	Tốc độ tối đa khẩn cấp (GPU Hot Spot)

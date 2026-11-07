@@ -309,3 +309,103 @@ b2c395cb	Voer een kleur in als #RRGGBB (bijv. #6A00FF) of kies een van de rondje
 55b1d508	Voer in als #RRGGBB (bijv. #6A00FF): zes tekens uit 0–9 en A–F
 743a1e61	Helderheid
 26565f26	Algemene helderheid van de leds. Elk effect gebruikt dit als maximum
+35ab111a	Ledapparaten die OpenRGB heeft gevonden. De strook hieronder toont een voorbeeld van de kleuren die nu worden verstuurd.
+74e00d85	Aan: kleurt alle apparaten die OpenRGB vindt (ook later toegevoegde). Uit: je kunt kiezen welke apparaten worden gekleurd
+c01c149b	Alle apparaten kleuren
+e61331df	Uit: kies hieronder per apparaat
+2c8ea653	Voor kleurafstemming. Laat alle apparaten in hetzelfde wit oplichten (kleurafstemming en helderheid van apparaten en zones blijven gelden). Gaat terug als je deze pagina verlaat
+4dbed8b1	Wit oplichten om te vergelijken
+9795e04b	Laat bij kleurafstemming alle apparaten in hetzelfde wit oplichten (gaat terug als je de pagina verlaat)
+082c3f40	De apparatenlijst verschijnt na verbinding met OpenRGB (je kunt hem ook laden met "Verbinding testen" hierboven).
+3922b0ea	fps = hoe vaak per seconde kleuren worden verstuurd · het gebruikte muziekeffect
+f3e43b07	Kleurt de aangevinkte apparaten (staat "Alle apparaten kleuren" aan, dan doen ze allemaal mee)
+5f338e63	Laatst naar dit apparaat verstuurde kleur (weergegeven dicht bij de schermkleur)
+ccf4614e	Wijzigt het muziekeffect alleen voor dit apparaat. "Auto" gebruikt "Muziekstijl" hierboven (traag bijwerkende apparaten krijgen automatisch een vloeiend effect)
+91935430	Spiegelen
+f527b8c5	Licht symmetrisch op vanuit het midden van de ledrij (voor lange ledstrips). "Auto" zet het aan voor groepen van 30 leds of meer
+2d073419	Updates per seconde
+ec70d216	Het maximale aantal kleurverzendingen per seconde naar dit apparaat. Meer is vloeiender, maar bij videokaarten en geheugen kunnen te veel verzendingen sommige leds onbeschreven laten en flikkeren veroorzaken. Verhoog alleen zolang het niet flikkert
+b4d70ec0	Eerder oplichten
+df7472e3	Haalt de kleurwissels van de muzieksynchronisatie alleen voor dit apparaat naar voren. Verhoog als het achter lijkt te lopen op andere apparaten (voor apparaten die tijd nodig hebben om een kleur te tonen, zoals videokaarten). Werkt bij slagen die uit het tempo voorspelbaar zijn. "Auto" is 8 ms voor USB, 20 ms voor geheugen en dergelijke, 60 ms voor videokaarten
+bce10cf7	Uit (aanbevolen): op videokaarten wordt de stromende regenboog een vaste regenboog en ademen een vaste kleur. Videokaarten schrijven leds één voor één, dus voortdurende beweging flikkert snel. Aan: ook videokaarten stromen en ademen
+44f9a4dc	Regenboog en ademen ook animeren
+9e24740c	Draait de ledvolgorde om (als de stroomrichting of de volgorde van laag naar hoog omgekeerd lijkt)
+8ebe842f	Omkeren
+b35b1a81	Zet aan als lichtblauw roze lijkt en groen rood (voor apparaten met omgewisselde kleurvolgorde)
+96aaf779	Rood en groen omwisselen
+a28e3556	Stem tint en helderheid van dit apparaat af, of wijzig effect, richting en tint per moederbordaansluiting (zone)
+8847ea7e	Kleurafstemming en zone-instellingen openen
+43c6336e	Kleurafstemming (hele apparaat)
+ee85a976	Dezelfde kleur kan op verschillende leds anders ogen in tint en helderheid. Zet hierboven "Wit oplichten om te vergelijken" aan en verlaag rood, groen en blauw tot het wit gelijk is (verhogen kan niet, dus verlaag de te sterke kleuren)
+3bb159a9	Rood
+4fc93dd4	Groen
+b0ba1b8f	Blauw
+387da053	Helderheid
+4cba9eab	Instellingen per zone (aansluiting)
+d64827fc	Wijzig per moederbordaansluiting effect, richting en tint passend bij wat er aangesloten is (ventilatoren, voeding, waterkoelingskop enz.). "Zelfde als apparaat" houdt de instellingen hierboven. Wat aan dezelfde aansluiting is doorgelust, vormt één zone
+41860c08	Wijzigt het muziekeffect alleen voor deze zone (bijv. niveaumeter voor de radiatorventilatoren, kleur op de maat voor de voeding)
+2c70dff2	Bij het effect "Elk onderdeel zijn rol": op welk geluid deze zone oplicht. "Passend bij het onderdeel": ventilatoren laag, videokaart midden, geheugen en toetsenbord hoog
+ed5a9363	Richting
+3d275c1f	Tip: zet voor ARGB-aansluitingen op het moederbord waar niets op zit het aantal leds op 0 in OpenRGB via Devices → (moederbord) → "Edit Device". Er wordt dan minder data verstuurd en de beweging wordt vloeiender. Spiegelen en Omkeren werken bij effecten die de ledvolgorde gebruiken (spectrum, niveaumeter enz.).
+6a1f71f3	Indeling in de kast
+337d069f	Kies waar ventilatoren, videokaart, geheugen, strips enz. in de kast zitten, dan stromen golven, regenbogen, niveaumeters, rimpelingen en meer als één geheel over de apparaten door de hele kast. Leds zonder plek (zoals toetsenborden) lichten zoals voorheen in hun eigen volgorde op
+12ccc5b1	Licht laten stromen volgens de positie in de kast
+c699ba40	Uit: licht op in de volgorde van elk apparaat, ook als er plekken zijn ingesteld
+7f06ca34	Stroomrichting
+a7b5b016	De richting waarin golven en regenbogen stromen, niveaumeters groeien en rimpelingen uitdijen (gezien door het zijpaneel van de kast)
+c99b267f	De kast van opzij. Leds met een plek tonen de laatst verstuurde kleur
+fa48084e	Gezien door het zijpaneel (links de achterkant, rechts de voorkant). Getoond als "Licht laten stromen volgens de positie in de kast" aan staat
+b553839d	De apparatenlijst verschijnt na verbinding met OpenRGB.
+5229dd83	Waar de leds van deze zone in de kast zitten. Kies voor doorgeluste ventilatoren de volgorde van aansluiten, zoals "3 (van boven naar beneden)"
+bb048236	Geavanceerd
+90901950	Diepere kleuren (gammacorrectie; uit geeft lichtere, flauwere kleuren)
+3ccf4c41	Leds laten ook hun donkere componenten volledig oplichten, dus ze ogen witter dan op het scherm. Aan: diepe kleuren zoals op het scherm, en helderheidsveranderingen ogen vloeiender
+dff98214	Rood knipperen bij noodvolle snelheid (gaat voor elk effect)
+c447e46b	Als een temperatuur zijn grens bereikt en de ventilatoren op volle snelheid gaan, knipperen de leds rood om je te waarschuwen, welk effect ook gekozen is
+6b3a1b39	Ondersteunde videokaarten direct aansturen, zonder OpenRGB (PNY ARGB Epic-X; blijft gelijk met de andere leds)
+f6b581bb	OpenRGB schrijft de leds van PNY-kaarten één voor één, dus elke kleurwissel duurt ongeveer 35 ms en loopt achter op de andere leds. Aan: de app schrijft direct via het NVIDIA-stuurprogramma. Mislukt het schrijven steeds, dan gaat hij automatisch terug naar OpenRGB
+e36ea0de	Ook direct schrijven naar niet-geteste kaartmodellen (alleen om uit te proberen)
+a6862cdb	Direct schrijven is alleen op echte hardware getest met de RTX 5070 Ti. Zet aan om andere PNY ARGB Epic-X-modellen met dezelfde ledindeling te proberen. Zet terug uit als de kleuren niet kloppen
+e90d8670	Bij muzieksynchronisatie nemen traag bijwerkende apparaten zoals videokaarten en geheugen de kleur van de andere apparaten over
+a64d70bc	Videokaarten en geheugen kunnen maar 4–8 keer per seconde van kleur wisselen en dus geen fijne beweging zoals spectrum of niveaumeter tonen. Aan: ze lichten op in de gemiddelde kleur van de snelle apparaten (zoals ventilatoren), zodat de kleuren overeenkomen. Apparaten met een eigen gekozen effect houden dat
+7b9813d5	Leds bij stoppen
+74ebaadf	Wat er met de leds gebeurt als de koppeling uitgaat, de app afsluit of de pc in slaapstand gaat
+4ba5fb63	Wat er met de leds gebeurt als de koppeling uitgaat, de app afsluit of de pc in slaapstand gaat. "Behouden" blijft op de laatste kleur staan
+ac0f3749	Algemeen
+69af1b60	Profielen & automatisering
+86406a7c	Meldingen & koppelingen
+0dee4b23	Veiligheid & back-up
+ddd59eb1	Opstarten & weergave
+bf6cf977	Automatisch starten bij aanmelden in Windows
+5699c4fc	Registreert hem in Taakplanner met "hoogste bevoegdheden" (start zonder UAC-vraag)
+5d0a76ce	Ook bij handmatig starten in het systeemvak starten
+aefcd37e	Bij automatisch starten start hij altijd in het systeemvak. Sluit je het venster met ×, dan draait hij verder in het systeemvak
+e162bf76	Miniwidget tonen
+1b093ce9	Toont temperaturen en toerentallen altijd bovenop. Sleep om te verplaatsen, rechtsklik om de transparantie te wijzigen
+1483f6b3	Uiterlijk
+07df2653	Wijzig weergavetaal, thema, accentkleur, achtergrond, tekstkleur, lettertype en tekstgrootte. Wijzigingen gelden meteen (de weergavetaal wisselt na herstarten van de app)
+b8eab0de	Taal · Language
+4aaa8fe4	Taal van de schermteksten. "Auto" volgt de weergavetaal van Windows (Engels als die niet wordt ondersteund). Herstart de app na een wijziging
+9bb17d53	Thema
+ae52556f	"Zoals Windows" volgt donker/licht uit de Windows-instellingen (Persoonlijke instellingen → Kleuren → app-modus)
+aab63522	Accentkleur
+d95f93ef	Standaard (paars)
+2a8cd564	Windows-kleur gebruiken
+ea89f663	Gebruikt de kleur uit de Windows-instellingen (Persoonlijke instellingen → Kleuren → accentkleur)
+3170685a	Achtergrondkleur
+14c3e93f	Kleurt achtergrond, zijbalk en kaarten samen. Donker in het donkere thema, licht in het lichte; de tint blijft gelijk bij het wisselen van thema
+17ff6b6d	Standaard
+da6bf903	Tekstkleur
+793df94e	De kleur van alle schermtekst (bijschriften en grafiekschalen in dezelfde tint, iets lichter). Licht in het donkere thema en donker in het lichte, leesbaar op elke achtergrond
+1843d590	Lettertype
+05dc00d5	Lettertype voor schermtekst. Tekens die het lettertype mist, worden in een vervangend lettertype getoond
+bfea4384	Pa's wijze lynx bezag vroom het fikse aquaduct · Temperaturen & ventilatoren ABC 123 °C
+982d7356	Tekstgrootte
+2b8e9d8c	Vergroot of verkleint het hele venster (tekst, knoppen en grafieken)
+00478af8	Regeling
+13f4a528	DRY RUN (testmodus)
+db8eea4d	Toont alleen de berekende waarden en schrijft niets naar de ventilatoren (behalve de beveiliging als een pomp vertraagt, en identificatie, metingen en tijdelijke instellingen die je zelf start)
+b373eaee	Bijwerkinterval
+14e1cbc6	Noodvolle snelheid (CPU en overige)
+35593dc1	Als een sensor die in een curve wordt gebruikt deze temperatuur bereikt, gaan alle ventilatoren naar 100%
+53ef686b	Noodvolle snelheid (GPU-hotspot)

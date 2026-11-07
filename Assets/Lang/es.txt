@@ -309,3 +309,103 @@ b2c395cb	Introduce un color como #RRGGBB (p. ej. #6A00FF) o elige uno de los cí
 55b1d508	Introdúcelo como #RRGGBB (p. ej. #6A00FF): seis caracteres entre 0–9 y A–F
 743a1e61	Brillo
 26565f26	Brillo general de los LED. Todos los efectos lo usan como máximo
+35ab111a	Dispositivos LED encontrados por OpenRGB. La franja de abajo muestra los colores que se envían ahora.
+74e00d85	Activado, colorea todos los dispositivos que encuentra OpenRGB (también los que se añadan después). Desactivado, puedes elegir qué dispositivos colorear
+c01c149b	Colorear todos los dispositivos
+e61331df	Desactivado, elige por dispositivo abajo
+2c8ea653	Para igualar colores. Ilumina todos los dispositivos con el mismo blanco (se siguen aplicando el ajuste de color y el brillo de dispositivos y zonas). Vuelve al salir de esta página
+4dbed8b1	Iluminar en blanco para comparar
+9795e04b	Ilumina todos los dispositivos con el mismo blanco para igualar colores (vuelve al salir de esta página)
+082c3f40	La lista de dispositivos aparece al conectar con OpenRGB (también puedes cargarla con «Probar conexión» arriba).
+3922b0ea	fps = veces por segundo que se envían colores · el efecto de sincronización musical en uso
+f3e43b07	Colorea los dispositivos marcados (con «Colorear todos los dispositivos» activado, se incluyen todos)
+5f338e63	Último color enviado a este dispositivo (mostrado parecido al color en pantalla)
+ccf4614e	Cambia el efecto de sincronización musical solo para este dispositivo. «Auto» usa «Estilo musical» de arriba (los dispositivos lentos reciben automáticamente un efecto suave)
+91935430	Espejo
+f527b8c5	Ilumina de forma simétrica desde el centro de la fila de LED (para tiras largas). «Auto» lo activa en grupos de 30 LED o más
+2d073419	Envíos por segundo
+ec70d216	Máximo de envíos de color por segundo a este dispositivo. Más es más fluido, pero en tarjetas gráficas y memoria demasiados pueden dejar LED sin actualizar y causar parpadeo. Súbelo solo mientras no parpadee
+b4d70ec0	Iluminar antes
+df7472e3	Adelanta los cambios de color de la sincronización musical solo para este dispositivo. Súbelo si se ve retrasado frente a otros (para dispositivos que tardan en mostrar un color, como las tarjetas gráficas). Funciona en pulsos predecibles por el tempo. «Auto» es 8 ms para USB, 20 ms para memoria y similares y 60 ms para tarjetas gráficas
+bce10cf7	Desactivado (recomendado): en tarjetas gráficas, el arcoíris que fluye pasa a ser fijo y la respiración un color fijo. Las tarjetas gráficas escriben los LED uno a uno, así que el movimiento constante tiende a parpadear. Activado, las tarjetas gráficas también fluyen y respiran
+44f9a4dc	Animar también arcoíris y respiración
+9e24740c	Invierte el orden de los LED (si la dirección del flujo o el orden de graves a agudos parece al revés)
+8ebe842f	Invertir
+b35b1a81	Actívalo si el celeste se ve rosa y el verde se ve rojo (para dispositivos con el orden de colores cambiado)
+96aaf779	Intercambiar rojo y verde
+a28e3556	Iguala el tono y el brillo de este dispositivo, o cambia el efecto, la dirección y el tono por conector de la placa base (zona)
+8847ea7e	Abrir ajuste de color y ajustes por zona
+43c6336e	Ajuste de color (todo el dispositivo)
+ee85a976	El mismo color puede verse distinto en tono y brillo según el LED. Activa «Iluminar en blanco para comparar» arriba y baja rojo, verde y azul hasta que los blancos coincidan (no se pueden subir, así que baja los colores demasiado fuertes)
+3bb159a9	Rojo
+4fc93dd4	Verde
+b0ba1b8f	Azul
+387da053	Brillo
+4cba9eab	Ajustes por zona (conector)
+d64827fc	Cambia el efecto, la dirección y el tono de cada conector de la placa base según lo que tenga conectado (ventiladores, fuente, bloque de refrigeración líquida, etc.). «Igual que el dispositivo» mantiene los ajustes de arriba. Lo que va encadenado en un mismo conector forma una zona
+41860c08	Cambia el efecto de sincronización musical solo para esta zona (p. ej. vúmetro para los ventiladores del radiador, color al ritmo para la fuente)
+2c70dff2	Con el efecto «Cada pieza en su papel», a qué sonido reacciona esta zona. «Según la pieza»: ventiladores graves, tarjeta gráfica medios, memoria y teclado agudos
+ed5a9363	Dirección
+3d275c1f	Consejo: en los conectores ARGB de la placa base sin nada conectado, pon el número de LED en 0 en OpenRGB desde Devices → (placa base) → «Edit Device». Se envían menos datos y el movimiento es más fluido. Espejo e Invertir afectan a los efectos que usan el orden de los LED (espectro, vúmetro, etc.).
+6a1f71f3	Disposición en la caja
+337d069f	Elige dónde están en la caja los ventiladores, la tarjeta gráfica, la memoria, las tiras, etc., y las olas, arcoíris, vúmetros, ondas y demás fluirán entre dispositivos como uno solo por toda la caja. Los LED sin ubicación (como los teclados) se iluminan en su propio orden como antes
+12ccc5b1	Hacer fluir la luz según la posición en la caja
+c699ba40	Desactivado, ilumina en el orden de cada dispositivo aunque haya ubicaciones
+7f06ca34	Dirección del flujo
+a7b5b016	Hacia dónde fluyen las olas y arcoíris, crecen los vúmetros y se expanden las ondas (visto por el cristal lateral de la caja)
+c99b267f	La caja vista de lado. Los LED con ubicación muestran el último color enviado
+fa48084e	Vista por el cristal lateral (izquierda la parte trasera, derecha la frontal). Se muestra con «Hacer fluir la luz según la posición en la caja» activado
+b553839d	La lista de dispositivos aparece al conectar con OpenRGB.
+5229dd83	Dónde están en la caja los LED de esta zona. Para ventiladores encadenados, elige el orden de conexión, como «3 (de arriba abajo)»
+bb048236	Avanzado
+90901950	Colores más intensos (corrección gamma; desactivada, los colores son más claros y pálidos)
+3ccf4c41	Los LED iluminan también sus componentes oscuros tal cual, así que se ven más blanquecinos que en pantalla. Activada, los colores son intensos como en pantalla y los cambios de brillo se ven más suaves a la vista
+dff98214	Parpadear en rojo con velocidad máxima de emergencia (por encima de cualquier efecto)
+c447e46b	Cuando una temperatura llega a su límite y los ventiladores pasan a velocidad máxima, los LED parpadean en rojo para avisarte, sea cual sea el efecto elegido
+6b3a1b39	Iluminar directamente las tarjetas gráficas compatibles, sin OpenRGB (PNY ARGB Epic-X; va a tiempo con los demás LED)
+f6b581bb	OpenRGB escribe los LED de las tarjetas PNY uno a uno, así que cada cambio de color tarda unos 35 ms y se retrasa respecto a los demás LED. Activado, la aplicación escribe directamente a través del controlador de NVIDIA. Si la escritura falla una y otra vez, vuelve automáticamente a usar OpenRGB
+e36ea0de	Escribir también en modelos no probados (solo para probar)
+a6862cdb	La escritura directa solo se ha probado en hardware real con la RTX 5070 Ti. Actívalo para probar otros modelos PNY ARGB Epic-X con la misma disposición de LED. Desactívalo si los colores salen mal
+e90d8670	En la sincronización musical, los dispositivos lentos como tarjetas gráficas y memoria toman el color de los demás
+a64d70bc	Las tarjetas gráficas y la memoria solo pueden cambiar de color 4–8 veces por segundo, así que no muestran movimientos finos como espectro o vúmetro. Activado, se iluminan con el color medio que muestran los dispositivos rápidos (como los ventiladores) y los colores se ven coherentes. Los dispositivos con un efecto elegido aparte lo mantienen
+7b9813d5	LED al detener
+74ebaadf	Qué hacer con los LED al desactivar la integración, cerrar la aplicación o suspender el PC
+4ba5fb63	Qué hacer con los LED al desactivar la integración, cerrar la aplicación o suspender el PC. «Mantener» se queda en el último color
+ac0f3749	General
+69af1b60	Perfiles y automatización
+86406a7c	Notificaciones e integraciones
+0dee4b23	Seguridad y copia de seguridad
+ddd59eb1	Inicio y pantalla
+bf6cf977	Iniciar automáticamente al iniciar sesión en Windows
+5699c4fc	Se registra en el Programador de tareas con «privilegios más altos» (se inicia sin aviso de UAC)
+5d0a76ce	Iniciar en la bandeja también al abrirla manualmente
+aefcd37e	Al iniciarse automáticamente, siempre arranca en la bandeja. Cerrar la ventana con × la deja funcionando en la bandeja
+e162bf76	Mostrar el miniwidget
+1b093ce9	Muestra temperaturas y velocidades siempre encima. Arrastra para moverlo; clic derecho para cambiar la opacidad
+1483f6b3	Apariencia
+07df2653	Cambia el idioma, el tema, el color de acento, el fondo, el color del texto, la fuente y el tamaño del texto. Los cambios se aplican al momento (el idioma cambia al reiniciar la aplicación)
+b8eab0de	Idioma · Language
+4aaa8fe4	Idioma del texto en pantalla. «Auto» sigue el idioma de Windows (inglés si no es compatible). Tras cambiarlo, reinicia la aplicación
+9bb17d53	Tema
+ae52556f	«Igual que Windows» sigue el modo oscuro/claro de la Configuración de Windows (Personalización → Colores → modo de aplicación)
+aab63522	Color de acento
+d95f93ef	Predeterminado (morado)
+2a8cd564	Usar el color de Windows
+ea89f663	Usa el color de la Configuración de Windows (Personalización → Colores → color de énfasis)
+3170685a	Color de fondo
+14c3e93f	Tiñe a la vez el fondo, la barra lateral y las tarjetas. Oscuro en el tema oscuro y claro en el claro; el tono se mantiene al cambiar de tema
+17ff6b6d	Predeterminado
+da6bf903	Color del texto
+793df94e	El color de todo el texto en pantalla (las notas y las escalas de los gráficos usan el mismo tono, algo más claro). Claro en el tema oscuro y oscuro en el claro, legible sobre cualquier fondo
+1843d590	Fuente
+05dc00d5	La fuente del texto en pantalla. Los caracteres que no tenga la fuente se muestran con una fuente de respaldo
+bfea4384	El veloz murciélago hindú comía feliz cardillo y kiwi · Temperaturas y ventiladores ABC 123 °C
+982d7356	Tamaño del texto
+2b8e9d8c	Amplía o reduce toda la ventana (texto, botones y gráficos)
+00478af8	Control
+13f4a528	DRY RUN (modo de prueba)
+db8eea4d	Solo muestra los valores calculados y no escribe nada en los ventiladores (salvo el modo de protección cuando una bomba se frena, y la identificación, las mediciones y los ajustes temporales que inicies tú)
+b373eaee	Intervalo de actualización
+14e1cbc6	Velocidad máxima de emergencia (CPU y otros)
+35593dc1	Cuando cualquier sensor usado en una curva llega a esta temperatura, todos los ventiladores pasan al 100 %
+53ef686b	Velocidad máxima de emergencia (Hot Spot de la GPU)

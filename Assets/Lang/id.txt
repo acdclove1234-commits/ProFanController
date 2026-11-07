@@ -309,3 +309,103 @@ b2c395cb	Masukkan warna sebagai #RRGGBB (mis. #6A00FF) atau pilih dari lingkaran
 55b1d508	Masukkan sebagai #RRGGBB (mis. #6A00FF): enam karakter dari 0–9 dan A–F
 743a1e61	Kecerahan
 26565f26	Kecerahan LED secara keseluruhan. Setiap efek memakainya sebagai batas atas
+35ab111a	Perangkat LED yang ditemukan OpenRGB. Strip di bawah adalah pratinjau warna yang sedang dikirim.
+74e00d85	Jika aktif, mewarnai semua perangkat yang ditemukan OpenRGB (termasuk yang ditambahkan kemudian). Jika nonaktif, Anda bisa memilih perangkat yang diwarnai
+c01c149b	Warnai semua perangkat
+e61331df	Jika nonaktif, pilih per perangkat di bawah
+2c8ea653	Untuk menyamakan warna. Menyalakan semua perangkat dengan putih yang sama (penyamaan warna dan kecerahan perangkat serta zona tetap berlaku). Kembali seperti semula saat meninggalkan halaman ini
+4dbed8b1	Nyalakan putih untuk membandingkan
+9795e04b	Saat menyamakan warna, menyalakan semua perangkat dengan putih yang sama (kembali saat meninggalkan halaman ini)
+082c3f40	Daftar perangkat muncul setelah tersambung ke OpenRGB (bisa juga dimuat dengan "Uji koneksi" di atas).
+3922b0ea	fps = berapa kali warna dikirim per detik · efek sinkron musik yang dipakai
+f3e43b07	Mewarnai perangkat yang dicentang (jika "Warnai semua perangkat" aktif, semua perangkat termasuk)
+5f338e63	Warna terakhir yang dikirim ke perangkat ini (ditampilkan mendekati warna di layar)
+ccf4614e	Mengubah efek sinkron musik hanya untuk perangkat ini. "Otomatis" memakai "Gaya musik" di atas (perangkat yang lambat diperbarui otomatis mendapat efek halus)
+91935430	Cermin
+f527b8c5	Menyala simetris dari tengah deretan LED (untuk strip LED panjang). "Otomatis" mengaktifkannya untuk kelompok 30 LED atau lebih
+2d073419	Pengiriman per detik
+ec70d216	Batas berapa kali warna dikirim ke perangkat ini per detik. Makin banyak makin halus, tetapi pada kartu grafis atau memori terlalu banyak bisa membuat sebagian LED tidak tertulis dan berkedip. Naikkan selama tidak berkedip
+b4d70ec0	Nyalakan lebih awal
+df7472e3	Memajukan pergantian warna sinkron musik hanya untuk perangkat ini. Naikkan jika terlihat terlambat dibanding perangkat lain (untuk perangkat yang butuh waktu menampilkan warna, seperti kartu grafis). Berlaku pada ketukan yang bisa diprediksi dari tempo. "Otomatis": USB 8 md, memori dll. 20 md, kartu grafis 60 md
+bce10cf7	Nonaktif (disarankan): pada kartu grafis, pelangi mengalir menjadi pelangi diam dan napas menjadi warna tetap. Kartu grafis menulis LED satu per satu, sehingga gerakan terus-menerus mudah berkedip. Jika aktif, kartu grafis juga mengalir dan bernapas
+44f9a4dc	Animasikan juga pelangi dan napas
+9e24740c	Membalik urutan LED (jika arah aliran atau urutan bas ke treble terlihat terbalik)
+8ebe842f	Balik
+b35b1a81	Aktifkan jika biru muda terlihat merah muda dan hijau terlihat merah (untuk perangkat dengan urutan warna tertukar)
+96aaf779	Tukar merah dan hijau
+a28e3556	Samakan rona dan kecerahan perangkat ini, atau ubah efek, arah, dan rona per konektor motherboard (zona)
+8847ea7e	Buka penyamaan warna dan pengaturan per zona
+43c6336e	Penyamaan warna (seluruh perangkat)
+ee85a976	Warna yang sama bisa tampak berbeda rona dan kecerahannya pada LED yang berbeda. Aktifkan "Nyalakan putih untuk membandingkan" di atas lalu turunkan merah, hijau, dan biru sampai putihnya sama (tidak bisa dinaikkan, jadi turunkan warna yang terlalu kuat)
+3bb159a9	Merah
+4fc93dd4	Hijau
+b0ba1b8f	Biru
+387da053	Kecerahan
+4cba9eab	Pengaturan per zona (konektor)
+d64827fc	Ubah efek, arah, dan rona tiap konektor motherboard sesuai yang tersambung (kipas, PSU, kepala water cooling, dll.). "Sama dengan perangkat" memakai pengaturan di atas. Yang dirangkai di konektor yang sama dihitung satu zona
+41860c08	Mengubah efek sinkron musik hanya untuk zona ini (mis. meter volume untuk kipas radiator, ganti warna per ketukan untuk PSU)
+2c70dff2	Pada efek "Setiap komponen dengan perannya", zona ini menyala mengikuti suara apa. "Sesuai komponen": kipas bas, kartu grafis nada tengah, memori dan keyboard treble
+ed5a9363	Arah
+3d275c1f	Tips: untuk konektor ARGB motherboard yang tidak tersambung apa pun, setel jumlah LED ke 0 di OpenRGB pada Devices → (motherboard) → "Edit Device". Data yang dikirim berkurang dan gerakan jadi lebih halus. Cermin dan Balik berlaku pada efek yang memakai urutan LED (spektrum, meter volume, dll.).
+6a1f71f3	Tata letak di casing
+337d069f	Pilih letak kipas, kartu grafis, memori, strip, dan lainnya di casing, lalu gelombang, pelangi, meter volume, riak, dan lainnya akan mengalir lintas perangkat sebagai satu kesatuan di seluruh casing. LED yang belum punya letak (seperti keyboard) tetap menyala menurut urutannya sendiri seperti sebelumnya
+12ccc5b1	Alirkan cahaya menurut posisi di casing
+c699ba40	Jika nonaktif, menyala menurut urutan tiap perangkat meski letaknya sudah dipilih
+7f06ca34	Arah aliran cahaya
+a7b5b016	Arah gelombang dan pelangi mengalir, meter volume memanjang, dan riak menyebar (dilihat dari kaca samping casing)
+c99b267f	Gambar casing dari samping. LED yang sudah punya letak menampilkan warna terakhir yang dikirim
+fa48084e	Tampilan dari kaca samping (kiri belakang, kanan depan). Ditampilkan saat "Alirkan cahaya menurut posisi di casing" aktif
+b553839d	Daftar perangkat muncul setelah tersambung ke OpenRGB.
+5229dd83	Letak LED zona ini di casing. Untuk kipas yang dirangkai, pilih urutan sambungannya, misalnya "3 buah (dari atas ke bawah)"
+bb048236	Lanjutan
+90901950	Warna lebih pekat (koreksi gamma; jika dimatikan warna lebih terang dan pucat)
+3ccf4c41	LED menyalakan komponen gelapnya apa adanya, jadi tampak lebih keputihan dibanding di layar. Jika aktif, warna pekat seperti di layar dan perubahan kecerahan tampak lebih halus di mata
+dff98214	Berkedip merah saat kecepatan penuh darurat (mengalahkan semua efek)
+c447e46b	Saat suhu mencapai batas dan kipas berputar penuh, LED berkedip merah untuk memberi tahu, apa pun efek yang dipilih
+6b3a1b39	Nyalakan langsung kartu grafis yang didukung tanpa OpenRGB (PNY ARGB Epic-X; menyala tanpa tertinggal dari LED lain)
+f6b581bb	OpenRGB menulis LED kartu PNY satu per satu, sehingga setiap pergantian warna butuh sekitar 35 md dan tertinggal dari LED lain. Jika aktif, aplikasi menulis langsung lewat driver NVIDIA. Jika penulisan terus gagal, otomatis kembali ke cara lewat OpenRGB
+e36ea0de	Tulis langsung juga ke model kartu yang belum diuji (hanya saat mencoba)
+a6862cdb	Penulisan langsung baru diuji pada perangkat nyata dengan RTX 5070 Ti. Aktifkan untuk mencoba model PNY ARGB Epic-X lain dengan tata letak LED yang sama. Matikan lagi jika warnanya aneh
+e90d8670	Saat sinkron musik, perangkat yang lambat diperbarui seperti kartu grafis dan memori mengikuti warna perangkat lain
+a64d70bc	Kartu grafis dan memori hanya bisa berganti warna 4–8 kali per detik, jadi tidak bisa menampilkan gerakan halus seperti spektrum atau meter volume. Jika aktif, perangkat itu menyala dengan warna rata-rata yang sedang ditampilkan perangkat cepat (seperti kipas), sehingga warna tampak seragam. Perangkat yang efeknya dipilih tersendiri tetap memakai efek itu
+7b9813d5	LED saat berhenti
+74ebaadf	Apa yang dilakukan pada LED saat integrasi dimatikan, aplikasi ditutup, atau PC tidur
+4ba5fb63	Apa yang dilakukan pada LED saat integrasi dimatikan, aplikasi ditutup, atau PC tidur. "Biarkan" berhenti di warna terakhir
+ac0f3749	Umum
+69af1b60	Profil & otomatisasi
+86406a7c	Notifikasi & integrasi
+0dee4b23	Keamanan & cadangan
+ddd59eb1	Mulai & tampilan
+bf6cf977	Mulai otomatis saat masuk Windows
+5699c4fc	Mendaftarkan ke Task Scheduler dengan "hak tertinggi" (mulai tanpa konfirmasi UAC)
+5d0a76ce	Masuk ke baki sistem juga saat dibuka manual
+aefcd37e	Saat mulai otomatis selalu mulai di baki sistem. Menutup jendela dengan × tetap membuatnya berjalan di baki
+e162bf76	Tampilkan widget mini
+1b093ce9	Menampilkan suhu dan putaran selalu di atas. Seret untuk memindah; klik kanan untuk mengubah transparansi
+1483f6b3	Tampilan
+07df2653	Ubah bahasa tampilan, tema, warna aksen, warna latar, warna teks, font, dan ukuran teks. Perubahan langsung berlaku (bahasa tampilan berganti setelah aplikasi dimulai ulang)
+b8eab0de	Bahasa · Language
+4aaa8fe4	Bahasa teks di layar. "Otomatis" mengikuti bahasa tampilan Windows (Inggris jika tidak didukung). Setelah mengubahnya, mulai ulang aplikasi
+9bb17d53	Tema
+ae52556f	"Ikuti Windows" mengikuti gelap/terang di Pengaturan Windows (Personalisasi → Warna → mode aplikasi)
+aab63522	Warna aksen
+d95f93ef	Bawaan (ungu)
+2a8cd564	Ikuti warna Windows
+ea89f663	Memakai warna dari Pengaturan Windows (Personalisasi → Warna → warna aksen)
+3170685a	Warna latar
+14c3e93f	Mewarnai latar, bilah samping, dan kartu sekaligus. Tema gelap memakai warna gelap, tema terang memakai warna terang; ronanya tetap sama saat tema diganti
+17ff6b6d	Bawaan
+da6bf903	Warna teks
+793df94e	Warna semua teks di layar (keterangan dan skala grafik memakai rona yang sama, sedikit lebih pudar). Terang di tema gelap dan gelap di tema terang, terbaca di latar apa pun
+1843d590	Font
+05dc00d5	Font teks di layar. Karakter yang tidak ada di font ditampilkan dengan font cadangan
+bfea4384	Halo dunia · Suhu dan kipas ABC 123 °C
+982d7356	Ukuran teks
+2b8e9d8c	Memperbesar atau memperkecil seluruh jendela (teks, tombol, dan grafik)
+00478af8	Kendali
+13f4a528	DRY RUN (mode uji)
+db8eea4d	Hanya menampilkan hasil perhitungan dan tidak menulis apa pun ke kipas (kecuali operasi perlindungan saat putaran pompa turun, serta identifikasi, pengukuran, dan setelan sementara yang Anda mulai sendiri)
+b373eaee	Interval pembaruan
+14e1cbc6	Kecepatan penuh darurat (CPU dan lainnya)
+35593dc1	Jika sensor apa pun yang dipakai di kurva mencapai suhu ini, semua kipas menjadi 100%
+53ef686b	Kecepatan penuh darurat (GPU Hot Spot)

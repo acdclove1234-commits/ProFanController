@@ -309,3 +309,103 @@ b2c395cb	Enter a color as #RRGGBB (e.g. #6A00FF), or pick one from the circles o
 55b1d508	Enter it as #RRGGBB (e.g. #6A00FF): six characters, 0–9 and A–F
 743a1e61	Brightness
 26565f26	Overall LED brightness. Every effect uses this as its maximum
+35ab111a	LED devices found by OpenRGB. The strip below previews the colors being sent now.
+74e00d85	When on, colors every device OpenRGB finds (including ones added later). When off, you can choose which devices to color
+c01c149b	Color all devices
+e61331df	When off, choose per device below
+2c8ea653	For color matching. Lights every device in the same white (device and zone color matching and brightness still apply). Goes back when you leave this page
+4dbed8b1	Light white to compare
+9795e04b	Lights every device in the same white for color matching (goes back when you leave this page)
+082c3f40	The device list appears once connected to OpenRGB (you can also load it with "Test connection" above).
+3922b0ea	fps = how many times per second colors are sent · the music sync effect in use
+f3e43b07	Colors the checked devices (when "Color all devices" is on, every device is included)
+5f338e63	Last color sent to this device (shown close to the on-screen color)
+ccf4614e	Changes the music sync effect for this device only. "Auto" uses "Music style" above (slow-updating devices automatically get a smooth effect)
+91935430	Mirror
+f527b8c5	Lights symmetrically from the middle of the LED row (for long LED strips). "Auto" turns it on for groups of 30 or more LEDs
+2d073419	Updates per second
+ec70d216	The most times per second colors are sent to this device. More is smoother, but on graphics cards and memory too many can leave some LEDs unwritten and cause flicker. Raise it only as far as it does not flicker
+b4d70ec0	Light earlier
+df7472e3	Makes music sync color changes earlier for this device only. Raise it when it looks late compared with other devices (for devices that take time to show a color, such as graphics cards). Works on beats it can predict from the tempo. "Auto" is 8 ms for USB, 20 ms for memory and the like, 60 ms for graphics cards
+bce10cf7	Off (recommended): on graphics cards, flowing rainbow becomes a static rainbow and breathing becomes a static color. Graphics cards write LEDs one at a time, so constant motion tends to flicker. When on, graphics cards flow and breathe too
+44f9a4dc	Animate rainbow and breathing too
+9e24740c	Reverses the LED order (when the flow direction or the bass-to-treble order looks backwards)
+8ebe842f	Reverse
+b35b1a81	Turn on when light blue looks pink and green looks red (for devices with the color order swapped)
+96aaf779	Swap red and green
+a28e3556	Match this device's tint and brightness, or change the effect, direction and tint per motherboard header (zone)
+8847ea7e	Open color matching and per-zone settings
+43c6336e	Color matching (whole device)
+ee85a976	The same color can look different in tint and brightness on different LEDs. Turn on "Light white to compare" above and lower red, green and blue until the whites match (they cannot go higher, so lower the colors that are too strong)
+3bb159a9	Red
+4fc93dd4	Green
+b0ba1b8f	Blue
+387da053	Brightness
+4cba9eab	Per-zone (header) settings
+d64827fc	Change the effect, direction and tint for each motherboard header to suit what is connected (fans, PSU, the water-cooling head and so on). "Same as device" keeps the settings above. Things daisy-chained on the same header form one zone
+41860c08	Changes the music sync effect for this zone only (e.g. a level meter for the radiator fans, beat-color for the PSU)
+2c70dff2	With the "Parts play their roles" effect, which sound this zone lights up to. "Match the part": fans bass, graphics card mids, memory and keyboard treble
+ed5a9363	Direction
+3d275c1f	Tip: for motherboard ARGB headers with nothing connected, set the LED count to 0 in OpenRGB under Devices → (motherboard) → "Edit Device". Less data is sent and motion gets smoother. Mirror and Reverse affect effects that use the LED order (spectrum, level meter and so on).
+6a1f71f3	Layout in the case
+337d069f	Choose where fans, the graphics card, memory, strips and so on sit in the case, and waves, rainbows, level meters, ripples and more flow across devices as one through the whole case. LEDs without a place (such as keyboards) light along their own order as before
+12ccc5b1	Flow light by position in the case
+c699ba40	When off, lights along each device's own order even if places are set
+7f06ca34	Flow direction
+a7b5b016	The direction waves and rainbows flow, level meters grow and ripples spread (seen through the side glass of the case)
+c99b267f	The case seen from the side. LEDs with a place show the last color sent
+fa48084e	Seen through the side glass (left is the back, right is the front). Shown when "Flow light by position in the case" is on
+b553839d	The device list appears once connected to OpenRGB.
+5229dd83	Where in the case this zone's LEDs are. For daisy-chained fans, choose the order they are chained in, such as "3 (top to bottom)"
+bb048236	Advanced
+90901950	Deeper colors (gamma correction; when off, colors are brighter and paler)
+3ccf4c41	LEDs light their dark components as they are, so they look whiter than on screen. When on, colors are deep like on screen and brightness changes look smoother to the eye
+dff98214	Blink red on emergency full speed (overrides any effect)
+c447e46b	When a temperature reaches its limit and the fans go to full speed, the LEDs blink red to tell you, whatever effect is chosen
+6b3a1b39	Light supported graphics cards directly, without OpenRGB (PNY ARGB Epic-X; stays in time with the other LEDs)
+f6b581bb	OpenRGB writes the LEDs of PNY cards one at a time, so every color change takes about 35 ms and lags the other LEDs. When on, the app writes directly through the NVIDIA driver. If writes keep failing, it goes back to OpenRGB automatically
+e36ea0de	Also write directly to untested card models (only when trying)
+a6862cdb	Direct writes have been tested on real hardware only with the RTX 5070 Ti. Turn this on to try other PNY ARGB Epic-X models with the same LED layout. Turn it back off if the colors look wrong
+e90d8670	In music sync, slow-updating devices such as graphics cards and memory match the other devices' color
+a64d70bc	Graphics cards and memory can change color only 4–8 times per second, so they cannot show fine motion like spectrum or level meters. When on, they light in the average color the fast devices (such as fans) are showing, so colors look consistent. Devices with their own chosen effect keep it
+7b9813d5	LEDs when stopping
+74ebaadf	What to do with the LEDs when the integration is turned off, the app exits or the PC sleeps
+4ba5fb63	What to do with the LEDs when the integration is turned off, the app exits or the PC sleeps. "Keep" stops on the last color
+ac0f3749	General
+69af1b60	Profiles & automation
+86406a7c	Notifications & integrations
+0dee4b23	Safety & backup
+ddd59eb1	Startup & display
+bf6cf977	Start automatically at Windows logon
+5699c4fc	Registers it in Task Scheduler with "highest privileges" (starts without the UAC prompt)
+5d0a76ce	Start in the tray when started manually too
+aefcd37e	When started automatically it always starts in the tray. Closing the window with × keeps it running in the tray
+e162bf76	Show the mini widget
+1b093ce9	Shows temperatures and speeds always on top. Drag to move; right-click to change the opacity
+1483f6b3	Appearance
+07df2653	Change the display language, theme, accent color, background, text color, font and text size. Changes apply right away (the display language switches after the app restarts)
+b8eab0de	Language
+4aaa8fe4	Language of the on-screen text. "Auto" follows the Windows display language (English if it is not supported). After changing it, restart the app to switch
+9bb17d53	Theme
+ae52556f	"Match Windows" follows dark/light in Windows Settings (Personalization → Colors → app mode)
+aab63522	Accent color
+d95f93ef	Default (purple)
+2a8cd564	Match Windows color
+ea89f663	Uses the color from Windows Settings (Personalization → Colors → Accent color)
+3170685a	Background color
+14c3e93f	Tints the background, sidebar and cards together. Dark uses a dark shade and light a light shade; the hue stays the same when you switch themes
+17ff6b6d	Default
+da6bf903	Text color
+793df94e	The color of all on-screen text (captions and chart labels use the same hue, slightly lighter). Light in dark mode and dark in light mode, so it is readable on any background
+1843d590	Font
+05dc00d5	The font for on-screen text. Characters the font does not have are shown in a fallback font
+bfea4384	The quick brown fox · Temperatures & fans ABC 123 °C
+982d7356	Text size
+2b8e9d8c	Scales the whole window (text, buttons and charts) up or down
+00478af8	Control
+13f4a528	DRY RUN (test mode)
+db8eea4d	Only shows the calculated results and writes nothing to the fans (except the protection run when a pump slows down, and identification, measurements and temporary settings you start yourself)
+b373eaee	Update interval
+14e1cbc6	Emergency full speed (CPU and others)
+35593dc1	When any sensor used in a curve reaches this temperature, every fan goes to 100%
+53ef686b	Emergency full speed (GPU hot spot)
