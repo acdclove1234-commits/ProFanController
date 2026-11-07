@@ -1400,3 +1400,103 @@ feb800ae	• {0} règles de basculement automatique par application seront suppr
 f0b8e8cf	• Le « Silencieux » en un clic utilisera « {0} »
 4f3910fa	\n\n(Annulable avec « Annuler »)
 04ce24e0	Supprimer le profil « {0} » ?{1}
+4ef180ea	Aucune application avec fenêtre trouvée
+abe0a99c	Indiquez un nom d'application et un profil.
+24593a42	Choisissez des capteurs différents pour A et B.
+92fd248d	Choisissez au moins deux capteurs.
+6e74e401	Capteur virtuel « {0} » créé. Vous pouvez le choisir dans « Capteur de température associé » de l'écran Courbes des ventilateurs.
+89cdb82c	« {0} » est utilisé par des courbes de ventilateurs. Si vous le supprimez, ces courbes le traiteront comme un capteur défaillant (pleine vitesse). Supprimer ?
+82ed89f8	Supprimer « {0} » ?
+3be9c598	L'inscription dans le Planificateur de tâches a échoué. Consultez le journal.
+131665f4	L'exe du dossier de développement (bin\\Debug) a été inscrit.\n
+28fcc4bc	Son emplacement peut changer lors d'une recompilation ; il est conseillé de l'inscrire à nouveau depuis un exe « publié ».
+9b94a7a0	La configuration est terminée. Si elle ne vous convient pas, revenez aux paramètres précédents avec « Annuler » dans l'écran Courbes des ventilateurs.
+31940460	Ne pas changer le mode d'alimentation
+ef7d18bc	Comme Windows
+639ba182	Sombre
+37141fb8	Clair
+8f4f452a	Par défaut (Montserrat pour l'alphabet latin, ProFan Maru pour le japonais)
+25ae07d9	ProFan Maru (police arrondie fournie)
+75788b92	Auto (langue d'affichage de Windows)
+1755da21	Un peu discret
+79a677b2	Un peu soutenu
+4bf63202	Soutenu
+26559a27	Gris
+77d49f1b	Teinte {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Presque blanc
+33e39538	Pâle
+ec6cb7af	Presque noir
+c53be0dd	La langue d'affichage a été modifiée. Elle change au redémarrage de l'application.\nRedémarrer maintenant ? (Pendant le redémarrage, le BIOS contrôle les ventilateurs)
+3036c063	L'adresse réseau de ce PC est introuvable
+f028972c	Impossible de démarrer le serveur web. Essayez un autre numéro de port (détails dans le journal)
+26d33196	PawnIO (le pilote de contrôle des ventilateurs) est introuvable. En l'état, seules les températures s'affichent et les ventilateurs ne peuvent pas être contrôlés.
+233ed082	 Vous pouvez l'installer en un clic depuis « Sécurité et sauvegarde » dans les paramètres.
+5d6faa41	Ouvrir l'écran d'installation
+f292e9e8	Cliquez à nouveau une fois l'installation de PawnIO terminée.
+302b3d1d	Connexion à Ollama…
+6b275359	Aucun modèle. Récupérez-en un, par exemple avec « ollama pull qwen2.5:7b » dans PowerShell
+8b713e28	Le modèle enregistré « {0} » est introuvable ; passage à « {1} »
+5098c728	{0} modèles trouvés
+e234c1c6	Connexion impossible (Ollama est-il lancé ?) : {0}
+6ea85f7b	Impossible de lire la liste des modèles : {0}
+7577135d	{0} : {1} ({2})
+490ac71b	[Contenu transmis à l'IA]\n\n
+9c8917d5	Choisissez d'abord un modèle avec « Actualiser la liste »
+30d9aac4	Trop peu d'enregistrements. Utilisez le PC quelques minutes puis relancez
+be68c30e	{0} analyse… (la première fois, le chargement du modèle prend du temps)
+3d4f2c52	Terminé ({0:HH:mm})
+dea2940c	Arrêté
+54fa54cb	Le modèle « {0} » n'est pas dans Ollama. Choisissez-en un autre avec « Actualiser la liste » ou exécutez « ollama pull {1} » dans PowerShell
+d7dc8672	Erreur : {0}
+3decf270	Un réglage automatique est en cours. Commencez quand il sera terminé.
+2ccbef69	Un test de refroidissement va durer environ {0} minutes.\n\n
+502399da	• Pendant le test, le CPU tourne à pleine puissance : les ventilateurs deviennent bruyants.\n
+c0d1c3f1	• Si la température du CPU atteint {0:F0} °C, la charge s'arrête automatiquement.\n
+116f3e5c	• Fermez au préalable les autres applications gourmandes.
+e8547f63	Actuellement {0:F0} °C / max {1:F0} °C
+12cb32db	{0} (stable {1:F0} °C)
+555758d6	Test de refroidissement terminé : {0}
+8c1ed861	Enregistrer le rapport du test de refroidissement
+73ba74aa	Texte (*.txt)|*.txt
+dab5f292	Évalue les résultats du dernier test de refroidissement et propose des améliorations pour les réglages des ventilateurs.
+6451d704	Accès au matériel : LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Fichier de paramètres : {0}
+1ffe58b3	La température a atteint sa limite
+4eed19a9	Boost actif
+8052eef4	Tout sauf les pompes tourne à 100 %
+732c5446	Contrôle par le BIOS (la surveillance des pompes continue)
+9903c467	Calcul seulement, sans écriture vers les ventilateurs (la protection des pompes fonctionne). Démarrez le contrôle avec le bouton ci-dessous
+138d15fc	Contrôle actif (à vérifier)
+9a955596	Certains capteurs sont introuvables (pièce remplacée, etc.)
+cde39c73	Certains capteurs restent bloqués sur la même valeur
+c347c56a	{0} contrôlés
+cbfa5900	Démarrer le contrôle (quitter le DRY RUN)
+559e78f2	Reprendre le contrôle
+f1198e29	Avertissement
+b47a04b8	Information
+d3ec144f	Virtuel ({0})
+f45a5a37	Le matériel détecté. Le bouton d'image permet de remplacer une image, par exemple par votre propre photo
+31e94c42	Définissez pour chaque ventilateur la relation entre température et vitesse. Les modifications sont appliquées et enregistrées immédiatement
+b5ccd0c3	Diagnostic automatique à partir des enregistrements et contrôle de la poussière et de l'usure des ventilateurs (conseils de l'IA en option)
+2efbce3f	Applique une charge pour créer des courbes automatiquement ou mesurer l'efficacité des réglages actuels
+73339fb8	Jusqu'à 24 heures de températures et de vitesses (hors périodes où l'application était fermée ; avant un redémarrage, moyennes par minute)
+389ce2cc	Estimation du coût de l'électricité et enregistrements d'anomalies
+4bd55735	Allume les LED du PC selon la température, en arc-en-ciel, au rythme de la musique, etc., via OpenRGB
+acea69f7	Toutes les températures, vitesses et voies de contrôle détectées sur ce PC, ainsi que les capteurs virtuels
+7626e5f7	Profils, basculement automatique, démarrage et comportement général du contrôle
+d3bf5d86	Le DRY RUN a été désactivé. Le contrôle des ventilateurs démarre.
+7f6b69df	Surveillance ProFanController
+0788f8eb	Arrière
+c85ab318	Avant
+0f616edd	Haut
+0e616d4a	Bas
+05b4fa72	Choisissez un emplacement dans la liste ci-dessous pour l'afficher ici
+e210ecbe	Plages de résonance
+38cc0a03	Actuellement {0:F1} °C → {1:F0} %{2}
+56706c2f	 (environ {0:N0} rpm)
+340bcb75	Installation en cours sur un autre écran…
+1581ae06	✔ PawnIO (le pilote de contrôle des ventilateurs) est installé. Les ventilateurs peuvent être contrôlés.
+487d0d7b	PawnIO a été installé, mais un redémarrage du PC est nécessaire pour terminer. Après le redémarrage, les ventilateurs pourront être contrôlés.
+1f017018	PawnIO a été installé mais n'est pas encore chargé. Redémarrez l'application pour contrôler les ventilateurs.
+2dcc9e2e	✖ PawnIO (le pilote de contrôle des ventilateurs) est introuvable. En l'état, seules les températures s'affichent et les ventilateurs ne peuvent pas être contrôlés.

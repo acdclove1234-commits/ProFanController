@@ -1400,3 +1400,103 @@ feb800ae	• Uygulamaya göre otomatik geçiş kurallarından {0} tanesi silinec
 f0b8e8cf	• Tek dokunuşla "Sessiz" artık "{0}" kullanacak
 4f3910fa	\n\n("Geri al" ile geri alabilirsiniz)
 04ce24e0	"{0}" profili silinsin mi?{1}
+4ef180ea	Penceresi olan uygulama bulunamadı
+abe0a99c	Bir uygulama adı ve profil belirtin.
+24593a42	A ve B için farklı sensörler seçin.
+92fd248d	İki veya daha fazla sensör seçin.
+6e74e401	"{0}" sanal sensörü oluşturuldu. Fan eğrileri ekranındaki "Bağlı sıcaklık sensörü" bölümünden seçebilirsiniz.
+89cdb82c	"{0}" fan eğrilerinde kullanılıyor. Silerseniz bu eğriler onu sensör arızası (tam hız) olarak görür. Silinsin mi?
+82ed89f8	"{0}" silinsin mi?
+3be9c598	Görev Zamanlayıcı'ya kayıt başarısız oldu. Günlüğü kontrol edin.
+131665f4	Geliştirme klasöründeki (bin\\Debug) exe kaydedildi.\n
+28fcc4bc	Yeniden derlendiğinde konumu değişebileceğinden, "yayımlanmış" bir exe ile yeniden kaydetmeniz önerilir.
+9b94a7a0	Kurulum tamamlandı. Beğenmezseniz Fan eğrileri ekranındaki "Geri al" ile önceki ayarlara dönebilirsiniz.
+31940460	Güç planını değiştirme
+ef7d18bc	Windows'a uy
+639ba182	Koyu
+37141fb8	Açık
+8f4f452a	Varsayılan (Latin alfabesi için Montserrat, Japonca için ProFan Maru)
+25ae07d9	ProFan Maru (birlikte gelen yuvarlak yazı tipi)
+75788b92	Otomatik (Windows görüntüleme dili)
+1755da21	Biraz hafif
+79a677b2	Biraz koyu
+4bf63202	Koyu
+26559a27	Gri
+77d49f1b	Ton {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Beyaza yakın
+33e39538	Soluk
+ec6cb7af	Siyaha yakın
+c53be0dd	Görüntüleme dili değiştirildi. Uygulama yeniden başlatılınca geçerli olur.\nŞimdi yeniden başlatılsın mı? (Yeniden başlatma sırasında fanları BIOS kontrol eder)
+3036c063	Bu bilgisayarın ağ adresi bulunamadı
+f028972c	Web sunucusu başlatılamadı. Başka bir bağlantı noktası numarası deneyin (ayrıntılar günlükte)
+26d33196	PawnIO (fan kontrol sürücüsü) bulunamadı. Bu hâliyle yalnızca sıcaklıklar gösterilir, fanlar kontrol edilemez.
+233ed082	 Ayarlardaki "Güvenlik ve yedekleme" bölümünden tek tuşla kurabilirsiniz.
+5d6faa41	Kurulum ekranını aç
+f292e9e8	PawnIO kurulumu bittikten sonra tekrar basın.
+302b3d1d	Ollama'ya bağlanılıyor…
+6b275359	Model yok. Örneğin PowerShell'de "ollama pull qwen2.5:7b" çalıştırarak bir model edinin
+8b713e28	Kaydedilen "{0}" modeli bulunamadığı için "{1}" modeline geçildi
+5098c728	{0} model bulundu
+e234c1c6	Bağlanılamıyor (Ollama çalışıyor mu?): {0}
+6ea85f7b	Model listesi okunamadı: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Yapay zekâya verilen içerik]\n\n
+9c8917d5	Önce "Listeyi yenile" ile bir model seçin
+30d9aac4	Kayıt çok az. Birkaç dakika kullandıktan sonra tekrar çalıştırın
+be68c30e	{0} analiz ediyor… (ilk seferde modelin yüklenmesi zaman alır)
+3d4f2c52	Tamamlandı ({0:HH:mm})
+dea2940c	Durduruldu
+54fa54cb	"{0}" modeli Ollama'da yok. "Listeyi yenile" ile yeniden seçin veya PowerShell'de "ollama pull {1}" çalıştırın
+d7dc8672	Hata: {0}
+3decf270	Otomatik ayar sürüyor. Bittikten sonra başlatın.
+2ccbef69	Yaklaşık {0} dakikalık bir soğutma testi yapılacak.\n\n
+502399da	• Test sırasında CPU tam güçle çalıştığı için fan sesi artar.\n
+c0d1c3f1	• CPU sıcaklığı {0:F0}°C'ye ulaşırsa yük otomatik olarak durdurulur.\n
+116f3e5c	• Diğer ağır uygulamaları önceden kapatın.
+e8547f63	Şu an {0:F0}°C / en yüksek {1:F0}°C
+12cb32db	{0} (kararlı {1:F0}°C)
+555758d6	Soğutma testi bitti: {0}
+8c1ed861	Soğutma testi raporunu kaydet
+73ba74aa	Metin (*.txt)|*.txt
+dab5f292	Son soğutma testinin sonuçlarını değerlendir ve fan ayarları için iyileştirme önerileri sun.
+6451d704	Donanım erişimi: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Ayar dosyası: {0}
+1ffe58b3	Sıcaklık sınıra ulaştı
+4eed19a9	Güçlendirme etkin
+8052eef4	Pompalar dışındaki her şey %100'de
+732c5446	BIOS kontrolü (pompa izleme sürüyor)
+9903c467	Yalnızca hesaplanıyor, fanlara yazılmıyor (pompa koruması çalışır). Aşağıdaki düğmeyle kontrolü başlatın
+138d15fc	Kontrol ediliyor (dikkat gerekli)
+9a955596	Bulunamayan sensörler var (parça değişimi vb.)
+cde39c73	Değeri takılı kalan sensörler var
+c347c56a	{0} tanesi kontrol ediliyor
+cbfa5900	Kontrolü başlat (DRY RUN'dan çık)
+559e78f2	Kontrolü sürdür
+f1198e29	Uyarı
+b47a04b8	Bildirim
+d3ec144f	Sanal ({0})
+f45a5a37	Algılanan donanım. Resim düğmesiyle görseli, örneğin kendi çektiğiniz bir fotoğrafla değiştirebilirsiniz
+31e94c42	Her fan için sıcaklık ile devir arasındaki ilişkiyi ayarlayın. Değişiklikler hemen uygulanır ve kaydedilir
+b5ccd0c3	Kayıtlara dayalı otomatik tanılama ve fanlardaki toz ile yıpranma kontrolü (yapay zekâ önerisi isteğe bağlı)
+2efbce3f	Yük uygulayarak eğrileri otomatik oluşturur veya mevcut ayarlarla ne kadar soğutulduğunu ölçer
+73339fb8	En fazla 24 saatlik sıcaklık ve devir (uygulamanın kapalı olduğu süre hariç; yeniden başlatma öncesi dakikalık ortalamalar)
+389ce2cc	Elektrik maliyeti tahmini ve arıza kayıtları
+4bd55735	OpenRGB üzerinden bilgisayarın LED'lerini sıcaklığa, gökkuşağına, müziğe vb. göre yakar
+acea69f7	Bu bilgisayarda algılanan tüm sıcaklıklar, devirler ve kontrol kanalları ile sanal sensörler
+7626e5f7	Profiller, otomatik geçiş, başlatma biçimi ve genel kontrol davranışı
+d3bf5d86	DRY RUN kapatıldı. Fan kontrolü başlıyor.
+7f6b69df	ProFanController gözetleyicisi
+0788f8eb	Arka
+c85ab318	Ön
+0f616edd	Üst
+0e616d4a	Alt
+05b4fa72	Aşağıdaki listeden bir yer seçince burada gösterilir
+e210ecbe	Rezonans bantları
+38cc0a03	Şu an {0:F1}°C → %{1:F0}{2}
+56706c2f	 (yaklaşık {0:N0} rpm)
+340bcb75	Başka bir ekranda kuruluyor…
+1581ae06	✔ PawnIO (fan kontrol sürücüsü) kurulu. Fanlar kontrol edilebilir.
+487d0d7b	PawnIO kuruldu, ancak tamamlamak için bilgisayarı yeniden başlatmanız gerekiyor. Bilgisayarı yeniden başlattıktan sonra fanlar kontrol edilebilir.
+1f017018	PawnIO kuruldu, ancak henüz yüklenmedi. Fanları kontrol etmek için uygulamayı yeniden başlatın.
+2dcc9e2e	✖ PawnIO (fan kontrol sürücüsü) bulunamadı. Bu hâliyle yalnızca sıcaklıklar gösterilir, fanlar kontrol edilemez.

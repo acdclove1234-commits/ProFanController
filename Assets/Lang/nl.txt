@@ -1400,3 +1400,103 @@ feb800ae	• {0} regels voor automatisch wisselen per app worden verwijderd
 f0b8e8cf	• De sneltoets "Stil" gaat "{0}" gebruiken
 4f3910fa	\n\n(Ongedaan te maken met "Ongedaan maken")
 04ce24e0	Profiel "{0}" verwijderen?{1}
+4ef180ea	Geen apps met een venster gevonden
+abe0a99c	Geef een appnaam en een profiel op.
+24593a42	Kies verschillende sensoren voor A en B.
+92fd248d	Kies twee of meer sensoren.
+6e74e401	Virtuele sensor "{0}" is gemaakt. Je kunt hem kiezen bij "Gekoppelde temperatuursensor" op het scherm Ventilatorcurves.
+89cdb82c	"{0}" wordt gebruikt door ventilatorcurves. Verwijder je hem, dan behandelen die curves hem als sensorstoring (volle snelheid). Verwijderen?
+82ed89f8	"{0}" verwijderen?
+3be9c598	Registreren in Taakplanner is mislukt. Bekijk het logboek.
+131665f4	De exe uit de ontwikkelmap (bin\\Debug) is geregistreerd.\n
+28fcc4bc	De locatie kan veranderen als je opnieuw bouwt, dus het is aan te raden opnieuw te registreren vanaf een "gepubliceerde" exe.
+9b94a7a0	De installatie is klaar. Bevalt het niet, dan ga je met "Ongedaan maken" op het scherm Ventilatorcurves terug naar de vorige instellingen.
+31940460	Energiebeheerschema niet wijzigen
+ef7d18bc	Zoals Windows
+639ba182	Donker
+37141fb8	Licht
+8f4f452a	Standaard (Montserrat voor Latijns schrift, ProFan Maru voor Japans)
+25ae07d9	ProFan Maru (meegeleverd rond lettertype)
+75788b92	Automatisch (Windows-weergavetaal)
+1755da21	Iets subtieler
+79a677b2	Iets dieper
+4bf63202	Diep
+26559a27	Grijs
+77d49f1b	Tint {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Bijna wit
+33e39538	Bleek
+ec6cb7af	Bijna zwart
+c53be0dd	De weergavetaal is gewijzigd. Hij wisselt zodra de app opnieuw start.\nNu opnieuw starten? (Tijdens het herstarten regelt het BIOS de ventilatoren)
+3036c063	Het netwerkadres van deze pc is niet gevonden
+f028972c	Kan de webserver niet starten. Probeer een ander poortnummer (details in het logboek)
+26d33196	PawnIO (het stuurprogramma voor ventilatorregeling) is niet gevonden. Zo worden alleen temperaturen getoond en kunnen de ventilatoren niet worden geregeld.
+233ed082	 Je kunt het met één knop installeren via "Veiligheid & back-up" in de instellingen.
+5d6faa41	Installatiescherm openen
+f292e9e8	Klik opnieuw als de installatie van PawnIO klaar is.
+302b3d1d	Verbinden met Ollama…
+6b275359	Geen modellen. Haal er een op, bijvoorbeeld met "ollama pull qwen2.5:7b" in PowerShell
+8b713e28	Het opgeslagen model "{0}" is niet gevonden, dus is overgeschakeld naar "{1}"
+5098c728	{0} modellen gevonden
+e234c1c6	Kan geen verbinding maken (draait Ollama?): {0}
+6ea85f7b	Kan de modellenlijst niet lezen: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Inhoud die aan de AI wordt doorgegeven]\n\n
+9c8917d5	Kies eerst een model met "Lijst vernieuwen"
+30d9aac4	Te weinig metingen. Gebruik de pc een paar minuten en probeer het opnieuw
+be68c30e	{0} analyseert… (de eerste keer duurt het laden van het model even)
+3d4f2c52	Klaar ({0:HH:mm})
+dea2940c	Gestopt
+54fa54cb	Model "{0}" staat niet in Ollama. Kies opnieuw met "Lijst vernieuwen" of voer "ollama pull {1}" uit in PowerShell
+d7dc8672	Fout: {0}
+3decf270	Er loopt een automatische afstemming. Begin als die klaar is.
+2ccbef69	Er wordt een koeltest van ongeveer {0} minuten uitgevoerd.\n\n
+502399da	• Tijdens de test werkt de CPU op vol vermogen, dus de ventilatoren worden luid.\n
+c0d1c3f1	• Bereikt de CPU-temperatuur {0:F0} °C, dan stopt de belasting automatisch.\n
+116f3e5c	• Sluit vooraf andere zware apps.
+e8547f63	Nu {0:F0} °C / max {1:F0} °C
+12cb32db	{0} (stabiel {1:F0} °C)
+555758d6	Koeltest klaar: {0}
+8c1ed861	Rapport van de koeltest opslaan
+73ba74aa	Tekst (*.txt)|*.txt
+dab5f292	Beoordeel de resultaten van de laatste koeltest en stel verbeteringen voor de ventilatorinstellingen voor.
+6451d704	Hardwaretoegang: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Instellingenbestand: {0}
+1ffe58b3	De temperatuur heeft de grens bereikt
+4eed19a9	Boost actief
+8052eef4	Alles behalve pompen draait op 100%
+732c5446	BIOS-regeling (pompbewaking loopt door)
+9903c467	Alleen berekenen, niet naar de ventilatoren schrijven (pompbeveiliging werkt). Start de regeling met de knop hieronder
+138d15fc	Regelt (aandacht nodig)
+9a955596	Sommige sensoren zijn niet gevonden (onderdeel vervangen enz.)
+cde39c73	Sommige sensoren staan vast op dezelfde waarde
+c347c56a	{0} worden geregeld
+cbfa5900	Regeling starten (DRY RUN uitzetten)
+559e78f2	Regeling hervatten
+f1198e29	Waarschuwing
+b47a04b8	Melding
+d3ec144f	Virtueel ({0})
+f45a5a37	De gedetecteerde hardware. Met de afbeeldingsknop kun je een afbeelding vervangen, bijvoorbeeld door een eigen foto
+31e94c42	Stel per ventilator het verband tussen temperatuur en toerental in. Wijzigingen worden meteen toegepast en opgeslagen
+b5ccd0c3	Automatische diagnose op basis van de metingen en controle op stof en slijtage van de ventilatoren (AI-advies optioneel)
+2efbce3f	Belast het systeem om automatisch curves te maken of te meten hoe goed de huidige instellingen koelen
+73339fb8	Tot 24 uur aan temperaturen en toerentallen (zonder de tijd dat de app gesloten was; vóór een herstart gemiddelden per minuut)
+389ce2cc	Schatting van stroomkosten en storingsregistraties
+4bd55735	Laat de leds van de pc via OpenRGB oplichten op temperatuur, regenboog, muziek en meer
+acea69f7	Alle temperaturen, toerentallen en regelkanalen die op deze pc zijn gedetecteerd, plus virtuele sensoren
+7626e5f7	Profielen, automatisch wisselen, opstartwijze en het gedrag van de hele regeling
+d3bf5d86	DRY RUN is uitgezet. De ventilatorregeling start.
+7f6b69df	ProFanController-bewaker
+0788f8eb	Achter
+c85ab318	Voor
+0f616edd	Boven
+0e616d4a	Onder
+05b4fa72	Kies een plek in de lijst hieronder om die hier te tonen
+e210ecbe	Resonantiebanden
+38cc0a03	Nu {0:F1} °C → {1:F0}%{2}
+56706c2f	 (ongeveer {0:N0} rpm)
+340bcb75	Bezig met installeren op een ander scherm…
+1581ae06	✔ PawnIO (het stuurprogramma voor ventilatorregeling) is geïnstalleerd. De ventilatoren kunnen worden geregeld.
+487d0d7b	PawnIO is geïnstalleerd, maar om af te ronden moet de pc opnieuw worden opgestart. Daarna kunnen de ventilatoren worden geregeld.
+1f017018	PawnIO is geïnstalleerd, maar nog niet geladen. Start de app opnieuw om de ventilatoren te regelen.
+2dcc9e2e	✖ PawnIO (het stuurprogramma voor ventilatorregeling) is niet gevonden. Zo worden alleen temperaturen getoond en kunnen de ventilatoren niet worden geregeld.

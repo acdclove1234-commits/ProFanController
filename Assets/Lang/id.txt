@@ -1400,3 +1400,103 @@ feb800ae	• {0} aturan peralihan otomatis per aplikasi akan dihapus
 f0b8e8cf	• "Senyap" sekali sentuh akan memakai "{0}"
 4f3910fa	\n\n(Bisa dibatalkan dengan "Urungkan")
 04ce24e0	Hapus profil "{0}"?{1}
+4ef180ea	Tidak ditemukan aplikasi yang punya jendela
+abe0a99c	Tentukan nama aplikasi dan profil.
+24593a42	Pilih sensor yang berbeda untuk A dan B.
+92fd248d	Pilih dua sensor atau lebih.
+6e74e401	Sensor virtual "{0}" dibuat. Bisa dipilih di "Sensor suhu yang dikaitkan" pada layar Kurva kipas.
+89cdb82c	"{0}" dipakai di kurva kipas. Jika dihapus, kurva tersebut akan menganggapnya sensor bermasalah (kecepatan penuh). Hapus?
+82ed89f8	Hapus "{0}"?
+3be9c598	Pendaftaran ke Task Scheduler gagal. Periksa log.
+131665f4	Exe dari folder pengembangan (bin\\Debug) sudah didaftarkan.\n
+28fcc4bc	Lokasinya bisa berubah saat dibangun ulang, jadi sebaiknya daftarkan ulang dari exe yang sudah "dipublikasikan".
+9b94a7a0	Penyiapan selesai. Jika tidak cocok, kembali ke pengaturan sebelumnya dengan "Urungkan" di layar Kurva kipas.
+31940460	Jangan ubah rencana daya
+ef7d18bc	Ikuti Windows
+639ba182	Gelap
+37141fb8	Terang
+8f4f452a	Bawaan (Montserrat untuk huruf Latin, ProFan Maru untuk bahasa Jepang)
+25ae07d9	ProFan Maru (font bulat bawaan)
+75788b92	Otomatis (bahasa tampilan Windows)
+1755da21	Agak lembut
+79a677b2	Agak pekat
+4bf63202	Pekat
+26559a27	Abu-abu
+77d49f1b	Rona {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Hampir putih
+33e39538	Pucat
+ec6cb7af	Hampir hitam
+c53be0dd	Bahasa tampilan diubah. Berlaku setelah aplikasi dijalankan ulang.\nJalankan ulang sekarang? (Selama dijalankan ulang, kipas dikendalikan BIOS)
+3036c063	Alamat jaringan PC ini tidak ditemukan
+f028972c	Server web tidak bisa dimulai. Coba nomor port lain (detail ada di log)
+26d33196	PawnIO (driver kendali kipas) tidak ditemukan. Dalam keadaan ini, hanya suhu yang ditampilkan dan kipas tidak bisa dikendalikan.
+233ed082	 Bisa dipasang dengan satu tombol dari "Keamanan & cadangan" di pengaturan.
+5d6faa41	Buka layar pemasangan
+f292e9e8	Tekan lagi setelah pemasangan PawnIO selesai.
+302b3d1d	Menghubungkan ke Ollama…
+6b275359	Belum ada model. Unduh satu, misalnya dengan menjalankan "ollama pull qwen2.5:7b" di PowerShell
+8b713e28	Model tersimpan "{0}" tidak ditemukan, jadi beralih ke "{1}"
+5098c728	{0} model ditemukan
+e234c1c6	Tidak bisa terhubung (apakah Ollama berjalan?): {0}
+6ea85f7b	Daftar model tidak bisa dibaca: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Isi yang diberikan ke AI]\n\n
+9c8917d5	Pilih model lewat "Perbarui daftar" terlebih dulu
+30d9aac4	Rekaman terlalu sedikit. Pakai PC beberapa menit lalu jalankan lagi
+be68c30e	{0} sedang menganalisis… (pertama kali, memuat model butuh waktu)
+3d4f2c52	Selesai ({0:HH:mm})
+dea2940c	Dihentikan
+54fa54cb	Model "{0}" tidak ada di Ollama. Pilih ulang lewat "Perbarui daftar" atau jalankan "ollama pull {1}" di PowerShell
+d7dc8672	Galat: {0}
+3decf270	Penyetelan otomatis sedang berjalan. Mulai setelah selesai.
+2ccbef69	Uji pendinginan akan dilakukan sekitar {0} menit.\n\n
+502399da	• Selama uji, CPU bekerja penuh sehingga suara kipas menjadi keras.\n
+c0d1c3f1	• Jika suhu CPU mencapai {0:F0}°C, beban otomatis dihentikan.\n
+116f3e5c	• Tutup dulu aplikasi berat lainnya.
+e8547f63	Saat ini {0:F0}°C / tertinggi {1:F0}°C
+12cb32db	{0} (stabil {1:F0}°C)
+555758d6	Uji pendinginan selesai: {0}
+8c1ed861	Simpan laporan uji pendinginan
+73ba74aa	Teks (*.txt)|*.txt
+dab5f292	Nilailah hasil uji pendinginan terakhir dan sarankan perbaikan untuk pengaturan kipas.
+6451d704	Akses perangkat keras: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	File pengaturan: {0}
+1ffe58b3	Suhu sudah mencapai batas
+4eed19a9	Boost aktif
+8052eef4	Semua kecuali pompa berputar 100%
+732c5446	Kendali BIOS (pemantauan pompa tetap berjalan)
+9903c467	Hanya menghitung, tidak menulis ke kipas (perlindungan pompa tetap bekerja). Mulai kendali dengan tombol di bawah
+138d15fc	Mengendalikan (perlu dicek)
+9a955596	Ada sensor yang tidak ditemukan (penggantian komponen, dll.)
+cde39c73	Ada sensor yang nilainya macet
+c347c56a	Mengendalikan {0}
+cbfa5900	Mulai kendali (keluar dari DRY RUN)
+559e78f2	Lanjutkan kendali
+f1198e29	Peringatan
+b47a04b8	Pemberitahuan
+d3ec144f	Virtual ({0})
+f45a5a37	Daftar perangkat keras yang terdeteksi. Lewat tombol gambar, Anda bisa menggantinya dengan foto sendiri, misalnya
+31e94c42	Atur hubungan suhu dan putaran untuk setiap kipas. Perubahan langsung diterapkan dan disimpan
+b5ccd0c3	Diagnosis otomatis dari rekaman serta pemeriksaan debu dan keausan kipas (saran AI opsional)
+2efbce3f	Memberi beban untuk membuat kurva otomatis atau mengukur seberapa baik pengaturan saat ini mendinginkan
+73339fb8	Suhu dan putaran hingga 24 jam (tidak termasuk saat aplikasi ditutup; sebelum mulai ulang berupa rata-rata per menit)
+389ce2cc	Perkiraan biaya listrik dan rekaman gangguan
+4bd55735	Menyalakan LED PC sesuai suhu, pelangi, musik, dan lainnya lewat OpenRGB
+acea69f7	Semua suhu, putaran, dan saluran kendali yang terdeteksi di PC ini, serta sensor virtual
+7626e5f7	Profil, peralihan otomatis, cara memulai, dan perilaku kendali secara keseluruhan
+d3bf5d86	DRY RUN dimatikan. Kendali kipas dimulai.
+7f6b69df	Pengawas ProFanController
+0788f8eb	Belakang
+c85ab318	Depan
+0f616edd	Atas
+0e616d4a	Bawah
+05b4fa72	Pilih lokasi di daftar bawah untuk menampilkannya di sini
+e210ecbe	Pita resonansi
+38cc0a03	Saat ini {0:F1}°C → {1:F0}%{2}
+56706c2f	 (sekitar {0:N0} rpm)
+340bcb75	Sedang dipasang di layar lain…
+1581ae06	✔ PawnIO (driver kendali kipas) sudah terpasang. Kipas bisa dikendalikan.
+487d0d7b	PawnIO sudah dipasang, tetapi PC perlu dimulai ulang untuk menyelesaikan. Setelah PC dimulai ulang, kipas bisa dikendalikan.
+1f017018	PawnIO sudah dipasang tetapi belum dimuat. Mulai ulang aplikasi untuk mengendalikan kipas.
+2dcc9e2e	✖ PawnIO (driver kendali kipas) tidak ditemukan. Dalam keadaan ini, hanya suhu yang ditampilkan dan kipas tidak bisa dikendalikan.

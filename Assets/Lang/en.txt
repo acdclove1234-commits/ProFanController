@@ -1400,3 +1400,103 @@ feb800ae	• {0} automatic switching rules for apps will be deleted
 f0b8e8cf	• The one-touch "Silent" will use "{0}"
 4f3910fa	\n\n(You can undo this with "Undo")
 04ce24e0	Delete profile "{0}"?{1}
+4ef180ea	No apps with a window found
+abe0a99c	Specify an app name and a profile.
+24593a42	Choose different sensors for A and B.
+92fd248d	Choose two or more sensors.
+6e74e401	Created virtual sensor "{0}". You can choose it in "Temperature sensor to follow" on the Fan curves screen.
+89cdb82c	"{0}" is used by fan curves. If you delete it, those curves will treat it as a sensor fault (full speed). Delete it?
+82ed89f8	Delete "{0}"?
+3be9c598	Registering with Task Scheduler failed. Check the log.
+131665f4	Registered the exe in the development folder (bin\\Debug).\n
+28fcc4bc	Its location may change when you rebuild, so registering again from a "published" exe is recommended.
+9b94a7a0	Setup is complete. If you don't like it, you can go back to the previous settings with "Undo" on the Fan curves screen.
+31940460	Don't change the power plan
+ef7d18bc	Match Windows
+639ba182	Dark
+37141fb8	Light
+8f4f452a	Default (Montserrat for Latin text, ProFan Maru for Japanese)
+25ae07d9	ProFan Maru (bundled rounded font)
+75788b92	Auto (Windows display language)
+1755da21	Slightly subtle
+79a677b2	Slightly deep
+4bf63202	Deep
+26559a27	Gray
+77d49f1b	Hue {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Near white
+33e39538	Pale
+ec6cb7af	Near black
+c53be0dd	The display language was changed. It switches when the app restarts.\nRestart now? (While restarting, the fans are under BIOS control)
+3036c063	This PC's network address can't be found
+f028972c	Couldn't start the web server. Try a different port number (details are in the log)
+26d33196	PawnIO (the fan control driver) can't be found. As it is, only temperatures are shown and the fans can't be controlled.
+233ed082	 You can install it with one button from "Safety & backup" in Settings.
+5d6faa41	Open the install screen
+f292e9e8	Press it again after the PawnIO installation has finished.
+302b3d1d	Connecting to Ollama…
+6b275359	No models. Get one by running, for example, "ollama pull qwen2.5:7b" in PowerShell
+8b713e28	The saved model "{0}" wasn't found, so it switched to "{1}"
+5098c728	{0} models found
+e234c1c6	Can't connect (is Ollama running?): {0}
+6ea85f7b	Couldn't read the model list: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Content passed to the AI]\n\n
+9c8917d5	Choose a model with "Refresh list" first
+30d9aac4	Too few records. Use the PC for a few minutes and run it again
+be68c30e	{0} is analyzing… (the first time, loading the model takes a while)
+3d4f2c52	Done ({0:HH:mm})
+dea2940c	Stopped
+54fa54cb	Model "{0}" isn't in Ollama. Choose again with "Refresh list", or run "ollama pull {1}" in PowerShell
+d7dc8672	Error: {0}
+3decf270	Auto tuning is running. Start after it finishes.
+2ccbef69	A cooling test will run for about {0} minutes.\n\n
+502399da	• During the test the CPU runs at full power, so the fans get loud.\n
+c0d1c3f1	• If the CPU temperature reaches {0:F0}°C, the load stops automatically.\n
+116f3e5c	• Close other heavy apps beforehand.
+e8547f63	Now {0:F0}°C / max {1:F0}°C
+12cb32db	{0} (steady {1:F0}°C)
+555758d6	Cooling test finished: {0}
+8c1ed861	Save the cooling test report
+73ba74aa	Text (*.txt)|*.txt
+dab5f292	Evaluate the results of the latest cooling test and suggest improvements to the fan settings.
+6451d704	Hardware access: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Settings file: {0}
+1ffe58b3	The temperature has reached its limit
+4eed19a9	Boost active
+8052eef4	Running everything except pumps at 100%
+732c5446	BIOS control (pump monitoring continues)
+9903c467	Calculating only, not writing to the fans (pump protection still works). Start control with the button below
+138d15fc	Controlling (needs attention)
+9a955596	Some sensors can't be found (a part was replaced, etc.)
+cde39c73	Some sensors are stuck at the same value
+c347c56a	Controlling {0}
+cbfa5900	Start control (leave DRY RUN)
+559e78f2	Resume control
+f1198e29	Warning
+b47a04b8	Notice
+d3ec144f	Virtual ({0})
+f45a5a37	The hardware that was detected. Use the image button to replace a picture with your own photo, for example
+31e94c42	Set the relationship between temperature and speed for each fan. Changes are applied and saved immediately
+b5ccd0c3	Automatic diagnosis from the records and checks for dust and wear on the fans (AI advice is optional)
+2efbce3f	Applies load to create curves automatically or to measure how well the current settings cool
+73339fb8	Up to 24 hours of temperatures and speeds (excluding times the app was closed; before a restart, 1-minute averages)
+389ce2cc	Electricity cost estimate and problem records
+4bd55735	Lights the PC's LEDs to match temperature, rainbow, music and more through OpenRGB
+acea69f7	All temperatures, speeds and control channels detected on this PC, plus virtual sensors
+7626e5f7	Profiles, automatic switching, startup and overall control behavior
+d3bf5d86	DRY RUN was turned off. Starting fan control.
+7f6b69df	ProFanController watchdog
+0788f8eb	Rear
+c85ab318	Front
+0f616edd	Top
+0e616d4a	Bottom
+05b4fa72	Choose a location in the list below to show it here
+e210ecbe	Resonance bands
+38cc0a03	Now {0:F1}°C → {1:F0}%{2}
+56706c2f	 (about {0:N0} rpm)
+340bcb75	Installing on another screen…
+1581ae06	✔ PawnIO (the fan control driver) is installed. The fans can be controlled.
+487d0d7b	PawnIO has been installed, but a PC restart is needed to finish. After restarting the PC, the fans can be controlled.
+1f017018	PawnIO has been installed but isn't loaded yet. Restart the app to control the fans.
+2dcc9e2e	✖ PawnIO (the fan control driver) can't be found. As it is, only temperatures are shown and the fans can't be controlled.

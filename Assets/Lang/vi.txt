@@ -1400,3 +1400,103 @@ feb800ae	• Sẽ xóa {0} quy tắc tự chuyển theo ứng dụng
 f0b8e8cf	• "Yên tĩnh" bằng một chạm sẽ dùng "{0}"
 4f3910fa	\n\n(Có thể hủy bằng "Hoàn tác")
 04ce24e0	Xóa cấu hình "{0}"?{1}
+4ef180ea	Không tìm thấy ứng dụng có cửa sổ
+abe0a99c	Hãy chỉ định tên ứng dụng và cấu hình.
+24593a42	Hãy chọn hai cảm biến khác nhau cho A và B.
+92fd248d	Hãy chọn từ hai cảm biến trở lên.
+6e74e401	Đã tạo cảm biến ảo "{0}". Có thể chọn trong "Cảm biến nhiệt độ liên kết" ở màn hình Đường cong quạt.
+89cdb82c	"{0}" đang được dùng trong đường cong quạt. Nếu xóa, các đường cong đó sẽ coi là cảm biến bất thường (chạy tối đa). Xóa?
+82ed89f8	Xóa "{0}"?
+3be9c598	Đăng ký vào Task Scheduler thất bại. Hãy xem nhật ký.
+131665f4	Đã đăng ký tệp exe trong thư mục phát triển (bin\\Debug).\n
+28fcc4bc	Vị trí có thể thay đổi khi build lại, nên khuyên đăng ký lại từ tệp exe đã "xuất bản".
+9b94a7a0	Đã thiết lập xong. Nếu không ưng, có thể trở về cài đặt trước bằng "Hoàn tác" ở màn hình Đường cong quạt.
+31940460	Không đổi gói điện năng
+ef7d18bc	Theo Windows
+639ba182	Tối
+37141fb8	Sáng
+8f4f452a	Mặc định (Montserrat cho chữ Latinh, ProFan Maru cho tiếng Nhật)
+25ae07d9	ProFan Maru (phông tròn đi kèm)
+75788b92	Tự động (ngôn ngữ hiển thị của Windows)
+1755da21	Hơi nhạt
+79a677b2	Hơi đậm
+4bf63202	Đậm
+26559a27	Xám
+77d49f1b	Sắc độ {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Gần trắng
+33e39538	Nhạt
+ec6cb7af	Gần đen
+c53be0dd	Đã đổi ngôn ngữ hiển thị. Sẽ áp dụng khi khởi động lại ứng dụng.\nKhởi động lại ngay? (Trong lúc khởi động lại, quạt do BIOS điều khiển)
+3036c063	Không tìm thấy địa chỉ mạng của PC này
+f028972c	Không khởi động được máy chủ web. Hãy thử số cổng khác (chi tiết trong nhật ký)
+26d33196	Không tìm thấy PawnIO (driver điều khiển quạt). Như vậy chỉ hiển thị được nhiệt độ, không điều khiển được quạt.
+233ed082	 Có thể cài bằng một nút trong "An toàn & sao lưu" ở phần cài đặt.
+5d6faa41	Mở màn hình cài đặt
+f292e9e8	Hãy nhấn lại sau khi cài đặt PawnIO xong.
+302b3d1d	Đang kết nối Ollama…
+6b275359	Chưa có mô hình. Hãy tải một mô hình, ví dụ chạy "ollama pull qwen2.5:7b" trong PowerShell
+8b713e28	Không tìm thấy mô hình đã lưu "{0}" nên đã chuyển sang "{1}"
+5098c728	Tìm thấy {0} mô hình
+e234c1c6	Không kết nối được (Ollama đã chạy chưa?): {0}
+6ea85f7b	Không đọc được danh sách mô hình: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Nội dung gửi cho AI]\n\n
+9c8917d5	Hãy chọn mô hình bằng "Làm mới danh sách" trước
+30d9aac4	Bản ghi quá ít. Hãy dùng máy vài phút rồi chạy lại
+be68c30e	{0} đang phân tích… (lần đầu sẽ mất thời gian tải mô hình)
+3d4f2c52	Xong ({0:HH:mm})
+dea2940c	Đã dừng
+54fa54cb	Mô hình "{0}" không có trong Ollama. Hãy chọn lại bằng "Làm mới danh sách" hoặc chạy "ollama pull {1}" trong PowerShell
+d7dc8672	Lỗi: {0}
+3decf270	Đang chạy tự tinh chỉnh. Hãy bắt đầu sau khi xong.
+2ccbef69	Sẽ kiểm tra làm mát trong khoảng {0} phút.\n\n
+502399da	• Trong lúc kiểm tra CPU chạy hết công suất nên tiếng quạt sẽ lớn.\n
+c0d1c3f1	• Khi nhiệt độ CPU đạt {0:F0}°C, tải sẽ tự dừng.\n
+116f3e5c	• Hãy đóng các ứng dụng nặng khác trước.
+e8547f63	Hiện tại {0:F0}°C / cao nhất {1:F0}°C
+12cb32db	{0} (khi ổn định {1:F0}°C)
+555758d6	Đã kiểm tra làm mát xong: {0}
+8c1ed861	Lưu báo cáo kiểm tra làm mát
+73ba74aa	Văn bản (*.txt)|*.txt
+dab5f292	Hãy đánh giá kết quả lần kiểm tra làm mát gần nhất và đề xuất cách cải thiện cài đặt quạt.
+6451d704	Truy cập phần cứng: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Tệp cài đặt: {0}
+1ffe58b3	Nhiệt độ đã chạm giới hạn
+4eed19a9	Đang tăng tốc
+8052eef4	Mọi thứ trừ bơm đang chạy 100%
+732c5446	BIOS điều khiển (vẫn giám sát bơm)
+9903c467	Chỉ tính toán, không ghi vào quạt (bảo vệ bơm vẫn hoạt động). Bắt đầu điều khiển bằng nút bên dưới
+138d15fc	Đang điều khiển (cần kiểm tra)
+9a955596	Có cảm biến không tìm thấy (đã thay linh kiện…)
+cde39c73	Có cảm biến bị đứng giá trị
+c347c56a	Đang điều khiển {0}
+cbfa5900	Bắt đầu điều khiển (thoát DRY RUN)
+559e78f2	Tiếp tục điều khiển
+f1198e29	Cảnh báo
+b47a04b8	Thông báo
+d3ec144f	Ảo ({0})
+f45a5a37	Danh sách phần cứng đã phát hiện. Có thể thay hình bằng ảnh tự chụp… qua nút hình ảnh
+31e94c42	Đặt mối quan hệ giữa nhiệt độ và tốc độ cho từng quạt. Thay đổi được áp dụng và lưu ngay
+b5ccd0c3	Tự chẩn đoán từ bản ghi và kiểm tra bụi, độ xuống cấp của quạt (lời khuyên AI là tùy chọn)
+2efbce3f	Tạo tải để tự tạo đường cong hoặc đo xem cài đặt hiện tại làm mát được đến đâu
+73339fb8	Nhiệt độ và tốc độ tối đa 24 giờ (trừ lúc ứng dụng đóng; trước khi khởi động lại là trung bình mỗi phút)
+389ce2cc	Ước tính tiền điện · bản ghi sự cố
+4bd55735	Cho LED của PC sáng theo nhiệt độ, cầu vồng, âm nhạc… qua liên kết OpenRGB
+acea69f7	Mọi nhiệt độ, tốc độ, kênh điều khiển phát hiện trên PC này và cảm biến ảo
+7626e5f7	Cấu hình, tự động chuyển, cách khởi động và hoạt động chung của việc điều khiển
+d3bf5d86	Đã tắt DRY RUN. Đang bắt đầu điều khiển quạt.
+7f6b69df	Trình giám sát ProFanController
+0788f8eb	Mặt lưng
+c85ab318	Trước
+0f616edd	Trên
+0e616d4a	Dưới
+05b4fa72	Chọn vị trí trong danh sách bên dưới để hiển thị ở đây
+e210ecbe	Tránh cộng hưởng
+38cc0a03	Hiện tại {0:F1}°C → {1:F0}%{2}
+56706c2f	 (khoảng {0:N0} rpm)
+340bcb75	Đang cài ở màn hình khác…
+1581ae06	✔ PawnIO (driver điều khiển quạt) đã được cài. Có thể điều khiển quạt.
+487d0d7b	Đã cài PawnIO nhưng cần khởi động lại PC để hoàn tất. Sau khi khởi động lại PC, có thể điều khiển quạt.
+1f017018	Đã cài PawnIO nhưng chưa được nạp. Khởi động lại ứng dụng để điều khiển quạt.
+2dcc9e2e	✖ Không tìm thấy PawnIO (driver điều khiển quạt). Như vậy chỉ hiển thị được nhiệt độ, không điều khiển được quạt.

@@ -1400,3 +1400,103 @@ feb800ae	• Verranno eliminate {0} regole di cambio automatico per app
 f0b8e8cf	• Il «Silenzioso» con un tocco userà «{0}»
 4f3910fa	\n\n(Annullabile con «Annulla»)
 04ce24e0	Eliminare il profilo «{0}»?{1}
+4ef180ea	Nessuna app con finestra trovata
+abe0a99c	Indica un nome di app e un profilo.
+24593a42	Scegli sensori diversi per A e B.
+92fd248d	Scegli due o più sensori.
+6e74e401	Sensore virtuale «{0}» creato. Puoi sceglierlo in «Sensore di temperatura associato» nella schermata Curve ventole.
+89cdb82c	«{0}» è usato dalle curve delle ventole. Se lo elimini, quelle curve lo tratteranno come un guasto del sensore (massima velocità). Eliminarlo?
+82ed89f8	Eliminare «{0}»?
+3be9c598	Registrazione nell'Utilità di pianificazione non riuscita. Controlla il log.
+131665f4	È stato registrato l'exe della cartella di sviluppo (bin\\Debug).\n
+28fcc4bc	La sua posizione può cambiare quando ricompili, quindi è consigliabile registrarlo di nuovo da un exe «pubblicato».
+9b94a7a0	La configurazione è completata. Se non ti piace, puoi tornare alle impostazioni precedenti con «Annulla» nella schermata Curve ventole.
+31940460	Non cambiare la combinazione per il risparmio di energia
+ef7d18bc	Come Windows
+639ba182	Scuro
+37141fb8	Chiaro
+8f4f452a	Predefinito (Montserrat per l'alfabeto latino, ProFan Maru per il giapponese)
+25ae07d9	ProFan Maru (carattere arrotondato incluso)
+75788b92	Automatico (lingua di visualizzazione di Windows)
+1755da21	Un po' tenue
+79a677b2	Un po' intenso
+4bf63202	Intenso
+26559a27	Grigio
+77d49f1b	Tonalità {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Quasi bianco
+33e39538	Pallido
+ec6cb7af	Quasi nero
+c53be0dd	La lingua di visualizzazione è stata cambiata. Si applica al riavvio dell'app.\nRiavviare ora? (Durante il riavvio le ventole sono controllate dal BIOS)
+3036c063	Impossibile trovare l'indirizzo di rete di questo PC
+f028972c	Impossibile avviare il server web. Prova un altro numero di porta (dettagli nel log)
+26d33196	PawnIO (il driver per il controllo ventole) non trovato. Così vengono mostrate solo le temperature e le ventole non si possono controllare.
+233ed082	 Puoi installarlo con un clic da «Sicurezza e backup» nelle impostazioni.
+5d6faa41	Apri la schermata di installazione
+f292e9e8	Premi di nuovo al termine dell'installazione di PawnIO.
+302b3d1d	Connessione a Ollama…
+6b275359	Nessun modello. Scaricane uno, ad esempio con «ollama pull qwen2.5:7b» in PowerShell
+8b713e28	Il modello salvato «{0}» non è stato trovato, quindi si è passati a «{1}»
+5098c728	Trovati {0} modelli
+e234c1c6	Impossibile connettersi (Ollama è in esecuzione?): {0}
+6ea85f7b	Impossibile leggere l'elenco dei modelli: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Contenuto passato all'IA]\n\n
+9c8917d5	Scegli prima un modello con «Aggiorna elenco»
+30d9aac4	Troppe poche registrazioni. Usa il PC per qualche minuto e riprova
+be68c30e	{0} sta analizzando… (la prima volta il caricamento del modello richiede tempo)
+3d4f2c52	Completato ({0:HH:mm})
+dea2940c	Interrotto
+54fa54cb	Il modello «{0}» non è presente in Ollama. Scegline un altro con «Aggiorna elenco» o esegui «ollama pull {1}» in PowerShell
+d7dc8672	Errore: {0}
+3decf270	È in corso una regolazione automatica. Inizia al termine.
+2ccbef69	Verrà eseguito un test di raffreddamento di circa {0} minuti.\n\n
+502399da	• Durante il test la CPU lavora al massimo, quindi le ventole diventano rumorose.\n
+c0d1c3f1	• Se la temperatura della CPU raggiunge {0:F0} °C, il carico si ferma automaticamente.\n
+116f3e5c	• Chiudi prima le altre app pesanti.
+e8547f63	Ora {0:F0} °C / max {1:F0} °C
+12cb32db	{0} (stabile {1:F0} °C)
+555758d6	Test di raffreddamento terminato: {0}
+8c1ed861	Salva il rapporto del test di raffreddamento
+73ba74aa	Testo (*.txt)|*.txt
+dab5f292	Valuta i risultati dell'ultimo test di raffreddamento e suggerisci miglioramenti per le impostazioni delle ventole.
+6451d704	Accesso all'hardware: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	File di impostazioni: {0}
+1ffe58b3	La temperatura ha raggiunto il limite
+4eed19a9	Boost attivo
+8052eef4	Tutto tranne le pompe gira al 100%
+732c5446	Controllo del BIOS (il monitoraggio pompe continua)
+9903c467	Solo calcolo, senza scrivere sulle ventole (la protezione pompe funziona). Avvia il controllo con il pulsante qui sotto
+138d15fc	Controllo attivo (da verificare)
+9a955596	Alcuni sensori non sono stati trovati (componente sostituito, ecc.)
+cde39c73	Alcuni sensori sono bloccati sullo stesso valore
+c347c56a	{0} sotto controllo
+cbfa5900	Avvia il controllo (esci dal DRY RUN)
+559e78f2	Riprendi il controllo
+f1198e29	Avviso
+b47a04b8	Notifica
+d3ec144f	Virtuale ({0})
+f45a5a37	L'hardware rilevato. Con il pulsante dell'immagine puoi sostituirla, ad esempio con una tua foto
+31e94c42	Imposta per ogni ventola la relazione tra temperatura e velocità. Le modifiche vengono applicate e salvate subito
+b5ccd0c3	Diagnosi automatica dalle registrazioni e controllo di polvere e usura delle ventole (consigli dell'IA facoltativi)
+2efbce3f	Applica un carico per creare curve automaticamente o misurare quanto raffreddano le impostazioni attuali
+73339fb8	Fino a 24 ore di temperature e velocità (esclusi i periodi con l'app chiusa; prima di un riavvio, medie al minuto)
+389ce2cc	Stima del costo dell'elettricità e registrazioni delle anomalie
+4bd55735	Illumina i LED del PC in base a temperatura, arcobaleno, musica e altro tramite OpenRGB
+acea69f7	Tutte le temperature, velocità e canali di controllo rilevati su questo PC, più i sensori virtuali
+7626e5f7	Profili, cambio automatico, modalità di avvio e comportamento generale del controllo
+d3bf5d86	DRY RUN disattivato. Inizia il controllo delle ventole.
+7f6b69df	Sorveglianza ProFanController
+0788f8eb	Retro
+c85ab318	Fronte
+0f616edd	Sopra
+0e616d4a	Sotto
+05b4fa72	Scegli una posizione nell'elenco qui sotto per mostrarla qui
+e210ecbe	Bande di risonanza
+38cc0a03	Ora {0:F1} °C → {1:F0}%{2}
+56706c2f	 (circa {0:N0} rpm)
+340bcb75	Installazione in corso in un'altra schermata…
+1581ae06	✔ PawnIO (il driver per il controllo ventole) è installato. Le ventole si possono controllare.
+487d0d7b	PawnIO è stato installato, ma per completare serve un riavvio del PC. Dopo il riavvio sarà possibile controllare le ventole.
+1f017018	PawnIO è stato installato ma non è ancora caricato. Riavvia l'app per controllare le ventole.
+2dcc9e2e	✖ PawnIO (il driver per il controllo ventole) non trovato. Così vengono mostrate solo le temperature e le ventole non si possono controllare.

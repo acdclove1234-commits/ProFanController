@@ -1400,3 +1400,103 @@ feb800ae	• {0} Regeln zum automatischen Wechsel nach Apps werden gelöscht
 f0b8e8cf	• Das Schnelltasten-„Leise“ verwendet künftig „{0}“
 4f3910fa	\n\n(Mit „Rückgängig“ zurücknehmbar)
 04ce24e0	Profil „{0}“ löschen?{1}
+4ef180ea	Keine Apps mit Fenster gefunden
+abe0a99c	Geben Sie einen App-Namen und ein Profil an.
+24593a42	Wählen Sie für A und B verschiedene Sensoren.
+92fd248d	Wählen Sie zwei oder mehr Sensoren.
+6e74e401	Virtueller Sensor „{0}“ erstellt. Sie können ihn auf der Seite Lüfterkurven unter „Zugeordneter Temperatursensor“ wählen.
+89cdb82c	„{0}“ wird von Lüfterkurven verwendet. Wenn Sie ihn löschen, behandeln diese Kurven ihn als Sensorfehler (volle Drehzahl). Löschen?
+82ed89f8	„{0}“ löschen?
+3be9c598	Die Registrierung in der Aufgabenplanung ist fehlgeschlagen. Prüfen Sie das Protokoll.
+131665f4	Die exe im Entwicklungsordner (bin\\Debug) wurde registriert.\n
+28fcc4bc	Beim Neuerstellen kann sich der Ort ändern, daher empfiehlt es sich, mit einer veröffentlichten exe neu zu registrieren.
+9b94a7a0	Die Einrichtung ist abgeschlossen. Wenn sie Ihnen nicht gefällt, gelangen Sie mit „Rückgängig“ auf der Seite Lüfterkurven zu den vorherigen Einstellungen zurück.
+31940460	Energieplan nicht ändern
+ef7d18bc	Wie Windows
+639ba182	Dunkel
+37141fb8	Hell
+8f4f452a	Standard (Montserrat für lateinische Schrift, ProFan Maru für Japanisch)
+25ae07d9	ProFan Maru (mitgelieferte runde Schrift)
+75788b92	Automatisch (Windows-Anzeigesprache)
+1755da21	Etwas dezenter
+79a677b2	Etwas kräftiger
+4bf63202	Kräftig
+26559a27	Grau
+77d49f1b	Farbton {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Fast weiß
+33e39538	Blass
+ec6cb7af	Fast schwarz
+c53be0dd	Die Anzeigesprache wurde geändert. Sie wird nach einem Neustart der App übernommen.\nJetzt neu starten? (Während des Neustarts steuert das BIOS die Lüfter)
+3036c063	Die Netzwerkadresse dieses PCs wurde nicht gefunden
+f028972c	Der Webserver konnte nicht gestartet werden. Versuchen Sie eine andere Portnummer (Details im Protokoll)
+26d33196	PawnIO (der Treiber für die Lüftersteuerung) wurde nicht gefunden. So werden nur Temperaturen angezeigt, die Lüfter lassen sich nicht steuern.
+233ed082	 Unter „Sicherheit & Sicherung“ in den Einstellungen lässt es sich mit einem Klick installieren.
+5d6faa41	Installationsseite öffnen
+f292e9e8	Klicken Sie erneut, wenn die Installation von PawnIO abgeschlossen ist.
+302b3d1d	Verbindung zu Ollama wird hergestellt…
+6b275359	Keine Modelle. Laden Sie eines, z. B. mit „ollama pull qwen2.5:7b“ in PowerShell
+8b713e28	Das gespeicherte Modell „{0}“ wurde nicht gefunden, daher wurde zu „{1}“ gewechselt
+5098c728	{0} Modelle gefunden
+e234c1c6	Keine Verbindung (läuft Ollama?): {0}
+6ea85f7b	Die Modellliste konnte nicht gelesen werden: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[An die KI übergebener Inhalt]\n\n
+9c8917d5	Wählen Sie zuerst mit „Liste aktualisieren“ ein Modell
+30d9aac4	Zu wenige Aufzeichnungen. Nutzen Sie den PC ein paar Minuten und starten Sie dann erneut
+be68c30e	{0} analysiert… (beim ersten Mal dauert das Laden des Modells etwas)
+3d4f2c52	Fertig ({0:HH:mm})
+dea2940c	Gestoppt
+54fa54cb	Das Modell „{0}“ ist nicht in Ollama. Wählen Sie mit „Liste aktualisieren“ neu oder führen Sie „ollama pull {1}“ in PowerShell aus
+d7dc8672	Fehler: {0}
+3decf270	Eine automatische Abstimmung läuft. Starten Sie, wenn sie beendet ist.
+2ccbef69	Ein Kühltest läuft etwa {0} Minuten.\n\n
+502399da	• Während des Tests läuft die CPU mit voller Leistung, daher werden die Lüfter laut.\n
+c0d1c3f1	• Erreicht die CPU-Temperatur {0:F0} °C, wird die Last automatisch beendet.\n
+116f3e5c	• Schließen Sie vorher andere aufwendige Apps.
+e8547f63	Aktuell {0:F0} °C / max. {1:F0} °C
+12cb32db	{0} (stabil {1:F0} °C)
+555758d6	Kühltest beendet: {0}
+8c1ed861	Bericht des Kühltests speichern
+73ba74aa	Text (*.txt)|*.txt
+dab5f292	Bewerte die Ergebnisse des letzten Kühltests und schlage Verbesserungen für die Lüftereinstellungen vor.
+6451d704	Hardwarezugriff: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Einstellungsdatei: {0}
+1ffe58b3	Die Temperatur hat ihre Grenze erreicht
+4eed19a9	Boost aktiv
+8052eef4	Alles außer Pumpen läuft mit 100 %
+732c5446	BIOS-Steuerung (Pumpenüberwachung läuft weiter)
+9903c467	Nur Berechnung, keine Ausgabe an die Lüfter (Pumpenschutz wirkt). Mit der Schaltfläche unten starten Sie die Steuerung
+138d15fc	Steuerung aktiv (bitte prüfen)
+9a955596	Einige Sensoren wurden nicht gefunden (Bauteil getauscht usw.)
+cde39c73	Einige Sensoren hängen auf demselben Wert
+c347c56a	{0} werden gesteuert
+cbfa5900	Steuerung starten (DRY RUN beenden)
+559e78f2	Steuerung fortsetzen
+f1198e29	Warnung
+b47a04b8	Hinweis
+d3ec144f	Virtuell ({0})
+f45a5a37	Die erkannte Hardware. Über die Bildschaltfläche können Sie ein Bild z. B. durch ein eigenes Foto ersetzen
+31e94c42	Legen Sie für jeden Lüfter fest, wie die Drehzahl von der Temperatur abhängt. Änderungen werden sofort übernommen und gespeichert
+b5ccd0c3	Automatische Diagnose aus den Aufzeichnungen und Prüfung der Lüfter auf Staub und Verschleiß (KI-Rat optional)
+2efbce3f	Belastet das System, um Kurven automatisch zu erstellen oder zu messen, wie gut die aktuellen Einstellungen kühlen
+73339fb8	Bis zu 24 Stunden Temperaturen und Drehzahlen (ohne Zeiten, in denen die App geschlossen war; vor einem Neustart Minutenmittel)
+389ce2cc	Stromkostenschätzung und Fehleraufzeichnungen
+4bd55735	Lässt die LEDs des PCs über OpenRGB passend zu Temperatur, Regenbogen, Musik usw. leuchten
+acea69f7	Alle auf diesem PC erkannten Temperaturen, Drehzahlen und Steuerkanäle sowie virtuelle Sensoren
+7626e5f7	Profile, automatischer Wechsel, Startart und Verhalten der gesamten Steuerung
+d3bf5d86	DRY RUN wurde beendet. Die Lüftersteuerung startet.
+7f6b69df	ProFanController-Wächter
+0788f8eb	Hinten
+c85ab318	Vorn
+0f616edd	Oben
+0e616d4a	Unten
+05b4fa72	Wählen Sie in der Liste unten einen Ort, dann wird er hier angezeigt
+e210ecbe	Resonanzbereiche
+38cc0a03	Aktuell {0:F1} °C → {1:F0} %{2}
+56706c2f	 (etwa {0:N0} rpm)
+340bcb75	Installation läuft auf einer anderen Seite…
+1581ae06	✔ PawnIO (der Treiber für die Lüftersteuerung) ist installiert. Die Lüfter lassen sich steuern.
+487d0d7b	PawnIO wurde installiert, zum Abschluss ist aber ein Neustart des PCs nötig. Nach dem Neustart lassen sich die Lüfter steuern.
+1f017018	PawnIO wurde installiert, ist aber noch nicht geladen. Starten Sie die App neu, um die Lüfter zu steuern.
+2dcc9e2e	✖ PawnIO (der Treiber für die Lüftersteuerung) wurde nicht gefunden. So werden nur Temperaturen angezeigt, die Lüfter lassen sich nicht steuern.

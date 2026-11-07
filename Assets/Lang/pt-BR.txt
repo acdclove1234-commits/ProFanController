@@ -1400,3 +1400,103 @@ feb800ae	• {0} regras de troca automática por app serão excluídas
 f0b8e8cf	• O "Silencioso" de um toque passará a usar "{0}"
 4f3910fa	\n\n(Dá para desfazer com "Desfazer")
 04ce24e0	Excluir o perfil "{0}"?{1}
+4ef180ea	Nenhum app com janela encontrado
+abe0a99c	Informe um nome de app e um perfil.
+24593a42	Escolha sensores diferentes para A e B.
+92fd248d	Escolha dois ou mais sensores.
+6e74e401	Sensor virtual "{0}" criado. Você pode escolhê-lo em "Sensor de temperatura associado" na tela Curvas das ventoinhas.
+89cdb82c	"{0}" é usado por curvas de ventoinhas. Se excluí-lo, essas curvas o tratarão como falha de sensor (velocidade máxima). Excluir?
+82ed89f8	Excluir "{0}"?
+3be9c598	Falha ao registrar no Agendador de Tarefas. Verifique o log.
+131665f4	O exe da pasta de desenvolvimento (bin\\Debug) foi registrado.\n
+28fcc4bc	O local pode mudar ao recompilar, por isso é recomendável registrar de novo a partir de um exe "publicado".
+9b94a7a0	A configuração foi concluída. Se não gostar, dá para voltar às configurações anteriores com "Desfazer" na tela Curvas das ventoinhas.
+31940460	Não mudar o plano de energia
+ef7d18bc	Igual ao Windows
+639ba182	Escuro
+37141fb8	Claro
+8f4f452a	Padrão (Montserrat para o alfabeto latino, ProFan Maru para o japonês)
+25ae07d9	ProFan Maru (fonte arredondada incluída)
+75788b92	Automático (idioma de exibição do Windows)
+1755da21	Um pouco suave
+79a677b2	Um pouco forte
+4bf63202	Forte
+26559a27	Cinza
+77d49f1b	Matiz {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Quase branco
+33e39538	Pálido
+ec6cb7af	Quase preto
+c53be0dd	O idioma de exibição foi alterado. Ele muda quando o app reinicia.\nReiniciar agora? (Durante a reinicialização, a BIOS controla as ventoinhas)
+3036c063	O endereço de rede deste PC não foi encontrado
+f028972c	Não foi possível iniciar o servidor web. Tente outro número de porta (há detalhes no log)
+26d33196	O PawnIO (o driver de controle das ventoinhas) não foi encontrado. Assim, só as temperaturas são exibidas e as ventoinhas não podem ser controladas.
+233ed082	 Dá para instalar com um clique em "Segurança e backup" nas configurações.
+5d6faa41	Abrir a tela de instalação
+f292e9e8	Clique de novo depois que a instalação do PawnIO terminar.
+302b3d1d	Conectando ao Ollama…
+6b275359	Não há modelos. Baixe um, por exemplo com "ollama pull qwen2.5:7b" no PowerShell
+8b713e28	O modelo salvo "{0}" não foi encontrado, então mudou para "{1}"
+5098c728	{0} modelos encontrados
+e234c1c6	Não é possível conectar (o Ollama está em execução?): {0}
+6ea85f7b	Não foi possível ler a lista de modelos: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Conteúdo passado à IA]\n\n
+9c8917d5	Escolha um modelo em "Atualizar lista" primeiro
+30d9aac4	Há poucos registros. Use o PC por alguns minutos e execute de novo
+be68c30e	{0} está analisando… (na primeira vez, carregar o modelo demora)
+3d4f2c52	Concluído ({0:HH:mm})
+dea2940c	Parado
+54fa54cb	O modelo "{0}" não está no Ollama. Escolha de novo em "Atualizar lista" ou execute "ollama pull {1}" no PowerShell
+d7dc8672	Erro: {0}
+3decf270	Há um ajuste automático em andamento. Comece depois que terminar.
+2ccbef69	Será feito um teste de resfriamento de cerca de {0} minutos.\n\n
+502399da	• Durante o teste a CPU trabalha no máximo, então as ventoinhas ficam barulhentas.\n
+c0d1c3f1	• Se a temperatura da CPU chegar a {0:F0} °C, a carga para automaticamente.\n
+116f3e5c	• Feche antes outros apps pesados.
+e8547f63	Agora {0:F0} °C / máx {1:F0} °C
+12cb32db	{0} (estável {1:F0} °C)
+555758d6	O teste de resfriamento terminou: {0}
+8c1ed861	Salvar o relatório do teste de resfriamento
+73ba74aa	Texto (*.txt)|*.txt
+dab5f292	Avalie os resultados do último teste de resfriamento e sugira melhorias para as configurações das ventoinhas.
+6451d704	Acesso ao hardware: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Arquivo de configuração: {0}
+1ffe58b3	A temperatura chegou ao limite
+4eed19a9	Boost ativo
+8052eef4	Tudo menos as bombas está em 100%
+732c5446	Controle da BIOS (o monitoramento das bombas continua)
+9903c467	Só calcula, sem gravar nas ventoinhas (a proteção das bombas funciona). Inicie o controle com o botão abaixo
+138d15fc	Controlando (verificar)
+9a955596	Alguns sensores não foram encontrados (troca de peças etc.)
+cde39c73	Alguns sensores estão com o valor travado
+c347c56a	Controlando {0}
+cbfa5900	Iniciar controle (sair do DRY RUN)
+559e78f2	Retomar controle
+f1198e29	Aviso
+b47a04b8	Notificação
+d3ec144f	Virtual ({0})
+f45a5a37	O hardware detectado. Com o botão de imagem você pode trocar a imagem, por exemplo, por uma foto sua
+31e94c42	Defina para cada ventoinha a relação entre temperatura e rotação. As alterações são aplicadas e salvas na hora
+b5ccd0c3	Diagnóstico automático a partir dos registros e verificação de poeira e desgaste das ventoinhas (conselhos de IA opcionais)
+2efbce3f	Aplica carga para criar curvas automaticamente ou medir o quanto as configurações atuais resfriam
+73339fb8	Até 24 horas de temperaturas e rotações (sem os períodos com o app fechado; antes de reiniciar, médias por minuto)
+389ce2cc	Estimativa do custo de energia e registros de falhas
+4bd55735	Acende os LEDs do PC conforme a temperatura, em arco-íris, com a música etc., pelo OpenRGB
+acea69f7	Todas as temperaturas, rotações e canais de controle detectados neste PC, além dos sensores virtuais
+7626e5f7	Perfis, troca automática, forma de iniciar e comportamento geral do controle
+d3bf5d86	O DRY RUN foi desativado. Iniciando o controle das ventoinhas.
+7f6b69df	Vigia do ProFanController
+0788f8eb	Traseira
+c85ab318	Frente
+0f616edd	Topo
+0e616d4a	Base
+05b4fa72	Escolha um local na lista abaixo para exibi-lo aqui
+e210ecbe	Faixas de ressonância
+38cc0a03	Agora {0:F1} °C → {1:F0}%{2}
+56706c2f	 (cerca de {0:N0} rpm)
+340bcb75	Instalando em outra tela…
+1581ae06	✔ O PawnIO (o driver de controle das ventoinhas) está instalado. As ventoinhas podem ser controladas.
+487d0d7b	O PawnIO foi instalado, mas para concluir é preciso reiniciar o PC. Depois de reiniciar o PC, as ventoinhas poderão ser controladas.
+1f017018	O PawnIO foi instalado, mas ainda não foi carregado. Reinicie o app para controlar as ventoinhas.
+2dcc9e2e	✖ O PawnIO (o driver de controle das ventoinhas) não foi encontrado. Assim, só as temperaturas são exibidas e as ventoinhas não podem ser controladas.

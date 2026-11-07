@@ -1400,3 +1400,103 @@ feb800ae	• Zostaną usunięte reguły automatycznego przełączania dla aplika
 f0b8e8cf	• „Cichy” z szybkich akcji będzie używać „{0}”
 4f3910fa	\n\n(Można cofnąć przyciskiem „Cofnij”)
 04ce24e0	Usunąć profil „{0}”?{1}
+4ef180ea	Nie znaleziono aplikacji z oknem
+abe0a99c	Podaj nazwę aplikacji i profil.
+24593a42	Wybierz różne czujniki dla A i B.
+92fd248d	Wybierz co najmniej dwa czujniki.
+6e74e401	Utworzono czujnik wirtualny „{0}”. Można go wybrać w „Powiązany czujnik temperatury” na ekranie Krzywe wentylatorów.
+89cdb82c	„{0}” jest używany przez krzywe wentylatorów. Po usunięciu te krzywe uznają go za usterkę czujnika (pełna prędkość). Usunąć?
+82ed89f8	Usunąć „{0}”?
+3be9c598	Nie udało się zarejestrować w Harmonogramie zadań. Sprawdź dziennik.
+131665f4	Zarejestrowano exe z folderu deweloperskiego (bin\\Debug).\n
+28fcc4bc	Po ponownym zbudowaniu lokalizacja może się zmienić, dlatego zalecamy ponowną rejestrację z „opublikowanego” exe.
+9b94a7a0	Konfiguracja zakończona. Jeśli się nie podoba, wrócisz do poprzednich ustawień przyciskiem „Cofnij” na ekranie Krzywe wentylatorów.
+31940460	Nie zmieniaj planu zasilania
+ef7d18bc	Jak w Windows
+639ba182	Ciemny
+37141fb8	Jasny
+8f4f452a	Domyślna (Montserrat dla alfabetu łacińskiego, ProFan Maru dla japońskiego)
+25ae07d9	ProFan Maru (dołączona zaokrąglona czcionka)
+75788b92	Automatycznie (język wyświetlania Windows)
+1755da21	Nieco delikatniej
+79a677b2	Nieco mocniej
+4bf63202	Mocno
+26559a27	Szary
+77d49f1b	Odcień {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Prawie biały
+33e39538	Blady
+ec6cb7af	Prawie czarny
+c53be0dd	Zmieniono język wyświetlania. Zostanie zastosowany po ponownym uruchomieniu aplikacji.\nUruchomić ponownie teraz? (Podczas ponownego uruchamiania wentylatorami steruje BIOS)
+3036c063	Nie można znaleźć adresu sieciowego tego komputera
+f028972c	Nie udało się uruchomić serwera WWW. Spróbuj innego numeru portu (szczegóły w dzienniku)
+26d33196	Nie znaleziono PawnIO (sterownika do sterowania wentylatorami). W tym stanie wyświetlane są tylko temperatury, a wentylatorami nie można sterować.
+233ed082	 Można go zainstalować jednym przyciskiem w „Bezpieczeństwo i kopie zapasowe” w ustawieniach.
+5d6faa41	Otwórz ekran instalacji
+f292e9e8	Naciśnij ponownie po zakończeniu instalacji PawnIO.
+302b3d1d	Łączenie z Ollama…
+6b275359	Brak modeli. Pobierz model, np. poleceniem „ollama pull qwen2.5:7b” w PowerShell
+8b713e28	Nie znaleziono zapisanego modelu „{0}”, więc przełączono na „{1}”
+5098c728	Znaleziono modele: {0}
+e234c1c6	Nie można połączyć (czy Ollama działa?): {0}
+6ea85f7b	Nie udało się odczytać listy modeli: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Treść przekazywana do AI]\n\n
+9c8917d5	Najpierw wybierz model przyciskiem „Odśwież listę”
+30d9aac4	Za mało zapisów. Używaj komputera przez kilka minut i uruchom ponownie
+be68c30e	{0} analizuje… (za pierwszym razem wczytanie modelu trwa dłużej)
+3d4f2c52	Gotowe ({0:HH:mm})
+dea2940c	Zatrzymano
+54fa54cb	Modelu „{0}” nie ma w Ollama. Wybierz ponownie przyciskiem „Odśwież listę” albo uruchom w PowerShell „ollama pull {1}”
+d7dc8672	Błąd: {0}
+3decf270	Trwa automatyczne strojenie. Zacznij po jego zakończeniu.
+2ccbef69	Test chłodzenia potrwa około {0} min.\n\n
+502399da	• Podczas testu CPU pracuje z pełną mocą, więc wentylatory będą głośniejsze.\n
+c0d1c3f1	• Gdy temperatura CPU osiągnie {0:F0}°C, obciążenie zatrzyma się automatycznie.\n
+116f3e5c	• Zamknij wcześniej inne ciężkie aplikacje.
+e8547f63	Teraz {0:F0}°C / maks {1:F0}°C
+12cb32db	{0} (stabilnie {1:F0}°C)
+555758d6	Test chłodzenia zakończony: {0}
+8c1ed861	Zapisz raport testu chłodzenia
+73ba74aa	Tekst (*.txt)|*.txt
+dab5f292	Oceń wyniki ostatniego testu chłodzenia i zaproponuj ulepszenia ustawień wentylatorów.
+6451d704	Dostęp do sprzętu: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Plik ustawień: {0}
+1ffe58b3	Temperatura osiągnęła limit
+4eed19a9	Boost aktywny
+8052eef4	Wszystko oprócz pomp pracuje na 100%
+732c5446	Sterowanie BIOS (monitorowanie pomp trwa)
+9903c467	Tylko obliczenia, bez zapisu do wentylatorów (ochrona pomp działa). Uruchom sterowanie przyciskiem poniżej
+138d15fc	Sterowanie (wymaga uwagi)
+9a955596	Nie znaleziono niektórych czujników (wymiana części itp.)
+cde39c73	Niektóre czujniki mają zamrożoną wartość
+c347c56a	Sterowane: {0}
+cbfa5900	Rozpocznij sterowanie (wyłącz DRY RUN)
+559e78f2	Wznów sterowanie
+f1198e29	Ostrzeżenie
+b47a04b8	Powiadomienie
+d3ec144f	Wirtualny ({0})
+f45a5a37	Wykryty sprzęt. Przyciskiem obrazu można podmienić obraz, np. na własne zdjęcie
+31e94c42	Ustaw dla każdego wentylatora zależność obrotów od temperatury. Zmiany są od razu stosowane i zapisywane
+b5ccd0c3	Automatyczna diagnoza z zapisów i kontrola kurzu oraz zużycia wentylatorów (porady AI opcjonalnie)
+2efbce3f	Obciąża system, by automatycznie tworzyć krzywe lub mierzyć, jak dobrze chłodzą bieżące ustawienia
+73339fb8	Do 24 godzin temperatur i obrotów (bez okresów, gdy aplikacja była zamknięta; przed ponownym uruchomieniem średnie minutowe)
+389ce2cc	Szacunkowy koszt energii i zapisy awarii
+4bd55735	Przez OpenRGB podświetla diody komputera zależnie od temperatury, tęczą, w rytm muzyki itd.
+acea69f7	Wszystkie temperatury, obroty i kanały sterowania wykryte na tym komputerze oraz czujniki wirtualne
+7626e5f7	Profile, automatyczne przełączanie, sposób uruchamiania i ogólne działanie sterowania
+d3bf5d86	Wyłączono DRY RUN. Rozpoczyna się sterowanie wentylatorami.
+7f6b69df	Strażnik ProFanController
+0788f8eb	Tył
+c85ab318	Przód
+0f616edd	Góra
+0e616d4a	Dół
+05b4fa72	Wybierz miejsce z listy poniżej, a pojawi się tutaj
+e210ecbe	Pasy rezonansu
+38cc0a03	Teraz {0:F1}°C → {1:F0}%{2}
+56706c2f	 (około {0:N0} rpm)
+340bcb75	Instalacja trwa na innym ekranie…
+1581ae06	✔ PawnIO (sterownik do sterowania wentylatorami) jest zainstalowane. Można sterować wentylatorami.
+487d0d7b	PawnIO zostało zainstalowane, ale na koniec wymagany jest restart komputera. Po restarcie będzie można sterować wentylatorami.
+1f017018	PawnIO zostało zainstalowane, ale nie jest jeszcze wczytane. Uruchom aplikację ponownie, aby sterować wentylatorami.
+2dcc9e2e	✖ Nie znaleziono PawnIO (sterownika do sterowania wentylatorami). W tym stanie wyświetlane są tylko temperatury, a wentylatorami nie można sterować.

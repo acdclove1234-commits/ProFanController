@@ -1400,3 +1400,103 @@ feb800ae	• Se eliminarán {0} reglas de cambio automático por aplicación
 f0b8e8cf	• El «Silencioso» de un toque usará «{0}»
 4f3910fa	\n\n(Se puede deshacer con «Deshacer»)
 04ce24e0	¿Eliminar el perfil «{0}»?{1}
+4ef180ea	No se encontraron aplicaciones con ventana
+abe0a99c	Indique un nombre de aplicación y un perfil.
+24593a42	Elija sensores distintos para A y B.
+92fd248d	Elija dos o más sensores.
+6e74e401	Se creó el sensor virtual «{0}». Puede elegirlo en «Sensor de temperatura asociado» de la pantalla Curvas de ventiladores.
+89cdb82c	«{0}» lo usan curvas de ventiladores. Si lo elimina, esas curvas lo tratarán como un fallo de sensor (velocidad máxima). ¿Eliminarlo?
+82ed89f8	¿Eliminar «{0}»?
+3be9c598	No se pudo registrar en el Programador de tareas. Revise el registro.
+131665f4	Se registró el exe de la carpeta de desarrollo (bin\\Debug).\n
+28fcc4bc	Su ubicación puede cambiar al recompilar, así que se recomienda volver a registrarlo desde un exe «publicado».
+9b94a7a0	La configuración ha terminado. Si no le gusta, puede volver a los ajustes anteriores con «Deshacer» en la pantalla Curvas de ventiladores.
+31940460	No cambiar el plan de energía
+ef7d18bc	Igual que Windows
+639ba182	Oscuro
+37141fb8	Claro
+8f4f452a	Predeterminada (Montserrat para el alfabeto latino, ProFan Maru para el japonés)
+25ae07d9	ProFan Maru (fuente redondeada incluida)
+75788b92	Automático (idioma de Windows)
+1755da21	Algo suave
+79a677b2	Algo intenso
+4bf63202	Intenso
+26559a27	Gris
+77d49f1b	Tono {0}°
+c96a6fad	{0} · {1}
+3e7b80f4	Casi blanco
+33e39538	Pálido
+ec6cb7af	Casi negro
+c53be0dd	Se cambió el idioma de la interfaz. Se aplica al reiniciar la aplicación.\n¿Reiniciar ahora? (Mientras se reinicia, la BIOS controla los ventiladores)
+3036c063	No se encuentra la dirección de red de este PC
+f028972c	No se pudo iniciar el servidor web. Pruebe con otro número de puerto (hay detalles en el registro)
+26d33196	No se encuentra PawnIO (el controlador para controlar ventiladores). Así solo se muestran temperaturas y no se pueden controlar los ventiladores.
+233ed082	 Puede instalarlo con un botón desde «Seguridad y copia de seguridad» en Ajustes.
+5d6faa41	Abrir la pantalla de instalación
+f292e9e8	Vuelva a pulsar cuando termine la instalación de PawnIO.
+302b3d1d	Conectando con Ollama…
+6b275359	No hay modelos. Descargue uno, por ejemplo con «ollama pull qwen2.5:7b» en PowerShell
+8b713e28	No se encontró el modelo guardado «{0}», así que se cambió a «{1}»
+5098c728	Se encontraron {0} modelos
+e234c1c6	No se puede conectar (¿está Ollama en marcha?): {0}
+6ea85f7b	No se pudo leer la lista de modelos: {0}
+7577135d	{0}: {1} ({2})
+490ac71b	[Contenido que se pasa a la IA]\n\n
+9c8917d5	Primero elija un modelo con «Actualizar lista»
+30d9aac4	Hay muy pocos registros. Use el PC unos minutos y vuelva a ejecutarlo
+be68c30e	{0} está analizando… (la primera vez, cargar el modelo tarda un poco)
+3d4f2c52	Terminado ({0:HH:mm})
+dea2940c	Detenido
+54fa54cb	El modelo «{0}» no está en Ollama. Elija otro con «Actualizar lista» o ejecute «ollama pull {1}» en PowerShell
+d7dc8672	Error: {0}
+3decf270	Hay un ajuste automático en curso. Empiece cuando termine.
+2ccbef69	Se hará una prueba de refrigeración de unos {0} minutos.\n\n
+502399da	• Durante la prueba la CPU trabaja al máximo, así que los ventiladores harán más ruido.\n
+c0d1c3f1	• Si la temperatura de la CPU llega a {0:F0} °C, la carga se detiene automáticamente.\n
+116f3e5c	• Cierre antes otras aplicaciones pesadas.
+e8547f63	Ahora {0:F0} °C / máx {1:F0} °C
+12cb32db	{0} (estable {1:F0} °C)
+555758d6	Terminó la prueba de refrigeración: {0}
+8c1ed861	Guardar el informe de la prueba de refrigeración
+73ba74aa	Texto (*.txt)|*.txt
+dab5f292	Evalúa los resultados de la última prueba de refrigeración y sugiere mejoras para los ajustes de los ventiladores.
+6451d704	Acceso al hardware: LibreHardwareMonitor + PawnIO\n
+6c7b6a5b	Archivo de ajustes: {0}
+1ffe58b3	La temperatura ha llegado al límite
+4eed19a9	Impulso activo
+8052eef4	Todo salvo las bombas gira al 100 %
+732c5446	Control de la BIOS (sigue la vigilancia de bombas)
+9903c467	Solo calcula, sin escribir en los ventiladores (la protección de bombas funciona). Inicie el control con el botón de abajo
+138d15fc	Controlando (requiere atención)
+9a955596	Algunos sensores no se encuentran (cambio de piezas, etc.)
+cde39c73	Algunos sensores tienen el valor congelado
+c347c56a	Controlando {0}
+cbfa5900	Iniciar control (salir de DRY RUN)
+559e78f2	Reanudar control
+f1198e29	Advertencia
+b47a04b8	Aviso
+d3ec144f	Virtual ({0})
+f45a5a37	Hardware detectado. Con el botón de imagen puede sustituirla, por ejemplo, por una foto propia
+31e94c42	Defina para cada ventilador la relación entre temperatura y velocidad. Los cambios se aplican y guardan al instante
+b5ccd0c3	Diagnóstico automático a partir de los registros y comprobación de polvo y desgaste de los ventiladores (consejos de IA opcionales)
+2efbce3f	Aplica carga para crear curvas automáticamente o medir cuánto enfrían los ajustes actuales
+73339fb8	Hasta 24 horas de temperaturas y velocidades (sin el tiempo con la aplicación cerrada; antes de un reinicio, medias por minuto)
+389ce2cc	Estimación del coste eléctrico y registros de fallos
+4bd55735	Ilumina los LED del PC según la temperatura, en arcoíris, al ritmo de la música, etc., mediante OpenRGB
+acea69f7	Todas las temperaturas, velocidades y canales de control detectados en este PC, además de los sensores virtuales
+7626e5f7	Perfiles, cambio automático, forma de inicio y comportamiento general del control
+d3bf5d86	Se desactivó el DRY RUN. Empieza el control de ventiladores.
+7f6b69df	Vigilante de ProFanController
+0788f8eb	Trasera
+c85ab318	Delante
+0f616edd	Arriba
+0e616d4a	Abajo
+05b4fa72	Elija un lugar en la lista de abajo para mostrarlo aquí
+e210ecbe	Franjas de resonancia
+38cc0a03	Ahora {0:F1} °C → {1:F0} %{2}
+56706c2f	 (unas {0:N0} rpm)
+340bcb75	Instalando en otra pantalla…
+1581ae06	✔ PawnIO (el controlador para controlar ventiladores) está instalado. Se pueden controlar los ventiladores.
+487d0d7b	PawnIO se instaló, pero para terminar hay que reiniciar el PC. Tras reiniciar el PC, se podrán controlar los ventiladores.
+1f017018	PawnIO se instaló, pero aún no se ha cargado. Reinicie la aplicación para controlar los ventiladores.
+2dcc9e2e	✖ No se encuentra PawnIO (el controlador para controlar ventiladores). Así solo se muestran temperaturas y no se pueden controlar los ventiladores.
