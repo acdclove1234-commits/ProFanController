@@ -509,3 +509,103 @@ a4de3937	Thoát ứng dụng và khởi động lại ngay (trong vài giây đ�
 7d0ab5b6	Mở trang chính thức (pawnio.eu)
 2b7f4cbf	Nếu không dùng được winget, hãy tải trình cài đặt từ trang chính thức và chạy nó
 e6974b1a	Kiểm tra lại
+1e39d435	Hãy nhấn sau khi đã cài bằng cách khác (như trình cài đặt trên trang chính thức)
+d5c6d032	Cấu hình cần nhập
+9d520d5c	Thay thế cấu hình trùng tên
+6751ee1b	Khi tắt, sẽ được thêm với tên như "Tiêu chuẩn (đã nhập)" (cài đặt hiện tại vẫn giữ)
+301f7b07	Cổng quạt
+cb0aedd5	Cảm biến nhiệt độ
+772bcb56	Thiết lập lại từ đầu bằng trình hướng dẫn
+1c166250	Để sau
+381b7b8a	Thay thế và áp dụng
+65d960e8	Thiết lập - ProFanController
+f918c02e	1  Chào mừng
+38684fb3	2  Nhận diện cổng
+76236dbf	3  Phương án làm mát
+b303c749	4  Hoàn tất
+99a4e0cb	Chào mừng đến với ProFanController
+26578394	Trình hướng dẫn này kiểm tra những gì được cắm vào các cổng quạt trên bo mạch chủ,\nrồi tự tạo đường cong quạt và các cấu hình (Yên tĩnh / Tiêu chuẩn / Hiệu năng) phù hợp với PC của bạn.
+80f88c90	Chuẩn bị
+b1838111	• Hãy ở cạnh thùng máy để nghe và thấy quạt quay.\n• Hãy tắt các tác vụ nặng (như game).\n• Cài đặt hiện tại sẽ bị ghi đè, nhưng sau khi xong có thể quay lại bằng "Hoàn tác".
+90560324	Nhận diện cổng quạt
+68879f49	Nhấn "Kiểm tra" sẽ cho cổng đó chạy tối đa trong 8 giây. Xem quạt nào quay nhanh lên rồi đặt tên và loại cho nó. Cổng 0 rpm là không cắm gì.
+5c41906d	Không dùng
+63d8f556	Quạt này quay theo nhiệt độ nào
+7f1db4e4	Theo CPU
+6e1fb818	Theo GPU
+78e6a15b	CPU và GPU
+fdc10db0	Phương án làm mát
+78757193	Cả ba cấu hình đều được tạo. Hãy chọn cấu hình dùng thường ngày ở đây; sau này có thể đổi bất cứ lúc nào từ menu khay hệ thống.
+f0eeb34c	Êm nhất có thể; chỉ quay mạnh khi tải nặng
+ff39d6e4	Tiêu chuẩn (khuyên dùng)
+a5f14a94	Cân bằng giữa êm và mát
+107ae700	Hiệu năng
+062bd953	Ưu tiên giữ nhiệt độ thấp
+7694e77b	Cảm biến nhiệt độ CPU
+bf2333b7	Cảm biến nhiệt độ GPU
+0b64da4f	Điều khiển bơm bằng ứng dụng này (cố định 70%)
+c1db4c06	Khi tắt, giao cho BIOS; ứng dụng chỉ giám sát tốc độ và bảo vệ khi bất thường (khuyên dùng)
+b58afa04	Đã sẵn sàng
+861676ec	Bắt đầu điều khiển ngay
+01bcdd36	Khi tắt sẽ bắt đầu ở chế độ DRY RUN (chỉ tính toán, không ghi vào quạt)
+709f1f3b	Mẹo: sau khi xong, đo tốc độ tối thiểu của từng quạt bằng "Hiệu chỉnh tự động" ở trang Đường cong quạt để cài đặt êm hơn nữa.
+aceb0a14	Hủy
+f193a383	Quay lại
+303830fc	Tiếp
+7b1ba115	Gỡ cài đặt (dọn dẹp) - ProFanController
+a4fe8394	Trước khi ngừng dùng ProFanController, đưa PC về trạng thái trước khi cài ứng dụng. Nhấn "Dọn dẹp và thoát" sẽ lần lượt làm các việc sau từ trên xuống.
+2ed98b28	Làm thêm (không chọn thì không làm)
+9dc58ae6	Xóa cả cài đặt, nhật ký và bản ghi
+f6fb6e2a	Gỡ cả PawnIO (driver điều khiển quạt)
+d767e070	Gỡ bằng winget. Các phần mềm khác như FanControl, LibreHardwareMonitor, OpenRGB cũng có thể dùng PawnIO. Nếu vẫn dùng chúng, hãy để tắt.
+6c2a038c	Dọn dẹp và thoát
+d481a31a	Đóng và thoát
+1db2dfed	Độ mờ 100%
+791083f9	Độ mờ 90%
+73894a76	Độ mờ 75%
+bcabc27d	Độ mờ 50%
+bba0ea7b	Tăng tốc (tối đa) 5 phút
+d45f8ae5	Yên tĩnh 1 giờ
+27ef87be	Hủy thao tác nhanh
+0abff5dc	Mở màn hình chính
+ae8884f0	Đóng tiện ích
+bd7aaf0b	Đang thực hiện…
+8394b962	Thất bại: {0}
+c6d96aae	Dọn dẹp: {0}: {1}: {2}
+95db46c4	Việc điều khiển quạt không chạy
+362dcae4	Đã trả mọi quạt về chế độ tự điều khiển của BIOS
+3bd7ef7e	Có cổng quạt chưa trả về được cho BIOS (tên cổng có trong nhật ký).
+63098690	Sau {0:F0} giây vẫn chưa trả xong quạt về cho BIOS.
+a9982b5a	Đã kết thúc cả tiến trình giám sát
+4df819d3	Đã dừng điều khiển quạt và đóng phần cứng
+235f026e	 ({0})
+81156e08	Việc điều khiển quạt không dừng trong 5 giây. Quạt đã được trả về BIOS, nhưng để chắc chắn
+ef5acb7a	Tiến trình giám sát đã đặt tốc độ an toàn
+fb7db8c2	Hãy khởi động lại PC
+fe1e7d87	 (khởi động lại PC sẽ trả quyền điều khiển cho BIOS).
+e39402e8	Đã dừng điều khiển đèn và giải phóng thiết bị
+8008dbae	Không dùng điều khiển đèn (đã đóng kết nối)
+775adf46	Xem trên điện thoại
+817c491e	Không xóa được quy tắc tường lửa. Hãy xóa "ProFanController Web" trong "Bảo mật Windows" → "Tường lửa và bảo vệ mạng" → "Cài đặt nâng cao" → "Quy tắc Đến".
+629589af	Đã dừng xem trên điện thoại và xóa quy tắc tường lửa
+1d979f07	Không xóa được tự khởi động. Hãy xóa "ProFanController" trong Task Scheduler (Task Scheduler Library).
+bc13583b	Đã xóa tự khởi động khi đăng nhập
+22c99fc8	Không xóa được cài đặt ghi lại khi bị lỗi (HKEY_LOCAL_MACHINE\\{0}). Để nguyên cũng không hại gì.
+14dd713f	Đã xóa cài đặt ghi lại khi bị lỗi
+f29a03c3	Gỡ cài đặt
+d66766d3	Không làm ở đây
+1e82ca4a	Không biết đường dẫn của tệp thực thi.
+eb8f4a4f	Không chuẩn bị được việc xóa cài đặt, nhật ký và bản ghi ({0}).\nSau khi ứng dụng thoát, hãy xóa cả thư mục:\n{1}
+8df0902c	Mở thư mục
+c5234463	ProFanController vẫn đang chạy nên chưa xóa cài đặt, nhật ký và bản ghi.\n
+32a27012	Hãy thoát ứng dụng rồi xóa cả thư mục sau:\n{0}
+ecdec9de	Đã xóa {0}.\n\n
+a261a21a	Khi đóng thông báo này, Explorer sẽ mở thư mục ứng dụng. Xóa cả thư mục là xong việc dọn dẹp:\n{0}
+62664073	Có mục không xóa được (có thể ứng dụng khác đang mở):\n•
+d6750fd2	\n•
+bf71d238	\n…và {0} mục khác
+df6134ea	\n\nSau khi đóng thông báo này, hãy xóa cả thư mục sau:\n{0}
+10d89683	Dọn dẹp ProFanController
+2d7f91ad	ProFanController đã đang chạy.\nHãy mở từ biểu tượng ở khay hệ thống.
+ec6a9bb6	Lưu bản ghi
+c0fd45c5	Vẫn đang chạy trong khay hệ thống. Để thoát, hãy nhấp phải vào biểu tượng.

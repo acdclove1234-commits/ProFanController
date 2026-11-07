@@ -509,3 +509,103 @@ a4de3937	Chiude l'app e la riavvia subito (in quei pochi secondi le ventole sono
 7d0ab5b6	Apri il sito ufficiale (pawnio.eu)
 2b7f4cbf	Se winget non è disponibile, scarica il programma di installazione dal sito ufficiale ed eseguilo
 e6974b1a	Ricontrolla
+1e39d435	Premi qui dopo averlo installato in un altro modo (ad esempio con il programma di installazione del sito ufficiale)
+d5c6d032	Profili da importare
+9d520d5c	Sostituisci i profili con lo stesso nome
+6751ee1b	Se disattivo, vengono aggiunti con nomi come «Standard (importato)» (le impostazioni attuali restano)
+301f7b07	Connettori delle ventole
+cb0aedd5	Sensori di temperatura
+772bcb56	Configura da zero con la procedura guidata
+1c166250	Più tardi
+381b7b8a	Sostituisci e applica
+65d960e8	Configurazione - ProFanController
+f918c02e	1  Benvenuto
+38684fb3	2  Identifica i connettori
+76236dbf	3  Strategia di raffreddamento
+b303c749	4  Fine
+99a4e0cb	Benvenuto in ProFanController
+26578394	Questa procedura verifica cosa è collegato ai connettori delle ventole della scheda madre\ne crea automaticamente curve e profili (Silenzioso / Standard / Prestazioni) adatti al tuo PC.
+80f88c90	Preparazione
+b1838111	• Resta vicino al case per sentire e vedere le ventole.\n• Chiudi i programmi pesanti (come i giochi).\n• Le impostazioni attuali verranno sovrascritte, ma al termine puoi tornare indietro con «Annulla».
+90560324	Identifica i connettori delle ventole
+68879f49	«Test» porta un connettore alla massima velocità per 8 secondi. Guarda quale ventola accelera e assegnale nome e tipo. I connettori a 0 rpm non hanno nulla collegato.
+5c41906d	Non usato
+63d8f556	Quale temperatura segue questa ventola
+7f1db4e4	Segui la CPU
+6e1fb818	Segui la GPU
+78e6a15b	CPU e GPU
+fdc10db0	Strategia di raffreddamento
+78757193	Vengono creati tutti e tre i profili. Scegli qui quello di tutti i giorni; puoi cambiarlo quando vuoi dal menu dell'area di notifica.
+f0eeb34c	Il più silenzioso possibile; gira davvero solo sotto carico elevato
+ff39d6e4	Standard (consigliato)
+a5f14a94	Equilibrio tra silenzio e raffreddamento
+107ae700	Prestazioni
+062bd953	Priorità alle temperature basse
+7694e77b	Sensore di temperatura della CPU
+bf2333b7	Sensore di temperatura della GPU
+0b64da4f	Controlla la pompa con questa app (fissa al 70%)
+c1db4c06	Se disattivo, resta al BIOS; l'app controlla solo la velocità e protegge in caso di guasti (consigliato)
+b58afa04	Tutto pronto
+861676ec	Avvia subito il controllo
+01bcdd36	Se disattivo, parte in DRY RUN (calcola soltanto e non scrive nulla sulle ventole)
+709f1f3b	Suggerimento: dopo, misura la velocità minima di ogni ventola con «Calibrazione automatica» nella pagina Curve per un'impostazione ancora più silenziosa.
+aceb0a14	Annulla
+f193a383	Indietro
+303830fc	Avanti
+7b1ba115	Disinstalla (pulizia) - ProFanController
+a4fe8394	Prima di smettere di usare ProFanController, il PC torna allo stato precedente all'installazione. «Pulisci ed esci» esegue quanto segue, dall'alto in basso.
+2ed98b28	In più (nulla di questo senza la tua scelta)
+9dc58ae6	Elimina anche impostazioni, log e registrazioni
+f6fb6e2a	Disinstalla anche PawnIO (il driver per il controllo delle ventole)
+d767e070	Viene disinstallato con winget. Anche altri programmi come FanControl, LibreHardwareMonitor o OpenRGB possono usare PawnIO. Se continui a usarli, lascia disattivato.
+6c2a038c	Pulisci ed esci
+d481a31a	Chiudi ed esci
+1db2dfed	Opacità 100%
+791083f9	Opacità 90%
+73894a76	Opacità 75%
+bcabc27d	Opacità 50%
+bba0ea7b	Boost (massima velocità) 5 min
+d45f8ae5	Silenzioso 1 ora
+27ef87be	Annulla l'azione rapida
+0abff5dc	Apri la finestra principale
+ae8884f0	Chiudi il widget
+bd7aaf0b	In corso…
+8394b962	Non riuscito: {0}
+c6d96aae	Pulizia: {0}: {1}: {2}
+95db46c4	Il controllo delle ventole non era attivo
+362dcae4	Tutte le ventole sono tornate sotto il controllo automatico del BIOS
+3bd7ef7e	Alcuni connettori non sono potuti tornare al controllo del BIOS (i nomi sono nel log).
+63098690	Dopo {0:F0} secondi il ritorno delle ventole al controllo del BIOS non era ancora finito.
+a9982b5a	Anche il processo watchdog è stato chiuso
+4df819d3	Controllo delle ventole fermato e hardware chiuso
+235f026e	 ({0})
+81156e08	Il controllo delle ventole non si è fermato entro 5 secondi. Le ventole sono state riportate al BIOS, ma per sicurezza
+ef5acb7a	Il processo watchdog ha impostato una velocità sicura
+fb7db8c2	Riavvia il PC
+fe1e7d87	 (dopo il riavvio del PC il controllo torna al BIOS).
+e39402e8	Controllo dell'illuminazione fermato e dispositivi rilasciati
+8008dbae	Il controllo dell'illuminazione non era in uso (connessione chiusa)
+775adf46	Vista dal telefono
+817c491e	Impossibile rimuovere la regola del firewall. Elimina «ProFanController Web» in «Sicurezza di Windows» → «Firewall e protezione della rete» → «Impostazioni avanzate» → «Regole connessioni in entrata».
+629589af	Vista dal telefono fermata e regola del firewall rimossa
+1d979f07	Impossibile rimuovere l'avvio automatico. Elimina «ProFanController» dall'Utilità di pianificazione (Libreria Utilità di pianificazione).
+bc13583b	L'avvio all'accesso è stato rimosso
+22c99fc8	Impossibile rimuovere l'impostazione dei dump di arresto anomalo (HKEY_LOCAL_MACHINE\\{0}). Lasciarla non causa problemi.
+14dd713f	L'impostazione dei dump di arresto anomalo è stata rimossa
+f29a03c3	Disinstalla
+d66766d3	Non eseguito qui
+1e82ca4a	Il percorso dell'eseguibile è sconosciuto.
+eb8f4a4f	Impossibile preparare l'eliminazione di impostazioni, log e registrazioni ({0}).\nDopo la chiusura dell'app, elimina l'intera cartella:\n{1}
+8df0902c	Apri cartella
+c5234463	ProFanController è ancora in esecuzione, quindi impostazioni, log e registrazioni non sono stati eliminati.\n
+32a27012	Chiudi l'app, poi elimina l'intera cartella:\n{0}
+ecdec9de	Eliminato: {0}.\n\n
+a261a21a	Chiudendo questo messaggio, Esplora file aprirà la cartella dell'app. Elimina l'intera cartella per completare la pulizia:\n{0}
+62664073	Alcuni elementi non sono stati eliminati (forse un'altra app li tiene aperti):\n•
+d6750fd2	\n•
+bf71d238	\n…e altri {0}
+df6134ea	\n\nDopo aver chiuso questo messaggio, elimina l'intera cartella:\n{0}
+10d89683	Pulizia di ProFanController
+2d7f91ad	ProFanController è già in esecuzione.\nAprilo dall'icona nell'area di notifica.
+ec6a9bb6	Salvataggio delle registrazioni
+c0fd45c5	Continua a funzionare nell'area di notifica. Per uscire, fai clic destro sull'icona.

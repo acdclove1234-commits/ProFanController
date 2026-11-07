@@ -509,3 +509,103 @@ a4de3937	Uygulamayı kapatıp hemen yeniden başlatır (bu birkaç saniye boyunc
 7d0ab5b6	Resmi siteyi aç (pawnio.eu)
 2b7f4cbf	winget kullanılamıyorsa yükleyiciyi resmi siteden indirip çalıştırın
 e6974b1a	Tekrar kontrol et
+1e39d435	Başka bir yolla (örneğin resmi sitedeki yükleyiciyle) kurduktan sonra basın
+d5c6d032	İçe aktarılacak profiller
+9d520d5c	Aynı adlı profilleri değiştir
+6751ee1b	Kapalıyken "Standart (içe aktarılan)" gibi adlarla eklenir (mevcut ayarlarınız kalır)
+301f7b07	Fan konnektörleri
+cb0aedd5	Sıcaklık sensörleri
+772bcb56	Kurulum sihirbazıyla baştan ayarla
+1c166250	Sonra
+381b7b8a	Değiştir ve uygula
+65d960e8	Kurulum - ProFanController
+f918c02e	1  Hoş geldiniz
+38684fb3	2  Konnektörleri tanı
+76236dbf	3  Soğutma yaklaşımı
+b303c749	4  Bitti
+99a4e0cb	ProFanController'a hoş geldiniz
+26578394	Bu sihirbaz anakartın fan konnektörlerine nelerin bağlı olduğunu kontrol eder\nve bilgisayarınıza uygun fan eğrilerini ve profilleri (Sessiz / Standart / Performans) otomatik oluşturur.
+80f88c90	Hazırlık
+b1838111	• Fanları duyup görebilmek için kasanın yanında durun.\n• Ağır programları (oyunlar gibi) kapatın.\n• Mevcut ayarlarınızın üzerine yazılır, ancak sonra "Geri al" ile dönebilirsiniz.
+90560324	Fan konnektörlerini tanı
+68879f49	"Test" bir konnektörü 8 saniye tam hızda çalıştırır. Hangi fanın hızlandığına bakın, sonra ona bir ad ve tür verin. 0 rpm olan konnektörlerde hiçbir şey bağlı değildir.
+5c41906d	Kullanılmıyor
+63d8f556	Bu fanın izlediği sıcaklık
+7f1db4e4	CPU'yu izle
+6e1fb818	GPU'yu izle
+78e6a15b	CPU ve GPU
+fdc10db0	Soğutma yaklaşımı
+78757193	Üç profilin hepsi oluşturulur. Burada günlük kullanılacak olanı seçin; istediğiniz zaman sistem tepsisi menüsünden değiştirebilirsiniz.
+f0eeb34c	Olabildiğince sessiz; yalnızca yüksek yükte gerçekten hızlanır
+ff39d6e4	Standart (önerilen)
+a5f14a94	Sessizlik ile soğutma arasında denge
+107ae700	Performans
+062bd953	Önce düşük sıcaklık
+7694e77b	CPU sıcaklık sensörü
+bf2333b7	GPU sıcaklık sensörü
+0b64da4f	Pompayı bu uygulamayla kontrol et (sabit %70)
+c1db4c06	Kapalıyken BIOS yönetir; uygulama yalnızca devri izler ve arızaya karşı korur (önerilen)
+b58afa04	Hazır
+861676ec	Kontrole hemen başla
+01bcdd36	Kapalıyken DRY RUN ile başlar (yalnızca hesaplar, fanlara hiçbir şey yazmaz)
+709f1f3b	İpucu: sonra Fan eğrileri sayfasındaki "Otomatik kalibrasyon" ile her fanın en düşük devrini ölçün; daha da sessiz bir ayar elde edersiniz.
+aceb0a14	İptal
+f193a383	Geri
+303830fc	İleri
+7b1ba115	Kaldır (temizlik) - ProFanController
+a4fe8394	ProFanController'ı kullanmayı bırakmadan önce bilgisayarı uygulama kurulmadan önceki hâline döndürür. "Temizle ve çık" aşağıdakileri yukarıdan aşağı yapar.
+2ed98b28	Ayrıca (seçmezseniz hiçbiri yapılmaz)
+9dc58ae6	Ayarları, günlükleri ve kayıtları da sil
+f6fb6e2a	PawnIO'yu (fan kontrol sürücüsü) da kaldır
+d767e070	winget ile kaldırır. FanControl, LibreHardwareMonitor veya OpenRGB gibi başka yazılımlar da PawnIO kullanıyor olabilir. Onları kullanmaya devam edecekseniz kapalı bırakın.
+6c2a038c	Temizle ve çık
+d481a31a	Kapat ve çık
+1db2dfed	Opaklık %100
+791083f9	Opaklık %90
+73894a76	Opaklık %75
+bcabc27d	Opaklık %50
+bba0ea7b	Güçlendir (tam hız) 5 dk
+d45f8ae5	Sessiz 1 saat
+27ef87be	Hızlı işlemi iptal et
+0abff5dc	Ana pencereyi aç
+ae8884f0	Pencere öğesini kapat
+bd7aaf0b	Yapılıyor…
+8394b962	Başarısız: {0}
+c6d96aae	Temizlik: {0}: {1}: {2}
+95db46c4	Fan kontrolü çalışmıyordu
+362dcae4	Tüm fanlar BIOS'un otomatik kontrolüne döndü
+3bd7ef7e	Bazı fan konnektörleri BIOS kontrolüne döndürülemedi (adları günlükte).
+63098690	{0:F0} saniye sonra fanların BIOS kontrolüne dönüşü hâlâ bitmemişti.
+a9982b5a	Gözetleyici işlem de sonlandırıldı
+4df819d3	Fan kontrolü durduruldu ve donanım kapatıldı
+235f026e	 ({0})
+81156e08	Fan kontrolü 5 saniye içinde durmadı. Fanlar BIOS'a döndürüldü, ancak her ihtimale karşı
+ef5acb7a	Gözetleyici işlem güvenli bir devir ayarladı
+fb7db8c2	Bilgisayarı yeniden başlatın
+fe1e7d87	 (bilgisayar yeniden başlatılınca kontrol BIOS'a döner).
+e39402e8	Aydınlatma kontrolü durduruldu ve cihazlar serbest bırakıldı
+8008dbae	Aydınlatma kontrolü kullanılmıyordu (bağlantı kapatıldı)
+775adf46	Telefon görünümü
+817c491e	Güvenlik duvarı izni kaldırılamadı. "Windows Güvenliği" → "Güvenlik duvarı ve ağ koruması" → "Gelişmiş ayarlar" → "Gelen Kuralları" altından "ProFanController Web"i silin.
+629589af	Telefon görünümü durduruldu ve güvenlik duvarı izni kaldırıldı
+1d979f07	Otomatik başlatma kaldırılamadı. Görev Zamanlayıcı'dan (Görev Zamanlayıcı Kitaplığı) "ProFanController"ı silin.
+bc13583b	Oturum açılışında başlatma kaldırıldı
+22c99fc8	Çökme dökümü ayarı kaldırılamadı (HKEY_LOCAL_MACHINE\\{0}). Bırakılması zarar vermez.
+14dd713f	Çökme dökümü ayarı kaldırıldı
+f29a03c3	Kaldır
+d66766d3	Burada yapılmaz
+1e82ca4a	Yürütülebilir dosyanın yolu bilinmiyor.
+eb8f4a4f	Ayarların, günlüklerin ve kayıtların silinmesi hazırlanamadı ({0}).\nUygulama kapandıktan sonra klasörün tamamını silin:\n{1}
+8df0902c	Klasörü aç
+c5234463	ProFanController hâlâ çalıştığı için ayarlar, günlükler ve kayıtlar silinmedi.\n
+32a27012	Uygulamayı kapatın, ardından bu klasörün tamamını silin:\n{0}
+ecdec9de	Silindi: {0}.\n\n
+a261a21a	Bu mesajı kapatınca Dosya Gezgini uygulamanın klasörünü açar. Temizliği bitirmek için klasörün tamamını silin:\n{0}
+62664073	Bazı öğeler silinemedi (başka bir uygulama açık tutuyor olabilir):\n•
+d6750fd2	\n•
+bf71d238	\n…ve {0} tane daha
+df6134ea	\n\nBu mesajı kapattıktan sonra bu klasörün tamamını silin:\n{0}
+10d89683	ProFanController temizliği
+2d7f91ad	ProFanController zaten çalışıyor.\nSistem tepsisindeki simgeden açın.
+ec6a9bb6	Kayıtları kaydetme
+c0fd45c5	Sistem tepsisinde çalışmaya devam ediyor. Çıkmak için simgeye sağ tıklayın.

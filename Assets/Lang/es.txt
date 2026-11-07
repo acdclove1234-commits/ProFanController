@@ -509,3 +509,103 @@ a4de3937	Cierra la aplicación y la vuelve a abrir enseguida (durante esos segun
 7d0ab5b6	Abrir el sitio oficial (pawnio.eu)
 2b7f4cbf	Si winget no está disponible, descarga el instalador del sitio oficial y ejecútalo
 e6974b1a	Comprobar de nuevo
+1e39d435	Pulsa aquí después de instalarlo de otra forma (por ejemplo, con el instalador del sitio oficial)
+d5c6d032	Perfiles a importar
+9d520d5c	Reemplazar perfiles con el mismo nombre
+6751ee1b	Desactivado, se añaden con nombres como «Estándar (importado)» (tus ajustes actuales se mantienen)
+301f7b07	Conectores de ventilador
+cb0aedd5	Sensores de temperatura
+772bcb56	Configurar desde cero con el asistente
+1c166250	Más tarde
+381b7b8a	Reemplazar y aplicar
+65d960e8	Configuración - ProFanController
+f918c02e	1  Bienvenida
+38684fb3	2  Identificar conectores
+76236dbf	3  Política de refrigeración
+b303c749	4  Listo
+99a4e0cb	Te damos la bienvenida a ProFanController
+26578394	Este asistente comprueba qué hay conectado a los conectores de ventilador de la placa base\ny crea automáticamente curvas y perfiles (Silencioso / Estándar / Rendimiento) para tu PC.
+80f88c90	Antes de empezar
+b1838111	• Quédate junto a la caja para oír y ver los ventiladores.\n• Cierra los programas pesados (como los juegos).\n• Tus ajustes actuales se sobrescribirán, pero después puedes volver atrás con «Deshacer».
+90560324	Identificar los conectores de ventilador
+68879f49	«Prueba» pone un conector a máxima velocidad durante 8 segundos. Mira qué ventilador acelera y ponle nombre y tipo. Los conectores a 0 rpm no tienen nada conectado.
+5c41906d	Sin usar
+63d8f556	Qué temperatura sigue este ventilador
+7f1db4e4	Seguir la CPU
+6e1fb818	Seguir la GPU
+78e6a15b	CPU y GPU
+fdc10db0	Política de refrigeración
+78757193	Se crean los tres perfiles. Elige aquí el de diario; puedes cambiarlo cuando quieras desde el menú de la bandeja.
+f0eeb34c	Lo más silencioso posible; solo gira con fuerza con carga alta
+ff39d6e4	Estándar (recomendado)
+a5f14a94	Equilibrio entre silencio y refrigeración
+107ae700	Rendimiento
+062bd953	Prioriza mantener la temperatura baja
+7694e77b	Sensor de temperatura de la CPU
+bf2333b7	Sensor de temperatura de la GPU
+0b64da4f	Controlar la bomba con esta aplicación (fija al 70 %)
+c1db4c06	Desactivado, la BIOS sigue al mando; la aplicación solo vigila la velocidad y protege ante fallos (recomendado)
+b58afa04	Todo listo
+861676ec	Empezar a controlar ya
+01bcdd36	Desactivado, empieza en DRY RUN (solo calcula y no escribe nada en los ventiladores)
+709f1f3b	Consejo: después, mide la velocidad mínima de cada ventilador con «Calibración automática» en la página Curvas para un ajuste aún más silencioso.
+aceb0a14	Cancelar
+f193a383	Atrás
+303830fc	Siguiente
+7b1ba115	Desinstalar (limpiar) - ProFanController
+a4fe8394	Antes de dejar de usar ProFanController, devuelve el PC al estado anterior a la aplicación. «Limpiar y salir» hace lo siguiente, de arriba abajo.
+2ed98b28	Además (nada de esto ocurre si no lo eliges)
+9dc58ae6	Borrar también ajustes, registros y grabaciones
+f6fb6e2a	Desinstalar también PawnIO (el controlador de ventiladores)
+d767e070	Se desinstala con winget. Otros programas como FanControl, LibreHardwareMonitor u OpenRGB también pueden usar PawnIO. Si vas a seguir usándolos, déjalo desactivado.
+6c2a038c	Limpiar y salir
+d481a31a	Cerrar y salir
+1db2dfed	Opacidad 100 %
+791083f9	Opacidad 90 %
+73894a76	Opacidad 75 %
+bcabc27d	Opacidad 50 %
+bba0ea7b	Turbo (velocidad máxima) 5 min
+d45f8ae5	Silencio 1 hora
+27ef87be	Cancelar acción rápida
+0abff5dc	Abrir ventana principal
+ae8884f0	Cerrar widget
+bd7aaf0b	En curso…
+8394b962	Error: {0}
+c6d96aae	Limpieza: {0}: {1}: {2}
+95db46c4	El control de ventiladores no estaba en marcha
+362dcae4	Todos los ventiladores han vuelto al control automático de la BIOS
+3bd7ef7e	Algunos conectores de ventilador no pudieron volver al control de la BIOS (sus nombres están en el registro).
+63098690	Tras {0:F0} segundos, la vuelta de los ventiladores al control de la BIOS no había terminado.
+a9982b5a	El proceso vigilante también se cerró
+4df819d3	El control de ventiladores se detuvo y se cerró el hardware
+235f026e	 ({0})
+81156e08	El control de ventiladores no se detuvo en 5 segundos. Los ventiladores se devolvieron a la BIOS, pero por seguridad
+ef5acb7a	El proceso vigilante puso una velocidad segura
+fb7db8c2	Reinicia el PC
+fe1e7d87	 (al reiniciar el PC, vuelve el control de la BIOS).
+e39402e8	El control de iluminación se detuvo y se liberaron los dispositivos
+8008dbae	El control de iluminación no estaba en uso (se cerró la conexión)
+775adf46	Vista móvil
+817c491e	No se pudo quitar la regla del firewall. Elimina «ProFanController Web» en «Seguridad de Windows» → «Firewall y protección de red» → «Configuración avanzada» → «Reglas de entrada».
+629589af	Vista móvil detenida y regla del firewall eliminada
+1d979f07	No se pudo quitar el inicio automático. Elimina «ProFanController» del Programador de tareas (Biblioteca del Programador de tareas).
+bc13583b	Se quitó el inicio al iniciar sesión
+22c99fc8	No se pudo quitar el ajuste de volcados por bloqueo (HKEY_LOCAL_MACHINE\\{0}). Dejarlo no hace daño.
+14dd713f	Se quitó el ajuste de volcados por bloqueo
+f29a03c3	Desinstalar
+d66766d3	No se hace aquí
+1e82ca4a	No se conoce la ruta del ejecutable.
+eb8f4a4f	No se pudo preparar el borrado de ajustes, registros y grabaciones ({0}).\nCuando la aplicación se cierre, borra la carpeta entera:\n{1}
+8df0902c	Abrir carpeta
+c5234463	ProFanController sigue en marcha, así que no se borraron ajustes, registros ni grabaciones.\n
+32a27012	Cierra la aplicación y luego borra esta carpeta entera:\n{0}
+ecdec9de	Borrado: {0}.\n\n
+a261a21a	Al cerrar este aviso, el Explorador abrirá la carpeta de la aplicación. Borra la carpeta entera para terminar la limpieza:\n{0}
+62664073	No se pudo borrar todo (quizá otra aplicación lo tiene abierto):\n•
+d6750fd2	\n•
+bf71d238	\n…y {0} más
+df6134ea	\n\nTras cerrar este aviso, borra esta carpeta entera:\n{0}
+10d89683	Limpieza de ProFanController
+2d7f91ad	ProFanController ya se está ejecutando.\nÁbrelo desde el icono de la bandeja.
+ec6a9bb6	Guardando registros
+c0fd45c5	Sigue funcionando en la bandeja. Para salir, haz clic derecho en el icono.

@@ -509,3 +509,103 @@ a4de3937	Closes the app and starts it again right away (for those few seconds th
 7d0ab5b6	Open the official site (pawnio.eu)
 2b7f4cbf	If winget is not available, get the installer from the official site and run it
 e6974b1a	Check again
+1e39d435	Press this after installing it another way (such as the installer from the official site)
+d5c6d032	Profiles to import
+9d520d5c	Replace profiles with the same name
+6751ee1b	When off, they are added with names like "Standard (imported)" (your current settings stay)
+301f7b07	Fan headers
+cb0aedd5	Temperature sensors
+772bcb56	Set up from scratch with the setup wizard
+1c166250	Later
+381b7b8a	Replace and apply
+65d960e8	Setup - ProFanController
+f918c02e	1  Welcome
+38684fb3	2  Identify headers
+76236dbf	3  Cooling policy
+b303c749	4  Done
+99a4e0cb	Welcome to ProFanController
+26578394	This wizard checks what is connected to your motherboard's fan headers\nand automatically creates fan curves and profiles (Silent / Standard / Performance) for your PC.
+80f88c90	Before you start
+b1838111	・Stay next to the case so you can hear and see the fans.\n・Close heavy programs (such as games).\n・Your current settings will be overwritten, but you can go back with "Undo" afterwards.
+90560324	Identify fan headers
+68879f49	"Test" runs a header at full speed for 8 seconds. See which fan speeds up, then give it a name and a type. Headers at 0 rpm have nothing connected.
+5c41906d	Not used
+63d8f556	Which temperature this fan follows
+7f1db4e4	Follow CPU
+6e1fb818	Follow GPU
+78e6a15b	CPU and GPU
+fdc10db0	Cooling policy
+78757193	All three profiles are created. Choose the one to use day to day; you can switch any time from the tray menu.
+f0eeb34c	As quiet as possible; spins up properly only under heavy load
+ff39d6e4	Standard (recommended)
+a5f14a94	A balance of quiet and cooling
+107ae700	Performance
+062bd953	Keeps temperatures low first
+7694e77b	CPU temperature sensor
+bf2333b7	GPU temperature sensor
+0b64da4f	Control the pump with this app (fixed 70%)
+c1db4c06	When off, the BIOS stays in charge; the app only watches the speed and protects against faults (recommended)
+b58afa04	All set
+861676ec	Start controlling right away
+01bcdd36	When off, it starts in DRY RUN (calculates only and writes nothing to the fans)
+709f1f3b	Tip: afterwards, measure each fan's minimum speed with "Auto calibration" on the Fan curves page for an even quieter setup.
+aceb0a14	Cancel
+f193a383	Back
+303830fc	Next
+7b1ba115	Uninstall (clean up) - ProFanController
+a4fe8394	Before you stop using ProFanController, this returns your PC to how it was before the app. "Clean up and exit" does the following, from top to bottom.
+2ed98b28	Also do (neither happens unless you choose it)
+9dc58ae6	Also delete settings, logs and records
+f6fb6e2a	Also uninstall PawnIO (the fan control driver)
+d767e070	Uninstalls it with winget. Other software such as FanControl, LibreHardwareMonitor or OpenRGB may also use PawnIO. If you keep using them, leave this off.
+6c2a038c	Clean up and exit
+d481a31a	Close and exit
+1db2dfed	Opacity 100%
+791083f9	Opacity 90%
+73894a76	Opacity 75%
+bcabc27d	Opacity 50%
+bba0ea7b	Boost (full speed) 5 min
+d45f8ae5	Silent 1 hour
+27ef87be	Cancel quick action
+0abff5dc	Open main window
+ae8884f0	Close widget
+bd7aaf0b	Working…
+8394b962	Failed: {0}
+c6d96aae	Clean-up: {0}: {1}: {2}
+95db46c4	Fan control was not running
+362dcae4	All fans are back under automatic BIOS control
+3bd7ef7e	Some fan headers could not be returned to BIOS control (the header names are in the log).
+63098690	After {0:F0} seconds, returning the fans to BIOS control had not finished.
+a9982b5a	The watchdog process was stopped too
+4df819d3	Fan control stopped and the hardware was closed
+235f026e	 ({0})
+81156e08	Fan control did not stop within 5 seconds. The fans have been returned to BIOS control, but to be safe
+ef5acb7a	The watchdog process set a safe speed
+fb7db8c2	Restart the PC
+fe1e7d87	 (restarting the PC returns control to the BIOS).
+e39402e8	Lighting control stopped and the devices were released
+8008dbae	Lighting control was not in use (the connection was closed)
+775adf46	Phone view
+817c491e	Could not remove the firewall rule. Delete "ProFanController Web" under "Windows Security" → "Firewall & network protection" → "Advanced settings" → "Inbound Rules".
+629589af	Phone view stopped and the firewall rule was removed
+1d979f07	Could not remove the automatic start. Delete "ProFanController" from Task Scheduler (Task Scheduler Library).
+bc13583b	The start at logon was removed
+22c99fc8	Could not remove the crash dump setting (HKEY_LOCAL_MACHINE\\{0}). Leaving it does no harm.
+14dd713f	The crash dump setting was removed
+f29a03c3	Uninstall
+d66766d3	Not done here
+1e82ca4a	The path of the executable is unknown.
+eb8f4a4f	Could not prepare to delete the settings, logs and records ({0}).\nAfter the app exits, delete the whole folder:\n{1}
+8df0902c	Open folder
+c5234463	ProFanController is still running, so the settings, logs and records were not deleted.\n
+32a27012	Exit the app, then delete this whole folder:\n{0}
+ecdec9de	Deleted {0}.\n\n
+a261a21a	When you close this message, Explorer opens the app's folder. Delete the whole folder to finish the clean-up:\n{0}
+62664073	Some items could not be deleted (another app may have them open):\n•
+d6750fd2	\n•
+bf71d238	\n…and {0} more
+df6134ea	\n\nAfter closing this message, delete this whole folder:\n{0}
+10d89683	ProFanController clean-up
+2d7f91ad	ProFanController is already running.\nOpen it from the tray icon.
+ec6a9bb6	Saving records
+c0fd45c5	Still running in the tray. To exit, right-click the icon.

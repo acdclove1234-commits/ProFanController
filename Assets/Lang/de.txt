@@ -509,3 +509,103 @@ a4de3937	Beendet die App und startet sie sofort wieder (in diesen Sekunden stehe
 7d0ab5b6	Offizielle Website öffnen (pawnio.eu)
 2b7f4cbf	Wenn winget nicht verfügbar ist, laden Sie das Installationsprogramm von der offiziellen Website und führen Sie es aus
 e6974b1a	Erneut prüfen
+1e39d435	Drücken Sie hier, nachdem Sie es auf anderem Weg installiert haben (etwa mit dem Installationsprogramm der offiziellen Website)
+d5c6d032	Zu importierende Profile
+9d520d5c	Profile mit gleichem Namen ersetzen
+6751ee1b	Wenn aus, werden sie mit Namen wie „Standard (importiert)“ hinzugefügt (Ihre aktuellen Einstellungen bleiben)
+301f7b07	Lüfteranschlüsse
+cb0aedd5	Temperatursensoren
+772bcb56	Mit dem Einrichtungsassistenten neu einrichten
+1c166250	Später
+381b7b8a	Ersetzen und anwenden
+65d960e8	Einrichtung - ProFanController
+f918c02e	1  Willkommen
+38684fb3	2  Anschlüsse erkennen
+76236dbf	3  Kühlstrategie
+b303c749	4  Fertig
+99a4e0cb	Willkommen bei ProFanController
+26578394	Dieser Assistent prüft, was an den Lüfteranschlüssen Ihres Mainboards hängt,\nund erstellt automatisch passende Lüfterkurven und Profile (Leise / Standard / Leistung) für Ihren PC.
+80f88c90	Vorbereitung
+b1838111	• Bleiben Sie neben dem Gehäuse, damit Sie die Lüfter hören und sehen.\n• Schließen Sie anspruchsvolle Programme (etwa Spiele).\n• Ihre aktuellen Einstellungen werden überschrieben, lassen sich danach aber mit „Rückgängig“ wiederherstellen.
+90560324	Lüfteranschlüsse erkennen
+68879f49	„Test“ lässt einen Anschluss 8 Sekunden mit voller Drehzahl laufen. Sehen Sie, welcher Lüfter schneller wird, und geben Sie ihm Namen und Typ. An Anschlüssen mit 0 rpm hängt nichts.
+5c41906d	Nicht verwendet
+63d8f556	Nach welcher Temperatur sich dieser Lüfter richtet
+7f1db4e4	Nach CPU
+6e1fb818	Nach GPU
+78e6a15b	CPU und GPU
+fdc10db0	Kühlstrategie
+78757193	Alle drei Profile werden erstellt. Wählen Sie hier das für den Alltag; über das Infobereichsmenü können Sie jederzeit wechseln.
+f0eeb34c	So leise wie möglich; dreht nur unter hoher Last richtig auf
+ff39d6e4	Standard (empfohlen)
+a5f14a94	Ausgewogen zwischen Ruhe und Kühlung
+107ae700	Leistung
+062bd953	Niedrige Temperaturen haben Vorrang
+7694e77b	CPU-Temperatursensor
+bf2333b7	GPU-Temperatursensor
+0b64da4f	Pumpe mit dieser App steuern (fest 70 %)
+c1db4c06	Wenn aus, bleibt das BIOS zuständig; die App überwacht nur die Drehzahl und schützt bei Störungen (empfohlen)
+b58afa04	Alles bereit
+861676ec	Steuerung sofort starten
+01bcdd36	Wenn aus, startet die App im DRY RUN (rechnet nur und schreibt nichts an die Lüfter)
+709f1f3b	Tipp: Messen Sie anschließend auf der Seite Lüfterkurven mit „Automatische Kalibrierung“ die Mindestdrehzahl jedes Lüfters – so wird es noch leiser.
+aceb0a14	Abbrechen
+f193a383	Zurück
+303830fc	Weiter
+7b1ba115	Deinstallieren (aufräumen) - ProFanController
+a4fe8394	Bevor Sie ProFanController nicht mehr verwenden, wird Ihr PC in den Zustand vor der Installation zurückversetzt. „Aufräumen und beenden“ führt Folgendes von oben nach unten aus.
+2ed98b28	Zusätzlich (beides nur, wenn Sie es auswählen)
+9dc58ae6	Auch Einstellungen, Protokolle und Aufzeichnungen löschen
+f6fb6e2a	Auch PawnIO (den Treiber für die Lüftersteuerung) deinstallieren
+d767e070	Wird mit winget deinstalliert. Auch andere Software wie FanControl, LibreHardwareMonitor oder OpenRGB kann PawnIO nutzen. Wenn Sie diese weiter verwenden, lassen Sie es aus.
+6c2a038c	Aufräumen und beenden
+d481a31a	Schließen und beenden
+1db2dfed	Deckkraft 100 %
+791083f9	Deckkraft 90 %
+73894a76	Deckkraft 75 %
+bcabc27d	Deckkraft 50 %
+bba0ea7b	Boost (volle Drehzahl) 5 Min.
+d45f8ae5	Leise 1 Stunde
+27ef87be	Schnellaktion aufheben
+0abff5dc	Hauptfenster öffnen
+ae8884f0	Widget schließen
+bd7aaf0b	Wird ausgeführt…
+8394b962	Fehlgeschlagen: {0}
+c6d96aae	Aufräumen: {0}: {1}: {2}
+95db46c4	Die Lüftersteuerung lief nicht
+362dcae4	Alle Lüfter sind wieder unter automatischer BIOS-Steuerung
+3bd7ef7e	Einige Lüfteranschlüsse konnten nicht an das BIOS zurückgegeben werden (die Namen stehen im Protokoll).
+63098690	Nach {0:F0} Sekunden war die Rückgabe der Lüfter an das BIOS noch nicht abgeschlossen.
+a9982b5a	Der Watchdog-Prozess wurde ebenfalls beendet
+4df819d3	Lüftersteuerung beendet und Hardware geschlossen
+235f026e	 ({0})
+81156e08	Die Lüftersteuerung hat nicht innerhalb von 5 Sekunden angehalten. Die Lüfter wurden an das BIOS zurückgegeben, aber sicherheitshalber
+ef5acb7a	Der Watchdog-Prozess hat eine sichere Drehzahl gesetzt
+fb7db8c2	Starten Sie den PC neu
+fe1e7d87	 (nach einem Neustart übernimmt wieder das BIOS).
+e39402e8	Lichtsteuerung beendet und Geräte freigegeben
+8008dbae	Die Lichtsteuerung wurde nicht verwendet (Verbindung geschlossen)
+775adf46	Handy-Ansicht
+817c491e	Die Firewall-Regel konnte nicht entfernt werden. Löschen Sie „ProFanController Web“ unter „Windows-Sicherheit“ → „Firewall- & Netzwerkschutz“ → „Erweiterte Einstellungen“ → „Eingehende Regeln“.
+629589af	Handy-Ansicht beendet und Firewall-Regel entfernt
+1d979f07	Der Autostart konnte nicht entfernt werden. Löschen Sie „ProFanController“ in der Aufgabenplanung (Aufgabenplanungsbibliothek).
+bc13583b	Der Start bei der Anmeldung wurde entfernt
+22c99fc8	Die Einstellung für Absturzabbilder konnte nicht entfernt werden (HKEY_LOCAL_MACHINE\\{0}). Sie schadet nicht, wenn sie bleibt.
+14dd713f	Die Einstellung für Absturzabbilder wurde entfernt
+f29a03c3	Deinstallieren
+d66766d3	Hier nicht ausgeführt
+1e82ca4a	Der Pfad der ausführbaren Datei ist unbekannt.
+eb8f4a4f	Das Löschen von Einstellungen, Protokollen und Aufzeichnungen konnte nicht vorbereitet werden ({0}).\nLöschen Sie nach dem Beenden der App den ganzen Ordner:\n{1}
+8df0902c	Ordner öffnen
+c5234463	ProFanController läuft noch, daher wurden Einstellungen, Protokolle und Aufzeichnungen nicht gelöscht.\n
+32a27012	Beenden Sie die App und löschen Sie dann diesen ganzen Ordner:\n{0}
+ecdec9de	Gelöscht: {0}.\n\n
+a261a21a	Wenn Sie diese Meldung schließen, öffnet der Explorer den Ordner der App. Löschen Sie den ganzen Ordner, um das Aufräumen abzuschließen:\n{0}
+62664073	Manches konnte nicht gelöscht werden (vielleicht ist es in einer anderen App geöffnet):\n•
+d6750fd2	\n•
+bf71d238	\n…und {0} weitere
+df6134ea	\n\nLöschen Sie nach dem Schließen dieser Meldung diesen ganzen Ordner:\n{0}
+10d89683	ProFanController aufräumen
+2d7f91ad	ProFanController läuft bereits.\nÖffnen Sie es über das Symbol im Infobereich.
+ec6a9bb6	Aufzeichnungen speichern
+c0fd45c5	Läuft im Infobereich weiter. Zum Beenden mit der rechten Maustaste auf das Symbol klicken.

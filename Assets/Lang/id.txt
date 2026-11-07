@@ -509,3 +509,103 @@ a4de3937	Menutup aplikasi lalu langsung memulainya lagi (selama beberapa detik i
 7d0ab5b6	Buka situs resmi (pawnio.eu)
 2b7f4cbf	Jika winget tidak tersedia, unduh penginstal dari situs resmi lalu jalankan
 e6974b1a	Periksa lagi
+1e39d435	Tekan setelah memasangnya dengan cara lain (misalnya penginstal dari situs resmi)
+d5c6d032	Profil yang diimpor
+9d520d5c	Ganti profil dengan nama yang sama
+6751ee1b	Jika nonaktif, ditambahkan dengan nama seperti "Standar (impor)" (pengaturan saat ini tetap ada)
+301f7b07	Konektor kipas
+cb0aedd5	Sensor suhu
+772bcb56	Siapkan dari awal dengan wizard penyiapan
+1c166250	Nanti
+381b7b8a	Ganti dan terapkan
+65d960e8	Penyiapan - ProFanController
+f918c02e	1  Selamat datang
+38684fb3	2  Kenali konektor
+76236dbf	3  Kebijakan pendinginan
+b303c749	4  Selesai
+99a4e0cb	Selamat datang di ProFanController
+26578394	Wizard ini memeriksa apa yang tersambung ke konektor kipas motherboard\ndan otomatis membuat kurva kipas serta profil (Senyap / Standar / Performa) yang cocok untuk PC Anda.
+80f88c90	Persiapan
+b1838111	• Tetaplah di dekat casing agar bisa mendengar dan melihat kipas.\n• Tutup program berat (seperti gim).\n• Pengaturan saat ini akan ditimpa, tetapi setelah selesai bisa dikembalikan dengan "Urungkan".
+90560324	Kenali konektor kipas
+68879f49	"Uji" memutar konektor pada kecepatan penuh selama 8 detik. Lihat kipas mana yang makin cepat, lalu beri nama dan jenisnya. Konektor 0 rpm tidak tersambung apa pun.
+5c41906d	Tidak dipakai
+63d8f556	Suhu yang diikuti kipas ini
+7f1db4e4	Ikuti CPU
+6e1fb818	Ikuti GPU
+78e6a15b	CPU dan GPU
+fdc10db0	Kebijakan pendinginan
+78757193	Ketiga profil akan dibuat. Pilih di sini yang dipakai sehari-hari; bisa diganti kapan saja dari menu baki sistem.
+f0eeb34c	Sesenyap mungkin; berputar kencang hanya saat beban tinggi
+ff39d6e4	Standar (disarankan)
+a5f14a94	Seimbang antara senyap dan dingin
+107ae700	Performa
+062bd953	Mengutamakan suhu tetap rendah
+7694e77b	Sensor suhu CPU
+bf2333b7	Sensor suhu GPU
+0b64da4f	Kendalikan pompa dengan aplikasi ini (tetap 70%)
+c1db4c06	Jika nonaktif, diserahkan ke BIOS; aplikasi hanya memantau putaran dan melindungi saat ada masalah (disarankan)
+b58afa04	Siap
+861676ec	Mulai kendali sekarang
+01bcdd36	Jika nonaktif, mulai dalam DRY RUN (hanya menghitung, tidak menulis ke kipas)
+709f1f3b	Tips: setelah selesai, ukur putaran minimum tiap kipas dengan "Kalibrasi otomatis" di halaman Kurva kipas agar bisa disetel lebih senyap.
+aceb0a14	Batal
+f193a383	Kembali
+303830fc	Berikutnya
+7b1ba115	Copot (bersihkan) - ProFanController
+a4fe8394	Sebelum berhenti memakai ProFanController, PC dikembalikan ke keadaan sebelum aplikasi dipasang. "Bersihkan dan keluar" menjalankan langkah berikut dari atas ke bawah.
+2ed98b28	Tambahan (tidak dilakukan jika tidak dipilih)
+9dc58ae6	Hapus juga pengaturan, log, dan rekaman
+f6fb6e2a	Copot juga PawnIO (driver kendali kipas)
+d767e070	Dicopot dengan winget. Perangkat lunak lain seperti FanControl, LibreHardwareMonitor, atau OpenRGB mungkin juga memakai PawnIO. Jika masih memakainya, biarkan nonaktif.
+6c2a038c	Bersihkan dan keluar
+d481a31a	Tutup dan keluar
+1db2dfed	Opasitas 100%
+791083f9	Opasitas 90%
+73894a76	Opasitas 75%
+bcabc27d	Opasitas 50%
+bba0ea7b	Boost (kecepatan penuh) 5 mnt
+d45f8ae5	Senyap 1 jam
+27ef87be	Batalkan aksi cepat
+0abff5dc	Buka jendela utama
+ae8884f0	Tutup widget
+bd7aaf0b	Sedang dijalankan…
+8394b962	Gagal: {0}
+c6d96aae	Pembersihan: {0}: {1}: {2}
+95db46c4	Kendali kipas tidak sedang berjalan
+362dcae4	Semua kipas sudah kembali ke kendali otomatis BIOS
+3bd7ef7e	Ada konektor kipas yang tidak bisa dikembalikan ke kendali BIOS (namanya ada di log).
+63098690	Setelah {0:F0} detik, pengembalian kipas ke kendali BIOS belum selesai.
+a9982b5a	Proses pengawas juga dihentikan
+4df819d3	Kendali kipas dihentikan dan perangkat keras ditutup
+235f026e	 ({0})
+81156e08	Kendali kipas tidak berhenti dalam 5 detik. Kipas sudah dikembalikan ke kendali BIOS, tetapi untuk berjaga-jaga
+ef5acb7a	Proses pengawas menyetel putaran aman
+fb7db8c2	Mulai ulang PC
+fe1e7d87	 (setelah PC dimulai ulang, kendali kembali ke BIOS).
+e39402e8	Kendali pencahayaan dihentikan dan perangkat dilepas
+8008dbae	Kendali pencahayaan tidak dipakai (koneksi ditutup)
+775adf46	Tampilan ponsel
+817c491e	Izin firewall tidak bisa dihapus. Hapus "ProFanController Web" di "Keamanan Windows" → "Firewall & perlindungan jaringan" → "Pengaturan lanjutan" → "Aturan Masuk".
+629589af	Tampilan ponsel dihentikan dan izin firewall dihapus
+1d979f07	Mulai otomatis tidak bisa dihapus. Hapus "ProFanController" dari Task Scheduler (Task Scheduler Library).
+bc13583b	Mulai otomatis saat masuk sudah dihapus
+22c99fc8	Pengaturan rekaman saat crash tidak bisa dihapus (HKEY_LOCAL_MACHINE\\{0}). Dibiarkan pun tidak berbahaya.
+14dd713f	Pengaturan rekaman saat crash sudah dihapus
+f29a03c3	Copot
+d66766d3	Tidak dilakukan di sini
+1e82ca4a	Jalur file program tidak diketahui.
+eb8f4a4f	Tidak bisa menyiapkan penghapusan pengaturan, log, dan rekaman ({0}).\nSetelah aplikasi ditutup, hapus seluruh foldernya:\n{1}
+8df0902c	Buka folder
+c5234463	ProFanController masih berjalan, jadi pengaturan, log, dan rekaman tidak dihapus.\n
+32a27012	Tutup aplikasi, lalu hapus seluruh folder berikut:\n{0}
+ecdec9de	{0} sudah dihapus.\n\n
+a261a21a	Saat pemberitahuan ini ditutup, File Explorer akan membuka folder aplikasi. Hapus seluruh foldernya untuk menyelesaikan pembersihan:\n{0}
+62664073	Ada yang tidak bisa dihapus (mungkin sedang dibuka aplikasi lain):\n•
+d6750fd2	\n•
+bf71d238	\n…dan {0} lainnya
+df6134ea	\n\nSetelah menutup pemberitahuan ini, hapus seluruh folder berikut:\n{0}
+10d89683	Pembersihan ProFanController
+2d7f91ad	ProFanController sudah berjalan.\nBuka dari ikon di baki sistem.
+ec6a9bb6	Menyimpan rekaman
+c0fd45c5	Tetap berjalan di baki sistem. Untuk keluar, klik kanan ikonnya.

@@ -509,3 +509,103 @@ a4de3937	Zamyka aplikację i od razu uruchamia ją ponownie (przez te kilka seku
 7d0ab5b6	Otwórz oficjalną stronę (pawnio.eu)
 2b7f4cbf	Jeśli winget jest niedostępny, pobierz instalator z oficjalnej strony i uruchom go
 e6974b1a	Sprawdź ponownie
+1e39d435	Naciśnij po zainstalowaniu w inny sposób (np. instalatorem z oficjalnej strony)
+d5c6d032	Profile do zaimportowania
+9d520d5c	Zastępuj profile o tej samej nazwie
+6751ee1b	Po wyłączeniu są dodawane z nazwami w rodzaju „Standardowy (import)” (obecne ustawienia zostają)
+301f7b07	Złącza wentylatorów
+cb0aedd5	Czujniki temperatury
+772bcb56	Skonfiguruj od nowa kreatorem
+1c166250	Później
+381b7b8a	Zastąp i zastosuj
+65d960e8	Konfiguracja - ProFanController
+f918c02e	1  Witamy
+38684fb3	2  Rozpoznanie złączy
+76236dbf	3  Strategia chłodzenia
+b303c749	4  Gotowe
+99a4e0cb	Witamy w ProFanController
+26578394	Kreator sprawdzi, co jest podłączone do złączy wentylatorów płyty głównej,\ni automatycznie utworzy krzywe oraz profile (Cichy / Standardowy / Wydajność) dla twojego komputera.
+80f88c90	Przygotowanie
+b1838111	• Bądź przy obudowie, żeby słyszeć i widzieć wentylatory.\n• Zamknij ciężkie programy (np. gry).\n• Obecne ustawienia zostaną nadpisane, ale potem możesz do nich wrócić przyciskiem „Cofnij”.
+90560324	Rozpoznanie złączy wentylatorów
+68879f49	„Test” uruchamia złącze na pełnych obrotach przez 8 sekund. Zobacz, który wentylator przyspieszył, i nadaj mu nazwę i rodzaj. Do złączy z 0 rpm nic nie jest podłączone.
+5c41906d	Nieużywane
+63d8f556	Za jaką temperaturą podąża ten wentylator
+7f1db4e4	Za CPU
+6e1fb818	Za GPU
+78e6a15b	CPU i GPU
+fdc10db0	Strategia chłodzenia
+78757193	Tworzone są wszystkie trzy profile. Wybierz tu ten na co dzień; zmienić go możesz w każdej chwili z menu w zasobniku.
+f0eeb34c	Jak najciszej; mocno kręci się tylko pod dużym obciążeniem
+ff39d6e4	Standardowy (zalecany)
+a5f14a94	Równowaga ciszy i chłodzenia
+107ae700	Wydajność
+062bd953	Przede wszystkim niskie temperatury
+7694e77b	Czujnik temperatury CPU
+bf2333b7	Czujnik temperatury GPU
+0b64da4f	Steruj pompą tą aplikacją (stałe 70%)
+c1db4c06	Po wyłączeniu steruje BIOS, a aplikacja tylko pilnuje obrotów i chroni przy awariach (zalecane)
+b58afa04	Wszystko gotowe
+861676ec	Od razu rozpocznij sterowanie
+01bcdd36	Po wyłączeniu start w trybie DRY RUN (tylko obliczenia, bez zapisu do wentylatorów)
+709f1f3b	Wskazówka: potem zmierz minimalne obroty każdego wentylatora przyciskiem „Automatyczna kalibracja” na stronie krzywych — będzie jeszcze ciszej.
+aceb0a14	Anuluj
+f193a383	Wstecz
+303830fc	Dalej
+7b1ba115	Odinstaluj (porządki) - ProFanController
+a4fe8394	Zanim przestaniesz używać ProFanController, komputer wraca do stanu sprzed instalacji aplikacji. „Posprzątaj i zakończ” wykonuje poniższe kroki od góry do dołu.
+2ed98b28	Dodatkowo (żadne z tych bez twojego wyboru)
+9dc58ae6	Usuń także ustawienia, dzienniki i zapisy
+f6fb6e2a	Odinstaluj także PawnIO (sterownik wentylatorów)
+d767e070	Odinstalowuje przez winget. PawnIO mogą używać też inne programy, np. FanControl, LibreHardwareMonitor czy OpenRGB. Jeśli nadal z nich korzystasz, zostaw wyłączone.
+6c2a038c	Posprzątaj i zakończ
+d481a31a	Zamknij i zakończ
+1db2dfed	Krycie 100%
+791083f9	Krycie 90%
+73894a76	Krycie 75%
+bcabc27d	Krycie 50%
+bba0ea7b	Boost (pełna prędkość) 5 min
+d45f8ae5	Cicho 1 godzinę
+27ef87be	Anuluj szybką akcję
+0abff5dc	Otwórz główne okno
+ae8884f0	Zamknij widżet
+bd7aaf0b	Trwa…
+8394b962	Niepowodzenie: {0}
+c6d96aae	Porządki: {0}: {1}: {2}
+95db46c4	Sterowanie wentylatorami nie działało
+362dcae4	Wszystkie wentylatory wróciły pod automatyczne sterowanie BIOS
+3bd7ef7e	Niektórych złączy nie udało się oddać pod sterowanie BIOS (ich nazwy są w dzienniku).
+63098690	Po {0:F0} s oddawanie wentylatorów pod sterowanie BIOS jeszcze się nie zakończyło.
+a9982b5a	Proces nadzorczy też został zamknięty
+4df819d3	Sterowanie wentylatorami zatrzymane, sprzęt zamknięty
+235f026e	 ({0})
+81156e08	Sterowanie wentylatorami nie zatrzymało się w ciągu 5 sekund. Wentylatory oddano pod BIOS, ale na wszelki wypadek
+ef5acb7a	Proces nadzorczy ustawił bezpieczne obroty
+fb7db8c2	Uruchom komputer ponownie
+fe1e7d87	 (po ponownym uruchomieniu komputera sterowanie wraca do BIOS).
+e39402e8	Sterowanie podświetleniem zatrzymane, urządzenia zwolnione
+8008dbae	Sterowanie podświetleniem nie było używane (połączenie zamknięte)
+775adf46	Podgląd w telefonie
+817c491e	Nie udało się usunąć reguły zapory. Usuń „ProFanController Web” w „Zabezpieczenia Windows” → „Zapora i ochrona sieci” → „Ustawienia zaawansowane” → „Reguły przychodzące”.
+629589af	Podgląd w telefonie zatrzymany, reguła zapory usunięta
+1d979f07	Nie udało się usunąć autostartu. Usuń „ProFanController” w Harmonogramie zadań (Biblioteka Harmonogramu zadań).
+bc13583b	Autostart przy logowaniu usunięty
+22c99fc8	Nie udało się usunąć ustawienia zrzutów awaryjnych (HKEY_LOCAL_MACHINE\\{0}). Pozostawienie go nie szkodzi.
+14dd713f	Ustawienie zrzutów awaryjnych usunięte
+f29a03c3	Odinstaluj
+d66766d3	Nie wykonywane tutaj
+1e82ca4a	Ścieżka pliku wykonywalnego jest nieznana.
+eb8f4a4f	Nie udało się przygotować usunięcia ustawień, dzienników i zapisów ({0}).\nPo zamknięciu aplikacji usuń cały folder:\n{1}
+8df0902c	Otwórz folder
+c5234463	ProFanController nadal działa, więc ustawienia, dzienniki i zapisy nie zostały usunięte.\n
+32a27012	Zamknij aplikację, a potem usuń cały ten folder:\n{0}
+ecdec9de	Usunięto: {0}.\n\n
+a261a21a	Po zamknięciu tego komunikatu Eksplorator otworzy folder aplikacji. Usuń cały folder, aby zakończyć porządki:\n{0}
+62664073	Nie wszystko udało się usunąć (może inna aplikacja ma to otwarte):\n•
+d6750fd2	\n•
+bf71d238	\n…i jeszcze {0}
+df6134ea	\n\nPo zamknięciu tego komunikatu usuń cały ten folder:\n{0}
+10d89683	Porządki ProFanController
+2d7f91ad	ProFanController już działa.\nOtwórz go ikoną w zasobniku.
+ec6a9bb6	Zapisywanie zapisów
+c0fd45c5	Nadal działa w zasobniku. Aby zakończyć, kliknij ikonę prawym przyciskiem.

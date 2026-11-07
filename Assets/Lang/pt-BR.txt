@@ -509,3 +509,103 @@ a4de3937	Fecha o app e abre de novo na hora (nesses segundos as ventoinhas ficam
 7d0ab5b6	Abrir o site oficial (pawnio.eu)
 2b7f4cbf	Se o winget não estiver disponível, baixe o instalador no site oficial e execute
 e6974b1a	Verificar de novo
+1e39d435	Pressione depois de instalar de outro jeito (como pelo instalador do site oficial)
+d5c6d032	Perfis a importar
+9d520d5c	Substituir perfis com o mesmo nome
+6751ee1b	Desligado, eles são adicionados com nomes como "Padrão (importado)" (suas configurações atuais ficam)
+301f7b07	Conectores de ventoinha
+cb0aedd5	Sensores de temperatura
+772bcb56	Configurar do zero com o assistente
+1c166250	Depois
+381b7b8a	Substituir e aplicar
+65d960e8	Configuração - ProFanController
+f918c02e	1  Boas-vindas
+38684fb3	2  Identificar conectores
+76236dbf	3  Política de resfriamento
+b303c749	4  Concluído
+99a4e0cb	Boas-vindas ao ProFanController
+26578394	Este assistente verifica o que está ligado aos conectores de ventoinha da placa-mãe\ne cria automaticamente curvas e perfis (Silencioso / Padrão / Desempenho) para o seu PC.
+80f88c90	Antes de começar
+b1838111	• Fique perto do gabinete para ouvir e ver as ventoinhas.\n• Feche programas pesados (como jogos).\n• Suas configurações atuais serão substituídas, mas dá para voltar com "Desfazer" depois.
+90560324	Identificar os conectores de ventoinha
+68879f49	"Teste" deixa um conector na velocidade máxima por 8 segundos. Veja qual ventoinha acelerou e dê a ela um nome e um tipo. Conectores com 0 rpm não têm nada ligado.
+5c41906d	Não usado
+63d8f556	Qual temperatura esta ventoinha segue
+7f1db4e4	Seguir a CPU
+6e1fb818	Seguir a GPU
+78e6a15b	CPU e GPU
+fdc10db0	Política de resfriamento
+78757193	Os três perfis são criados. Escolha aqui o do dia a dia; você pode trocar quando quiser pelo menu da bandeja.
+f0eeb34c	O mais silencioso possível; só gira forte com carga alta
+ff39d6e4	Padrão (recomendado)
+a5f14a94	Equilíbrio entre silêncio e resfriamento
+107ae700	Desempenho
+062bd953	Prioriza manter a temperatura baixa
+7694e77b	Sensor de temperatura da CPU
+bf2333b7	Sensor de temperatura da GPU
+0b64da4f	Controlar a bomba com este app (fixa em 70%)
+c1db4c06	Desligado, a BIOS continua no comando; o app só acompanha a rotação e protege em caso de falha (recomendado)
+b58afa04	Tudo pronto
+861676ec	Começar o controle agora
+01bcdd36	Desligado, começa em DRY RUN (só calcula e não escreve nada nas ventoinhas)
+709f1f3b	Dica: depois, meça a rotação mínima de cada ventoinha com "Calibração automática" na página de curvas para um ajuste ainda mais silencioso.
+aceb0a14	Cancelar
+f193a383	Voltar
+303830fc	Avançar
+7b1ba115	Desinstalar (limpeza) - ProFanController
+a4fe8394	Antes de você parar de usar o ProFanController, o PC volta ao estado de antes do app. "Limpar e sair" faz o seguinte, de cima para baixo.
+2ed98b28	Também (nada disso acontece sem a sua escolha)
+9dc58ae6	Apagar também configurações, logs e registros
+f6fb6e2a	Desinstalar também o PawnIO (o driver de controle das ventoinhas)
+d767e070	Desinstala com o winget. Outros programas como FanControl, LibreHardwareMonitor ou OpenRGB também podem usar o PawnIO. Se continuar usando-os, deixe desligado.
+6c2a038c	Limpar e sair
+d481a31a	Fechar e sair
+1db2dfed	Opacidade 100%
+791083f9	Opacidade 90%
+73894a76	Opacidade 75%
+bcabc27d	Opacidade 50%
+bba0ea7b	Turbo (velocidade máxima) 5 min
+d45f8ae5	Silencioso 1 hora
+27ef87be	Cancelar ação rápida
+0abff5dc	Abrir janela principal
+ae8884f0	Fechar widget
+bd7aaf0b	Em andamento…
+8394b962	Falhou: {0}
+c6d96aae	Limpeza: {0}: {1}: {2}
+95db46c4	O controle das ventoinhas não estava rodando
+362dcae4	Todas as ventoinhas voltaram ao controle automático da BIOS
+3bd7ef7e	Alguns conectores não puderam voltar ao controle da BIOS (os nomes estão no log).
+63098690	Depois de {0:F0} segundos, a volta das ventoinhas ao controle da BIOS ainda não tinha terminado.
+a9982b5a	O processo vigia também foi encerrado
+4df819d3	O controle das ventoinhas parou e o hardware foi fechado
+235f026e	 ({0})
+81156e08	O controle das ventoinhas não parou em 5 segundos. As ventoinhas voltaram para a BIOS, mas por segurança
+ef5acb7a	O processo vigia colocou uma rotação segura
+fb7db8c2	Reinicie o PC
+fe1e7d87	 (ao reiniciar o PC, o controle volta para a BIOS).
+e39402e8	O controle de iluminação parou e os dispositivos foram liberados
+8008dbae	O controle de iluminação não estava em uso (conexão fechada)
+775adf46	Visualização no celular
+817c491e	Não foi possível remover a regra do firewall. Exclua "ProFanController Web" em "Segurança do Windows" → "Firewall e proteção de rede" → "Configurações avançadas" → "Regras de Entrada".
+629589af	Visualização no celular parada e regra do firewall removida
+1d979f07	Não foi possível remover a inicialização automática. Exclua "ProFanController" no Agendador de Tarefas (Biblioteca do Agendador de Tarefas).
+bc13583b	A inicialização no login foi removida
+22c99fc8	Não foi possível remover a configuração de despejo de falhas (HKEY_LOCAL_MACHINE\\{0}). Deixá-la não causa problema.
+14dd713f	A configuração de despejo de falhas foi removida
+f29a03c3	Desinstalar
+d66766d3	Não é feito aqui
+1e82ca4a	O caminho do executável é desconhecido.
+eb8f4a4f	Não foi possível preparar a exclusão de configurações, logs e registros ({0}).\nDepois que o app fechar, apague a pasta inteira:\n{1}
+8df0902c	Abrir pasta
+c5234463	O ProFanController ainda está rodando, então configurações, logs e registros não foram apagados.\n
+32a27012	Feche o app e depois apague esta pasta inteira:\n{0}
+ecdec9de	Apagado: {0}.\n\n
+a261a21a	Ao fechar este aviso, o Explorador abre a pasta do app. Apague a pasta inteira para terminar a limpeza:\n{0}
+62664073	Alguns itens não puderam ser apagados (talvez outro app os esteja usando):\n•
+d6750fd2	\n•
+bf71d238	\n…e mais {0}
+df6134ea	\n\nDepois de fechar este aviso, apague esta pasta inteira:\n{0}
+10d89683	Limpeza do ProFanController
+2d7f91ad	O ProFanController já está aberto.\nAbra-o pelo ícone da bandeja.
+ec6a9bb6	Salvando registros
+c0fd45c5	Continua rodando na bandeja. Para sair, clique com o botão direito no ícone.

@@ -509,3 +509,103 @@ a4de3937	Sluit de app af en start hem meteen opnieuw (gedurende die paar seconde
 7d0ab5b6	Officiële site openen (pawnio.eu)
 2b7f4cbf	Als winget niet beschikbaar is, haal dan het installatieprogramma van de officiële site en voer het uit
 e6974b1a	Opnieuw controleren
+1e39d435	Druk hierop nadat je het op een andere manier hebt geïnstalleerd (zoals met het installatieprogramma van de officiële site)
+d5c6d032	Te importeren profielen
+9d520d5c	Profielen met dezelfde naam vervangen
+6751ee1b	Uit: ze worden toegevoegd met namen als "Standaard (geïmporteerd)" (je huidige instellingen blijven)
+301f7b07	Ventilatoraansluitingen
+cb0aedd5	Temperatuursensoren
+772bcb56	Opnieuw instellen met de installatiewizard
+1c166250	Later
+381b7b8a	Vervangen en toepassen
+65d960e8	Installatie - ProFanController
+f918c02e	1  Welkom
+38684fb3	2  Aansluitingen herkennen
+76236dbf	3  Koelbeleid
+b303c749	4  Klaar
+99a4e0cb	Welkom bij ProFanController
+26578394	Deze wizard controleert wat er op de ventilatoraansluitingen van je moederbord zit\nen maakt automatisch ventilatorcurves en profielen (Stil / Standaard / Prestaties) voor je pc.
+80f88c90	Voorbereiding
+b1838111	• Blijf bij de kast zodat je de ventilatoren hoort en ziet.\n• Sluit zware programma's (zoals games).\n• Je huidige instellingen worden overschreven, maar met "Ongedaan maken" kun je daarna terug.
+90560324	Ventilatoraansluitingen herkennen
+68879f49	"Test" laat een aansluiting 8 seconden op volle snelheid draaien. Kijk welke ventilator sneller gaat en geef hem een naam en een soort. Aansluitingen op 0 rpm hebben niets aangesloten.
+5c41906d	Niet gebruikt
+63d8f556	Welke temperatuur deze ventilator volgt
+7f1db4e4	CPU volgen
+6e1fb818	GPU volgen
+78e6a15b	CPU en GPU
+fdc10db0	Koelbeleid
+78757193	Alle drie de profielen worden gemaakt. Kies hier het profiel voor dagelijks gebruik; via het systeemvakmenu kun je altijd wisselen.
+f0eeb34c	Zo stil mogelijk; draait alleen bij zware belasting echt op
+ff39d6e4	Standaard (aanbevolen)
+a5f14a94	Balans tussen stilte en koeling
+107ae700	Prestaties
+062bd953	Lage temperaturen gaan voor
+7694e77b	CPU-temperatuursensor
+bf2333b7	GPU-temperatuursensor
+0b64da4f	Pomp met deze app regelen (vast 70%)
+c1db4c06	Uit: het BIOS blijft verantwoordelijk; de app bewaakt alleen het toerental en beschermt bij storingen (aanbevolen)
+b58afa04	Alles klaar
+861676ec	Meteen beginnen met regelen
+01bcdd36	Uit: start in DRY RUN (berekent alleen en schrijft niets naar de ventilatoren)
+709f1f3b	Tip: meet daarna met "Automatisch kalibreren" op de pagina Ventilatorcurves het minimale toerental van elke ventilator voor een nog stillere instelling.
+aceb0a14	Annuleren
+f193a383	Terug
+303830fc	Volgende
+7b1ba115	Verwijderen (opruimen) - ProFanController
+a4fe8394	Voordat je stopt met ProFanController, wordt je pc teruggezet naar de toestand van vóór de app. "Opruimen en afsluiten" doet het volgende, van boven naar beneden.
+2ed98b28	Daarnaast (geen van beide zonder jouw keuze)
+9dc58ae6	Ook instellingen, logs en metingen wissen
+f6fb6e2a	Ook PawnIO (het stuurprogramma voor ventilatorregeling) verwijderen
+d767e070	Wordt verwijderd met winget. Ook andere software zoals FanControl, LibreHardwareMonitor of OpenRGB kan PawnIO gebruiken. Blijf je die gebruiken, laat dit dan uit.
+6c2a038c	Opruimen en afsluiten
+d481a31a	Sluiten en afsluiten
+1db2dfed	Dekking 100%
+791083f9	Dekking 90%
+73894a76	Dekking 75%
+bcabc27d	Dekking 50%
+bba0ea7b	Boost (volle snelheid) 5 min
+d45f8ae5	Stil 1 uur
+27ef87be	Snelactie opheffen
+0abff5dc	Hoofdvenster openen
+ae8884f0	Widget sluiten
+bd7aaf0b	Bezig…
+8394b962	Mislukt: {0}
+c6d96aae	Opruimen: {0}: {1}: {2}
+95db46c4	De ventilatorregeling liep niet
+362dcae4	Alle ventilatoren staan weer onder automatische BIOS-regeling
+3bd7ef7e	Sommige ventilatoraansluitingen konden niet terug naar BIOS-regeling (de namen staan in de log).
+63098690	Na {0:F0} seconden was het teruggeven van de ventilatoren aan het BIOS nog niet klaar.
+a9982b5a	Het watchdog-proces is ook gestopt
+4df819d3	Ventilatorregeling gestopt en hardware gesloten
+235f026e	 ({0})
+81156e08	De ventilatorregeling stopte niet binnen 5 seconden. De ventilatoren zijn teruggegeven aan het BIOS, maar voor de zekerheid
+ef5acb7a	Het watchdog-proces heeft een veilig toerental ingesteld
+fb7db8c2	Start de pc opnieuw op
+fe1e7d87	 (na een herstart van de pc neemt het BIOS de regeling weer over).
+e39402e8	Lichtregeling gestopt en apparaten vrijgegeven
+8008dbae	Lichtregeling werd niet gebruikt (verbinding gesloten)
+775adf46	Telefoonweergave
+817c491e	De firewallregel kon niet worden verwijderd. Verwijder "ProFanController Web" via "Windows-beveiliging" → "Firewall- en netwerkbeveiliging" → "Geavanceerde instellingen" → "Binnenkomende regels".
+629589af	Telefoonweergave gestopt en firewallregel verwijderd
+1d979f07	Het automatisch opstarten kon niet worden verwijderd. Verwijder "ProFanController" uit Taakplanner (Taakplanner-bibliotheek).
+bc13583b	Het opstarten bij aanmelden is verwijderd
+22c99fc8	De instelling voor crashdumps kon niet worden verwijderd (HKEY_LOCAL_MACHINE\\{0}). Laten staan kan geen kwaad.
+14dd713f	De instelling voor crashdumps is verwijderd
+f29a03c3	Verwijderen
+d66766d3	Hier niet uitgevoerd
+1e82ca4a	Het pad van het uitvoerbare bestand is onbekend.
+eb8f4a4f	Kon het wissen van instellingen, logs en metingen niet voorbereiden ({0}).\nVerwijder na het afsluiten van de app de hele map:\n{1}
+8df0902c	Map openen
+c5234463	ProFanController draait nog, dus instellingen, logs en metingen zijn niet gewist.\n
+32a27012	Sluit de app af en verwijder daarna deze hele map:\n{0}
+ecdec9de	Gewist: {0}.\n\n
+a261a21a	Als je deze melding sluit, opent Verkenner de map van de app. Verwijder de hele map om het opruimen af te ronden:\n{0}
+62664073	Sommige onderdelen konden niet worden gewist (misschien heeft een andere app ze open):\n•
+d6750fd2	\n•
+bf71d238	\n…en nog {0}
+df6134ea	\n\nVerwijder na het sluiten van deze melding deze hele map:\n{0}
+10d89683	ProFanController opruimen
+2d7f91ad	ProFanController draait al.\nOpen het via het pictogram in het systeemvak.
+ec6a9bb6	Metingen opslaan
+c0fd45c5	Draait verder in het systeemvak. Klik met de rechtermuisknop op het pictogram om af te sluiten.

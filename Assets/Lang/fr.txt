@@ -509,3 +509,103 @@ a4de3937	Ferme l'application et la relance aussitôt (pendant ces quelques secon
 7d0ab5b6	Ouvrir le site officiel (pawnio.eu)
 2b7f4cbf	Si winget n'est pas disponible, récupérez le programme d'installation sur le site officiel et lancez-le
 e6974b1a	Vérifier à nouveau
+1e39d435	Appuyez ici après l'avoir installé autrement (par exemple avec le programme d'installation du site officiel)
+d5c6d032	Profils à importer
+9d520d5c	Remplacer les profils portant le même nom
+6751ee1b	Désactivé, ils sont ajoutés avec des noms comme « Standard (importé) » (vos réglages actuels restent)
+301f7b07	Connecteurs de ventilateurs
+cb0aedd5	Capteurs de température
+772bcb56	Tout reconfigurer avec l'assistant
+1c166250	Plus tard
+381b7b8a	Remplacer et appliquer
+65d960e8	Configuration - ProFanController
+f918c02e	1  Bienvenue
+38684fb3	2  Identifier les connecteurs
+76236dbf	3  Politique de refroidissement
+b303c749	4  Terminé
+99a4e0cb	Bienvenue dans ProFanController
+26578394	Cet assistant vérifie ce qui est branché sur les connecteurs de ventilateurs de votre carte mère\net crée automatiquement des courbes et des profils (Silencieux / Standard / Performance) adaptés à votre PC.
+80f88c90	Préparation
+b1838111	• Restez près du boîtier pour entendre et voir les ventilateurs.\n• Fermez les programmes lourds (comme les jeux).\n• Vos réglages actuels seront écrasés, mais « Annuler » permet d'y revenir ensuite.
+90560324	Identifier les connecteurs de ventilateurs
+68879f49	« Test » fait tourner un connecteur à pleine vitesse pendant 8 secondes. Repérez le ventilateur qui accélère, puis donnez-lui un nom et un type. Les connecteurs à 0 rpm n'ont rien de branché.
+5c41906d	Non utilisé
+63d8f556	La température que suit ce ventilateur
+7f1db4e4	Suivre le CPU
+6e1fb818	Suivre le GPU
+78e6a15b	CPU et GPU
+fdc10db0	Politique de refroidissement
+78757193	Les trois profils sont créés. Choisissez ici celui du quotidien ; vous pouvez changer à tout moment depuis le menu de la zone de notification.
+f0eeb34c	Le plus silencieux possible ; ne tourne vraiment que sous forte charge
+ff39d6e4	Standard (recommandé)
+a5f14a94	Équilibre entre silence et refroidissement
+107ae700	Performance
+062bd953	Priorité aux basses températures
+7694e77b	Capteur de température du CPU
+bf2333b7	Capteur de température du GPU
+0b64da4f	Contrôler la pompe avec cette application (fixe 70 %)
+c1db4c06	Désactivé, le BIOS garde la main ; l'application surveille seulement la vitesse et protège en cas de problème (recommandé)
+b58afa04	Tout est prêt
+861676ec	Commencer le contrôle tout de suite
+01bcdd36	Désactivé, démarre en DRY RUN (calcule seulement, n'écrit rien aux ventilateurs)
+709f1f3b	Astuce : ensuite, mesurez la vitesse minimale de chaque ventilateur avec « Calibrage automatique » dans la page Courbes pour un réglage encore plus silencieux.
+aceb0a14	Annuler
+f193a383	Retour
+303830fc	Suivant
+7b1ba115	Désinstaller (nettoyer) - ProFanController
+a4fe8394	Avant d'arrêter d'utiliser ProFanController, votre PC est remis dans l'état d'avant l'installation. « Nettoyer et quitter » effectue ce qui suit, de haut en bas.
+2ed98b28	En plus (rien de cela sans votre choix)
+9dc58ae6	Supprimer aussi réglages, journaux et enregistrements
+f6fb6e2a	Désinstaller aussi PawnIO (le pilote de contrôle des ventilateurs)
+d767e070	Désinstallé avec winget. D'autres logiciels comme FanControl, LibreHardwareMonitor ou OpenRGB peuvent aussi utiliser PawnIO. Si vous continuez à les utiliser, laissez cette option désactivée.
+6c2a038c	Nettoyer et quitter
+d481a31a	Fermer et quitter
+1db2dfed	Opacité 100 %
+791083f9	Opacité 90 %
+73894a76	Opacité 75 %
+bcabc27d	Opacité 50 %
+bba0ea7b	Boost (pleine vitesse) 5 min
+d45f8ae5	Silencieux 1 heure
+27ef87be	Annuler l'action rapide
+0abff5dc	Ouvrir la fenêtre principale
+ae8884f0	Fermer le widget
+bd7aaf0b	En cours…
+8394b962	Échec : {0}
+c6d96aae	Nettoyage : {0} : {1} : {2}
+95db46c4	Le contrôle des ventilateurs ne tournait pas
+362dcae4	Tous les ventilateurs sont revenus sous contrôle automatique du BIOS
+3bd7ef7e	Certains connecteurs n'ont pas pu être rendus au contrôle du BIOS (leurs noms sont dans le journal).
+63098690	Après {0:F0} secondes, le retour des ventilateurs au contrôle du BIOS n'était pas terminé.
+a9982b5a	Le processus de surveillance a aussi été arrêté
+4df819d3	Contrôle des ventilateurs arrêté et matériel fermé
+235f026e	 ({0})
+81156e08	Le contrôle des ventilateurs ne s'est pas arrêté en 5 secondes. Les ventilateurs ont été rendus au BIOS, mais par précaution
+ef5acb7a	Le processus de surveillance a mis une vitesse sûre
+fb7db8c2	Redémarrez le PC
+fe1e7d87	 (après un redémarrage, le BIOS reprend le contrôle).
+e39402e8	Contrôle de l'éclairage arrêté et appareils libérés
+8008dbae	Le contrôle de l'éclairage n'était pas utilisé (connexion fermée)
+775adf46	Vue mobile
+817c491e	Impossible de supprimer la règle de pare-feu. Supprimez « ProFanController Web » dans « Sécurité Windows » → « Pare-feu et protection du réseau » → « Paramètres avancés » → « Règles de trafic entrant ».
+629589af	Vue mobile arrêtée et règle de pare-feu supprimée
+1d979f07	Impossible de supprimer le démarrage automatique. Supprimez « ProFanController » dans le Planificateur de tâches (Bibliothèque du Planificateur de tâches).
+bc13583b	Le démarrage à l'ouverture de session a été supprimé
+22c99fc8	Impossible de supprimer le réglage des vidages sur incident (HKEY_LOCAL_MACHINE\\{0}). Le laisser est sans danger.
+14dd713f	Le réglage des vidages sur incident a été supprimé
+f29a03c3	Désinstaller
+d66766d3	Non effectué ici
+1e82ca4a	Le chemin de l'exécutable est inconnu.
+eb8f4a4f	Impossible de préparer la suppression des réglages, journaux et enregistrements ({0}).\nAprès la fermeture de l'application, supprimez tout le dossier :\n{1}
+8df0902c	Ouvrir le dossier
+c5234463	ProFanController tourne encore, donc réglages, journaux et enregistrements n'ont pas été supprimés.\n
+32a27012	Quittez l'application, puis supprimez tout ce dossier :\n{0}
+ecdec9de	Supprimé : {0}.\n\n
+a261a21a	À la fermeture de ce message, l'Explorateur ouvre le dossier de l'application. Supprimez tout le dossier pour terminer le nettoyage :\n{0}
+62664073	Certains éléments n'ont pas pu être supprimés (une autre application les a peut-être ouverts) :\n•
+d6750fd2	\n•
+bf71d238	\n…et {0} autres
+df6134ea	\n\nAprès avoir fermé ce message, supprimez tout ce dossier :\n{0}
+10d89683	Nettoyage de ProFanController
+2d7f91ad	ProFanController est déjà lancé.\nOuvrez-le depuis l'icône de la zone de notification.
+ec6a9bb6	Enregistrement des données
+c0fd45c5	Continue de tourner dans la zone de notification. Pour quitter, faites un clic droit sur l'icône.
