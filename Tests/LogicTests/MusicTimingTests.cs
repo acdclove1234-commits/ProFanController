@@ -150,6 +150,70 @@ public static class MusicTiming
 public static class MusicTimingTests
 {
     /// <summary>
+    /// 調査: テンポをつかんでいるのに早く光る拍が、曲のどこで・どんなときに出るか（MUSIC_TIMING_SONG=wav）。
+    /// 5 秒ごとに、光った拍の数・物差しとの差・アプリのテンポと物差しのテンポを出す
+    /// </summary>
+    public static void TestEarlyFlashDiag()
+    {
+        string? path = Environment.GetEnvironmentVariable("MUSIC_TIMING_SONG");
+        if (string.IsNullOrEmpty(path) || !File.Exists(path)) return;
+        var mono = MusicWavTests.ReadWavMono(path, out int fs);
+        var e = new AudioEngine(fs) { Settings = MusicTuning.EngineSettings(new RgbConfig { Mode = RgbModes.Music }) };
+        var hops = new List<(double T, double Odf)>();
+        e.Onsets.DiagHop = (t, odf, bn) => hops.Add((t, (1.0 * bn[0] + 0.8 * bn[1] + 0.35 * bn[2] + 0.15 * bn[3]) / 2.3));
+        var run = new EngineRun(e).Feed(mono);
+        double bias = MusicTiming.ReferenceBias();
+        var refBeats = BeatReference.Track(hops, out double refBpm).Select(t => t - bias).ToList();
+        var flashes = new List<(double T, double Bpm, double Err)>();
+        for (int i = 1; i < run.Frames.Count; i++)
+        {
+            var b = run.Beats[i];
+            double ta = run.Frames[i - 1].T, tb = run.Frames[i].T;
+            if (!b.Locked || !b.Crossed(ta, tb)) continue;
+            double t = b.NextBeatAfter(ta);
+            flashes.Add((t, b.Bpm, MusicTiming.ErrTo(refBeats, t) * 1000));
+        }
+        T.Info($"{Path.GetFileName(path)}: ref {refBpm:F1} bpm, {flashes.Count} locked flashes, early<-40 {flashes.Count(f => f.Err < -40)}, late>+40 {flashes.Count(f => f.Err > 40)}");
+        double end = run.Frames[^1].T;
+        for (double w = run.T0; w < end; w += 5)
+        {
+            var seg = flashes.Where(f => f.T >= w && f.T < w + 5).ToList();
+            var rb = refBeats.Where(t => t >= w && t < w + 5).ToList();
+            double refLocal = rb.Count >= 2 ? 60 * (rb.Count - 1) / (rb[^1] - rb[0]) : double.NaN;
+            if (seg.Count == 0) { T.Info($"  {w - run.T0,5:F0}s  -  ref {refLocal,6:F1}"); continue; }
+            string errs = string.Join(" ", seg.Select(f => $"{f.Err:F0}"));
+            // キック・スネアが、物差しの拍とアプリの光る拍のどちらに重なっているか（どちらの拍が正しそうか）
+            var hits = run.Events.Where(x => x.T >= w && x.T < w + 5 && x.Kind is AudioEventKind.Kick or AudioEventKind.Snare).Select(x => x.T).ToList();
+            var kicksOnly = run.Events.Where(x => x.T >= w && x.T < w + 5 && x.Kind == AudioEventKind.Snare).Select(x => x.T).ToList(); // スネア（2・4 拍目）がどちらの拍に重なるか
+            var appBeats = seg.Select(f => f.T).ToList();
+            int onRef = hits.Count(t => Math.Abs(MusicTiming.ErrTo(refBeats, t)) <= 0.05);
+            int onApp = hits.Count(t => Math.Abs(MusicTiming.ErrTo(appBeats, t)) <= 0.05);
+            int kRef = kicksOnly.Count(t => Math.Abs(MusicTiming.ErrTo(refBeats, t)) <= 0.05), kApp = kicksOnly.Count(t => Math.Abs(MusicTiming.ErrTo(appBeats, t)) <= 0.05);
+            T.Info($"  {w - run.T0,5:F0}s  app {seg.Average(f => f.Bpm),6:F1} ref {refLocal,6:F1}  hits on ref {onRef}/{hits.Count} on app {onApp}/{hits.Count}  snares on ref {kRef}/{kicksOnly.Count} on app {kApp}/{kicksOnly.Count}  errs {errs}");
+        }
+    }
+
+    /// <summary>調査: スネアを決めるまでに待つコマ数（0・1・2）で、スネアの正確さ（2・4 拍目に合っているか・見つけた割合）を比べる</summary>
+    public static void TestSnareHoldCompare()
+    {
+        string? folder = Environment.GetEnvironmentVariable("MUSIC_TIMING");
+        if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
+        var files = Directory.GetFiles(folder, "*.wav").Where(f => File.Exists(Path.ChangeExtension(f, ".done"))).OrderBy(f => f).ToList();
+        int saved = OnsetDetector.SnareTune.HoldHops;
+        try
+        {
+            foreach (int hold in new[] { 2, 1, 0 })
+            {
+                OnsetDetector.SnareTune.HoldHops = hold;
+                var rs = files.Select(f => MusicWavTests.AnalyzeSong(f)).ToList();
+                T.Info($"hold {hold}: snare {rs.Average(r => r.Snare):F2}/s, on 2·4 {rs.Average(r => r.SnareOnBackbeat):P1}, on 1·3 {rs.Average(r => r.Front):P1}, " +
+                       $"half-beat {rs.Average(r => r.Half):P1}, 2·4 found {rs.Average(r => r.BackbeatFound):P1}");
+            }
+        }
+        finally { OnsetDetector.SnareTune.HoldHops = saved; }
+    }
+
+    /// <summary>
     /// 調査: スネアを、候補を見つけたコマで決めても（2 コマ待たなくても）間違えないか。
     /// 候補のコマで「キックの帯がほとんど立ち上がっていない」なら、その後にキックが見つかることは少ないはず
     /// </summary>
@@ -158,6 +222,9 @@ public static class MusicTimingTests
         string? folder = Environment.GetEnvironmentVariable("MUSIC_TIMING");
         if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
         var rows = new List<(double Kb, bool HatFirst, bool G1First, bool KickNear, bool HatOnly, long Rel)>();
+        // 以前の決め方（2 コマ待つ）で、待っている間にキックやハイハットが見つかった割合を数える
+        int savedHold = OnsetDetector.SnareTune.HoldHops;
+        OnsetDetector.SnareTune.HoldHops = 2;
         foreach (string wav in Directory.GetFiles(folder, "*.wav").OrderBy(f => f))
         {
             if (!File.Exists(Path.ChangeExtension(wav, ".done"))) continue;
@@ -166,6 +233,7 @@ public static class MusicTimingTests
             e.Onsets.DiagSnareFirst = (t, kb, hf, g1f, kn, ho, rel) => rows.Add((kb, hf, g1f, kn, ho, rel));
             new EngineRun(e).Feed(mono);
         }
+        OnsetDetector.SnareTune.HoldHops = savedHold;
         int window = 2;
         int emitted = rows.Count(r => !r.KickNear && !r.HatOnly);
         int kickAfter = rows.Count(r => r.KickNear && r.Rel > 0);

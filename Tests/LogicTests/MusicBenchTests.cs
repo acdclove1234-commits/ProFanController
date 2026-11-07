@@ -256,13 +256,14 @@ public static class MusicWavTests
         int ch = 2;
         fs = 48000;
         int bits = 32;
+        int format = 3; // 1 = 整数 PCM、3 = 浮動小数（0xFFFE は拡張形式。中の種類はビット数で判断する）
         while (br.BaseStream.Position < br.BaseStream.Length)
         {
             string id = new string(br.ReadChars(4));
             int size = br.ReadInt32();
             if (id == "fmt ")
             {
-                br.ReadInt16();
+                format = br.ReadUInt16();
                 ch = br.ReadInt16();
                 fs = br.ReadInt32();
                 br.ReadInt32();
@@ -272,12 +273,23 @@ public static class MusicWavTests
             }
             else if (id == "data")
             {
-                int n = size / 4 / ch;
+                // 16 / 24 bit は整数、32 bit は浮動小数（拡張形式で整数 32 bit のものは、ここでは扱わない）
+                bool isFloat = format == 3 || (format != 1 && bits == 32);
+                int bytes = bits / 8;
+                int n = size / bytes / ch;
                 var mono = new float[n];
                 for (int i = 0; i < n; i++)
                 {
                     float s = 0;
-                    for (int c = 0; c < ch; c++) s += br.ReadSingle();
+                    for (int c = 0; c < ch; c++)
+                    {
+                        s += bits switch
+                        {
+                            16 => br.ReadInt16() / 32768f,
+                            24 => ((br.ReadByte() | (br.ReadByte() << 8) | (br.ReadSByte() << 16))) / 8388608f,
+                            _ => isFloat ? br.ReadSingle() : br.ReadInt32() / 2147483648f,
+                        };
+                    }
                     mono[i] = s / ch;
                 }
                 return mono;
