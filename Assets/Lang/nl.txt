@@ -1107,3 +1107,96 @@ e266b3b4	Knippert sterk op de beat (alleen als "Flitsen beperken" uit staat)
 23099007	Midden (snare, zang)
 b599c0f6	Hoog (hi-hat)
 34c5e8d2	Hele geluid (volume)
+1e73f52b	Het gebruik varieert tussen {0:F0} en {1:F0}%, maar de waarde staat al meer dan {2:F0} minuten op {3:F1} °C
+f898c734	Geen https-adres: {0}
+9181a7c0	De app is in {0:F0} minuten {1} keer gestopt, dus automatisch herstarten is gestaakt.
+abf150b9	Automatisch herstarten staat uit.
+08738032	ProFanController is onverwacht gestopt.\n\nDe ventilatoren staan vast op een veilig toerental ({0:F0}%, pompen op 100%). {1}\n
+a506afc7	Na een herstart van de pc neemt het BIOS de regeling weer over (start je ProFanController opnieuw, dan regelt de app weer).\n\nLogboek: 
+5e11c7bc	Niet bruikbaar vanaf dit netwerk.
+3540eeb1	Te vaak een verkeerde sleutel; toegang is even geblokkeerd. Wacht ongeveer 1 minuut.
+aacf373e	De toegangssleutel klopt niet. Gebruik de URL die in de instellingen op de pc wordt getoond.
+1e1ddced	Verbinden…
+6b1221b3	Systeem
+73dd9d77	Volle snelheid 5 min
+f27c7942	 bijgewerkt · 
+908c69fa	Kan geen verbinding maken met de pc
+88209a5b	(geen)
+59d07259	winget.exe niet gevonden
+f20bb342	Kan winget niet starten
+7c7e0834	Geannuleerd
+fd770949	Time-out
+1ca63358	Downloaden… {0} / {1}
+eb7cfe73	Verwijderen klaar. Controleren…
+792a1ca8	Installatie klaar. Controleren…
+0a1e33ea	Verwijderen… (dit duurt even)
+41209895	Installeren… (dit duurt even)
+3487b9bc	Gedownload bestand wordt gecontroleerd…
+dbd5b1f0	Downloaden…
+9e8ebaf4	Bezig… {0}%
+305b4308	(volgt {0})
+0f6e5123	Er loopt een koeltest of kalibratie. Begin als die klaar is.
+5b079133	Kies minstens één ventilator om af te stemmen.
+395141d9	Geen GPU-temperatuursensor gevonden.
+4b25b2cd	Geen CPU-temperatuursensor gevonden.
+7a122984	Geen sensor voor GPU-gebruik gevonden, dus de GPU kan niet worden afgestemd.
+c7751269	• Start daarna een game of benchmark (3DMark, FF-benchmark enz.) en houd de GPU belast.\n
+c886e5d0	• De CPU wordt volledig belast (sluit andere zware apps).\n
+dbca6724	Automatisch afstemmen begint (ongeveer {0} min).\n\n
+a1ca3c2f	• De {0} gekozen ventilatoren worden geleidelijk verlaagd vanaf 100%. Het geluid wordt afwisselend harder en zachter.\n
+ac505b53	• Bereikt de {0}-temperatuur {1:F0} °C, dan wordt meteen gestopt en keert de normale regeling terug.\n
+46002470	• Het resultaat wordt pas toegepast nadat je het hebt bekeken, dus tussentijds stoppen verandert geen instellingen.
+36a2fc44	Automatisch afstemmen
+417196a4	Nu {0:F0} °C / ventilator {1:F0}%
+5d9f4450	Nu {0:F0} °C
+fe560e0e	Meting klaar. Bekijk de curve en kies het profiel waarop je hem toepast.
+507f470e	Automatisch afstemmen: te weinig stappen gemeten, dus er kon geen curve worden gemaakt.
+afab154e	De meting voor automatisch afstemmen is klaar. Bekijk de curve en pas hem toe.
+8bbd848f	Resultaat bekijken
+59c5b033	{0} · in rust {1:F1} °C · bij volle belasting:
+5ab01921	{0:F0} °C is zelfs op volle snelheid niet vast te houden (overweeg betere koeling)
+d1e24e74	Toerental nodig om {0:F0} °C vast te houden: ongeveer {1:F0}%
+9e669da9	* Voortijdig gestopt, dus alleen gemaakt van de gemeten stappen ({0})
+d63ad09b	Profiel "{0}" niet gevonden. Kies opnieuw.
+26bd87a8	De automatisch gemaakte curve is toegepast op {1} ventilatoren in "{0}" (terug te draaien met "Ongedaan maken").
+b6e37608	Curve bekijken
+85bbd542	Toegepast op alle profielen (doel: {0}). Terug te draaien met "Ongedaan maken".
+cd7e4f98	CPU (automatisch afgestemd)
+343dc6dc	GPU (automatisch afgestemd)
+c8043f0d	Voeg een ventilator toe met "Aansluiting toevoegen" linksonder, of gebruik de installatiewizard in de instellingen
+06dd8842	Kies links een ventilator uit de lijst of voeg een aansluiting toe
+02a68814	Kopiëren naar "{0}"
+7998312d	Kopiëren naar dezelfde ventilator in andere profielen
+0f944042	Geen doel om naar te kopiëren
+e93950f9	Curve "{0}" gekopieerd.
+184cbc4c	Deze aansluiting is al toegevoegd.
+f013e4fc	GPU-ventilator "{0}" wordt toegevoegd (experimentele functie).\n\n
+78fbbc26	• Zodra de regeling begint, stopt de automatische regeling van het GPU-stuurprogramma (zoals de 0 RPM-modus die de ventilatoren in rust stilzet).\n
+a779ee69	• Komt de GPU-temperatuur boven {0:F0} °C (Hot Spot {1:F0} °C), dan gaat hij ongeacht de instellingen naar 100%.\n
+e158d65b	• Direct na het toevoegen staat "Met deze app regelen" uit (zoals voorheen). Bekijk de curve voordat je het aanzet.
+35a1a5ce	GPU-ventilator
+7a81ddb7	CPU-gekoppeld
+082898e0	"{0}" uit alle profielen verwijderen?\nDe verwijderde aansluiting gaat terug naar BIOS-regeling.
+5c0edbde	Curve {0}
+68339e34	Er is minstens één curve nodig. Voor een constant toerental schakel je over naar "Vast toerental".
+0de821a1	Er wordt al een andere ventilator gekalibreerd. Begin als dat klaar is.
+d4ae40d7	Er loopt een automatische afstemming of koeltest. Begin als die klaar is.
+2e3bb637	Deze ventilator zit niet in het actieve profiel.
+3009598f	Kalibratie van "{0}" begint.\n\n
+8d17b7e8	• Ongeveer 1–2 minuten lang draait de ventilator afwisselend op volle snelheid en staat hij stil.\n
+60985017	• Voer het uit terwijl CPU/GPU niet belast zijn (boven 80 °C stopt het automatisch).
+40098717	Starten…
+5a35c90a	Nog niet gemeten.
+4661e38f	Max {0:N0} rpm / stopt onder {1:F0}% / start bij {2:F0}% (gemeten {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Deze ventilator stopt onder {0:F0}%. Wil je niet dat hij stopt, stel dan {1:F0}% of meer in.
+1d4c0bba	Het minimumtoerental van "{0}" is in alle profielen op {1:F0}% gezet.
+9edeb81a	"{0}" vermijdt nu {1:F0}–{2:F0}%. Dit wordt als roze band in de curvegrafiek getoond.
+1e5aacaa	Maximaal 4 resonantiebanden per ventilator.
+d66864fa	Binnen in de behuizing
+1eef08cf	Bewerken afronden
+653d9443	Er is minstens één kaart nodig.
+aa2f7c05	Afbeelding kiezen…
+44dceb5c	Terug naar illustratie
+30ef4ec2	Afbeelding kiezen voor "{0}"
+3d493cb5	Afbeeldingsbestanden (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Kan de afbeelding niet instellen.\n{0}

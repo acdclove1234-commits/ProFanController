@@ -1107,3 +1107,96 @@ e266b3b4	Berkedip kuat mengikuti ketukan (hanya jika "Kurangi kedipan" dimatikan
 23099007	Nada tengah (snare, vokal)
 b599c0f6	Nada tinggi (hi-hat)
 34c5e8d2	Seluruh suara (volume)
+1e73f52b	Penggunaan berubah antara {0:F0} dan {1:F0}%, tetapi nilainya tetap {3:F1}°C selama lebih dari {2:F0} menit
+f898c734	Bukan alamat https: {0}
+9181a7c0	Aplikasi tertutup {1} kali dalam {0:F0} menit, jadi mulai ulang otomatis dihentikan.
+abf150b9	Mulai ulang otomatis dimatikan.
+08738032	ProFanController tertutup secara tak terduga.\n\nKipas ditetapkan pada putaran aman ({0:F0}%, pompa 100%). {1}\n
+a506afc7	Memulai ulang PC mengembalikan kendali ke BIOS (jika ProFanController dijalankan lagi, aplikasi yang mengendalikan).\n\nLog: 
+5e11c7bc	Tidak bisa dipakai dari jaringan ini.
+3540eeb1	Terlalu banyak kunci yang salah, jadi untuk sementara tidak diterima. Tunggu sekitar 1 menit.
+aacf373e	Kunci akses salah. Gunakan URL yang tampil di layar pengaturan PC.
+1e1ddced	Menghubungkan…
+6b1221b3	Sistem
+73dd9d77	Penuh 5 menit
+f27c7942	 diperbarui · 
+908c69fa	Tidak bisa terhubung ke PC
+88209a5b	(tidak ada)
+59d07259	winget.exe tidak ditemukan
+f20bb342	Tidak bisa menjalankan winget
+7c7e0834	Dibatalkan
+fd770949	Waktu habis
+1ca63358	Mengunduh… {0} / {1}
+eb7cfe73	Pencopotan selesai. Memeriksa…
+792a1ca8	Pemasangan selesai. Memeriksa…
+0a1e33ea	Mencopot… (perlu sedikit waktu)
+41209895	Memasang… (perlu sedikit waktu)
+3487b9bc	Memeriksa file yang diunduh…
+dbd5b1f0	Mengunduh…
+9e8ebaf4	Sedang berjalan… {0}%
+305b4308	(mengikuti {0})
+0f6e5123	Uji pendinginan atau kalibrasi sedang berjalan. Mulai setelah selesai.
+5b079133	Pilih minimal satu kipas yang akan disetel.
+395141d9	Sensor suhu GPU tidak ditemukan.
+4b25b2cd	Sensor suhu CPU tidak ditemukan.
+7a122984	Sensor penggunaan GPU tidak ditemukan, jadi GPU tidak bisa disetel.
+c7751269	• Setelah dimulai, jalankan gim atau benchmark (3DMark, FF Benchmark, dll.) dan terus beri beban pada GPU.\n
+c886e5d0	• CPU akan diberi beban penuh (tutup aplikasi berat lainnya).\n
+dbca6724	Memulai penyetelan otomatis (sekitar {0} mnt).\n\n
+a1ca3c2f	• {0} kipas yang dipilih diturunkan sedikit demi sedikit dari 100%. Suaranya akan naik-turun.\n
+ac505b53	• Jika suhu {0} mencapai {1:F0}°C, penyetelan langsung dihentikan dan kendali biasa dipulihkan.\n
+46002470	• Hasil baru diterapkan setelah Anda memeriksanya, jadi menghentikan di tengah tidak mengubah pengaturan.
+36a2fc44	Penyetelan otomatis
+417196a4	Saat ini {0:F0}°C / kipas {1:F0}%
+5d9f4450	Saat ini {0:F0}°C
+fe560e0e	Pengukuran selesai. Periksa kurvanya dan pilih profil tujuan penerapan.
+507f470e	Penyetelan otomatis: langkah yang terukur terlalu sedikit, jadi kurva tidak bisa dibuat.
+afab154e	Pengukuran penyetelan otomatis selesai. Periksa kurva hasilnya lalu terapkan.
+8bbd848f	Lihat hasil
+59c5b033	{0} · saat diam {1:F1}°C · saat beban penuh:
+5ab01921	{0:F0}°C tidak bisa dipertahankan bahkan dengan kecepatan penuh (pertimbangkan meningkatkan pendinginan)
+d1e24e74	Putaran yang diperlukan untuk mempertahankan {0:F0}°C: sekitar {1:F0}%
+9e669da9	* Berakhir di tengah jalan, jadi dibuat hanya dari langkah yang terukur ({0})
+d63ad09b	Profil "{0}" tidak ditemukan. Pilih lagi.
+26bd87a8	Kurva yang dibuat otomatis diterapkan ke {1} kipas di "{0}" (bisa dikembalikan dengan "Urungkan").
+b6e37608	Lihat kurva
+85bbd542	Diterapkan ke semua profil (target: {0}). Bisa dikembalikan dengan "Urungkan".
+cd7e4f98	CPU (penyetelan otomatis)
+343dc6dc	GPU (penyetelan otomatis)
+c8043f0d	Daftarkan kipas lewat "Tambah konektor" di kiri bawah, atau gunakan wizard penyiapan di layar pengaturan
+06dd8842	Pilih kipas dari daftar di kiri, atau tambahkan konektor
+02a68814	Salin ke "{0}"
+7998312d	Salin ke kipas yang sama di profil lain
+0f944042	Tidak ada tujuan penyalinan
+e93950f9	Kurva "{0}" disalin.
+184cbc4c	Konektor ini sudah ditambahkan.
+f013e4fc	Menambahkan kipas GPU "{0}" (fitur eksperimental).\n\n
+78fbbc26	• Begitu kendali dimulai, kendali otomatis driver GPU (seperti mode 0 RPM yang menghentikan kipas saat diam) berhenti.\n
+a779ee69	• Jika suhu GPU melewati {0:F0}°C (Hot Spot {1:F0}°C), kipas dijadikan 100% apa pun pengaturannya.\n
+e158d65b	• Tepat setelah ditambahkan, "Kendalikan dengan aplikasi ini" dalam keadaan mati (seperti sebelumnya). Periksa kurva sebelum menyalakannya.
+35a1a5ce	Kipas GPU
+7a81ddb7	Ikut CPU
+082898e0	Hapus "{0}" dari semua profil?\nKonektor yang dihapus kembali ke kendali BIOS.
+5c0edbde	Kurva {0}
+68339e34	Minimal perlu satu kurva. Untuk putaran tetap, beralihlah ke "Putaran tetap".
+0de821a1	Kipas lain sedang dikalibrasi. Mulai setelah selesai.
+d4ae40d7	Penyetelan otomatis atau uji pendinginan sedang berjalan. Mulai setelah selesai.
+2e3bb637	Kipas ini tidak ada di profil yang sedang aktif.
+3009598f	Memulai kalibrasi "{0}".\n\n
+8d17b7e8	• Selama sekitar 1–2 menit, kipas akan bergantian berputar penuh dan berhenti.\n
+60985017	• Jalankan saat CPU/GPU tidak dibebani (otomatis dihentikan jika suhu melewati 80°C).
+40098717	Memulai…
+5a35c90a	Belum diukur.
+4661e38f	Maks {0:N0} rpm / berhenti di bawah {1:F0}% / mulai berputar di {2:F0}% (diukur {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Kipas ini berhenti di bawah {0:F0}%. Jika tidak ingin berhenti, atur ke {1:F0}% atau lebih.
+1d4c0bba	Putaran minimum "{0}" diatur ke {1:F0}% di semua profil.
+9edeb81a	"{0}" kini menghindari {1:F0}–{2:F0}%. Ditampilkan sebagai pita merah muda pada grafik kurva.
+1e5aacaa	Maksimal 4 pita resonansi per kipas.
+d66864fa	Di dalam casing
+1eef08cf	Selesai mengedit
+653d9443	Minimal perlu satu kartu.
+aa2f7c05	Pilih gambar…
+44dceb5c	Kembali ke ilustrasi
+30ef4ec2	Pilih gambar untuk "{0}"
+3d493cb5	File gambar (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Gambar tidak bisa diatur.\n{0}

@@ -1107,3 +1107,96 @@ e266b3b4	Clignote fortement au rythme (uniquement si « Réduire les flashs » e
 23099007	Médiums (caisse claire, voix)
 b599c0f6	Aigus (charleston)
 34c5e8d2	Son global (volume)
+1e73f52b	L'utilisation varie de {0:F0} à {1:F0} %, mais la valeur reste à {3:F1} °C depuis plus de {2:F0} minutes
+f898c734	Ce n'est pas une adresse https : {0}
+9181a7c0	L'application s'est arrêtée {1} fois en {0:F0} minutes ; le redémarrage automatique a été abandonné.
+abf150b9	Le redémarrage automatique est désactivé.
+08738032	ProFanController s'est arrêté de manière inattendue.\n\nLes ventilateurs sont bloqués à une vitesse sûre ({0:F0} %, pompes à 100 %). {1}\n
+a506afc7	Au redémarrage du PC, le BIOS reprend le contrôle (en relançant ProFanController, l'application reprend le contrôle).\n\nJournal : 
+5e11c7bc	Impossible d'utiliser depuis ce réseau.
+3540eeb1	Trop de clés erronées : l'accès est suspendu un moment. Patientez environ 1 minute.
+aacf373e	La clé d'accès est incorrecte. Utilisez l'URL affichée dans les paramètres sur le PC.
+1e1ddced	Connexion…
+6b1221b3	Système
+73dd9d77	Pleine vitesse 5 min
+f27c7942	 mis à jour · 
+908c69fa	Connexion au PC impossible
+88209a5b	(aucun)
+59d07259	winget.exe introuvable
+f20bb342	Impossible de lancer winget
+7c7e0834	Annulé
+fd770949	Délai dépassé
+1ca63358	Téléchargement… {0} / {1}
+eb7cfe73	Désinstallation terminée. Vérification…
+792a1ca8	Installation terminée. Vérification…
+0a1e33ea	Désinstallation… (cela prend un moment)
+41209895	Installation… (cela prend un moment)
+3487b9bc	Vérification du fichier téléchargé…
+dbd5b1f0	Téléchargement…
+9e8ebaf4	En cours… {0} %
+305b4308	(suit {0})
+0f6e5123	Un test de refroidissement ou un calibrage est en cours. Commencez quand il sera terminé.
+5b079133	Choisissez au moins un ventilateur à régler.
+395141d9	Aucun capteur de température GPU trouvé.
+4b25b2cd	Aucun capteur de température CPU trouvé.
+7a122984	Aucun capteur d'utilisation GPU trouvé ; le GPU ne peut pas être réglé.
+c7751269	• Une fois lancé, démarrez un jeu ou un benchmark (3DMark, FF Benchmark, etc.) et maintenez le GPU en charge.\n
+c886e5d0	• Le CPU sera chargé à fond (fermez les autres applications gourmandes).\n
+dbca6724	Le réglage automatique commence (environ {0} min).\n\n
+a1ca3c2f	• Les {0} ventilateurs choisis sont abaissés progressivement depuis 100 %. Le bruit va monter et descendre.\n
+ac505b53	• Si la température {0} atteint {1:F0} °C, le réglage s'arrête aussitôt et le contrôle habituel reprend.\n
+46002470	• Le résultat n'est appliqué qu'après votre vérification ; un arrêt en cours ne modifie donc aucun réglage.
+36a2fc44	Réglage automatique
+417196a4	Actuellement {0:F0} °C / ventilateur {1:F0} %
+5d9f4450	Actuellement {0:F0} °C
+fe560e0e	Mesure terminée. Vérifiez la courbe et choisissez le profil auquel l'appliquer.
+507f470e	Réglage automatique : trop peu de paliers mesurés, impossible de créer une courbe.
+afab154e	La mesure du réglage automatique est terminée. Vérifiez la courbe obtenue et appliquez-la.
+8bbd848f	Voir le résultat
+59c5b033	{0} · au repos {1:F1} °C · à pleine charge :
+5ab01921	Impossible de tenir {0:F0} °C même à pleine vitesse (envisagez d'améliorer le refroidissement)
+d1e24e74	Vitesse nécessaire pour tenir {0:F0} °C : environ {1:F0} %
+9e669da9	* Arrêté avant la fin : créée à partir des seuls paliers mesurés ({0})
+d63ad09b	Profil « {0} » introuvable. Choisissez-en un autre.
+26bd87a8	La courbe créée automatiquement a été appliquée à {1} ventilateurs de « {0} » (annulable avec « Annuler »).
+b6e37608	Voir la courbe
+85bbd542	Appliqué à tous les profils (cible : {0}). Annulable avec « Annuler ».
+cd7e4f98	CPU (réglage auto)
+343dc6dc	GPU (réglage auto)
+c8043f0d	Ajoutez un ventilateur avec « Ajouter un connecteur » en bas à gauche, ou utilisez l'assistant de configuration dans les paramètres
+06dd8842	Choisissez un ventilateur dans la liste de gauche ou ajoutez un connecteur
+02a68814	Copier vers « {0} »
+7998312d	Copier vers le même ventilateur des autres profils
+0f944042	Aucune destination de copie
+e93950f9	Courbe « {0} » copiée.
+184cbc4c	Ce connecteur a déjà été ajouté.
+f013e4fc	Ajout du ventilateur GPU « {0} » (fonction expérimentale).\n\n
+78fbbc26	• Dès que le contrôle commence, le contrôle automatique du pilote GPU (comme le mode 0 RPM qui arrête les ventilateurs au repos) s'arrête.\n
+a779ee69	• Si la température GPU dépasse {0:F0} °C (Hot Spot {1:F0} °C), la vitesse passe à 100 % quels que soient les réglages.\n
+e158d65b	• Juste après l'ajout, « Contrôler avec cette application » est désactivé (comme avant). Vérifiez la courbe avant de l'activer.
+35a1a5ce	Ventilateur GPU
+7a81ddb7	Liée au CPU
+082898e0	Supprimer « {0} » de tous les profils ?\nLe connecteur supprimé revient sous contrôle du BIOS.
+5c0edbde	Courbe {0}
+68339e34	Au moins une courbe est nécessaire. Pour une vitesse constante, passez à « Vitesse fixe ».
+0de821a1	Un autre ventilateur est en cours de calibrage. Commencez quand il sera terminé.
+d4ae40d7	Un réglage automatique ou un test de refroidissement est en cours. Commencez quand il sera terminé.
+2e3bb637	Ce ventilateur ne fait pas partie du profil actif.
+3009598f	Début du calibrage de « {0} ».\n\n
+8d17b7e8	• Pendant environ 1 à 2 minutes, le ventilateur alternera entre pleine vitesse et arrêt.\n
+60985017	• Lancez-le quand le CPU/GPU n'est pas en charge (il s'arrête automatiquement au-delà de 80 °C).
+40098717	Démarrage…
+5a35c90a	Pas encore mesuré.
+4661e38f	Max {0:N0} rpm / arrêt sous {1:F0} % / démarre à {2:F0} % (mesuré le {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Ce ventilateur s'arrête sous {0:F0} %. Pour qu'il ne s'arrête pas, réglez {1:F0} % ou plus.
+1d4c0bba	La vitesse minimale de « {0} » a été réglée à {1:F0} % dans tous les profils.
+9edeb81a	« {0} » évite désormais {1:F0}–{2:F0} %. Une bande rose l'indique sur le graphique de la courbe.
+1e5aacaa	4 plages de résonance au maximum par ventilateur.
+d66864fa	Intérieur du boîtier
+1eef08cf	Terminer la modification
+653d9443	Au moins une carte est nécessaire.
+aa2f7c05	Choisir une image…
+44dceb5c	Revenir à l'illustration
+30ef4ec2	Choisir une image pour « {0} »
+3d493cb5	Images (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Impossible de définir l'image.\n{0}

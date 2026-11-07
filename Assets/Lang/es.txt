@@ -1107,3 +1107,96 @@ e266b3b4	Parpadea con fuerza al ritmo (solo si «Reducir destellos» está desac
 23099007	Medios (caja, voz)
 b599c0f6	Agudos (charles)
 34c5e8d2	Todo el sonido (volumen)
+1e73f52b	El uso varía entre {0:F0} y {1:F0} %, pero el valor sigue en {3:F1} °C desde hace más de {2:F0} minutos
+f898c734	No es una dirección https: {0}
+9181a7c0	Se cerró {1} veces en {0:F0} minutos, así que se dejó de reiniciar automáticamente.
+abf150b9	El reinicio automático está desactivado.
+08738032	ProFanController se cerró de forma inesperada.\n\nLos ventiladores están fijados a una velocidad segura ({0:F0} %, bombas al 100 %). {1}\n
+a506afc7	Al reiniciar el PC, la BIOS vuelve a tener el control (si vuelve a iniciar ProFanController, lo controlará la aplicación).\n\nRegistro: 
+5e11c7bc	No se puede usar desde esta red.
+3540eeb1	Demasiadas claves erróneas; se ha bloqueado temporalmente. Espere aproximadamente 1 minuto.
+aacf373e	La clave de acceso es incorrecta. Use la URL que aparece en la pantalla de ajustes del PC.
+1e1ddced	Conectando…
+6b1221b3	Sistema
+73dd9d77	Velocidad máxima 5 min
+f27c7942	 actualizado · 
+908c69fa	No se puede conectar con el PC
+88209a5b	(ninguno)
+59d07259	No se encuentra winget.exe
+f20bb342	No se pudo iniciar winget
+7c7e0834	Cancelado
+fd770949	Tiempo agotado
+1ca63358	Descargando… {0} / {1}
+eb7cfe73	Desinstalación terminada. Comprobando…
+792a1ca8	Instalación terminada. Comprobando…
+0a1e33ea	Desinstalando… (tarda un poco)
+41209895	Instalando… (tarda un poco)
+3487b9bc	Comprobando el archivo descargado…
+dbd5b1f0	Descargando…
+9e8ebaf4	En curso… {0} %
+305b4308	(sigue a {0})
+0f6e5123	Hay una prueba de refrigeración o una calibración en curso. Empiece cuando termine.
+5b079133	Elija al menos un ventilador para ajustar.
+395141d9	No se encontró el sensor de temperatura de la GPU.
+4b25b2cd	No se encontró el sensor de temperatura de la CPU.
+7a122984	No se encontró el sensor de uso de la GPU, así que no se puede ajustar la GPU.
+c7751269	• Al empezar, abra un juego o un benchmark (3DMark, FF Benchmark, etc.) y mantenga la GPU con carga.\n
+c886e5d0	• Se pone la CPU a plena carga (cierre otras aplicaciones pesadas).\n
+dbca6724	Empieza el ajuste automático (unos {0} min).\n\n
+a1ca3c2f	• Los {0} ventiladores elegidos bajarán poco a poco desde el 100 %. El ruido subirá y bajará.\n
+ac505b53	• Si la temperatura de {0} llega a {1:F0} °C, se detiene en el acto y vuelve el control habitual.\n
+46002470	• El resultado se aplica solo tras revisarlo, así que detenerlo a mitad no cambia ningún ajuste.
+36a2fc44	Ajuste automático
+417196a4	Ahora {0:F0} °C / ventilador {1:F0} %
+5d9f4450	Ahora {0:F0} °C
+fe560e0e	Medición terminada. Revise la curva y elija el perfil al que aplicarla.
+507f470e	Ajuste automático: se midieron muy pocos pasos y no se pudo crear la curva.
+afab154e	La medición del ajuste automático terminó. Revise la curva resultante y aplíquela.
+8bbd848f	Ver resultado
+59c5b033	{0} · en reposo {1:F1} °C · a plena carga:
+5ab01921	No se pueden mantener {0:F0} °C ni a velocidad máxima (plantéese mejorar la refrigeración)
+d1e24e74	Velocidad necesaria para mantener {0:F0} °C: alrededor del {1:F0} %
+9e669da9	* Terminó antes de tiempo; se creó solo con los pasos medidos ({0})
+d63ad09b	No se encuentra el perfil «{0}». Elija otro.
+26bd87a8	Se aplicó la curva creada automáticamente a {1} ventiladores de «{0}» (se puede revertir con «Deshacer»).
+b6e37608	Ver curva
+85bbd542	Aplicado a todos los perfiles (objetivo: {0}). Se puede revertir con «Deshacer».
+cd7e4f98	CPU (ajuste automático)
+343dc6dc	GPU (ajuste automático)
+c8043f0d	Registre un ventilador con «Añadir conector» abajo a la izquierda o use el asistente de configuración de Ajustes
+06dd8842	Elija un ventilador de la lista de la izquierda o añada un conector
+02a68814	Copiar a «{0}»
+7998312d	Copiar al mismo ventilador de otros perfiles
+0f944042	No hay destino para copiar
+e93950f9	Se copió la curva «{0}».
+184cbc4c	Este conector ya está añadido.
+f013e4fc	Se añade el ventilador de GPU «{0}» (función experimental).\n\n
+78fbbc26	• Al empezar el control, se detiene el control automático del controlador de la GPU (como el modo 0 RPM, que para los ventiladores en reposo).\n
+a779ee69	• Si la temperatura de la GPU supera {0:F0} °C (Hot Spot {1:F0} °C), se pone al 100 % sin importar los ajustes.\n
+e158d65b	• Justo después de añadirlo, «Controlar con esta aplicación» está desactivado (como hasta ahora). Revise la curva antes de activarlo.
+35a1a5ce	Ventilador de la GPU
+7a81ddb7	Ligada a la CPU
+082898e0	¿Eliminar «{0}» de todos los perfiles?\nEl conector eliminado vuelve al control de la BIOS.
+5c0edbde	Curva {0}
+68339e34	Se necesita al menos una curva. Para una velocidad constante, cambie a «Velocidad fija».
+0de821a1	Se está calibrando otro ventilador. Empiece cuando termine.
+d4ae40d7	Hay un ajuste automático o una prueba de refrigeración en curso. Empiece cuando termine.
+2e3bb637	Este ventilador no está en el perfil activo.
+3009598f	Empieza la calibración de «{0}».\n\n
+8d17b7e8	• Durante 1–2 minutos, el ventilador alternará entre velocidad máxima y parado.\n
+60985017	• Ejecútela cuando la CPU/GPU no tengan carga (se detiene sola si la temperatura supera 80 °C).
+40098717	Iniciando…
+5a35c90a	Aún no se ha medido.
+4661e38f	Máx {0:N0} rpm / se detiene por debajo del {1:F0} % / arranca al {2:F0} % (medido el {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Este ventilador se detiene por debajo del {0:F0} %. Si no quiere que se detenga, ponga {1:F0} % o más.
+1d4c0bba	La velocidad mínima de «{0}» se fijó en {1:F0} % en todos los perfiles.
+9edeb81a	«{0}» ahora evita {1:F0}–{2:F0} %. Se muestra como una franja rosa en el gráfico de la curva.
+1e5aacaa	Como máximo 4 franjas de resonancia por ventilador.
+d66864fa	Interior de la caja
+1eef08cf	Terminar de editar
+653d9443	Se necesita al menos una tarjeta.
+aa2f7c05	Elegir imagen…
+44dceb5c	Volver a la ilustración
+30ef4ec2	Elegir imagen para «{0}»
+3d493cb5	Archivos de imagen (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	No se pudo establecer la imagen.\n{0}

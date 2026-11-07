@@ -1107,3 +1107,96 @@ e266b3b4	Nhấp nháy mạnh theo nhịp (chỉ khi tắt "Giảm nhấp nháy")
 23099007	Âm trung (snare · giọng hát)
 b599c0f6	Âm cao (hi-hat)
 34c5e8d2	Toàn bộ âm thanh (âm lượng)
+1e73f52b	Mức dùng thay đổi từ {0:F0} đến {1:F0}% nhưng giá trị vẫn đứng ở {3:F1}°C hơn {2:F0} phút
+f898c734	Không phải địa chỉ https: {0}
+9181a7c0	Ứng dụng đã thoát {1} lần trong {0:F0} phút nên đã ngừng tự khởi động lại.
+abf150b9	Tự khởi động lại đang tắt.
+08738032	ProFanController đã thoát bất ngờ.\n\nQuạt đã được cố định ở tốc độ an toàn ({0:F0}%, bơm 100%). {1}\n
+a506afc7	Khởi động lại PC sẽ trả quyền điều khiển về BIOS (nếu mở lại ProFanController, ứng dụng sẽ điều khiển).\n\nNhật ký: 
+5e11c7bc	Không thể dùng từ mạng này.
+3540eeb1	Nhập sai khóa quá nhiều lần nên tạm thời không nhận. Hãy đợi khoảng 1 phút.
+aacf373e	Khóa truy cập không đúng. Hãy dùng URL hiển thị trên màn hình cài đặt của PC.
+1e1ddced	Đang kết nối…
+6b1221b3	Hệ thống
+73dd9d77	Tối đa 5 phút
+f27c7942	 cập nhật · 
+908c69fa	Không kết nối được với PC
+88209a5b	(không có)
+59d07259	Không tìm thấy winget.exe
+f20bb342	Không chạy được winget
+7c7e0834	Đã hủy
+fd770949	Hết thời gian chờ
+1ca63358	Đang tải xuống… {0} / {1}
+eb7cfe73	Đã gỡ xong. Đang kiểm tra…
+792a1ca8	Đã cài xong. Đang kiểm tra…
+0a1e33ea	Đang gỡ cài đặt… (mất một chút thời gian)
+41209895	Đang cài đặt… (mất một chút thời gian)
+3487b9bc	Đang kiểm tra tệp đã tải…
+dbd5b1f0	Đang tải xuống…
+9e8ebaf4	Đang tiến hành… {0}%
+305b4308	(theo {0})
+0f6e5123	Đang chạy kiểm tra làm mát hoặc hiệu chỉnh. Hãy bắt đầu sau khi xong.
+5b079133	Hãy chọn ít nhất một quạt để tinh chỉnh.
+395141d9	Không tìm thấy cảm biến nhiệt độ GPU.
+4b25b2cd	Không tìm thấy cảm biến nhiệt độ CPU.
+7a122984	Không tìm thấy cảm biến mức dùng GPU nên không thể tinh chỉnh GPU.
+c7751269	• Sau khi bắt đầu, hãy mở game hoặc benchmark (3DMark, FF Benchmark…) và giữ tải cho GPU.\n
+c886e5d0	• CPU sẽ chạy hết công suất (hãy đóng các ứng dụng nặng khác).\n
+dbca6724	Bắt đầu tự tinh chỉnh (khoảng {0} phút).\n\n
+a1ca3c2f	• {0} quạt đã chọn sẽ được giảm dần từ 100%. Tiếng quạt sẽ to nhỏ thất thường.\n
+ac505b53	• Khi nhiệt độ {0} đạt {1:F0}°C, sẽ dừng ngay và trở về điều khiển thường lệ.\n
+46002470	• Kết quả chỉ được áp dụng sau khi bạn xác nhận, nên dừng giữa chừng cũng không thay đổi cài đặt.
+36a2fc44	Tự tinh chỉnh
+417196a4	Hiện tại {0:F0}°C / quạt {1:F0}%
+5d9f4450	Hiện tại {0:F0}°C
+fe560e0e	Đã đo xong. Hãy xem đường cong và chọn cấu hình để áp dụng.
+507f470e	Tự tinh chỉnh: đo được quá ít bước nên không tạo được đường cong.
+afab154e	Đã đo xong phần tự tinh chỉnh. Hãy xem đường cong kết quả rồi áp dụng.
+8bbd848f	Xem kết quả
+59c5b033	{0} · khi nghỉ {1:F1}°C · khi tải tối đa:
+5ab01921	Không giữ được {0:F0}°C kể cả khi chạy tối đa (hãy cân nhắc tăng cường làm mát)
+d1e24e74	Tốc độ cần để giữ {0:F0}°C: khoảng {1:F0}%
+9e669da9	* Kết thúc giữa chừng nên chỉ tạo từ các bước đã đo ({0})
+d63ad09b	Không tìm thấy cấu hình "{0}". Hãy chọn lại.
+26bd87a8	Đã áp dụng đường cong tạo tự động cho {1} quạt của "{0}" (có thể khôi phục bằng "Hoàn tác").
+b6e37608	Xem đường cong
+85bbd542	Đã áp dụng cho mọi cấu hình (mục tiêu: {0}). Có thể khôi phục bằng "Hoàn tác".
+cd7e4f98	CPU (tự tinh chỉnh)
+343dc6dc	GPU (tự tinh chỉnh)
+c8043f0d	Hãy đăng ký quạt bằng "Thêm cổng" ở góc dưới bên trái, hoặc dùng trình hướng dẫn thiết lập trong màn hình cài đặt
+06dd8842	Hãy chọn quạt trong danh sách bên trái hoặc thêm cổng
+02a68814	Sao chép sang "{0}"
+7998312d	Sao chép sang cùng quạt ở các cấu hình khác
+0f944042	Không có nơi để sao chép
+e93950f9	Đã sao chép đường cong "{0}".
+184cbc4c	Cổng này đã được thêm rồi.
+f013e4fc	Thêm quạt GPU "{0}" (tính năng thử nghiệm).\n\n
+78fbbc26	• Khi bắt đầu điều khiển, chế độ tự điều khiển của driver GPU (như chế độ 0 RPM dừng quạt khi nghỉ) sẽ ngừng.\n
+a779ee69	• Khi nhiệt độ GPU vượt {0:F0}°C (Hot Spot {1:F0}°C), quạt sẽ chạy 100% bất kể cài đặt.\n
+e158d65b	• Ngay sau khi thêm, "Điều khiển bằng ứng dụng này" đang tắt (như trước). Hãy xem đường cong trước khi bật.
+35a1a5ce	Quạt GPU
+7a81ddb7	Theo CPU
+082898e0	Xóa "{0}" khỏi mọi cấu hình?\nCổng bị xóa sẽ trở về cho BIOS điều khiển.
+5c0edbde	Đường cong {0}
+68339e34	Cần ít nhất một đường cong. Để chạy tốc độ không đổi, hãy chuyển sang "Tốc độ cố định".
+0de821a1	Một quạt khác đang được hiệu chỉnh. Hãy bắt đầu sau khi xong.
+d4ae40d7	Đang chạy tự tinh chỉnh hoặc kiểm tra làm mát. Hãy bắt đầu sau khi xong.
+2e3bb637	Quạt này không có trong cấu hình đang chạy.
+3009598f	Bắt đầu hiệu chỉnh "{0}".\n\n
+8d17b7e8	• Trong khoảng 1–2 phút, quạt sẽ lúc chạy tối đa lúc dừng.\n
+60985017	• Hãy chạy khi CPU/GPU không có tải (sẽ tự dừng nếu nhiệt độ vượt 80°C).
+40098717	Đang bắt đầu…
+5a35c90a	Chưa đo.
+4661e38f	Tối đa {0:N0} rpm / dừng khi dưới {1:F0}% / bắt đầu quay ở {2:F0}% (đo lúc {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Quạt này dừng khi dưới {0:F0}%. Nếu không muốn quạt dừng, hãy đặt từ {1:F0}% trở lên.
+1d4c0bba	Đã đặt tốc độ tối thiểu của "{0}" là {1:F0}% cho mọi cấu hình.
+9edeb81a	Đã cho "{0}" tránh {1:F0}–{2:F0}%. Phần này hiển thị bằng dải màu hồng trên biểu đồ đường cong.
+1e5aacaa	Mỗi quạt có tối đa 4 dải tránh cộng hưởng.
+d66864fa	Trong thùng máy
+1eef08cf	Kết thúc chỉnh sửa
+653d9443	Cần ít nhất một thẻ.
+aa2f7c05	Chọn hình…
+44dceb5c	Trở về hình minh họa
+30ef4ec2	Chọn hình cho "{0}"
+3d493cb5	Tệp hình ảnh (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Không đặt được hình.\n{0}

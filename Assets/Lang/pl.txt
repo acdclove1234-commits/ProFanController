@@ -1107,3 +1107,96 @@ e266b3b4	Mocno miga w rytm (tylko gdy „Ogranicz miganie” jest wyłączone)
 23099007	Średnie (werbel, wokal)
 b599c0f6	Wysokie (hi-hat)
 34c5e8d2	Cały dźwięk (głośność)
+1e73f52b	Obciążenie zmienia się od {0:F0} do {1:F0}%, a wartość od ponad {2:F0} min stoi na {3:F1}°C
+f898c734	To nie jest adres https: {0}
+9181a7c0	Aplikacja zakończyła się {1} razy w ciągu {0:F0} min, więc automatyczne ponowne uruchamianie zostało wstrzymane.
+abf150b9	Automatyczne ponowne uruchamianie jest wyłączone.
+08738032	ProFanController nieoczekiwanie się zakończył.\n\nWentylatory ustawiono na bezpieczne obroty ({0:F0}%, pompy 100%). {1}\n
+a506afc7	Po restarcie komputera sterowanie wraca do BIOS (po ponownym uruchomieniu ProFanController steruje znów aplikacja).\n\nDziennik: 
+5e11c7bc	Nie można korzystać z tej sieci.
+3540eeb1	Zbyt wiele błędnych kluczy, dostęp chwilowo wstrzymany. Odczekaj około minuty.
+aacf373e	Nieprawidłowy klucz dostępu. Użyj adresu URL pokazanego w ustawieniach na komputerze.
+1e1ddced	Łączenie…
+6b1221b3	Systemowy
+73dd9d77	Pełna prędkość 5 min
+f27c7942	 aktualizacja · 
+908c69fa	Nie można połączyć się z komputerem
+88209a5b	(brak)
+59d07259	Nie znaleziono winget.exe
+f20bb342	Nie udało się uruchomić winget
+7c7e0834	Anulowano
+fd770949	Przekroczono czas
+1ca63358	Pobieranie… {0} / {1}
+eb7cfe73	Odinstalowanie zakończone. Sprawdzanie…
+792a1ca8	Instalacja zakończona. Sprawdzanie…
+0a1e33ea	Odinstalowywanie… (to chwilę potrwa)
+41209895	Instalowanie… (to chwilę potrwa)
+3487b9bc	Sprawdzanie pobranego pliku…
+dbd5b1f0	Pobieranie…
+9e8ebaf4	W toku… {0}%
+305b4308	(podąża za {0})
+0f6e5123	Trwa test chłodzenia lub kalibracja. Zacznij po ich zakończeniu.
+5b079133	Wybierz co najmniej jeden wentylator do strojenia.
+395141d9	Nie znaleziono czujnika temperatury GPU.
+4b25b2cd	Nie znaleziono czujnika temperatury CPU.
+7a122984	Nie znaleziono czujnika obciążenia GPU, więc nie można stroić GPU.
+c7751269	• Po starcie uruchom grę lub benchmark (3DMark, FF Benchmark itp.) i utrzymuj obciążenie GPU.\n
+c886e5d0	• CPU zostanie w pełni obciążone (zamknij inne ciężkie aplikacje).\n
+dbca6724	Rozpoczyna się automatyczne strojenie (około {0} min).\n\n
+a1ca3c2f	• Wybrane wentylatory ({0}) będą stopniowo zwalniać od 100%. Dźwięk będzie to głośniejszy, to cichszy.\n
+ac505b53	• Gdy temperatura {0} osiągnie {1:F0}°C, strojenie od razu się zatrzyma i wróci zwykłe sterowanie.\n
+46002470	• Wynik jest stosowany dopiero po sprawdzeniu, więc przerwanie w trakcie niczego nie zmienia w ustawieniach.
+36a2fc44	Automatyczne strojenie
+417196a4	Teraz {0:F0}°C / wentylator {1:F0}%
+5d9f4450	Teraz {0:F0}°C
+fe560e0e	Pomiar zakończony. Sprawdź krzywą i wybierz profil, do którego ją zastosować.
+507f470e	Automatyczne strojenie: zmierzono za mało stopni, nie można utworzyć krzywej.
+afab154e	Pomiar automatycznego strojenia zakończony. Sprawdź uzyskaną krzywą i zastosuj ją.
+8bbd848f	Zobacz wynik
+59c5b033	{0} · w spoczynku {1:F1}°C · przy pełnym obciążeniu:
+5ab01921	Nawet na pełnej prędkości nie da się utrzymać {0:F0}°C (rozważ poprawę chłodzenia)
+d1e24e74	Obroty potrzebne do utrzymania {0:F0}°C: około {1:F0}%
+9e669da9	* Zakończono przedwcześnie, krzywą utworzono tylko z zmierzonych stopni ({0})
+d63ad09b	Nie znaleziono profilu „{0}”. Wybierz ponownie.
+26bd87a8	Automatycznie utworzoną krzywą zastosowano do wentylatorów w „{0}” ({1} szt.); można to cofnąć przyciskiem „Cofnij”.
+b6e37608	Zobacz krzywą
+85bbd542	Zastosowano do wszystkich profili (cel: {0}). Można to cofnąć przyciskiem „Cofnij”.
+cd7e4f98	CPU (strojenie automatyczne)
+343dc6dc	GPU (strojenie automatyczne)
+c8043f0d	Dodaj wentylator przyciskiem „Dodaj złącze” w lewym dolnym rogu lub użyj kreatora konfiguracji w ustawieniach
+06dd8842	Wybierz wentylator z listy po lewej lub dodaj złącze
+02a68814	Kopiuj do „{0}”
+7998312d	Kopiuj do tego samego wentylatora w innych profilach
+0f944042	Brak miejsca docelowego
+e93950f9	Skopiowano krzywą „{0}”.
+184cbc4c	To złącze zostało już dodane.
+f013e4fc	Dodawanie wentylatora GPU „{0}” (funkcja eksperymentalna).\n\n
+78fbbc26	• Po rozpoczęciu sterowania automatyczne sterowanie sterownika GPU (np. tryb 0 RPM zatrzymujący wentylatory w spoczynku) przestaje działać.\n
+a779ee69	• Gdy temperatura GPU przekroczy {0:F0}°C (Hot Spot {1:F0}°C), obroty wzrosną do 100% niezależnie od ustawień.\n
+e158d65b	• Zaraz po dodaniu „Steruj tą aplikacją” jest wyłączone (jak dotąd). Sprawdź krzywą przed włączeniem.
+35a1a5ce	Wentylator GPU
+7a81ddb7	Powiązana z CPU
+082898e0	Usunąć „{0}” ze wszystkich profili?\nUsunięte złącze wróci pod sterowanie BIOS.
+5c0edbde	Krzywa {0}
+68339e34	Potrzebna jest co najmniej jedna krzywa. Aby mieć stałe obroty, przełącz na „Stałe obroty”.
+0de821a1	Trwa kalibracja innego wentylatora. Zacznij po jej zakończeniu.
+d4ae40d7	Trwa automatyczne strojenie lub test chłodzenia. Zacznij po ich zakończeniu.
+2e3bb637	Tego wentylatora nie ma w aktywnym profilu.
+3009598f	Rozpoczyna się kalibracja „{0}”.\n\n
+8d17b7e8	• Przez około 1–2 minuty wentylator będzie na przemian pracował na pełnych obrotach i stawał.\n
+60985017	• Uruchom, gdy CPU/GPU nie są obciążone (przy temperaturze powyżej 80°C zatrzyma się automatycznie).
+40098717	Uruchamianie…
+5a35c90a	Jeszcze nie zmierzono.
+4661e38f	Maks {0:N0} rpm / zatrzymanie poniżej {1:F0}% / start od {2:F0}% (zmierzono {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Ten wentylator zatrzymuje się poniżej {0:F0}%. Jeśli nie ma się zatrzymywać, ustaw {1:F0}% lub więcej.
+1d4c0bba	Minimalne obroty „{0}” ustawiono na {1:F0}% we wszystkich profilach.
+9edeb81a	„{0}” omija teraz {1:F0}–{2:F0}%. Na wykresie krzywej pokazuje to różowy pas.
+1e5aacaa	Najwyżej 4 pasy rezonansu na wentylator.
+d66864fa	Wnętrze obudowy
+1eef08cf	Zakończ edycję
+653d9443	Potrzebna jest co najmniej jedna karta.
+aa2f7c05	Wybierz obraz…
+44dceb5c	Wróć do ilustracji
+30ef4ec2	Wybierz obraz dla „{0}”
+3d493cb5	Pliki obrazów (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Nie udało się ustawić obrazu.\n{0}

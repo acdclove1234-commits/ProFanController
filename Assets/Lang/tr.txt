@@ -1107,3 +1107,96 @@ e266b3b4	Vuruşta güçlü yanıp söner (yalnızca "Yanıp sönmeyi azalt" kapa
 23099007	Orta (trampet, vokal)
 b599c0f6	Tiz (hi-hat)
 34c5e8d2	Tüm ses (ses seviyesi)
+1e73f52b	Kullanım %{0:F0} ile %{1:F0} arasında değiştiği hâlde değer {2:F0} dakikadan uzun süredir {3:F1}°C'de sabit
+f898c734	https adresi değil: {0}
+9181a7c0	{0:F0} dakikada {1} kez kapandığı için otomatik yeniden başlatma durduruldu.
+abf150b9	Otomatik yeniden başlatma kapalı.
+08738032	ProFanController beklenmedik şekilde kapandı.\n\nFanlar güvenli bir devirde (%{0:F0}, pompalar %100) sabitlendi. {1}\n
+a506afc7	Bilgisayarı yeniden başlatınca kontrol BIOS'a döner (ProFanController'ı yeniden başlatırsanız uygulama kontrol eder).\n\nGünlük: 
+5e11c7bc	Bu ağdan kullanılamaz.
+3540eeb1	Çok fazla yanlış anahtar girildiği için bir süre kabul edilmiyor. Yaklaşık 1 dakika bekleyin.
+aacf373e	Erişim anahtarı yanlış. Bilgisayarın ayarlar ekranında görünen URL'yi kullanın.
+1e1ddced	Bağlanılıyor…
+6b1221b3	Sistem
+73dd9d77	Tam hız 5 dk
+f27c7942	 güncellendi · 
+908c69fa	Bilgisayara bağlanılamıyor
+88209a5b	(yok)
+59d07259	winget.exe bulunamadı
+f20bb342	winget başlatılamadı
+7c7e0834	İptal edildi
+fd770949	Zaman aşımı
+1ca63358	İndiriliyor… {0} / {1}
+eb7cfe73	Kaldırma bitti. Kontrol ediliyor…
+792a1ca8	Kurulum bitti. Kontrol ediliyor…
+0a1e33ea	Kaldırılıyor… (biraz sürebilir)
+41209895	Kuruluyor… (biraz sürebilir)
+3487b9bc	İndirilen dosya kontrol ediliyor…
+dbd5b1f0	İndiriliyor…
+9e8ebaf4	İlerliyor… %{0}
+305b4308	({0} takibi)
+0f6e5123	Bir soğutma testi veya kalibrasyon sürüyor. Bittikten sonra başlatın.
+5b079133	Ayarlanacak en az bir fan seçin.
+395141d9	GPU sıcaklık sensörü bulunamadı.
+4b25b2cd	CPU sıcaklık sensörü bulunamadı.
+7a122984	GPU kullanım sensörü bulunamadığı için GPU ayarlanamaz.
+c7751269	• Başladıktan sonra bir oyun veya benchmark (3DMark, FF Benchmark vb.) açıp GPU'ya yük vermeye devam edin.\n
+c886e5d0	• CPU'ya tam yük verilir (diğer ağır uygulamaları kapatın).\n
+dbca6724	Otomatik ayar başlıyor (yaklaşık {0} dk).\n\n
+a1ca3c2f	• Seçilen {0} fan %100'den yavaş yavaş düşürülür. Ses yükselip alçalacaktır.\n
+ac505b53	• {0} sıcaklığı {1:F0}°C'ye ulaşırsa hemen durdurulur ve normal kontrole dönülür.\n
+46002470	• Sonuç siz onayladıktan sonra uygulanır, bu yüzden yarıda durdurmak hiçbir ayarı değiştirmez.
+36a2fc44	Otomatik ayar
+417196a4	Şu an {0:F0}°C / fan %{1:F0}
+5d9f4450	Şu an {0:F0}°C
+fe560e0e	Ölçüm bitti. Eğriyi kontrol edip uygulanacak profili seçin.
+507f470e	Otomatik ayar: ölçülebilen adım sayısı az olduğu için eğri oluşturulamadı.
+afab154e	Otomatik ayar ölçümü bitti. Ortaya çıkan eğriyi kontrol edip uygulayın.
+8bbd848f	Sonuçları gör
+59c5b033	{0} · boşta {1:F1}°C · tam yükte:
+5ab01921	Tam hızda bile {0:F0}°C korunamıyor (soğutmayı iyileştirmeyi düşünün)
+d1e24e74	{0:F0}°C'yi korumak için gereken devir: yaklaşık %{1:F0}
+9e669da9	* Yarıda bittiği için yalnızca ölçülen adımlarla oluşturuldu ({0})
+d63ad09b	"{0}" profili bulunamadı. Yeniden seçin.
+26bd87a8	Otomatik oluşturulan eğri "{0}" içindeki {1} fana uygulandı ("Geri al" ile geri alabilirsiniz).
+b6e37608	Eğriyi gör
+85bbd542	Tüm profillere uygulandı (hedef: {0}). "Geri al" ile geri alabilirsiniz.
+cd7e4f98	CPU (otomatik ayar)
+343dc6dc	GPU (otomatik ayar)
+c8043f0d	Sol alttaki "Konnektör ekle" ile bir fan kaydedin veya ayarlar ekranındaki kurulum sihirbazını kullanın
+06dd8842	Soldaki listeden bir fan seçin veya konnektör ekleyin
+02a68814	"{0}" konumuna kopyala
+7998312d	Diğer profillerdeki aynı fana kopyala
+0f944042	Kopyalanacak hedef yok
+e93950f9	"{0}" eğrisi kopyalandı.
+184cbc4c	Bu konnektör zaten eklendi.
+f013e4fc	"{0}" GPU fanı ekleniyor (deneysel özellik).\n\n
+78fbbc26	• Kontrol başladığında GPU sürücüsünün otomatik kontrolü (boştayken fanları durduran 0 RPM modu gibi) durur.\n
+a779ee69	• GPU sıcaklığı {0:F0}°C'yi (Hot Spot {1:F0}°C) aşarsa ayarlardan bağımsız olarak %100 yapılır.\n
+e158d65b	• Ekledikten hemen sonra "Bu uygulamayla kontrol et" kapalıdır (eskisi gibi). Açmadan önce eğriyi kontrol edin.
+35a1a5ce	GPU fanı
+7a81ddb7	CPU'ya bağlı
+082898e0	"{0}" tüm profillerden silinsin mi?\nSilinen konnektör BIOS kontrolüne döner.
+5c0edbde	Eğri {0}
+68339e34	En az bir eğri gerekir. Sabit bir devir için "Sabit devir"e geçin.
+0de821a1	Başka bir fanın kalibrasyonu sürüyor. Bittikten sonra başlatın.
+d4ae40d7	Otomatik ayar veya soğutma testi sürüyor. Bittikten sonra başlatın.
+2e3bb637	Bu fan etkin profilde yok.
+3009598f	"{0}" kalibrasyonu başlıyor.\n\n
+8d17b7e8	• Yaklaşık 1–2 dakika boyunca fan tam hızda dönüp durur.\n
+60985017	• CPU/GPU'ya yük yokken çalıştırın (sıcaklık 80°C'yi aşarsa otomatik olarak durur).
+40098717	Başlatılıyor…
+5a35c90a	Henüz ölçülmedi.
+4661e38f	En yüksek {0:N0} rpm / durma: %{1:F0} altı / dönmeye başlama: %{2:F0} ({3:yyyy/MM/dd HH:mm} ölçümü)
+0010941c	⚠ Bu fan %{0:F0} altında durur. Durmasını istemiyorsanız %{1:F0} veya üzerine ayarlayın.
+1d4c0bba	"{0}" fanının en düşük devri tüm profillerde %{1:F0} yapıldı.
+9edeb81a	"{0}" artık %{1:F0}–%{2:F0} aralığından kaçınıyor. Eğri grafiğinde pembe bir bantla gösterilir.
+1e5aacaa	Bir fan için en fazla 4 rezonans bandı olabilir.
+d66864fa	Kasa içi
+1eef08cf	Düzenlemeyi bitir
+653d9443	En az bir kart gerekir.
+aa2f7c05	Resim seç…
+44dceb5c	Çizime dön
+30ef4ec2	"{0}" için resim seç
+3d493cb5	Resim dosyaları (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Resim ayarlanamadı.\n{0}

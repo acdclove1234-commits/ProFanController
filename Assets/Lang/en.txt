@@ -1107,3 +1107,96 @@ e266b3b4	Flashes strongly on the beat (only when "Reduce flashing" is off)
 23099007	Mids (snare, vocals)
 b599c0f6	Highs (hi-hat)
 34c5e8d2	Whole sound (volume)
+1e73f52b	Usage changed between {0:F0} and {1:F0}%, yet it stayed at {3:F1}°C for over {2:F0} minutes
+f898c734	Not an https address: {0}
+9181a7c0	It exited {1} times in {0:F0} minutes, so automatic restart has been stopped.
+abf150b9	Automatic restart is turned off.
+08738032	ProFanController quit unexpectedly.\n\nThe fans are fixed at a safe speed ({0:F0}%, pumps at 100%). {1}\n
+a506afc7	Restarting the PC returns control to the BIOS (restart ProFanController to have the app control them again).\n\nLog: 
+5e11c7bc	It can't be used from this network.
+3540eeb1	Too many wrong keys, so access is paused for a while. Wait about 1 minute.
+aacf373e	The access key is wrong. Use the URL shown in the PC's settings screen.
+1e1ddced	Connecting…
+6b1221b3	System
+73dd9d77	Full speed 5 min
+f27c7942	 updated · 
+908c69fa	Can't connect to the PC
+88209a5b	(none)
+59d07259	winget.exe not found
+f20bb342	Couldn't start winget
+7c7e0834	Canceled
+fd770949	Timed out
+1ca63358	Downloading… {0} / {1}
+eb7cfe73	Uninstall finished. Checking…
+792a1ca8	Install finished. Checking…
+0a1e33ea	Uninstalling… (this takes a moment)
+41209895	Installing… (this takes a moment)
+3487b9bc	Checking the downloaded file…
+dbd5b1f0	Downloading…
+9e8ebaf4	In progress… {0}%
+305b4308	(follows {0})
+0f6e5123	A cooling test or calibration is running. Start after it finishes.
+5b079133	Select at least one fan to tune.
+395141d9	No GPU temperature sensor found.
+4b25b2cd	No CPU temperature sensor found.
+7a122984	No GPU usage sensor found, so the GPU can't be tuned.
+c7751269	• After it starts, launch a game or benchmark (3DMark, FF benchmark, etc.) and keep the GPU under load.\n
+c886e5d0	• The CPU is put under full load (close other heavy apps).\n
+dbca6724	Starting auto tuning (about {0} min).\n\n
+a1ca3c2f	• The {0} selected fans are lowered gradually from 100%. They will get louder and quieter.\n
+ac505b53	• If the {0} temperature reaches {1:F0}°C, tuning stops at once and normal control resumes.\n
+46002470	• You check the results before they are applied, so stopping midway changes no settings.
+36a2fc44	Auto tuning
+417196a4	Now {0:F0}°C / fan {1:F0}%
+5d9f4450	Now {0:F0}°C
+fe560e0e	Measurement finished. Check the curve and choose the profile to apply it to.
+507f470e	Auto tuning: too few steps could be measured, so no curve could be made.
+afab154e	Auto tuning measurement finished. Check the resulting curve and apply it.
+8bbd848f	View results
+59c5b033	{0} · idle {1:F1}°C · under full load:
+5ab01921	{0:F0}°C can't be held even at full speed (consider improving cooling)
+d1e24e74	Speed needed to hold {0:F0}°C: about {1:F0}%
+9e669da9	* It ended early, so the curve uses only the measured steps ({0})
+d63ad09b	Profile "{0}" not found. Choose again.
+26bd87a8	Applied the automatically made curve to {1} fans in "{0}" (you can revert it with "Undo").
+b6e37608	View curve
+85bbd542	Applied to all profiles (target: {0}). You can revert it with "Undo".
+cd7e4f98	CPU (auto-tuned)
+343dc6dc	GPU (auto-tuned)
+c8043f0d	Register a fan with "Add header" at the bottom left, or use the setup wizard in Settings
+06dd8842	Select a fan from the list on the left, or add a header
+02a68814	Copy to "{0}"
+7998312d	Copy to the same fan in other profiles
+0f944042	Nowhere to copy to
+e93950f9	Copied curve "{0}".
+184cbc4c	This header has already been added.
+f013e4fc	Adding GPU fan "{0}" (experimental feature).\n\n
+78fbbc26	• Once control starts, the GPU driver's automatic control (such as 0 RPM mode, which stops the fans at idle) stops.\n
+a779ee69	• If the GPU temperature exceeds {0:F0}°C (Hot Spot {1:F0}°C), the fans go to 100% regardless of the settings.\n
+e158d65b	• Right after adding, "Control with this app" is off (as before). Check the curve before turning it on.
+35a1a5ce	GPU fan
+7a81ddb7	CPU-linked
+082898e0	Delete "{0}" from all profiles?\nThe deleted header returns to BIOS control.
+5c0edbde	Curve {0}
+68339e34	At least one curve is needed. For a constant speed, switch to "Fixed speed".
+0de821a1	Another fan is being calibrated. Start after it finishes.
+d4ae40d7	Auto tuning or a cooling test is running. Start after it finishes.
+2e3bb637	This fan isn't in the active profile.
+3009598f	Starting calibration of "{0}".\n\n
+8d17b7e8	• For about 1–2 minutes, the fan will switch between full speed and stopped.\n
+60985017	• Run it while the CPU/GPU are not under load (it stops automatically if the temperature exceeds 80°C).
+40098717	Starting…
+5a35c90a	Not measured yet.
+4661e38f	Max {0:N0} rpm / stops below {1:F0}% / starts at {2:F0}% (measured {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ This fan stops below {0:F0}%. To keep it spinning, set {1:F0}% or more.
+1d4c0bba	Set the minimum speed of "{0}" to {1:F0}% in all profiles.
+9edeb81a	"{0}" now avoids {1:F0}–{2:F0}%. This is shown as a pink band on the curve graph.
+1e5aacaa	Up to 4 resonance bands per fan.
+d66864fa	Inside the case
+1eef08cf	Finish editing
+653d9443	At least one card is needed.
+aa2f7c05	Choose image…
+44dceb5c	Back to illustration
+30ef4ec2	Choose an image for "{0}"
+3d493cb5	Image files (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Couldn't set the image.\n{0}

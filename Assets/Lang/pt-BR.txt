@@ -1107,3 +1107,96 @@ e266b3b4	Pisca forte na batida (somente quando "Reduzir piscadas" estiver deslig
 23099007	Médios (caixa, vocal)
 b599c0f6	Agudos (chimbal)
 34c5e8d2	Som inteiro (volume)
+1e73f52b	O uso varia entre {0:F0} e {1:F0}%, mas o valor continua em {3:F1} °C há mais de {2:F0} minutos
+f898c734	Não é um endereço https: {0}
+9181a7c0	O app fechou {1} vezes em {0:F0} minutos, então a reinicialização automática foi interrompida.
+abf150b9	A reinicialização automática está desligada.
+08738032	O ProFanController fechou inesperadamente.\n\nAs ventoinhas estão fixas em uma rotação segura ({0:F0}%, bombas em 100%). {1}\n
+a506afc7	Ao reiniciar o PC, a BIOS volta a controlar (ao abrir o ProFanController de novo, o app volta a controlar).\n\nLog: 
+5e11c7bc	Não pode ser usado a partir desta rede.
+3540eeb1	Muitas chaves erradas; o acesso foi suspenso por um tempo. Aguarde cerca de 1 minuto.
+aacf373e	A chave de acesso está errada. Use a URL exibida na tela de configurações do PC.
+1e1ddced	Conectando…
+6b1221b3	Sistema
+73dd9d77	Velocidade máxima 5 min
+f27c7942	 atualizado · 
+908c69fa	Não é possível conectar ao PC
+88209a5b	(nenhum)
+59d07259	winget.exe não encontrado
+f20bb342	Não foi possível iniciar o winget
+7c7e0834	Cancelado
+fd770949	Tempo esgotado
+1ca63358	Baixando… {0} / {1}
+eb7cfe73	Desinstalação concluída. Verificando…
+792a1ca8	Instalação concluída. Verificando…
+0a1e33ea	Desinstalando… (leva um pouco de tempo)
+41209895	Instalando… (leva um pouco de tempo)
+3487b9bc	Verificando o arquivo baixado…
+dbd5b1f0	Baixando…
+9e8ebaf4	Em andamento… {0}%
+305b4308	(segue {0})
+0f6e5123	Há um teste de resfriamento ou uma calibração em andamento. Comece depois que terminar.
+5b079133	Escolha pelo menos uma ventoinha para ajustar.
+395141d9	Sensor de temperatura da GPU não encontrado.
+4b25b2cd	Sensor de temperatura da CPU não encontrado.
+7a122984	Sensor de uso da GPU não encontrado, então a GPU não pode ser ajustada.
+c7751269	• Depois de iniciar, abra um jogo ou benchmark (3DMark, FF Benchmark etc.) e mantenha a GPU sob carga.\n
+c886e5d0	• A CPU será colocada em carga total (feche outros apps pesados).\n
+dbca6724	Iniciando o ajuste automático (cerca de {0} min).\n\n
+a1ca3c2f	• As {0} ventoinhas escolhidas serão reduzidas aos poucos a partir de 100%. O som vai aumentar e diminuir.\n
+ac505b53	• Se a temperatura de {0} chegar a {1:F0} °C, o ajuste para na hora e volta o controle normal.\n
+46002470	• O resultado só é aplicado depois da sua confirmação, então interromper no meio não muda nenhuma configuração.
+36a2fc44	Ajuste automático
+417196a4	Agora {0:F0} °C / ventoinha {1:F0}%
+5d9f4450	Agora {0:F0} °C
+fe560e0e	A medição terminou. Confira a curva e escolha o perfil em que aplicá-la.
+507f470e	Ajuste automático: poucos passos medidos, não foi possível criar a curva.
+afab154e	A medição do ajuste automático terminou. Confira a curva resultante e aplique-a.
+8bbd848f	Ver resultado
+59c5b033	{0} · em repouso {1:F1} °C · em carga total:
+5ab01921	Não é possível manter {0:F0} °C nem na velocidade máxima (considere melhorar o resfriamento)
+d1e24e74	Rotação necessária para manter {0:F0} °C: cerca de {1:F0}%
+9e669da9	* Terminou antes, então foi criada só com os passos medidos ({0})
+d63ad09b	Perfil "{0}" não encontrado. Escolha de novo.
+26bd87a8	A curva criada automaticamente foi aplicada a {1} ventoinhas de "{0}" (dá para reverter com "Desfazer").
+b6e37608	Ver curva
+85bbd542	Aplicado a todos os perfis (alvo: {0}). Dá para reverter com "Desfazer".
+cd7e4f98	CPU (ajuste automático)
+343dc6dc	GPU (ajuste automático)
+c8043f0d	Cadastre uma ventoinha em "Adicionar conector" no canto inferior esquerdo ou use o assistente de configuração nas configurações
+06dd8842	Escolha uma ventoinha na lista à esquerda ou adicione um conector
+02a68814	Copiar para "{0}"
+7998312d	Copiar para a mesma ventoinha dos outros perfis
+0f944042	Não há destino para copiar
+e93950f9	Curva "{0}" copiada.
+184cbc4c	Este conector já foi adicionado.
+f013e4fc	Adicionando a ventoinha da GPU "{0}" (recurso experimental).\n\n
+78fbbc26	• Ao iniciar o controle, o controle automático do driver da GPU (como o modo 0 RPM, que para as ventoinhas em repouso) é interrompido.\n
+a779ee69	• Se a temperatura da GPU passar de {0:F0} °C (Hot Spot {1:F0} °C), vai para 100% independentemente das configurações.\n
+e158d65b	• Logo após adicionar, "Controlar com este app" fica desligado (como antes). Confira a curva antes de ligar.
+35a1a5ce	Ventoinha da GPU
+7a81ddb7	Ligada à CPU
+082898e0	Excluir "{0}" de todos os perfis?\nO conector excluído volta ao controle da BIOS.
+5c0edbde	Curva {0}
+68339e34	É preciso pelo menos uma curva. Para uma rotação constante, mude para "Rotação fixa".
+0de821a1	Outra ventoinha está sendo calibrada. Comece depois que terminar.
+d4ae40d7	Há um ajuste automático ou teste de resfriamento em andamento. Comece depois que terminar.
+2e3bb637	Esta ventoinha não está no perfil ativo.
+3009598f	Iniciando a calibração de "{0}".\n\n
+8d17b7e8	• Por cerca de 1–2 minutos, a ventoinha vai alternar entre velocidade máxima e parada.\n
+60985017	• Execute quando a CPU/GPU não estiverem sob carga (para sozinha se a temperatura passar de 80 °C).
+40098717	Iniciando…
+5a35c90a	Ainda não medido.
+4661e38f	Máx {0:N0} rpm / para abaixo de {1:F0}% / começa a girar em {2:F0}% (medido em {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Esta ventoinha para abaixo de {0:F0}%. Para que não pare, defina {1:F0}% ou mais.
+1d4c0bba	A rotação mínima de "{0}" foi definida em {1:F0}% em todos os perfis.
+9edeb81a	"{0}" agora evita {1:F0}–{2:F0}%. Isso aparece como uma faixa rosa no gráfico da curva.
+1e5aacaa	No máximo 4 faixas de ressonância por ventoinha.
+d66864fa	Interior do gabinete
+1eef08cf	Concluir edição
+653d9443	É preciso pelo menos um cartão.
+aa2f7c05	Escolher imagem…
+44dceb5c	Voltar à ilustração
+30ef4ec2	Escolher imagem para "{0}"
+3d493cb5	Arquivos de imagem (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Não foi possível definir a imagem.\n{0}

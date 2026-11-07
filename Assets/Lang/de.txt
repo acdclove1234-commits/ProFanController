@@ -1107,3 +1107,96 @@ e266b3b4	Blinkt im Beat stark (nur wenn „Blitzen reduzieren“ aus ist)
 23099007	Mitten (Snare, Gesang)
 b599c0f6	Höhen (Hi-Hat)
 34c5e8d2	Gesamter Klang (Lautstärke)
+1e73f52b	Die Auslastung schwankt zwischen {0:F0} und {1:F0} %, trotzdem bleibt der Wert seit über {2:F0} Minuten bei {3:F1} °C
+f898c734	Keine https-Adresse: {0}
+9181a7c0	Die App wurde in {0:F0} Minuten {1}-mal beendet, daher wird nicht mehr automatisch neu gestartet.
+abf150b9	Der automatische Neustart ist ausgeschaltet.
+08738032	ProFanController wurde unerwartet beendet.\n\nDie Lüfter sind auf eine sichere Drehzahl festgelegt ({0:F0} %, Pumpen 100 %). {1}\n
+a506afc7	Nach einem Neustart des PCs übernimmt wieder das BIOS (wenn Sie ProFanController neu starten, steuert wieder die App).\n\nProtokoll: 
+5e11c7bc	Aus diesem Netzwerk nicht nutzbar.
+3540eeb1	Zu viele falsche Schlüssel, daher vorübergehend gesperrt. Warten Sie etwa 1 Minute.
+aacf373e	Der Zugriffsschlüssel ist falsch. Verwenden Sie die URL, die in den Einstellungen am PC angezeigt wird.
+1e1ddced	Verbindung wird hergestellt…
+6b1221b3	System
+73dd9d77	Volle Drehzahl 5 Min.
+f27c7942	 aktualisiert · 
+908c69fa	Keine Verbindung zum PC
+88209a5b	(keine)
+59d07259	winget.exe nicht gefunden
+f20bb342	winget konnte nicht gestartet werden
+7c7e0834	Abgebrochen
+fd770949	Zeitüberschreitung
+1ca63358	Download läuft… {0} / {1}
+eb7cfe73	Deinstallation beendet. Wird geprüft…
+792a1ca8	Installation beendet. Wird geprüft…
+0a1e33ea	Wird deinstalliert… (dauert einen Moment)
+41209895	Wird installiert… (dauert einen Moment)
+3487b9bc	Heruntergeladene Datei wird geprüft…
+dbd5b1f0	Download läuft…
+9e8ebaf4	Läuft… {0} %
+305b4308	(folgt {0})
+0f6e5123	Ein Kühltest oder eine Kalibrierung läuft. Starten Sie, wenn sie beendet ist.
+5b079133	Wählen Sie mindestens einen Lüfter zum Abstimmen.
+395141d9	Kein GPU-Temperatursensor gefunden.
+4b25b2cd	Kein CPU-Temperatursensor gefunden.
+7a122984	Kein Sensor für die GPU-Auslastung gefunden, daher kann die GPU nicht abgestimmt werden.
+c7751269	• Starten Sie danach ein Spiel oder einen Benchmark (3DMark, FF-Benchmark usw.) und halten Sie die GPU unter Last.\n
+c886e5d0	• Die CPU wird voll ausgelastet (schließen Sie andere aufwendige Apps).\n
+dbca6724	Die automatische Abstimmung beginnt (etwa {0} Min.).\n\n
+a1ca3c2f	• Die {0} gewählten Lüfter werden von 100 % schrittweise gesenkt. Es wird abwechselnd lauter und leiser.\n
+ac505b53	• Erreicht die Temperatur von {0} {1:F0} °C, wird sofort abgebrochen und zur normalen Steuerung zurückgekehrt.\n
+46002470	• Das Ergebnis wird erst nach Ihrer Prüfung übernommen; ein Abbruch ändert also keine Einstellungen.
+36a2fc44	Automatische Abstimmung
+417196a4	Aktuell {0:F0} °C / Lüfter {1:F0} %
+5d9f4450	Aktuell {0:F0} °C
+fe560e0e	Die Messung ist beendet. Prüfen Sie die Kurve und wählen Sie das Profil, auf das sie angewendet wird.
+507f470e	Automatische Abstimmung: Zu wenige Stufen gemessen, daher konnte keine Kurve erstellt werden.
+afab154e	Die Messung der automatischen Abstimmung ist beendet. Prüfen Sie die Kurve und wenden Sie sie an.
+8bbd848f	Ergebnis ansehen
+59c5b033	{0} · Leerlauf {1:F1} °C · bei voller Last:
+5ab01921	{0:F0} °C lassen sich selbst bei voller Drehzahl nicht halten (erwägen Sie eine bessere Kühlung)
+d1e24e74	Nötige Drehzahl, um {0:F0} °C zu halten: etwa {1:F0} %
+9e669da9	* Vorzeitig beendet, daher nur aus den gemessenen Stufen erstellt ({0})
+d63ad09b	Profil „{0}“ nicht gefunden. Wählen Sie erneut.
+26bd87a8	Die automatisch erstellte Kurve wurde auf {1} Lüfter in „{0}“ angewendet (mit „Rückgängig“ zurücknehmbar).
+b6e37608	Kurve ansehen
+85bbd542	Auf alle Profile angewendet (Ziel: {0}). Mit „Rückgängig“ zurücknehmbar.
+cd7e4f98	CPU (automatisch abgestimmt)
+343dc6dc	GPU (automatisch abgestimmt)
+c8043f0d	Fügen Sie einen Lüfter über „Anschluss hinzufügen“ unten links hinzu oder nutzen Sie den Einrichtungsassistenten in den Einstellungen
+06dd8842	Wählen Sie links einen Lüfter aus oder fügen Sie einen Anschluss hinzu
+02a68814	Nach „{0}“ kopieren
+7998312d	In denselben Lüfter anderer Profile kopieren
+0f944042	Kein Ziel zum Kopieren
+e93950f9	Kurve „{0}“ kopiert.
+184cbc4c	Dieser Anschluss wurde bereits hinzugefügt.
+f013e4fc	GPU-Lüfter „{0}“ wird hinzugefügt (experimentelle Funktion).\n\n
+78fbbc26	• Mit Beginn der Steuerung endet die automatische Steuerung des GPU-Treibers (z. B. der 0-RPM-Modus, der die Lüfter im Leerlauf stoppt).\n
+a779ee69	• Übersteigt die GPU-Temperatur {0:F0} °C (Hot Spot {1:F0} °C), wird unabhängig von den Einstellungen auf 100 % geschaltet.\n
+e158d65b	• Direkt nach dem Hinzufügen ist „Mit dieser App steuern“ aus (wie bisher). Prüfen Sie die Kurve, bevor Sie es einschalten.
+35a1a5ce	GPU-Lüfter
+7a81ddb7	CPU-gekoppelt
+082898e0	„{0}“ aus allen Profilen löschen?\nDer gelöschte Anschluss kehrt zur BIOS-Steuerung zurück.
+5c0edbde	Kurve {0}
+68339e34	Mindestens eine Kurve ist nötig. Für eine konstante Drehzahl wechseln Sie zu „Feste Drehzahl“.
+0de821a1	Ein anderer Lüfter wird gerade kalibriert. Starten Sie, wenn das beendet ist.
+d4ae40d7	Eine automatische Abstimmung oder ein Kühltest läuft. Starten Sie, wenn sie beendet sind.
+2e3bb637	Dieser Lüfter ist nicht im aktiven Profil enthalten.
+3009598f	Kalibrierung von „{0}“ wird gestartet.\n\n
+8d17b7e8	• Etwa 1–2 Minuten lang läuft der Lüfter abwechselnd mit voller Drehzahl und steht still.\n
+60985017	• Führen Sie sie aus, während CPU/GPU nicht belastet sind (bei über 80 °C wird automatisch abgebrochen).
+40098717	Wird gestartet…
+5a35c90a	Noch nicht gemessen.
+4661e38f	Max. {0:N0} rpm / Stopp unter {1:F0} % / Anlauf ab {2:F0} % (gemessen {3:yyyy/MM/dd HH:mm})
+0010941c	⚠ Dieser Lüfter bleibt unter {0:F0} % stehen. Soll er nicht stehen bleiben, stellen Sie {1:F0} % oder mehr ein.
+1d4c0bba	Die Mindestdrehzahl von „{0}“ wurde in allen Profilen auf {1:F0} % gesetzt.
+9edeb81a	„{0}“ meidet jetzt {1:F0}–{2:F0} %. Das wird im Kurvendiagramm als rosa Band angezeigt.
+1e5aacaa	Pro Lüfter sind höchstens 4 Resonanzbereiche möglich.
+d66864fa	Gehäuseinneres
+1eef08cf	Bearbeiten beenden
+653d9443	Mindestens eine Karte ist nötig.
+aa2f7c05	Bild auswählen…
+44dceb5c	Zurück zur Illustration
+30ef4ec2	Bild für „{0}“ auswählen
+3d493cb5	Bilddateien (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
+927e8083	Das Bild konnte nicht festgelegt werden.\n{0}
