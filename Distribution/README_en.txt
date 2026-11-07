@@ -12,12 +12,15 @@ and can be checked from a phone.
   for example: Settings [設定].
 
 
-■ What's new in v6.5.2
+■ What's new in v6.6.0
   - Languages: the user interface is now available in 18 languages (English, Japanese, Chinese
     Simplified and Traditional, Korean, Russian, Ukrainian, German, French, Spanish, Italian,
     Portuguese (Brazil), Polish, Dutch, Turkish, Vietnamese, Thai, Indonesian). The phone view and
     the AI advisor's answers follow the same language. The translations are new, so some wording
-    may read unnaturally.
+    may read unnaturally. This English guide is included, and the updater and the PawnIO installer
+    show English messages.
+  - Lighting [ライティング]: Undo and Redo on the Lighting page (also Ctrl+Z / Ctrl+Y). "Reset to
+    defaults" can be undone too; the integration switch, lights off and the connection are not.
   - Fans: the emergency full speed now always watches the CPU temperature and the GPU core and
     hot spot, even when no curve uses them (for example when the radiator fans follow the coolant only).
   - Music sync: can listen to one app only (for example Spotify), so other sounds and notification
@@ -25,6 +28,20 @@ and can be checked from a phone.
     beat 44% -> 66% of the time, and flashed on the wrong beat 6% -> 4% of the time), twice as many snares
     found, melodies and high notes glow in the "beat colour" style, new per-part and solid-colour styles,
     "lights off" that keeps the control running, and "reset to defaults" for the reaction values.
+  - Music sync, timing:
+    - The song's tempo is remembered, so the beat comes back quickly after a busy passage; a beat
+      grid that stays shifted by the same amount is corrected.
+    - Slow songs (about 80-90 BPM) flash at double speed less often (on 31 recorded songs, time
+      at double speed 9.9% -> 4.5%, flashes between beats 13.0% -> 10.4%). In exchange, fast songs
+      (about 150-160 BPM) sometimes flash on every other beat; those flashes stay on the beat.
+    - Snares reach the lights 11 ms sooner.
+    - With the Windows sound format at 96 kHz, 192 kHz and so on, beats and snares are found as
+      well as at 44.1 / 48 kHz (snares were missed and some songs locked at double tempo).
+    - The output device kind (onboard, USB, HDMI / DisplayPort, Bluetooth, virtual) is shown on
+      the Lighting page. For Bluetooth, HDMI and virtual devices it suggests an Audio delay
+      [音の遅れの補正] that you can apply with one button. When audio software such as Nahimic, Dolby,
+      DTS, SteelSeries Sonar or Voicemeeter is running, it names it and points to the Sync test
+      [同期テスト].
   - Diagnostics [診断]: the fan dust and wear check moved here and was made more accurate (room
     temperature and fan-curve changes no longer look like dust; sudden and gradual changes are told apart).
     The AI cooling advisor is now an option, off by default (switch at the top of Diagnostics).

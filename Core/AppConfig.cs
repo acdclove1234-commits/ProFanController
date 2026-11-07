@@ -961,7 +961,7 @@ public sealed class MusicConfig : ObservableObject
     /// </summary>
     private void UpgradeOldIntensityDefaults()
     {
-        // これまでの版の値（6.5.1 まで、6.5.2 の開発中のいちど目）のどれかと全部同じなら、まだ自分で変えていないとみなす
+        // これまでの版の値（6.5.1 まで、6.6.0 の開発中のいちど目）のどれかと全部同じなら、まだ自分で変えていないとみなす
         (double R, double S, double P, double M)[] olds = Intensity switch
         {
             Intensities.Subtle => new[] { (40.0, 600.0, 30.0, 35.0), (40.0, 500.0, 35.0, 25.0) },
