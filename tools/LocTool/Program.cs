@@ -170,8 +170,9 @@ static IEnumerable<(string, string)> ExtractCs(string root, string file)
     var tree = CSharpSyntaxTree.ParseText(File.ReadAllText(file), path: rel);
     foreach (var inv in tree.GetRoot().DescendantNodes().OfType<InvocationExpressionSyntax>())
     {
-        if (!IsLocCall(inv) || inv.ArgumentList.Arguments.Count == 0) continue;
-        var arg = inv.ArgumentList.Arguments[0].Expression;
+        int at = KeyArgument(inv);
+        if (at < 0 || inv.ArgumentList.Arguments.Count <= at) continue;
+        var arg = inv.ArgumentList.Arguments[at].Expression;
         string? key = KeyOf(arg);
         if (key is null || key.Length == 0) continue;
         int line = arg.GetLocation().GetLineSpan().StartLinePosition.Line + 1;
@@ -179,11 +180,15 @@ static IEnumerable<(string, string)> ExtractCs(string root, string file)
     }
 }
 
-static bool IsLocCall(InvocationExpressionSyntax inv) => inv.Expression switch
+static bool IsLocCall(InvocationExpressionSyntax inv) => KeyArgument(inv) >= 0;
+
+/// <summary>見出しになる引数の位置（L・LF は 1 つ目、Localization.LookupIn は 2 つ目）。訳す呼び出しでなければ -1</summary>
+static int KeyArgument(InvocationExpressionSyntax inv) => inv.Expression switch
 {
-    IdentifierNameSyntax id => id.Identifier.Text is "L" or "LF",
-    MemberAccessExpressionSyntax ma => ma.Expression.ToString() is "Loc" or "ProFanController.Loc" && ma.Name.Identifier.Text is "L" or "LF",
-    _ => false,
+    IdentifierNameSyntax id => id.Identifier.Text is "L" or "LF" ? 0 : -1,
+    MemberAccessExpressionSyntax ma when ma.Expression.ToString() is "Loc" or "ProFanController.Loc" && ma.Name.Identifier.Text is "L" or "LF" => 0,
+    MemberAccessExpressionSyntax ma when ma.Expression.ToString() is "Localization" && ma.Name.Identifier.Text is "LookupIn" => 1,
+    _ => -1,
 };
 
 /// <summary>実行時と同じ見出し（L($"…") は LocString と同じ作り方）</summary>
@@ -356,7 +361,7 @@ static bool IsInsideLoc(ExpressionSyntax s)
     SyntaxNode? n = s;
     while (n?.Parent is ParenthesizedExpressionSyntax) n = n.Parent;
     return n?.Parent is ArgumentSyntax { Parent: ArgumentListSyntax { Parent: InvocationExpressionSyntax inv } list } a
-           && IsLocCall(inv) && list.Arguments.IndexOf(a) == 0;
+           && KeyArgument(inv) is var at && at >= 0 && list.Arguments.IndexOf(a) == at;
 }
 
 /// <summary>ログに書く文（Logger.Info / Warn / Error / Debug の引数の中）。ログは作った人が読むので訳さない</summary>

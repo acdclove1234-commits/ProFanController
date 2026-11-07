@@ -413,7 +413,21 @@ public partial class MainWindow
                 new("", L("既定（英数字 Montserrat・日本語 ProFan Maru）")),
                 new(ThemeManager.BundledMaruId, L("ProFan Maru（同梱の丸ゴシック）")),
             };
-            var lang = System.Windows.Markup.XmlLanguage.GetLanguage("ja-jp");
+            // 表示言語（「自動」と、それぞれの言語をその言語の名前で。英語の名前も添える）
+            var languages = new List<ChoiceOption> { new("", L("自動（Windows の表示言語）")) };
+            foreach (var l in Localization.Languages)
+                languages.Add(new ChoiceOption(l.Code, l.NativeName == l.EnglishName ? l.NativeName : $"{l.NativeName} — {l.EnglishName}"));
+            LanguageCombo.ItemsSource = languages;
+
+            // フォントの名前は、画面の言語での名前があればそれを出す
+            var lang = System.Windows.Markup.XmlLanguage.GetLanguage(Localization.Language switch
+            {
+                "zh-Hans" => "zh-cn",
+                "zh-Hant" => "zh-tw",
+                "ko" => "ko-kr",
+                Localization.Source => "ja-jp",
+                var other => other,
+            });
             foreach (var f in Fonts.SystemFontFamilies
                          .Select(f => (Id: f.Source, Label: f.FamilyNames.TryGetValue(lang, out var ja) ? ja : f.Source))
                          .Where(f => !f.Id.Contains('#'))
@@ -474,6 +488,32 @@ public partial class MainWindow
         FontPreview.FontFamily = ThemeManager.FontFor(a.FontFamily);
         // 元の値が一覧にない（ほかの PC で選んだフォントなど）ときは、選択欄が空にならないよう既定として表示する
         if (FontCombo.ItemsSource is IEnumerable<ChoiceOption> list && !list.Any(o => o.Id == a.FontFamily)) FontCombo.SelectedIndex = 0;
+        // 表示言語（知らない値なら「自動」として表示する）
+        string language = Localization.Languages.Any(l => l.Code == Config.Language) ? Config.Language : "";
+        if (LanguageCombo.SelectedValue as string != language)
+        {
+            _languageSyncing = true;
+            LanguageCombo.SelectedValue = language;
+            _languageSyncing = false;
+        }
+    }
+
+    private bool _languageSyncing;
+
+    /// <summary>
+    /// 表示言語を変えたとき: 保存して、起動し直すか聞く（画面の言葉は起動するときに決まるため）。
+    /// 聞く文は、選んだ言語で出す（今の言語が読めない人が選び直すこともあるので）
+    /// </summary>
+    private void OnLanguageChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_languageSyncing || !IsLoaded || LanguageCombo.SelectedValue is not string code || code == Config.Language) return;
+        Config.Language = code;
+        FlushCommit();
+        string next = Localization.Effective(code);
+        if (next == Localization.Language) return; // 「自動」にしても、同じ言語のまま
+        string ask = Localization.LookupIn(next, "表示言語を変えました。アプリを起動し直すと切り替わります。\n今すぐ起動し直しますか？（ファンは、起動し直すあいだ BIOS の制御になります）");
+        if (MessageBox.Show(this, ask, "ProFanController", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            CurrentApp.RestartApplication();
     }
 
     private void OnAccentDefaultClick(object sender, RoutedEventArgs e)

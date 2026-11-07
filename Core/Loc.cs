@@ -95,6 +95,20 @@ public static class Localization
         _table = lang.Code == Source ? new() : LoadEmbedded(lang.Code);
     }
 
+    /// <summary>設定の値から、実際に使う言語の名前（「自動」なら Windows の表示言語から決めたもの）</summary>
+    public static string Effective(string? setting) => Resolve(setting, WindowsUiLanguage());
+
+    /// <summary>
+    /// ほかの言語の表を引く（表示言語を選び直したときの「起動し直しますか」を、選んだ言語で出すため。
+    /// 毎回その言語の表を読むので、何度も使う場所では使わない）
+    /// </summary>
+    public static string LookupIn(string code, string ja)
+    {
+        if (Find(code).Code == Source) return ja;
+        if (Find(code).Code == Current.Code) return Lookup(ja);
+        return LoadEmbedded(Find(code).Code).TryGetValue(Hash(ja), out var t) ? t : ja;
+    }
+
     /// <summary>テスト用: 翻訳表を直接入れる（null なら元の言葉に戻す）</summary>
     internal static void UseTable(string code, TextReader? reader)
     {

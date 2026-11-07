@@ -40,7 +40,7 @@ public partial class App
     public void RestartApplication()
     {
         if (_exiting || _cleanupStarted) return;
-        Logger.Info("アプリを起動し直します（PawnIO を読み込むため）");
+        Logger.Info("アプリを起動し直します（PawnIO の読み込み・表示言語の切り替えなど）");
         // 新しいアプリは、このアプリが終わる（二重起動の防止の印を離す）まで最大 30 秒待ってから始まる
         StartSelf(RestartArgument);
         ExitApplication();

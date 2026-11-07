@@ -383,123 +383,125 @@ aefcd37e	自動起動のときは常にタスクトレイで起動します。�
 e162bf76	ミニウィジェットを表示する	MainWindow.xaml:2412
 1b093ce9	常に最前面に温度と回転数を表示します。ドラッグで移動、右クリックで不透明度を変更できます	MainWindow.xaml:2413
 1483f6b3	見た目	MainWindow.xaml:2422
-8de67190	テーマ・アクセント色・背景色・文字色・フォント・文字の大きさを変えられます。変えるとすぐに反映されます	MainWindow.xaml:2424
-9bb17d53	テーマ	MainWindow.xaml:2426
-ae52556f	「Windows に合わせる」なら、Windows の設定（個人用設定 → 色 → アプリ モード）のダーク／ライトに合わせます	MainWindow.xaml:2429
-aab63522	アクセント色	MainWindow.xaml:2431
-d95f93ef	既定（紫）	MainWindow.xaml:2433
-2a8cd564	Windows の色に合わせる	MainWindow.xaml:2434
-ea89f663	Windows の設定（個人用設定 → 色 → アクセント カラー）の色を使います	MainWindow.xaml:2435
-3170685a	背景色	MainWindow.xaml:2444
-14c3e93f	背景・サイドバー・カードをまとめて染めます。ダークでは暗い色、ライトでは明るい色になり、テーマを替えても色合いは同じです	MainWindow.xaml:2446
-17ff6b6d	既定	MainWindow.xaml:2448
-da6bf903	文字色	MainWindow.xaml:2457
-793df94e	画面のすべての文字の色です（補足の文字やグラフの目盛りも、同じ色合いで少し薄くなります）。ダークでは明るい色、ライトでは暗い色になり、どの背景でも読めます	MainWindow.xaml:2459
-1843d590	フォント	MainWindow.xaml:2471
-05dc00d5	画面の文字のフォント。日本語の文字がないフォントでは、日本語は Yu Gothic UI で表示します	MainWindow.xaml:2474
-bfea4384	あいうえお 温度とファン ABC 123 °C	MainWindow.xaml:2476
-982d7356	文字の大きさ	MainWindow.xaml:2479
-2b8e9d8c	画面全体（文字・ボタン・グラフ）を拡大・縮小します	MainWindow.xaml:2482
-00478af8	制御	MainWindow.xaml:2490
-13f4a528	DRY RUN（テストモード）	MainWindow.xaml:2493
-db8eea4d	計算結果を表示するだけで、ファンには書き込みません（ポンプの回転が落ちたときの保護運転と、自分で始めた識別・測定・一時指定だけは書き込みます）	MainWindow.xaml:2494
-b373eaee	更新間隔	MainWindow.xaml:2509
-14e1cbc6	緊急全開（CPU・その他）	MainWindow.xaml:2513
-35593dc1	カーブで使っているどれかのセンサーがこの温度に達すると、全ファンを 100% にします	MainWindow.xaml:2514
-53ef686b	緊急全開（GPU Hot Spot）	MainWindow.xaml:2518
-279d8c16	Hot Spot は GPU 内でいちばん熱い点で、Edge より 10〜20°C 高く出ます	MainWindow.xaml:2519
-9bcc9b8c	Radeon RX 7000 シリーズは Hot Spot 110°C で自動的に性能を下げます。全開の解除は、しきい値より 5°C 下がってからです。	MainWindow.xaml:2523
-1ac4b576	このアプリについて	MainWindow.xaml:2530
-81d90dca	＋ 新しいプロファイル	MainWindow.xaml:2541
-4cdf9ede	ファンカーブの組み合わせを名前を付けて保存し、切り替えられます	MainWindow.xaml:2544
-774923ad	このプロファイルの役割。名前を変えても、おまかせ調整（静音は目標温度 +5°C・冷却重視は −5°C）・新しいファンのカーブ・ワンタッチの「静音」が、この役割で正しく動きます	MainWindow.xaml:2560
-82ac5e85	このプロファイルのときに使う Windows の電源プラン	MainWindow.xaml:2563
-d663551d	普段使う	MainWindow.xaml:2566
-80173301	複製	MainWindow.xaml:2567
-1aafcfce	終了時に元の電源プランに戻す	MainWindow.xaml:2576
-935428de	電源プランは、プロファイルが切り替わったときに自動で変わります（「変えない」を選ぶとそのまま）	MainWindow.xaml:2577
-02bd77a9	＋ ルールを追加	MainWindow.xaml:2587
-95dbf04d	スケジュール	MainWindow.xaml:2589
-c6ae093f	時間帯でプロファイルを切り替えます（例: 毎日 23:00〜7:00 は静音）。アプリの自動切り替えのほうが優先されます	MainWindow.xaml:2590
-b30b1d5c	毎日	MainWindow.xaml:2607
-1b0c1825	平日	MainWindow.xaml:2608
-c16e0695	週末	MainWindow.xaml:2609
-9b7e9425	開始時刻（例: 23:00）	MainWindow.xaml:2611
-1925ac9b	〜	MainWindow.xaml:2612
-a297edb9	終了時刻（例: 7:00）。開始より前なら翌日の時刻	MainWindow.xaml:2613
-8d3afa5f	プロファイルの自動切り替え	MainWindow.xaml:2629
-a6a78db0	指定したアプリが起動している間、プロファイルを自動で切り替えます。上にあるルールほど優先されます。終了すると「普段使う」プロファイルに戻ります。	MainWindow.xaml:2631
-235c5be1	プロセス名（例: eldenring）。.exe は付けても付けなくても構いません	MainWindow.xaml:2667
-92b89c34	実行中のアプリから選ぶ ▾	MainWindow.xaml:2668
-850bfcd1	ワンタッチ操作	MainWindow.xaml:2680
-b7230497	ダッシュボード・タスクトレイ・ミニウィジェット・スマホから、一時的にブースト（全開）や静音にできます	MainWindow.xaml:2681
-37cd5718	ホットキーを使う（ゲーム中でも操作できます）	MainWindow.xaml:2684
-18d0cc13	Ctrl+Alt+B: 5 分ブースト ／ Ctrl+Alt+Q: 1 時間静音 ／ Ctrl+Alt+N: 解除	MainWindow.xaml:2685
-7ae7ed01	「静音」で使うプロファイル	MainWindow.xaml:2693
-77a57db6	スマホから監視	MainWindow.xaml:2704
-fe9fdb92	スマホのブラウザから見られるようにする	MainWindow.xaml:2707
-49d300c9	同じ Wi-Fi のスマホから温度・回転数の確認とプロファイルの切り替えができます。Windows ファイアウォールに、プライベートネットワーク（自宅など）だけの許可を追加します	MainWindow.xaml:2708
-6ac0a5cf	ポート番号	MainWindow.xaml:2717
-cf308cb2	アクセス用の鍵を作り直す	MainWindow.xaml:2719
-389a7b03	今までの URL では開けなくなります	MainWindow.xaml:2720
-ac3a6f94	スマホのカメラで QR コードを読むか、次の URL を開いてください	MainWindow.xaml:2731
-12e17da1	URL にはアクセス用の鍵が含まれています。他の人に教えないでください	MainWindow.xaml:2734
-967f26f5	スマホに通知	MainWindow.xaml:2743
-9fcdd35a	緊急全開・ポンプ異常・ファンの停止などをスマホに通知する	MainWindow.xaml:2746
-1fe03718	外出中やゲーム中でも気づけます。同じ内容の通知は 10 分間は送りません	MainWindow.xaml:2747
-5bd9ee6f	ntfy（アプリを入れるだけ・おすすめ）	MainWindow.xaml:2751
-a643ae88	1. スマホに「ntfy」アプリを入れる（App Store / Google Play・無料・登録不要）\n2. アプリの「＋」から、下のトピック名を購読する（左の QR コードをカメラで読んでも OK）	MainWindow.xaml:2767
-6ced87ba	トピック名	MainWindow.xaml:2778
-19b272e4	作り直す	MainWindow.xaml:2780
-084d7180	サーバー	MainWindow.xaml:2781
-172228d8	トピック名を知っている人は誰でも通知を読めます。推測されにくい今の名前のまま使ってください	MainWindow.xaml:2785
-88a4ad91	Discord のサーバー設定 →「連携サービス」→「ウェブフック」→「新しいウェブフック」→「ウェブフック URL をコピー」で取得できます	MainWindow.xaml:2793
-cb5c4d63	「注意」も通知する（ファンの停止・センサーの異常など）	MainWindow.xaml:2798
-a000b788	回復したときも通知する	MainWindow.xaml:2800
-a15f890e	テスト送信	MainWindow.xaml:2803
-c114b738	ライティングを開く	MainWindow.xaml:2812
-3f597f38	LED のライティング（OpenRGB 連携）の画面を開きます	MainWindow.xaml:2813
-c0c9a6ba	LED のライティング（OpenRGB 連携）	MainWindow.xaml:2815
-158ada0f	LED の設定は、左のメニューの「ライティング」に移りました。接続・光り方・音楽連動・デバイスごとの設定をまとめて変えられます。	MainWindow.xaml:2817
-c1eb5397	電気代の計算	MainWindow.xaml:2825
-6da48835	ダッシュボードとレポート画面に、消費電力量と電気代の目安を表示します	MainWindow.xaml:2826
-db0f8cfc	1 kWh あたりの電気代	MainWindow.xaml:2837
-306750cc	円（検針票の単価。分からなければ目安の 31 円のまま）	MainWindow.xaml:2840
-1405c464	CPU・GPU 以外の消費電力	MainWindow.xaml:2841
-665cef72	W（マザーボード・メモリ・SSD・ファン・電源の損失など。一般的に 40〜80 W）	MainWindow.xaml:2844
-b4d79a66	CPU と GPU はセンサーの値を使います。モニターやスピーカーは含みません。コンセントで測った値ではないので、あくまで目安です。	MainWindow.xaml:2847
-69355ed4	安全機能	MainWindow.xaml:2856
-619b1ea2	見張りプロセスを使う（おすすめ）	MainWindow.xaml:2859
-d1086ffa	アプリが強制終了・フリーズしたとき、ファンが低い回転のまま止まってしまうのを防ぎます。タスクマネージャーに ProFanController が 2 つ表示されますが、片方は見張り役です	MainWindow.xaml:2861
-f739cc9b	そのときの回転数	MainWindow.xaml:2874
-43c454af	ポンプは常に 100% にします	MainWindow.xaml:2874
-d063c0c0	アプリを自動で起動し直す（10 分間に 3 回までで、それ以上はお知らせを表示）	MainWindow.xaml:2878
-f2eae029	異常なセンサーの値を無視する	MainWindow.xaml:2883
-2487009f	一瞬だけ跳ねた値（読み取りエラー）で全開にならないようにします。負荷が変わっても値が動かない「固まった」センサーは、異常として扱います	MainWindow.xaml:2885
-3616d69f	起動時に部品の交換を確認する	MainWindow.xaml:2891
-f47011bb	GPU などを交換してセンサーが変わったときに、新しいセンサーへの置き換えを案内します	MainWindow.xaml:2893
-35eb3141	センサーがないときの回転数	MainWindow.xaml:2906
-90554019	部品を外した・交換したなどで、センサーそのものが見つからないカーブはこの回転数にします（センサーはあるのに値がおかしいときは、安全のため 100%）	MainWindow.xaml:2910
-963fb48e	異常の前後を自動で記録する	MainWindow.xaml:2915
-e424608f	緊急全開・ポンプ異常などのとき、前後 10 分の記録を保存します（レポート画面で確認できます）	MainWindow.xaml:2916
-f4e32f07	GPU のファンも制御できるようにする（試験的）	MainWindow.xaml:2922
-f73d1f9b	ファンカーブ画面の「端子を追加」に GPU のファンが表示されます。制御中は GPU ドライバーの自動制御（0 RPM モードなど）が止まるので、GPU の温度を使ったカーブで使ってください	MainWindow.xaml:2924
-f04fb800	メモリの温度を読む	MainWindow.xaml:2930
-5ac1bfd9	メモリの温度は、メモリの LED と同じ配線（SMBus）で読みます。OpenRGB などがこの配線を順番待ちせずに使っていると、ぶつかってメモリの温度が読めなくなることがあります。そのときはオフにしてください（メモリの温度を使うカーブは、センサーが見つからないときの回転数で回ります）	MainWindow.xaml:2932
-8154441c	設定のバックアップと共有	MainWindow.xaml:2941
-894c08f0	設定は変更のたびに自動でバックアップしています（10 分に 1 回まで・最大 30 個）。config.json が壊れても、起動時に自動で復旧します。プロファイルをファイルに書き出せば、別の PC で読み込めます（端子やセンサーは名前で対応付けます）	MainWindow.xaml:2943
-b187e750	設定を書き出す…	MainWindow.xaml:2945
-7c186faa	設定を読み込む…	MainWindow.xaml:2946
-077e159d	バックアップから戻す ▾	MainWindow.xaml:2947
-4222af0e	今すぐバックアップ	MainWindow.xaml:2948
-8d711ab6	セットアップとファイル	MainWindow.xaml:2957
-f8cfb37f	セットアップウィザードを開く	MainWindow.xaml:2959
-0cdb9795	設定フォルダを開く	MainWindow.xaml:2960
-e252e493	ログフォルダを開く	MainWindow.xaml:2961
-c7cbd09a	ファン制御用のドライバー（PawnIO）	MainWindow.xaml:2969
-6234a43c	アンインストール（お片付け）	MainWindow.xaml:2977
-29c38de6	このアプリを使うのをやめるときに使います。ファンを BIOS の自動制御に戻したことを確かめてから、ライティングの制御・ログオン時の自動起動・ファイアウォールの許可などを片付けて終了します。何を行うかは、次の画面で確かめてから始められます（設定・記録を消すか、PawnIO もアンインストールするかも選べます）	MainWindow.xaml:2979
-b2abf4ee	アンインストール（お片付け）…	MainWindow.xaml:2981
+07df2653	表示言語・テーマ・アクセント色・背景色・文字色・フォント・文字の大きさを変えられます。変えるとすぐに反映されます（表示言語は、アプリを起動し直すと切り替わります）	MainWindow.xaml:2424
+b8eab0de	表示言語 · Language	MainWindow.xaml:2427
+4aaa8fe4	画面の言葉の言語。「自動」なら Windows の表示言語に合わせます（対応していない言語なら英語）。変えたら、アプリを起動し直すと切り替わります	MainWindow.xaml:2430
+9bb17d53	テーマ	MainWindow.xaml:2433
+ae52556f	「Windows に合わせる」なら、Windows の設定（個人用設定 → 色 → アプリ モード）のダーク／ライトに合わせます	MainWindow.xaml:2436
+aab63522	アクセント色	MainWindow.xaml:2438
+d95f93ef	既定（紫）	MainWindow.xaml:2440
+2a8cd564	Windows の色に合わせる	MainWindow.xaml:2441
+ea89f663	Windows の設定（個人用設定 → 色 → アクセント カラー）の色を使います	MainWindow.xaml:2442
+3170685a	背景色	MainWindow.xaml:2451
+14c3e93f	背景・サイドバー・カードをまとめて染めます。ダークでは暗い色、ライトでは明るい色になり、テーマを替えても色合いは同じです	MainWindow.xaml:2453
+17ff6b6d	既定	MainWindow.xaml:2455
+da6bf903	文字色	MainWindow.xaml:2464
+793df94e	画面のすべての文字の色です（補足の文字やグラフの目盛りも、同じ色合いで少し薄くなります）。ダークでは明るい色、ライトでは暗い色になり、どの背景でも読めます	MainWindow.xaml:2466
+1843d590	フォント	MainWindow.xaml:2478
+05dc00d5	画面の文字のフォント。日本語の文字がないフォントでは、日本語は Yu Gothic UI で表示します	MainWindow.xaml:2481
+bfea4384	あいうえお 温度とファン ABC 123 °C	MainWindow.xaml:2483
+982d7356	文字の大きさ	MainWindow.xaml:2486
+2b8e9d8c	画面全体（文字・ボタン・グラフ）を拡大・縮小します	MainWindow.xaml:2489
+00478af8	制御	MainWindow.xaml:2497
+13f4a528	DRY RUN（テストモード）	MainWindow.xaml:2500
+db8eea4d	計算結果を表示するだけで、ファンには書き込みません（ポンプの回転が落ちたときの保護運転と、自分で始めた識別・測定・一時指定だけは書き込みます）	MainWindow.xaml:2501
+b373eaee	更新間隔	MainWindow.xaml:2516
+14e1cbc6	緊急全開（CPU・その他）	MainWindow.xaml:2520
+35593dc1	カーブで使っているどれかのセンサーがこの温度に達すると、全ファンを 100% にします	MainWindow.xaml:2521
+53ef686b	緊急全開（GPU Hot Spot）	MainWindow.xaml:2525
+279d8c16	Hot Spot は GPU 内でいちばん熱い点で、Edge より 10〜20°C 高く出ます	MainWindow.xaml:2526
+9bcc9b8c	Radeon RX 7000 シリーズは Hot Spot 110°C で自動的に性能を下げます。全開の解除は、しきい値より 5°C 下がってからです。	MainWindow.xaml:2530
+1ac4b576	このアプリについて	MainWindow.xaml:2537
+81d90dca	＋ 新しいプロファイル	MainWindow.xaml:2548
+4cdf9ede	ファンカーブの組み合わせを名前を付けて保存し、切り替えられます	MainWindow.xaml:2551
+774923ad	このプロファイルの役割。名前を変えても、おまかせ調整（静音は目標温度 +5°C・冷却重視は −5°C）・新しいファンのカーブ・ワンタッチの「静音」が、この役割で正しく動きます	MainWindow.xaml:2567
+82ac5e85	このプロファイルのときに使う Windows の電源プラン	MainWindow.xaml:2570
+d663551d	普段使う	MainWindow.xaml:2573
+80173301	複製	MainWindow.xaml:2574
+1aafcfce	終了時に元の電源プランに戻す	MainWindow.xaml:2583
+935428de	電源プランは、プロファイルが切り替わったときに自動で変わります（「変えない」を選ぶとそのまま）	MainWindow.xaml:2584
+02bd77a9	＋ ルールを追加	MainWindow.xaml:2594
+95dbf04d	スケジュール	MainWindow.xaml:2596
+c6ae093f	時間帯でプロファイルを切り替えます（例: 毎日 23:00〜7:00 は静音）。アプリの自動切り替えのほうが優先されます	MainWindow.xaml:2597
+b30b1d5c	毎日	MainWindow.xaml:2614
+1b0c1825	平日	MainWindow.xaml:2615
+c16e0695	週末	MainWindow.xaml:2616
+9b7e9425	開始時刻（例: 23:00）	MainWindow.xaml:2618
+1925ac9b	〜	MainWindow.xaml:2619
+a297edb9	終了時刻（例: 7:00）。開始より前なら翌日の時刻	MainWindow.xaml:2620
+8d3afa5f	プロファイルの自動切り替え	MainWindow.xaml:2636
+a6a78db0	指定したアプリが起動している間、プロファイルを自動で切り替えます。上にあるルールほど優先されます。終了すると「普段使う」プロファイルに戻ります。	MainWindow.xaml:2638
+235c5be1	プロセス名（例: eldenring）。.exe は付けても付けなくても構いません	MainWindow.xaml:2674
+92b89c34	実行中のアプリから選ぶ ▾	MainWindow.xaml:2675
+850bfcd1	ワンタッチ操作	MainWindow.xaml:2687
+b7230497	ダッシュボード・タスクトレイ・ミニウィジェット・スマホから、一時的にブースト（全開）や静音にできます	MainWindow.xaml:2688
+37cd5718	ホットキーを使う（ゲーム中でも操作できます）	MainWindow.xaml:2691
+18d0cc13	Ctrl+Alt+B: 5 分ブースト ／ Ctrl+Alt+Q: 1 時間静音 ／ Ctrl+Alt+N: 解除	MainWindow.xaml:2692
+7ae7ed01	「静音」で使うプロファイル	MainWindow.xaml:2700
+77a57db6	スマホから監視	MainWindow.xaml:2711
+fe9fdb92	スマホのブラウザから見られるようにする	MainWindow.xaml:2714
+49d300c9	同じ Wi-Fi のスマホから温度・回転数の確認とプロファイルの切り替えができます。Windows ファイアウォールに、プライベートネットワーク（自宅など）だけの許可を追加します	MainWindow.xaml:2715
+6ac0a5cf	ポート番号	MainWindow.xaml:2724
+cf308cb2	アクセス用の鍵を作り直す	MainWindow.xaml:2726
+389a7b03	今までの URL では開けなくなります	MainWindow.xaml:2727
+ac3a6f94	スマホのカメラで QR コードを読むか、次の URL を開いてください	MainWindow.xaml:2738
+12e17da1	URL にはアクセス用の鍵が含まれています。他の人に教えないでください	MainWindow.xaml:2741
+967f26f5	スマホに通知	MainWindow.xaml:2750
+9fcdd35a	緊急全開・ポンプ異常・ファンの停止などをスマホに通知する	MainWindow.xaml:2753
+1fe03718	外出中やゲーム中でも気づけます。同じ内容の通知は 10 分間は送りません	MainWindow.xaml:2754
+5bd9ee6f	ntfy（アプリを入れるだけ・おすすめ）	MainWindow.xaml:2758
+a643ae88	1. スマホに「ntfy」アプリを入れる（App Store / Google Play・無料・登録不要）\n2. アプリの「＋」から、下のトピック名を購読する（左の QR コードをカメラで読んでも OK）	MainWindow.xaml:2774
+6ced87ba	トピック名	MainWindow.xaml:2785
+19b272e4	作り直す	MainWindow.xaml:2787
+084d7180	サーバー	MainWindow.xaml:2788
+172228d8	トピック名を知っている人は誰でも通知を読めます。推測されにくい今の名前のまま使ってください	MainWindow.xaml:2792
+88a4ad91	Discord のサーバー設定 →「連携サービス」→「ウェブフック」→「新しいウェブフック」→「ウェブフック URL をコピー」で取得できます	MainWindow.xaml:2800
+cb5c4d63	「注意」も通知する（ファンの停止・センサーの異常など）	MainWindow.xaml:2805
+a000b788	回復したときも通知する	MainWindow.xaml:2807
+a15f890e	テスト送信	MainWindow.xaml:2810
+c114b738	ライティングを開く	MainWindow.xaml:2819
+3f597f38	LED のライティング（OpenRGB 連携）の画面を開きます	MainWindow.xaml:2820
+c0c9a6ba	LED のライティング（OpenRGB 連携）	MainWindow.xaml:2822
+158ada0f	LED の設定は、左のメニューの「ライティング」に移りました。接続・光り方・音楽連動・デバイスごとの設定をまとめて変えられます。	MainWindow.xaml:2824
+c1eb5397	電気代の計算	MainWindow.xaml:2832
+6da48835	ダッシュボードとレポート画面に、消費電力量と電気代の目安を表示します	MainWindow.xaml:2833
+db0f8cfc	1 kWh あたりの電気代	MainWindow.xaml:2844
+306750cc	円（検針票の単価。分からなければ目安の 31 円のまま）	MainWindow.xaml:2847
+1405c464	CPU・GPU 以外の消費電力	MainWindow.xaml:2848
+665cef72	W（マザーボード・メモリ・SSD・ファン・電源の損失など。一般的に 40〜80 W）	MainWindow.xaml:2851
+b4d79a66	CPU と GPU はセンサーの値を使います。モニターやスピーカーは含みません。コンセントで測った値ではないので、あくまで目安です。	MainWindow.xaml:2854
+69355ed4	安全機能	MainWindow.xaml:2863
+619b1ea2	見張りプロセスを使う（おすすめ）	MainWindow.xaml:2866
+d1086ffa	アプリが強制終了・フリーズしたとき、ファンが低い回転のまま止まってしまうのを防ぎます。タスクマネージャーに ProFanController が 2 つ表示されますが、片方は見張り役です	MainWindow.xaml:2868
+f739cc9b	そのときの回転数	MainWindow.xaml:2881
+43c454af	ポンプは常に 100% にします	MainWindow.xaml:2881
+d063c0c0	アプリを自動で起動し直す（10 分間に 3 回までで、それ以上はお知らせを表示）	MainWindow.xaml:2885
+f2eae029	異常なセンサーの値を無視する	MainWindow.xaml:2890
+2487009f	一瞬だけ跳ねた値（読み取りエラー）で全開にならないようにします。負荷が変わっても値が動かない「固まった」センサーは、異常として扱います	MainWindow.xaml:2892
+3616d69f	起動時に部品の交換を確認する	MainWindow.xaml:2898
+f47011bb	GPU などを交換してセンサーが変わったときに、新しいセンサーへの置き換えを案内します	MainWindow.xaml:2900
+35eb3141	センサーがないときの回転数	MainWindow.xaml:2913
+90554019	部品を外した・交換したなどで、センサーそのものが見つからないカーブはこの回転数にします（センサーはあるのに値がおかしいときは、安全のため 100%）	MainWindow.xaml:2917
+963fb48e	異常の前後を自動で記録する	MainWindow.xaml:2922
+e424608f	緊急全開・ポンプ異常などのとき、前後 10 分の記録を保存します（レポート画面で確認できます）	MainWindow.xaml:2923
+f4e32f07	GPU のファンも制御できるようにする（試験的）	MainWindow.xaml:2929
+f73d1f9b	ファンカーブ画面の「端子を追加」に GPU のファンが表示されます。制御中は GPU ドライバーの自動制御（0 RPM モードなど）が止まるので、GPU の温度を使ったカーブで使ってください	MainWindow.xaml:2931
+f04fb800	メモリの温度を読む	MainWindow.xaml:2937
+5ac1bfd9	メモリの温度は、メモリの LED と同じ配線（SMBus）で読みます。OpenRGB などがこの配線を順番待ちせずに使っていると、ぶつかってメモリの温度が読めなくなることがあります。そのときはオフにしてください（メモリの温度を使うカーブは、センサーが見つからないときの回転数で回ります）	MainWindow.xaml:2939
+8154441c	設定のバックアップと共有	MainWindow.xaml:2948
+894c08f0	設定は変更のたびに自動でバックアップしています（10 分に 1 回まで・最大 30 個）。config.json が壊れても、起動時に自動で復旧します。プロファイルをファイルに書き出せば、別の PC で読み込めます（端子やセンサーは名前で対応付けます）	MainWindow.xaml:2950
+b187e750	設定を書き出す…	MainWindow.xaml:2952
+7c186faa	設定を読み込む…	MainWindow.xaml:2953
+077e159d	バックアップから戻す ▾	MainWindow.xaml:2954
+4222af0e	今すぐバックアップ	MainWindow.xaml:2955
+8d711ab6	セットアップとファイル	MainWindow.xaml:2964
+f8cfb37f	セットアップウィザードを開く	MainWindow.xaml:2966
+0cdb9795	設定フォルダを開く	MainWindow.xaml:2967
+e252e493	ログフォルダを開く	MainWindow.xaml:2968
+c7cbd09a	ファン制御用のドライバー（PawnIO）	MainWindow.xaml:2976
+6234a43c	アンインストール（お片付け）	MainWindow.xaml:2984
+29c38de6	このアプリを使うのをやめるときに使います。ファンを BIOS の自動制御に戻したことを確かめてから、ライティングの制御・ログオン時の自動起動・ファイアウォールの許可などを片付けて終了します。何を行うかは、次の画面で確かめてから始められます（設定・記録を消すか、PawnIO もアンインストールするかも選べます）	MainWindow.xaml:2986
+b2abf4ee	アンインストール（お片付け）…	MainWindow.xaml:2988
 276c23be	ファンの回転数を変えるには、マザーボードのファン制御チップを読み書きするドライバー PawnIO（無料・LibreHardwareMonitor などでも使われています）が必要です。\n「PawnIO をインストール」を押すと、Windows に付属の winget で公式のパッケージ（namazso.PawnIO）を入れます。インターネットにつながっている必要があり、数十秒〜数分かかります。終わったら、アプリを起動し直すと使えるようになります。	UI/PawnIoInstallPanel.xaml:13
 32818dc0	PawnIO をインストール	UI/PawnIoInstallPanel.xaml:15
 8d7b411c	アプリを起動し直す	UI/PawnIoInstallPanel.xaml:16
@@ -1424,17 +1426,19 @@ ef7d18bc	Windows に合わせる	MainWindow.Settings.cs:396
 37141fb8	ライト	MainWindow.Settings.cs:398
 8f4f452a	既定（英数字 Montserrat・日本語 ProFan Maru）	MainWindow.Settings.cs:413
 25ae07d9	ProFan Maru（同梱の丸ゴシック）	MainWindow.Settings.cs:414
-1755da21	やや控えめ	MainWindow.Settings.cs:438
-79a677b2	やや濃い	MainWindow.Settings.cs:438
-4bf63202	濃い	MainWindow.Settings.cs:438
-26559a27	灰色	MainWindow.Settings.cs:443
-77d49f1b	色相 {0}°	MainWindow.Settings.cs:443
-c96a6fad	{0}・{1}	MainWindow.Settings.cs:447
-3e7b80f4	白に近い	MainWindow.Settings.cs:457
-33e39538	淡い	MainWindow.Settings.cs:457
-ec6cb7af	黒に近い	MainWindow.Settings.cs:458
-3036c063	この PC のネットワークアドレスが見つかりません	MainWindow.Settings.cs:593
-f028972c	Web サーバーを開始できませんでした。ポート番号を変えて試してください（ログに詳細があります）	MainWindow.Settings.cs:594
+75788b92	自動（Windows の表示言語）	MainWindow.Settings.cs:417
+1755da21	やや控えめ	MainWindow.Settings.cs:452
+79a677b2	やや濃い	MainWindow.Settings.cs:452
+4bf63202	濃い	MainWindow.Settings.cs:452
+26559a27	灰色	MainWindow.Settings.cs:457
+77d49f1b	色相 {0}°	MainWindow.Settings.cs:457
+c96a6fad	{0}・{1}	MainWindow.Settings.cs:461
+3e7b80f4	白に近い	MainWindow.Settings.cs:471
+33e39538	淡い	MainWindow.Settings.cs:471
+ec6cb7af	黒に近い	MainWindow.Settings.cs:472
+c53be0dd	表示言語を変えました。アプリを起動し直すと切り替わります。\n今すぐ起動し直しますか？（ファンは、起動し直すあいだ BIOS の制御になります）	MainWindow.Settings.cs:514
+3036c063	この PC のネットワークアドレスが見つかりません	MainWindow.Settings.cs:633
+f028972c	Web サーバーを開始できませんでした。ポート番号を変えて試してください（ログに詳細があります）	MainWindow.Settings.cs:634
 26d33196	PawnIO（ファン制御用のドライバー）が見つかりません。このままでは温度の表示だけで、ファンは制御できません。	MainWindow.Setup.cs:23
 233ed082	設定の「安全・バックアップ」から、ボタン 1 つでインストールできます。	MainWindow.Setup.cs:24
 5d6faa41	インストールの画面を開く	MainWindow.Setup.cs:25
