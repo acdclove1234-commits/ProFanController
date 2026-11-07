@@ -1,0 +1,111 @@
+# ProFanController UI text (de). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Wird gestartet…
+3c3d953a	Hardware wird erkannt
+68a076e4	Pause (zurück an BIOS)
+a7580d36	Profil
+f70fd09f	Übersicht
+4f50f431	Geräte
+86d8b163	Lüfterkurven
+a010a7fc	Verlauf
+133b6776	Bericht
+b4bcc740	Diagnose
+977807d2	Test & Abstimmung
+60dd6c40	Beleuchtung
+dfa4a412	Sensoren
+6243fa06	Einstellungen
+fa345a0a	Alle Lüfter außer Pumpen 5 Minuten lang auf 100 % (Strg+Alt+B)
+46f899c1	Boost 5 Min.
+5332244c	Leise-Profil für 1 Stunde verwenden (Strg+Alt+Q)
+4f178a31	Leise 1 Std.
+057e1182	Aufheben
+222df90d	Schnellaktion aufheben (Strg+Alt+N)
+29fe6bbf	Karten bearbeiten
+78e47efe	Mini-Widget
+3f64d7a6	Rückgängig (Strg+Z)
+f1c037fb	Rückgängig
+378033f8	Wiederholen (Strg+Y)
+d5868aec	Wiederholen
+67c75bfe	Setzt die Beleuchtungseinstellungen einen Schritt zurück (Strg+Z). Integration ein/aus, Licht aus, Verbindung und „Blitzen reduzieren“ bleiben unverändert
+f0085ee5	Stellt die rückgängig gemachte Beleuchtungsänderung wieder her (Strg+Y)
+7a6246e2	5 Min.
+6ed56950	30 Min.
+53fb2e4b	1 Std.
+20d85a26	6 Std.
+9c6a5f50	24 Std.
+f13af350	Als CSV exportieren
+55004637	Temperaturen und Lüfterstatus in Echtzeit
+5bcd0e2d	Schließen
+a2565db3	Nach links
+c79c3d0e	Nach rechts
+e3edb67b	Löschen
+129b5ea4	Karte hinzufügen
+019555f8	Angezeigte Temperatur
+b4255600	Letzte 10 Minuten / durchgezogen = Temperatur (linke Achse) · gestrichelt = Drehzahl (rechte Achse)
+0a88e8cb	Echtzeit
+c5ebcb9c	Lüfter / Pumpen (klicken, um die Kurve zu bearbeiten)
+a7377177	Drehende Lüfter
+0ee2f2ba	Bild ändern
+1606ea26	Sensoren anzeigen
+9a7c10f0	Zu bearbeitendes Profil
+33c1221d	Anschluss hinzufügen
+762d7886	„Test“ lässt ihn 8 Sekunden mit voller Drehzahl laufen, damit Sie sehen, welcher Lüfter es ist (wird allen Profilen hinzugefügt)
+82a38dd8	Test
+2a1d8a18	Hinzufügen
+1337d6a7	Test (8 s 100 %)
+5f279080	Grundeinstellungen
+ba60770e	Name (für alle Profile gleich)
+2bf39d7d	Typ
+99ad1110	Lüfter
+0af668ca	Pumpe (AIO)
+6920ae77	Mit dieser App steuern
+67175336	Wenn aus, läuft er nach den BIOS-Einstellungen (Pumpen werden weiter überwacht)
+03cf27f6	GPU-Lüfter (experimentell)
+8be5fd73	Solange diese App sie steuert, ist die eigene Steuerung des GPU-Treibers (z. B. der 0-RPM-Modus, der die Lüfter im Leerlauf anhält) aus. Verwenden Sie für die Kurve eine GPU-Temperatur. Über 85 °C an der GPU (100 °C am Hot Spot) laufen sie unabhängig von den Einstellungen mit 100 %.
+59c6e4bc	Steuerungsart
+a80265dc	Kurve
+051753eb	Drehzahl für jede Temperatur selbst festlegen
+530a9c8a	Zieltemperatur (automatisch)
+1fc9ab3c	Nur eine Temperatur festlegen, die Drehzahl regelt sich selbst
+27bd9d15	Fest
+84b1afad	Immer dieselbe Drehzahl (für Pumpen)
+26a15192	Folgen (Gruppe)
+7f925b2a	Drehzahl an einen anderen Lüfter angleichen
+b2e99d58	Zieltemperatur-Modus
+41ce3406	Hält die gewählte Temperatur mit möglichst niedriger Drehzahl unter dem Ziel. Keine Kurve nötig. Je länger sie über dem Ziel bleibt, desto weiter steigt die Drehzahl.
+bc125c78	Beobachtete Temperatur
+0e59213f	Zieltemperatur
+84629c82	Reaktion
+f4774c9f	Höher reagiert zügig auf Temperaturänderungen (niedriger ist leiser und ruhiger)
+34c1c904	Folgemodus (Lüftergruppe)
+4e05c4dd	Läuft mit derselben Drehzahl wie der gewählte Lüfter (Leitlüfter). Gleicht man Lüfter mit derselben Aufgabe an, etwa die vorderen Ansauglüfter, verschwindet das „Wummern“ durch Schwebungen.
+932d7da3	Leitlüfter
+7c20c9ff	Aufschlag
+e66fa60a	Wenn er etwas schneller oder langsamer als der Leitlüfter laufen soll
+ca7e07b6	Nach Drehzahl (rpm) angleichen
+a4885460	Sind beide Lüfter kalibriert, wird die tatsächliche Drehzahl statt % angeglichen (klappt auch bei verschiedenen Modellen)
+7dd9bc7b	Feste Drehzahl
+309627fd	Mindestdrehzahl
+ac1c4927	Anstiegsrate / s
+fa9ef1de	Abfallrate / s
+3aed820e	Pumpenschutz
+a5668673	Fällt in keiner Einstellung unter 40 %. Liegt die Drehzahl 3 Sekunden lang unter dem Warnwert, geht sie auf 100 % und Sie werden benachrichtigt – auch unter BIOS-Steuerung.
+7c811ff7	Warndrehzahl
+cb5145a7	Als Mindestdrehzahl übernehmen
+812e0683	Automatische Kalibrierung
+ec41d4ae	Abbrechen
+9514979f	Fährt den Lüfter von 0 bis 100 % und misst, wo er stoppt, wo er anläuft und seine Höchstdrehzahl (ca. 1–2 Minuten)
+26101bee	+ Bereich hinzufügen
+f5097e76	Resonanzbereiche (laute Drehzahlen überspringen)
+11bb3e7a	Tragen Sie Drehzahlbereiche ein, in denen Gehäuse oder Radiator brummen – der Lüfter durchläuft sie dann zügig, statt dort zu bleiben (für alle Profile gleich)
+da85df7a	Drehzahl ausprobieren
+af4cf1be	Der Schieberegler stellt nur diesen Lüfter sofort auf diese Drehzahl (20 Sekunden nach dem Loslassen kehrt alles zurück). Bei einer lauten Stelle „Hier überspringen“ drücken.
+ea6d9cfc	Hier überspringen
+ed263790	Übersprungener Bereich
+49024f94	% bis
+8b7237a1	Noch keine. Wenn keine Drehzahl stört, kann es so bleiben.
+166baf5a	Automatisch erstellen…
+3eb67669	Belastet den PC, misst und erstellt die leiseste Kurve, die die Zieltemperatur noch hält (Seite „Test & Abstimmung“)
+cd6687b0	Kopieren ▾
+a8a30430	+ Kurve hinzufügen
+29506d39	Diese Kurve löschen
+5d2df974	Bei mehreren Kurven gilt die höchste Anforderung

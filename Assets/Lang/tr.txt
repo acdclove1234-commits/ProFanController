@@ -1,0 +1,111 @@
+# ProFanController UI text (tr). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Başlatılıyor…
+3c3d953a	Donanım algılanıyor
+68a076e4	Duraklat (BIOS'a bırak)
+a7580d36	Profil
+f70fd09f	Pano
+4f50f431	Cihazlar
+86d8b163	Fan eğrileri
+a010a7fc	Geçmiş
+133b6776	Rapor
+b4bcc740	Tanılama
+977807d2	Test ve ayar
+60dd6c40	Aydınlatma
+dfa4a412	Sensörler
+6243fa06	Ayarlar
+fa345a0a	Pompalar dışındaki tüm fanları 5 dakika %100 çalıştırır (Ctrl+Alt+B)
+46f899c1	Güçlendir 5 dk
+5332244c	Sessiz profili 1 saat kullanır (Ctrl+Alt+Q)
+4f178a31	Sessiz 1 sa
+057e1182	İptal
+222df90d	Hızlı işlemi iptal et (Ctrl+Alt+N)
+29fe6bbf	Kartları düzenle
+78e47efe	Mini pencere öğesi
+3f64d7a6	Geri al (Ctrl+Z)
+f1c037fb	Geri al
+378033f8	Yinele (Ctrl+Y)
+d5868aec	Yinele
+67c75bfe	Aydınlatma ayarlarını bir adım geri alır (Ctrl+Z). Entegrasyonun açık/kapalı durumu, ışıkları kapatma, bağlantı ve "Yanıp sönmeyi azalt" değişmez
+f0085ee5	Geri alınan aydınlatma değişikliğini yineler (Ctrl+Y)
+7a6246e2	5 dk
+6ed56950	30 dk
+53fb2e4b	1 sa
+20d85a26	6 sa
+9c6a5f50	24 sa
+f13af350	CSV olarak dışa aktar
+55004637	Sıcaklıklar ve fan durumu canlı
+5bcd0e2d	Kapat
+a2565db3	Sola
+c79c3d0e	Sağa
+e3edb67b	Sil
+129b5ea4	Kart ekle
+019555f8	Gösterilecek sıcaklık
+b4255600	Son 10 dakika / düz = sıcaklık (sol eksen) · kesikli = devir (sağ eksen)
+0a88e8cb	Canlı
+c5ebcb9c	Fanlar / pompalar (eğriyi düzenlemek için tıklayın)
+a7377177	Dönen fan sayısı
+0ee2f2ba	Resmi değiştir
+1606ea26	Sensörleri göster
+9a7c10f0	Düzenlenecek profil
+33c1221d	Konnektör ekle
+762d7886	"Test" hangi fan olduğunu görmeniz için onu 8 saniye tam hızda çalıştırır (tüm profillere eklenir)
+82a38dd8	Test
+2a1d8a18	Ekle
+1337d6a7	Test (8 sn %100)
+5f279080	Temel
+ba60770e	Ad (tüm profillerde ortak)
+2bf39d7d	Tür
+99ad1110	Fan
+0af668ca	Pompa (AIO)
+6920ae77	Bu uygulamayla kontrol et
+67175336	Kapalıyken BIOS ayarlarıyla döner (pompalar izlenmeye devam eder)
+03cf27f6	GPU fanları (deneysel)
+8be5fd73	Bu uygulama kontrol ederken GPU sürücüsünün kendi kontrolü (boştayken fanları durduran 0 RPM modu gibi) kapalıdır. Eğri için bir GPU sıcaklığı kullanın. GPU'da 85°C'nin (Hot Spot'ta 100°C'nin) üzerinde ayarlardan bağımsız olarak %100 çalışırlar.
+59c6e4bc	Kontrol yöntemi
+a80265dc	Eğri
+051753eb	Her sıcaklık için devri kendiniz belirleyin
+530a9c8a	Hedef sıcaklık (otomatik)
+1fc9ab3c	Sadece sıcaklığı seçin, devir kendini ayarlar
+27bd9d15	Sabit
+84b1afad	Her zaman aynı devir (pompalar için)
+26a15192	Takip (grup)
+7f925b2a	Devri başka bir fanla eşitle
+b2e99d58	Hedef sıcaklık modu
+41ce3406	Seçilen sıcaklığı mümkün olan en düşük devirde hedefin altında tutar. Eğri düşünmeye gerek yok. Hedefin üzerinde ne kadar uzun kalırsa devir o kadar artar.
+bc125c78	İzlenen sıcaklık
+0e59213f	Hedef sıcaklık
+84629c82	Tepki
+f4774c9f	Yüksek değer sıcaklık değişimlerine çevik tepki verir (düşük değer daha sessiz ve sakin)
+34c1c904	Takip modu (fan grubu)
+4e05c4dd	Seçilen fanla (lider) aynı devirde döner. Ön emiş fanları gibi aynı görevdeki fanları eşitlemek, vuruşmadan kaynaklanan dalgalı uğultuyu önler.
+932d7da3	Takip edilecek fan
+7c20c9ff	Ek
+e66fa60a	Liderden biraz daha hızlı ya da yavaş dönmesi için
+ca7e07b6	Devre (rpm) göre eşitle
+a4885460	İki fan da kalibre edildiyse % yerine gerçek devri eşitler (farklı modellerde bile işe yarar)
+7dd9bc7b	Sabit devir
+309627fd	En düşük devir
+ac1c4927	Artış hızı / sn
+fa9ef1de	Azalış hızı / sn
+3aed820e	Pompa koruması
+a5668673	Hiçbir ayarda %40'ın altına inmez. Devir 3 saniye boyunca uyarı değerinin altında kalırsa, BIOS kontrolünde bile %100'e çıkar ve sizi bilgilendirir.
+7c811ff7	Uyarı devri
+cb5145a7	En düşük devir olarak kullan
+812e0683	Otomatik kalibrasyon
+ec41d4ae	Durdur
+9514979f	Fanı %0'dan %100'e çalıştırır ve durduğu, dönmeye başladığı ve en yüksek devri ölçer (yaklaşık 1–2 dakika)
+26101bee	+ Aralık ekle
+f5097e76	Rezonans (gürültülü devirleri atla)
+11bb3e7a	Kasanın veya radyatörün uğuldadığı devir aralıklarını ekleyin; fan bu aralıklarda kalmadan hızla geçer (tüm profillerde ortak)
+da85df7a	Bir devri dene
+af4cf1be	Kaydırıcı yalnızca bu fanı hemen o devre getirir (son hareketten 20 saniye sonra geri döner). Gürültülü bir nokta bulursanız "Burayı atla"ya basın.
+ea6d9cfc	Burayı atla
+ed263790	Atlanacak aralık
+49024f94	% ile
+8b7237a1	Henüz yok. Rahatsız eden bir devir yoksa böyle bırakabilirsiniz.
+166baf5a	Otomatik oluştur…
+3eb67669	Bilgisayara yük bindirir, ölçer ve hedef sıcaklığı hâlâ koruyan en sessiz eğriyi oluşturur (Test ve ayar sayfası)
+cd6687b0	Kopyala ▾
+a8a30430	+ Eğri ekle
+29506d39	Bu eğriyi sil
+5d2df974	Birden fazla eğri varsa en yüksek talep geçerlidir

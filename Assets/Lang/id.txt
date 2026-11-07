@@ -1,0 +1,111 @@
+# ProFanController UI text (id). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Memulai…
+3c3d953a	Mendeteksi perangkat keras
+68a076e4	Jeda (kembalikan ke BIOS)
+a7580d36	Profil
+f70fd09f	Dasbor
+4f50f431	Perangkat
+86d8b163	Kurva kipas
+a010a7fc	Riwayat
+133b6776	Laporan
+b4bcc740	Diagnostik
+977807d2	Uji & setel
+60dd6c40	Pencahayaan
+dfa4a412	Sensor
+6243fa06	Pengaturan
+fa345a0a	Semua kipas kecuali pompa berjalan 100% selama 5 menit (Ctrl+Alt+B)
+46f899c1	Boost 5 mnt
+5332244c	Memakai profil Senyap selama 1 jam (Ctrl+Alt+Q)
+4f178a31	Senyap 1 jam
+057e1182	Batalkan
+222df90d	Batalkan aksi cepat (Ctrl+Alt+N)
+29fe6bbf	Edit kartu
+78e47efe	Widget mini
+3f64d7a6	Urungkan (Ctrl+Z)
+f1c037fb	Urungkan
+378033f8	Ulangi (Ctrl+Y)
+d5868aec	Ulangi
+67c75bfe	Mengembalikan pengaturan pencahayaan satu langkah (Ctrl+Z). Integrasi aktif/nonaktif, lampu mati, koneksi, dan "Kurangi kedipan" tidak berubah
+f0085ee5	Mengulangi perubahan pencahayaan yang diurungkan (Ctrl+Y)
+7a6246e2	5 mnt
+6ed56950	30 mnt
+53fb2e4b	1 jam
+20d85a26	6 jam
+9c6a5f50	24 jam
+f13af350	Ekspor CSV
+55004637	Suhu dan status kipas secara langsung
+5bcd0e2d	Tutup
+a2565db3	Ke kiri
+c79c3d0e	Ke kanan
+e3edb67b	Hapus
+129b5ea4	Tambah kartu
+019555f8	Suhu yang ditampilkan
+b4255600	10 menit terakhir / garis utuh = suhu (sumbu kiri) · garis putus = putaran (sumbu kanan)
+0a88e8cb	Langsung
+c5ebcb9c	Kipas / pompa (klik untuk mengedit kurva)
+a7377177	Kipas yang berputar
+0ee2f2ba	Ganti gambar
+1606ea26	Tampilkan sensor
+9a7c10f0	Profil yang diedit
+33c1221d	Tambah konektor
+762d7886	"Uji" memutar kipas pada kecepatan penuh selama 8 detik agar terlihat kipas yang mana (ditambahkan ke semua profil)
+82a38dd8	Uji
+2a1d8a18	Tambah
+1337d6a7	Uji (100% selama 8 dtk)
+5f279080	Dasar
+ba60770e	Nama (sama untuk semua profil)
+2bf39d7d	Jenis
+99ad1110	Kipas
+0af668ca	Pompa (AIO)
+6920ae77	Kendalikan dengan aplikasi ini
+67175336	Jika dimatikan, berputar sesuai pengaturan BIOS (pompa tetap dipantau)
+03cf27f6	Kipas GPU (eksperimental)
+8be5fd73	Selama aplikasi ini mengendalikannya, kendali otomatis driver GPU (seperti mode 0 RPM yang menghentikan kipas saat idle) nonaktif. Gunakan suhu GPU untuk kurva. Di atas 85°C pada GPU (100°C pada Hot Spot), kipas berputar 100% apa pun pengaturannya.
+59c6e4bc	Cara kendali
+a80265dc	Kurva
+051753eb	Tentukan sendiri putaran untuk tiap suhu
+530a9c8a	Suhu target (otomatis)
+1fc9ab3c	Cukup tentukan suhu, putaran menyesuaikan sendiri
+27bd9d15	Tetap
+84b1afad	Selalu putaran yang sama (untuk pompa)
+26a15192	Ikuti (grup)
+7f925b2a	Samakan putaran dengan kipas lain
+b2e99d58	Mode suhu target
+41ce3406	Menjaga suhu yang dipilih di bawah target dengan putaran serendah mungkin. Tidak perlu memikirkan kurva. Makin lama di atas target, putaran makin naik.
+bc125c78	Suhu yang dipantau
+0e59213f	Suhu target
+84629c82	Respons
+f4774c9f	Makin tinggi makin sigap bereaksi pada perubahan suhu (makin rendah makin senyap dan tenang)
+34c1c904	Mode ikuti (grup kipas)
+4e05c4dd	Berputar dengan putaran yang sama seperti kipas yang dipilih (pemimpin). Menyamakan kipas dengan tugas yang sama, seperti kipas intake depan, mencegah dengung bergelombang akibat interferensi.
+932d7da3	Kipas yang diikuti
+7c20c9ff	Tambahan
+e66fa60a	Untuk berputar sedikit lebih cepat atau lebih lambat dari pemimpin
+ca7e07b6	Samakan menurut putaran (rpm)
+a4885460	Jika kedua kipas sudah dikalibrasi, menyamakan putaran sebenarnya, bukan % (berlaku juga untuk model berbeda)
+7dd9bc7b	Putaran tetap
+309627fd	Putaran minimum
+ac1c4927	Laju naik / dtk
+fa9ef1de	Laju turun / dtk
+3aed820e	Perlindungan pompa
+a5668673	Tidak pernah di bawah 40% dengan pengaturan apa pun. Jika putaran di bawah nilai peringatan selama 3 detik, naik ke 100% dan memberi tahu Anda, meskipun dikendalikan BIOS.
+7c811ff7	Putaran peringatan
+cb5145a7	Pakai sebagai putaran minimum
+812e0683	Kalibrasi otomatis
+ec41d4ae	Hentikan
+9514979f	Menjalankan kipas dari 0 hingga 100% dan mengukur putaran saat berhenti, saat mulai berputar, dan maksimum (sekitar 1–2 menit)
+26101bee	+ Tambah rentang
+f5097e76	Resonansi (lewati putaran yang bising)
+11bb3e7a	Tambahkan rentang putaran tempat casing atau radiator berdengung; kipas akan melewatinya dengan cepat alih-alih bertahan di sana (sama untuk semua profil)
+da85df7a	Coba putaran
+af4cf1be	Penggeser langsung membuat hanya kipas ini berputar pada putaran tersebut (kembali 20 detik setelah berhenti menggeser). Jika menemukan titik bising, tekan "Lewati di sini".
+ea6d9cfc	Lewati di sini
+ed263790	Rentang yang dilewati
+49024f94	% hingga
+8b7237a1	Belum ada. Jika tidak ada putaran yang mengganggu, biarkan saja begini.
+166baf5a	Buat otomatis…
+3eb67669	Memberi beban pada PC, mengukur, dan membuat kurva tersenyap yang masih menjaga suhu target (halaman Uji & setel)
+cd6687b0	Salin ▾
+a8a30430	+ Tambah kurva
+29506d39	Hapus kurva ini
+5d2df974	Jika ada beberapa kurva, permintaan tertinggi yang dipakai

@@ -1,0 +1,111 @@
+# ProFanController UI text (nl). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Bezig met starten…
+3c3d953a	Hardware wordt gedetecteerd
+68a076e4	Pauze (terug naar BIOS)
+a7580d36	Profiel
+f70fd09f	Dashboard
+4f50f431	Apparaten
+86d8b163	Ventilatorcurves
+a010a7fc	Geschiedenis
+133b6776	Rapport
+b4bcc740	Diagnose
+977807d2	Testen & afstemmen
+60dd6c40	Verlichting
+dfa4a412	Sensoren
+6243fa06	Instellingen
+fa345a0a	Alle ventilatoren behalve pompen 5 minuten op 100% (Ctrl+Alt+B)
+46f899c1	Boost 5 min
+5332244c	Gebruikt het profiel Stil 1 uur lang (Ctrl+Alt+Q)
+4f178a31	Stil 1 u
+057e1182	Opheffen
+222df90d	Snelactie opheffen (Ctrl+Alt+N)
+29fe6bbf	Kaarten bewerken
+78e47efe	Miniwidget
+3f64d7a6	Ongedaan maken (Ctrl+Z)
+f1c037fb	Ongedaan maken
+378033f8	Opnieuw (Ctrl+Y)
+d5868aec	Opnieuw
+67c75bfe	Zet de verlichtingsinstellingen één stap terug (Ctrl+Z). Integratie aan/uit, licht uit, de verbinding en "Flitsen beperken" veranderen niet
+f0085ee5	Voert de ongedaan gemaakte verlichtingswijziging opnieuw uit (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 u
+20d85a26	6 u
+9c6a5f50	24 u
+f13af350	CSV exporteren
+55004637	Temperaturen en ventilatorstatus live
+5bcd0e2d	Sluiten
+a2565db3	Naar links
+c79c3d0e	Naar rechts
+e3edb67b	Verwijderen
+129b5ea4	Kaart toevoegen
+019555f8	Weergegeven temperatuur
+b4255600	Laatste 10 minuten / doorgetrokken = temperatuur (linkeras) · gestippeld = toerental (rechteras)
+0a88e8cb	Live
+c5ebcb9c	Ventilatoren / pompen (klik om de curve te bewerken)
+a7377177	Draaiende ventilatoren
+0ee2f2ba	Afbeelding wijzigen
+1606ea26	Sensoren tonen
+9a7c10f0	Te bewerken profiel
+33c1221d	Aansluiting toevoegen
+762d7886	"Test" laat hem 8 seconden op vol toerental draaien zodat je ziet welke ventilator het is (wordt aan alle profielen toegevoegd)
+82a38dd8	Test
+2a1d8a18	Toevoegen
+1337d6a7	Test (8 s op 100%)
+5f279080	Basis
+ba60770e	Naam (gelijk in alle profielen)
+2bf39d7d	Soort
+99ad1110	Ventilator
+0af668ca	Pomp (AIO)
+6920ae77	Met deze app regelen
+67175336	Uit: draait volgens de BIOS-instellingen (pompen worden nog bewaakt)
+03cf27f6	GPU-ventilatoren (experimenteel)
+8be5fd73	Zolang deze app ze regelt, staat de eigen regeling van het GPU-stuurprogramma (zoals de 0 RPM-modus die ze stilzet bij rust) uit. Gebruik een GPU-temperatuur voor de curve. Boven 85 °C op de GPU (100 °C op de hotspot) draaien ze op 100%, ongeacht de instellingen.
+59c6e4bc	Regelwijze
+a80265dc	Curve
+051753eb	Zelf het toerental per temperatuur bepalen
+530a9c8a	Doeltemperatuur (automatisch)
+1fc9ab3c	Alleen een temperatuur kiezen, het toerental regelt zichzelf
+27bd9d15	Vast
+84b1afad	Altijd hetzelfde toerental (voor pompen)
+26a15192	Volgen (groep)
+7f925b2a	Toerental gelijk aan een andere ventilator
+b2e99d58	Doeltemperatuurmodus
+41ce3406	Houdt de gekozen temperatuur onder het doel met een zo laag mogelijk toerental. Geen curve nodig. Hoe langer hij boven het doel blijft, hoe verder het toerental stijgt.
+bc125c78	Bewaakte temperatuur
+0e59213f	Doeltemperatuur
+84629c82	Reactie
+f4774c9f	Hoger reageert vlot op temperatuurwijzigingen (lager is stiller en rustiger)
+34c1c904	Volgmodus (ventilatorgroep)
+4e05c4dd	Draait op hetzelfde toerental als de gekozen ventilator (de leider). Ventilatoren met dezelfde taak gelijk zetten, zoals de inblazers voorin, voorkomt het zwevende brommen.
+932d7da3	Te volgen ventilator
+7c20c9ff	Toeslag
+e66fa60a	Om iets sneller of langzamer dan de leider te draaien
+ca7e07b6	Gelijk zetten op toerental (rpm)
+a4885460	Als beide ventilatoren gekalibreerd zijn, wordt het echte toerental gelijkgezet in plaats van % (werkt ook bij verschillende modellen)
+7dd9bc7b	Vast toerental
+309627fd	Minimaal toerental
+ac1c4927	Stijgsnelheid / s
+fa9ef1de	Daalsnelheid / s
+3aed820e	Pompbeveiliging
+a5668673	Gaat bij geen enkele instelling onder 40%. Blijft het toerental 3 seconden onder de alarmwaarde, dan gaat hij naar 100% en krijg je een melding, ook onder BIOS-regeling.
+7c811ff7	Alarmtoerental
+cb5145a7	Als minimaal toerental gebruiken
+812e0683	Automatisch kalibreren
+ec41d4ae	Stoppen
+9514979f	Laat de ventilator van 0 tot 100% draaien en meet waar hij stopt, waar hij aanloopt en het maximum (ongeveer 1–2 minuten)
+26101bee	+ Bereik toevoegen
+f5097e76	Resonantie (luide toerentallen overslaan)
+11bb3e7a	Voeg toerentalbereiken toe waarin de kast of radiator bromt; de ventilator gaat er dan snel doorheen in plaats van te blijven hangen (gelijk in alle profielen)
+da85df7a	Toerental uitproberen
+af4cf1be	De schuifregelaar zet alleen deze ventilator direct op dat toerental (20 seconden na loslaten gaat alles terug). Vind je een luide plek, druk dan op "Hier overslaan".
+ea6d9cfc	Hier overslaan
+ed263790	Over te slaan bereik
+49024f94	% tot
+8b7237a1	Nog geen. Als geen enkel toerental hinderlijk klinkt, kun je het zo laten.
+166baf5a	Automatisch maken…
+3eb67669	Belast de pc, meet en maakt de stilste curve die de doeltemperatuur nog haalt (pagina Testen & afstemmen)
+cd6687b0	Kopiëren ▾
+a8a30430	+ Curve toevoegen
+29506d39	Deze curve verwijderen
+5d2df974	Bij meerdere curves telt de hoogste vraag

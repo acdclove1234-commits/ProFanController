@@ -1,0 +1,111 @@
+# ProFanController UI text (es). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Iniciando…
+3c3d953a	Detectando el hardware
+68a076e4	Pausa (devolver a la BIOS)
+a7580d36	Perfil
+f70fd09f	Panel
+4f50f431	Dispositivos
+86d8b163	Curvas de ventiladores
+a010a7fc	Historial
+133b6776	Informe
+b4bcc740	Diagnóstico
+977807d2	Prueba y ajuste
+60dd6c40	Iluminación
+dfa4a412	Sensores
+6243fa06	Ajustes
+fa345a0a	Todos los ventiladores salvo las bombas al 100 % durante 5 minutos (Ctrl+Alt+B)
+46f899c1	Turbo 5 min
+5332244c	Usa el perfil Silencioso durante 1 hora (Ctrl+Alt+Q)
+4f178a31	Silencio 1 h
+057e1182	Cancelar
+222df90d	Cancelar la acción rápida (Ctrl+Alt+N)
+29fe6bbf	Editar tarjetas
+78e47efe	Miniwidget
+3f64d7a6	Deshacer (Ctrl+Z)
+f1c037fb	Deshacer
+378033f8	Rehacer (Ctrl+Y)
+d5868aec	Rehacer
+67c75bfe	Devuelve los ajustes de iluminación un paso atrás (Ctrl+Z). La integración activada/desactivada, el apagado de luces, la conexión y «Reducir destellos» no cambian
+f0085ee5	Rehace el cambio de iluminación que deshiciste (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 h
+20d85a26	6 h
+9c6a5f50	24 h
+f13af350	Exportar CSV
+55004637	Temperaturas y estado de los ventiladores en tiempo real
+5bcd0e2d	Cerrar
+a2565db3	A la izquierda
+c79c3d0e	A la derecha
+e3edb67b	Eliminar
+129b5ea4	Añadir tarjeta
+019555f8	Temperatura que se muestra
+b4255600	Últimos 10 minutos / línea continua = temperatura (eje izquierdo) · discontinua = velocidad (eje derecho)
+0a88e8cb	En vivo
+c5ebcb9c	Ventiladores / bombas (clic para editar la curva)
+a7377177	Ventiladores girando
+0ee2f2ba	Cambiar imagen
+1606ea26	Mostrar sensores
+9a7c10f0	Perfil que se edita
+33c1221d	Añadir conector
+762d7886	«Prueba» lo hace girar a máxima velocidad 8 segundos para que veas qué ventilador es (se añade a todos los perfiles)
+82a38dd8	Prueba
+2a1d8a18	Añadir
+1337d6a7	Prueba (100 % durante 8 s)
+5f279080	Básico
+ba60770e	Nombre (común a todos los perfiles)
+2bf39d7d	Tipo
+99ad1110	Ventilador
+0af668ca	Bomba (AIO)
+6920ae77	Controlar con esta aplicación
+67175336	Si se desactiva, funciona según la BIOS (las bombas siguen vigiladas)
+03cf27f6	Ventiladores de la GPU (experimental)
+8be5fd73	Mientras esta aplicación los controla, el control propio del controlador de la GPU (como el modo 0 RPM que los detiene en reposo) queda desactivado. Usa una temperatura de la GPU para la curva. Por encima de 85 °C en la GPU (100 °C en el Hot Spot) giran al 100 % sea cual sea el ajuste.
+59c6e4bc	Modo de control
+a80265dc	Curva
+051753eb	Decide tú la velocidad para cada temperatura
+530a9c8a	Temperatura objetivo (automático)
+1fc9ab3c	Solo indica una temperatura y la velocidad se ajusta sola
+27bd9d15	Fija
+84b1afad	Siempre la misma velocidad (para bombas)
+26a15192	Seguir (grupo)
+7f925b2a	Igualar la velocidad con otro ventilador
+b2e99d58	Modo temperatura objetivo
+41ce3406	Mantiene la temperatura elegida por debajo del objetivo con la menor velocidad posible. No hace falta una curva. Cuanto más tiempo siga por encima del objetivo, más sube la velocidad.
+bc125c78	Temperatura vigilada
+0e59213f	Temperatura objetivo
+84629c82	Respuesta
+f4774c9f	Más alto reacciona con viveza a los cambios de temperatura (más bajo es más silencioso y tranquilo)
+34c1c904	Modo seguimiento (grupo de ventiladores)
+4e05c4dd	Gira a la misma velocidad que el ventilador elegido (el líder). Igualar los ventiladores con la misma función, como los de admisión frontales, evita el zumbido ondulante por batido.
+932d7da3	Ventilador a seguir
+7c20c9ff	Diferencia
+e66fa60a	Para girar un poco más rápido o más lento que el líder
+ca7e07b6	Igualar por velocidad (rpm)
+a4885460	Si ambos ventiladores están calibrados, iguala la velocidad real en lugar del % (sirve incluso entre modelos distintos)
+7dd9bc7b	Velocidad fija
+309627fd	Velocidad mínima
+ac1c4927	Subida / s
+fa9ef1de	Bajada / s
+3aed820e	Protección de la bomba
+a5668673	Nunca baja del 40 % con ningún ajuste. Si la velocidad pasa 3 segundos por debajo del valor de alerta, se pone al 100 % y te avisa, incluso bajo control de la BIOS.
+7c811ff7	Velocidad de alerta
+cb5145a7	Usar como velocidad mínima
+812e0683	Calibración automática
+ec41d4ae	Detener
+9514979f	Hace girar el ventilador de 0 a 100 % y mide la velocidad a la que se para, a la que arranca y la máxima (1–2 minutos aprox.)
+26101bee	+ Añadir rango
+f5097e76	Resonancia (evitar velocidades ruidosas)
+11bb3e7a	Añade los rangos de velocidad en los que zumba la caja o el radiador y el ventilador los atravesará rápido en lugar de quedarse en ellos (común a todos los perfiles)
+da85df7a	Probar una velocidad
+af4cf1be	Al mover el control, solo este ventilador pasa a esa velocidad (vuelve 20 segundos después de soltarlo). Si encuentras un punto ruidoso, pulsa «Evitar aquí».
+ea6d9cfc	Evitar aquí
+ed263790	Rango a evitar
+49024f94	% a
+8b7237a1	Aún no hay ninguno. Si ninguna velocidad molesta, puedes dejarlo así.
+166baf5a	Crear automáticamente…
+3eb67669	Carga el PC, mide y crea la curva más silenciosa que aún mantiene la temperatura objetivo (página Prueba y ajuste)
+cd6687b0	Copiar ▾
+a8a30430	+ Añadir curva
+29506d39	Eliminar esta curva
+5d2df974	Con varias curvas, se usa la que pide más

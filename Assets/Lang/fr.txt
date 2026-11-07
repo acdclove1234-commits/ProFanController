@@ -1,0 +1,111 @@
+# ProFanController UI text (fr). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Initialisation…
+3c3d953a	Détection du matériel
+68a076e4	Pause (rendre la main au BIOS)
+a7580d36	Profil
+f70fd09f	Tableau de bord
+4f50f431	Appareils
+86d8b163	Courbes des ventilateurs
+a010a7fc	Historique
+133b6776	Rapport
+b4bcc740	Diagnostic
+977807d2	Test et réglage
+60dd6c40	Éclairage
+dfa4a412	Capteurs
+6243fa06	Paramètres
+fa345a0a	Tous les ventilateurs sauf les pompes à 100 % pendant 5 minutes (Ctrl+Alt+B)
+46f899c1	Boost 5 min
+5332244c	Profil Silencieux pendant 1 heure (Ctrl+Alt+Q)
+4f178a31	Silencieux 1 h
+057e1182	Annuler
+222df90d	Annuler l'action rapide (Ctrl+Alt+N)
+29fe6bbf	Modifier les cartes
+78e47efe	Mini-widget
+3f64d7a6	Annuler (Ctrl+Z)
+f1c037fb	Annuler
+378033f8	Rétablir (Ctrl+Y)
+d5868aec	Rétablir
+67c75bfe	Ramène les réglages d'éclairage une étape en arrière (Ctrl+Z). L'activation de l'intégration, l'extinction, la connexion et « Réduire les flashs » ne changent pas
+f0085ee5	Rétablit le changement d'éclairage annulé (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 h
+20d85a26	6 h
+9c6a5f50	24 h
+f13af350	Exporter en CSV
+55004637	Températures et état des ventilateurs en temps réel
+5bcd0e2d	Fermer
+a2565db3	Vers la gauche
+c79c3d0e	Vers la droite
+e3edb67b	Supprimer
+129b5ea4	Ajouter une carte
+019555f8	Température affichée
+b4255600	10 dernières minutes / trait plein = température (axe gauche) · pointillés = vitesse (axe droit)
+0a88e8cb	Temps réel
+c5ebcb9c	Ventilateurs / pompes (cliquez pour modifier la courbe)
+a7377177	Ventilateurs en rotation
+0ee2f2ba	Changer l'image
+1606ea26	Afficher les capteurs
+9a7c10f0	Profil à modifier
+33c1221d	Ajouter un connecteur
+762d7886	« Test » le fait tourner à pleine vitesse 8 secondes pour voir de quel ventilateur il s'agit (ajouté à tous les profils)
+82a38dd8	Test
+2a1d8a18	Ajouter
+1337d6a7	Test (100 % pendant 8 s)
+5f279080	Réglages de base
+ba60770e	Nom (commun à tous les profils)
+2bf39d7d	Type
+99ad1110	Ventilateur
+0af668ca	Pompe (AIO)
+6920ae77	Contrôler avec cette application
+67175336	Désactivé, il suit les réglages du BIOS (les pompes restent surveillées)
+03cf27f6	Ventilateurs du GPU (expérimental)
+8be5fd73	Tant que l'application les contrôle, le contrôle du pilote GPU (comme le mode 0 RPM qui arrête les ventilateurs au repos) est désactivé. Utilisez une température du GPU pour la courbe. Au-delà de 85 °C sur le GPU (100 °C sur le Hot Spot), ils tournent à 100 % quels que soient les réglages.
+59c6e4bc	Mode de contrôle
+a80265dc	Courbe
+051753eb	Définir soi-même la vitesse pour chaque température
+530a9c8a	Température cible (automatique)
+1fc9ab3c	Choisissez une température, la vitesse s'ajuste seule
+27bd9d15	Fixe
+84b1afad	Toujours la même vitesse (pour les pompes)
+26a15192	Suivre (groupe)
+7f925b2a	Aligner la vitesse sur un autre ventilateur
+b2e99d58	Mode température cible
+41ce3406	Maintient la température choisie sous la cible à la vitesse la plus basse possible. Aucune courbe à prévoir. Plus elle reste au-dessus de la cible, plus la vitesse augmente.
+bc125c78	Température surveillée
+0e59213f	Température cible
+84629c82	Réactivité
+f4774c9f	Plus c'est élevé, plus la réaction aux changements de température est vive (plus bas = plus calme et silencieux)
+34c1c904	Mode suivi (groupe de ventilateurs)
+4e05c4dd	Tourne à la même vitesse que le ventilateur choisi (le meneur). Aligner les ventilateurs qui ont le même rôle, comme ceux d'admission en façade, évite le bourdonnement dû aux battements.
+932d7da3	Ventilateur suivi
+7c20c9ff	Décalage
+e66fa60a	Pour tourner un peu plus vite ou plus lentement que le meneur
+ca7e07b6	Aligner sur la vitesse (rpm)
+a4885460	Si les deux ventilateurs sont calibrés, aligne la vitesse réelle plutôt que le % (fonctionne aussi entre modèles différents)
+7dd9bc7b	Vitesse fixe
+309627fd	Vitesse minimale
+ac1c4927	Montée / s
+fa9ef1de	Descente / s
+3aed820e	Protection de la pompe
+a5668673	Ne descend jamais sous 40 %, quel que soit le réglage. Si la vitesse reste 3 secondes sous le seuil d'alerte, elle passe à 100 % et vous êtes averti, même sous contrôle du BIOS.
+7c811ff7	Vitesse d'alerte
+cb5145a7	Utiliser comme vitesse minimale
+812e0683	Calibrage automatique
+ec41d4ae	Arrêter
+9514979f	Fait tourner le ventilateur de 0 à 100 % et mesure la vitesse d'arrêt, de démarrage et la vitesse maximale (environ 1 à 2 minutes)
+26101bee	+ Ajouter une plage
+f5097e76	Plages de résonance (éviter les vitesses bruyantes)
+11bb3e7a	Ajoutez les plages de vitesse où le boîtier ou le radiateur vibre : le ventilateur les traverse rapidement au lieu d'y rester (commun à tous les profils)
+da85df7a	Essayer une vitesse
+af4cf1be	Le curseur règle immédiatement ce seul ventilateur à cette vitesse (retour 20 secondes après la dernière action). Si vous trouvez un point bruyant, appuyez sur « Éviter ici ».
+ea6d9cfc	Éviter ici
+ed263790	Plage à éviter
+49024f94	% à
+8b7237a1	Aucune pour l'instant. Si aucune vitesse ne vous gêne, vous pouvez laisser ainsi.
+166baf5a	Créer automatiquement…
+3eb67669	Charge le PC, mesure et crée la courbe la plus silencieuse qui tient encore la température cible (page Test et réglage)
+cd6687b0	Copier ▾
+a8a30430	+ Ajouter une courbe
+29506d39	Supprimer cette courbe
+5d2df974	Avec plusieurs courbes, la demande la plus élevée l'emporte

@@ -1,0 +1,111 @@
+# ProFanController UI text (vi). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Đang khởi động…
+3c3d953a	Đang dò tìm phần cứng
+68a076e4	Tạm dừng (trả về BIOS)
+a7580d36	Cấu hình
+f70fd09f	Bảng điều khiển
+4f50f431	Thiết bị
+86d8b163	Đường cong quạt
+a010a7fc	Lịch sử
+133b6776	Báo cáo
+b4bcc740	Chẩn đoán
+977807d2	Kiểm tra & tinh chỉnh
+60dd6c40	Đèn LED
+dfa4a412	Cảm biến
+6243fa06	Cài đặt
+fa345a0a	Cho mọi quạt trừ bơm chạy 100% trong 5 phút (Ctrl+Alt+B)
+46f899c1	Tăng tốc 5 phút
+5332244c	Dùng cấu hình Yên tĩnh trong 1 giờ (Ctrl+Alt+Q)
+4f178a31	Yên tĩnh 1 giờ
+057e1182	Hủy
+222df90d	Hủy thao tác nhanh (Ctrl+Alt+N)
+29fe6bbf	Sửa thẻ
+78e47efe	Tiện ích mini
+3f64d7a6	Hoàn tác (Ctrl+Z)
+f1c037fb	Hoàn tác
+378033f8	Làm lại (Ctrl+Y)
+d5868aec	Làm lại
+67c75bfe	Đưa cài đặt đèn về một bước trước (Ctrl+Z). Bật/tắt liên kết, tắt đèn, kết nối và "Giảm nhấp nháy" không thay đổi
+f0085ee5	Làm lại thay đổi đèn vừa hoàn tác (Ctrl+Y)
+7a6246e2	5 phút
+6ed56950	30 phút
+53fb2e4b	1 giờ
+20d85a26	6 giờ
+9c6a5f50	24 giờ
+f13af350	Xuất CSV
+55004637	Nhiệt độ và trạng thái quạt theo thời gian thực
+5bcd0e2d	Đóng
+a2565db3	Sang trái
+c79c3d0e	Sang phải
+e3edb67b	Xóa
+129b5ea4	Thêm thẻ
+019555f8	Nhiệt độ hiển thị
+b4255600	10 phút gần nhất / nét liền = nhiệt độ (trục trái) · nét đứt = tốc độ quay (trục phải)
+0a88e8cb	Trực tiếp
+c5ebcb9c	Quạt / bơm (nhấp để sửa đường cong)
+a7377177	Số quạt đang quay
+0ee2f2ba	Đổi hình
+1606ea26	Hiện cảm biến
+9a7c10f0	Cấu hình cần sửa
+33c1221d	Thêm cổng
+762d7886	"Kiểm tra" cho quạt chạy tối đa 8 giây để bạn biết đó là quạt nào (thêm vào mọi cấu hình)
+82a38dd8	Kiểm tra
+2a1d8a18	Thêm
+1337d6a7	Kiểm tra (100% trong 8 giây)
+5f279080	Cơ bản
+ba60770e	Tên (chung cho mọi cấu hình)
+2bf39d7d	Loại
+99ad1110	Quạt
+0af668ca	Bơm (tản nhiệt nước AIO)
+6920ae77	Điều khiển bằng ứng dụng này
+67175336	Khi tắt, quạt chạy theo cài đặt BIOS (bơm vẫn được giám sát)
+03cf27f6	Quạt GPU (thử nghiệm)
+8be5fd73	Khi ứng dụng điều khiển, chế độ tự điều khiển của driver GPU (như chế độ 0 RPM dừng quạt lúc nhàn rỗi) sẽ tắt. Hãy dùng nhiệt độ GPU cho đường cong. Trên 85°C ở GPU (100°C ở Hot Spot), quạt chạy 100% bất kể cài đặt.
+59c6e4bc	Cách điều khiển
+a80265dc	Đường cong
+051753eb	Tự đặt tốc độ cho từng nhiệt độ
+530a9c8a	Nhiệt độ mục tiêu (tự động)
+1fc9ab3c	Chỉ cần chọn nhiệt độ, tốc độ tự điều chỉnh
+27bd9d15	Cố định
+84b1afad	Luôn cùng một tốc độ (cho bơm)
+26a15192	Theo (nhóm)
+7f925b2a	Đồng tốc với quạt khác
+b2e99d58	Chế độ nhiệt độ mục tiêu
+41ce3406	Giữ nhiệt độ đã chọn dưới mục tiêu với tốc độ thấp nhất có thể. Không cần nghĩ đến đường cong. Càng ở trên mục tiêu lâu, tốc độ càng tăng dần.
+bc125c78	Nhiệt độ theo dõi
+0e59213f	Nhiệt độ mục tiêu
+84629c82	Độ phản hồi
+f4774c9f	Càng lớn càng phản ứng nhanh với thay đổi nhiệt độ (càng nhỏ càng êm và chậm rãi)
+34c1c904	Chế độ theo (nhóm quạt)
+4e05c4dd	Chạy cùng tốc độ với quạt đã chọn (quạt dẫn). Đồng tốc các quạt cùng nhiệm vụ, như quạt hút phía trước, giúp tránh tiếng ù ù dao động do phách.
+932d7da3	Quạt để theo
+7c20c9ff	Cộng thêm
+e66fa60a	Dùng khi muốn quay nhanh hoặc chậm hơn quạt dẫn một chút
+ca7e07b6	Đồng bộ theo tốc độ (rpm)
+a4885460	Nếu cả hai quạt đã hiệu chỉnh, đồng bộ theo tốc độ thực thay vì % (dùng được cả với quạt khác mẫu)
+7dd9bc7b	Tốc độ cố định
+309627fd	Tốc độ tối thiểu
+ac1c4927	Tốc độ tăng / giây
+fa9ef1de	Tốc độ giảm / giây
+3aed820e	Bảo vệ bơm
+a5668673	Không bao giờ dưới 40% với bất kỳ cài đặt nào. Nếu tốc độ dưới ngưỡng cảnh báo liên tục 3 giây, bơm sẽ lên 100% và thông báo cho bạn, kể cả khi BIOS đang điều khiển.
+7c811ff7	Tốc độ cảnh báo
+cb5145a7	Dùng làm tốc độ tối thiểu
+812e0683	Hiệu chỉnh tự động
+ec41d4ae	Dừng
+9514979f	Chạy quạt từ 0 đến 100% và đo tốc độ lúc dừng, lúc bắt đầu quay và tốc độ tối đa (khoảng 1–2 phút)
+26101bee	+ Thêm dải
+f5097e76	Cộng hưởng (bỏ qua tốc độ ồn)
+11bb3e7a	Thêm các dải tốc độ làm vỏ máy hoặc két tản nhiệt kêu ù, quạt sẽ đi qua nhanh thay vì dừng lại ở đó (chung cho mọi cấu hình)
+da85df7a	Thử tốc độ
+af4cf1be	Thanh trượt đưa ngay riêng quạt này về tốc độ đó (20 giây sau khi thôi chỉnh sẽ trở lại). Nếu tìm thấy chỗ ồn, hãy nhấn "Bỏ qua chỗ này".
+ea6d9cfc	Bỏ qua chỗ này
+ed263790	Dải bỏ qua
+49024f94	% đến
+8b7237a1	Chưa có. Nếu không có tốc độ nào gây khó chịu, cứ để như vậy.
+166baf5a	Tạo tự động…
+3eb67669	Tạo tải cho PC, đo đạc và tạo đường cong êm nhất vẫn giữ được nhiệt độ mục tiêu (trang Kiểm tra & tinh chỉnh)
+cd6687b0	Sao chép ▾
+a8a30430	+ Thêm đường cong
+29506d39	Xóa đường cong này
+5d2df974	Khi có nhiều đường cong, mức yêu cầu cao nhất được dùng

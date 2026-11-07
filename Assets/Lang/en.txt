@@ -1,0 +1,111 @@
+# ProFanController UI text (en). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Starting…
+3c3d953a	Detecting hardware
+68a076e4	Pause (hand back to BIOS)
+a7580d36	Profile
+f70fd09f	Dashboard
+4f50f431	Devices
+86d8b163	Fan curves
+a010a7fc	History
+133b6776	Report
+b4bcc740	Diagnostics
+977807d2	Test & tune
+60dd6c40	Lighting
+dfa4a412	Sensors
+6243fa06	Settings
+fa345a0a	Runs every fan except pumps at 100% for 5 minutes (Ctrl+Alt+B)
+46f899c1	Boost 5 min
+5332244c	Uses the Silent profile for 1 hour (Ctrl+Alt+Q)
+4f178a31	Silent 1 h
+057e1182	Cancel
+222df90d	Cancel the quick action (Ctrl+Alt+N)
+29fe6bbf	Edit cards
+78e47efe	Mini widget
+3f64d7a6	Undo (Ctrl+Z)
+f1c037fb	Undo
+378033f8	Redo (Ctrl+Y)
+d5868aec	Redo
+67c75bfe	Takes the lighting settings back one step (Ctrl+Z). Integration on/off, lights off, the connection and "Reduce flashing" are not changed
+f0085ee5	Redoes the lighting change you undid (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 h
+20d85a26	6 h
+9c6a5f50	24 h
+f13af350	Export CSV
+55004637	Live temperatures and fan status
+5bcd0e2d	Close
+a2565db3	Move left
+c79c3d0e	Move right
+e3edb67b	Delete
+129b5ea4	Add card
+019555f8	Temperature to show
+b4255600	Last 10 minutes / solid = temperature (left axis) · dashed = speed (right axis)
+0a88e8cb	Live
+c5ebcb9c	Fans / pumps (click to edit the curve)
+a7377177	Fans spinning
+0ee2f2ba	Change image
+1606ea26	Show sensors
+9a7c10f0	Profile to edit
+33c1221d	Add header
+762d7886	"Test" runs it at full speed for 8 seconds so you can see which fan it is (added to every profile)
+82a38dd8	Test
+2a1d8a18	Add
+1337d6a7	Test (100% for 8 s)
+5f279080	Basics
+ba60770e	Name (shared by all profiles)
+2bf39d7d	Type
+99ad1110	Fan
+0af668ca	Pump (AIO)
+6920ae77	Control with this app
+67175336	When off, it runs on the BIOS settings (pumps are still monitored)
+03cf27f6	GPU fans (experimental)
+8be5fd73	While this app controls them, the GPU driver's own control (such as the 0 RPM mode that stops the fans at idle) is off. Use a GPU temperature for the curve. Above 85°C on the GPU (100°C on the hot spot) they run at 100% regardless of the settings.
+59c6e4bc	Control mode
+a80265dc	Curve
+051753eb	Set the speed for each temperature yourself
+530a9c8a	Target temperature (automatic)
+1fc9ab3c	Just set a temperature; the speed adjusts itself
+27bd9d15	Fixed
+84b1afad	Always the same speed (for pumps)
+26a15192	Follow (group)
+7f925b2a	Match the speed of another fan
+b2e99d58	Target temperature mode
+41ce3406	Keeps the chosen temperature below the target at the lowest speed it can. No curve needed. The longer it stays above the target, the more the speed goes up.
+bc125c78	Temperature to watch
+0e59213f	Target temperature
+84629c82	Response
+f4774c9f	Higher reacts briskly to temperature changes (lower is quieter and calmer)
+34c1c904	Follow mode (fan group)
+4e05c4dd	Runs at the same speed as the chosen fan (the leader). Matching fans with the same job, such as the front intake fans, prevents the "wow-wow" beating noise.
+932d7da3	Fan to follow
+7c20c9ff	Offset
+e66fa60a	Use this to run a little faster or slower than the leader
+ca7e07b6	Match by speed (rpm)
+a4885460	If both fans are calibrated, matches the actual speed instead of % (works even for different fan models)
+7dd9bc7b	Fixed speed
+309627fd	Minimum speed
+ac1c4927	Ramp-up rate / s
+fa9ef1de	Ramp-down rate / s
+3aed820e	Pump protection
+a5668673	Never goes below 40% in any setting. If the speed stays below the alert value for 3 seconds, it goes to 100% and notifies you, even under BIOS control.
+7c811ff7	Alert speed
+cb5145a7	Use as minimum speed
+812e0683	Auto calibration
+ec41d4ae	Stop
+9514979f	Runs the fan from 0 to 100% and measures the speed where it stops, where it starts and its maximum (about 1–2 minutes)
+26101bee	+ Add band
+f5097e76	Resonance bands (skip noisy speeds)
+11bb3e7a	Add speed bands where the case or radiator hums, and the fan passes through them quickly instead of staying there (shared by all profiles)
+da85df7a	Try a speed
+af4cf1be	Moving the slider runs only this fan at that speed (it goes back 20 seconds after you stop). If you find a noisy spot, press "Skip this".
+ea6d9cfc	Skip this
+ed263790	Band to skip
+49024f94	% to
+8b7237a1	None yet. If no speed sounds bad, you can leave it like this.
+166baf5a	Create automatically…
+3eb67669	Loads the PC, measures, and builds the quietest curve that still holds the target temperature (Test & tune page)
+cd6687b0	Copy ▾
+a8a30430	+ Add curve
+29506d39	Delete this curve
+5d2df974	With several curves, the highest demand wins

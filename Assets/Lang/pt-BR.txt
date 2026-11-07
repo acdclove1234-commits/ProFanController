@@ -1,0 +1,111 @@
+# ProFanController UI text (pt-BR). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Iniciando…
+3c3d953a	Detectando o hardware
+68a076e4	Pausar (devolver à BIOS)
+a7580d36	Perfil
+f70fd09f	Painel
+4f50f431	Dispositivos
+86d8b163	Curvas das ventoinhas
+a010a7fc	Histórico
+133b6776	Relatório
+b4bcc740	Diagnóstico
+977807d2	Teste e ajuste
+60dd6c40	Iluminação
+dfa4a412	Sensores
+6243fa06	Configurações
+fa345a0a	Todas as ventoinhas, exceto bombas, a 100% por 5 minutos (Ctrl+Alt+B)
+46f899c1	Turbo 5 min
+5332244c	Usa o perfil Silencioso por 1 hora (Ctrl+Alt+Q)
+4f178a31	Silencioso 1 h
+057e1182	Cancelar
+222df90d	Cancelar a ação rápida (Ctrl+Alt+N)
+29fe6bbf	Editar cartões
+78e47efe	Miniwidget
+3f64d7a6	Desfazer (Ctrl+Z)
+f1c037fb	Desfazer
+378033f8	Refazer (Ctrl+Y)
+d5868aec	Refazer
+67c75bfe	Volta as configurações de iluminação um passo (Ctrl+Z). Integração ligada/desligada, luzes apagadas, conexão e "Reduzir piscadas" não mudam
+f0085ee5	Refaz a mudança de iluminação desfeita (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 h
+20d85a26	6 h
+9c6a5f50	24 h
+f13af350	Exportar CSV
+55004637	Temperaturas e estado das ventoinhas em tempo real
+5bcd0e2d	Fechar
+a2565db3	Para a esquerda
+c79c3d0e	Para a direita
+e3edb67b	Excluir
+129b5ea4	Adicionar cartão
+019555f8	Temperatura exibida
+b4255600	Últimos 10 minutos / linha contínua = temperatura (eixo esquerdo) · tracejada = rotação (eixo direito)
+0a88e8cb	Ao vivo
+c5ebcb9c	Ventoinhas / bombas (clique para editar a curva)
+a7377177	Ventoinhas girando
+0ee2f2ba	Trocar imagem
+1606ea26	Mostrar sensores
+9a7c10f0	Perfil a editar
+33c1221d	Adicionar conector
+762d7886	"Teste" gira a ventoinha no máximo por 8 segundos para você ver qual é (adicionado a todos os perfis)
+82a38dd8	Teste
+2a1d8a18	Adicionar
+1337d6a7	Teste (100% por 8 s)
+5f279080	Básico
+ba60770e	Nome (comum a todos os perfis)
+2bf39d7d	Tipo
+99ad1110	Ventoinha
+0af668ca	Bomba (water cooler AIO)
+6920ae77	Controlar com este app
+67175336	Desligado, segue as configurações da BIOS (as bombas continuam monitoradas)
+03cf27f6	Ventoinhas da GPU (experimental)
+8be5fd73	Enquanto este app as controla, o controle do driver da GPU (como o modo 0 RPM que as para em repouso) fica desligado. Use uma temperatura da GPU na curva. Acima de 85 °C na GPU (100 °C no Hot Spot) elas giram a 100%, independentemente das configurações.
+59c6e4bc	Modo de controle
+a80265dc	Curva
+051753eb	Defina você a rotação para cada temperatura
+530a9c8a	Temperatura-alvo (automático)
+1fc9ab3c	Só escolha a temperatura; a rotação se ajusta sozinha
+27bd9d15	Fixo
+84b1afad	Sempre a mesma rotação (para bombas)
+26a15192	Seguir (grupo)
+7f925b2a	Igualar a rotação com outra ventoinha
+b2e99d58	Modo temperatura-alvo
+41ce3406	Mantém a temperatura escolhida abaixo do alvo com a menor rotação possível. Não precisa pensar em curva. Quanto mais tempo ficar acima do alvo, mais a rotação sobe.
+bc125c78	Temperatura observada
+0e59213f	Temperatura-alvo
+84629c82	Resposta
+f4774c9f	Mais alto reage rápido às mudanças de temperatura (mais baixo é mais silencioso e calmo)
+34c1c904	Modo seguir (grupo de ventoinhas)
+4e05c4dd	Gira na mesma rotação da ventoinha escolhida (a líder). Igualar ventoinhas com a mesma função, como as de entrada frontais, evita o zumbido ondulado do batimento.
+932d7da3	Ventoinha a seguir
+7c20c9ff	Acréscimo
+e66fa60a	Para girar um pouco mais rápido ou mais devagar que a líder
+ca7e07b6	Igualar pela rotação (rpm)
+a4885460	Se as duas ventoinhas estiverem calibradas, iguala a rotação real em vez do % (funciona até entre modelos diferentes)
+7dd9bc7b	Rotação fixa
+309627fd	Rotação mínima
+ac1c4927	Subida / s
+fa9ef1de	Descida / s
+3aed820e	Proteção da bomba
+a5668673	Nunca fica abaixo de 40% em nenhuma configuração. Se a rotação ficar 3 segundos abaixo do valor de alerta, vai a 100% e avisa você, mesmo sob controle da BIOS.
+7c811ff7	Rotação de alerta
+cb5145a7	Usar como rotação mínima
+812e0683	Calibração automática
+ec41d4ae	Parar
+9514979f	Gira a ventoinha de 0 a 100% e mede a rotação em que ela para, em que volta a girar e a máxima (cerca de 1–2 minutos)
+26101bee	+ Adicionar faixa
+f5097e76	Ressonância (pular rotações barulhentas)
+11bb3e7a	Adicione as faixas de rotação em que o gabinete ou o radiador zumbe, e a ventoinha passa por elas rapidamente em vez de ficar nelas (comum a todos os perfis)
+da85df7a	Testar uma rotação
+af4cf1be	Ao mover o controle, só esta ventoinha passa a essa rotação (volta 20 segundos depois de soltar). Se achar um ponto barulhento, pressione "Evitar aqui".
+ea6d9cfc	Evitar aqui
+ed263790	Faixa a evitar
+49024f94	% a
+8b7237a1	Nenhuma ainda. Se nenhuma rotação incomoda, pode deixar assim.
+166baf5a	Criar automaticamente…
+3eb67669	Coloca carga no PC, mede e cria a curva mais silenciosa que ainda mantém a temperatura-alvo (página Teste e ajuste)
+cd6687b0	Copiar ▾
+a8a30430	+ Adicionar curva
+29506d39	Excluir esta curva
+5d2df974	Com várias curvas, vale a que pede mais

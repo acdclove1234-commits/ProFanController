@@ -1,0 +1,111 @@
+# ProFanController UI text (pl). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Uruchamianie…
+3c3d953a	Wykrywanie sprzętu
+68a076e4	Pauza (oddaj sterowanie BIOS)
+a7580d36	Profil
+f70fd09f	Pulpit
+4f50f431	Urządzenia
+86d8b163	Krzywe wentylatorów
+a010a7fc	Historia
+133b6776	Raport
+b4bcc740	Diagnostyka
+977807d2	Test i strojenie
+60dd6c40	Podświetlenie
+dfa4a412	Czujniki
+6243fa06	Ustawienia
+fa345a0a	Wszystkie wentylatory oprócz pomp na 100% przez 5 minut (Ctrl+Alt+B)
+46f899c1	Boost 5 min
+5332244c	Profil Cichy przez 1 godzinę (Ctrl+Alt+Q)
+4f178a31	Cicho 1 h
+057e1182	Anuluj
+222df90d	Anuluj szybką akcję (Ctrl+Alt+N)
+29fe6bbf	Edytuj karty
+78e47efe	Miniwidżet
+3f64d7a6	Cofnij (Ctrl+Z)
+f1c037fb	Cofnij
+378033f8	Ponów (Ctrl+Y)
+d5868aec	Ponów
+67c75bfe	Cofa ustawienia podświetlenia o jeden krok (Ctrl+Z). Włączenie integracji, wyłączenie świateł, połączenie i „Ogranicz miganie” się nie zmieniają
+f0085ee5	Ponawia cofniętą zmianę podświetlenia (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 h
+20d85a26	6 h
+9c6a5f50	24 h
+f13af350	Eksportuj CSV
+55004637	Temperatury i stan wentylatorów na żywo
+5bcd0e2d	Zamknij
+a2565db3	W lewo
+c79c3d0e	W prawo
+e3edb67b	Usuń
+129b5ea4	Dodaj kartę
+019555f8	Wyświetlana temperatura
+b4255600	Ostatnie 10 minut / ciągła = temperatura (lewa oś) · przerywana = obroty (prawa oś)
+0a88e8cb	Na żywo
+c5ebcb9c	Wentylatory / pompy (kliknij, aby edytować krzywą)
+a7377177	Obracające się wentylatory
+0ee2f2ba	Zmień obraz
+1606ea26	Pokaż czujniki
+9a7c10f0	Edytowany profil
+33c1221d	Dodaj złącze
+762d7886	„Test” uruchamia go na pełnych obrotach przez 8 sekund, żeby było widać, który to wentylator (dodawane do wszystkich profili)
+82a38dd8	Test
+2a1d8a18	Dodaj
+1337d6a7	Test (100% przez 8 s)
+5f279080	Podstawowe
+ba60770e	Nazwa (wspólna dla wszystkich profili)
+2bf39d7d	Rodzaj
+99ad1110	Wentylator
+0af668ca	Pompa (AIO)
+6920ae77	Steruj tą aplikacją
+67175336	Po wyłączeniu działa według ustawień BIOS (pompy są nadal monitorowane)
+03cf27f6	Wentylatory GPU (eksperymentalne)
+8be5fd73	Gdy aplikacja nimi steruje, własne sterowanie sterownika GPU (np. tryb 0 RPM zatrzymujący wentylatory w spoczynku) jest wyłączone. Do krzywej użyj temperatury GPU. Powyżej 85°C na GPU (100°C na Hot Spot) pracują na 100% niezależnie od ustawień.
+59c6e4bc	Sposób sterowania
+a80265dc	Krzywa
+051753eb	Samodzielnie ustal obroty dla każdej temperatury
+530a9c8a	Temperatura docelowa (automatycznie)
+1fc9ab3c	Wystarczy ustawić temperaturę, obroty dobiorą się same
+27bd9d15	Stałe
+84b1afad	Zawsze te same obroty (dla pomp)
+26a15192	Podążaj (grupa)
+7f925b2a	Wyrównaj obroty z innym wentylatorem
+b2e99d58	Tryb temperatury docelowej
+41ce3406	Utrzymuje wybraną temperaturę poniżej celu przy możliwie najniższych obrotach. Nie trzeba układać krzywej. Im dłużej jest powyżej celu, tym bardziej rosną obroty.
+bc125c78	Obserwowana temperatura
+0e59213f	Temperatura docelowa
+84629c82	Reakcja
+f4774c9f	Wyżej = żwawa reakcja na zmiany temperatury (niżej = ciszej i spokojniej)
+34c1c904	Tryb podążania (grupa wentylatorów)
+4e05c4dd	Pracuje na tych samych obrotach co wybrany wentylator (wiodący). Wyrównanie wentylatorów o tej samej roli, np. przednich wlotowych, usuwa „falujące” buczenie z dudnień.
+932d7da3	Wentylator wiodący
+7c20c9ff	Dodatek
+e66fa60a	Gdy ma kręcić się trochę szybciej lub wolniej niż wiodący
+ca7e07b6	Wyrównuj według obrotów (rpm)
+a4885460	Jeśli oba wentylatory są skalibrowane, wyrównuje rzeczywiste obroty zamiast % (działa nawet dla różnych modeli)
+7dd9bc7b	Stałe obroty
+309627fd	Minimalne obroty
+ac1c4927	Wzrost / s
+fa9ef1de	Spadek / s
+3aed820e	Ochrona pompy
+a5668673	W żadnym ustawieniu nie spada poniżej 40%. Jeśli obroty przez 3 sekundy są poniżej progu ostrzeżenia, przechodzi na 100% i powiadamia — nawet pod sterowaniem BIOS.
+7c811ff7	Próg ostrzeżenia
+cb5145a7	Ustaw jako minimalne obroty
+812e0683	Automatyczna kalibracja
+ec41d4ae	Przerwij
+9514979f	Uruchamia wentylator od 0 do 100% i mierzy obroty zatrzymania, startu oraz maksymalne (ok. 1–2 minuty)
+26101bee	+ Dodaj zakres
+f5097e76	Rezonans (omijaj głośne obroty)
+11bb3e7a	Dodaj zakresy obrotów, przy których buczy obudowa lub chłodnica — wentylator przejdzie przez nie szybko, zamiast w nich zostać (wspólne dla wszystkich profili)
+da85df7a	Wypróbuj obroty
+af4cf1be	Suwak od razu ustawia tylko ten wentylator na dane obroty (wraca 20 sekund po ostatnim ruchu). Gdy znajdziesz głośne miejsce, naciśnij „Omijaj to”.
+ea6d9cfc	Omijaj to
+ed263790	Omijany zakres
+49024f94	% do
+8b7237a1	Brak. Jeśli żadne obroty nie przeszkadzają, można tak zostawić.
+166baf5a	Utwórz automatycznie…
+3eb67669	Obciąża komputer, mierzy i tworzy najcichszą krzywą, która nadal utrzymuje temperaturę docelową (strona Test i strojenie)
+cd6687b0	Kopiuj ▾
+a8a30430	+ Dodaj krzywą
+29506d39	Usuń tę krzywą
+5d2df974	Przy kilku krzywych wygrywa najwyższe zapotrzebowanie

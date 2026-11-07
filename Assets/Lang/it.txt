@@ -1,0 +1,111 @@
+# ProFanController UI text (it). Each line: hash of the Japanese source text, TAB, translation. Line breaks: backslash + n.
+9cefb48e	Avvio…
+3c3d953a	Rilevamento dell'hardware
+68a076e4	Pausa (ritorno al BIOS)
+a7580d36	Profilo
+f70fd09f	Pannello
+4f50f431	Dispositivi
+86d8b163	Curve ventole
+a010a7fc	Cronologia
+133b6776	Rapporto
+b4bcc740	Diagnostica
+977807d2	Test e regolazione
+60dd6c40	Illuminazione
+dfa4a412	Sensori
+6243fa06	Impostazioni
+fa345a0a	Tutte le ventole tranne le pompe al 100% per 5 minuti (Ctrl+Alt+B)
+46f899c1	Boost 5 min
+5332244c	Usa il profilo Silenzioso per 1 ora (Ctrl+Alt+Q)
+4f178a31	Silenzioso 1 h
+057e1182	Annulla
+222df90d	Annulla l'azione rapida (Ctrl+Alt+N)
+29fe6bbf	Modifica schede
+78e47efe	Mini widget
+3f64d7a6	Annulla (Ctrl+Z)
+f1c037fb	Annulla
+378033f8	Ripeti (Ctrl+Y)
+d5868aec	Ripeti
+67c75bfe	Riporta le impostazioni dell'illuminazione indietro di un passo (Ctrl+Z). Integrazione attiva/disattiva, luci spente, connessione e «Riduci i lampeggi» non cambiano
+f0085ee5	Ripete la modifica all'illuminazione annullata (Ctrl+Y)
+7a6246e2	5 min
+6ed56950	30 min
+53fb2e4b	1 h
+20d85a26	6 h
+9c6a5f50	24 h
+f13af350	Esporta CSV
+55004637	Temperature e stato delle ventole in tempo reale
+5bcd0e2d	Chiudi
+a2565db3	A sinistra
+c79c3d0e	A destra
+e3edb67b	Elimina
+129b5ea4	Aggiungi scheda
+019555f8	Temperatura mostrata
+b4255600	Ultimi 10 minuti / linea continua = temperatura (asse sinistro) · tratteggiata = velocità (asse destro)
+0a88e8cb	Tempo reale
+c5ebcb9c	Ventole / pompe (clic per modificare la curva)
+a7377177	Ventole in rotazione
+0ee2f2ba	Cambia immagine
+1606ea26	Mostra sensori
+9a7c10f0	Profilo da modificare
+33c1221d	Aggiungi connettore
+762d7886	«Test» la fa girare al massimo per 8 secondi per capire quale ventola è (aggiunto a tutti i profili)
+82a38dd8	Test
+2a1d8a18	Aggiungi
+1337d6a7	Test (100% per 8 s)
+5f279080	Impostazioni di base
+ba60770e	Nome (comune a tutti i profili)
+2bf39d7d	Tipo
+99ad1110	Ventola
+0af668ca	Pompa (AIO)
+6920ae77	Controlla con questa app
+67175336	Se disattivato, gira secondo le impostazioni del BIOS (le pompe restano monitorate)
+03cf27f6	Ventole della GPU (sperimentale)
+8be5fd73	Mentre l'app le controlla, il controllo del driver della GPU (come la modalità 0 RPM che le ferma a riposo) è disattivato. Usa una temperatura della GPU per la curva. Oltre 85 °C sulla GPU (100 °C sull'Hot Spot) girano al 100% a prescindere dalle impostazioni.
+59c6e4bc	Modalità di controllo
+a80265dc	Curva
+051753eb	Decidi tu la velocità per ogni temperatura
+530a9c8a	Temperatura obiettivo (automatica)
+1fc9ab3c	Imposta solo la temperatura, la velocità si regola da sola
+27bd9d15	Fissa
+84b1afad	Sempre la stessa velocità (per le pompe)
+26a15192	Segui (gruppo)
+7f925b2a	Allinea la velocità a un'altra ventola
+b2e99d58	Modalità temperatura obiettivo
+41ce3406	Mantiene la temperatura scelta sotto l'obiettivo con la velocità più bassa possibile. Nessuna curva da pensare. Più a lungo resta sopra l'obiettivo, più la velocità sale.
+bc125c78	Temperatura osservata
+0e59213f	Temperatura obiettivo
+84629c82	Reattività
+f4774c9f	Più alto reagisce con prontezza ai cambi di temperatura (più basso è più silenzioso e calmo)
+34c1c904	Modalità segui (gruppo di ventole)
+4e05c4dd	Gira alla stessa velocità della ventola scelta (la guida). Allineare le ventole con lo stesso ruolo, come quelle frontali in aspirazione, elimina il ronzio ondulato dei battimenti.
+932d7da3	Ventola da seguire
+7c20c9ff	Scostamento
+e66fa60a	Per girare un po' più veloce o più lenta della guida
+ca7e07b6	Allinea per velocità (rpm)
+a4885460	Se entrambe le ventole sono calibrate, allinea la velocità reale invece della % (funziona anche tra modelli diversi)
+7dd9bc7b	Velocità fissa
+309627fd	Velocità minima
+ac1c4927	Salita / s
+fa9ef1de	Discesa / s
+3aed820e	Protezione pompa
+a5668673	Non scende mai sotto il 40% con nessuna impostazione. Se la velocità resta sotto il valore di allarme per 3 secondi, passa al 100% e ti avvisa, anche sotto controllo del BIOS.
+7c811ff7	Velocità di allarme
+cb5145a7	Usa come velocità minima
+812e0683	Calibrazione automatica
+ec41d4ae	Interrompi
+9514979f	Porta la ventola da 0 a 100% e misura la velocità a cui si ferma, a cui riparte e quella massima (circa 1–2 minuti)
+26101bee	+ Aggiungi intervallo
+f5097e76	Risonanze (salta le velocità rumorose)
+11bb3e7a	Aggiungi gli intervalli di velocità in cui il case o il radiatore vibrano: la ventola li attraversa rapidamente invece di fermarcisi (comune a tutti i profili)
+da85df7a	Prova una velocità
+af4cf1be	Il cursore porta subito solo questa ventola a quella velocità (torna com'era 20 secondi dopo l'ultimo movimento). Se trovi un punto rumoroso, premi «Evita qui».
+ea6d9cfc	Evita qui
+ed263790	Intervallo da evitare
+49024f94	% a
+8b7237a1	Ancora nessuno. Se nessuna velocità dà fastidio, puoi lasciare così.
+166baf5a	Crea automaticamente…
+3eb67669	Mette sotto carico il PC, misura e crea la curva più silenziosa che mantiene ancora la temperatura obiettivo (pagina Test e regolazione)
+cd6687b0	Copia ▾
+a8a30430	+ Aggiungi curva
+29506d39	Elimina questa curva
+5d2df974	Con più curve vale la richiesta più alta
