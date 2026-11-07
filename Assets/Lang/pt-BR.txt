@@ -269,7 +269,6 @@ a48b2636	Adianta a luz em 10 ms
 61644194	+ se a luz vier antes do som, − se vier depois. Fones e caixas Bluetooth e TVs (HDMI) tocam o som atrasado, então use +
 0e36045a	O Bluetooth atrasa o som; recomenda-se +150–200 ms
 ece319ca	Definir +180 ms
-8101e4b1	Define o atraso de áudio em +180 ms (depois dá para ajustar com o teste de sincronia)
 e02412ea	Enquanto ligado, as piscadas fortes ficam limitadas a 3 por segundo (para proteger os olhos e a saúde de pessoas sensíveis à luz). O estroboscópio também não é usado
 ff4e5cc2	Reduzir piscadas
 a2bb37bc	Limita as piscadas fortes a 3 por segundo. Ao desligar, o "Estroboscópio" fica disponível
@@ -1590,3 +1589,12 @@ a10ec68f	Uso
 ba90de43	Clock
 1044c343	Dados
 f951f047	Nível
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	O som passa por uma saída virtual{0}, então toca um pouco atrasado. Referência: +{1} ms
+5ed44de1	Define o atraso de áudio no valor de referência para esta saída (depois dá para ajustar fino com o teste de sincronia)
+67520391	Definir +{0} ms
+7775994a	O som por HDMI/DisplayPort (monitor ou TV) pode atrasar. Referência: +{0} ms (em uma TV pode passar de +100 ms)
+86b7be3f	Conector da placa-mãe
+a4ae5bfd	Saída virtual
+d2937a7a	Software de áudio: {0} (a luz acompanha o som antes dos efeitos; se parecer fora de sincronia, ajuste com o "Teste de sincronia")
+db4d82a2	Área de Trabalho Remota

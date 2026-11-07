@@ -704,14 +704,14 @@ public static class AudioEngineTests
 
     public static void TestOtherSampleRates()
     {
-        foreach (int fs in new[] { 44100, 96000 })
+        foreach (int fs in new[] { 44100, 96000, 192000 })
         {
             var g = new SignalGen(fs, 14, seed: 71);
             g.Loop(120, 0.2, 14, hats: true);
             var e = new AudioEngine(fs);
             var run = new EngineRun(e).Feed(g.Buf);
-            T.Info($"{fs} Hz: FFT {e.FftSize}, frames {run.Frames.Count} ({run.Frames.Count / 14.0:F1}/s)");
-            T.Near(run.Frames.Count / 14.0, fs / 512.0, 1, $"{fs} Hz: one frame per 512 samples");
+            T.Info($"{fs} Hz: analysed at {e.AnalysisRate} Hz, FFT {e.FftSize}, frames {run.Frames.Count} ({run.Frames.Count / 14.0:F1}/s)");
+            T.Near(run.Frames.Count / 14.0, e.AnalysisRate / 512.0, 1, $"{fs} Hz: one frame per 512 analysed samples (96 / 192 kHz are analysed at 48 kHz)");
             CheckEventTiming(run, g.KickTimes, AudioEventKind.Kick, $"Kick @ {fs} Hz", 2.0);
             CheckTempo(run, g, 120, $"120 BPM @ {fs / 1000.0} kHz");
             var tone = new SignalGen(fs, 4);

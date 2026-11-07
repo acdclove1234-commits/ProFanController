@@ -59,6 +59,14 @@ public sealed class OnsetDetector
         internal static double HatLeakRatio = 0;
         /// <summary>低い中音で検出していないときに必要な、高音の帯の立ち上がりの強さ（0 = 見ない）</summary>
         internal static double HiMin = 0;
+        /// <summary>
+        /// スネアの候補を見つけてから決めるまでに待つコマ数（キックが少し遅れて見つかるのを待つ）。
+        /// 録音した 19 曲で比べると、1 コマ待ちは 2 コマ待ちと同じくらい正確で（2・4 拍目に合う 37.8% / 37.4%、
+        /// 1・3 拍目に出る間違い 11.9% / 11.0%）、2・4 拍目を見つける割合は増えた（28% / 25%）。待たないと、遅れて見つかる
+        /// キックをスネアと取り違える間違いが増える（1・3 拍目 16%）ので、1 コマだけ待つ
+        /// （以前は 2 コマ。1 コマ待つごとに、スネアの光が約 11 ミリ秒遅れる）
+        /// </summary>
+        internal static int HoldHops = 1;
     }
     /// <summary>キックと同時（± この秒数）ならスネアにしない</summary>
     private const double SnareKickWindowSec = 0.020;
@@ -98,6 +106,9 @@ public sealed class OnsetDetector
     private double _snareT;
     private float _snareS;
     private double _snareMid, _snareHi;
+    /// <summary>スネアの候補を見つけたコマの、キックの帯の立ち上がり・ハイハット・低い中音（早めに決められるかの調査用）</summary>
+    private double _snareKickBandFirst;
+    private bool _snareHatFirst, _snareG1First;
     private readonly PeakPicker _snarePick1, _snarePick2;
 
     /// <param name="sampleRate">サンプリング周波数（Hz）</param>
@@ -205,6 +216,8 @@ public sealed class OnsetDetector
     private readonly double[] _bandNorm = new double[4];
     /// <summary>調査用: スネアの候補を決めたとき（時刻・強さ・低い中音でも検出したか・キックと同時か・ハイハットの漏れとみなしたか）</summary>
     internal Action<double, float, bool, bool, bool>? DiagSnare { get; set; }
+    /// <summary>調査用: スネアの候補を決めたとき（時刻, 見つけたコマのキックの帯, そのコマでハイハットも, そのコマで低い中音も, キックが近い, ハイハットだけ, キックのコマ − 候補のコマ）</summary>
+    internal Action<double, double, bool, bool, bool, bool, long>? DiagSnareFirst { get; set; }
     /// <summary>調査用: 1 回ごとの時刻・立ち上がりの強さ・4 つの帯の強さ（配列は使い回すので、受け取った側で写すこと）</summary>
     internal Action<double, double, double[]>? DiagHop { get; set; }
 
@@ -324,8 +337,8 @@ public sealed class OnsetDetector
         if (hat) events!.Add(AudioEventKind.Hat, tTrue, (float)_pickers[3].Strength);
         if (onset) events!.Add(AudioEventKind.Onset, tTrue, (float)_combined.Strength);
 
-        // 5. スネア: 中音の帯で検出し、前後 20 ミリ秒にキックがなければスネアとする。
-        //    キックの低音は少し遅れて立ち上がることがあるので、2 回（約 21 ミリ秒）待ってから決める。
+        // 5. スネア: 中音の帯で検出し、直前 20 ミリ秒（約 2 回）にキックがなければスネアとする。
+        //    1 コマだけ待って決める（キックはほとんどその時までに見つかっている。待つほど光が遅れる。SnareTune.HoldHops）。
         //    500 Hz〜4 kHz（G2）だけで検出し、同時にハイハットも検出したときは、ハイハットの音の漏れとみなす
         //    （スネアは胴の音が 120〜500 Hz（G1）にも出る。仕様 A6 にない追加）
         double minS = SnareTune.MinStrength;
@@ -341,6 +354,9 @@ public sealed class OnsetDetector
                 _snareS = (float)snareS;
                 _snareG1 = false;
                 _snareMid = _snareHi = 0;
+                _snareKickBandFirst = _bandNorm[0];
+                _snareHatFirst = hat;
+                _snareG1First = s1 && _snarePick1.Strength >= minS;
             }
             else _snareS = Math.Max(_snareS, (float)snareS);
             if (s1 && _snarePick1.Strength >= minS) _snareG1 = true;
@@ -351,7 +367,7 @@ public sealed class OnsetDetector
             _snareMid = Math.Max(_snareMid, _bandNorm[2]);
             _snareHi = Math.Max(_snareHi, _bandNorm[3]);
         }
-        if (_snareHop >= 0 && hop >= _snareHop + _snareWindow)
+        if (_snareHop >= 0 && hop >= _snareHop + Math.Min(SnareTune.HoldHops, _snareWindow))
         {
             bool kickNear = _lastKickHop >= _snareHop - _snareWindow;
             // キックと同時でも、中音がとても強ければスネア（2・4 拍目でキックと重なるクラップなど）
@@ -362,6 +378,7 @@ public sealed class OnsetDetector
             // 中音だけの立ち上がり（低い中音も高音も出ていない）は、ボーカルやギターとみなす（スネアは胴の音か響き線の音が一緒に出る）
             if (SnareTune.HiMin > 0 && !_snareG1 && _snareHi < SnareTune.HiMin) hatOnly = true;
             DiagSnare?.Invoke(_snareT, _snareS, _snareG1, kickNear, hatOnly);
+            DiagSnareFirst?.Invoke(_snareT, _snareKickBandFirst, _snareHatFirst, _snareG1First, kickNear, hatOnly, _lastKickHop - _snareHop);
             if (!kickNear && !hatOnly) events!.Add(AudioEventKind.Snare, _snareT, _snareS);
             _snareHop = -1;
         }

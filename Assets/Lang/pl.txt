@@ -269,7 +269,6 @@ a48b2636	Przyspiesza światło o 10 ms
 61644194	+, gdy światło wyprzedza dźwięk, −, gdy się spóźnia. Słuchawki i głośniki Bluetooth oraz telewizory (HDMI) odtwarzają dźwięk z opóźnieniem, więc użyj +
 0e36045a	Bluetooth opóźnia dźwięk; zalecane +150–200 ms
 ece319ca	Ustaw +180 ms
-8101e4b1	Ustawia opóźnienie dźwięku na +180 ms (później można dostroić testem synchronizacji)
 e02412ea	Gdy włączone, mocne błyski są ograniczone do 3 na sekundę (aby chronić oczy i zdrowie osób wrażliwych na światło). Stroboskop również nie jest używany
 ff4e5cc2	Ogranicz miganie
 a2bb37bc	Ogranicza mocne błyski do 3 na sekundę. Po wyłączeniu dostępny staje się „Stroboskop”
@@ -1590,3 +1589,12 @@ a10ec68f	Obciążenie
 ba90de43	Taktowanie
 1044c343	Dane
 f951f047	Poziom
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Dźwięk przechodzi przez wirtualne wyjście{0}, więc odtwarza się z lekkim opóźnieniem. Orientacyjnie: +{1} ms
+5ed44de1	Ustawia opóźnienie dźwięku na wartość orientacyjną dla tego wyjścia (później można je dostroić testem synchronizacji)
+67520391	Ustaw +{0} ms
+7775994a	Dźwięk przez HDMI/DisplayPort (monitor lub telewizor) może być opóźniony. Orientacyjnie: +{0} ms (w telewizorze bywa +100 ms i więcej)
+86b7be3f	Gniazdo płyty głównej
+a4ae5bfd	Wirtualne wyjście
+d2937a7a	Oprogramowanie dźwięku: {0} (światło podąża za dźwiękiem przed efektami; jeśli wydaje się przesunięte, dopasuj je „Testem synchronizacji”)
+db4d82a2	Pulpit zdalny

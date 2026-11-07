@@ -269,7 +269,6 @@ a48b2636	Moves the light 10 ms earlier
 61644194	Use + when the light comes before the sound, − when it comes after. Bluetooth earphones and speakers and TVs (HDMI) play sound late, so use +
 0e36045a	Bluetooth plays sound late, so +150–200 ms is recommended
 ece319ca	Set +180 ms
-8101e4b1	Sets the audio delay to +180 ms (you can fine-tune it later with the sync test)
 e02412ea	While on, strong flashes are limited to 3 per second (to protect the eyes and health of people sensitive to light). Strobe is not used either
 ff4e5cc2	Reduce flashing
 a2bb37bc	Limits strong flashes to 3 per second. Turning it off makes "Strobe" available
@@ -526,7 +525,7 @@ b303c749	4  Done
 99a4e0cb	Welcome to ProFanController
 26578394	This wizard checks what is connected to your motherboard's fan headers\nand automatically creates fan curves and profiles (Silent / Standard / Performance) for your PC.
 80f88c90	Before you start
-b1838111	・Stay next to the case so you can hear and see the fans.\n・Close heavy programs (such as games).\n・Your current settings will be overwritten, but you can go back with "Undo" afterwards.
+b1838111	• Stay next to the case so you can hear and see the fans.\n• Close heavy programs (such as games).\n• Your current settings will be overwritten, but you can go back with "Undo" afterwards.
 90560324	Identify fan headers
 68879f49	"Test" runs a header at full speed for 8 seconds. See which fan speeds up, then give it a name and a type. Headers at 0 rpm have nothing connected.
 5c41906d	Not used
@@ -1590,3 +1589,12 @@ a10ec68f	Load
 ba90de43	Clock
 1044c343	Data
 f951f047	Level
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Audio goes through a virtual output{0}, so it plays a little late. Suggested: +{1} ms
+5ed44de1	Sets the audio delay to the suggested value for this output (you can fine-tune it later with the sync test)
+67520391	Set +{0} ms
+7775994a	HDMI/DisplayPort (monitor or TV) audio can be late. Suggested: +{0} ms (a TV can be +100 ms or more)
+86b7be3f	Motherboard jack
+a4ae5bfd	Virtual output
+d2937a7a	Audio software: {0} (the lights follow the sound before effects are applied; if they feel out of sync, adjust with the "Sync test")
+db4d82a2	Remote Desktop

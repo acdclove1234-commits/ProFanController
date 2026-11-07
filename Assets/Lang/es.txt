@@ -269,7 +269,6 @@ a48b2636	Adelanta la luz 10 ms
 61644194	+ si la luz llega antes que el sonido, − si llega después. Los auriculares y altavoces Bluetooth y los televisores (HDMI) reproducen el sonido con retraso, así que usa +
 0e36045a	El Bluetooth retrasa el sonido; se recomiendan +150–200 ms
 ece319ca	Poner +180 ms
-8101e4b1	Pone el retraso de audio en +180 ms (luego puedes afinarlo con la prueba de sincronización)
 e02412ea	Mientras está activo, los destellos fuertes se limitan a 3 por segundo (para proteger la vista y la salud de las personas sensibles a la luz). Tampoco se usa el estroboscopio
 ff4e5cc2	Reducir destellos
 a2bb37bc	Limita los destellos fuertes a 3 por segundo. Al desactivarlo, «Estroboscopio» pasa a estar disponible
@@ -1590,3 +1589,12 @@ a10ec68f	Uso
 ba90de43	Frecuencia
 1044c343	Datos
 f951f047	Nivel
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	El sonido pasa por una salida virtual{0}, así que suena un poco tarde. Orientativo: +{1} ms
+5ed44de1	Pone el retraso de audio en el valor orientativo para esta salida (luego se puede afinar con la prueba de sincronización)
+67520391	Poner +{0} ms
+7775994a	El sonido por HDMI/DisplayPort (monitor o televisor) puede llegar tarde. Orientativo: +{0} ms (en un televisor puede ser +100 ms o más)
+86b7be3f	Toma de la placa base
+a4ae5bfd	Salida virtual
+d2937a7a	Software de audio: {0} (la luz sigue al sonido antes de los efectos; si parece desfasada, ajústela con la «Prueba de sincronización»)
+db4d82a2	Escritorio remoto

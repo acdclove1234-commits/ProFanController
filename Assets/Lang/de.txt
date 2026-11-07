@@ -269,7 +269,6 @@ a48b2636	Licht 10 ms früher
 61644194	+ wenn das Licht vor dem Ton kommt, − wenn danach. Bluetooth-Kopfhörer und -Lautsprecher sowie Fernseher (HDMI) geben den Ton verzögert aus, daher +
 0e36045a	Bluetooth verzögert den Ton, empfohlen sind +150–200 ms
 ece319ca	+180 ms einstellen
-8101e4b1	Setzt die Audioverzögerung auf +180 ms (später mit dem Synchronisationstest feinjustierbar)
 e02412ea	Solange aktiv, sind starke Blitze auf 3 pro Sekunde begrenzt (zum Schutz von Augen und Gesundheit lichtempfindlicher Menschen). Auch das Stroboskop wird nicht verwendet
 ff4e5cc2	Blitzen reduzieren
 a2bb37bc	Begrenzt starke Blitze auf 3 pro Sekunde. Ausgeschaltet wird „Stroboskop“ wählbar
@@ -1590,3 +1589,12 @@ a10ec68f	Auslastung
 ba90de43	Takt
 1044c343	Daten
 f951f047	Pegel
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Der Ton läuft über eine virtuelle Ausgabe{0} und kommt daher etwas später. Richtwert: +{1} ms
+5ed44de1	Setzt die Audioverzögerung auf den Richtwert für diese Ausgabe (später mit dem Synchronisationstest feinjustierbar)
+67520391	+{0} ms einstellen
+7775994a	Über HDMI/DisplayPort (Monitor oder Fernseher) kann der Ton verzögert sein. Richtwert: +{0} ms (bei Fernsehern auch +100 ms oder mehr)
+86b7be3f	Mainboard-Buchse
+a4ae5bfd	Virtuelle Ausgabe
+d2937a7a	Audiosoftware: {0} (die Beleuchtung folgt dem Ton vor den Effekten; wirkt sie versetzt, gleichen Sie es mit dem „Synchronisationstest“ an)
+db4d82a2	Remotedesktop

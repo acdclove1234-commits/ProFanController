@@ -269,7 +269,6 @@ a48b2636	Işığı 10 ms öne alır
 61644194	Işık sesten önce geliyorsa +, sonra geliyorsa −. Bluetooth kulaklık ve hoparlörler ile TV'ler (HDMI) sesi geç çalar, bu yüzden + kullanın
 0e36045a	Bluetooth sesi geciktirir; +150–200 ms önerilir
 ece319ca	+180 ms yap
-8101e4b1	Ses gecikmesini +180 ms yapar (sonra senkron testiyle ince ayar yapabilirsiniz)
 e02412ea	Açıkken güçlü yanıp sönmeler saniyede 3 ile sınırlanır (ışığa duyarlı kişilerin gözlerini ve sağlığını korumak için). Stroboskop da kullanılmaz
 ff4e5cc2	Yanıp sönmeyi azalt
 a2bb37bc	Güçlü yanıp sönmeleri saniyede 3 ile sınırlar. Kapatınca "Stroboskop" seçilebilir olur
@@ -1590,3 +1589,12 @@ a10ec68f	Kullanım
 ba90de43	Saat hızı
 1044c343	Veri
 f951f047	Seviye
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Ses sanal bir çıkıştan{0} geçtiği için biraz gecikmeli çalar. Önerilen: +{1} ms
+5ed44de1	Ses gecikmesini bu çıkış için önerilen değere ayarlar (daha sonra senkron testiyle ince ayar yapabilirsiniz)
+67520391	+{0} ms yap
+7775994a	HDMI/DisplayPort (monitör veya TV) üzerinden ses gecikebilir. Önerilen: +{0} ms (TV'de +100 ms veya daha fazla olabilir)
+86b7be3f	Anakart girişi
+a4ae5bfd	Sanal çıkış
+d2937a7a	Ses yazılımı: {0} (ışık, efektler uygulanmadan önceki sese göre yanar; sesle uyumsuz gelirse "Senkron testi" ile ayarlayın)
+db4d82a2	Uzak Masaüstü

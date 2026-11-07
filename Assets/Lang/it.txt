@@ -269,7 +269,6 @@ a48b2636	Anticipa la luce di 10 ms
 61644194	+ se la luce arriva prima del suono, − se arriva dopo. Auricolari e altoparlanti Bluetooth e TV (HDMI) riproducono il suono in ritardo, quindi usa +
 0e36045a	Il Bluetooth ritarda il suono: consigliati +150–200 ms
 ece319ca	Imposta +180 ms
-8101e4b1	Imposta il ritardo audio a +180 ms (poi puoi affinarlo con il test di sincronizzazione)
 e02412ea	Quando è attivo, i lampeggi forti sono limitati a 3 al secondo (per proteggere gli occhi e la salute delle persone sensibili alla luce). Anche lo stroboscopio non viene usato
 ff4e5cc2	Riduci i lampeggi
 a2bb37bc	Limita i lampeggi forti a 3 al secondo. Disattivandolo, «Stroboscopio» diventa disponibile
@@ -1590,3 +1589,12 @@ a10ec68f	Carico
 ba90de43	Clock
 1044c343	Dati
 f951f047	Livello
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Il suono passa da un'uscita virtuale{0}, quindi arriva un po' in ritardo. Indicativo: +{1} ms
+5ed44de1	Imposta il ritardo audio sul valore indicativo per questa uscita (potrai rifinirlo poi con il test di sincronizzazione)
+67520391	Imposta +{0} ms
+7775994a	Il suono via HDMI/DisplayPort (monitor o TV) può essere in ritardo. Indicativo: +{0} ms (con una TV anche +100 ms o più)
+86b7be3f	Presa della scheda madre
+a4ae5bfd	Uscita virtuale
+d2937a7a	Software audio: {0} (la luce segue il suono prima degli effetti; se sembra sfasata, regolala con il «Test di sincronizzazione»)
+db4d82a2	Desktop remoto

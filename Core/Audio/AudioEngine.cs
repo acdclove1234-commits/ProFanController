@@ -86,6 +86,8 @@ public sealed class AudioEngine
     /// <summary>同期テスト: クリックの前に必要な、ほぼ無音の時間（秒）</summary>
     private const double ClickQuietSec = 0.300;
 
+    private readonly Decimator? _dec;
+    private readonly double _decDelaySec;
     private readonly int _nLow, _nHigh, _ringMask;
     private readonly float[] _ring;
     private int _pos;
@@ -123,16 +125,27 @@ public sealed class AudioEngine
     public AudioEngine(int sampleRate = 48000)
     {
         SampleRate = sampleRate > 0 ? sampleRate : 48000;
+        // 88.2〜384 kHz の音は、44.1 / 48 kHz に落としてから分析する。分析の 1 コマ（512 個）と立ち上がりの目盛りは
+        // 44.1 / 48 kHz で調整してあり、192 kHz のままだと 1 コマが 4 分の 1 の時間になって、スネアを取りこぼしたり、
+        // 倍のテンポをつかんだりするため
+        int factor = Decimator.FactorFor(SampleRate);
+        if (factor > 1)
+        {
+            _dec = new Decimator(factor);
+            _decDelaySec = _dec.DelaySamples / SampleRate;
+        }
+        AnalysisRate = SampleRate / factor;
         // 窓の長さ（時間）をサンプリング周波数によらずそろえる: 48 kHz で 2048 / 1024 個、96 kHz で 4096 / 2048 個
+        // （落とせない周波数のときだけ。64 kHz など）
         int scale = 1;
-        while (scale < 4 && SampleRate >= 48000 * scale * 1.5) scale <<= 1;
+        while (scale < 4 && AnalysisRate >= 48000 * scale * 1.5) scale <<= 1;
         _nLow = 2048 * scale;
         _nHigh = 1024 * scale;
         int ring = 4096;
         while (ring < _nLow) ring <<= 1;
         _ring = new float[ring];
         _ringMask = ring - 1;
-        _dt = (double)Hop / SampleRate;
+        _dt = (double)Hop / AnalysisRate;
         // 立ち上がりの検出は「フルスケールのサイン波 ≈ 512」の目盛りで調整してあるので、FFT が大きいときは割る
         _magScale = 1.0 / scale;
         _fftLow = new Fft(_nLow);
@@ -146,10 +159,10 @@ public sealed class AudioEngine
         _powLow = new double[_nLow / 2 + 1];
         _powHigh = new double[_nHigh / 2 + 1];
         _magLow = new double[_nLow / 2 + 1];
-        double frameRate = SampleRate / (double)Hop;
-        _bands = new BandAnalyzer(SampleRate, _nLow, _nHigh, _dt);
-        _kick = new KickPath(SampleRate);
-        _onsets = new OnsetDetector(SampleRate, _nLow, frameRate);
+        double frameRate = AnalysisRate / (double)Hop;
+        _bands = new BandAnalyzer(AnalysisRate, _nLow, _nHigh, _dt);
+        _kick = new KickPath(AnalysisRate);
+        _onsets = new OnsetDetector(AnalysisRate, _nLow, frameRate);
         _tracker = new BeatTracker(frameRate);
         _drop = new DropDetector(_dt);
         _aGateRelease = TimeConst.Alpha(_dt, GateReleaseSec);
@@ -158,7 +171,10 @@ public sealed class AudioEngine
         ResetInternal();
     }
 
+    /// <summary>Push に渡す音のサンプリング周波数</summary>
     public int SampleRate { get; }
+    /// <summary>分析に使うサンプリング周波数（88.2 kHz 以上は 44.1 / 48 kHz に落とす）</summary>
+    public int AnalysisRate { get; }
     /// <summary>分析の設定（どのスレッドから変えてもよい。次の分析から反映）</summary>
     public AudioEngineSettings Settings
     {
@@ -201,19 +217,30 @@ public sealed class AudioEngine
         if (_resetRequested) ResetInternal();
         bool click = ClickDetect;
         double invFs = 1.0 / SampleRate;
+        var dec = _dec;
         for (int i = 0; i < mono.Length; i++)
         {
             float x = mono[i];
             if (!float.IsFinite(x)) x = 0;
-            _ring[_pos] = x;
-            _pos = (_pos + 1) & _ringMask;
-            _kick.Sample(x);
-            if (click) DetectClick(x, tFirst + i * invFs);
-            if (++_sinceHop >= Hop)
-            {
-                _sinceHop = 0;
-                AnalyzeHop(tFirst + i * invFs);
-            }
+            double t = tFirst + i * invFs;
+            // 同期テストのクリックは、届いたままの細かさで時刻を測る
+            if (click) DetectClick(x, t);
+            if (dec is null) Analyze(x, t);
+            // 落とした音の時刻は、フィルターの遅れの分だけ前（線形位相なので、どの高さの音も同じ遅れ）
+            else if (dec.Push(x, out float y)) Analyze(y, t - _decDelaySec);
+        }
+    }
+
+    /// <summary>分析するサンプリング周波数（AnalysisRate）の音 1 個</summary>
+    private void Analyze(float x, double t)
+    {
+        _ring[_pos] = x;
+        _pos = (_pos + 1) & _ringMask;
+        _kick.Sample(x);
+        if (++_sinceHop >= Hop)
+        {
+            _sinceHop = 0;
+            AnalyzeHop(t);
         }
     }
 
@@ -238,6 +265,7 @@ public sealed class AudioEngine
     {
         _resetRequested = false;
         _resetTempoRequested = false;
+        _dec?.Reset();
         Array.Clear(_ring);
         _pos = 0;
         _sinceHop = 0;
@@ -313,7 +341,7 @@ public sealed class AudioEngine
         var s = Effective();
         _hop++;
         // 時刻は必ず前のコマより新しくする（時計の取り直しで、まれに少し戻ることがあるため。FeatureRing は時刻順が前提）
-        if (!double.IsFinite(tHop)) tHop = double.IsFinite(_lastT) ? _lastT + (double)Hop / SampleRate : 0;
+        if (!double.IsFinite(tHop)) tHop = double.IsFinite(_lastT) ? _lastT + _dt : 0;
         if (tHop <= _lastT) tHop = _lastT + 1e-6;
         _lastT = tHop;
         if (_resetTempoRequested)

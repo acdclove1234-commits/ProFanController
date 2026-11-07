@@ -269,7 +269,6 @@ a48b2636	Avance la lumière de 10 ms
 61644194	+ si la lumière arrive avant le son, − si elle arrive après. Les écouteurs et enceintes Bluetooth et les téléviseurs (HDMI) jouent le son en retard : utilisez +
 0e36045a	Le Bluetooth retarde le son : +150–200 ms recommandés
 ece319ca	Régler à +180 ms
-8101e4b1	Règle le décalage audio à +180 ms (affinable ensuite avec le test de synchro)
 e02412ea	Tant que c'est activé, les flashs forts sont limités à 3 par seconde (pour protéger les yeux et la santé des personnes sensibles à la lumière). Le stroboscope n'est pas utilisé non plus
 ff4e5cc2	Réduire les flashs
 a2bb37bc	Limite les flashs forts à 3 par seconde. Le désactiver rend « Stroboscope » disponible
@@ -1590,3 +1589,12 @@ a10ec68f	Charge
 ba90de43	Fréquence
 1044c343	Données
 f951f047	Niveau
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Le son passe par une sortie virtuelle{0}, il arrive donc un peu en retard. Valeur conseillée : +{1} ms
+5ed44de1	Règle le décalage audio sur la valeur conseillée pour cette sortie (vous pourrez l'affiner plus tard avec le test de synchro)
+67520391	Régler à +{0} ms
+7775994a	Le son en HDMI/DisplayPort (écran ou téléviseur) peut être en retard. Valeur conseillée : +{0} ms (parfois +100 ms ou plus sur un téléviseur)
+86b7be3f	Prise de la carte mère
+a4ae5bfd	Sortie virtuelle
+d2937a7a	Logiciels audio : {0} (la lumière suit le son avant les effets ; si elle semble décalée, ajustez-la avec le « Test de synchro »)
+db4d82a2	Bureau à distance

@@ -44,6 +44,12 @@ public sealed class BeatTracker
     {
         /// <summary>ロックできないまま、別のテンポを試すまでの時間（秒）</summary>
         internal static double StuckSec = 4.5;
+        /// <summary>「ありがちな」テンポの中心（秒。0.5 = 120 BPM）</summary>
+        internal static double PriorCentreSec = 0.5;
+        /// <summary>このテンポ（BPM）より速くつかんでいるときは、半分のテンポにする判定を FastOctaveDownRatio に緩める</summary>
+        internal static double FastOctaveDownBpm = 150;
+        /// <summary>速いテンポのときの「1 拍おきの低音の強さの比」のしきい値（OctaveDownRatio と同じなら緩めない）</summary>
+        internal static double FastOctaveDownRatio = OctaveDownRatioDefault;
         /// <summary>予測からこれより離れた山は、その拍の音ではないとみなす（秒）</summary>
         internal static double OutlierSec = 0.035;
         /// <summary>音のあった拍の割合: これ以下で 0、これ以上で満点</summary>
@@ -87,7 +93,7 @@ public sealed class BeatTracker
     public const double MinBpm = 69.4;
     public const double MaxBpm = 181.5;
     /// <summary>「ありがちなテンポ」の中心（秒。120 BPM）。幅は 1 オクターブ</summary>
-    private const double PriorCentreSec = 0.5;
+    // ありがちなテンポの中心は Tune.PriorCentreSec
     /// <summary>前回のテンポからの変わりにくさ（対数の幅）</summary>
     private const double TransitionSigma = 0.05;
     /// <summary>周期を細かく求めるときの刻み（コマ）</summary>
@@ -95,7 +101,8 @@ public sealed class BeatTracker
     /// <summary>倍・半分の判定に使う長さ（秒）</summary>
     private const double OctaveWindowSec = 5.0;
     /// <summary>1 拍おきの低音の強さの比がこれ未満なら、本当のテンポは半分（周期が倍）</summary>
-    private const double OctaveDownRatio = 0.35;
+    private const double OctaveDownRatio = OctaveDownRatioDefault;
+    internal const double OctaveDownRatioDefault = 0.35;
     /// <summary>
     /// 拍と拍のちょうど中間の低音の強さが、拍の位置の強さのこの割合以上なら、本当のテンポは倍（周期が半分）。
     /// （仕様書 A7 の判定は「半分にする」向きだけなので、キックが毎拍鳴る 174 BPM が 87 BPM になるのを防ぐために足した）
@@ -278,7 +285,7 @@ public sealed class BeatTracker
         for (int j = 0; j < _m; j++)
         {
             double tau = _tauMin + j;
-            double oct = Math.Log2(tau / (PriorCentreSec * frameRate));
+            double oct = Math.Log2(tau / (Tune.PriorCentreSec * frameRate));
             _prior[j] = Math.Exp(-0.5 * oct * oct);
         }
         // テンポの移り変わりやすさ: 近いテンポほど移りやすい。
@@ -702,7 +709,8 @@ public sealed class BeatTracker
         even /= ne;
         odd /= no;
         double mx = Math.Max(even, odd);
-        return mx > 1e-9 && Math.Min(even, odd) / mx < OctaveDownRatio;
+        double limit = 60 * _f / tau > Tune.FastOctaveDownBpm ? Math.Max(OctaveDownRatio, Tune.FastOctaveDownRatio) : OctaveDownRatio;
+        return mx > 1e-9 && Math.Min(even, odd) / mx < limit;
     }
 
     /// <summary>

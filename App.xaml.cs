@@ -336,7 +336,7 @@ public partial class App : Application
             if (conflicts.Count > 0)
             {
                 Logger.Warn($"LED・ファンを操作するほかのソフトが動いています: {string.Join("、", conflicts)}");
-                parts.Add(L($"{string.Join(L("・"), conflicts)} が動いています。同じ LED やファンを操作するので、色が勝手に戻る・ちらつく・回転数が反映されない原因になります。そのソフトの LED・ファンの制御を止めるか、終了してください。"));
+                parts.Add(L($"{string.Join(Localization.ListSeparator, conflicts)} が動いています。同じ LED やファンを操作するので、色が勝手に戻る・ちらつく・回転数が反映されない原因になります。そのソフトの LED・ファンの制御を止めるか、終了してください。"));
             }
             if (parts.Count == 0) return;
             if (unstable is not null)

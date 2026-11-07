@@ -178,6 +178,12 @@ public static class Localization
         return IsWide(first[^1]) ? first + second : first + " " + second;
     }
 
+    /// <summary>
+    /// 短い名前を並べるときの区切り（日本語は「・」、ほかの言語は「、」の訳。英語なら ", "）。
+    /// 「・」の訳は箇条書きの印（•）なので、区切りには使わない
+    /// </summary>
+    public static string ListSeparator => IsSource ? "・" : Lookup("、");
+
     /// <summary>全角の文字（かな・漢字・全角の記号）か。これで終わる文のあとには空白を入れない</summary>
     internal static bool IsWide(char c) =>
         c is >= '　' and <= 'ヿ' or >= '㐀' and <= '䶿' or >= '一' and <= '鿿'

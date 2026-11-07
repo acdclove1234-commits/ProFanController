@@ -76,6 +76,8 @@ public sealed class AudioCapture : IDisposable
     public string Status { get; private set; } = L("停止中");
     /// <summary>いま音を取り込んでいる出力先の名前（スピーカー・ヘッドホンなど）</summary>
     public string EndpointName { get; private set; } = "";
+    /// <summary>聞いている出力先の種類と、見つかった音のソフト（音の遅れの補正の案内に使う）</summary>
+    public OutputInfo Output { get; private set; } = OutputInfo.None;
     /// <summary>いま音を取り込んでいる出力先の ID</summary>
     public string EndpointId { get; private set; } = "";
     /// <summary>音が届いた合図で読み取っている（false なら一定間隔で読みに行く方式）</summary>
@@ -124,6 +126,7 @@ public sealed class AudioCapture : IDisposable
         Status = L("停止中");
         EndpointName = "";
         EndpointId = "";
+        Output = OutputInfo.None;
         AppOnly = false;
     }
 
@@ -236,6 +239,7 @@ public sealed class AudioCapture : IDisposable
         capture.StartRecording();
 
         EndpointName = device.FriendlyName;
+        Output = OutputProbe.Describe(device);
         EndpointId = id;
         EventDriven = !polling;
         Status = L($"音を取り込み中: {device.FriendlyName}");
@@ -492,7 +496,10 @@ public sealed class AudioCapture : IDisposable
         scan.Refresh(enumerator, device, source, AudioClock.Now);
         capture.Start();
 
-        EndpointName = device.FriendlyName;
+        // 聞いている出力先: アプリが「いつもの出力先」以外に出しているなら（アプリごとの出力先の設定など）、そちら
+        var playing = scan.PlayingElsewhere ?? device;
+        EndpointName = playing.FriendlyName;
+        Output = OutputProbe.Describe(playing);
         EndpointId = id;
         EventDriven = true;
         AppOnly = true;
@@ -563,6 +570,13 @@ public sealed class AudioCapture : IDisposable
                 if (scan.Due(source, now))
                 {
                     scan.Refresh(enumerator, device, source, now);
+                    // アプリが出している出力先が変わった（アプリの設定で切り替えた など）: 表示と案内を合わせる
+                    var playingNow = scan.PlayingElsewhere ?? device;
+                    if (playingNow.FriendlyName != EndpointName)
+                    {
+                        EndpointName = playingNow.FriendlyName;
+                        Output = OutputProbe.Describe(playingNow);
+                    }
                     int desired = AppAudioTarget.ChooseTarget(scan.Procs, source, scan.Entries);
                     bool alive = ProcessList.IsAlive(app.Process);
                     if (AppAudioTarget.ShouldRetarget(pid, alive, desired,
@@ -661,6 +675,9 @@ public sealed class AudioCapture : IDisposable
         private readonly HashSet<uint> _pids = new();
         private string _source = "";
         private double _at = double.NegativeInfinity;
+
+        /// <summary>アプリの音が鳴っている出力先（いつもの出力先にセッションがなく、ほかの出力先で見つけたとき。なければ null）</summary>
+        public MMDevice? PlayingElsewhere => _devices.Count > 0 ? _devices[0] : null;
 
         /// <summary>選んだ名前のプロセス（PID・親の PID）</summary>
         public List<ProcEntry> Procs { get; private set; } = new();

@@ -1120,7 +1120,9 @@ public partial class MainWindow
         m.AudioDelayMs = Math.Clamp(Math.Round(m.AudioDelayMs + step), -100, 400);
     }
 
-    private void OnBluetoothDelayClick(object sender, RoutedEventArgs e) => Config.Rgb.Music.AudioDelayMs = 180;
+    /// <summary>出力先の目安（Bluetooth +180・HDMI +50・仮想の出力先 +30）に、音の遅れの補正を合わせる</summary>
+    private void OnBluetoothDelayClick(object sender, RoutedEventArgs e) =>
+        Config.Rgb.Music.AudioDelayMs = (sender as FrameworkElement)?.Tag is int ms && ms > 0 ? ms : OutputPath.BluetoothDelayMs;
 
     /// <summary>「反応のしかた」の値のうち、初期値から変えているものを表示する（カスタムしたときに、元の値が分かるように）</summary>
     private void RefreshTuningDefaults()
@@ -1719,7 +1721,7 @@ public partial class MainWindow
                 var list = new List<string>();
                 var conflicts = InstallCheck.FindRunningConflicts();
                 if (conflicts.Count > 0)
-                    list.Add(L($"{string.Join(L("・"), conflicts)} が動いています。同じ LED を操作するので、色が勝手に戻る・ちらつく・ほかのデバイスとそろわない原因になります。")
+                    list.Add(L($"{string.Join(Localization.ListSeparator, conflicts)} が動いています。同じ LED を操作するので、色が勝手に戻る・ちらつく・ほかのデバイスとそろわない原因になります。")
                         + L("そのソフトの LED の制御（ライティング）を止めるか、終了してください（Lian Li の L-Connect は、ファンの回転だけ使う設定にできます）。"));
                 string? path = OpenRgbSettings.FindUnsharedSmbus();
                 if (path is not null)
@@ -1898,9 +1900,28 @@ public partial class MainWindow
             : rgb.Mode != RgbModes.Music ? ""
             : rgb.MusicSource.Length > 0 ? L($"{audio.Status}（{rgb.MusicSource} の音だけに反応）")
             : audio.Status;
-        if (audio.Running && audio.EndpointName.Length > 0) status += L($"\n聞いている出力先: {audio.EndpointName}");
+        var output = audio.Output;
+        if (audio.Running && audio.EndpointName.Length > 0)
+        {
+            string kind = OutputPath.KindLabel(output.Kind);
+            status += L($"\n聞いている出力先: {audio.EndpointName}") + (kind.Length > 0 ? L($"（{kind}）") : "");
+        }
         SetText(AudioStatus, status);
-        BluetoothHint.Visibility = VisibleIf(audio.Running && LightingRules.LooksLikeBluetooth(audio.EndpointName) && m.AudioDelayMs < BluetoothHintBelowMs);
+        // 出力先に合わせた音の遅れの補正の案内（Bluetooth・HDMI・仮想の出力先）。種類が分からなければ、名前で Bluetooth を見分ける
+        bool suggest = audio.Running && (OutputPath.ShouldSuggest(output, m.AudioDelayMs)
+            || (output.Kind == OutputKind.Unknown && LightingRules.LooksLikeBluetooth(audio.EndpointName) && m.AudioDelayMs < BluetoothHintBelowMs));
+        if (suggest)
+        {
+            int ms = output.SuggestedDelayMs > 0 ? output.SuggestedDelayMs : OutputPath.BluetoothDelayMs;
+            SetText(OutputHintText, output.Kind == OutputKind.Unknown ? OutputPath.Hint(output with { Kind = OutputKind.Bluetooth }) : OutputPath.Hint(output));
+            string label = L($"+{ms} ms にする");
+            if (OutputHintButton.Content as string != label) OutputHintButton.Content = label;
+            OutputHintButton.Tag = ms;
+        }
+        BluetoothHint.Visibility = VisibleIf(suggest);
+        string note = audio.Running ? OutputPath.SoftwareNote(output) : "";
+        SetText(OutputSoftwareNote, note);
+        OutputSoftwareNote.Visibility = VisibleIf(note.Length > 0);
 
         var engine = _liveEngine;
         if (engine is null)

@@ -56,7 +56,7 @@ public partial class MainWindow
             var kinds = fan.Curves.Select(c => FindSensorOption(c.SensorId)?.Kind ?? SensorKind.Other)
                 .Append(fan.Mode == FanModes.Target ? FindSensorOption(fan.TargetSensorId)?.Kind ?? SensorKind.Other : SensorKind.Other)
                 .Distinct().ToArray();
-            string hint = string.Join(L("・"), kinds.Where(k => k is SensorKind.Cpu or SensorKind.Gpu or SensorKind.GpuHotspot)
+            string hint = string.Join(Localization.ListSeparator, kinds.Where(k => k is SensorKind.Cpu or SensorKind.Gpu or SensorKind.GpuHotspot)
                 .Select(k => k == SensorKind.Cpu ? "CPU" : "GPU").Distinct());
             _tuneFans.Add(new TuneFanVm
             {

@@ -269,7 +269,6 @@ a48b2636	Cho đèn sớm hơn 10 ms
 61644194	Đặt + khi đèn sáng trước âm thanh, − khi sáng sau. Tai nghe, loa Bluetooth và TV (HDMI) phát âm thanh trễ nên hãy đặt +
 0e36045a	Bluetooth làm âm thanh trễ, nên dùng +150–200 ms
 ece319ca	Đặt +180 ms
-8101e4b1	Đặt bù độ trễ âm thanh thành +180 ms (sau đó có thể tinh chỉnh bằng kiểm tra đồng bộ)
 e02412ea	Khi bật, nhấp nháy mạnh bị giới hạn 3 lần mỗi giây (để bảo vệ mắt và sức khỏe của người nhạy cảm với ánh sáng). Cũng không dùng đèn chớp
 ff4e5cc2	Giảm nhấp nháy
 a2bb37bc	Giới hạn nhấp nháy mạnh ở 3 lần mỗi giây. Tắt đi thì có thể chọn "Đèn chớp"
@@ -1590,3 +1589,12 @@ a10ec68f	Mức dùng
 ba90de43	Xung nhịp
 1044c343	Dữ liệu
 f951f047	Mức
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Âm thanh đi qua đầu ra ảo{0} nên phát ra hơi trễ. Tham khảo: +{1} ms
+5ed44de1	Đặt độ trễ âm thanh theo giá trị tham khảo cho đầu ra này (sau đó có thể tinh chỉnh bằng kiểm tra đồng bộ)
+67520391	Đặt +{0} ms
+7775994a	Âm thanh qua HDMI/DisplayPort (màn hình, TV) có thể bị trễ. Tham khảo: +{0} ms (TV có khi từ +100 ms trở lên)
+86b7be3f	Cổng trên bo mạch chủ
+a4ae5bfd	Đầu ra ảo
+d2937a7a	Phần mềm âm thanh: {0} (ánh sáng theo âm thanh trước khi áp hiệu ứng; nếu thấy lệch, hãy chỉnh bằng "Kiểm tra đồng bộ")
+db4d82a2	Máy tính Từ xa

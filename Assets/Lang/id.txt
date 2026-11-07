@@ -269,7 +269,6 @@ a48b2636	Majukan cahaya 10 md
 61644194	+ jika cahaya datang sebelum suara, − jika sesudahnya. Earphone dan speaker Bluetooth serta TV (HDMI) memutar suara terlambat, jadi gunakan +
 0e36045a	Bluetooth membuat suara terlambat; disarankan +150–200 ms
 ece319ca	Setel +180 ms
-8101e4b1	Menyetel tunda audio ke +180 md (nanti bisa disetel halus dengan uji sinkron)
 e02412ea	Selama aktif, kedipan kuat dibatasi 3 kali per detik (untuk melindungi mata dan kesehatan orang yang peka cahaya). Strobo juga tidak digunakan
 ff4e5cc2	Kurangi kedipan
 a2bb37bc	Membatasi kedipan kuat 3 kali per detik. Jika dimatikan, "Strobo" bisa dipilih
@@ -1590,3 +1589,12 @@ a10ec68f	Penggunaan
 ba90de43	Clock
 1044c343	Data
 f951f047	Level
+29ea7bfd	HDMI/DisplayPort
+4fbed49a	Suara melewati keluaran virtual{0}, jadi berbunyi sedikit terlambat. Patokan: +{1} ms
+5ed44de1	Mengatur tunda audio ke nilai patokan untuk keluaran ini (nanti bisa disetel halus dengan uji sinkron)
+67520391	Setel +{0} ms
+7775994a	Suara lewat HDMI/DisplayPort (monitor atau TV) bisa terlambat. Patokan: +{0} ms (TV bisa +100 ms atau lebih)
+86b7be3f	Colokan motherboard
+a4ae5bfd	Keluaran virtual
+d2937a7a	Perangkat lunak audio: {0} (cahaya mengikuti suara sebelum efek diterapkan; jika terasa tidak pas, sesuaikan dengan "Uji sinkron")
+db4d82a2	Desktop Jarak Jauh
