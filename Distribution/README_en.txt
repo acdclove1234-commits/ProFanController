@@ -5,12 +5,19 @@ ProFanController controls the motherboard's fan headers from temperatures.
 It also monitors temperatures and load, runs cooling tests, lights LEDs with OpenRGB,
 and can be checked from a phone.
 
-* The user interface is in Japanese for now. An English UI is in progress.
+* The user interface is available in 18 languages, including English. It follows the Windows
+  display language; to choose another one, go to Settings [設定] -> Appearance [見た目] ->
+  Language [表示言語] (the app restarts to switch).
   Below, screen and button names are given in English with the Japanese label in brackets,
   for example: Settings [設定].
 
 
 ■ What's new in v6.5.2
+  - Languages: the user interface is now available in 18 languages (English, Japanese, Chinese
+    Simplified and Traditional, Korean, Russian, Ukrainian, German, French, Spanish, Italian,
+    Portuguese (Brazil), Polish, Dutch, Turkish, Vietnamese, Thai, Indonesian). The phone view and
+    the AI advisor's answers follow the same language. The translations are new, so some wording
+    may read unnaturally.
   - Fans: the emergency full speed now always watches the CPU temperature and the GPU core and
     hot spot, even when no curve uses them (for example when the radiator fans follow the coolant only).
   - Music sync: can listen to one app only (for example Spotify), so other sounds and notification
