@@ -109,3 +109,103 @@ cd6687b0	Copy ▾
 a8a30430	+ Add curve
 29506d39	Delete this curve
 5d2df974	With several curves, the highest demand wins
+4c746c03	Curve name
+8e521d8d	Temperature sensor to follow
+06c32776	Presets
+60e54e25	Silent
+0d4c913e	Balanced
+bec16825	Max cooling
+7b60cd54	Full speed
+3f2721c4	Drag a point to move it (Shift for steps of 5) / double-click empty space to add / right-click a point to delete / Ctrl+Z to undo
+88ee66d0	Hysteresis
+27871d57	When the temperature falls, the speed comes down only after it has dropped by this much (prevents hunting)
+cc724aca	Smoothing
+58bf73af	Lower ignores sudden temperature changes and moves calmly (EMA factor)
+ed1667bc	Initializing hardware…
+762ee495	Option
+3b807e37	Use the AI cooling advisor (experimental)
+6fa47fc1	When on, an AI advice panel appears just below. It hands the statistics of your records and your settings to Ollama running on this PC for analysis (no data leaves the PC). Ollama and an AI model (several GB) must be installed separately. While it writes an answer, the CPU and GPU are loaded, so temperatures may rise. It never changes your settings
+f406552c	AI cooling advisor (Ollama)
+cf692ab8	Hands the record statistics (min, average, max and so on), your settings, the diagnostics and the cooling test results to Ollama running on this PC for analysis. No data is sent outside the PC.
+662a0e08	Ollama URL
+00a8f617	Model
+1576035a	Refresh list
+ba9c8066	What to ask the AI (optional)
+f1b60e47	Question (optional)
+f8aac5e1	e.g. I want quieter fans while gaming / I want to review the radiator fan curve (works with this left empty too)
+59ed94e7	Analyze
+de37473b	Stop
+8ba6749e	See what is sent to the AI
+15466e37	Last 30 min
+d5eeddbf	Last 2 hours
+33fe68e5	All records
+482a6b70	Diagnose
+6ff94291	Automatic diagnosis
+8165f824	Finds unstable speeds, overcooling, undercooling, stall zones, beating and more in your records, and suggests adjustments. Most useful right after a game or other heavy load
+7fff8113	I cleaned it (use from here as the new baseline)
+f0f25c1b	Press this after cleaning filters or fans. Records from now on become the new baseline for comparison
+9c1df669	Check now
+267e9ec4	Fan wear and dust check
+2c6b3065	Saves a record every minute and compares with the past: "is the speed lower for the same duty (bearing wear, dust)?" and "is the temperature higher for the same power (clogged filter or radiator)?".
+060669c9	Start auto-tune
+96cc9d01	Auto-tune (create curves automatically)
+46ac54ca	Recommended
+121a7d95	Under real load, lowers the fan speed step by step from 100% and measures where the temperature settles. From that it builds the quietest curve that still holds the target temperature (about 8–15 minutes; if you stop it midway, normal control resumes).
+e9947588	What to cool
+d881d18f	CPU (built-in load, automatic)
+e57cca88	GPU (load with a game or benchmark)
+c074a956	Under full load, keeps the temperature from going above this
+0c43c305	Fans to tune
+183c9165	Measures with the chosen fans at the same speed. Pumps are excluded (they run as usual).
+3e4a2fef	Measurements
+67633e51	Resulting curve (moving the target temperature above rebuilds it without measuring again)
+0e95ff55	Apply to this profile
+6f4b51e9	Profiles with "Silent" in the name get target +5°C, "Performance" gets target −5°C, others get the target as is
+a6de9295	Apply to all profiles
+35ae4fe6	10 min
+c7ad32f7	15 min
+89cb8346	Start test
+cc4ae169	Cooling test
+16e5632b	Measures automatically: idle for 30 seconds → load on all CPU cores → stop the load and cool down. Shows how well your current fan settings cool. The GPU is not included; to test it too, run a game or benchmark during the test.
+eb918d75	When ready, press "Start test". Close heavy apps for accurate results.
+9e3aee28	Trend during test and tuning
+339697a1	Save report
+8a49bfd9	Ask the AI to analyze
+1ba434e9	Result
+d5adfca5	Electricity cost (¥)
+30ece901	Energy (kWh)
+4feccfb0	Power and electricity cost (estimate)
+f342a144	Current power draw
+6c5afbe8	Today
+895e4f8f	This month
+fcfbfdb9	This month (projected)
+74c2a632	Last 30 days / hover over a bar to see that day. The unit price and more can be changed under Settings → "Notifications & integrations"
+64cff568	Open folder
+7b9f9495	Incident records (flight recorder)
+f98ae273	When an emergency full speed, a pump problem, a stopped fan or the like happens, every temperature and speed from 10 minutes before and after is saved automatically. Useful for finding the cause or asking the AI.
+b1ff910c	Summary
+d0f79d07	Open CSV
+0fc2ab3f	No records yet (which means nothing dangerous has happened).
+1a038335	Virtual sensors
+a16411bf	Build the maximum or average of several sensors, or the difference of two (e.g. coolant − room), and use it in curves.
+696b6294	New virtual sensor
+8b00feb4	Maximum (highest temperature)
+4d8caee1	Average
+5658427c	Minimum
+07307e41	Difference (A − B)
+fcf52b91	Create
+bc3cb03d	Color being sent to the LEDs now (the first one if they differ)
+9c4008ce	Connection
+01f82432	Changes the colors of the motherboard, memory, fans, LED strips and more through the free OpenRGB. Start OpenRGB and turn on its "SDK Server" (if it does not connect, add --server to OpenRGB's start options).
+8f1d5969	When on, connects to OpenRGB and colors the LEDs with the effect chosen below. When off, this app sends nothing to the LEDs
+49aac369	Use OpenRGB
+6305fed9	Works with LEDs that OpenRGB supports. Do not use a maker's RGB software such as ASRock Polychrome at the same time (they fight and flicker)
+c8f39b51	Turns all LEDs off. The integration keeps running, so devices do not fall back to their own effect (such as rainbow). Can also be switched from the tray menu "LED effect"
+4c92312b	Lights off (keep the integration)
+956da380	For sleeping or a darker room. Your settings stay, so turning it back off lights them the same way
+7f4cedf2	Server
+722099aa	Where OpenRGB's SDK server is. On the same PC, 127.0.0.1 : 6742 is fine
+64c2cd9b	Address of the PC running OpenRGB (127.0.0.1 for this PC)
+5b89ecc9	Port of OpenRGB's SDK server (usually 6742)
+1ac6b9e1	Test connection
+235b3d31	Checks that OpenRGB can be reached and lists the devices it found below (does not change LED colors)

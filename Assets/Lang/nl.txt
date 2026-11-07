@@ -109,3 +109,103 @@ cd6687b0	Kopiëren ▾
 a8a30430	+ Curve toevoegen
 29506d39	Deze curve verwijderen
 5d2df974	Bij meerdere curves telt de hoogste vraag
+4c746c03	Curvenaam
+8e521d8d	Gekoppelde temperatuursensor
+06c32776	Voorinstellingen
+60e54e25	Stil
+0d4c913e	Gebalanceerd
+bec16825	Maximale koeling
+7b60cd54	Volle snelheid
+3f2721c4	Sleep een punt om het te verplaatsen (Shift voor stappen van 5) / dubbelklik op een lege plek om toe te voegen / rechtsklik op een punt om te verwijderen / Ctrl+Z om ongedaan te maken
+88ee66d0	Hysterese
+27871d57	Als de temperatuur daalt, gaat het toerental pas omlaag nadat ze zoveel gedaald is (voorkomt pendelen)
+cc724aca	Demping
+58bf73af	Lager negeert plotselinge temperatuursprongen en beweegt rustiger (EMA-factor)
+ed1667bc	Hardware initialiseren…
+762ee495	Optie
+3b807e37	AI-koeladviseur gebruiken (experimenteel)
+6fa47fc1	Als dit aan staat, verschijnt er direct eronder een paneel met AI-advies. De statistieken van je metingen en je instellingen worden ter analyse doorgegeven aan Ollama op deze pc (er verlaten geen gegevens de pc). Ollama en een AI-model (enkele GB) moet je apart installeren. Tijdens het schrijven van het antwoord worden CPU en GPU belast, dus temperaturen kunnen stijgen. Instellingen worden nooit gewijzigd
+f406552c	AI-koeladviseur (Ollama)
+cf692ab8	Geeft de statistieken van de metingen (minimum, gemiddelde, maximum enz.), de instellingen, de diagnose en de resultaten van de koeltest ter analyse aan Ollama op deze pc. Er worden geen gegevens buiten de pc verstuurd.
+662a0e08	Ollama-URL
+00a8f617	Model
+1576035a	Lijst vernieuwen
+ba9c8066	Vraag aan de AI (optioneel)
+f1b60e47	Vraag (optioneel)
+f8aac5e1	bijv. ik wil stillere ventilatoren tijdens het gamen / ik wil de curve van de radiatorventilatoren herzien (werkt ook leeg)
+59ed94e7	Analyseren
+de37473b	Stoppen
+8ba6749e	Bekijken wat naar de AI gaat
+15466e37	Laatste 30 min
+d5eeddbf	Laatste 2 uur
+33fe68e5	Alle metingen
+482a6b70	Diagnose uitvoeren
+6ff94291	Automatische diagnose
+8165f824	Vindt in je metingen schommelende toerentallen, te veel of te weinig koeling, stilstandzones, zweving en meer, en stelt aanpassingen voor. Het nuttigst direct na een game of andere zware belasting
+7fff8113	Schoongemaakt (vanaf hier nieuwe basis)
+f0f25c1b	Druk hierop na het reinigen van filters of ventilatoren. Metingen vanaf nu worden de nieuwe basis voor vergelijking
+9c1df669	Nu controleren
+267e9ec4	Slijtage- en stofcontrole van ventilatoren
+2c6b3065	Slaat elke minuut een meting op en vergelijkt met vroeger: "is het toerental lager bij dezelfde aansturing (lagerslijtage, stof)?" en "is de temperatuur hoger bij hetzelfde vermogen (verstopt filter of radiator)?".
+060669c9	Automatisch afstemmen starten
+96cc9d01	Automatisch afstemmen (curves automatisch maken)
+46ac54ca	Aanbevolen
+121a7d95	Verlaagt onder echte belasting het ventilatortoerental stap voor stap vanaf 100% en meet waar de temperatuur zich stabiliseert. Daaruit ontstaat de stilste curve die de doeltemperatuur nog haalt (ongeveer 8–15 minuten; stop je halverwege, dan gaat de normale regeling verder).
+e9947588	Wat koelen
+d881d18f	CPU (ingebouwde belasting, automatisch)
+e57cca88	GPU (belasting met een game of benchmark)
+c074a956	Houdt de temperatuur onder volle belasting onder deze waarde
+0c43c305	Af te stemmen ventilatoren
+183c9165	Meet met de gekozen ventilatoren op hetzelfde toerental. Pompen doen niet mee (ze draaien zoals altijd).
+3e4a2fef	Meetresultaten
+67633e51	Resulterende curve (als je de doeltemperatuur hierboven wijzigt, wordt hij zonder nieuwe meting opnieuw gemaakt)
+0e95ff55	Op dit profiel toepassen
+6f4b51e9	Profielen met "Stil" in de naam krijgen doel +5 °C, "Prestaties" doel −5 °C, de rest het doel ongewijzigd
+a6de9295	Op alle profielen toepassen
+35ae4fe6	10 min
+c7ad32f7	15 min
+89cb8346	Test starten
+cc4ae169	Koeltest
+16e5632b	Meet automatisch: 30 seconden rust → belasting op alle CPU-kernen → belasting stoppen en afkoelen. Laat zien hoe goed je huidige ventilatorinstellingen koelen. De GPU doet niet mee; wil je die ook testen, start dan tijdens de test een game of benchmark.
+eb918d75	Druk op "Test starten" als je klaar bent. Sluit zware apps voor nauwkeurige resultaten.
+9e3aee28	Verloop tijdens test en afstemming
+339697a1	Rapport opslaan
+8a49bfd9	Laten analyseren door de AI
+1ba434e9	Resultaat
+d5adfca5	Stroomkosten (¥)
+30ece901	Energie (kWh)
+4feccfb0	Vermogen en stroomkosten (schatting)
+f342a144	Huidig verbruik
+6c5afbe8	Vandaag
+895e4f8f	Deze maand
+fcfbfdb9	Deze maand (verwacht)
+74c2a632	Laatste 30 dagen / beweeg over een balk om die dag te zien. De prijs per eenheid en meer pas je aan via Instellingen → "Meldingen & koppelingen"
+64cff568	Map openen
+7b9f9495	Incidentmetingen (vluchtrecorder)
+f98ae273	Bij een noodvolle snelheid, een pompprobleem, een stilstaande ventilator en dergelijke worden alle temperaturen en toerentallen van 10 minuten ervoor en erna automatisch opgeslagen. Handig om de oorzaak te vinden of de AI te raadplegen.
+b1ff910c	Overzicht
+d0f79d07	CSV openen
+0fc2ab3f	Nog geen metingen (er is dus niets gevaarlijks gebeurd).
+1a038335	Virtuele sensoren
+a16411bf	Maak het maximum of gemiddelde van meerdere sensoren, of het verschil tussen twee (bijv. koelvloeistof − kamer), en gebruik het in curves.
+696b6294	Nieuwe virtuele sensor
+8b00feb4	Maximum (hoogste temperatuur)
+4d8caee1	Gemiddelde
+5658427c	Minimum
+07307e41	Verschil (A − B)
+fcf52b91	Maken
+bc3cb03d	Kleur die nu naar de leds gaat (de eerste als ze verschillen)
+9c4008ce	Verbinding
+01f82432	Verandert de kleuren van moederbord, geheugen, ventilatoren, ledstrips en meer via het gratis OpenRGB. Start OpenRGB en zet de "SDK Server" aan (lukt de verbinding niet, voeg dan --server toe aan de startopties van OpenRGB).
+8f1d5969	Aan: maakt verbinding met OpenRGB en kleurt de leds met het effect dat je hieronder kiest. Uit: deze app stuurt niets naar de leds
+49aac369	OpenRGB gebruiken
+6305fed9	Werkt met leds die OpenRGB ondersteunt. Gebruik niet tegelijk RGB-software van een fabrikant zoals ASRock Polychrome (ze vechten om de regeling en flikkeren)
+c8f39b51	Zet alle leds uit. De koppeling blijft actief, dus apparaten vallen niet terug op hun eigen effect (zoals regenboog). Ook te schakelen via het systeemvakmenu "Led-effect"
+4c92312b	Licht uit (koppeling blijft actief)
+956da380	Om te slapen of voor een donkerdere kamer. Je instellingen blijven bewaard; zet je dit weer uit, dan gaat alles aan zoals voorheen
+7f4cedf2	Server
+722099aa	Waar de SDK-server van OpenRGB staat. Op dezelfde pc is 127.0.0.1 : 6742 prima
+64c2cd9b	Adres van de pc waarop OpenRGB draait (127.0.0.1 voor deze pc)
+5b89ecc9	Poort van de SDK-server van OpenRGB (meestal 6742)
+1ac6b9e1	Verbinding testen
+235b3d31	Controleert of OpenRGB bereikbaar is en toont hieronder de gevonden apparaten (verandert geen ledkleuren)

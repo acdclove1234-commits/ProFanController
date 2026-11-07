@@ -109,3 +109,103 @@ cd6687b0	Copiar ▾
 a8a30430	+ Añadir curva
 29506d39	Eliminar esta curva
 5d2df974	Con varias curvas, se usa la que pide más
+4c746c03	Nombre de la curva
+8e521d8d	Sensor de temperatura asociado
+06c32776	Preajustes
+60e54e25	Silencioso
+0d4c913e	Equilibrado
+bec16825	Máxima refrigeración
+7b60cd54	Velocidad máxima
+3f2721c4	Arrastra un punto para moverlo (Mayús para pasos de 5) / doble clic en un espacio vacío para añadir / clic derecho en un punto para eliminar / Ctrl+Z para deshacer
+88ee66d0	Histéresis
+27871d57	Cuando la temperatura baja, la velocidad solo baja después de que haya bajado esta diferencia (evita oscilaciones)
+cc724aca	Suavizado
+58bf73af	Más bajo ignora los cambios bruscos de temperatura y se mueve con calma (factor EMA)
+ed1667bc	Inicializando el hardware…
+762ee495	Opción
+3b807e37	Usar el asesor de refrigeración con IA (experimental)
+6fa47fc1	Al activarlo, aparece justo debajo un panel de consejos de la IA. Las estadísticas de tus registros y tus ajustes se envían para su análisis a Ollama en este PC (ningún dato sale del PC). Ollama y un modelo de IA (varios GB) se instalan aparte. Mientras redacta la respuesta, la CPU y la GPU trabajan, así que las temperaturas pueden subir. Nunca cambia tus ajustes
+f406552c	Asesor de refrigeración con IA (Ollama)
+cf692ab8	Envía las estadísticas de los registros (mínimo, media, máximo, etc.), los ajustes, el diagnóstico y los resultados de la prueba de refrigeración a Ollama en este PC para su análisis. No se envía ningún dato fuera del PC.
+662a0e08	URL de Ollama
+00a8f617	Modelo
+1576035a	Actualizar lista
+ba9c8066	Qué preguntar a la IA (opcional)
+f1b60e47	Pregunta (opcional)
+f8aac5e1	p. ej.: quiero ventiladores más silenciosos al jugar / quiero revisar la curva de los ventiladores del radiador (también funciona en blanco)
+59ed94e7	Analizar
+de37473b	Detener
+8ba6749e	Ver lo que se envía a la IA
+15466e37	Últimos 30 min
+d5eeddbf	Últimas 2 horas
+33fe68e5	Todos los registros
+482a6b70	Diagnosticar
+6ff94291	Diagnóstico automático
+8165f824	Encuentra en tus registros velocidades inestables, exceso o falta de refrigeración, zonas de parada, batidos y más, y sugiere ajustes. Lo más útil es ejecutarlo justo después de jugar o de otra carga fuerte
+7fff8113	Lo limpié (usar desde aquí como nueva referencia)
+f0f25c1b	Pulsa esto después de limpiar filtros o ventiladores. Los registros a partir de ahora serán la nueva referencia para comparar
+9c1df669	Comprobar ahora
+267e9ec4	Desgaste y polvo de los ventiladores
+2c6b3065	Guarda un registro cada minuto y compara con el pasado: «¿ha bajado la velocidad con la misma orden (desgaste del rodamiento, polvo)?» y «¿ha subido la temperatura con la misma potencia (filtro o radiador obstruido)?».
+060669c9	Iniciar ajuste automático
+96cc9d01	Ajuste automático (crear curvas automáticamente)
+46ac54ca	Recomendado
+121a7d95	Con carga real, baja la velocidad de los ventiladores poco a poco desde el 100 % y mide dónde se estabiliza la temperatura. Con eso crea la curva más silenciosa que aún mantiene la temperatura objetivo (unos 8–15 minutos; si lo detienes, vuelve el control normal).
+e9947588	Qué refrigerar
+d881d18f	CPU (carga integrada, automático)
+e57cca88	GPU (carga con un juego o benchmark)
+c074a956	Con carga máxima, evita que la temperatura supere este valor
+0c43c305	Ventiladores a ajustar
+183c9165	Mide con los ventiladores elegidos a la misma velocidad. Las bombas quedan fuera (funcionan como siempre).
+3e4a2fef	Mediciones
+67633e51	Curva resultante (si cambias la temperatura objetivo de arriba, se recalcula sin volver a medir)
+0e95ff55	Aplicar a este perfil
+6f4b51e9	Los perfiles con «Silencioso» en el nombre usan objetivo +5 °C, «Rendimiento» objetivo −5 °C y los demás el objetivo tal cual
+a6de9295	Aplicar a todos los perfiles
+35ae4fe6	10 min
+c7ad32f7	15 min
+89cb8346	Iniciar prueba
+cc4ae169	Prueba de refrigeración
+16e5632b	Mide automáticamente: reposo 30 segundos → carga en todos los núcleos de la CPU → fin de la carga y enfriamiento. Muestra lo bien que refrigeran tus ajustes actuales. La GPU no se incluye; para probarla también, ejecuta un juego o benchmark durante la prueba.
+eb918d75	Cuando estés listo, pulsa «Iniciar prueba». Cierra las aplicaciones pesadas para obtener resultados precisos.
+9e3aee28	Evolución durante la prueba y el ajuste
+339697a1	Guardar informe
+8a49bfd9	Pedir análisis a la IA
+1ba434e9	Resultado
+d5adfca5	Coste eléctrico (¥)
+30ece901	Energía (kWh)
+4feccfb0	Potencia y coste eléctrico (estimación)
+f342a144	Consumo actual
+6c5afbe8	Hoy
+895e4f8f	Este mes
+fcfbfdb9	Este mes (previsión)
+74c2a632	Últimos 30 días / pasa el ratón sobre una barra para ver ese día. El precio unitario y más se cambian en Ajustes → «Notificaciones e integraciones»
+64cff568	Abrir carpeta
+7b9f9495	Registros de incidentes (caja negra)
+f98ae273	Cuando ocurre una velocidad máxima de emergencia, un problema de bomba, un ventilador parado o algo similar, se guardan automáticamente todas las temperaturas y velocidades de los 10 minutos anteriores y posteriores. Útil para encontrar la causa o consultar a la IA.
+b1ff910c	Resumen
+d0f79d07	Abrir CSV
+0fc2ab3f	Aún no hay registros (es decir, no ha pasado nada peligroso).
+1a038335	Sensores virtuales
+a16411bf	Crea el máximo o la media de varios sensores, o la diferencia entre dos (p. ej. líquido − habitación), y úsalos en las curvas.
+696b6294	Nuevo sensor virtual
+8b00feb4	Máximo (la temperatura más alta)
+4d8caee1	Media
+5658427c	Mínimo
+07307e41	Diferencia (A − B)
+fcf52b91	Crear
+bc3cb03d	Color que se envía ahora a los LED (el primero si son distintos)
+9c4008ce	Conexión
+01f82432	Cambia los colores de la placa base, la memoria, los ventiladores, las tiras LED y más mediante el programa gratuito OpenRGB. Abre OpenRGB y activa su «SDK Server» (si no conecta, añade --server a las opciones de inicio de OpenRGB).
+8f1d5969	Al activarlo, se conecta a OpenRGB y colorea los LED con el efecto elegido abajo. Desactivado, esta aplicación no envía nada a los LED
+49aac369	Usar OpenRGB
+6305fed9	Funciona con los LED que admite OpenRGB. No uses a la vez el software RGB de un fabricante como ASRock Polychrome (se pelean por el control y parpadean)
+c8f39b51	Apaga todos los LED. La integración sigue activa, así que los dispositivos no vuelven a su propio efecto (como el arcoíris). También se cambia desde el menú de la bandeja «Efecto LED»
+4c92312b	Apagar luces (mantener la integración)
+956da380	Para dormir o para una habitación más oscura. Tus ajustes se conservan y, al desactivarlo, se encienden igual que antes
+7f4cedf2	Servidor
+722099aa	Dónde está el servidor SDK de OpenRGB. En el mismo PC, 127.0.0.1 : 6742 está bien
+64c2cd9b	Dirección del PC donde se ejecuta OpenRGB (127.0.0.1 para este PC)
+5b89ecc9	Puerto del servidor SDK de OpenRGB (normalmente 6742)
+1ac6b9e1	Probar conexión
+235b3d31	Comprueba si se puede llegar a OpenRGB y muestra abajo los dispositivos encontrados (no cambia los colores de los LED)

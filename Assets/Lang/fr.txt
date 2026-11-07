@@ -109,3 +109,103 @@ cd6687b0	Copier ▾
 a8a30430	+ Ajouter une courbe
 29506d39	Supprimer cette courbe
 5d2df974	Avec plusieurs courbes, la demande la plus élevée l'emporte
+4c746c03	Nom de la courbe
+8e521d8d	Capteur de température associé
+06c32776	Préréglages
+60e54e25	Silencieux
+0d4c913e	Équilibré
+bec16825	Refroidissement max
+7b60cd54	Pleine vitesse
+3f2721c4	Faites glisser un point pour le déplacer (Maj pour des pas de 5) / double-cliquez dans le vide pour ajouter / clic droit sur un point pour supprimer / Ctrl+Z pour annuler
+88ee66d0	Hystérésis
+27871d57	Quand la température baisse, la vitesse ne diminue qu'après une baisse de cette valeur (évite les oscillations)
+cc724aca	Lissage
+58bf73af	Plus c'est bas, plus les variations brusques sont ignorées et plus le mouvement est calme (facteur EMA)
+ed1667bc	Initialisation du matériel…
+762ee495	Option
+3b807e37	Utiliser le conseiller de refroidissement IA (expérimental)
+6fa47fc1	Une fois activé, un panneau de conseils IA apparaît juste en dessous. Les statistiques de vos enregistrements et vos réglages sont transmis pour analyse à Ollama qui tourne sur ce PC (aucune donnée ne quitte le PC). Ollama et un modèle d'IA (plusieurs Go) doivent être installés séparément. Pendant la rédaction de la réponse, le CPU et le GPU sont sollicités et les températures peuvent monter. Les réglages ne sont jamais modifiés
+f406552c	Conseiller de refroidissement IA (Ollama)
+cf692ab8	Transmet les statistiques des enregistrements (minimum, moyenne, maximum, etc.), les réglages, le diagnostic et les résultats du test de refroidissement à Ollama qui tourne sur ce PC. Aucune donnée n'est envoyée hors du PC.
+662a0e08	URL d'Ollama
+00a8f617	Modèle
+1576035a	Actualiser la liste
+ba9c8066	Question pour l'IA (facultatif)
+f1b60e47	Question (facultatif)
+f8aac5e1	ex. : je veux des ventilateurs plus discrets en jeu / je veux revoir la courbe des ventilateurs du radiateur (l'analyse fonctionne aussi sans question)
+59ed94e7	Analyser
+de37473b	Arrêter
+8ba6749e	Voir ce qui est envoyé à l'IA
+15466e37	30 dernières min
+d5eeddbf	2 dernières heures
+33fe68e5	Tous les enregistrements
+482a6b70	Diagnostiquer
+6ff94291	Diagnostic automatique
+8165f824	Repère dans vos enregistrements les vitesses instables, le surrefroidissement, le refroidissement insuffisant, les zones d'arrêt, les battements, etc., et propose des réglages. Plus utile juste après un jeu ou une forte charge
+7fff8113	Nettoyé (nouvelle référence à partir d'ici)
+f0f25c1b	Appuyez après avoir nettoyé filtres ou ventilateurs. Les enregistrements suivants deviennent la nouvelle référence de comparaison
+9c1df669	Vérifier maintenant
+267e9ec4	Usure et poussière des ventilateurs
+2c6b3065	Enregistre chaque minute et compare avec le passé : « la vitesse a-t-elle baissé pour la même consigne (usure du roulement, poussière) ? » et « la température a-t-elle monté pour la même puissance (filtre ou radiateur encrassé) ? ».
+060669c9	Lancer le réglage auto
+96cc9d01	Réglage automatique (création des courbes)
+46ac54ca	Recommandé
+121a7d95	Sous charge réelle, réduit la vitesse des ventilateurs pas à pas depuis 100 % et mesure où la température se stabilise. En déduit la courbe la plus silencieuse qui tient encore la température cible (8 à 15 minutes environ ; en cas d'arrêt, le contrôle normal reprend).
+e9947588	À refroidir
+d881d18f	CPU (charge intégrée, automatique)
+e57cca88	GPU (charge par un jeu ou un benchmark)
+c074a956	Sous pleine charge, empêche la température de dépasser cette valeur
+0c43c305	Ventilateurs à régler
+183c9165	Mesure avec les ventilateurs choisis à la même vitesse. Les pompes sont exclues (elles tournent normalement).
+3e4a2fef	Mesures
+67633e51	Courbe obtenue (modifier la température cible ci-dessus la recalcule sans nouvelle mesure)
+0e95ff55	Appliquer à ce profil
+6f4b51e9	Les profils dont le nom contient « Silencieux » visent la cible +5 °C, « Performance » la cible −5 °C, les autres la cible telle quelle
+a6de9295	Appliquer à tous les profils
+35ae4fe6	10 min
+c7ad32f7	15 min
+89cb8346	Lancer le test
+cc4ae169	Test de refroidissement
+16e5632b	Mesure automatiquement : repos 30 secondes → charge sur tous les cœurs du CPU → arrêt de la charge et refroidissement. Montre l'efficacité de vos réglages actuels. Le GPU n'est pas inclus ; pour le tester aussi, lancez un jeu ou un benchmark pendant le test.
+eb918d75	Quand vous êtes prêt, appuyez sur « Lancer le test ». Fermez les applications lourdes pour des mesures précises.
+9e3aee28	Évolution pendant le test et le réglage
+339697a1	Enregistrer le rapport
+8a49bfd9	Faire analyser par l'IA
+1ba434e9	Résultat
+d5adfca5	Coût de l'électricité (¥)
+30ece901	Énergie (kWh)
+4feccfb0	Puissance et coût de l'électricité (estimation)
+f342a144	Consommation actuelle
+6c5afbe8	Aujourd'hui
+895e4f8f	Ce mois-ci
+fcfbfdb9	Ce mois-ci (projection)
+74c2a632	30 derniers jours / survolez une barre pour voir la valeur du jour. Le prix unitaire et le reste se modifient dans Paramètres → « Notifications et intégrations »
+64cff568	Ouvrir le dossier
+7b9f9495	Enregistrements d'incidents (boîte noire)
+f98ae273	En cas de pleine vitesse d'urgence, de problème de pompe, de ventilateur arrêté, etc., toutes les températures et vitesses des 10 minutes avant et après sont enregistrées automatiquement. Utile pour trouver la cause ou interroger l'IA.
+b1ff910c	Résumé
+d0f79d07	Ouvrir le CSV
+0fc2ab3f	Aucun enregistrement pour l'instant (rien de dangereux ne s'est produit).
+1a038335	Capteurs virtuels
+a16411bf	Créez le maximum ou la moyenne de plusieurs capteurs, ou la différence de deux (ex. : liquide − pièce), et utilisez-les dans les courbes.
+696b6294	Nouveau capteur virtuel
+8b00feb4	Maximum (température la plus haute)
+4d8caee1	Moyenne
+5658427c	Minimum
+07307e41	Différence (A − B)
+fcf52b91	Créer
+bc3cb03d	Couleur envoyée aux LED en ce moment (la première si elles diffèrent)
+9c4008ce	Connexion
+01f82432	Change les couleurs de la carte mère, de la mémoire, des ventilateurs, des bandes LED, etc. via le logiciel gratuit OpenRGB. Lancez OpenRGB et activez son « SDK Server » (si la connexion échoue, ajoutez --server aux options de démarrage d'OpenRGB).
+8f1d5969	Activé, se connecte à OpenRGB et colore les LED avec l'effet choisi ci-dessous. Désactivé, cette application n'envoie rien aux LED
+49aac369	Utiliser OpenRGB
+6305fed9	Fonctionne avec les LED prises en charge par OpenRGB. N'utilisez pas en même temps un logiciel RGB de fabricant comme ASRock Polychrome (ils se disputent le contrôle et clignotent)
+c8f39b51	Éteint toutes les LED. L'intégration continue, donc les appareils ne reviennent pas à leur propre effet (comme l'arc-en-ciel). Également accessible depuis le menu de la zone de notification « Effet LED »
+4c92312b	Éteindre (garder l'intégration)
+956da380	Pour dormir ou assombrir la pièce. Vos réglages restent, et en désactivant cette option l'éclairage revient à l'identique
+7f4cedf2	Serveur
+722099aa	Emplacement du serveur SDK d'OpenRGB. Sur le même PC, 127.0.0.1 : 6742 convient
+64c2cd9b	Adresse du PC où tourne OpenRGB (127.0.0.1 pour ce PC)
+5b89ecc9	Port du serveur SDK d'OpenRGB (généralement 6742)
+1ac6b9e1	Tester la connexion
+235b3d31	Vérifie qu'OpenRGB est joignable et liste ci-dessous les appareils trouvés (ne change pas les couleurs des LED)

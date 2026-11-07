@@ -109,3 +109,103 @@ cd6687b0	Kopyala ▾
 a8a30430	+ Eğri ekle
 29506d39	Bu eğriyi sil
 5d2df974	Birden fazla eğri varsa en yüksek talep geçerlidir
+4c746c03	Eğri adı
+8e521d8d	Bağlı sıcaklık sensörü
+06c32776	Hazır ayarlar
+60e54e25	Sessiz
+0d4c913e	Dengeli
+bec16825	Maksimum soğutma
+7b60cd54	Tam hız
+3f2721c4	Taşımak için noktayı sürükleyin (5'lik adımlar için Shift) / eklemek için boş yere çift tıklayın / silmek için noktaya sağ tıklayın / geri almak için Ctrl+Z
+88ee66d0	Histerezis
+27871d57	Sıcaklık düşerken devir ancak bu kadar düştükten sonra azalır (salınımı önler)
+cc724aca	Yumuşatma
+58bf73af	Düşük değer ani sıcaklık değişimlerini yok sayar ve sakin hareket eder (EMA katsayısı)
+ed1667bc	Donanım başlatılıyor…
+762ee495	Seçenek
+3b807e37	Yapay zekâ soğutma danışmanını kullan (deneysel)
+6fa47fc1	Açıldığında hemen altında yapay zekâ önerileri paneli görünür. Kayıtların istatistikleri ve ayarlarınız bu bilgisayarda çalışan Ollama'ya analiz için verilir (hiçbir veri bilgisayardan çıkmaz). Ollama ve bir yapay zekâ modeli (birkaç GB) ayrıca kurulmalıdır. Yanıt yazılırken CPU ve GPU yüklenir, bu yüzden sıcaklıklar artabilir. Ayarlarınızı asla değiştirmez
+f406552c	Yapay zekâ soğutma danışmanı (Ollama)
+cf692ab8	Kayıt istatistiklerini (en düşük, ortalama, en yüksek vb.), ayarları, tanılamayı ve soğutma testi sonuçlarını bu bilgisayarda çalışan Ollama'ya analiz için verir. Hiçbir veri bilgisayarın dışına gönderilmez.
+662a0e08	Ollama URL'si
+00a8f617	Model
+1576035a	Listeyi yenile
+ba9c8066	Yapay zekâya sorulacak (isteğe bağlı)
+f1b60e47	Soru (isteğe bağlı)
+f8aac5e1	örn. oyun sırasında fanların daha sessiz olmasını istiyorum / radyatör fanlarının eğrisini gözden geçirmek istiyorum (boş bırakılsa da çalışır)
+59ed94e7	Analiz et
+de37473b	Durdur
+8ba6749e	Yapay zekâya gönderileni gör
+15466e37	Son 30 dk
+d5eeddbf	Son 2 saat
+33fe68e5	Tüm kayıtlar
+482a6b70	Tanıla
+6ff94291	Otomatik tanılama
+8165f824	Kayıtlarda dalgalanan devirleri, aşırı veya yetersiz soğutmayı, durma bölgelerini, vuruşmayı ve daha fazlasını bulur, ayar önerir. En çok bir oyundan veya ağır yükten hemen sonra işe yarar
+7fff8113	Temizledim (buradan itibaren yeni referans)
+f0f25c1b	Filtreleri veya fanları temizledikten sonra basın. Bundan sonraki kayıtlar karşılaştırma için yeni referans olur
+9c1df669	Şimdi kontrol et
+267e9ec4	Fan aşınması ve toz kontrolü
+2c6b3065	Her dakika bir kayıt saklar ve geçmişle karşılaştırır: "aynı komutta devir düştü mü (rulman aşınması, toz)?" ve "aynı güçte sıcaklık arttı mı (tıkanmış filtre veya radyatör)?".
+060669c9	Otomatik ayarı başlat
+96cc9d01	Otomatik ayar (eğrileri otomatik oluştur)
+46ac54ca	Önerilen
+121a7d95	Gerçek yük altında fan devrini %100'den adım adım düşürür ve sıcaklığın nerede dengelendiğini ölçer. Buna göre hedef sıcaklığı hâlâ koruyan en sessiz eğriyi oluşturur (yaklaşık 8–15 dakika; yarıda durdurursanız normal kontrol devam eder).
+e9947588	Soğutulacak
+d881d18f	CPU (yerleşik yük, otomatik)
+e57cca88	GPU (oyun veya benchmark ile yük)
+c074a956	Tam yükte sıcaklığın bunu aşmasını önler
+0c43c305	Ayarlanacak fanlar
+183c9165	Seçilen fanları aynı devirde tutarak ölçer. Pompalar hariçtir (her zamanki gibi çalışırlar).
+3e4a2fef	Ölçümler
+67633e51	Oluşacak eğri (yukarıdaki hedef sıcaklığı değiştirmek, yeniden ölçmeden eğriyi yeniler)
+0e95ff55	Bu profile uygula
+6f4b51e9	Adında "Sessiz" olan profiller hedef +5°C, "Performans" hedef −5°C, diğerleri hedefin kendisiyle oluşturulur
+a6de9295	Tüm profillere uygula
+35ae4fe6	10 dk
+c7ad32f7	15 dk
+89cb8346	Testi başlat
+cc4ae169	Soğutma testi
+16e5632b	Otomatik olarak ölçer: 30 saniye bekleme → tüm CPU çekirdeklerine yük → yükü durdurup soğutma. Mevcut fan ayarlarınızın ne kadar iyi soğuttuğunu gösterir. GPU dahil değildir; onu da test etmek için test sırasında bir oyun veya benchmark çalıştırın.
+eb918d75	Hazır olduğunuzda "Testi başlat"a basın. Doğru ölçüm için ağır uygulamaları kapatın.
+9e3aee28	Test ve ayar sırasındaki değişim
+339697a1	Raporu kaydet
+8a49bfd9	Yapay zekâya analiz ettir
+1ba434e9	Sonuç
+d5adfca5	Elektrik maliyeti (¥)
+30ece901	Enerji (kWh)
+4feccfb0	Güç ve elektrik maliyeti (tahmini)
+f342a144	Şu anki güç tüketimi
+6c5afbe8	Bugün
+895e4f8f	Bu ay
+fcfbfdb9	Bu ay (tahmin)
+74c2a632	Son 30 gün / o günün değerini görmek için farenizi bir çubuğun üzerine getirin. Birim fiyat ve diğerleri Ayarlar → "Bildirimler ve entegrasyonlar" altında değiştirilebilir
+64cff568	Klasörü aç
+7b9f9495	Olay kayıtları (uçuş kaydedici)
+f98ae273	Acil tam hız, pompa sorunu, duran fan gibi bir durum olduğunda, öncesi ve sonrasındaki 10 dakikanın tüm sıcaklıkları ve devirleri otomatik olarak kaydedilir. Nedeni bulmak veya yapay zekâya danışmak için kullanışlıdır.
+b1ff910c	Özet
+d0f79d07	CSV'yi aç
+0fc2ab3f	Henüz kayıt yok (yani tehlikeli bir şey olmadı).
+1a038335	Sanal sensörler
+a16411bf	Birden çok sensörün en yüksek veya ortalama değerini ya da iki sensörün farkını (örn. sıvı − oda) oluşturup eğrilerde kullanın.
+696b6294	Yeni sanal sensör
+8b00feb4	En yüksek (en sıcak değer)
+4d8caee1	Ortalama
+5658427c	En düşük
+07307e41	Fark (A − B)
+fcf52b91	Oluştur
+bc3cb03d	Şu anda LED'lere gönderilen renk (farklıysa ilki)
+9c4008ce	Bağlantı
+01f82432	Ücretsiz OpenRGB aracılığıyla anakart, bellek, fanlar, LED şeritler ve daha fazlasının renklerini değiştirir. OpenRGB'yi başlatın ve "SDK Server"ı açın (bağlanmazsa OpenRGB'nin başlatma seçeneklerine --server ekleyin).
+8f1d5969	Açıkken OpenRGB'ye bağlanır ve LED'leri aşağıda seçilen efektle renklendirir. Kapalıyken bu uygulama LED'lere hiçbir şey göndermez
+49aac369	OpenRGB'yi kullan
+6305fed9	OpenRGB'nin desteklediği LED'lerle çalışır. ASRock Polychrome gibi bir üreticinin RGB yazılımını aynı anda kullanmayın (kontrol için çekişir ve titrerler)
+c8f39b51	Tüm LED'leri kapatır. Entegrasyon devam eder, böylece cihazlar kendi efektlerine (gökkuşağı gibi) dönmez. Sistem tepsisi menüsündeki "LED efekti"nden de değiştirilebilir
+4c92312b	Işıkları kapat (entegrasyon devam eder)
+956da380	Uyurken veya daha karanlık bir oda için. Ayarlarınız korunur; bu seçeneği kapatınca her şey aynı şekilde yanar
+7f4cedf2	Sunucu
+722099aa	OpenRGB SDK sunucusunun yeri. Aynı bilgisayarda 127.0.0.1 : 6742 yeterlidir
+64c2cd9b	OpenRGB'nin çalıştığı bilgisayarın adresi (bu bilgisayar için 127.0.0.1)
+5b89ecc9	OpenRGB SDK sunucusunun bağlantı noktası (genellikle 6742)
+1ac6b9e1	Bağlantıyı test et
+235b3d31	OpenRGB'ye ulaşılıp ulaşılamadığını kontrol eder ve bulunan cihazları aşağıda listeler (LED renklerini değiştirmez)

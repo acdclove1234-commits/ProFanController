@@ -109,3 +109,103 @@ cd6687b0	Kopieren ▾
 a8a30430	+ Kurve hinzufügen
 29506d39	Diese Kurve löschen
 5d2df974	Bei mehreren Kurven gilt die höchste Anforderung
+4c746c03	Kurvenname
+8e521d8d	Zugeordneter Temperatursensor
+06c32776	Vorlagen
+60e54e25	Leise
+0d4c913e	Ausgewogen
+bec16825	Maximale Kühlung
+7b60cd54	Volle Drehzahl
+3f2721c4	Punkt ziehen zum Verschieben (Umschalt für 5er-Schritte) / Doppelklick auf freie Fläche zum Hinzufügen / Rechtsklick auf Punkt zum Löschen / Strg+Z zum Rückgängigmachen
+88ee66d0	Hysterese
+27871d57	Wenn die Temperatur sinkt, geht die Drehzahl erst zurück, nachdem sie um diesen Wert gefallen ist (verhindert Pendeln)
+cc724aca	Glättung
+58bf73af	Niedriger ignoriert plötzliche Temperatursprünge und bewegt sich ruhiger (EMA-Faktor)
+ed1667bc	Hardware wird initialisiert…
+762ee495	Option
+3b807e37	KI-Kühlberater verwenden (experimentell)
+6fa47fc1	Wenn aktiv, erscheint direkt darunter ein Feld mit KI-Ratschlägen. Die Statistiken Ihrer Aufzeichnungen und Ihre Einstellungen werden zur Analyse an Ollama auf diesem PC übergeben (keine Daten verlassen den PC). Ollama und ein KI-Modell (mehrere GB) müssen separat installiert werden. Während die Antwort entsteht, sind CPU und GPU belastet, daher können die Temperaturen steigen. Einstellungen werden nie geändert
+f406552c	KI-Kühlberater (Ollama)
+cf692ab8	Übergibt die Statistiken der Aufzeichnungen (Minimum, Mittel, Maximum usw.), die Einstellungen, die Diagnose und die Ergebnisse des Kühltests zur Analyse an Ollama auf diesem PC. Es werden keine Daten aus dem PC gesendet.
+662a0e08	Ollama-URL
+00a8f617	Modell
+1576035a	Liste aktualisieren
+ba9c8066	Frage an die KI (optional)
+f1b60e47	Frage (optional)
+f8aac5e1	z. B. Ich möchte leisere Lüfter beim Spielen / Ich möchte die Kurve der Radiatorlüfter überprüfen (funktioniert auch leer)
+59ed94e7	Analysieren
+de37473b	Stopp
+8ba6749e	Anzeigen, was an die KI geht
+15466e37	Letzte 30 Min.
+d5eeddbf	Letzte 2 Std.
+33fe68e5	Alle Aufzeichnungen
+482a6b70	Diagnose starten
+6ff94291	Automatische Diagnose
+8165f824	Findet in den Aufzeichnungen schwankende Drehzahlen, Überkühlung, Unterkühlung, Stillstandsbereiche, Schwebungen und mehr und schlägt Anpassungen vor. Am sinnvollsten direkt nach einem Spiel oder anderer hoher Last
+7fff8113	Gereinigt (ab hier neue Vergleichsbasis)
+f0f25c1b	Nach dem Reinigen von Filtern oder Lüftern drücken. Aufzeichnungen ab jetzt werden zur neuen Vergleichsbasis
+9c1df669	Jetzt prüfen
+267e9ec4	Lüfterverschleiß und Staub prüfen
+2c6b3065	Speichert jede Minute eine Aufzeichnung und vergleicht mit früher: „Ist die Drehzahl bei gleicher Ansteuerung gesunken (Lagerverschleiß, Staub)?“ und „Ist die Temperatur bei gleicher Leistung gestiegen (verstopfter Filter oder Radiator)?“.
+060669c9	Automatische Abstimmung starten
+96cc9d01	Automatische Abstimmung (Kurven automatisch erstellen)
+46ac54ca	Empfohlen
+121a7d95	Senkt unter echter Last die Lüfterdrehzahl schrittweise von 100 % und misst, wo sich die Temperatur einpendelt. Daraus entsteht die leiseste Kurve, die die Zieltemperatur noch hält (ca. 8–15 Minuten; bei Abbruch läuft die normale Steuerung weiter).
+e9947588	Was gekühlt wird
+d881d18f	CPU (eingebaute Last, automatisch)
+e57cca88	GPU (Last durch Spiel oder Benchmark)
+c074a956	Unter Volllast soll die Temperatur nicht darüber steigen
+0c43c305	Abzustimmende Lüfter
+183c9165	Misst mit den gewählten Lüftern auf gleicher Drehzahl. Pumpen sind ausgenommen (sie laufen wie gewohnt).
+3e4a2fef	Messergebnisse
+67633e51	Entstehende Kurve (wenn Sie die Zieltemperatur oben ändern, wird sie ohne neue Messung neu erstellt)
+0e95ff55	Auf dieses Profil anwenden
+6f4b51e9	Profile mit „Leise“ im Namen erhalten Ziel +5 °C, „Leistung“ Ziel −5 °C, alle anderen das Ziel unverändert
+a6de9295	Auf alle Profile anwenden
+35ae4fe6	10 Min.
+c7ad32f7	15 Min.
+89cb8346	Test starten
+cc4ae169	Kühltest
+16e5632b	Misst automatisch: 30 Sekunden Leerlauf → Last auf alle CPU-Kerne → Last beenden und abkühlen. Zeigt, wie gut Ihre aktuellen Lüftereinstellungen kühlen. Die GPU ist nicht enthalten; um sie mitzutesten, während des Tests ein Spiel oder einen Benchmark laufen lassen.
+eb918d75	Wenn Sie bereit sind, drücken Sie „Test starten“. Schließen Sie anspruchsvolle Apps für genaue Ergebnisse.
+9e3aee28	Verlauf während Test und Abstimmung
+339697a1	Bericht speichern
+8a49bfd9	Von der KI analysieren lassen
+1ba434e9	Ergebnis
+d5adfca5	Stromkosten (¥)
+30ece901	Energie (kWh)
+4feccfb0	Leistung und Stromkosten (Schätzung)
+f342a144	Aktuelle Leistungsaufnahme
+6c5afbe8	Heute
+895e4f8f	Diesen Monat
+fcfbfdb9	Diesen Monat (Prognose)
+74c2a632	Letzte 30 Tage / mit der Maus über einen Balken zeigen, um den Tageswert zu sehen. Strompreis und mehr unter Einstellungen → „Benachrichtigungen & Integrationen“
+64cff568	Ordner öffnen
+7b9f9495	Vorfallaufzeichnungen (Flugschreiber)
+f98ae273	Bei Notfall-Volllast, Pumpenproblemen, stehenden Lüftern und Ähnlichem werden alle Temperaturen und Drehzahlen von 10 Minuten davor und danach automatisch gespeichert. Hilfreich, um die Ursache zu finden oder die KI zu fragen.
+b1ff910c	Übersicht
+d0f79d07	CSV öffnen
+0fc2ab3f	Noch keine Aufzeichnungen (es ist also nichts Gefährliches passiert).
+1a038335	Virtuelle Sensoren
+a16411bf	Bilden Sie Maximum oder Mittelwert mehrerer Sensoren oder die Differenz zweier Sensoren (z. B. Kühlmittel − Raum) und nutzen Sie sie in Kurven.
+696b6294	Neuer virtueller Sensor
+8b00feb4	Maximum (höchste Temperatur)
+4d8caee1	Mittelwert
+5658427c	Minimum
+07307e41	Differenz (A − B)
+fcf52b91	Erstellen
+bc3cb03d	Farbe, die gerade an die LEDs geht (bei unterschiedlichen die erste)
+9c4008ce	Verbindung
+01f82432	Ändert die Farben von Mainboard, Arbeitsspeicher, Lüftern, LED-Streifen und mehr über das kostenlose OpenRGB. Starten Sie OpenRGB und schalten Sie den „SDK Server“ ein (falls keine Verbindung zustande kommt, --server zu den Startoptionen von OpenRGB hinzufügen).
+8f1d5969	Wenn aktiv, verbindet sich die App mit OpenRGB und färbt die LEDs mit dem unten gewählten Effekt. Wenn aus, sendet diese App nichts an die LEDs
+49aac369	OpenRGB verwenden
+6305fed9	Funktioniert mit LEDs, die OpenRGB unterstützt. Verwenden Sie nicht gleichzeitig RGB-Software eines Herstellers wie ASRock Polychrome (sie streiten sich und flackern)
+c8f39b51	Schaltet alle LEDs aus. Die Integration läuft weiter, daher fallen Geräte nicht auf ihren eigenen Effekt (z. B. Regenbogen) zurück. Auch im Taskleistenmenü „LED-Effekt“ umschaltbar
+4c92312b	Licht aus (Integration läuft weiter)
+956da380	Zum Schlafen oder für einen dunkleren Raum. Die Einstellungen bleiben erhalten; schalten Sie es wieder aus, leuchtet alles wie zuvor
+7f4cedf2	Server
+722099aa	Wo der SDK-Server von OpenRGB läuft. Auf demselben PC passt 127.0.0.1 : 6742
+64c2cd9b	Adresse des PCs, auf dem OpenRGB läuft (127.0.0.1 für diesen PC)
+5b89ecc9	Port des SDK-Servers von OpenRGB (meist 6742)
+1ac6b9e1	Verbindung testen
+235b3d31	Prüft, ob OpenRGB erreichbar ist, und listet die gefundenen Geräte unten auf (ändert keine LED-Farben)

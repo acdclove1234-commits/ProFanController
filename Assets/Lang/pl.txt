@@ -109,3 +109,103 @@ cd6687b0	Kopiuj ▾
 a8a30430	+ Dodaj krzywą
 29506d39	Usuń tę krzywą
 5d2df974	Przy kilku krzywych wygrywa najwyższe zapotrzebowanie
+4c746c03	Nazwa krzywej
+8e521d8d	Powiązany czujnik temperatury
+06c32776	Ustawienia wstępne
+60e54e25	Cichy
+0d4c913e	Zrównoważony
+bec16825	Maks. chłodzenie
+7b60cd54	Pełna prędkość
+3f2721c4	Przeciągnij punkt, aby go przesunąć (Shift — co 5) / kliknij dwukrotnie puste miejsce, aby dodać / kliknij punkt prawym przyciskiem, aby usunąć / Ctrl+Z, aby cofnąć
+88ee66d0	Histereza
+27871d57	Gdy temperatura spada, obroty maleją dopiero po spadku o tę wartość (zapobiega falowaniu)
+cc724aca	Wygładzanie
+58bf73af	Niżej = ignorowanie nagłych zmian temperatury i spokojniejsza praca (współczynnik EMA)
+ed1667bc	Inicjalizacja sprzętu…
+762ee495	Opcja
+3b807e37	Używaj doradcy chłodzenia AI (eksperymentalne)
+6fa47fc1	Po włączeniu tuż poniżej pojawia się panel porad AI. Statystyki zapisów i ustawienia są przekazywane do analizy Ollamie działającej na tym komputerze (żadne dane go nie opuszczają). Ollamę i model AI (kilka GB) trzeba zainstalować osobno. Podczas pisania odpowiedzi CPU i GPU są obciążone, więc temperatury mogą wzrosnąć. Ustawienia nigdy nie są zmieniane
+f406552c	Doradca chłodzenia AI (Ollama)
+cf692ab8	Przekazuje statystyki zapisów (minimum, średnia, maksimum itd.), ustawienia, diagnostykę i wyniki testu chłodzenia do analizy Ollamie działającej na tym komputerze. Żadne dane nie są wysyłane poza komputer.
+662a0e08	URL Ollamy
+00a8f617	Model
+1576035a	Odśwież listę
+ba9c8066	O co zapytać AI (opcjonalnie)
+f1b60e47	Pytanie (opcjonalnie)
+f8aac5e1	np. chcę cichszych wentylatorów w grach / chcę przejrzeć krzywą wentylatorów chłodnicy (działa też bez pytania)
+59ed94e7	Analizuj
+de37473b	Zatrzymaj
+8ba6749e	Zobacz, co trafi do AI
+15466e37	Ostatnie 30 min
+d5eeddbf	Ostatnie 2 godziny
+33fe68e5	Wszystkie zapisy
+482a6b70	Diagnozuj
+6ff94291	Automatyczna diagnoza
+8165f824	Znajduje w zapisach niestabilne obroty, przechłodzenie, niedochłodzenie, strefy zatrzymania, dudnienia i inne problemy oraz proponuje zmiany. Najlepiej uruchomić zaraz po grze lub innym dużym obciążeniu
+7fff8113	Wyczyściłem (od teraz nowy punkt odniesienia)
+f0f25c1b	Naciśnij po wyczyszczeniu filtrów lub wentylatorów. Zapisy od tej chwili staną się nowym punktem odniesienia
+9c1df669	Sprawdź teraz
+267e9ec4	Kontrola zużycia i kurzu wentylatorów
+2c6b3065	Zapisuje dane co minutę i porównuje z przeszłością: „czy obroty spadły przy tym samym wysterowaniu (zużycie łożyska, kurz)?” i „czy temperatura wzrosła przy tej samej mocy (zatkany filtr lub chłodnica)?”.
+060669c9	Uruchom automatyczne strojenie
+96cc9d01	Automatyczne strojenie (krzywe tworzone same)
+46ac54ca	Zalecane
+121a7d95	Pod rzeczywistym obciążeniem stopniowo zmniejsza obroty wentylatorów od 100% i mierzy, gdzie temperatura się ustala. Na tej podstawie tworzy najcichszą krzywą, która nadal utrzymuje temperaturę docelową (ok. 8–15 minut; po przerwaniu wraca zwykłe sterowanie).
+e9947588	Co chłodzić
+d881d18f	CPU (wbudowane obciążenie, automatycznie)
+e57cca88	GPU (obciążenie grą lub benchmarkiem)
+c074a956	Przy pełnym obciążeniu nie pozwala temperaturze przekroczyć tej wartości
+0c43c305	Strojone wentylatory
+183c9165	Mierzy przy jednakowych obrotach wybranych wentylatorów. Pompy są pomijane (działają normalnie).
+3e4a2fef	Wyniki pomiarów
+67633e51	Wynikowa krzywa (zmiana temperatury docelowej powyżej przelicza ją bez ponownego pomiaru)
+0e95ff55	Zastosuj do tego profilu
+6f4b51e9	Profile z „Cichy” w nazwie dostają cel +5°C, z „Wydajność” cel −5°C, pozostałe cel bez zmian
+a6de9295	Zastosuj do wszystkich profili
+35ae4fe6	10 min
+c7ad32f7	15 min
+89cb8346	Rozpocznij test
+cc4ae169	Test chłodzenia
+16e5632b	Mierzy automatycznie: 30 sekund spoczynku → obciążenie wszystkich rdzeni CPU → koniec obciążenia i schładzanie. Pokazuje, jak dobrze chłodzą obecne ustawienia. GPU nie jest uwzględniony; aby go sprawdzić, uruchom podczas testu grę lub benchmark.
+eb918d75	Gdy będziesz gotowy, naciśnij „Rozpocznij test”. Zamknij ciężkie aplikacje, aby wyniki były dokładne.
+9e3aee28	Przebieg podczas testu i strojenia
+339697a1	Zapisz raport
+8a49bfd9	Daj AI do analizy
+1ba434e9	Wynik
+d5adfca5	Koszt energii (¥)
+30ece901	Energia (kWh)
+4feccfb0	Moc i koszt energii (szacunkowo)
+f342a144	Obecny pobór mocy
+6c5afbe8	Dziś
+895e4f8f	W tym miesiącu
+fcfbfdb9	W tym miesiącu (prognoza)
+74c2a632	Ostatnie 30 dni / najedź na słupek, aby zobaczyć wartość z danego dnia. Cenę jednostkową i inne zmienisz w Ustawienia → „Powiadomienia i integracje”
+64cff568	Otwórz folder
+7b9f9495	Zapisy zdarzeń (czarna skrzynka)
+f98ae273	Gdy wystąpi awaryjna pełna prędkość, problem z pompą, zatrzymany wentylator itp., wszystkie temperatury i obroty z 10 minut przed i po są zapisywane automatycznie. Przydatne do szukania przyczyny lub pytania AI.
+b1ff910c	Podsumowanie
+d0f79d07	Otwórz CSV
+0fc2ab3f	Brak zapisów (czyli nic niebezpiecznego się nie wydarzyło).
+1a038335	Czujniki wirtualne
+a16411bf	Utwórz maksimum lub średnią kilku czujników albo różnicę dwóch (np. płyn − pokój) i używaj ich w krzywych.
+696b6294	Nowy czujnik wirtualny
+8b00feb4	Maksimum (najwyższa temperatura)
+4d8caee1	Średnia
+5658427c	Minimum
+07307e41	Różnica (A − B)
+fcf52b91	Utwórz
+bc3cb03d	Kolor wysyłany teraz do LED-ów (pierwszy, jeśli się różnią)
+9c4008ce	Połączenie
+01f82432	Zmienia kolory płyty głównej, pamięci, wentylatorów, taśm LED i innych przez darmowy OpenRGB. Uruchom OpenRGB i włącz „SDK Server” (jeśli nie łączy, dodaj --server do opcji uruchamiania OpenRGB).
+8f1d5969	Po włączeniu łączy się z OpenRGB i koloruje LED-y efektem wybranym poniżej. Po wyłączeniu aplikacja nic nie wysyła do LED-ów
+49aac369	Używaj OpenRGB
+6305fed9	Działa z LED-ami obsługiwanymi przez OpenRGB. Nie używaj jednocześnie oprogramowania RGB producenta, np. ASRock Polychrome (przejmują sterowanie i migoczą)
+c8f39b51	Wyłącza wszystkie LED-y. Integracja działa dalej, więc urządzenia nie wracają do własnego efektu (np. tęczy). Można też przełączać z menu w zasobniku „Efekt LED”
+4c92312b	Zgaś światła (integracja działa dalej)
+956da380	Do spania lub ciemniejszego pokoju. Ustawienia zostają, a po wyłączeniu opcji wszystko świeci jak wcześniej
+7f4cedf2	Serwer
+722099aa	Gdzie działa serwer SDK OpenRGB. Na tym samym komputerze wystarczy 127.0.0.1 : 6742
+64c2cd9b	Adres komputera z OpenRGB (127.0.0.1 dla tego komputera)
+5b89ecc9	Port serwera SDK OpenRGB (zwykle 6742)
+1ac6b9e1	Testuj połączenie
+235b3d31	Sprawdza, czy OpenRGB odpowiada, i pokazuje poniżej znalezione urządzenia (nie zmienia kolorów LED)

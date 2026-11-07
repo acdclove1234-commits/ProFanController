@@ -109,3 +109,103 @@ cd6687b0	Copiar ▾
 a8a30430	+ Adicionar curva
 29506d39	Excluir esta curva
 5d2df974	Com várias curvas, vale a que pede mais
+4c746c03	Nome da curva
+8e521d8d	Sensor de temperatura associado
+06c32776	Predefinições
+60e54e25	Silencioso
+0d4c913e	Equilibrado
+bec16825	Máximo resfriamento
+7b60cd54	Velocidade máxima
+3f2721c4	Arraste um ponto para movê-lo (Shift para passos de 5) / clique duas vezes num espaço vazio para adicionar / clique com o botão direito num ponto para excluir / Ctrl+Z para desfazer
+88ee66d0	Histerese
+27871d57	Quando a temperatura cai, a rotação só diminui depois de cair esta diferença (evita oscilação)
+cc724aca	Suavização
+58bf73af	Mais baixo ignora mudanças bruscas de temperatura e se move com calma (fator EMA)
+ed1667bc	Inicializando o hardware…
+762ee495	Opção
+3b807e37	Usar o consultor de resfriamento com IA (experimental)
+6fa47fc1	Quando ligado, aparece logo abaixo um painel com conselhos da IA. As estatísticas dos registros e suas configurações são enviadas para análise ao Ollama rodando neste PC (nenhum dado sai do PC). O Ollama e um modelo de IA (vários GB) precisam ser instalados à parte. Enquanto a resposta é escrita, a CPU e a GPU ficam sob carga, então as temperaturas podem subir. Nunca altera suas configurações
+f406552c	Consultor de resfriamento com IA (Ollama)
+cf692ab8	Envia as estatísticas dos registros (mínimo, média, máximo etc.), as configurações, o diagnóstico e os resultados do teste de resfriamento ao Ollama rodando neste PC para análise. Nenhum dado é enviado para fora do PC.
+662a0e08	URL do Ollama
+00a8f617	Modelo
+1576035a	Atualizar lista
+ba9c8066	O que perguntar à IA (opcional)
+f1b60e47	Pergunta (opcional)
+f8aac5e1	ex.: quero ventoinhas mais silenciosas nos jogos / quero revisar a curva das ventoinhas do radiador (funciona também em branco)
+59ed94e7	Analisar
+de37473b	Parar
+8ba6749e	Ver o que é enviado à IA
+15466e37	Últimos 30 min
+d5eeddbf	Últimas 2 horas
+33fe68e5	Todos os registros
+482a6b70	Diagnosticar
+6ff94291	Diagnóstico automático
+8165f824	Encontra nos registros rotações instáveis, resfriamento demais ou de menos, zonas de parada, batimentos e mais, e sugere ajustes. Mais útil logo depois de um jogo ou outra carga pesada
+7fff8113	Limpei (usar daqui como nova referência)
+f0f25c1b	Pressione depois de limpar filtros ou ventoinhas. Os registros a partir de agora passam a ser a nova referência de comparação
+9c1df669	Verificar agora
+267e9ec4	Desgaste e poeira das ventoinhas
+2c6b3065	Salva um registro a cada minuto e compara com o passado: "a rotação caiu com o mesmo comando (desgaste do rolamento, poeira)?" e "a temperatura subiu com a mesma potência (filtro ou radiador entupido)?".
+060669c9	Iniciar ajuste automático
+96cc9d01	Ajuste automático (criar curvas automaticamente)
+46ac54ca	Recomendado
+121a7d95	Sob carga real, reduz a rotação das ventoinhas aos poucos a partir de 100% e mede onde a temperatura se estabiliza. Com isso cria a curva mais silenciosa que ainda mantém a temperatura-alvo (cerca de 8–15 minutos; se parar no meio, o controle normal volta).
+e9947588	O que resfriar
+d881d18f	CPU (carga embutida, automático)
+e57cca88	GPU (carga com jogo ou benchmark)
+c074a956	Sob carga máxima, evita que a temperatura passe deste valor
+0c43c305	Ventoinhas a ajustar
+183c9165	Mede com as ventoinhas escolhidas na mesma rotação. As bombas ficam de fora (funcionam como sempre).
+3e4a2fef	Medições
+67633e51	Curva resultante (mudar a temperatura-alvo acima recria a curva sem medir de novo)
+0e95ff55	Aplicar a este perfil
+6f4b51e9	Perfis com "Silencioso" no nome usam alvo +5 °C, "Desempenho" alvo −5 °C e os demais o alvo como está
+a6de9295	Aplicar a todos os perfis
+35ae4fe6	10 min
+c7ad32f7	15 min
+89cb8346	Iniciar teste
+cc4ae169	Teste de resfriamento
+16e5632b	Mede automaticamente: repouso de 30 segundos → carga em todos os núcleos da CPU → fim da carga e resfriamento. Mostra quanto suas configurações atuais resfriam. A GPU não está incluída; para testá-la também, rode um jogo ou benchmark durante o teste.
+eb918d75	Quando estiver pronto, pressione "Iniciar teste". Feche apps pesados para medir com precisão.
+9e3aee28	Evolução durante o teste e o ajuste
+339697a1	Salvar relatório
+8a49bfd9	Pedir análise à IA
+1ba434e9	Resultado
+d5adfca5	Custo de energia (¥)
+30ece901	Energia (kWh)
+4feccfb0	Potência e custo de energia (estimativa)
+f342a144	Consumo atual
+6c5afbe8	Hoje
+895e4f8f	Este mês
+fcfbfdb9	Este mês (projeção)
+74c2a632	Últimos 30 dias / passe o mouse numa barra para ver aquele dia. O preço unitário e mais podem ser alterados em Configurações → "Notificações e integrações"
+64cff568	Abrir pasta
+7b9f9495	Registros de incidentes (caixa-preta)
+f98ae273	Quando ocorre velocidade máxima de emergência, problema na bomba, ventoinha parada ou algo parecido, todas as temperaturas e rotações dos 10 minutos antes e depois são salvas automaticamente. Útil para achar a causa ou perguntar à IA.
+b1ff910c	Resumo
+d0f79d07	Abrir CSV
+0fc2ab3f	Nenhum registro ainda (ou seja, nada perigoso aconteceu).
+1a038335	Sensores virtuais
+a16411bf	Crie o máximo ou a média de vários sensores, ou a diferença entre dois (ex.: líquido − ambiente), e use nas curvas.
+696b6294	Novo sensor virtual
+8b00feb4	Máximo (a temperatura mais alta)
+4d8caee1	Média
+5658427c	Mínimo
+07307e41	Diferença (A − B)
+fcf52b91	Criar
+bc3cb03d	Cor enviada aos LEDs agora (a primeira, se forem diferentes)
+9c4008ce	Conexão
+01f82432	Muda as cores da placa-mãe, memória, ventoinhas, fitas de LED e mais por meio do OpenRGB gratuito. Abra o OpenRGB e ative o "SDK Server" (se não conectar, adicione --server às opções de inicialização do OpenRGB).
+8f1d5969	Ligado, conecta ao OpenRGB e colore os LEDs com o efeito escolhido abaixo. Desligado, este app não envia nada aos LEDs
+49aac369	Usar o OpenRGB
+6305fed9	Funciona com os LEDs que o OpenRGB suporta. Não use ao mesmo tempo um software RGB de fabricante como o ASRock Polychrome (eles disputam o controle e piscam)
+c8f39b51	Apaga todos os LEDs. A integração continua, então os dispositivos não voltam ao próprio efeito (como o arco-íris). Também dá para alternar pelo menu da bandeja "Efeito de LED"
+4c92312b	Apagar luzes (manter a integração)
+956da380	Para dormir ou deixar o ambiente mais escuro. Suas configurações ficam salvas e, ao desligar a opção, tudo acende como antes
+7f4cedf2	Servidor
+722099aa	Onde está o servidor SDK do OpenRGB. No mesmo PC, 127.0.0.1 : 6742 está ótimo
+64c2cd9b	Endereço do PC que roda o OpenRGB (127.0.0.1 para este PC)
+5b89ecc9	Porta do servidor SDK do OpenRGB (normalmente 6742)
+1ac6b9e1	Testar conexão
+235b3d31	Verifica se o OpenRGB responde e lista abaixo os dispositivos encontrados (não muda as cores dos LEDs)

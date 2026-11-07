@@ -109,3 +109,103 @@ cd6687b0	Sao chép ▾
 a8a30430	+ Thêm đường cong
 29506d39	Xóa đường cong này
 5d2df974	Khi có nhiều đường cong, mức yêu cầu cao nhất được dùng
+4c746c03	Tên đường cong
+8e521d8d	Cảm biến nhiệt độ liên kết
+06c32776	Cấu hình sẵn
+60e54e25	Yên tĩnh
+0d4c913e	Cân bằng
+bec16825	Làm mát tối đa
+7b60cd54	Tốc độ tối đa
+3f2721c4	Kéo điểm để di chuyển (giữ Shift để bước 5) / nhấp đúp vào chỗ trống để thêm / nhấp phải vào điểm để xóa / Ctrl+Z để hoàn tác
+88ee66d0	Độ trễ (hysteresis)
+27871d57	Khi nhiệt độ giảm, tốc độ chỉ giảm sau khi nhiệt độ đã xuống thêm chừng này (tránh dao động)
+cc724aca	Làm mượt
+58bf73af	Càng nhỏ càng bỏ qua thay đổi nhiệt độ đột ngột và di chuyển êm hơn (hệ số EMA)
+ed1667bc	Đang khởi tạo phần cứng…
+762ee495	Tùy chọn
+3b807e37	Dùng trợ lý làm mát AI (thử nghiệm)
+6fa47fc1	Khi bật, ngay bên dưới sẽ có khung lời khuyên của AI. Số liệu thống kê từ bản ghi và cài đặt của bạn được gửi cho Ollama chạy trên PC này để phân tích (không có dữ liệu nào rời khỏi PC). Cần cài riêng Ollama và mô hình AI (vài GB). Trong lúc soạn câu trả lời, CPU và GPU bị tải nên nhiệt độ có thể tăng. Không bao giờ thay đổi cài đặt
+f406552c	Trợ lý làm mát AI (Ollama)
+cf692ab8	Gửi số liệu thống kê bản ghi (thấp nhất, trung bình, cao nhất…), cài đặt, kết quả chẩn đoán và kiểm tra làm mát cho Ollama chạy trên PC này để phân tích. Không có dữ liệu nào được gửi ra ngoài PC.
+662a0e08	URL của Ollama
+00a8f617	Mô hình
+1576035a	Làm mới danh sách
+ba9c8066	Điều muốn hỏi AI (tùy chọn)
+f1b60e47	Câu hỏi (tùy chọn)
+f8aac5e1	VD: muốn quạt êm hơn khi chơi game / muốn xem lại đường cong quạt két tản nhiệt (để trống vẫn phân tích được)
+59ed94e7	Phân tích
+de37473b	Dừng
+8ba6749e	Xem nội dung gửi cho AI
+15466e37	30 phút gần nhất
+d5eeddbf	2 giờ gần nhất
+33fe68e5	Toàn bộ bản ghi
+482a6b70	Chẩn đoán
+6ff94291	Chẩn đoán tự động
+8165f824	Tìm trong bản ghi các vấn đề như tốc độ dao động, làm mát quá mức, làm mát không đủ, vùng dừng quạt, tiếng ù do phách…, rồi đề xuất điều chỉnh. Hiệu quả nhất khi chạy ngay sau khi chơi game hoặc tải nặng
+7fff8113	Đã vệ sinh (lấy mốc mới từ đây)
+f0f25c1b	Hãy nhấn sau khi vệ sinh lưới lọc hoặc quạt. Các bản ghi từ giờ sẽ là mốc so sánh mới
+9c1df669	Kiểm tra ngay
+267e9ec4	Kiểm tra hao mòn và bụi của quạt
+2c6b3065	Lưu bản ghi mỗi phút và so sánh với trước đây: "cùng lệnh tốc độ mà vòng quay có giảm không (ổ trục hao mòn, bụi)" và "cùng công suất mà nhiệt độ có tăng không (lưới lọc hoặc két tản nhiệt bị tắc)".
+060669c9	Bắt đầu tự tinh chỉnh
+96cc9d01	Tự tinh chỉnh (tự tạo đường cong)
+46ac54ca	Khuyên dùng
+121a7d95	Trong lúc tải thực, giảm dần tốc độ quạt từ 100% và đo điểm nhiệt độ ổn định. Từ đó tạo đường cong êm nhất vẫn giữ được nhiệt độ mục tiêu (khoảng 8–15 phút; dừng giữa chừng thì điều khiển thường lệ sẽ tiếp tục).
+e9947588	Đối tượng làm mát
+d881d18f	CPU (tải tích hợp, tự động)
+e57cca88	GPU (tạo tải bằng game hoặc benchmark)
+c074a956	Khi tải tối đa, không để nhiệt độ vượt quá mức này
+0c43c305	Quạt cần tinh chỉnh
+183c9165	Đo với các quạt đã chọn chạy cùng tốc độ. Bơm không tham gia (vẫn chạy như thường).
+3e4a2fef	Kết quả đo
+67633e51	Đường cong được tạo (thay đổi nhiệt độ mục tiêu ở trên sẽ tạo lại mà không cần đo lại)
+0e95ff55	Áp dụng cho cấu hình này
+6f4b51e9	Cấu hình có tên chứa "Yên tĩnh" dùng mục tiêu +5°C, "Hiệu năng" dùng mục tiêu −5°C, các cấu hình khác giữ nguyên mục tiêu
+a6de9295	Áp dụng cho mọi cấu hình
+35ae4fe6	10 phút
+c7ad32f7	15 phút
+89cb8346	Bắt đầu kiểm tra
+cc4ae169	Kiểm tra làm mát
+16e5632b	Tự động đo theo thứ tự: nghỉ 30 giây → tải toàn bộ nhân CPU → ngừng tải và làm nguội. Cho biết cài đặt quạt hiện tại làm mát tốt đến đâu. Không bao gồm GPU; muốn thử cả GPU, hãy chạy game hoặc benchmark trong lúc kiểm tra.
+eb918d75	Khi đã sẵn sàng, nhấn "Bắt đầu kiểm tra". Đóng các ứng dụng nặng để đo chính xác.
+9e3aee28	Diễn biến trong lúc kiểm tra và tinh chỉnh
+339697a1	Lưu báo cáo
+8a49bfd9	Nhờ AI phân tích
+1ba434e9	Kết quả
+d5adfca5	Tiền điện (¥)
+30ece901	Điện năng (kWh)
+4feccfb0	Công suất và tiền điện (ước tính)
+f342a144	Công suất tiêu thụ hiện tại
+6c5afbe8	Hôm nay
+895e4f8f	Tháng này
+fcfbfdb9	Dự kiến tháng này
+74c2a632	30 ngày gần nhất / di chuột lên cột để xem giá trị ngày đó. Đơn giá và các mục khác đổi trong Cài đặt → "Thông báo & liên kết"
+64cff568	Mở thư mục
+7b9f9495	Bản ghi sự cố (hộp đen)
+f98ae273	Khi xảy ra tốc độ tối đa khẩn cấp, sự cố bơm, quạt dừng…, toàn bộ nhiệt độ và tốc độ quay trong 10 phút trước và sau sẽ được tự động lưu lại. Hữu ích khi tìm nguyên nhân hoặc hỏi AI.
+b1ff910c	Tóm tắt
+d0f79d07	Mở CSV
+0fc2ab3f	Chưa có bản ghi nào (nghĩa là chưa từng có tình trạng nguy hiểm).
+1a038335	Cảm biến ảo
+a16411bf	Tạo giá trị lớn nhất, trung bình của nhiều cảm biến hoặc hiệu của hai cảm biến (VD: nhiệt độ nước − nhiệt độ phòng) để dùng cho đường cong.
+696b6294	Cảm biến ảo mới
+8b00feb4	Lớn nhất (nhiệt độ cao nhất)
+4d8caee1	Trung bình
+5658427c	Nhỏ nhất
+07307e41	Hiệu (A − B)
+fcf52b91	Tạo
+bc3cb03d	Màu đang gửi tới LED (màu đầu tiên nếu các LED khác nhau)
+9c4008ce	Kết nối
+01f82432	Đổi màu bo mạch chủ, RAM, quạt, dải LED… thông qua phần mềm miễn phí OpenRGB. Hãy mở OpenRGB và bật "SDK Server" (nếu không kết nối được, thêm --server vào tùy chọn khởi động của OpenRGB).
+8f1d5969	Khi bật, ứng dụng kết nối với OpenRGB và đổi màu LED theo hiệu ứng chọn bên dưới. Khi tắt, ứng dụng không gửi gì tới LED
+49aac369	Liên kết với OpenRGB
+6305fed9	Áp dụng cho các LED mà OpenRGB hỗ trợ. Không dùng cùng lúc phần mềm RGB của hãng như ASRock Polychrome (chúng tranh quyền điều khiển và nhấp nháy)
+c8f39b51	Tắt toàn bộ LED. Liên kết vẫn tiếp tục nên thiết bị không quay về hiệu ứng riêng (như cầu vồng). Cũng có thể đổi từ menu khay hệ thống "Hiệu ứng LED"
+4c92312b	Tắt đèn (vẫn giữ liên kết)
+956da380	Khi đi ngủ hoặc muốn phòng tối hơn. Cài đặt được giữ nguyên, tắt tùy chọn này thì đèn sáng lại như cũ
+7f4cedf2	Máy chủ
+722099aa	Vị trí máy chủ SDK của OpenRGB. Trên cùng PC, giữ 127.0.0.1 : 6742 là được
+64c2cd9b	Địa chỉ PC đang chạy OpenRGB (127.0.0.1 nếu là PC này)
+5b89ecc9	Cổng máy chủ SDK của OpenRGB (thường là 6742)
+1ac6b9e1	Kiểm tra kết nối
+235b3d31	Kiểm tra xem có kết nối được OpenRGB không và liệt kê thiết bị tìm thấy ở bên dưới (không đổi màu LED)

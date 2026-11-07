@@ -109,3 +109,103 @@ cd6687b0	Salin ▾
 a8a30430	+ Tambah kurva
 29506d39	Hapus kurva ini
 5d2df974	Jika ada beberapa kurva, permintaan tertinggi yang dipakai
+4c746c03	Nama kurva
+8e521d8d	Sensor suhu yang dikaitkan
+06c32776	Preset
+60e54e25	Senyap
+0d4c913e	Seimbang
+bec16825	Pendinginan maksimum
+7b60cd54	Kecepatan penuh
+3f2721c4	Seret titik untuk memindahkan (Shift untuk kelipatan 5) / klik dua kali di area kosong untuk menambah / klik kanan titik untuk menghapus / Ctrl+Z untuk mengurungkan
+88ee66d0	Histeresis
+27871d57	Saat suhu turun, putaran baru turun setelah suhu turun sebanyak ini (mencegah putaran naik-turun)
+cc724aca	Penghalusan
+58bf73af	Makin rendah makin mengabaikan perubahan suhu mendadak dan bergerak tenang (koefisien EMA)
+ed1667bc	Menginisialisasi perangkat keras…
+762ee495	Opsi
+3b807e37	Gunakan penasihat pendinginan AI (eksperimental)
+6fa47fc1	Jika diaktifkan, panel saran AI muncul tepat di bawah. Statistik rekaman dan pengaturan Anda diserahkan ke Ollama yang berjalan di PC ini untuk dianalisis (tidak ada data yang keluar dari PC). Ollama dan model AI (beberapa GB) harus dipasang terpisah. Saat menulis jawaban, CPU dan GPU terbebani sehingga suhu bisa naik. Pengaturan tidak pernah diubah
+f406552c	Penasihat pendinginan AI (Ollama)
+cf692ab8	Menyerahkan statistik rekaman (minimum, rata-rata, maksimum, dll.), pengaturan, diagnostik, dan hasil uji pendinginan ke Ollama yang berjalan di PC ini untuk dianalisis. Tidak ada data yang dikirim ke luar PC.
+662a0e08	URL Ollama
+00a8f617	Model
+1576035a	Perbarui daftar
+ba9c8066	Pertanyaan untuk AI (opsional)
+f1b60e47	Pertanyaan (opsional)
+f8aac5e1	mis. ingin kipas lebih senyap saat bermain gim / ingin meninjau kurva kipas radiator (tetap bisa dianalisis jika kosong)
+59ed94e7	Analisis
+de37473b	Hentikan
+8ba6749e	Lihat yang dikirim ke AI
+15466e37	30 menit terakhir
+d5eeddbf	2 jam terakhir
+33fe68e5	Semua rekaman
+482a6b70	Diagnosis
+6ff94291	Diagnosis otomatis
+8165f824	Menemukan putaran yang naik-turun, pendinginan berlebih atau kurang, zona berhenti, dengung interferensi, dan lainnya dari rekaman, lalu menyarankan penyesuaian. Paling berguna setelah bermain gim atau beban berat
+7fff8113	Sudah dibersihkan (jadikan acuan baru mulai sekarang)
+f0f25c1b	Tekan setelah membersihkan filter atau kipas. Rekaman mulai sekarang menjadi acuan baru untuk perbandingan
+9c1df669	Periksa sekarang
+267e9ec4	Pemeriksaan keausan dan debu kipas
+2c6b3065	Menyimpan rekaman setiap menit dan membandingkannya dengan masa lalu: "apakah putaran turun untuk perintah yang sama (bantalan aus, debu)?" dan "apakah suhu naik untuk daya yang sama (filter atau radiator tersumbat)?".
+060669c9	Mulai penyetelan otomatis
+96cc9d01	Penyetelan otomatis (buat kurva otomatis)
+46ac54ca	Disarankan
+121a7d95	Di bawah beban nyata, menurunkan putaran kipas sedikit demi sedikit dari 100% dan mengukur di mana suhu stabil. Dari situ dibuat kurva tersenyap yang masih menjaga suhu target (sekitar 8–15 menit; jika dihentikan di tengah, kendali normal berlanjut).
+e9947588	Yang didinginkan
+d881d18f	CPU (beban bawaan, otomatis)
+e57cca88	GPU (beban dengan gim atau benchmark)
+c074a956	Saat beban penuh, menjaga agar suhu tidak melebihi nilai ini
+0c43c305	Kipas yang disetel
+183c9165	Mengukur dengan kipas yang dipilih pada putaran yang sama. Pompa tidak termasuk (berjalan seperti biasa).
+3e4a2fef	Hasil pengukuran
+67633e51	Kurva yang dihasilkan (mengubah suhu target di atas akan membuatnya ulang tanpa mengukur lagi)
+0e95ff55	Terapkan ke profil ini
+6f4b51e9	Profil yang namanya mengandung "Senyap" memakai target +5°C, "Performa" target −5°C, yang lain target apa adanya
+a6de9295	Terapkan ke semua profil
+35ae4fe6	10 mnt
+c7ad32f7	15 mnt
+89cb8346	Mulai uji
+cc4ae169	Uji pendinginan
+16e5632b	Mengukur otomatis: diam 30 detik → beban di semua inti CPU → hentikan beban dan dinginkan. Menunjukkan seberapa baik pengaturan kipas saat ini mendinginkan. GPU tidak termasuk; untuk menguji GPU juga, jalankan gim atau benchmark selama pengujian.
+eb918d75	Jika sudah siap, tekan "Mulai uji". Tutup aplikasi berat agar hasilnya akurat.
+9e3aee28	Perkembangan selama uji dan penyetelan
+339697a1	Simpan laporan
+8a49bfd9	Minta AI menganalisis
+1ba434e9	Hasil
+d5adfca5	Biaya listrik (¥)
+30ece901	Energi (kWh)
+4feccfb0	Daya dan biaya listrik (perkiraan)
+f342a144	Konsumsi daya saat ini
+6c5afbe8	Hari ini
+895e4f8f	Bulan ini
+fcfbfdb9	Perkiraan bulan ini
+74c2a632	30 hari terakhir / arahkan kursor ke batang untuk melihat nilai hari itu. Harga satuan dan lainnya bisa diubah di Pengaturan → "Notifikasi & integrasi"
+64cff568	Buka folder
+7b9f9495	Rekaman insiden (perekam penerbangan)
+f98ae273	Saat terjadi kecepatan penuh darurat, masalah pompa, kipas berhenti, dan sejenisnya, semua suhu dan putaran dari 10 menit sebelum dan sesudahnya disimpan otomatis. Berguna untuk mencari penyebab atau bertanya ke AI.
+b1ff910c	Ringkasan
+d0f79d07	Buka CSV
+0fc2ab3f	Belum ada rekaman (artinya belum pernah terjadi kondisi berbahaya).
+1a038335	Sensor virtual
+a16411bf	Buat nilai maksimum atau rata-rata dari beberapa sensor, atau selisih dua sensor (mis. cairan − ruangan), lalu gunakan di kurva.
+696b6294	Sensor virtual baru
+8b00feb4	Maksimum (suhu tertinggi)
+4d8caee1	Rata-rata
+5658427c	Minimum
+07307e41	Selisih (A − B)
+fcf52b91	Buat
+bc3cb03d	Warna yang sedang dikirim ke LED (yang pertama jika berbeda-beda)
+9c4008ce	Koneksi
+01f82432	Mengubah warna motherboard, memori, kipas, strip LED, dan lainnya melalui OpenRGB yang gratis. Jalankan OpenRGB dan aktifkan "SDK Server" (jika tidak tersambung, tambahkan --server ke opsi mulai OpenRGB).
+8f1d5969	Jika aktif, tersambung ke OpenRGB dan mewarnai LED dengan efek yang dipilih di bawah. Jika nonaktif, aplikasi ini tidak mengirim apa pun ke LED
+49aac369	Gunakan OpenRGB
+6305fed9	Berlaku untuk LED yang didukung OpenRGB. Jangan gunakan bersamaan dengan perangkat lunak RGB pabrikan seperti ASRock Polychrome (saling berebut kendali dan berkedip)
+c8f39b51	Mematikan semua LED. Integrasi tetap berjalan sehingga perangkat tidak kembali ke efeknya sendiri (seperti pelangi). Bisa juga diganti dari menu baki sistem "Efek LED"
+4c92312b	Matikan lampu (integrasi tetap berjalan)
+956da380	Untuk tidur atau ruangan yang lebih gelap. Pengaturan tetap tersimpan; jika opsi ini dimatikan lagi, lampu menyala seperti sebelumnya
+7f4cedf2	Server
+722099aa	Lokasi server SDK OpenRGB. Di PC yang sama, 127.0.0.1 : 6742 sudah cukup
+64c2cd9b	Alamat PC yang menjalankan OpenRGB (127.0.0.1 untuk PC ini)
+5b89ecc9	Port server SDK OpenRGB (biasanya 6742)
+1ac6b9e1	Uji koneksi
+235b3d31	Memeriksa apakah OpenRGB dapat dijangkau dan menampilkan perangkat yang ditemukan di daftar bawah (tidak mengubah warna LED)
