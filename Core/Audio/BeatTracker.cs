@@ -49,7 +49,7 @@ public sealed class BeatTracker
         /// <summary>音のあった拍の割合: これ以下で 0、これ以上で満点</summary>
         internal static double HitShareZero = 0.4, HitShareFull = 0.74;
         /// <summary>時刻のずれ（音のあった拍の二乗平均、ミリ秒）: これ以下で満点、これ以上で 0</summary>
-        internal static double ErrFullMs = 10, ErrZeroMs = 40;
+        internal static double ErrFullMs = 15, ErrZeroMs = 50;
         /// <summary>拍の位置の音の多さ（直近 2 拍の平均の何倍か）: これ以下で 0、これ以上で満点</summary>
         internal static double RatioZero = 0.8, RatioFull = 1.2;
         /// <summary>この確かさ以上が LockBeats 拍続いたらロック</summary>
@@ -61,6 +61,15 @@ public sealed class BeatTracker
         internal static double HalfShiftRatio = 2;
         /// <summary>付点 8 分の刻みの疑い: 4/3 倍の周期のくし形の値が、今の周期のこの倍以上なら疑う（0 = 疑わない）。疑うときの「音の多さ」の基準</summary>
         internal static double DottedSuspectRatio = 0.6, SuspectRatioZero = 1.0, SuspectRatioFull = 1.5;
+        /// <summary>
+        /// テンポの記憶: 覚えたテンポの近くを選びやすくする強さ（くし形の値を最大 1 + MemBoost 倍。0 = 覚えない）・薄れる時間（秒）・
+        /// 覚えるのに必要な、ロック中で確かさ MemConf 以上の拍の数・行き詰まってもテンポを捨てない記憶の重みの下限
+        /// </summary>
+        internal static double MemBoost = 3, MemFadeSec = 60, MemConf = 0.6, MemKeepMin = 0.3;
+        internal static int MemMinBeats = 8;
+        /// <summary>予測した拍の並びのずれの見分け: 離れた音がこの回数続いて、同じ向き・ばらつき OffsetSpreadSec 秒以内なら、ずれとして直す（0 = しない）</summary>
+        internal static int OffsetRun = 3;
+        internal static double OffsetSpreadSec = 0.03;
     }
 
     // ===== テンポ
@@ -184,6 +193,12 @@ public sealed class BeatTracker
     private double _tempoConf;
     /// <summary>今のテンポが、付点 8 分の刻みかもしれない（4/3 倍の周期も強い）</summary>
     private bool _dottedSuspect;
+    // テンポの記憶（覚えた周期・最後にしっかりロックしていた時刻・続けて確かさの高かった拍の数）
+    private double _memPeriod, _memAtSec;
+    private int _memBeats;
+    // 直近の離れた音のずれ（コマ。予測した拍の並びがずれているかを見分ける）
+    private readonly double[] _offErr = new double[6];
+    private int _offHead, _offCount;
     private double _period;                 // 周期（コマ。0 = まだない）
     private double _candidate;
     private int _candidateCount;
@@ -574,6 +589,7 @@ public sealed class BeatTracker
             return 0;
         }
         for (int j = 0; j < _m; j++) _obs[j] /= obsSum;
+        ApplyTempoMemory();
         double postSum = 0;
         for (int j = 0; j < _m; j++)
         {
@@ -838,6 +854,19 @@ public sealed class BeatTracker
         // 予測から OutlierSec より離れた山は、その拍の音ではなく近くの別の音（拍の少し前のキックなど）とみなす:
         // 「音のない拍」として数え、位置の修正も弱くする（スウィングやシンコペーションで 1 小節に 1 回ずれた音に引っぱられないように）
         bool outlier = Math.Abs(e) > OutlierSec * _f;
+        // 離れた音が、同じ向きに同じくらいのずれで続く: 拍でない音ではなく、予測した拍の並びがずれている。ふつうどおりに直す
+        if (outlier && Tune.OffsetRun > 0)
+        {
+            _offErr[_offHead] = e;
+            _offHead = (_offHead + 1) % _offErr.Length;
+            if (_offCount < _offErr.Length) _offCount++;
+            if (ConsistentOffset())
+            {
+                outlier = false;
+                DiagLog?.Invoke($"consistent offset {e * 1000 / _f:F0}ms: correcting the phase");
+            }
+        }
+        else if (!outlier) _offCount = 0;
         double gain = outlier ? s * OutlierGain : s;
 
         // 位置と周期の修正（比例・積分）。公開する位置は、なめらかに追いつかせる
@@ -852,6 +881,21 @@ public sealed class BeatTracker
         UpdateConfidence();
         UpdateLock();
         UpdateDownbeat(idx, c, w);
+    }
+
+    /// <summary>直近 OffsetRun 回の離れた音が、同じ向きで、ずれのばらつきが OffsetSpreadSec 以内か</summary>
+    private bool ConsistentOffset()
+    {
+        int n = Tune.OffsetRun;
+        if (n <= 0 || _offCount < n || n > _offErr.Length) return false;
+        double lo = double.PositiveInfinity, hi = double.NegativeInfinity;
+        for (int k = 1; k <= n; k++)
+        {
+            double v = _offErr[(_offHead - k + _offErr.Length) % _offErr.Length];
+            lo = Math.Min(lo, v);
+            hi = Math.Max(hi, v);
+        }
+        return (lo > 0 || hi < 0) && hi - lo <= Tune.OffsetSpreadSec * _f;
     }
 
     /// <summary>
@@ -887,6 +931,7 @@ public sealed class BeatTracker
 
     private void UpdateLock()
     {
+        RememberTempo();
         _goodBeats = _conf >= LockConf ? _goodBeats + 1 : 0;
         _badBeats = _conf < UnlockConf ? _badBeats + 1 : 0;
         if (_lock == BeatLock.Unlocked)
@@ -930,6 +975,13 @@ public sealed class BeatTracker
     {
         _stuckFrames = 0;
         if (_period <= 0) return;
+        // 覚えているテンポ（さっきまでロックできていた）なら、テンポは捨てずに拍の位置だけ取り直す
+        if (MemoryWeight() >= Tune.MemKeepMin && NearMemory(_period))
+        {
+            DiagLog?.Invoke($"stuck: keep remembered {60 * _f / _period:F1} BPM, re-acquire the phase");
+            AcquirePhase(allowGlide: false);
+            return;
+        }
         DiagLog?.Invoke($"stuck: veto {60 * _f / _period:F1} BPM");
         for (int j = 0; j < _m; j++)
             if (Math.Abs(Math.Log((_tauMin + j) / _period)) < VetoLogWidth) _veto[j] = Math.Min(_veto[j], VetoFloor);
@@ -956,6 +1008,53 @@ public sealed class BeatTracker
         for (int j = 0; j < _m; j++) _post[j] = 0.3 * _post[j] + 0.7 / _m;
     }
 
+    // ================================================================
+    // テンポの記憶: 曲のテンポは途中でほとんど変わらないので、しっかりロックできたテンポを覚えておき、
+    // ロックが外れて探し直すときに選びやすくする（覚えたテンポとその倍・半分。時間がたつと薄れ、無音で忘れる）
+
+    /// <summary>ロック中で確かさが高い拍が続いたら、そのテンポを覚える（拍の確かめのたびに呼ぶ）</summary>
+    private void RememberTempo()
+    {
+        if (Tune.MemBoost <= 0 || _period <= 0) return;
+        _memBeats = _lock == BeatLock.Locked && _conf >= Tune.MemConf ? _memBeats + 1 : 0;
+        if (_memBeats < Tune.MemMinBeats) return;
+        _memPeriod = _period;
+        _memAtSec = _tNow;
+    }
+
+    /// <summary>覚えているテンポの重み（0〜1。最後にしっかりロックしてから MemFadeSec で 1/e に薄れる）</summary>
+    private double MemoryWeight() =>
+        Tune.MemBoost <= 0 || _memPeriod <= 0 ? 0 : Math.Exp(-Math.Max(0, _tNow - _memAtSec) / Tune.MemFadeSec);
+
+    /// <summary>周期 tau が、覚えているテンポ（またはその倍・半分）に近いか（±4%）</summary>
+    private bool NearMemory(double tau) => _memPeriod > 0 && MemoryDistance(tau) < 0.04;
+
+    /// <summary>周期 tau と、覚えているテンポ（倍・半分を含む）との距離（対数の比）</summary>
+    private double MemoryDistance(double tau)
+    {
+        double d = Math.Abs(Math.Log(tau / _memPeriod));
+        d = Math.Min(d, Math.Abs(Math.Log(tau / (2 * _memPeriod))));
+        return Math.Min(d, Math.Abs(Math.Log(tau / (0.5 * _memPeriod))));
+    }
+
+    /// <summary>くし形の結果に、覚えているテンポの近くを選びやすくする重みを掛ける（テンポを求めるたびに）</summary>
+    private void ApplyTempoMemory()
+    {
+        double w = MemoryWeight();
+        if (w <= 0.01) return;
+        double sum = 0;
+        for (int j = 0; j < _m; j++)
+        {
+            double d = MemoryDistance(_tauMin + j) / MemSigma;
+            _obs[j] *= 1 + Tune.MemBoost * w * Math.Exp(-0.5 * d * d);
+            sum += _obs[j];
+        }
+        if (sum > 1e-12) for (int j = 0; j < _m; j++) _obs[j] /= sum;
+    }
+
+    /// <summary>覚えているテンポの近くとみなす幅（対数の比。±3% ほど）</summary>
+    private const double MemSigma = 0.03;
+
     /// <summary>抑えたテンポを少しずつ元に戻す（テンポを求め直すたびに呼ぶ）</summary>
     private void RecoverVeto()
     {
@@ -972,6 +1071,8 @@ public sealed class BeatTracker
     private void SilenceReset()
     {
         _silenceDone = true;
+        _memPeriod = 0; // 曲の切れ目: 覚えているテンポを忘れる
+        _memBeats = 0;
         _hasGrid = false;
         _pendCount = 0;
         ClearHist();
@@ -1079,6 +1180,7 @@ public sealed class BeatTracker
     private void ClearHist()
     {
         _histCount = _histHead = 0;
+        _offCount = 0;
     }
 }
 
