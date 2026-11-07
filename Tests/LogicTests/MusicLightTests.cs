@@ -73,6 +73,23 @@ public sealed record LightRun(double[] T, double[] Brightness)
         return peaks / (to - from);
     }
 
+    /// <summary>細かい揺れ: 前後 50 ミリ秒（±3 コマ）の平均からのずれの二乗平均の平方根（ハイハットのたびの小さな明滅など）</summary>
+    public double Ripple(double from, double to)
+    {
+        var b = Between(from, to).Select(x => x.B).ToArray();
+        double s = 0;
+        int n = 0;
+        for (int i = 3; i + 3 < b.Length; i++)
+        {
+            double m = 0;
+            for (int k = -3; k <= 3; k++) m += b[i + k];
+            double d = b[i] - m / 7;
+            s += d * d;
+            n++;
+        }
+        return n > 0 ? Math.Sqrt(s / n) : 0;
+    }
+
     /// <summary>1 秒あたりの明るさの変わり幅の合計（コマ間の差の絶対値の合計。大きいほど激しく変わる）</summary>
     public double ChangePerSec(double from, double to)
     {
@@ -106,9 +123,9 @@ public static class MusicLight
     private const double Latency = 0.08;
 
     /// <summary>buf を流しながら、30 LED のテープを 60 コマ/秒で描く</summary>
-    public static LightRun Run(float[] buf, int fs, ResolvedMusic m)
+    public static LightRun Run(float[] buf, int fs, ResolvedMusic m, RgbConfig? engineCfg = null)
     {
-        var e = new AudioEngine(fs) { Settings = MusicTuning.EngineSettings(new RgbConfig { Mode = RgbModes.Music }) };
+        var e = new AudioEngine(fs) { Settings = MusicTuning.EngineSettings(engineCfg ?? new RgbConfig { Mode = RgbModes.Music }) };
         var dev = new RgbDevice(2, "Strip", 30, 4, null, "HID: x");
         var r = new DeviceRenderer(dev);
         var input = new RenderInput
@@ -316,5 +333,199 @@ public static class BeatHueLightTests
             T.Check(la.PeaksPerSec(4, 15.5) <= maxPeaks && la.Swing(4, 15.5) <= 0.3,
                 $"arpeggio {name}: no flicker ({la.PeaksPerSec(4, 15.5):F1} clear peaks/s ≤ {maxPeaks}, swing {la.Swing(4, 15.5):F2} ≤ 0.30)");
         }
+    }
+}
+
+/// <summary>ドラムの多い曲（人が叩く揺れ・16 分のハイハット・高音のリード入り）での光り方</summary>
+public static class DrumLight
+{
+    public sealed record Song(string Name, SignalGen G, List<double> Beats);
+
+    public static IEnumerable<Song> Songs()
+    {
+        const double sec = 24;
+        {
+            var g = new SignalGen(48000, sec, seed: 41);
+            var b = MusicBench.Pattern(g, 120, 0.2, sec, "x.....x...x.....", "....x.......x...", "xxxxxxxxxxxxxxxx", jitterMs: 12, seed: 41, hatAmp: 0.07);
+            MusicBench.Backing(g, 120, 0.2, sec);
+            Lead(g, 120, 0.2, sec);
+            yield return new Song("pop 120, 16th hats, lead", g, b);
+        }
+        {
+            var g = new SignalGen(48000, sec, seed: 42);
+            var b = MusicBench.Pattern(g, 128, 0.2, sec, "x...x...x...x...", "....x.......x...", "..o...o...o...o.", seed: 42, hatAmp: 0.08);
+            MusicBench.Backing(g, 128, 0.2, sec);
+            Lead(g, 128, 0.2, sec);
+            yield return new Song("edm 128, open hats, lead", g, b);
+        }
+        {
+            var g = new SignalGen(48000, sec, seed: 43);
+            var b = MusicBench.Pattern(g, 100, 0.2, sec, "x.......x.x.....", "....x.......x..g", "x.x.x.x.x.x.x.xx", jitterMs: 20, seed: 43, hatAmp: 0.08);
+            MusicBench.Backing(g, 100, 0.2, sec);
+            yield return new Song("live rock 100, loose", g, b);
+        }
+        {
+            // テンポがつかみにくい曲（シンコペーションが強い。実際の曲でテンポの確かさが下がった区間の代わり）
+            var c = MusicBench.Cases().First(x => x.Name.StartsWith("funk"));
+            Lead(c.Gen, 105, 0.2, MusicBench.Seconds);
+            yield return new Song("funk 105 (no lock), lead", c.Gen, c.Beats);
+        }
+    }
+
+    /// <summary>高音のリード（8 分音符のフレーズ、1〜2 kHz）</summary>
+    private static void Lead(SignalGen g, double bpm, double from, double to)
+    {
+        double p = 60 / bpm / 2;
+        double[] mel = { 1046.5, 1174.7, 1318.5, 1568, 1318.5, 1174.7, 1046.5, 880 };
+        int k = 0;
+        for (double t = from; t < to - 0.3; t += p, k++)
+            if (k % 8 != 7) MusicLight.Pluck(g, t, mel[k % mel.Length], 0.05, 0.12, 3);
+    }
+
+    /// <summary>メリハリ: 拍の直後（0〜80 ms）の明るさと、明るさの下から 30% の値の差</summary>
+    public static double Accent(LightRun r, List<double> beats, double from, double to)
+    {
+        var all = r.Between(from, to).Select(x => x.B).OrderBy(x => x).ToArray();
+        double p30 = all.Length > 0 ? all[(int)(0.3 * (all.Length - 1))] : 0;
+        return r.MeanAfter(beats.Where(t => t >= from && t < to), 0, 0.08) - p30;
+    }
+
+    public static string Format(Song s, LightRun r)
+    {
+        const double from = 8, to = 23;
+        return $"{s.Name,-26} peaks {r.PeaksPerSec(from, to):F1}/s small {r.PeaksPerSec(from, to, 0.05):F1}/s  ripple {r.Ripple(from, to):F3}  change {r.ChangePerSec(from, to):F2}/s  accent {Accent(r, s.Beats, from, to):F2}  swing {r.Swing(from, to):F2}  " +
+               $"beats {s.Beats.Count(t => t >= from && t < to) / (to - from):F1}/s";
+    }
+}
+
+public static class DrumLightReportTests
+{
+    /// <summary>調査用: 環境変数 DRUM_REPORT=1 のとき、ドラムの曲での光り方の数値（LIGHT_SWEEP で値を変えて比べる）</summary>
+    public static void TestDrumLightReport()
+    {
+        if (Environment.GetEnvironmentVariable("DRUM_REPORT") != "1") return;
+        var songs = DrumLight.Songs().ToList();
+        foreach (var spec in (Environment.GetEnvironmentVariable("LIGHT_SWEEP") ?? "").Split('|'))
+        {
+            var saved = BeatTuneSweepTests.Snapshot();
+            try
+            {
+                BeatTuneSweepTests.Apply(spec);
+                T.Info($"[{(spec.Length == 0 ? "current" : spec)}]");
+                // 感度は使っている人の値（2）でも測る（DRUM_SENS）
+                double sens = double.TryParse(Environment.GetEnvironmentVariable("DRUM_SENS"), out double sv) ? sv : 1;
+                var cfg = new RgbConfig { Mode = RgbModes.Music, MusicStyle = MusicStyles.BeatHue, Sensitivity = sens };
+                foreach (var s in songs) T.Info("  " + DrumLight.Format(s, MusicLight.Run(s.G.Buf, s.G.Fs, MusicTuning.Resolve(cfg), cfg)));
+            }
+            finally { BeatTuneSweepTests.Restore(saved); }
+        }
+    }
+}
+
+/// <summary>
+/// 音の少ない版と多い版の比べ: 同じドラムとベースに、ギターのストローク（8 分）と高音のリードを重ねる。
+/// 音が増えても、キックとスネアの見え方が変わらず、ギターに反応しすぎないか
+/// </summary>
+public static class DenseMixLight
+{
+    public sealed record Mix(string Name, SignalGen G, List<double> Beats, List<double> Kicks, List<double> Snares, List<double> Strums);
+
+    public static IEnumerable<Mix> Mixes()
+    {
+        foreach (bool dense in new[] { false, true })
+        {
+            const double sec = 24, bpm = 120;
+            var g = new SignalGen(48000, sec, seed: 51);
+            var beats = MusicBench.Pattern(g, bpm, 0.2, sec, "x.......x.x.....", "....x.......x...", "x.x.x.x.x.x.x.x.", jitterMs: 8, seed: 51, hatAmp: 0.06);
+            MusicBench.Backing(g, bpm, 0.2, sec);
+            var strums = new List<double>();
+            if (dense)
+            {
+                // ギター: 6 本の弦の和音を 8 分で（弦ごとに 8 ミリ秒ずつずらす）。倍音が多く 80 Hz〜3 kHz に広がる
+                double[][] chords = { new[] { 82.4, 123.5, 164.8, 207.7, 246.9, 329.6 }, new[] { 110, 164.8, 220, 277.2, 329.6, 440 } };
+                double p = 60 / bpm / 2;
+                int k = 0;
+                for (double t = 0.2; t < sec - 0.3; t += p, k++)
+                {
+                    var ch = chords[(k / 8) % 2];
+                    for (int s = 0; s < ch.Length; s++) MusicLight.Pluck(g, t + 0.008 * s, ch[s], 0.035, 0.22, 8);
+                    strums.Add(t);
+                }
+                double[] mel = { 1046.5, 1174.7, 1318.5, 1568, 1318.5, 1174.7, 1046.5, 880 };
+                int m = 0;
+                for (double t = 0.2; t < sec - 0.3; t += p, m++)
+                    if (m % 8 != 7) MusicLight.Pluck(g, t + 0.004, mel[m % mel.Length], 0.04, 0.12, 3);
+            }
+            yield return new Mix(dense ? "dense (+guitar, lead)" : "sparse (drums, bass)", g, beats, g.KickTimes.ToList(), g.SnareTimes.ToList(), strums);
+        }
+    }
+
+    /// <summary>キック・スネア・ギターだけの瞬間（ドラムから 60 ms 以上離れたストローク）の直後の明るさと、ふだんの明るさ（下から 30%）</summary>
+    public static (double Kick, double Snare, double Guitar, double Floor) Measure(Mix x, LightRun r, double from = 8, double to = 23)
+    {
+        var all = r.Between(from, to).Select(v => v.B).OrderBy(v => v).ToArray();
+        double floor = all[(int)(0.3 * (all.Length - 1))];
+        var drums = x.Kicks.Concat(x.Snares).ToList();
+        var guitarOnly = x.Strums.Where(s => s >= from && s < to && drums.All(d => Math.Abs(d - s) >= 0.06)).ToList();
+        return (r.MeanAfter(x.Kicks.Where(t => t >= from && t < to), 0, 0.08),
+                r.MeanAfter(x.Snares.Where(t => t >= from && t < to), 0, 0.08),
+                guitarOnly.Count > 0 ? r.MeanAfter(guitarOnly, 0, 0.08) : double.NaN,
+                floor);
+    }
+}
+
+public static class DenseMixReportTests
+{
+    /// <summary>調査用: 環境変数 DENSE_REPORT=1 のとき、音の少ない版と多い版での、キック・スネア・ギターの見え方（LIGHT_SWEEP で比べる）</summary>
+    public static void TestDenseMixReport()
+    {
+        if (Environment.GetEnvironmentVariable("DENSE_REPORT") != "1") return;
+        var mixes = DenseMixLight.Mixes().ToList();
+        double sens = double.TryParse(Environment.GetEnvironmentVariable("DRUM_SENS"), out double sv) ? sv : 2;
+        foreach (var spec in (Environment.GetEnvironmentVariable("LIGHT_SWEEP") ?? "").Split('|'))
+        {
+            var saved = BeatTuneSweepTests.Snapshot();
+            try
+            {
+                BeatTuneSweepTests.Apply(spec);
+                T.Info($"[{(spec.Length == 0 ? "current" : spec)}]");
+                var cfg = new RgbConfig { Mode = RgbModes.Music, MusicStyle = MusicStyles.BeatHue, Sensitivity = sens };
+                foreach (var x in mixes)
+                {
+                    var r = MusicLight.Run(x.G.Buf, x.G.Fs, MusicTuning.Resolve(cfg), cfg);
+                    var (k, s, gtr, fl) = DenseMixLight.Measure(x, r);
+                    T.Info($"  {x.Name,-22} kick {k:F2} snare {s:F2} guitar-only {(double.IsNaN(gtr) ? "  - " : gtr.ToString("F2"))} floor {fl:F2}  → kick +{k - fl:F2} snare +{s - fl:F2} guitar +{(double.IsNaN(gtr) ? 0 : gtr - fl):F2}  ripple {r.Ripple(8, 23):F3} small peaks {r.PeaksPerSec(8, 23, 0.05):F1}/s");
+                }
+            }
+            finally { BeatTuneSweepTests.Restore(saved); }
+        }
+    }
+}
+
+public static class DenseMixLightTests
+{
+    /// <summary>
+    /// 音の多い曲（ギターのストローク・リード入り）で、テンポをつかめていない区間でも、キックが主役で、ギターだけの瞬間には光りすぎず、
+    /// 明るさの底上げもない（テンポの確かさを 0 にして確かめる。実際の曲では、確かさが下がる区間が半分ほどある）
+    /// </summary>
+    public static void TestDenseMixKeepsDrumsInFront()
+    {
+        var saved = BeatTuneSweepTests.Snapshot();
+        try
+        {
+            foreach (bool unlocked in new[] { false, true })
+            {
+                if (unlocked) BeatTuneSweepTests.Apply("RatioZero=5;RatioFull=6");
+                var cfg = new RgbConfig { Mode = RgbModes.Music, MusicStyle = MusicStyles.BeatHue, Sensitivity = 2 };
+                var dense = DenseMixLight.Mixes().Last();
+                var r = MusicLight.Run(dense.G.Buf, dense.G.Fs, MusicTuning.Resolve(cfg), cfg);
+                var (k, s, g, fl) = DenseMixLight.Measure(dense, r);
+                string state = unlocked ? "unlocked" : "locked";
+                T.Check(k - fl >= 0.25 && g - fl <= 0.06 && k - fl >= 3 * (g - fl),
+                    $"dense mix ({state}): kick +{k - fl:F2} stands out, guitar-only +{g - fl:F2} stays small");
+                T.Check(fl <= 0.45, $"dense mix ({state}): no lifted floor ({fl:F2})");
+            }
+        }
+        finally { BeatTuneSweepTests.Restore(saved); }
     }
 }
