@@ -736,6 +736,8 @@ public partial class MainWindow
     private MusicConfig? _litMusic;
     /// <summary>プリセットを当てている間（このときの変更では「カスタム」にしない）</summary>
     private bool _applyingPreset;
+    /// <summary>ライティングの元に戻す・やり直す（ファンの設定の履歴とは別。InitLighting で作る）</summary>
+    private LightingHistory? _lightHistory;
     /// <summary>色の入力欄の文字をコードから書き換えている間（TextChanged を無視する）</summary>
     private bool _hexSyncing;
     private string _monoSwatchFor = "";
@@ -778,6 +780,7 @@ public partial class MainWindow
         CaseDirectionCombo.ItemsSource = CaseDirections.All.Select(d => new ChoiceOption(d.Id, d.Label)).ToList();
 
         WatchLightingConfig();
+        _lightHistory = new LightingHistory(Config.Rgb);
         _rgbKnownDevices = CurrentApp.Rgb.Devices;
         RebuildRgbDeviceRows();
         RefreshLightingUi();
@@ -912,6 +915,53 @@ public partial class MainWindow
         WatchLightingConfig();
         RebuildRgbDeviceRows();
         RefreshLightingUi();
+        // バックアップから戻すなどで LED の設定も変わったら、それも 1 段として元に戻せるようにする
+        CheckpointLighting();
+    }
+
+    // =====================================================================
+    // ライティングの元に戻す・やり直す
+    // =====================================================================
+
+    /// <summary>変更が落ち着いた LED の設定を、元に戻す用の 1 段として覚える（保存のたびに FlushCommit から呼ぶ）</summary>
+    private void CheckpointLighting()
+    {
+        if (_lightHistory is null) return;
+        _lightHistory.Checkpoint(Config.Rgb);
+        UpdateLightingUndoButtons();
+    }
+
+    private void UpdateLightingUndoButtons()
+    {
+        if (_lightHistory is null) return;
+        LightingUndoButton.IsEnabled = _lightHistory.CanUndo;
+        LightingRedoButton.IsEnabled = _lightHistory.CanRedo;
+    }
+
+    private void OnLightingUndoClick(object sender, RoutedEventArgs e) => LightingUndo();
+    private void OnLightingRedoClick(object sender, RoutedEventArgs e) => LightingRedo();
+
+    private void LightingUndo() => LightingStep(undo: true);
+    private void LightingRedo() => LightingStep(undo: false);
+
+    private void LightingStep(bool undo)
+    {
+        if (_lightHistory is null) return;
+        FlushCommit(); // 保存の予約中の変更も、先に 1 段にする
+        bool ok, lists;
+        _applyingPreset = true; // 戻している途中の値の変化で、プリセットを「カスタム」にしない
+        try { ok = undo ? _lightHistory.Undo(Config.Rgb, out lists) : _lightHistory.Redo(Config.Rgb, out lists); }
+        finally { _applyingPreset = false; }
+        if (!ok) return;
+        // デバイスの一覧は変更の知らせが出ないので、行を作り直して LED へ反映する（ほかの値は知らせで反映される）
+        if (lists)
+        {
+            RebuildRgbDeviceRows();
+            LightingListsChanged();
+        }
+        RefreshLightingUi();
+        UpdateLightingUndoButtons();
+        Logger.Info(undo ? "ライティングの設定を元に戻しました" : "ライティングの設定をやり直しました");
     }
 
     /// <summary>
@@ -1003,6 +1053,8 @@ public partial class MainWindow
     private void OnLightingChoiceClick(object sender, RoutedEventArgs e)
     {
         if (sender is not FrameworkElement { DataContext: LightingChoiceVm c } || !c.IsEnabled) return;
+        if (c.Kind is not (LightingChoiceKind.Accent or LightingChoiceKind.Background or LightingChoiceKind.TextColor))
+            FlushCommit(); // 直前のスライダーの変更とは別の 1 段にする
         var rgb = Config.Rgb;
         var m = rgb.Music;
         switch (c.Kind)
@@ -1051,6 +1103,7 @@ public partial class MainWindow
                 return;
         }
         RefreshLightingUi();
+        FlushCommit(); // 選んだものを 1 段として覚え、すぐに「元に戻す」を押せるようにする
     }
 
     private void OnTempoHalfClick(object sender, RoutedEventArgs e)
@@ -1085,11 +1138,13 @@ public partial class MainWindow
     {
         string changed = MusicTuning.ChangedTuningSummary(Config.Rgb);
         if (changed.Length == 0) return;
+        FlushCommit(); // 直前のスライダーの変更とは別の 1 段にする
         _applyingPreset = true;
         try { MusicTuning.ResetTuning(Config.Rgb); }
         finally { _applyingPreset = false; }
+        FlushCommit(); // すぐに「元に戻す」を押せるようにする
         Logger.Info($"音楽連動の反応のしかたを初期値に戻しました（{changed}）");
-        ShowAlert("反応のしかたの値を初期値に戻しました。「元に戻す」で取り消せます。", AlertLevel.Info);
+        ShowAlert("反応のしかたの値を初期値に戻しました。右上の「元に戻す」で、戻す前の値にできます。", AlertLevel.Info);
     }
 
     /// <summary>

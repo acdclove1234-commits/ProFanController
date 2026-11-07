@@ -447,6 +447,23 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
+                    <!-- ライティングの元に戻す・やり直す（ファンの設定の履歴とは別。MainWindow.Lighting.cs） -->
+                    <StackPanel x:Name="LightingActions" Orientation="Horizontal" Visibility="Collapsed">
+                        <Button x:Name="LightingUndoButton" Style="{StaticResource GhostButton}" Click="OnLightingUndoClick" Padding="12,7" Margin="0,0,8,0" IsEnabled="False"
+                                ToolTip="ライティングの設定を、ひとつ前に戻します (Ctrl+Z)。連携のオン・オフ、消灯、接続先、「激しい点滅を抑える」は変わりません">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE7A7;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                <TextBlock Text="元に戻す"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="LightingRedoButton" Style="{StaticResource GhostButton}" Click="OnLightingRedoClick" Padding="12,7" IsEnabled="False"
+                                ToolTip="元に戻したライティングの設定を、やり直します (Ctrl+Y)">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE7A6;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                <TextBlock Text="やり直す"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
                     <StackPanel x:Name="HistoryActions" Orientation="Horizontal" Visibility="Collapsed">
                         <RadioButton Style="{StaticResource Segment}" Content="5分" Tag="5" GroupName="Range" Checked="OnRangeChanged"/>
                         <RadioButton Style="{StaticResource Segment}" Content="30分" Tag="30" GroupName="Range" Checked="OnRangeChanged" IsChecked="True"/>
@@ -1911,7 +1928,7 @@
                                     <DockPanel Margin="0,2,0,8">
                                         <Button x:Name="ResetTuningButton" DockPanel.Dock="Right" Style="{StaticResource SmallGhost}" Content="初期値に戻す"
                                                 Click="OnResetTuningClick" Padding="10,3" Margin="8,0,0,0" VerticalAlignment="Top"
-                                                ToolTip="感度・滑らかさ・メリハリなどの値（下の「詳細」の値も）を初期値に戻します。光り方・強さ・色の組み合わせ・音の遅れの補正はそのままです。「元に戻す」で取り消せます"/>
+                                                ToolTip="感度・滑らかさ・メリハリなどの値（下の「詳細」の値も）を初期値に戻します。光り方・強さ・色の組み合わせ・音の遅れの補正はそのままです。右上の「元に戻す」で取り消せます"/>
                                         <TextBlock x:Name="TuningChangedText" Style="{StaticResource Caption}" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                     </DockPanel>
 

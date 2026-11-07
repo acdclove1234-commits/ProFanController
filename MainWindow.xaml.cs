@@ -277,6 +277,7 @@ public partial class MainWindow : Window
         _commitTimer.Stop();
         foreach (var c in Config.Profiles.SelectMany(p => p.Fans).SelectMany(f => f.Curves)) c.SortPoints();
         _controller.Commit();
+        CheckpointLighting(); // ライティングの元に戻す用に、変更が落ち着いた状態を 1 段として覚える（MainWindow.Lighting.cs）
         // 点の一覧を入力中（Tab で次の欄へ移った直後など）に表示し直すと、入力欄から外れてしまうので、そのときは後回しにする
         if (!PointsList.IsKeyboardFocusWithin) PointsList.Items.Refresh();
         CurveGraph.InvalidateVisual();
@@ -307,8 +308,10 @@ public partial class MainWindow : Window
     {
         // テキスト入力中の Ctrl+Z は TextBox 自身が処理するので、ここには来ない
         if (Keyboard.Modifiers != ModifierKeys.Control) return;
-        if (e.Key == Key.Z) { Undo(); e.Handled = true; }
-        else if (e.Key == Key.Y) { Redo(); e.Handled = true; }
+        // ライティングの画面では、ライティングの履歴を使う（ファンの設定の履歴とは別）
+        bool lighting = LightingPage.Visibility == Visibility.Visible;
+        if (e.Key == Key.Z) { if (lighting) LightingUndo(); else Undo(); e.Handled = true; }
+        else if (e.Key == Key.Y) { if (lighting) LightingRedo(); else Redo(); e.Handled = true; }
     }
 
     // =====================================================================
@@ -482,6 +485,7 @@ public partial class MainWindow : Window
 
         DashboardActions.Visibility = DashboardPage.Visibility;
         CurvesActions.Visibility = CurvesPage.Visibility;
+        LightingActions.Visibility = LightingPage.Visibility;
         HistoryActions.Visibility = HistoryPage.Visibility;
 
         (PageTitle.Text, PageSubtitle.Text) = sender switch
