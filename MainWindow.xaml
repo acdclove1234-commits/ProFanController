@@ -1889,6 +1889,14 @@
                                                 ToolTip="音が小さいときでも、この明るさまでは光らせておきます。0% にすると、音がないときは真っ暗になります"/>
                                     </DockPanel>
 
+                                    <!-- 初期値から変えている値と、初期値に戻すボタン -->
+                                    <DockPanel Margin="0,2,0,8">
+                                        <Button x:Name="ResetTuningButton" DockPanel.Dock="Right" Style="{StaticResource SmallGhost}" Content="初期値に戻す"
+                                                Click="OnResetTuningClick" Padding="10,3" Margin="8,0,0,0" VerticalAlignment="Top"
+                                                ToolTip="感度・滑らかさ・メリハリなどの値（下の「詳細」の値も）を初期値に戻します。光り方・強さ・色の組み合わせ・音の遅れの補正はそのままです。「元に戻す」で取り消せます"/>
+                                        <TextBlock x:Name="TuningChangedText" Style="{StaticResource Caption}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                    </DockPanel>
+
                                     <!-- 音の遅れの補正と同期テスト -->
                                     <DockPanel Style="{StaticResource LightRow}">
                                         <TextBlock Text="音の遅れの補正" Style="{StaticResource RowLabel}"

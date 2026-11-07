@@ -151,6 +151,9 @@ public static class MusicTuning
         m.MinBrightness = p.MinBrightness;
     }
 
+    /// <summary>「映画」のプリセットだけ、強さの値と違うメリハリ・いちばん暗いとき（明るめで、穏やか）</summary>
+    public const double CinemaPunch = 30, CinemaMinBrightness = 40;
+
     /// <summary>プリセットを選んだとき: 光り方・強さ・パレットなどをまとめて書き換える</summary>
     public static void ApplyPreset(RgbConfig cfg, string preset)
     {
@@ -170,10 +173,90 @@ public static class MusicTuning
         m.Palette = palette;
         if (preset == MusicPresets.Cinema)
         {
-            m.Punch = 30;
-            m.MinBrightness = 40;
+            m.Punch = CinemaPunch;
+            m.MinBrightness = CinemaMinBrightness;
         }
         m.Preset = MusicPresets.All.Contains(preset) ? preset : MusicPresets.Custom;
+    }
+
+    /// <summary>「反応のしかた」の 1 つの値: 画面の名前・今の値・初期値・表示の書式</summary>
+    public sealed record TuningValue(string Label, double Current, double Default, string Format)
+    {
+        /// <summary>初期値から変えているか</summary>
+        public bool Changed => Math.Abs(Current - Default) > 1e-6;
+        public string Show(double v) => string.Format(System.Globalization.CultureInfo.InvariantCulture, Format, v);
+    }
+
+    /// <summary>
+    /// 「反応のしかた」の値と、その初期値。「強さ」に結びついた 4 つ（反応の速さ・滑らかさ・メリハリ・いちばん暗いとき）は
+    /// 今の強さの値（「映画」のプリセットを選んでいるときは、その値）、それ以外はアプリの初期値。
+    /// 音の遅れの補正は、イヤホン・スピーカーに合わせた値なので含めない
+    /// </summary>
+    public static IReadOnlyList<TuningValue> TuningValues(RgbConfig cfg)
+    {
+        var m = cfg.Music;
+        var p = Profile(m.Intensity);
+        var d = new MusicConfig();
+        var dr = new RgbConfig();
+        bool cinema = m.Preset == MusicPresets.Cinema;
+        return new[]
+        {
+            new TuningValue("感度", m.GainDb, d.GainDb, "{0:+0;-0;0} dB"),
+            new TuningValue("反応の感度", cfg.Sensitivity, dr.Sensitivity, "{0:F1}"),
+            new TuningValue("滑らかさ", m.SmoothnessMs, p.SmoothnessMs, "{0:F0} ms"),
+            new TuningValue("メリハリ", m.Punch, cinema ? CinemaPunch : p.Punch, "{0:F0}%"),
+            new TuningValue("いちばん暗いとき", m.MinBrightness, cinema ? CinemaMinBrightness : p.MinBrightness, "{0:F0}%"),
+            new TuningValue("反応の速さ", m.ReactionMs, p.ReactionMs, "{0:F0} ms"),
+            new TuningValue("明るさに使う音量の幅", m.DynamicRangeDb, d.DynamicRangeDb, "{0:F0} dB"),
+            new TuningValue("音の高さのバランス", m.AutoBalance, d.AutoBalance, "{0:F0}%"),
+            new TuningValue("高音の持ち上げ", m.TrebleTilt, d.TrebleTilt, "{0:F1} dB/oct"),
+            new TuningValue("コントラスト", m.Contrast, d.Contrast, "{0:F2}"),
+        };
+    }
+
+    /// <summary>初期値から変えている値の説明（例「反応の感度 2.0（初期 1.0）」。変えていなければ空）</summary>
+    public static string ChangedTuningSummary(RgbConfig cfg) =>
+        string.Join("、", TuningValues(cfg).Where(v => v.Changed).Select(v => $"{v.Label} {v.Show(v.Current)}（初期 {v.Show(v.Default)}）"));
+
+    /// <summary>
+    /// 「初期値に戻す」: 反応のしかたの値を初期値にする（光り方・強さ・色の組み合わせ・音の遅れの補正はそのまま）。
+    /// 戻した結果が、どれかのプリセットとまったく同じなら、そのプリセットを選んだ状態にする
+    /// </summary>
+    public static void ResetTuning(RgbConfig cfg)
+    {
+        var m = cfg.Music;
+        var d = new MusicConfig();
+        bool cinema = m.Preset == MusicPresets.Cinema;
+        ApplyIntensity(m, m.Intensity);
+        if (cinema)
+        {
+            m.Punch = CinemaPunch;
+            m.MinBrightness = CinemaMinBrightness;
+        }
+        m.GainDb = d.GainDb;
+        m.DynamicRangeDb = d.DynamicRangeDb;
+        m.AutoBalance = d.AutoBalance;
+        m.TrebleTilt = d.TrebleTilt;
+        m.Contrast = d.Contrast;
+        cfg.Sensitivity = new RgbConfig().Sensitivity;
+        m.Preset = MatchingPreset(cfg) ?? MusicPresets.Custom;
+    }
+
+    /// <summary>今の光り方・強さ・色の組み合わせ・強さの値が、まったく同じになるプリセット（なければ null）</summary>
+    public static string? MatchingPreset(RgbConfig cfg)
+    {
+        var m = cfg.Music;
+        foreach (var preset in MusicPresets.All)
+        {
+            if (preset == MusicPresets.Custom) continue;
+            var sample = new RgbConfig { MusicStyle = cfg.MusicStyle };
+            ApplyPreset(sample, preset);
+            var s = sample.Music;
+            if (sample.MusicStyle == cfg.MusicStyle && s.Intensity == m.Intensity && s.Palette == m.Palette
+                && s.ReactionMs == m.ReactionMs && s.SmoothnessMs == m.SmoothnessMs && s.Punch == m.Punch && s.MinBrightness == m.MinBrightness)
+                return preset;
+        }
+        return null;
     }
 
     /// <summary>分析エンジンの設定</summary>

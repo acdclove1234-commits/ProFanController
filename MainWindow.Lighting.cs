@@ -980,6 +980,7 @@ public partial class MainWindow
         SpeedRow.Visibility = VisibleIf(rgb.Mode is RgbModes.Rainbow or RgbModes.Breathing || (music && LightingRules.UsesSpeed(rgb.MusicStyle)));
         SpeedLabel.Text = music ? "流れる速さ" : "速さ";
         PunchRow.Visibility = VisibleIf(LightingRules.UsesPunch(rgb.MusicStyle));
+        RefreshTuningDefaults();
         TempoRow.Visibility = VisibleIf(LightingRules.UsesTempo(rgb.MusicStyle));
         ColorRow.Visibility = VisibleIf(LightingRules.UsesStaticColor(rgb));
         StrobeNote.Visibility = VisibleIf(m.ReduceFlashing);
@@ -1067,6 +1068,29 @@ public partial class MainWindow
     }
 
     private void OnBluetoothDelayClick(object sender, RoutedEventArgs e) => Config.Rgb.Music.AudioDelayMs = 180;
+
+    /// <summary>「反応のしかた」の値のうち、初期値から変えているものを表示する（カスタムしたときに、元の値が分かるように）</summary>
+    private void RefreshTuningDefaults()
+    {
+        var rgb = Config.Rgb;
+        string changed = MusicTuning.ChangedTuningSummary(rgb);
+        TuningChangedText.Text = changed.Length == 0
+            ? $"すべて初期値です（強さ「{Intensities.Label(rgb.Music.Intensity)}」の値）"
+            : "初期値から変えている値: " + changed;
+        ResetTuningButton.IsEnabled = changed.Length > 0;
+    }
+
+    /// <summary>「初期値に戻す」: 反応のしかたの値を初期値にする（光り方・強さ・色の組み合わせ・音の遅れの補正はそのまま）</summary>
+    private void OnResetTuningClick(object sender, RoutedEventArgs e)
+    {
+        string changed = MusicTuning.ChangedTuningSummary(Config.Rgb);
+        if (changed.Length == 0) return;
+        _applyingPreset = true;
+        try { MusicTuning.ResetTuning(Config.Rgb); }
+        finally { _applyingPreset = false; }
+        Logger.Info($"音楽連動の反応のしかたを初期値に戻しました（{changed}）");
+        ShowAlert("反応のしかたの値を初期値に戻しました。「元に戻す」で取り消せます。", AlertLevel.Info);
+    }
 
     /// <summary>
     /// 「激しい点滅を抑える」: オフにするときは、光に敏感な方への注意を出して確認する。
