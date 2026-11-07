@@ -228,6 +228,8 @@ public static class BeatTuneSweepTests
         typeof(BeatTracker.Tune).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)
             .Append(typeof(OnsetDetector).GetField("OdfWeights", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)!)
             .Concat(typeof(OnsetDetector.SnareTune).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic).Select(f => f))
+            .Concat(typeof(BeatHueEffect.Tune).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic))
+            .Concat(typeof(BeatDriver).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic).Where(x => !x.IsLiteral && !x.IsInitOnly))
             .ToArray();
 
     public static Dictionary<System.Reflection.FieldInfo, object?> Snapshot() => Fields.ToDictionary(f => f, f => f.GetValue(null));
@@ -247,7 +249,8 @@ public static class BeatTuneSweepTests
             if (f.FieldType == typeof(int[])) { f.SetValue(null, kv[1].Split(',').Select(int.Parse).ToArray()); continue; }
             if (f.FieldType == typeof(double[])) { f.SetValue(null, kv[1].Split(',').Select(x => double.Parse(x, System.Globalization.CultureInfo.InvariantCulture)).ToArray()); continue; }
             double v = double.Parse(kv[1], System.Globalization.CultureInfo.InvariantCulture);
-            f.SetValue(null, f.FieldType == typeof(int) ? (int)Math.Round(v) : v);
+            object value = f.FieldType == typeof(int) ? (object)(int)Math.Round(v) : f.FieldType == typeof(float) ? (object)(float)v : (object)v;
+            f.SetValue(null, value);
         }
     }
 
