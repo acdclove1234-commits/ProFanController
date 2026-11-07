@@ -1300,3 +1300,103 @@ df788b17	El color elegido en «Color» se aclara y oscurece despacio
 25525b81	{0} ({1})
 bb1834e5	Ha ajustado usted mismo los ajustes de abajo. Si elige otro preajuste, se vuelve a su combinación
 1cf255e8	Para trabajar o de noche. Los colores cambian despacio y con suavidad
+9df36e7d	La opción segura. Late de forma agradable con los graves
+4beab2e2	Un efecto animado en el que un anillo de luz se expande con cada golpe de batería
+f6ac23cd	El efecto más intenso, con fuertes cambios de color en cada golpe
+b7e7d574	Reparte de graves a agudos a lo largo de los LED para ver el sonido
+7c3c3b30	Un efecto discreto y cálido que no molesta en películas ni juegos
+355fd781	{0}\nEfecto: {1} · Intensidad: {2} · Colores: {3}
+67f5dc44	\n(Si desactiva «Reducir destellos», parpadea aún más intensamente)
+e3c74af7	Relajado y tranquilo. Los colores cambian despacio cada compás
+8265bcd4	Reacción moderada. Los colores cambian cada 2 tiempos
+39194da9	Reacción ágil. Los colores cambian en cada tiempo
+283c2191	Reacción máxima. Los colores cambian al instante en cada tiempo y se resalta el inicio del compás
+899bfdf5	{0}\nAl elegirlo: reacción {1:F0} ms · suavizado {2:F0} ms · contraste {3:F0} % · mínimo {4:F0} %
+1763988d	Velocidad de flujo
+782c7098	Ahora a medio tempo
+3da3fc0d	Ahora a doble tempo
+587c7525	Todo en valores predeterminados (los de la intensidad «{0}»)
+08d68b95	Valores cambiados respecto a los predeterminados: 
+57a4e475	Los valores de reacción volvieron a los predeterminados. Con «Deshacer» arriba a la derecha puede recuperar los valores anteriores.
+6d49db83	¿Permitir el parpadeo intenso?\n\nLas luces intermitentes fuertes pueden afectar a la salud de las personas sensibles a la luz (por ejemplo, crisis fotosensibles).
+91f616cf	 Si se encuentra mal, vuelva a activar «Reducir destellos» de inmediato.
+165c4145	Conectado. Se encontraron {0} dispositivos.
+3757a4b4	Empieza al activar «Usar OpenRGB»
+d7b2f046	No se puede conectar: {0}\nInicie OpenRGB, pulse «Start Server» en la pestaña «SDK Server» y vuelva a intentarlo.
+23ecbb88	«Usar OpenRGB» está desactivado. Actívelo para conectar
+f8d56f66	Desactivado (al activar «Usar OpenRGB» empieza a cambiar el color de los LED)
+dabf7260	Podrá elegir cuando se cargue la lista de dispositivos. Pulse «Probar conexión» arriba
+70f103b7	Elija al menos uno (para apagar los LED, desactive «Usar OpenRGB» arriba)
+355efac9	Se conservan los ajustes de los dispositivos que ahora no se encuentran (funcionarán como antes al volver a conectarlos): {0}
+49610d95	Buscando aplicaciones que reproducen sonido…
+937d0bba	 (reproduce sonido)
+bd2b75f3	 (en reproducción)
+e197ab2d	No se encontraron aplicaciones. Reproduzca una canción y vuelva a pulsar
+8dc805b8	La prueba de sincronización se puede usar cuando «Usar OpenRGB» está activado y el efecto es «Sincronización musical».
+1071825a	No se pudo reproducir el clic
+9fb33dc5	Cada 0,6 segundos suena un clic y los LED destellan en blanco. Si la luz llega antes que el sonido, pulse «+»; si llega después, «−», hasta que sonido y luz coincidan.
+462dc044	 Vuelva a pulsar o salga de esta pantalla para detenerlo.
+8cd7762f	{0} está en marcha. Controla los mismos LED, lo que puede hacer que los colores vuelvan solos, parpadeen o no coincidan con otros dispositivos.
+55b403e0	 Detenga el control de LED (iluminación) de ese programa o ciérrelo (Lian Li L-Connect se puede configurar para usar solo la velocidad de los ventiladores).
+caf81aa5	En los ajustes de OpenRGB está desactivado «Shared SMBus Access» (compartir el SMBus con otros programas).
+7051883b	 Esta aplicación lee la temperatura de la memoria por el mismo cableado (SMBus), así que pueden chocar y la temperatura puede dejar de leerse.
+2810f408	 Active «Shared SMBus Access» en Settings de OpenRGB y reinicie OpenRGB (o desactive Ajustes → «Leer la temperatura de la memoria»).
+0b102823	\nArchivo de ajustes: {0}
+7c87a784	 · 
+cde5d20f	La captura de sonido empieza al activar «Usar OpenRGB»
+37b53bcd	{0} (solo reacciona al sonido de {1})
+8e13b3ed	\nSalida que se escucha: {0}
+a33ee710	Preparando la captura de sonido…
+aeb57d02	Se muestra con sincronización musical a través de OpenRGB
+6a7d3717	Tempo: no se usa
+d9cb0d66	Se ilumina solo según el volumen
+8d9ab8cc	Se ilumina con el bombo
+58c9b655	Tempo captado (fiabilidad {0:F0} %)
+7ddda7d0	Detectando el tempo…
+12235fc4	Candidato {0:F0} BPM (fiabilidad {1:F0} %)
+f689911d	En canciones con un ritmo claro, el tempo se capta en pocos segundos
+64ff1784	Volumen {0} · referencia {1:F0} dBFS
+87c8c605	● Se detecta sonido
+eafa50be	○ Silencio (reacciona cuando suena algo)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (memoria de vídeo)
+d453beab	Memoria (RAM)
+8f27288e	SSD · {0}
+efd9152e	Vida útil {0:F0} %
+77b82689	Revisar
+51592c08	Atención
+6b7001de	Normal
+56d75872	Referencia
+22024d48	Recopilando
+5afe281d	Se guardaron los registros de 10 minutos antes y después del fallo: {0}
+61c7691d	Ver registros
+29d6a363	{0:N0} yenes
+37d31a15	La CPU y la GPU usan los valores de los sensores; lo demás se calcula como {0:F0} W (tarifa {1:0.##} yenes/kWh). Solo se cuenta mientras la aplicación está en marcha.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · otros {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} h
+2f240cf7	{0:F1} kWh (según la media de los días con registros)
+b5d6b2e1	Unos {0} · {1:F1} h
+8dec5fdd	Unos {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · unos {2} · {3:F1} h
+df95f0be	Cargando y analizando los registros…
+8223041f	 · referencia: desde la limpieza del {0:yyyy/MM/dd}
+c427ad3a	Comprobado a las {0:HH:mm} · {1:F0} días de registros{2}
+00cd1e3b	Aviso de mantenimiento: hay un cambio en {0}.
+4c563244	Ver diagnóstico
+5ff17925	No se pudo analizar: {0}
+aa4e55c3	¿Ha limpiado los ventiladores, filtros o radiador?\n\nLos registros a partir de ahora serán la nueva referencia de comparación (se tarda unos 10 días en poder evaluar).
+d83f7d90	Lo limpié
+b5814c1a	No se pudo abrir: {0}
+5f439d96	Consumo eléctrico (estimado)
+039fa193	Electricidad
+239f35c2	Hoy {0:F2} kWh · unos {1:N0} yenes
+b46fd1a2	Se usa «{1}» porque ahora mismo se está ejecutando «{0}»
+7cc5282f	Nuevo perfil
+ca0a2914	Copia de {0}
+3b42230a	Se necesita al menos un perfil.
+feb800ae	• Se eliminarán {0} reglas de cambio automático por aplicación
+5d2665a7	• {0} programaciones cambiarán a «{1}»
+f0b8e8cf	• El «Silencioso» de un toque usará «{0}»
+4f3910fa	\n\n(Se puede deshacer con «Deshacer»)
+04ce24e0	¿Eliminar el perfil «{0}»?{1}

@@ -1300,3 +1300,103 @@ df788b17	Die unter „Farbe“ gewählte Farbe wird langsam heller und dunkler
 25525b81	{0} ({1})
 bb1834e5	Sie haben die Einstellungen unten selbst angepasst. Wählen Sie eine andere Voreinstellung, gilt wieder deren Kombination
 1cf255e8	Für die Arbeit oder die Nacht. Die Farben wechseln langsam und ruhig
+9df36e7d	Die sichere Wahl. Pulsiert angenehm mit dem Bass
+4beab2e2	Ein lebhafter Effekt, bei dem sich mit jedem Trommelschlag ein Lichtring ausbreitet
+f6ac23cd	Der heftigste Effekt mit starkem Farbwechsel bei jedem Beat
+b7e7d574	Verteilt Bässe bis Höhen über die LEDs, sodass man den Klang sieht
+7c3c3b30	Ein dezenter, warmer Effekt, der bei Filmen und Spielen nicht stört
+355fd781	{0}\nEffekt: {1} · Stärke: {2} · Farben: {3}
+67f5dc44	\n(Wenn „Blitzen reduzieren“ aus ist, blinkt es noch heftiger)
+e3c74af7	Ruhig und gelassen. Die Farben wechseln langsam mit jedem Takt
+8265bcd4	Mäßige Reaktion. Die Farben wechseln alle 2 Schläge
+39194da9	Flotte Reaktion. Die Farben wechseln mit jedem Schlag
+283c2191	Maximale Reaktion. Die Farben wechseln sofort mit jedem Schlag, der Taktanfang wird betont
+899bfdf5	{0}\nBei Auswahl: Reaktion {1:F0} ms · Glättung {2:F0} ms · Kontrast {3:F0} % · dunkelster Wert {4:F0} %
+1763988d	Fließgeschwindigkeit
+782c7098	Derzeit halbes Tempo
+3da3fc0d	Derzeit doppeltes Tempo
+587c7525	Alles Standardwerte (die der Stärke „{0}“)
+08d68b95	Gegenüber den Standardwerten geändert: 
+57a4e475	Die Reaktionswerte wurden auf die Standardwerte zurückgesetzt. Mit „Rückgängig“ oben rechts erhalten Sie die vorherigen Werte zurück.
+6d49db83	Heftiges Blinken erlauben?\n\nStarkes Blinklicht kann das Befinden lichtempfindlicher Menschen beeinträchtigen (z. B. fotosensible Anfälle auslösen).
+91f616cf	 Wenn Ihnen unwohl wird, schalten Sie „Blitzen reduzieren“ sofort wieder ein.
+165c4145	Verbunden. {0} Geräte gefunden.
+3757a4b4	Startet, wenn „OpenRGB verwenden“ eingeschaltet wird
+d7b2f046	Keine Verbindung: {0}\nStarten Sie OpenRGB, klicken Sie im Tab „SDK Server“ auf „Start Server“ und versuchen Sie es erneut.
+23ecbb88	„OpenRGB verwenden“ ist aus. Schalten Sie es ein, um zu verbinden
+f8d56f66	Aus (mit „OpenRGB verwenden“ beginnt die App, die LED-Farben zu ändern)
+dabf7260	Auswählbar, sobald die Geräteliste geladen ist. Klicken Sie oben auf „Verbindung testen“
+70f103b7	Wählen Sie mindestens eines aus (um die LEDs auszuschalten, schalten Sie oben „OpenRGB verwenden“ aus)
+355efac9	Einstellungen für Geräte, die gerade nicht gefunden werden, bleiben erhalten (nach dem erneuten Anschließen funktionieren sie wie zuvor): {0}
+49610d95	Suche nach Apps, die Ton abspielen…
+937d0bba	 (spielt Ton ab)
+bd2b75f3	 (läuft)
+e197ab2d	Keine App gefunden. Spielen Sie einen Song ab und klicken Sie erneut
+8dc805b8	Der Synchrontest ist verfügbar, wenn „OpenRGB verwenden“ an ist und der Effekt „Musiksynchronisation“ gewählt ist.
+1071825a	Klickton konnte nicht abgespielt werden
+9fb33dc5	Alle 0,6 Sekunden ertönt ein Klick und die LEDs blitzen weiß. Kommt das Licht vor dem Ton, drücken Sie „+“, kommt es danach, „−“, bis Ton und Licht übereinstimmen.
+462dc044	 Zum Beenden erneut klicken oder diese Seite verlassen.
+8cd7762f	{0} läuft. Diese Software steuert dieselben LEDs, wodurch Farben von selbst zurückspringen, flimmern oder nicht mehr zu anderen Geräten passen können.
+55b403e0	 Beenden Sie dort die LED-Steuerung (Beleuchtung) oder schließen Sie die Software (Lian Li L-Connect lässt sich so einstellen, dass nur die Lüfterdrehzahl genutzt wird).
+caf81aa5	In den OpenRGB-Einstellungen ist „Shared SMBus Access“ (SMBus mit anderer Software teilen) ausgeschaltet.
+7051883b	 Diese App liest die Arbeitsspeichertemperatur über dieselbe Leitung (SMBus), daher kann es zu Konflikten kommen und die Temperatur nicht mehr lesbar sein.
+2810f408	 Schalten Sie in den Settings von OpenRGB „Shared SMBus Access“ ein und starten Sie OpenRGB neu (oder schalten Sie Einstellungen → „Arbeitsspeichertemperaturen lesen“ aus).
+0b102823	\nEinstellungsdatei: {0}
+7c87a784	 · 
+cde5d20f	Die Tonaufnahme startet, wenn „OpenRGB verwenden“ eingeschaltet wird
+37b53bcd	{0} (reagiert nur auf den Ton von {1})
+8e13b3ed	\nAbgehörte Ausgabe: {0}
+a33ee710	Tonaufnahme wird vorbereitet…
+aeb57d02	Wird bei Musiksynchronisation mit OpenRGB angezeigt
+6a7d3717	Tempo: nicht verwendet
+d9cb0d66	Leuchtet nur nach Lautstärke
+8d9ab8cc	Leuchtet zum Kick
+58c9b655	Tempo erfasst (Sicherheit {0:F0} %)
+7ddda7d0	Tempo wird erkannt…
+12235fc4	Kandidat {0:F0} BPM (Sicherheit {1:F0} %)
+f689911d	Bei Songs mit klarem Beat wird das Tempo in wenigen Sekunden erfasst
+64ff1784	Lautstärke {0} · Referenz {1:F0} dBFS
+87c8c605	● Ton erkannt
+eafa50be	○ Stille (reagiert, sobald Ton erklingt)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (Grafikspeicher)
+d453beab	Arbeitsspeicher (RAM)
+8f27288e	SSD · {0}
+efd9152e	Lebensdauer {0:F0} %
+77b82689	Prüfen nötig
+51592c08	Achtung
+6b7001de	Normal
+56d75872	Zur Info
+22024d48	Wird gesammelt
+5afe281d	Die Aufzeichnung 10 Minuten vor und nach dem Fehler wurde gespeichert: {0}
+61c7691d	Aufzeichnung ansehen
+29d6a363	{0:N0} Yen
+37d31a15	CPU und GPU nutzen Sensorwerte, alles andere wird mit {0:F0} W gerechnet (Tarif {1:0.##} Yen/kWh). Gezählt wird nur, solange die App läuft.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · Sonstiges {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} Std.
+2f240cf7	{0:F1} kWh (aus dem Durchschnitt der Tage mit Aufzeichnung)
+b5d6b2e1	Etwa {0} · {1:F1} Std.
+8dec5fdd	Etwa {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · etwa {2} · {3:F1} Std.
+df95f0be	Aufzeichnungen werden geladen und geprüft…
+8223041f	 · Basis: seit der Reinigung am {0:yyyy/MM/dd}
+c427ad3a	Geprüft um {0:HH:mm} · Aufzeichnung von {1:F0} Tagen{2}
+00cd1e3b	Wartungshinweis: Bei {0} gibt es eine Veränderung.
+4c563244	Diagnose ansehen
+5ff17925	Prüfung nicht möglich: {0}
+aa4e55c3	Haben Sie Lüfter, Filter oder Radiator gereinigt?\n\nDie Aufzeichnungen ab jetzt werden zur neuen Vergleichsbasis (bis zu einer Bewertung dauert es etwa 10 Tage).
+d83f7d90	Gereinigt
+b5814c1a	Öffnen nicht möglich: {0}
+5f439d96	Stromverbrauch (Schätzung)
+039fa193	Strom
+239f35c2	Heute {0:F2} kWh · etwa {1:N0} Yen
+b46fd1a2	„{1}“ wird verwendet, weil gerade „{0}“ läuft
+7cc5282f	Neues Profil
+ca0a2914	Kopie von {0}
+3b42230a	Mindestens ein Profil ist nötig.
+feb800ae	• {0} Regeln zum automatischen Wechsel nach Apps werden gelöscht
+5d2665a7	• {0} Zeitpläne wechseln zu „{1}“
+f0b8e8cf	• Das Schnelltasten-„Leise“ verwendet künftig „{0}“
+4f3910fa	\n\n(Mit „Rückgängig“ zurücknehmbar)
+04ce24e0	Profil „{0}“ löschen?{1}

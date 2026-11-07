@@ -1300,3 +1300,103 @@ df788b17	Warna yang dipilih di "Warna" perlahan menjadi terang dan redup
 25525b81	{0} ({1})
 bb1834e5	Anda menyesuaikan sendiri pengaturan di bawah. Memilih preset lain akan kembali ke kombinasinya
 1cf255e8	Untuk bekerja atau malam hari. Warna berganti perlahan dan lembut
+9df36e7d	Pilihan aman. Berdenyut nyaman mengikuti bass
+4beab2e2	Efek meriah dengan cincin cahaya yang menyebar setiap pukulan drum
+f6ac23cd	Efek paling intens, dengan pergantian warna kuat di setiap ketukan
+b7e7d574	Menyusun nada rendah sampai tinggi di sepanjang LED agar suara terlihat
+7c3c3b30	Efek lembut dan hangat yang tidak mengganggu film atau gim
+355fd781	{0}\nEfek: {1} · Intensitas: {2} · Warna: {3}
+67f5dc44	\n(Jika "Kurangi kedipan" dimatikan, kedipannya akan lebih intens lagi)
+e3c74af7	Santai dan tenang. Warna berganti perlahan setiap birama
+8265bcd4	Respons sedang. Warna berganti setiap 2 ketukan
+39194da9	Respons sigap. Warna berganti setiap ketukan
+283c2191	Respons maksimal. Warna berganti seketika setiap ketukan dan awal birama ditonjolkan
+899bfdf5	{0}\nSaat dipilih: respons {1:F0} ms · kehalusan {2:F0} ms · kontras {3:F0}% · paling redup {4:F0}%
+1763988d	Kecepatan aliran
+782c7098	Saat ini setengah tempo
+3da3fc0d	Saat ini dua kali tempo
+587c7525	Semua nilai bawaan (nilai intensitas "{0}")
+08d68b95	Nilai yang diubah dari bawaan: 
+57a4e475	Nilai respons dikembalikan ke bawaan. Gunakan "Urungkan" di kanan atas untuk mendapatkan nilai sebelumnya.
+6d49db83	Izinkan kedipan intens?\n\nKedipan cahaya yang kuat dapat memengaruhi kesehatan orang yang peka terhadap cahaya (misalnya kejang fotosensitif).
+91f616cf	 Jika merasa tidak enak badan, segera nyalakan lagi "Kurangi kedipan".
+165c4145	Terhubung. {0} perangkat ditemukan.
+3757a4b4	Dimulai saat "Gunakan OpenRGB" dinyalakan
+d7b2f046	Tidak bisa terhubung: {0}\nJalankan OpenRGB, tekan "Start Server" di tab "SDK Server", lalu coba lagi.
+23ecbb88	"Gunakan OpenRGB" mati. Nyalakan untuk terhubung
+f8d56f66	Mati (saat "Gunakan OpenRGB" dinyalakan, warna LED mulai diubah)
+dabf7260	Bisa dipilih setelah daftar perangkat dimuat. Tekan "Uji koneksi" di atas
+70f103b7	Pilih minimal satu (untuk mematikan LED, matikan "Gunakan OpenRGB" di atas)
+355efac9	Pengaturan perangkat yang saat ini tidak ditemukan tetap disimpan (bisa dipakai lagi setelah disambungkan ulang): {0}
+49610d95	Mencari aplikasi yang sedang memutar suara…
+937d0bba	 (sedang bersuara)
+bd2b75f3	 (sedang diputar)
+e197ab2d	Aplikasi tidak ditemukan. Putar lagu lalu tekan lagi
+8dc805b8	Uji sinkron bisa dipakai saat "Gunakan OpenRGB" menyala dan efeknya "Sinkron musik".
+1071825a	Tidak bisa memutar bunyi klik
+9fb33dc5	Setiap 0,6 detik terdengar bunyi "klik" dan LED menyala putih. Jika cahaya lebih cepat dari suara tekan "+", jika lebih lambat tekan "−", sampai suara dan cahaya pas.
+462dc044	 Tekan lagi atau tinggalkan layar ini untuk berhenti.
+8cd7762f	{0} sedang berjalan. Perangkat lunak itu mengendalikan LED yang sama, sehingga warna bisa kembali sendiri, berkedip, atau tidak selaras dengan perangkat lain.
+55b403e0	 Hentikan kendali LED (pencahayaan) perangkat lunak itu atau tutup (L-Connect dari Lian Li bisa diatur hanya untuk putaran kipas).
+caf81aa5	Di pengaturan OpenRGB, "Shared SMBus Access" (berbagi SMBus dengan perangkat lunak lain) mati.
+7051883b	 Aplikasi ini membaca suhu memori lewat jalur yang sama (SMBus), jadi bisa bentrok dan suhu tidak terbaca.
+2810f408	 Nyalakan "Shared SMBus Access" di Settings OpenRGB lalu jalankan ulang OpenRGB (atau matikan Pengaturan → "Baca suhu memori").
+0b102823	\nFile pengaturan: {0}
+7c87a784	 · 
+cde5d20f	Penangkapan suara dimulai saat "Gunakan OpenRGB" dinyalakan
+37b53bcd	{0} (hanya bereaksi pada suara {1})
+8e13b3ed	\nKeluaran yang didengarkan: {0}
+a33ee710	Menyiapkan penangkapan suara…
+aeb57d02	Ditampilkan saat sinkron musik lewat OpenRGB
+6a7d3717	Tempo: tidak dipakai
+d9cb0d66	Menyala hanya menurut kerasnya suara
+8d9ab8cc	Menyala mengikuti kick
+58c9b655	Tempo tertangkap (keyakinan {0:F0}%)
+7ddda7d0	Mendeteksi tempo…
+12235fc4	Kandidat {0:F0} BPM (keyakinan {1:F0}%)
+f689911d	Untuk lagu dengan ketukan jelas, tempo tertangkap dalam beberapa detik
+64ff1784	Volume {0} · acuan {1:F0} dBFS
+87c8c605	● Suara terdeteksi
+eafa50be	○ Hening (bereaksi saat ada suara)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (memori video)
+d453beab	Memori (RAM)
+8f27288e	SSD · {0}
+efd9152e	Umur {0:F0}%
+77b82689	Perlu diperiksa
+51592c08	Perhatian
+6b7001de	Normal
+56d75872	Referensi
+22024d48	Mengumpulkan
+5afe281d	Rekaman 10 menit sebelum dan sesudah gangguan disimpan: {0}
+61c7691d	Lihat rekaman
+29d6a363	{0:N0} yen
+37d31a15	CPU dan GPU memakai nilai sensor, sisanya dihitung {0:F0} W (tarif {1:0.##} yen/kWh). Hanya dihitung selama aplikasi berjalan.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · lainnya {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} jam
+2f240cf7	{0:F1} kWh (dari rata-rata hari yang terekam)
+b5d6b2e1	Sekitar {0} · {1:F1} jam
+8dec5fdd	Sekitar {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · sekitar {2} · {3:F1} jam
+df95f0be	Memuat dan memeriksa rekaman…
+8223041f	 · acuan: sejak pembersihan {0:yyyy/MM/dd}
+c427ad3a	Diperiksa pukul {0:HH:mm} · rekaman {1:F0} hari{2}
+00cd1e3b	Pemberitahuan perawatan: ada perubahan pada {0}.
+4c563244	Lihat diagnosis
+5ff17925	Tidak bisa diperiksa: {0}
+aa4e55c3	Apakah kipas, filter, atau radiator sudah dibersihkan?\n\nRekaman mulai sekarang menjadi acuan baru untuk perbandingan (perlu sekitar 10 hari sampai bisa dinilai).
+d83f7d90	Sudah dibersihkan
+b5814c1a	Tidak bisa dibuka: {0}
+5f439d96	Konsumsi daya (perkiraan)
+039fa193	Daya
+239f35c2	Hari ini {0:F2} kWh · sekitar {1:N0} yen
+b46fd1a2	Memakai "{1}" karena "{0}" sedang berjalan
+7cc5282f	Profil baru
+ca0a2914	Salinan {0}
+3b42230a	Minimal perlu satu profil.
+feb800ae	• {0} aturan peralihan otomatis per aplikasi akan dihapus
+5d2665a7	• {0} jadwal akan beralih ke "{1}"
+f0b8e8cf	• "Senyap" sekali sentuh akan memakai "{0}"
+4f3910fa	\n\n(Bisa dibatalkan dengan "Urungkan")
+04ce24e0	Hapus profil "{0}"?{1}

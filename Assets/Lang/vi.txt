@@ -1300,3 +1300,103 @@ df788b17	Màu đã chọn trong "Màu" từ từ sáng lên rồi tối đi
 25525b81	{0} ({1})
 bb1834e5	Bạn đã tự chỉnh các cài đặt bên dưới. Chọn cài sẵn khác sẽ trở về tổ hợp của cài sẵn đó
 1cf255e8	Khi làm việc hoặc ban đêm. Màu chuyển đổi chậm rãi, nhẹ nhàng
+9df36e7d	Phân vân thì chọn cái này. Đập nhịp dễ chịu theo âm trầm
+4beab2e2	Hiệu ứng sôi động, mỗi tiếng trống lại lan ra một vòng sáng
+f6ac23cd	Hiệu ứng dữ dội nhất, đổi màu mạnh theo từng nhịp
+b7e7d574	Xếp âm trầm đến âm cao dọc dãy LED để nhìn thấy âm thanh
+7c3c3b30	Hiệu ứng ấm áp, nhẹ nhàng, không làm phiền khi xem phim hay chơi game
+355fd781	{0}\nHiệu ứng: {1} · Cường độ: {2} · Màu: {3}
+67f5dc44	\n(Nếu tắt "Giảm nhấp nháy", đèn sẽ nhấp nháy còn mạnh hơn)
+e3c74af7	Thư thái, êm ả. Màu đổi chậm theo từng ô nhịp
+8265bcd4	Phản ứng vừa phải. Màu đổi mỗi 2 phách
+39194da9	Phản ứng nhanh nhạy. Màu đổi mỗi phách
+283c2191	Phản ứng tối đa. Màu đổi tức thì mỗi phách và nhấn mạnh đầu ô nhịp
+899bfdf5	{0}\nKhi chọn: phản ứng {1:F0} ms · độ mượt {2:F0} ms · độ tương phản {3:F0}% · tối nhất {4:F0}%
+1763988d	Tốc độ chảy
+782c7098	Hiện đang ở nửa tempo
+3da3fc0d	Hiện đang ở gấp đôi tempo
+587c7525	Tất cả là giá trị mặc định (của cường độ "{0}")
+08d68b95	Các giá trị đã đổi so với mặc định: 
+57a4e475	Đã đưa các giá trị phản ứng về mặc định. Dùng "Hoàn tác" ở góc trên bên phải để lấy lại giá trị trước đó.
+6d49db83	Cho phép nhấp nháy mạnh?\n\nÁnh sáng nhấp nháy mạnh có thể ảnh hưởng đến sức khỏe của người nhạy cảm với ánh sáng (ví dụ cơn động kinh do ánh sáng).
+91f616cf	 Nếu thấy khó chịu, hãy bật lại "Giảm nhấp nháy" ngay.
+165c4145	Đã kết nối. Tìm thấy {0} thiết bị.
+3757a4b4	Bắt đầu khi bật "Liên kết với OpenRGB"
+d7b2f046	Không kết nối được: {0}\nHãy mở OpenRGB, nhấn "Start Server" ở thẻ "SDK Server" rồi thử lại.
+23ecbb88	"Liên kết với OpenRGB" đang tắt. Bật lên để kết nối
+f8d56f66	Tắt (bật "Liên kết với OpenRGB" sẽ bắt đầu đổi màu LED)
+dabf7260	Có thể chọn sau khi tải danh sách thiết bị. Hãy nhấn "Kiểm tra kết nối" ở trên
+70f103b7	Hãy chọn ít nhất một (muốn tắt LED thì tắt "Liên kết với OpenRGB" ở trên)
+355efac9	Cài đặt của các thiết bị hiện không tìm thấy vẫn được giữ lại (cắm lại sẽ dùng như cũ): {0}
+49610d95	Đang tìm ứng dụng đang phát âm thanh…
+937d0bba	 (đang phát âm thanh)
+bd2b75f3	 (đang phát)
+e197ab2d	Không tìm thấy ứng dụng. Hãy phát một bài rồi nhấn lại
+8dc805b8	Có thể dùng thử đồng bộ khi "Liên kết với OpenRGB" đang bật và hiệu ứng là "Đồng bộ nhạc".
+1071825a	Không phát được tiếng tách
+9fb33dc5	Cứ 0,6 giây lại có tiếng "tách" và LED sáng trắng. Nếu ánh sáng sớm hơn âm thanh thì nhấn "+", muộn hơn thì nhấn "−", để tìm điểm âm thanh và ánh sáng khớp nhau.
+462dc044	 Nhấn lần nữa hoặc rời màn hình này để dừng.
+8cd7762f	{0} đang chạy. Phần mềm này điều khiển cùng các LED nên có thể khiến màu tự quay lại, nhấp nháy hoặc lệch với thiết bị khác.
+55b403e0	 Hãy tắt điều khiển LED (đèn) của phần mềm đó hoặc thoát nó (L-Connect của Lian Li có thể đặt chỉ dùng tốc độ quạt).
+caf81aa5	Trong cài đặt OpenRGB, "Shared SMBus Access" (dùng chung SMBus với phần mềm khác) đang tắt.
+7051883b	 Ứng dụng này đọc nhiệt độ RAM qua cùng đường dây (SMBus) nên có thể xung đột và không đọc được nhiệt độ.
+2810f408	 Hãy bật "Shared SMBus Access" trong Settings của OpenRGB rồi khởi động lại OpenRGB (hoặc tắt Cài đặt → "Đọc nhiệt độ RAM").
+0b102823	\nTệp cài đặt: {0}
+7c87a784	 · 
+cde5d20f	Việc thu âm thanh bắt đầu khi bật "Liên kết với OpenRGB"
+37b53bcd	{0} (chỉ phản ứng với âm thanh của {1})
+8e13b3ed	\nĐầu ra đang nghe: {0}
+a33ee710	Đang chuẩn bị thu âm thanh…
+aeb57d02	Hiển thị khi đồng bộ nhạc qua OpenRGB
+6a7d3717	Tempo: không dùng
+d9cb0d66	Đang sáng chỉ theo độ lớn âm thanh
+8d9ab8cc	Đang sáng theo trống kick
+58c9b655	Đã nắm được tempo (độ tin cậy {0:F0}%)
+7ddda7d0	Đang dò tempo…
+12235fc4	Ứng viên {0:F0} BPM (độ tin cậy {1:F0}%)
+f689911d	Với bài có nhịp rõ, chỉ vài giây là nắm được tempo
+64ff1784	Âm lượng {0} · mức chuẩn {1:F0} dBFS
+87c8c605	● Đang phát hiện âm thanh
+eafa50be	○ Im lặng (sẽ phản ứng khi có âm thanh)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (bộ nhớ đồ họa)
+d453beab	Bộ nhớ (RAM)
+8f27288e	SSD · {0}
+efd9152e	Tuổi thọ {0:F0}%
+77b82689	Cần kiểm tra
+51592c08	Chú ý
+6b7001de	Bình thường
+56d75872	Tham khảo
+22024d48	Đang thu thập
+5afe281d	Đã lưu bản ghi 10 phút trước và sau sự cố: {0}
+61c7691d	Xem bản ghi
+29d6a363	{0:N0} yên
+37d31a15	CPU và GPU dùng giá trị cảm biến, phần còn lại tính là {0:F0} W (đơn giá {1:0.##} yên/kWh). Chỉ tính trong lúc ứng dụng đang chạy.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · khác {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} giờ
+2f240cf7	{0:F1} kWh (từ trung bình các ngày có bản ghi)
+b5d6b2e1	Khoảng {0} · {1:F1} giờ
+8dec5fdd	Khoảng {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · khoảng {2} · {3:F1} giờ
+df95f0be	Đang tải và phân tích bản ghi…
+8223041f	 · mốc: từ lần vệ sinh {0:yyyy/MM/dd}
+c427ad3a	Đã kiểm tra lúc {0:HH:mm} · bản ghi {1:F0} ngày{2}
+00cd1e3b	Thông báo bảo trì: {0} có thay đổi.
+4c563244	Xem chẩn đoán
+5ff17925	Không phân tích được: {0}
+aa4e55c3	Bạn đã vệ sinh quạt, tấm lọc hoặc két tản nhiệt chưa?\n\nBản ghi từ giờ sẽ là mốc mới để so sánh (cần khoảng 10 ngày mới đánh giá được).
+d83f7d90	Đã vệ sinh
+b5814c1a	Không mở được: {0}
+5f439d96	Điện năng tiêu thụ (ước tính)
+039fa193	Điện năng
+239f35c2	Hôm nay {0:F2} kWh · khoảng {1:N0} yên
+b46fd1a2	Đang dùng "{1}" vì hiện "{0}" đang chạy
+7cc5282f	Cấu hình mới
+ca0a2914	Bản sao của {0}
+3b42230a	Cần ít nhất một cấu hình.
+feb800ae	• Sẽ xóa {0} quy tắc tự chuyển theo ứng dụng
+5d2665a7	• {0} lịch sẽ chuyển sang "{1}"
+f0b8e8cf	• "Yên tĩnh" bằng một chạm sẽ dùng "{0}"
+4f3910fa	\n\n(Có thể hủy bằng "Hoàn tác")
+04ce24e0	Xóa cấu hình "{0}"?{1}

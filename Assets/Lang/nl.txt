@@ -1300,3 +1300,103 @@ df788b17	De kleur die bij "Kleur" is gekozen, wordt langzaam lichter en donkerde
 25525b81	{0} ({1})
 bb1834e5	Je hebt de instellingen hieronder zelf aangepast. Kies je een andere voorinstelling, dan geldt weer de combinatie daarvan
 1cf255e8	Voor werk of 's nachts. De kleuren wisselen langzaam en rustig
+9df36e7d	De veilige keuze. Pulseert prettig mee met de bas
+4beab2e2	Een levendig effect waarbij bij elke drumslag een ring van licht uitwaaiert
+f6ac23cd	Het heftigste effect, met sterke kleurwissels bij elke beat
+b7e7d574	Verdeelt laag tot hoog over de leds, zodat je het geluid kunt zien
+7c3c3b30	Een subtiel, warm effect dat films en games niet stoort
+355fd781	{0}\nEffect: {1} · Sterkte: {2} · Kleuren: {3}
+67f5dc44	\n(Zet je "Flitsen beperken" uit, dan knippert het nog heftiger)
+e3c74af7	Rustig en kalm. De kleuren wisselen langzaam per maat
+8265bcd4	Gematigde reactie. De kleuren wisselen elke 2 tellen
+39194da9	Vlotte reactie. De kleuren wisselen elke tel
+283c2191	Maximale reactie. De kleuren wisselen direct op elke tel en het begin van elke maat wordt benadrukt
+899bfdf5	{0}\nBij keuze: reactie {1:F0} ms · demping {2:F0} ms · contrast {3:F0}% · donkerst {4:F0}%
+1763988d	Stroomsnelheid
+782c7098	Nu op half tempo
+3da3fc0d	Nu op dubbel tempo
+587c7525	Alles standaardwaarden (die van sterkte "{0}")
+08d68b95	Gewijzigd ten opzichte van de standaard: 
+57a4e475	De reactiewaarden zijn teruggezet naar de standaard. Met "Ongedaan maken" rechtsboven krijg je de vorige waarden terug.
+6d49db83	Heftig knipperen toestaan?\n\nSterk knipperend licht kan de gezondheid beïnvloeden van mensen die gevoelig zijn voor licht (bijvoorbeeld fotosensitieve aanvallen).
+91f616cf	 Voel je je niet goed, zet "Flitsen beperken" dan meteen weer aan.
+165c4145	Verbonden. {0} apparaten gevonden.
+3757a4b4	Start zodra "OpenRGB gebruiken" aan staat
+d7b2f046	Kan geen verbinding maken: {0}\nStart OpenRGB, klik op "Start Server" op het tabblad "SDK Server" en probeer het opnieuw.
+23ecbb88	"OpenRGB gebruiken" staat uit. Zet het aan om te verbinden
+f8d56f66	Uit (met "OpenRGB gebruiken" aan begint de app de ledkleuren te wijzigen)
+dabf7260	Je kunt kiezen zodra de apparatenlijst is geladen. Klik hierboven op "Verbinding testen"
+70f103b7	Kies er minstens één (om de leds uit te zetten, zet je hierboven "OpenRGB gebruiken" uit)
+355efac9	Instellingen voor apparaten die nu niet gevonden worden, blijven bewaard (na opnieuw aansluiten werken ze weer zoals voorheen): {0}
+49610d95	Zoeken naar apps die geluid afspelen…
+937d0bba	 (speelt geluid af)
+bd2b75f3	 (speelt af)
+e197ab2d	Geen apps gevonden. Speel een nummer af en klik opnieuw
+8dc805b8	De synchronisatietest is beschikbaar als "OpenRGB gebruiken" aan staat en het effect "Muzieksynchronisatie" is.
+1071825a	Kan het kliktgeluid niet afspelen
+9fb33dc5	Elke 0,6 seconde klinkt een klik en flitsen de leds wit. Komt het licht vóór het geluid, druk dan op "+", komt het erna, op "−", tot geluid en licht gelijk lopen.
+462dc044	 Klik nogmaals of verlaat dit scherm om te stoppen.
+8cd7762f	{0} draait. Die software stuurt dezelfde leds aan, waardoor kleuren vanzelf terugspringen, flikkeren of niet meer gelijk lopen met andere apparaten.
+55b403e0	 Zet de ledbesturing (verlichting) in die software uit of sluit hem (Lian Li L-Connect kan zo worden ingesteld dat alleen de ventilatorsnelheid wordt gebruikt).
+caf81aa5	In de instellingen van OpenRGB staat "Shared SMBus Access" (SMBus delen met andere software) uit.
+7051883b	 Deze app leest de geheugentemperatuur via dezelfde bedrading (SMBus), dus ze kunnen botsen en de temperatuur kan onleesbaar worden.
+2810f408	 Zet "Shared SMBus Access" aan in de Settings van OpenRGB en start OpenRGB opnieuw (of zet Instellingen → "Geheugentemperatuur lezen" uit).
+0b102823	\nInstellingenbestand: {0}
+7c87a784	 · 
+cde5d20f	Het opnemen van geluid start zodra "OpenRGB gebruiken" aan staat
+37b53bcd	{0} (reageert alleen op geluid van {1})
+8e13b3ed	\nBeluisterde uitvoer: {0}
+a33ee710	Geluidsopname wordt voorbereid…
+aeb57d02	Wordt getoond bij muzieksynchronisatie via OpenRGB
+6a7d3717	Tempo: niet gebruikt
+d9cb0d66	Licht alleen op naar luidheid
+8d9ab8cc	Licht op op de kick
+58c9b655	Tempo gevonden (zekerheid {0:F0}%)
+7ddda7d0	Tempo wordt bepaald…
+12235fc4	Kandidaat {0:F0} BPM (zekerheid {1:F0}%)
+f689911d	Bij nummers met een duidelijke beat wordt het tempo binnen enkele seconden gevonden
+64ff1784	Volume {0} · referentie {1:F0} dBFS
+87c8c605	● Geluid gedetecteerd
+eafa50be	○ Stilte (reageert zodra er geluid is)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (videogeheugen)
+d453beab	Geheugen (RAM)
+8f27288e	SSD · {0}
+efd9152e	Levensduur {0:F0}%
+77b82689	Nakijken nodig
+51592c08	Let op
+6b7001de	Normaal
+56d75872	Ter info
+22024d48	Verzamelen
+5afe281d	De metingen van 10 minuten voor en na de storing zijn opgeslagen: {0}
+61c7691d	Metingen bekijken
+29d6a363	{0:N0} yen
+37d31a15	CPU en GPU gebruiken sensorwaarden, de rest wordt gerekend als {0:F0} W (tarief {1:0.##} yen/kWh). Alleen geteld zolang de app draait.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · overig {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} uur
+2f240cf7	{0:F1} kWh (op basis van het gemiddelde van dagen met metingen)
+b5d6b2e1	Ongeveer {0} · {1:F1} uur
+8dec5fdd	Ongeveer {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · ongeveer {2} · {3:F1} uur
+df95f0be	Metingen worden geladen en onderzocht…
+8223041f	 · basis: sinds de schoonmaak van {0:yyyy/MM/dd}
+c427ad3a	Gecontroleerd om {0:HH:mm} · {1:F0} dagen aan metingen{2}
+00cd1e3b	Onderhoudsmelding: er is een verandering bij {0}.
+4c563244	Diagnose bekijken
+5ff17925	Onderzoeken is niet gelukt: {0}
+aa4e55c3	Heb je de ventilatoren, filters of radiator schoongemaakt?\n\nDe metingen vanaf nu worden de nieuwe basis voor vergelijking (het duurt ongeveer 10 dagen voordat er een oordeel mogelijk is).
+d83f7d90	Schoongemaakt
+b5814c1a	Kan niet openen: {0}
+5f439d96	Stroomverbruik (schatting)
+039fa193	Stroom
+239f35c2	Vandaag {0:F2} kWh · ongeveer {1:N0} yen
+b46fd1a2	"{1}" wordt gebruikt omdat "{0}" nu draait
+7cc5282f	Nieuw profiel
+ca0a2914	Kopie van {0}
+3b42230a	Er is minstens één profiel nodig.
+feb800ae	• {0} regels voor automatisch wisselen per app worden verwijderd
+5d2665a7	• {0} planningen wisselen naar "{1}"
+f0b8e8cf	• De sneltoets "Stil" gaat "{0}" gebruiken
+4f3910fa	\n\n(Ongedaan te maken met "Ongedaan maken")
+04ce24e0	Profiel "{0}" verwijderen?{1}

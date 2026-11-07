@@ -1300,3 +1300,103 @@ df788b17	La couleur choisie dans « Couleur » s'éclaircit et s'assombrit lente
 25525b81	{0} ({1})
 bb1834e5	Vous avez ajusté vous-même les réglages ci-dessous. Choisir un autre préréglage rétablit sa combinaison
 1cf255e8	Pour le travail ou la nuit. Les couleurs changent lentement et en douceur
+9df36e7d	Le choix sûr. Pulse agréablement avec les basses
+4beab2e2	Un effet animé où un anneau de lumière s'étend à chaque coup de batterie
+f6ac23cd	L'effet le plus intense, avec de forts changements de couleur à chaque temps
+b7e7d574	Répartit les basses aux aigus le long des LED pour voir le son
+7c3c3b30	Un effet discret et chaleureux qui ne gêne pas les films ni les jeux
+355fd781	{0}\nEffet : {1} · Intensité : {2} · Couleurs : {3}
+67f5dc44	\n(En désactivant « Réduire les flashs », le clignotement devient encore plus intense)
+e3c74af7	Calme et posé. Les couleurs changent lentement à chaque mesure
+8265bcd4	Réaction modérée. Les couleurs changent tous les 2 temps
+39194da9	Réaction vive. Les couleurs changent à chaque temps
+283c2191	Réaction maximale. Les couleurs changent instantanément à chaque temps et le début de chaque mesure est accentué
+899bfdf5	{0}\nUne fois choisi : réaction {1:F0} ms · lissage {2:F0} ms · contraste {3:F0} % · minimum {4:F0} %
+1763988d	Vitesse de défilement
+782c7098	Actuellement à mi-tempo
+3da3fc0d	Actuellement à tempo double
+587c7525	Toutes les valeurs par défaut (celles de l'intensité « {0} »)
+08d68b95	Valeurs modifiées par rapport aux valeurs par défaut : 
+57a4e475	Les valeurs de réaction ont été remises par défaut. Le bouton « Annuler » en haut à droite rétablit les valeurs précédentes.
+6d49db83	Autoriser le clignotement intense ?\n\nDe fortes lumières clignotantes peuvent affecter la santé des personnes sensibles à la lumière (par exemple, crises photosensibles).
+91f616cf	 En cas de malaise, réactivez immédiatement « Réduire les flashs ».
+165c4145	Connecté. {0} appareils trouvés.
+3757a4b4	Démarre lorsque « Utiliser OpenRGB » est activé
+d7b2f046	Connexion impossible : {0}\nLancez OpenRGB, cliquez sur « Start Server » dans l'onglet « SDK Server », puis réessayez.
+23ecbb88	« Utiliser OpenRGB » est désactivé. Activez-le pour vous connecter
+f8d56f66	Désactivé (activez « Utiliser OpenRGB » pour commencer à changer la couleur des LED)
+dabf7260	Le choix est possible une fois la liste des appareils chargée. Cliquez sur « Tester la connexion » ci-dessus
+70f103b7	Choisissez-en au moins un (pour éteindre les LED, désactivez « Utiliser OpenRGB » ci-dessus)
+355efac9	Les réglages des appareils introuvables pour l'instant sont conservés (ils refonctionnent une fois reconnectés) : {0}
+49610d95	Recherche des applications qui émettent du son…
+937d0bba	 (émet du son)
+bd2b75f3	 (en lecture)
+e197ab2d	Aucune application trouvée. Lancez un morceau et cliquez à nouveau
+8dc805b8	Le test de synchronisation est disponible quand « Utiliser OpenRGB » est activé et que l'effet est « Synchro musicale ».
+1071825a	Impossible de jouer le son de clic
+9fb33dc5	Un clic retentit toutes les 0,6 seconde et les LED flashent en blanc. Si la lumière précède le son, appuyez sur « + », si elle le suit, sur « − », jusqu'à ce que le son et la lumière coïncident.
+462dc044	 Cliquez à nouveau ou quittez cet écran pour arrêter.
+8cd7762f	{0} est en cours d'exécution. Il pilote les mêmes LED, ce qui peut faire revenir les couleurs d'elles-mêmes, scintiller ou se désynchroniser des autres appareils.
+55b403e0	 Arrêtez le contrôle des LED (éclairage) dans ce logiciel ou fermez-le (Lian Li L-Connect peut être réglé pour ne gérer que la vitesse des ventilateurs).
+caf81aa5	« Shared SMBus Access » (partage du SMBus avec d'autres logiciels) est désactivé dans les paramètres d'OpenRGB.
+7051883b	 Cette application lit la température de la mémoire par le même câblage (SMBus) ; les deux peuvent entrer en conflit et la température devenir illisible.
+2810f408	 Activez « Shared SMBus Access » dans les Settings d'OpenRGB, puis redémarrez OpenRGB (ou désactivez Paramètres → « Lire la température de la mémoire »).
+0b102823	\nFichier de paramètres : {0}
+7c87a784	 · 
+cde5d20f	La capture du son démarre lorsque « Utiliser OpenRGB » est activé
+37b53bcd	{0} (ne réagit qu'au son de {1})
+8e13b3ed	\nSortie écoutée : {0}
+a33ee710	Préparation de la capture du son…
+aeb57d02	Affiché en synchro musicale avec OpenRGB
+6a7d3717	Tempo : non utilisé
+d9cb0d66	S'allume selon le volume uniquement
+8d9ab8cc	S'allume sur la grosse caisse
+58c9b655	Tempo trouvé (fiabilité {0:F0} %)
+7ddda7d0	Détection du tempo…
+12235fc4	Candidat {0:F0} BPM (fiabilité {1:F0} %)
+f689911d	Pour les morceaux au rythme net, le tempo est trouvé en quelques secondes
+64ff1784	Volume {0} · référence {1:F0} dBFS
+87c8c605	● Son détecté
+eafa50be	○ Silence (réagit dès qu'un son est joué)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (mémoire vidéo)
+d453beab	Mémoire (RAM)
+8f27288e	SSD · {0}
+efd9152e	Durée de vie {0:F0} %
+77b82689	À vérifier
+51592c08	Attention
+6b7001de	Normal
+56d75872	Indicatif
+22024d48	Collecte en cours
+5afe281d	Les enregistrements des 10 minutes avant et après l'anomalie ont été sauvegardés : {0}
+61c7691d	Voir les enregistrements
+29d6a363	{0:N0} yens
+37d31a15	Le CPU et le GPU utilisent les valeurs des capteurs, le reste est compté pour {0:F0} W (tarif {1:0.##} yens/kWh). Seul le temps de fonctionnement de l'application est compté.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · autres {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} h
+2f240cf7	{0:F1} kWh (d'après la moyenne des jours enregistrés)
+b5d6b2e1	Environ {0} · {1:F1} h
+8dec5fdd	Environ {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · environ {2} · {3:F1} h
+df95f0be	Chargement et analyse des enregistrements…
+8223041f	 · référence : depuis le nettoyage du {0:yyyy/MM/dd}
+c427ad3a	Vérifié à {0:HH:mm} · {1:F0} jours d'enregistrements{2}
+00cd1e3b	Rappel d'entretien : {0} présente un changement.
+4c563244	Voir le diagnostic
+5ff17925	Analyse impossible : {0}
+aa4e55c3	Avez-vous nettoyé les ventilateurs, les filtres ou le radiateur ?\n\nLes enregistrements à partir de maintenant deviennent la nouvelle référence de comparaison (il faut environ 10 jours avant une évaluation).
+d83f7d90	Nettoyé
+b5814c1a	Ouverture impossible : {0}
+5f439d96	Consommation électrique (estimation)
+039fa193	Électricité
+239f35c2	Aujourd'hui {0:F2} kWh · environ {1:N0} yens
+b46fd1a2	« {1} » est utilisé car « {0} » est en cours d'exécution
+7cc5282f	Nouveau profil
+ca0a2914	Copie de {0}
+3b42230a	Au moins un profil est nécessaire.
+feb800ae	• {0} règles de basculement automatique par application seront supprimées
+5d2665a7	• {0} programmations basculeront sur « {1} »
+f0b8e8cf	• Le « Silencieux » en un clic utilisera « {0} »
+4f3910fa	\n\n(Annulable avec « Annuler »)
+04ce24e0	Supprimer le profil « {0} » ?{1}

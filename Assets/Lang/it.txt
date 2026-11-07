@@ -1300,3 +1300,103 @@ df788b17	Il colore scelto in «Colore» si schiarisce e si scurisce lentamente
 25525b81	{0} ({1})
 bb1834e5	Hai regolato tu le impostazioni qui sotto. Scegliendo un'altra preimpostazione si torna alla sua combinazione
 1cf255e8	Per il lavoro o la notte. I colori cambiano lentamente e con calma
+9df36e7d	La scelta sicura. Pulsa piacevolmente con i bassi
+4beab2e2	Un effetto vivace in cui un anello di luce si espande a ogni colpo di batteria
+f6ac23cd	L'effetto più intenso, con forti cambi di colore a ogni battito
+b7e7d574	Distribuisce dai bassi agli alti lungo i LED per vedere il suono
+7c3c3b30	Un effetto discreto e caldo che non disturba film e giochi
+355fd781	{0}\nEffetto: {1} · Intensità: {2} · Colori: {3}
+67f5dc44	\n(Disattivando «Riduci i lampeggi» lampeggia in modo ancora più intenso)
+e3c74af7	Rilassato e calmo. I colori cambiano lentamente a ogni battuta
+8265bcd4	Reazione moderata. I colori cambiano ogni 2 movimenti
+39194da9	Reazione scattante. I colori cambiano a ogni movimento
+283c2191	Reazione massima. I colori cambiano all'istante a ogni movimento e l'inizio della battuta viene accentuato
+899bfdf5	{0}\nSe scelto: reazione {1:F0} ms · morbidezza {2:F0} ms · contrasto {3:F0}% · minimo {4:F0}%
+1763988d	Velocità di scorrimento
+782c7098	Ora a metà tempo
+3da3fc0d	Ora a tempo doppio
+587c7525	Tutti valori predefiniti (quelli dell'intensità «{0}»)
+08d68b95	Valori cambiati rispetto ai predefiniti: 
+57a4e475	I valori della reazione sono tornati ai predefiniti. Con «Annulla» in alto a destra puoi recuperare i valori precedenti.
+6d49db83	Consentire il lampeggio intenso?\n\nLe luci lampeggianti forti possono influire sulla salute delle persone sensibili alla luce (ad esempio crisi fotosensibili).
+91f616cf	 Se non ti senti bene, riattiva subito «Riduci i lampeggi».
+165c4145	Connesso. Trovati {0} dispositivi.
+3757a4b4	Inizia quando attivi «Usa OpenRGB»
+d7b2f046	Impossibile connettersi: {0}\nAvvia OpenRGB, premi «Start Server» nella scheda «SDK Server» e riprova.
+23ecbb88	«Usa OpenRGB» è disattivato. Attivalo per connetterti
+f8d56f66	Disattivato (attivando «Usa OpenRGB» inizia a cambiare il colore dei LED)
+dabf7260	Potrai scegliere dopo il caricamento dell'elenco dei dispositivi. Premi «Prova connessione» qui sopra
+70f103b7	Scegline almeno uno (per spegnere i LED, disattiva «Usa OpenRGB» qui sopra)
+355efac9	Le impostazioni dei dispositivi non trovati ora sono conservate (funzioneranno come prima quando li ricolleghi): {0}
+49610d95	Ricerca delle app che riproducono audio…
+937d0bba	 (riproduce audio)
+bd2b75f3	 (in riproduzione)
+e197ab2d	Nessuna app trovata. Avvia un brano e premi di nuovo
+8dc805b8	Il test di sincronizzazione si può usare quando «Usa OpenRGB» è attivo e l'effetto è «Sincronizzazione musicale».
+1071825a	Impossibile riprodurre il clic
+9fb33dc5	Ogni 0,6 secondi si sente un clic e i LED lampeggiano di bianco. Se la luce arriva prima del suono premi «+», se arriva dopo «−», finché suono e luce coincidono.
+462dc044	 Premi di nuovo o lascia questa schermata per fermarlo.
+8cd7762f	{0} è in esecuzione. Controlla gli stessi LED, quindi i colori possono tornare indietro da soli, sfarfallare o non coincidere con gli altri dispositivi.
+55b403e0	 Interrompi il controllo dei LED (illuminazione) in quel software o chiudilo (Lian Li L-Connect può essere impostato per usare solo la velocità delle ventole).
+caf81aa5	Nelle impostazioni di OpenRGB «Shared SMBus Access» (condivisione dello SMBus con altri software) è disattivato.
+7051883b	 Questa app legge la temperatura della memoria tramite lo stesso cablaggio (SMBus), quindi possono esserci conflitti e la temperatura può diventare illeggibile.
+2810f408	 Attiva «Shared SMBus Access» nelle Settings di OpenRGB e riavvia OpenRGB (oppure disattiva Impostazioni → «Leggi la temperatura della memoria»).
+0b102823	\nFile di impostazioni: {0}
+7c87a784	 · 
+cde5d20f	L'acquisizione audio inizia quando attivi «Usa OpenRGB»
+37b53bcd	{0} (reagisce solo al suono di {1})
+8e13b3ed	\nUscita in ascolto: {0}
+a33ee710	Preparazione dell'acquisizione audio…
+aeb57d02	Mostrato nella sincronizzazione musicale tramite OpenRGB
+6a7d3717	Tempo: non usato
+d9cb0d66	Si illumina solo in base al volume
+8d9ab8cc	Si illumina con la cassa
+58c9b655	Tempo agganciato (affidabilità {0:F0}%)
+7ddda7d0	Rilevamento del tempo…
+12235fc4	Candidato {0:F0} BPM (affidabilità {1:F0}%)
+f689911d	Per i brani con un ritmo chiaro, il tempo viene agganciato in pochi secondi
+64ff1784	Volume {0} · riferimento {1:F0} dBFS
+87c8c605	● Suono rilevato
+eafa50be	○ Silenzio (reagisce quando c'è suono)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (memoria video)
+d453beab	Memoria (RAM)
+8f27288e	SSD · {0}
+efd9152e	Vita {0:F0}%
+77b82689	Da controllare
+51592c08	Attenzione
+6b7001de	Normale
+56d75872	Indicativo
+22024d48	Raccolta in corso
+5afe281d	Salvate le registrazioni dei 10 minuti prima e dopo l'anomalia: {0}
+61c7691d	Vedi registrazioni
+29d6a363	{0:N0} yen
+37d31a15	CPU e GPU usano i valori dei sensori, il resto è calcolato come {0:F0} W (tariffa {1:0.##} yen/kWh). Viene contato solo mentre l'app è in esecuzione.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · altro {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} ore
+2f240cf7	{0:F1} kWh (dalla media dei giorni registrati)
+b5d6b2e1	Circa {0} · {1:F1} ore
+8dec5fdd	Circa {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · circa {2} · {3:F1} ore
+df95f0be	Caricamento e analisi delle registrazioni…
+8223041f	 · riferimento: dalla pulizia del {0:yyyy/MM/dd}
+c427ad3a	Controllato alle {0:HH:mm} · {1:F0} giorni di registrazioni{2}
+00cd1e3b	Avviso di manutenzione: c'è un cambiamento in {0}.
+4c563244	Vedi diagnostica
+5ff17925	Impossibile analizzare: {0}
+aa4e55c3	Hai pulito ventole, filtri o radiatore?\n\nLe registrazioni da ora diventano il nuovo riferimento per il confronto (servono circa 10 giorni prima di una valutazione).
+d83f7d90	Ho pulito
+b5814c1a	Impossibile aprire: {0}
+5f439d96	Consumo elettrico (stima)
+039fa193	Elettricità
+239f35c2	Oggi {0:F2} kWh · circa {1:N0} yen
+b46fd1a2	Si usa «{1}» perché ora è in esecuzione «{0}»
+7cc5282f	Nuovo profilo
+ca0a2914	Copia di {0}
+3b42230a	Serve almeno un profilo.
+feb800ae	• Verranno eliminate {0} regole di cambio automatico per app
+5d2665a7	• {0} pianificazioni passeranno a «{1}»
+f0b8e8cf	• Il «Silenzioso» con un tocco userà «{0}»
+4f3910fa	\n\n(Annullabile con «Annulla»)
+04ce24e0	Eliminare il profilo «{0}»?{1}

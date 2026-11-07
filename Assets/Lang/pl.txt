@@ -1300,3 +1300,103 @@ df788b17	Kolor wybrany w „Kolor” powoli się rozjaśnia i przyciemnia
 25525b81	{0} ({1})
 bb1834e5	Ustawienia poniżej zostały dostosowane ręcznie. Wybranie innego ustawienia wstępnego przywraca jego kombinację
 1cf255e8	Do pracy lub w nocy. Kolory zmieniają się powoli i łagodnie
+9df36e7d	Bezpieczny wybór. Przyjemnie pulsuje z basem
+4beab2e2	Żywy efekt, w którym z każdym uderzeniem perkusji rozchodzi się pierścień światła
+f6ac23cd	Najbardziej intensywny efekt z mocną zmianą koloru na każde uderzenie
+b7e7d574	Rozkłada tony od niskich do wysokich wzdłuż LED, by dźwięk był widoczny
+7c3c3b30	Subtelny, ciepły efekt, który nie przeszkadza w filmach i grach
+355fd781	{0}\nEfekt: {1} · Intensywność: {2} · Kolory: {3}
+67f5dc44	\n(Po wyłączeniu „Ogranicz miganie” miga jeszcze intensywniej)
+e3c74af7	Spokojnie i łagodnie. Kolory zmieniają się powoli co takt
+8265bcd4	Umiarkowana reakcja. Kolory zmieniają się co 2 miary
+39194da9	Żwawa reakcja. Kolory zmieniają się co miarę
+283c2191	Maksymalna reakcja. Kolory zmieniają się natychmiast co miarę, a początek taktu jest akcentowany
+899bfdf5	{0}\nPo wybraniu: reakcja {1:F0} ms · wygładzanie {2:F0} ms · kontrast {3:F0}% · minimum {4:F0}%
+1763988d	Szybkość płynięcia
+782c7098	Teraz połowa tempa
+3da3fc0d	Teraz podwójne tempo
+587c7525	Wszystko domyślne (wartości intensywności „{0}”)
+08d68b95	Wartości zmienione względem domyślnych: 
+57a4e475	Wartości reakcji przywrócono do domyślnych. Przyciskiem „Cofnij” w prawym górnym rogu można wrócić do poprzednich wartości.
+6d49db83	Zezwolić na intensywne miganie?\n\nSilne miganie światła może wpływać na samopoczucie osób wrażliwych na światło (np. wywołać napad fotogenny).
+91f616cf	 W razie złego samopoczucia od razu włącz ponownie „Ogranicz miganie”.
+165c4145	Połączono. Znaleziono urządzenia: {0}.
+3757a4b4	Rozpocznie się po włączeniu „Używaj OpenRGB”
+d7b2f046	Nie można połączyć: {0}\nUruchom OpenRGB, kliknij „Start Server” na karcie „SDK Server” i spróbuj ponownie.
+23ecbb88	„Używaj OpenRGB” jest wyłączone. Włącz, aby się połączyć
+f8d56f66	Wył. (po włączeniu „Używaj OpenRGB” rozpocznie się zmiana koloru LED)
+dabf7260	Wybór będzie możliwy po wczytaniu listy urządzeń. Kliknij „Testuj połączenie” powyżej
+70f103b7	Wybierz co najmniej jedno (aby zgasić diody, wyłącz „Używaj OpenRGB” powyżej)
+355efac9	Ustawienia urządzeń, których teraz nie znaleziono, zostały zachowane (po ponownym podłączeniu zadziałają jak wcześniej): {0}
+49610d95	Szukanie aplikacji odtwarzających dźwięk…
+937d0bba	 (odtwarza dźwięk)
+bd2b75f3	 (odtwarzanie)
+e197ab2d	Nie znaleziono aplikacji. Odtwórz utwór i kliknij ponownie
+8dc805b8	Test synchronizacji jest dostępny, gdy „Używaj OpenRGB” jest włączone, a efekt to „Synchronizacja z muzyką”.
+1071825a	Nie udało się odtworzyć kliknięcia
+9fb33dc5	Co 0,6 sekundy słychać kliknięcie, a diody błyskają na biało. Jeśli światło jest przed dźwiękiem, naciśnij „+”, jeśli po — „−”, aż dźwięk i światło się zgrają.
+462dc044	 Kliknij ponownie lub opuść ten ekran, aby zatrzymać.
+8cd7762f	Uruchomiono: {0}. Ten program steruje tymi samymi diodami, przez co kolory mogą same wracać, migotać lub rozjeżdżać się z innymi urządzeniami.
+55b403e0	 Wyłącz w nim sterowanie diodami (podświetlenie) lub go zamknij (Lian Li L-Connect można ustawić tak, by sterował tylko obrotami wentylatorów).
+caf81aa5	W ustawieniach OpenRGB wyłączono „Shared SMBus Access” (współdzielenie SMBus z innymi programami).
+7051883b	 Ta aplikacja odczytuje temperaturę pamięci tą samą magistralą (SMBus), więc może dochodzić do konfliktów i temperatura może przestać być odczytywana.
+2810f408	 Włącz „Shared SMBus Access” w Settings OpenRGB i uruchom OpenRGB ponownie (albo wyłącz Ustawienia → „Odczytuj temperaturę pamięci”).
+0b102823	\nPlik ustawień: {0}
+7c87a784	 · 
+cde5d20f	Przechwytywanie dźwięku rozpocznie się po włączeniu „Używaj OpenRGB”
+37b53bcd	{0} (reaguje tylko na dźwięk z {1})
+8e13b3ed	\nNasłuchiwane wyjście: {0}
+a33ee710	Przygotowywanie przechwytywania dźwięku…
+aeb57d02	Wyświetlane przy synchronizacji z muzyką przez OpenRGB
+6a7d3717	Tempo: nieużywane
+d9cb0d66	Świeci tylko według głośności
+8d9ab8cc	Świeci w rytm stopy
+58c9b655	Tempo uchwycone (pewność {0:F0}%)
+7ddda7d0	Wykrywanie tempa…
+12235fc4	Kandydat {0:F0} BPM (pewność {1:F0}%)
+f689911d	W utworach z wyraźnym rytmem tempo zostaje uchwycone w kilka sekund
+64ff1784	Głośność {0} · odniesienie {1:F0} dBFS
+87c8c605	● Wykryto dźwięk
+eafa50be	○ Cisza (reaguje, gdy pojawi się dźwięk)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (pamięć wideo)
+d453beab	Pamięć (RAM)
+8f27288e	SSD · {0}
+efd9152e	Żywotność {0:F0}%
+77b82689	Wymaga sprawdzenia
+51592c08	Uwaga
+6b7001de	W normie
+56d75872	Informacyjnie
+22024d48	Zbieranie danych
+5afe281d	Zapisano dane z 10 minut przed i po problemie: {0}
+61c7691d	Zobacz zapisy
+29d6a363	{0:N0} jenów
+37d31a15	CPU i GPU korzystają z wartości czujników, resztę liczy się jako {0:F0} W (stawka {1:0.##} jenów/kWh). Liczone tylko podczas działania aplikacji.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · inne {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} godz.
+2f240cf7	{0:F1} kWh (ze średniej z dni z zapisami)
+b5d6b2e1	Około {0} · {1:F1} godz.
+8dec5fdd	Około {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · około {2} · {3:F1} godz.
+df95f0be	Wczytywanie i analiza zapisów…
+8223041f	 · odniesienie: od czyszczenia {0:yyyy/MM/dd}
+c427ad3a	Sprawdzono o {0:HH:mm} · zapisy z {1:F0} dni{2}
+00cd1e3b	Przypomnienie o konserwacji: zmiana w {0}.
+4c563244	Zobacz diagnostykę
+5ff17925	Nie udało się sprawdzić: {0}
+aa4e55c3	Czy wentylatory, filtry lub chłodnica zostały wyczyszczone?\n\nZapisy od teraz staną się nowym punktem odniesienia do porównań (ocena będzie możliwa po około 10 dniach).
+d83f7d90	Wyczyszczone
+b5814c1a	Nie udało się otworzyć: {0}
+5f439d96	Zużycie energii (szacunkowe)
+039fa193	Energia
+239f35c2	Dziś {0:F2} kWh · około {1:N0} jenów
+b46fd1a2	Używany jest „{1}”, bo teraz działa „{0}”
+7cc5282f	Nowy profil
+ca0a2914	Kopia {0}
+3b42230a	Potrzebny jest co najmniej jeden profil.
+feb800ae	• Zostaną usunięte reguły automatycznego przełączania dla aplikacji ({0})
+5d2665a7	• Harmonogramy ({0}) przełączą się na „{1}”
+f0b8e8cf	• „Cichy” z szybkich akcji będzie używać „{0}”
+4f3910fa	\n\n(Można cofnąć przyciskiem „Cofnij”)
+04ce24e0	Usunąć profil „{0}”?{1}

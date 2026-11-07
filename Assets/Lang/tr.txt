@@ -1300,3 +1300,103 @@ df788b17	"Renk" ile seçilen renk yavaşça parlayıp kararır
 25525b81	{0} ({1})
 bb1834e5	Aşağıdaki ayarları kendiniz değiştirdiniz. Başka bir ön ayar seçerseniz onun birleşimine dönülür
 1cf255e8	Çalışırken veya gece için. Renkler yavaşça ve sakince değişir
+9df36e7d	Kararsızsanız bu. Basla birlikte hoş bir şekilde atar
+4beab2e2	Her davul vuruşunda bir ışık halkasının yayıldığı canlı bir efekt
+f6ac23cd	Her vuruşta güçlü renk değişimiyle en yoğun efekt
+b7e7d574	Bastan tize sesleri LED'lere dizerek sesi görmenizi sağlayan efekt
+7c3c3b30	Film ve oyunları rahatsız etmeyen sade, sıcak bir efekt
+355fd781	{0}\nEfekt: {1} · Yoğunluk: {2} · Renkler: {3}
+67f5dc44	\n("Yanıp sönmeyi azalt" kapatılırsa daha da yoğun yanıp söner)
+e3c74af7	Rahat ve sakin. Renkler her ölçüde yavaşça değişir
+8265bcd4	Orta tepki. Renkler 2 vuruşta bir değişir
+39194da9	Çevik tepki. Renkler her vuruşta değişir
+283c2191	En yüksek tepki. Renkler her vuruşta anında değişir ve ölçü başı vurgulanır
+899bfdf5	{0}\nSeçildiğinde: tepki {1:F0} ms · yumuşatma {2:F0} ms · kontrast %{3:F0} · en karanlık %{4:F0}
+1763988d	Akış hızı
+782c7098	Şu an yarım tempo
+3da3fc0d	Şu an çift tempo
+587c7525	Tümü varsayılan değerler ("{0}" yoğunluğunun değerleri)
+08d68b95	Varsayılandan değiştirilen değerler: 
+57a4e475	Tepki değerleri varsayılana döndürüldü. Sağ üstteki "Geri al" ile önceki değerlere dönebilirsiniz.
+6d49db83	Yoğun yanıp sönmeye izin verilsin mi?\n\nGüçlü yanıp sönen ışıklar ışığa duyarlı kişilerin sağlığını etkileyebilir (örneğin ışığa duyarlı nöbetler).
+91f616cf	 Kendinizi kötü hissederseniz hemen "Yanıp sönmeyi azalt"ı yeniden açın.
+165c4145	Bağlanıldı. {0} cihaz bulundu.
+3757a4b4	"OpenRGB'yi kullan" açılınca başlar
+d7b2f046	Bağlanılamıyor: {0}\nOpenRGB'yi başlatın, "SDK Server" sekmesinde "Start Server"a basın ve tekrar deneyin.
+23ecbb88	"OpenRGB'yi kullan" kapalı. Bağlanmak için açın
+f8d56f66	Kapalı ("OpenRGB'yi kullan" açılınca LED renklerini değiştirmeye başlar)
+dabf7260	Cihaz listesi yüklendikten sonra seçebilirsiniz. Yukarıdaki "Bağlantıyı test et"e basın
+70f103b7	En az birini seçin (LED'leri söndürmek için yukarıdaki "OpenRGB'yi kullan"ı kapatın)
+355efac9	Şu an bulunamayan cihazların ayarları da saklandı (yeniden bağlanınca eskisi gibi kullanılır): {0}
+49610d95	Ses çalan uygulamalar aranıyor…
+937d0bba	 (ses çalıyor)
+bd2b75f3	 (oynatılıyor)
+e197ab2d	Uygulama bulunamadı. Bir şarkı çalıp tekrar basın
+8dc805b8	Senkron testi, "OpenRGB'yi kullan" açıkken ve efekt "Müzik senkronu" iken kullanılabilir.
+1071825a	Tık sesi çalınamadı
+9fb33dc5	Her 0,6 saniyede bir "tık" sesi duyulur ve LED'ler beyaz yanar. Işık sesten önceyse "+", sonraysa "−" ile ses ve ışığın denk geldiği yeri bulun.
+462dc044	 Durdurmak için tekrar basın veya bu ekrandan çıkın.
+8cd7762f	{0} çalışıyor. Aynı LED'leri kontrol ettiği için renklerin kendiliğinden geri dönmesine, titremesine veya diğer cihazlarla uyuşmamasına yol açar.
+55b403e0	 O yazılımın LED kontrolünü (aydınlatma) durdurun veya kapatın (Lian Li L-Connect yalnızca fan devrini kullanacak şekilde ayarlanabilir).
+caf81aa5	OpenRGB ayarlarında "Shared SMBus Access" (SMBus'ı diğer yazılımlarla paylaşma) kapalı.
+7051883b	 Bu uygulama bellek sıcaklığını aynı hat (SMBus) üzerinden okuduğu için çakışma olabilir ve sıcaklık okunamaz hâle gelebilir.
+2810f408	 OpenRGB'nin Settings bölümünde "Shared SMBus Access"i açıp OpenRGB'yi yeniden başlatın (veya Ayarlar → "Bellek sıcaklığını oku"yu kapatın).
+0b102823	\nAyar dosyası: {0}
+7c87a784	 · 
+cde5d20f	"OpenRGB'yi kullan" açılınca ses yakalama başlar
+37b53bcd	{0} (yalnızca {1} sesine tepki verir)
+8e13b3ed	\nDinlenen çıkış: {0}
+a33ee710	Ses yakalama hazırlanıyor…
+aeb57d02	Müzik senkronunda OpenRGB ile bağlıyken gösterilir
+6a7d3717	Tempo: kullanılmıyor
+d9cb0d66	Yalnızca ses yüksekliğiyle yanıyor
+8d9ab8cc	Kick'e göre yanıyor
+58c9b655	Tempo yakalandı (güven %{0:F0})
+7ddda7d0	Tempo algılanıyor…
+12235fc4	Aday {0:F0} BPM (güven %{1:F0})
+f689911d	Vuruşu belirgin şarkılarda tempo birkaç saniyede yakalanır
+64ff1784	Ses seviyesi {0} · referans {1:F0} dBFS
+87c8c605	● Ses algılanıyor
+eafa50be	○ Sessizlik (ses gelince tepki verir)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (video belleği)
+d453beab	Bellek (RAM)
+8f27288e	SSD · {0}
+efd9152e	Ömür %{0:F0}
+77b82689	Kontrol gerekli
+51592c08	Dikkat
+6b7001de	Normal
+56d75872	Bilgi
+22024d48	Toplanıyor
+5afe281d	Sorunun 10 dakika öncesi ve sonrasının kaydı kaydedildi: {0}
+61c7691d	Kayıtları gör
+29d6a363	{0:N0} yen
+37d31a15	CPU ve GPU için sensör değerleri, geri kalanı için {0:F0} W kullanılarak hesaplanır (birim fiyat {1:0.##} yen/kWh). Yalnızca uygulama çalışırken sayılır.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · diğer {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} saat
+2f240cf7	{0:F1} kWh (kayıtlı günlerin ortalamasından)
+b5d6b2e1	Yaklaşık {0} · {1:F1} saat
+8dec5fdd	Yaklaşık {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · yaklaşık {2} · {3:F1} saat
+df95f0be	Kayıtlar yüklenip inceleniyor…
+8223041f	 · referans: {0:yyyy/MM/dd} temizliğinden beri
+c427ad3a	{0:HH:mm} kontrol edildi · {1:F0} günlük kayıt{2}
+00cd1e3b	Bakım bildirimi: {0} üzerinde bir değişiklik var.
+4c563244	Tanılamayı gör
+5ff17925	İncelenemedi: {0}
+aa4e55c3	Fanları, filtreleri veya radyatörü temizlediniz mi?\n\nBundan sonraki kayıtlar karşılaştırma için yeni referans olur (değerlendirme yapılabilmesi yaklaşık 10 gün sürer).
+d83f7d90	Temizledim
+b5814c1a	Açılamadı: {0}
+5f439d96	Güç tüketimi (tahmini)
+039fa193	Güç
+239f35c2	Bugün {0:F2} kWh · yaklaşık {1:N0} yen
+b46fd1a2	Şu an "{0}" çalıştığı için "{1}" kullanılıyor
+7cc5282f	Yeni profil
+ca0a2914	{0} kopyası
+3b42230a	En az bir profil gerekir.
+feb800ae	• Uygulamaya göre otomatik geçiş kurallarından {0} tanesi silinecek
+5d2665a7	• {0} zamanlama "{1}" profiline geçecek
+f0b8e8cf	• Tek dokunuşla "Sessiz" artık "{0}" kullanacak
+4f3910fa	\n\n("Geri al" ile geri alabilirsiniz)
+04ce24e0	"{0}" profili silinsin mi?{1}

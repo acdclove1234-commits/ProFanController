@@ -1300,3 +1300,103 @@ df788b17	A cor escolhida em "Cor" clareia e escurece devagar
 25525b81	{0} ({1})
 bb1834e5	Você ajustou por conta própria as configurações abaixo. Escolher outra predefinição volta à combinação dela
 1cf255e8	Para trabalhar ou à noite. As cores mudam devagar e suavemente
+9df36e7d	A escolha segura. Pulsa de forma agradável com os graves
+4beab2e2	Um efeito animado em que um anel de luz se espalha a cada batida de bateria
+f6ac23cd	O efeito mais intenso, com fortes trocas de cor a cada batida
+b7e7d574	Distribui dos graves aos agudos ao longo dos LEDs para você ver o som
+7c3c3b30	Um efeito discreto e quente que não atrapalha filmes nem jogos
+355fd781	{0}\nEfeito: {1} · Intensidade: {2} · Cores: {3}
+67f5dc44	\n(Desligando "Reduzir piscadas", pisca de forma ainda mais intensa)
+e3c74af7	Tranquilo e calmo. As cores mudam devagar a cada compasso
+8265bcd4	Reação moderada. As cores mudam a cada 2 tempos
+39194da9	Reação ágil. As cores mudam a cada tempo
+283c2191	Reação máxima. As cores mudam na hora a cada tempo e o início do compasso é destacado
+899bfdf5	{0}\nAo escolher: reação {1:F0} ms · suavização {2:F0} ms · contraste {3:F0}% · mínimo {4:F0}%
+1763988d	Velocidade do fluxo
+782c7098	Agora em meio tempo
+3da3fc0d	Agora em tempo dobrado
+587c7525	Tudo nos valores padrão (os da intensidade "{0}")
+08d68b95	Valores alterados em relação ao padrão: 
+57a4e475	Os valores de reação voltaram ao padrão. Com "Desfazer" no canto superior direito você recupera os valores anteriores.
+6d49db83	Permitir piscadas intensas?\n\nLuzes piscando forte podem afetar a saúde de pessoas sensíveis à luz (por exemplo, crises fotossensíveis).
+91f616cf	 Se você se sentir mal, ligue "Reduzir piscadas" de novo imediatamente.
+165c4145	Conectado. {0} dispositivos encontrados.
+3757a4b4	Começa quando "Usar o OpenRGB" é ligado
+d7b2f046	Não é possível conectar: {0}\nAbra o OpenRGB, clique em "Start Server" na aba "SDK Server" e tente de novo.
+23ecbb88	"Usar o OpenRGB" está desligado. Ligue para conectar
+f8d56f66	Desligado (ao ligar "Usar o OpenRGB", começa a mudar a cor dos LEDs)
+dabf7260	Dá para escolher depois que a lista de dispositivos carregar. Clique em "Testar conexão" acima
+70f103b7	Escolha pelo menos um (para apagar os LEDs, desligue "Usar o OpenRGB" acima)
+355efac9	As configurações dos dispositivos não encontrados agora foram mantidas (voltam a funcionar ao reconectar): {0}
+49610d95	Procurando apps que estão tocando som…
+937d0bba	 (tocando som)
+bd2b75f3	 (reproduzindo)
+e197ab2d	Nenhum app encontrado. Toque uma música e clique de novo
+8dc805b8	O teste de sincronização pode ser usado quando "Usar o OpenRGB" está ligado e o efeito é "Sincronização com música".
+1071825a	Não foi possível tocar o clique
+9fb33dc5	A cada 0,6 segundo soa um clique e os LEDs piscam em branco. Se a luz vier antes do som, clique em "+"; se vier depois, em "−", até som e luz coincidirem.
+462dc044	 Clique de novo ou saia desta tela para parar.
+8cd7762f	{0} está em execução. Ele controla os mesmos LEDs, o que pode fazer as cores voltarem sozinhas, tremularem ou ficarem fora de sincronia com outros dispositivos.
+55b403e0	 Pare o controle de LED (iluminação) desse programa ou feche-o (o L-Connect da Lian Li pode ser configurado para usar só a rotação das ventoinhas).
+caf81aa5	Nas configurações do OpenRGB, "Shared SMBus Access" (compartilhar o SMBus com outros programas) está desligado.
+7051883b	 Este app lê a temperatura da memória pela mesma fiação (SMBus), então pode haver conflito e a temperatura pode deixar de ser lida.
+2810f408	 Ligue "Shared SMBus Access" nas Settings do OpenRGB e reinicie o OpenRGB (ou desligue Configurações → "Ler a temperatura da memória").
+0b102823	\nArquivo de configuração: {0}
+7c87a784	 · 
+cde5d20f	A captura de som começa quando "Usar o OpenRGB" é ligado
+37b53bcd	{0} (reage só ao som de {1})
+8e13b3ed	\nSaída ouvida: {0}
+a33ee710	Preparando a captura de som…
+aeb57d02	Exibido na sincronização com música pelo OpenRGB
+6a7d3717	Tempo: não usado
+d9cb0d66	Acende só pelo volume
+8d9ab8cc	Acende com o bumbo
+58c9b655	Tempo captado (confiança {0:F0}%)
+7ddda7d0	Detectando o tempo…
+12235fc4	Candidato {0:F0} BPM (confiança {1:F0}%)
+f689911d	Em músicas com batida clara, o tempo é captado em poucos segundos
+64ff1784	Volume {0} · referência {1:F0} dBFS
+87c8c605	● Som detectado
+eafa50be	○ Silêncio (reage quando há som)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (memória de vídeo)
+d453beab	Memória (RAM)
+8f27288e	SSD · {0}
+efd9152e	Vida útil {0:F0}%
+77b82689	Verificar
+51592c08	Atenção
+6b7001de	Normal
+56d75872	Referência
+22024d48	Coletando
+5afe281d	Os registros de 10 minutos antes e depois da falha foram salvos: {0}
+61c7691d	Ver registros
+29d6a363	{0:N0} ienes
+37d31a15	CPU e GPU usam os valores dos sensores; o restante é calculado como {0:F0} W (tarifa {1:0.##} ienes/kWh). Só conta enquanto o app está em execução.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · outros {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} h
+2f240cf7	{0:F1} kWh (pela média dos dias com registros)
+b5d6b2e1	Cerca de {0} · {1:F1} h
+8dec5fdd	Cerca de {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · cerca de {2} · {3:F1} h
+df95f0be	Carregando e analisando os registros…
+8223041f	 · referência: desde a limpeza de {0:yyyy/MM/dd}
+c427ad3a	Verificado às {0:HH:mm} · {1:F0} dias de registros{2}
+00cd1e3b	Aviso de manutenção: há uma mudança em {0}.
+4c563244	Ver diagnóstico
+5ff17925	Não foi possível analisar: {0}
+aa4e55c3	Você limpou as ventoinhas, os filtros ou o radiador?\n\nOs registros a partir de agora viram a nova referência de comparação (leva cerca de 10 dias até haver uma avaliação).
+d83f7d90	Limpei
+b5814c1a	Não foi possível abrir: {0}
+5f439d96	Consumo de energia (estimativa)
+039fa193	Energia
+239f35c2	Hoje {0:F2} kWh · cerca de {1:N0} ienes
+b46fd1a2	Usando "{1}" porque "{0}" está em execução
+7cc5282f	Novo perfil
+ca0a2914	Cópia de {0}
+3b42230a	É preciso pelo menos um perfil.
+feb800ae	• {0} regras de troca automática por app serão excluídas
+5d2665a7	• {0} agendamentos passarão para "{1}"
+f0b8e8cf	• O "Silencioso" de um toque passará a usar "{0}"
+4f3910fa	\n\n(Dá para desfazer com "Desfazer")
+04ce24e0	Excluir o perfil "{0}"?{1}

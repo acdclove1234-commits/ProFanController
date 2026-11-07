@@ -1300,3 +1300,103 @@ df788b17	The color chosen in "Color" slowly brightens and dims
 25525b81	{0} ({1})
 bb1834e5	You have adjusted the settings below yourself. Choosing another preset returns to its combination
 1cf255e8	For work or night time. Colors shift slowly and gently
+9df36e7d	The safe choice. Pulses pleasantly with the bass
+4beab2e2	A lively effect where a ring of light spreads with every drum hit
+f6ac23cd	The most intense effect, with strong color changes on every beat
+b7e7d574	Spreads bass to treble along the LEDs so you can see the sound
+7c3c3b30	A subtle, warm effect that doesn't get in the way of movies or games
+355fd781	{0}\nEffect: {1} · Intensity: {2} · Colors: {3}
+67f5dc44	\n(Turning off "Reduce flashing" makes it flash even more intensely)
+e3c74af7	Relaxed and calm. Colors change slowly every bar
+8265bcd4	Moderate response. Colors change every 2 beats
+39194da9	Snappy response. Colors change every beat
+283c2191	Maximum response. Colors change instantly on every beat and the start of each bar is emphasized
+899bfdf5	{0}\nWhen chosen: response {1:F0} ms · smoothing {2:F0} ms · contrast {3:F0}% · darkest {4:F0}%
+1763988d	Flow speed
+782c7098	Currently at half tempo
+3da3fc0d	Currently at double tempo
+587c7525	All values are defaults (those of intensity "{0}")
+08d68b95	Values changed from the defaults: 
+57a4e475	The response values were reset to the defaults. Use "Undo" at the top right to get the previous values back.
+6d49db83	Allow intense flashing?\n\nStrong flashing light can affect the health of people who are sensitive to light (for example, photosensitive seizures).
+91f616cf	 If you feel unwell, turn "Reduce flashing" back on immediately.
+165c4145	Connected. {0} devices found.
+3757a4b4	Starts when "Use OpenRGB" is turned on
+d7b2f046	Can't connect: {0}\nStart OpenRGB, press "Start Server" on the "SDK Server" tab, and try again.
+23ecbb88	"Use OpenRGB" is off. Turn it on to connect
+f8d56f66	Off (turning on "Use OpenRGB" starts changing the LED colors)
+dabf7260	You can choose after the device list is loaded. Press "Test connection" above
+70f103b7	Choose at least one (to turn the LEDs off, turn off "Use OpenRGB" above)
+355efac9	Settings for devices not found right now are kept (they work again when reconnected): {0}
+49610d95	Looking for apps that are playing sound…
+937d0bba	 (playing sound)
+bd2b75f3	 (playing)
+e197ab2d	No apps found. Play a song and press it again
+8dc805b8	The sync test can be used when "Use OpenRGB" is on and the effect is "Music sync".
+1071825a	Couldn't play the click sound
+9fb33dc5	A click sounds every 0.6 seconds and the LEDs flash white. If the light comes before the sound, press "+"; if after, press "−", and find where sound and light line up.
+462dc044	 Press it again or leave this screen to stop.
+8cd7762f	{0} is running. It controls the same LEDs, which can make colors revert by themselves, flicker or fall out of sync with other devices.
+55b403e0	 Stop that software's LED control (lighting) or close it (Lian Li L-Connect can be set to use fan speed control only).
+caf81aa5	"Shared SMBus Access" (sharing SMBus with other software) is turned off in the OpenRGB settings.
+7051883b	 This app reads the memory temperature over the same wiring (SMBus), so the two can collide and the temperature may become unreadable.
+2810f408	 Turn on "Shared SMBus Access" in OpenRGB's Settings and restart OpenRGB (or turn off Settings → "Read memory temperatures").
+0b102823	\nSettings file: {0}
+7c87a784	 · 
+cde5d20f	Sound capture starts when "Use OpenRGB" is turned on
+37b53bcd	{0} (reacts only to sound from {1})
+8e13b3ed	\nListening to output: {0}
+a33ee710	Preparing sound capture…
+aeb57d02	Shown when linked with OpenRGB in music sync
+6a7d3717	Tempo: not used
+d9cb0d66	Lighting by loudness only
+8d9ab8cc	Lighting to the kick
+58c9b655	Locked onto the tempo (confidence {0:F0}%)
+7ddda7d0	Detecting tempo…
+12235fc4	Candidate {0:F0} BPM (confidence {1:F0}%)
+f689911d	For songs with a clear beat, the tempo is found within a few seconds
+64ff1784	Volume {0} · reference {1:F0} dBFS
+87c8c605	● Sound detected
+eafa50be	○ Silence (reacts when sound plays)
+8117844a	CPU · {0}
+2a0c461e	GPU · {0}
+7df797d5	VRAM (video memory)
+d453beab	Memory (RAM)
+8f27288e	SSD · {0}
+efd9152e	Life {0:F0}%
+77b82689	Needs checking
+51592c08	Caution
+6b7001de	Normal
+56d75872	Reference
+22024d48	Collecting
+5afe281d	Saved the records from 10 minutes before and after the problem: {0}
+61c7691d	View records
+29d6a363	{0:N0} yen
+37d31a15	CPU and GPU use sensor values; everything else is counted as {0:F0} W (rate {1:0.##} yen/kWh). Only counted while the app is running.
+e03883da	CPU {0:F0} W · GPU {1:F0} W · other {2:F0} W
+83b6ebdd	{0:F2} kWh · {1:F1} hours
+2f240cf7	{0:F1} kWh (from the average of days with records)
+b5d6b2e1	About {0} · {1:F1} hours
+8dec5fdd	About {0}
+c4867bf2	{0:M/d（ddd）}  {1:F2} kWh · about {2} · {3:F1} hours
+df95f0be	Loading and examining records…
+8223041f	 · baseline: since cleaning on {0:yyyy/MM/dd}
+c427ad3a	Checked at {0:HH:mm} · {1:F0} days of records{2}
+00cd1e3b	Maintenance notice: there is a change in {0}.
+4c563244	View diagnostics
+5ff17925	Couldn't examine: {0}
+aa4e55c3	Did you clean the fans, filters or radiator?\n\nRecords from now on become the new baseline for comparison (it takes about 10 days before a verdict is possible).
+d83f7d90	I cleaned it
+b5814c1a	Couldn't open: {0}
+5f439d96	Power consumption (estimate)
+039fa193	Power
+239f35c2	Today {0:F2} kWh · about {1:N0} yen
+b46fd1a2	Using "{1}" because "{0}" is currently running
+7cc5282f	New profile
+ca0a2914	Copy of {0}
+3b42230a	At least one profile is needed.
+feb800ae	• {0} automatic switching rules for apps will be deleted
+5d2665a7	• {0} schedules will switch to "{1}"
+f0b8e8cf	• The one-touch "Silent" will use "{0}"
+4f3910fa	\n\n(You can undo this with "Undo")
+04ce24e0	Delete profile "{0}"?{1}
