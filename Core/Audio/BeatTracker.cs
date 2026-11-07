@@ -46,10 +46,20 @@ public sealed class BeatTracker
         internal static double StuckSec = 4.5;
         /// <summary>「ありがちな」テンポの中心（秒。0.5 = 120 BPM）</summary>
         internal static double PriorCentreSec = 0.5;
+        /// <summary>「ありがちさ」の幅（オクターブ）。中心より速い側だけ別に決められる（1 = 遅い側と同じ）</summary>
+        internal static double PriorFastWidthOct = 1;
         /// <summary>このテンポ（BPM）より速くつかんでいるときは、半分のテンポにする判定を FastOctaveDownRatio に緩める</summary>
         internal static double FastOctaveDownBpm = 150;
         /// <summary>速いテンポのときの「1 拍おきの低音の強さの比」のしきい値（OctaveDownRatio と同じなら緩めない）</summary>
         internal static double FastOctaveDownRatio = OctaveDownRatioDefault;
+        /// <summary>
+        /// このテンポ（BPM）以上でロックしていて、テンポの判定が LockedHalveSec 秒続けて「ちょうど半分」と言うなら、ロック中でも半分にする（0 = しない）。
+        /// 倍か半分か音だけでは決めきれない曲で、遅いほうを選ぶ（半分なら光るのは全部拍の上。倍だと半分が拍の間で光り、せわしなく感じる）。
+        /// 実際の曲 31 曲で、倍のテンポでつかんでいる時間が 9.9% → 4.5%、拍の間で光る割合が 13.0% → 10.4%。
+        /// 代わりに本当に速い曲（150〜160 BPM）がときどき 1 拍おきに光る（半分 0.3% → 4.0%。光るのは拍の上のまま）
+        /// </summary>
+        internal static double LockedHalveBpm = 140;
+        internal static double LockedHalveSec = 2;
         /// <summary>予測からこれより離れた山は、その拍の音ではないとみなす（秒）</summary>
         internal static double OutlierSec = 0.035;
         /// <summary>音のあった拍の割合: これ以下で 0、これ以上で満点</summary>
@@ -209,6 +219,8 @@ public sealed class BeatTracker
     private double _period;                 // 周期（コマ。0 = まだない）
     private double _candidate;
     private int _candidateCount;
+    // ロック中に、テンポの判定が「今の半分」と言い続けている回数
+    private int _halfRun;
     // 試して合わなかったテンポを抑える重み（1 = 抑えない）
     private readonly double[] _veto;
     private readonly int _stuckLimit;
@@ -286,6 +298,8 @@ public sealed class BeatTracker
         {
             double tau = _tauMin + j;
             double oct = Math.Log2(tau / (Tune.PriorCentreSec * frameRate));
+            // oct < 0 は周期が短い（速い）側
+            if (oct < 0) oct /= Tune.PriorFastWidthOct;
             _prior[j] = Math.Exp(-0.5 * oct * oct);
         }
         // テンポの移り変わりやすさ: 近いテンポほど移りやすい。
@@ -345,6 +359,7 @@ public sealed class BeatTracker
         _period = 0;
         _candidate = 0;
         _candidateCount = 0;
+        _halfRun = 0;
         _hasGrid = false;
         _nextBeat = 0;
         _nextIdx = 1;
@@ -461,6 +476,7 @@ public sealed class BeatTracker
                 SetPeriodKeepLast(_period + FollowGain * (tf - _period));
             }
             _candidateCount = 0;
+            _halfRun = 0;
         }
         else if (_lock == BeatLock.Locked && _phaseConf >= 0.5)
         {
@@ -468,9 +484,23 @@ public sealed class BeatTracker
             // （くし形のフィルターは拍でない繰り返し（3 連の刻みなど）も拾うので。本当に曲のテンポが変われば、
             //   拍が合わなくなって確かさが下がり、ロックが外れてから乗り換える）
             _candidateCount = 0;
+            // ただし速いテンポで、判定がちょうど半分と言い続けるときは半分にする（倍のテンポの 8 分音符の並びは
+            // 音とよく合うので、ロックが外れるのを待つといつまでも倍のまま）
+            bool half = Tune.LockedHalveBpm > 0 && 60 * _f / _period >= Tune.LockedHalveBpm && 2 * _period <= _tauMax * 1.03
+                        && Math.Abs(Math.Log(tf / (2 * _period))) < CloseLogRatio;
+            _halfRun = half ? _halfRun + 1 : 0;
+            if (half && _halfRun * UpdateSec >= Tune.LockedHalveSec)
+            {
+                DiagLog?.Invoke($"locked: halve {60 * _f / _period:F1} -> {60 * _f / tf:F1} BPM");
+                _halfRun = 0;
+                HalveKeepGrid(tf);
+                _stuckFrames = 0;
+                return;
+            }
         }
         else
         {
+            _halfRun = 0;
             // 今のテンポと違う: 同じ候補（±6%）が 3 回続いたら切り替える
             if (_candidateCount > 0 && Math.Abs(Math.Log(tf / _candidate)) < CloseLogRatio)
             {
@@ -804,6 +834,41 @@ public sealed class BeatTracker
             Array.Clear(_sdb);
             _sdbCount = 0;
         }
+    }
+
+    /// <summary>
+    /// ロック中に半分のテンポ（周期 slow ≒ 今の 2 倍）にする。拍の並びは今のまま 1 拍おきに間引き、残すのは
+    /// 低音（キック・スネアの胴）の立ち上がりが強いほう（本当の拍。拍の間は刻みやベースの 8 分音符が多い）。
+    /// 位置を探し直すと、拍の間のほうがそろう曲で裏拍に移ってしまうため
+    /// </summary>
+    private void HalveKeepGrid(double slow)
+    {
+        if (!_hasGrid || _period <= 0) { _period = slow; AcquirePhase(allowGlide: false); return; }
+        double fast = _period;
+        double last = _nextBeat - fast;
+        int beats = Math.Max(1, (int)(Math.Min(_count, OctaveWindowSec * _f) / (2 * fast)));
+        double Score(double anchor)
+        {
+            double s = 0;
+            for (int k = 0; k < beats; k++)
+            {
+                long i = (long)Math.Round(anchor - k * 2 * fast);
+                s += Math.Max(LowAt(i - 1), Math.Max(LowAt(i), LowAt(i + 1)));
+            }
+            return s;
+        }
+        double keep = Score(last) >= Score(last - fast) ? last : last - fast;
+        double next = keep + slow;
+        while (next <= _n) next += slow;
+        _nextIdx += (long)Math.Round((next - _nextBeat) / slow);
+        _period = slow;
+        _nextBeat = next;
+        _glide = 0;
+        _pendCount = 0;
+        ClearHist();
+        _goodBeats = _badBeats = 0;
+        Array.Clear(_sdb);
+        _sdbCount = 0;
     }
 
     /// <summary>周期を変える（いちばん最近のビートの位置は動かさず、次のビートの位置を動かす）</summary>
