@@ -609,3 +609,103 @@ df6134ea	\n\nBu mesajı kapattıktan sonra bu klasörün tamamını silin:\n{0}
 2d7f91ad	ProFanController zaten çalışıyor.\nSistem tepsisindeki simgeden açın.
 ec6a9bb6	Kayıtları kaydetme
 c0fd45c5	Sistem tepsisinde çalışmaya devam ediyor. Çıkmak için simgeye sağ tıklayın.
+77d62ee9	ProFanController: düzeldi
+977b8544	Profil otomatik olarak değiştirildi
+790c11cc	{0} algılandı → {1}
+fa5d05c3	ProFanController: bakım
+5b860ae3	DRY RUN (test modu) ile çalışıyor. Yalnızca sıcaklıklara göre devirleri hesaplar; fanlar sürülmüyor.
+874003cc	Kontrole başla
+812bba50	Ayar dosyası bozuktu, bu yüzden bir yedekten ({0:yyyy/MM/dd HH:mm}) geri yüklendi. Bozuk dosya config.broken_*.json olarak saklandı.
+9ca7b4fa	ProFanController beklenmedik şekilde kapandı, gözetleyici işlem onu otomatik olarak yeniden başlattı. Fanlar güvenli bir devre alındıktan sonra kontrol sürdü. Nedeni günlükte görülebilir.
+7b249720	Günlüğü aç
+3a7e2e72	Beklenmedik şekilde kapandı ve otomatik olarak yeniden başlatıldı.
+c51b6c55	Windows ile otomatik başlayan uygulama başka bir konumda ({0}). Eski bir sürüm başlıyor olabilir.
+268b2432	Bu uygulama "{0}" klasörünün içinden çalışıyor. Toparlarken silinmemesi ve birden fazla sürüm oluşmaması için,
+80df7870	 aşağıdaki düğmeyle {0} konumuna taşıyın (ayarlarınız da gelir, otomatik başlatma yeni yerde yeniden kaydedilir ve uygulama yeniden başlar).
+8d7ede7f	{0} çalışıyor. Aynı LED'leri ve fanları kontrol ettiği için renkler kendiliğinden geri döner, titrer veya devirler uygulanmaz. O yazılımın LED ve fan kontrolünü kapatın ya da onu kapatın.
+7e24b89a	•
+0cac6658	{0} konumuna taşı
+f8529664	Otomatik başlatmayı buradan yap
+c674f1d5	Otomatik başlatma artık çalışan bu uygulamayı gösteriyor.
+f5c17fde	Otomatik başlatma yeniden kaydedilemedi (günlüğe bakın).
+467c4a19	{0} konumuna taşınamadı: {1}
+14d2e005	Ses yakalama
+c08fb050	 /
+48ccab47	Kullanılan bir sensör bulunamıyor
+9c32a53a	Donanım değişikliği algılandı
+58f4eb35	ProFanController: donanım değişikliği
+646e0b57	{0}. Yeni sensörlere geçişi bilgisayar ekranında onaylayın.
+9dddc76a	Fan kontrolünde bir sorun var
+8ad6890e	{0} (güvenlik için kontrol BIOS'ta; otomatik olarak düzeltme deneniyor)
+cdfd31fc	ProFanController: fan kontrolü sorunu
+30b6b07e	Bazı parçalar okunamıyor
+465384a0	Fan kontrolü düzeldi
+2a57fe9c	Normal kontrole dönüldü.
+96429453	ProFanController: düzeldi
+a8e2e175	Fan kontrolü normale döndü.
+0d78d54c	Başka bir program config.json'u açık tuttuğu için okunamadı (dosyaya dokunulmadı).
+9b03cdae	Asıl dosya config.broken_<tarih>.json olarak saklandı.
+b07af289	config.json yüklenemedi ve hiçbir yedek onu geri getiremedi.\n{0}\n\n{1}\nBoş ayarlarla başlatılıyor.
+645b237e	Güçlendir
+169abc6e	Pompalar dışındaki tüm fanları {0} dakika %100 çalıştırır.
+c342d519	"Sessiz" için kullanılan profil bulunamadı. Ayarlar'daki "Hızlı işlemler" bölümünden seçin.
+77a0d0ea	Telefon için web sunucusu başlatılamadı (bağlantı noktası {0}): {1}
+eec05191	Acil tam hız
+0413f77c	Duraklatıldı
+45fadb4f	Kontrol ediliyor
+404e2134	Pencere öğesi
+1f2511a8	Pencere
+0f13893a	Sistem tepsisi
+e6a34da2	Durduruldu
+652c7b75	Ses yakalanamıyor ({0} sn sonra yeniden denenecek): {1}
+2674d6a9	Ses çıkışı (hoparlör veya kulaklık) bulunamadı
+b43ec2f4	Bu ses biçimi desteklenmiyor ({0}, {1} bit, {2} Hz)
+cfbdd9a8	Ses yakalanıyor: {0}
+a4cae56b	İşlem açılamıyor (izin yok)
+0db7fdbc	{0} yeniden başlatılınca tekrar denenecek
+b2f0b650	{0} sonra tekrar denenecek
+eaca42d5	{0:0} dk
+16ed2a19	{0:0} sn
+3eba78ae	Yalnızca uygulamanın sesi yakalanıyor
+6c8ed347	Uygulama ses çalıyor ama ses gelmiyor
+f7cc10dc	Uygulama ses çalıyor ama yalnızca sessizlik geliyor
+f0d6d50a	Yakalama durdu: {0}
+ddf3f681	Yakalama hazır değil
+2788b714	Yakalama noktası oluşturulamıyor ({0})
+0737216f	Windows ses hizmeti yanıt vermiyor
+c4cea099	Tıklama sesi durdu: {0}
+60d54065	Tıklama sesi çalınamıyor: {0}
+b49ebc51	Ollama bir hata döndürdü ({0}): {1}
+e4abf7e1	Henüz kayıt yok.
+12b1b1d4	# Kayıt dönemi: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} dk; başlatmadan önce dakikalık ortalamalar, sonra her saniye)
+ffa27fbb	# Etkin profil: {0}
+fc54838c	# Acil tam hız: CPU vb. {0:F0}°C / GPU Hot Spot {1:F0}°C
+84e02914	## Sıcaklıklar (en düşük / ortalama / 95. yüzdelik / en yüksek, °C)
+64a1986f	({0} bağlı olmayan veya geçersiz değerli sensörler olduğu için hariç tutuldu. Bunlardan bahsetme)
+04258b8c	,
+e059f424	## Yük ve diğerleri (ortalama / en yüksek)
+3da93ace	## Fan ayarları ve gerçekleşen değerler
+3bd31dc4	- {0} ({1}, kontrol: {2})
+22f7e502	Pompa
+343d27f0	BIOS'a bırakıldı
+e6a77abc	 Duty ort. {0:F0}% / en yüksek {1:F0}%
+7a001c56	, devir ort. {0:F0} / en yüksek {1:F0} rpm
+9100819e	  - Eğri "{0}" sensör: {1} / {2} / histerezis {3:F1}°C
+de44c455	  - En düşük {0:F0}%, artış {1:F1}%/sn, azalış {2:F1}%/sn
+c25f9522	  - Kalibrasyon: en yüksek {0:F0} rpm, {1:F0}% altında durur, {2:F0}% ile başlar
+34cfa91d	## Otomatik tanılama sonuçları
+fec5f212	## Son soğutma testi
+0fb6099a	## Uzun vadeli eğilim (birkaç haftalık kayıtlardan; fan aşınması ve toz kontrolü)
+193ad442	## Kullanıcının sorusu
+b0bc7eac	Hedef {0:F0}°C
+7d5e41f2	Sabit {0:F0}%
+f87c3ac9	Başka bir fanı izler
+1b56d605	config.json boş.
+c8d58466	Standart
+52ed0fe4	En yüksek
+91302315	Fark
+8e4f9981	Başlangıçta
+b6d7dbf8	Otomatik
+ae81cf8d	Elle
+7aebcb13	İçe aktarmadan önce
+44fc16c5	Parça değişikliği eşlemesinden önce

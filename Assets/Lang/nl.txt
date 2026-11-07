@@ -609,3 +609,103 @@ df6134ea	\n\nVerwijder na het sluiten van deze melding deze hele map:\n{0}
 2d7f91ad	ProFanController draait al.\nOpen het via het pictogram in het systeemvak.
 ec6a9bb6	Metingen opslaan
 c0fd45c5	Draait verder in het systeemvak. Klik met de rechtermuisknop op het pictogram om af te sluiten.
+77d62ee9	ProFanController: hersteld
+977b8544	Het profiel is automatisch gewisseld
+790c11cc	{0} gedetecteerd → {1}
+fa5d05c3	ProFanController: onderhoud
+5b860ae3	Draait in DRY RUN (testmodus). Berekent alleen de toerentallen bij de temperaturen; de ventilatoren worden niet aangestuurd.
+874003cc	Beginnen met regelen
+812bba50	Het instellingenbestand was beschadigd en is hersteld uit een back-up ({0:yyyy/MM/dd HH:mm}). Het beschadigde bestand is bewaard als config.broken_*.json.
+9ca7b4fa	ProFanController stopte onverwacht, dus het watchdog-proces heeft het automatisch herstart. De regeling ging verder nadat de ventilatoren op een veilig toerental zijn gezet. De oorzaak staat in de log.
+7b249720	Log openen
+3a7e2e72	De app stopte onverwacht en is automatisch herstart.
+c51b6c55	De app die automatisch met Windows start, staat op een andere plek ({0}). Mogelijk start er een oude versie.
+268b2432	Deze app draait vanuit de map "{0}". Zodat hij niet verdwijnt bij het opruimen en er geen meerdere versies ontstaan,
+80df7870	 verplaats hem met de knop hieronder naar {0} (je instellingen gaan mee, het automatisch opstarten wordt op de nieuwe plek opnieuw ingesteld en de app herstart).
+8d7ede7f	{0} draait. Het stuurt dezelfde leds en ventilatoren aan, waardoor kleuren terugspringen, flikkeren of toerentallen niet worden toegepast. Zet in die software de led- en ventilatorregeling uit, of sluit hem af.
+7e24b89a	•
+0cac6658	Verplaatsen naar {0}
+f8529664	Automatisch opstarten vanaf hier
+c674f1d5	Het automatisch opstarten wijst nu naar deze draaiende app.
+f5c17fde	Kon het automatisch opstarten niet opnieuw instellen (controleer de log).
+467c4a19	Kon niet verplaatsen naar {0}: {1}
+14d2e005	Geluidsopname
+c08fb050	 /
+48ccab47	Een gebruikte sensor is niet gevonden
+9c32a53a	Hardwarewijzigingen gedetecteerd
+58f4eb35	ProFanController: hardwarewijziging
+646e0b57	{0}. Bevestig de overstap naar de nieuwe sensoren op het pc-scherm.
+9dddc76a	Er is een probleem met de ventilatorregeling
+8ad6890e	{0} (voor de veiligheid regelt het BIOS; herstel wordt automatisch geprobeerd)
+cdfd31fc	ProFanController: probleem met ventilatorregeling
+30b6b07e	Sommige onderdelen kunnen niet worden gelezen
+465384a0	Ventilatorregeling hersteld
+2a57fe9c	Terug naar normale regeling.
+96429453	ProFanController: hersteld
+a8e2e175	De ventilatorregeling is weer normaal.
+0d78d54c	config.json kon niet worden gelezen omdat een ander programma hem open houdt (het bestand is niet gewijzigd).
+9b03cdae	Het oorspronkelijke bestand is bewaard als config.broken_<datum>.json.
+b07af289	config.json kon niet worden geladen en geen enkele back-up kon hem herstellen.\n{0}\n\n{1}\nStart met lege instellingen.
+645b237e	Boost
+169abc6e	Alle ventilatoren behalve pompen {0} minuten op 100%.
+c342d519	Het profiel voor "Stil" is niet gevonden. Kies het onder "Snelacties" in de instellingen.
+77a0d0ea	Kon de webserver voor de telefoon niet starten (poort {0}): {1}
+eec05191	Noodvolle snelheid
+0413f77c	Gepauzeerd
+45fadb4f	Regelt
+404e2134	Widget
+1f2511a8	Venster
+0f13893a	Systeemvak
+e6a34da2	Gestopt
+652c7b75	Kan geen geluid opnemen (nieuwe poging over {0} s): {1}
+2674d6a9	Geen geluidsuitvoer (luidsprekers of koptelefoon) gevonden
+b43ec2f4	Dit geluidsformaat wordt niet ondersteund ({0}, {1} bit, {2} Hz)
+cfbdd9a8	Geluid wordt opgenomen: {0}
+a4cae56b	Kan het proces niet openen (geen toestemming)
+0db7fdbc	Nieuwe poging als {0} herstart
+b2f0b650	Nieuwe poging over {0}
+eaca42d5	{0:0} min
+16ed2a19	{0:0} s
+3eba78ae	Alleen het geluid van de app wordt opgenomen
+6c8ed347	De app speelt geluid af, maar er komt geen geluid binnen
+f7cc10dc	De app speelt geluid af, maar er komt alleen stilte binnen
+f0d6d50a	Opname gestopt: {0}
+ddf3f681	Opname is niet klaar
+2788b714	Kan het opnamepunt niet maken ({0})
+0737216f	De Windows-audioservice reageert niet
+c4cea099	Het klikgeluid is gestopt: {0}
+60d54065	Kan het klikgeluid niet afspelen: {0}
+b49ebc51	Ollama gaf een fout terug ({0}): {1}
+e4abf7e1	Nog geen metingen.
+12b1b1d4	# Opnameperiode: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} min; vóór het opstarten gemiddelden per minuut, daarna elke seconde)
+ffa27fbb	# Actief profiel: {0}
+fc54838c	# Noodvolle snelheid: CPU enz. {0:F0} °C / GPU-hotspot {1:F0} °C
+84e02914	## Temperaturen (min / gemiddeld / 95e percentiel / max, °C)
+64a1986f	({0} zijn uitgesloten als niet-aangesloten sensoren of sensoren met ongeldige waarden. Noem ze niet)
+04258b8c	,
+e059f424	## Belasting en meer (gemiddeld / max)
+3da93ace	## Ventilatorinstellingen en resultaten
+3bd31dc4	- {0} ({1}, regeling: {2})
+22f7e502	Pomp
+343d27f0	Aan BIOS overgelaten
+e6a77abc	 Duty gem. {0:F0}% / max {1:F0}%
+7a001c56	, toerental gem. {0:F0} / max {1:F0} rpm
+9100819e	  - Curve "{0}" sensor: {1} / {2} / hysterese {3:F1} °C
+de44c455	  - Minimum {0:F0}%, stijgen {1:F1}%/s, dalen {2:F1}%/s
+c25f9522	  - Kalibratie: max {0:F0} rpm, stopt onder {1:F0}%, start bij {2:F0}%
+34cfa91d	## Resultaten van automatische diagnose
+fec5f212	## Laatste koeltest
+0fb6099a	## Langetermijntrend (uit enkele weken metingen; controle op slijtage en stof van ventilatoren)
+193ad442	## Vraag van de gebruiker
+b0bc7eac	Doel {0:F0} °C
+7d5e41f2	Vast {0:F0}%
+f87c3ac9	Volgt een andere ventilator
+1b56d605	config.json is leeg.
+c8d58466	Standaard
+52ed0fe4	Maximum
+91302315	Verschil
+8e4f9981	Bij opstarten
+b6d7dbf8	Auto
+ae81cf8d	Handmatig
+7aebcb13	Vóór import
+44fc16c5	Vóór koppeling na vervangen onderdelen

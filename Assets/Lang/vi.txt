@@ -609,3 +609,103 @@ df6134ea	\n\nSau khi đóng thông báo này, hãy xóa cả thư mục sau:\n{0
 2d7f91ad	ProFanController đã đang chạy.\nHãy mở từ biểu tượng ở khay hệ thống.
 ec6a9bb6	Lưu bản ghi
 c0fd45c5	Vẫn đang chạy trong khay hệ thống. Để thoát, hãy nhấp phải vào biểu tượng.
+77d62ee9	ProFanController: đã phục hồi
+977b8544	Đã tự động chuyển cấu hình
+790c11cc	Phát hiện {0} → {1}
+fa5d05c3	ProFanController: bảo trì
+5b860ae3	Đang chạy ở chế độ DRY RUN (chế độ thử). Chỉ tính tốc độ theo nhiệt độ, không điều khiển quạt.
+874003cc	Bắt đầu điều khiển
+812bba50	Tệp cài đặt bị hỏng nên đã khôi phục từ bản sao lưu ({0:yyyy/MM/dd HH:mm}). Tệp hỏng được giữ lại dưới tên config.broken_*.json.
+9ca7b4fa	ProFanController đã thoát bất ngờ nên tiến trình giám sát đã tự khởi động lại. Đã đặt quạt về tốc độ an toàn rồi tiếp tục điều khiển. Có thể xem nguyên nhân trong nhật ký.
+7b249720	Mở nhật ký
+3a7e2e72	Đã thoát bất ngờ nên được tự khởi động lại.
+c51b6c55	Ứng dụng tự chạy cùng Windows là ứng dụng ở vị trí khác ({0}). Có thể một phiên bản cũ đang chạy.
+268b2432	Ứng dụng này đang chạy từ bên trong thư mục "{0}". Để không bị xóa khi dọn dẹp hay sinh ra nhiều phiên bản,
+80df7870	 hãy chuyển nó sang {0} bằng nút bên dưới (cài đặt được mang theo, tự khởi động cũng được đăng ký lại ở nơi mới, rồi ứng dụng khởi động lại).
+8d7ede7f	{0} đang chạy. Nó điều khiển cùng LED và quạt nên khiến màu tự quay lại, nhấp nháy hoặc tốc độ không được áp dụng. Hãy tắt điều khiển LED và quạt của phần mềm đó, hoặc thoát nó.
+7e24b89a	•
+0cac6658	Chuyển sang {0}
+f8529664	Tự khởi động từ vị trí này
+c674f1d5	Đã đăng ký lại tự khởi động cho ứng dụng đang chạy này.
+f5c17fde	Không đăng ký lại được tự khởi động (hãy xem nhật ký).
+467c4a19	Không chuyển được sang {0}: {1}
+14d2e005	Thu âm thanh
+c08fb050	 /
+48ccab47	Không tìm thấy cảm biến đang dùng
+9c32a53a	Phát hiện thay đổi phần cứng
+58f4eb35	ProFanController: thay đổi phần cứng
+646e0b57	{0}. Hãy xác nhận việc chuyển sang cảm biến mới trên màn hình PC.
+9dddc76a	Việc điều khiển quạt có vấn đề
+8ad6890e	{0} (để an toàn đã giao cho BIOS điều khiển; sẽ tự thử khôi phục)
+cdfd31fc	ProFanController: sự cố điều khiển quạt
+30b6b07e	Không đọc được một số linh kiện
+465384a0	Đã khôi phục điều khiển quạt
+2a57fe9c	Đã quay lại điều khiển bình thường.
+96429453	ProFanController: đã khôi phục
+a8e2e175	Việc điều khiển quạt đã bình thường trở lại.
+0d78d54c	Không đọc được config.json vì một chương trình khác đang mở nó (tệp vẫn nguyên).
+9b03cdae	Tệp gốc được giữ lại dưới tên config.broken_<thời gian>.json.
+b07af289	Không đọc được config.json và cũng không khôi phục được từ bản sao lưu.\n{0}\n\n{1}\nSẽ khởi động với cài đặt trống.
+645b237e	Tăng tốc
+169abc6e	Cho mọi quạt trừ bơm chạy 100% trong {0} phút.
+c342d519	Không tìm thấy cấu hình dùng cho "Yên tĩnh". Hãy chọn trong "Thao tác nhanh" ở trang cài đặt.
+77a0d0ea	Không khởi động được máy chủ web cho điện thoại (cổng {0}): {1}
+eec05191	Tốc độ tối đa khẩn cấp
+0413f77c	Đang tạm dừng
+45fadb4f	Đang điều khiển
+404e2134	Tiện ích
+1f2511a8	Cửa sổ
+0f13893a	Khay hệ thống
+e6a34da2	Đã dừng
+652c7b75	Không thu được âm thanh (thử lại sau {0} giây): {1}
+2674d6a9	Không tìm thấy thiết bị phát âm thanh (loa, tai nghe)
+b43ec2f4	Không hỗ trợ định dạng âm thanh này ({0} · {1} bit · {2} Hz)
+cfbdd9a8	Đang thu âm thanh: {0}
+a4cae56b	Không mở được tiến trình (không có quyền)
+0db7fdbc	Sẽ thử lại khi {0} khởi động lại
+b2f0b650	Sẽ thử lại sau {0}
+eaca42d5	{0:0} phút
+16ed2a19	{0:0} giây
+3eba78ae	Đang chỉ thu âm thanh của ứng dụng
+6c8ed347	Ứng dụng đang phát âm thanh nhưng không nhận được âm thanh
+f7cc10dc	Ứng dụng đang phát âm thanh nhưng chỉ nhận được im lặng
+f0d6d50a	Đã ngừng thu: {0}
+ddf3f681	Chưa sẵn sàng thu
+2788b714	Không tạo được điểm thu ({0})
+0737216f	Dịch vụ âm thanh của Windows không phản hồi
+c4cea099	Tiếng click đã dừng: {0}
+60d54065	Không phát được tiếng click: {0}
+b49ebc51	Ollama trả về lỗi ({0}): {1}
+e4abf7e1	Chưa có bản ghi.
+12b1b1d4	# Khoảng ghi: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} phút; trước khi khởi động là trung bình mỗi phút, sau đó mỗi giây)
+ffa27fbb	# Cấu hình đang chạy: {0}
+fc54838c	# Tốc độ tối đa khẩn cấp: CPU… {0:F0}°C / GPU Hot Spot {1:F0}°C
+84e02914	## Nhiệt độ (nhỏ nhất / trung bình / phân vị 95 / lớn nhất, °C)
+64a1986f	({0} đã bị loại vì chưa kết nối hoặc giá trị không hợp lệ. Đừng nhắc đến chúng)
+04258b8c	,
+e059f424	## Tải và các mục khác (trung bình / lớn nhất)
+3da93ace	## Cài đặt và kết quả của quạt
+3bd31dc4	- {0} ({1}, điều khiển: {2})
+22f7e502	Bơm
+343d27f0	Giao cho BIOS
+e6a77abc	 Duty trung bình {0:F0}% / lớn nhất {1:F0}%
+7a001c56	, tốc độ quay trung bình {0:F0} / lớn nhất {1:F0} rpm
+9100819e	  - Đường cong "{0}" cảm biến: {1} / {2} / độ trễ {3:F1}°C
+de44c455	  - Tốc độ tối thiểu {0:F0}%, tăng {1:F1}%/giây, giảm {2:F1}%/giây
+c25f9522	  - Hiệu chỉnh: tối đa {0:F0} rpm, dừng dưới {1:F0}%, bắt đầu quay ở {2:F0}%
+34cfa91d	## Kết quả chẩn đoán tự động
+fec5f212	## Lần kiểm tra làm mát gần nhất
+0fb6099a	## Xu hướng dài hạn (từ bản ghi vài tuần; kiểm tra hao mòn và bụi của quạt)
+193ad442	## Câu hỏi của người dùng
+b0bc7eac	Mục tiêu {0:F0}°C
+7d5e41f2	Cố định {0:F0}%
+f87c3ac9	Theo quạt khác
+1b56d605	config.json trống.
+c8d58466	Tiêu chuẩn
+52ed0fe4	Lớn nhất
+91302315	Hiệu
+8e4f9981	Khi khởi động
+b6d7dbf8	Tự động
+ae81cf8d	Thủ công
+7aebcb13	Trước khi nhập
+44fc16c5	Trước khi ghép sau khi thay linh kiện

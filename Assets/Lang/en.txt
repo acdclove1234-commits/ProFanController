@@ -609,3 +609,103 @@ df6134ea	\n\nAfter closing this message, delete this whole folder:\n{0}
 2d7f91ad	ProFanController is already running.\nOpen it from the tray icon.
 ec6a9bb6	Saving records
 c0fd45c5	Still running in the tray. To exit, right-click the icon.
+77d62ee9	ProFanController: recovered
+977b8544	The profile was switched automatically
+790c11cc	{0} detected → {1}
+fa5d05c3	ProFanController: maintenance
+5b860ae3	Running in DRY RUN (test mode). It only calculates the speeds for the temperatures; the fans are not being driven.
+874003cc	Start controlling
+812bba50	The settings file was damaged, so it was restored from a backup ({0:yyyy/MM/dd HH:mm}). The damaged file is kept as config.broken_*.json.
+9ca7b4fa	ProFanController exited unexpectedly, so the watchdog process restarted it automatically. Control resumed after setting the fans to a safe speed. See the log for the cause.
+7b249720	Open log
+3a7e2e72	It exited unexpectedly and was restarted automatically.
+c51b6c55	The app that starts automatically with Windows is in another location ({0}). An old version may be starting.
+268b2432	This app is running from inside the "{0}" folder. So that it does not disappear when you tidy up, or end up with several versions,
+80df7870	 move it to {0} with the button below (your settings come along, the automatic start is registered again at the new place, and the app restarts).
+8d7ede7f	{0} is running. It controls the same LEDs and fans, which makes colors revert, flicker or speeds not take effect. Turn off that software's LED and fan control, or exit it.
+7e24b89a	•
+0cac6658	Move to {0}
+f8529664	Start automatically from here
+c674f1d5	The automatic start now points to this running app.
+f5c17fde	Could not register the automatic start again (check the log).
+467c4a19	Could not move to {0}: {1}
+14d2e005	Audio capture
+c08fb050	 /
+48ccab47	A sensor in use cannot be found
+9c32a53a	Hardware changes detected
+58f4eb35	ProFanController: hardware change
+646e0b57	{0}. Confirm the switch to the new sensors on the PC screen.
+9dddc76a	There is a problem with fan control
+8ad6890e	{0} (the BIOS is in control for safety; recovery is attempted automatically)
+cdfd31fc	ProFanController: fan control problem
+30b6b07e	Some parts cannot be read
+465384a0	Fan control recovered
+2a57fe9c	Back to normal control.
+96429453	ProFanController: recovered
+a8e2e175	Fan control is back to normal.
+0d78d54c	config.json could not be read because another program keeps it open (the file is untouched).
+9b03cdae	The original file was kept as config.broken_<date>.json.
+b07af289	config.json could not be loaded, and no backup could restore it.\n{0}\n\n{1}\nStarting with empty settings.
+645b237e	Boost
+169abc6e	Runs every fan except pumps at 100% for {0} minutes.
+c342d519	The profile used for "Silent" cannot be found. Choose it under "Quick actions" in Settings.
+77a0d0ea	Could not start the web server for the phone view (port {0}): {1}
+eec05191	Emergency full speed
+0413f77c	Paused
+45fadb4f	Controlling
+404e2134	Widget
+1f2511a8	Window
+0f13893a	Tray
+e6a34da2	Stopped
+652c7b75	Cannot capture audio (retrying in {0} s): {1}
+2674d6a9	No audio output (speakers or headphones) found
+b43ec2f4	This audio format is not supported ({0}, {1} bit, {2} Hz)
+cfbdd9a8	Capturing audio: {0}
+a4cae56b	Cannot open the process (no permission)
+0db7fdbc	Will try again when {0} restarts
+b2f0b650	Will try again in {0}
+eaca42d5	{0:0} min
+16ed2a19	{0:0} s
+3eba78ae	Capturing the app's audio only
+6c8ed347	The app is playing sound, but no audio arrives
+f7cc10dc	The app is playing sound, but only silence arrives
+f0d6d50a	Capture stopped: {0}
+ddf3f681	Capture is not ready
+2788b714	Cannot create the capture endpoint ({0})
+0737216f	The Windows audio service does not respond
+c4cea099	The click sound stopped: {0}
+60d54065	Cannot play the click sound: {0}
+b49ebc51	Ollama returned an error ({0}): {1}
+e4abf7e1	No records yet.
+12b1b1d4	# Recording period: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} min; before startup, 1-minute averages; after startup, every second)
+ffa27fbb	# Active profile: {0}
+fc54838c	# Emergency full speed: CPU etc. {0:F0}°C / GPU hot spot {1:F0}°C
+84e02914	## Temperatures (min / average / 95th percentile / max, °C)
+64a1986f	({0} were excluded as unconnected sensors or sensors with invalid values. Do not mention them)
+04258b8c	,
+e059f424	## Load and more (average / max)
+3da93ace	## Fan settings and results
+3bd31dc4	- {0} ({1}, control: {2})
+22f7e502	Pump
+343d27f0	Left to BIOS
+e6a77abc	 Duty avg {0:F0}% / max {1:F0}%
+7a001c56	, speed avg {0:F0} / max {1:F0} rpm
+9100819e	  - Curve "{0}" sensor: {1} / {2} / hysteresis {3:F1}°C
+de44c455	  - Minimum {0:F0}%, ramp up {1:F1}%/s, ramp down {2:F1}%/s
+c25f9522	  - Calibration: max {0:F0} rpm, stops below {1:F0}%, starts at {2:F0}%
+34cfa91d	## Automatic diagnosis results
+fec5f212	## Latest cooling test
+0fb6099a	## Long-term trend (from several weeks of records; fan wear and dust check)
+193ad442	## Question from the user
+b0bc7eac	Target {0:F0}°C
+7d5e41f2	Fixed {0:F0}%
+f87c3ac9	Follows another fan
+1b56d605	config.json is empty.
+c8d58466	Standard
+52ed0fe4	Maximum
+91302315	Difference
+8e4f9981	At startup
+b6d7dbf8	Auto
+ae81cf8d	Manual
+7aebcb13	Before import
+44fc16c5	Before part-change mapping

@@ -609,3 +609,103 @@ df6134ea	\n\nDepois de fechar este aviso, apague esta pasta inteira:\n{0}
 2d7f91ad	O ProFanController já está aberto.\nAbra-o pelo ícone da bandeja.
 ec6a9bb6	Salvando registros
 c0fd45c5	Continua rodando na bandeja. Para sair, clique com o botão direito no ícone.
+77d62ee9	ProFanController: normalizado
+977b8544	O perfil foi trocado automaticamente
+790c11cc	{0} detectado → {1}
+fa5d05c3	ProFanController: manutenção
+5b860ae3	Rodando em DRY RUN (modo de teste). Só calcula as rotações pela temperatura; as ventoinhas não estão sendo controladas.
+874003cc	Começar o controle
+812bba50	O arquivo de configurações estava corrompido e foi restaurado de um backup ({0:yyyy/MM/dd HH:mm}). O arquivo corrompido foi mantido como config.broken_*.json.
+9ca7b4fa	O ProFanController fechou inesperadamente, então o processo vigia o reiniciou automaticamente. O controle voltou depois de colocar as ventoinhas numa rotação segura. A causa está no log.
+7b249720	Abrir log
+3a7e2e72	Fechou inesperadamente e foi reiniciado automaticamente.
+c51b6c55	O app que inicia com o Windows está em outro local ({0}). Talvez uma versão antiga esteja iniciando.
+268b2432	Este app está rodando de dentro da pasta "{0}". Para não sumir numa arrumação nem acabar com várias versões,
+80df7870	 mova-o para {0} com o botão abaixo (as configurações vão junto, a inicialização automática é registrada de novo no novo local e o app reinicia).
+8d7ede7f	{0} está rodando. Ele controla os mesmos LEDs e ventoinhas, o que faz as cores voltarem sozinhas, piscarem ou as rotações não valerem. Desligue o controle de LEDs e ventoinhas desse programa ou feche-o.
+7e24b89a	•
+0cac6658	Mover para {0}
+f8529664	Iniciar automaticamente daqui
+c674f1d5	A inicialização automática agora aponta para este app em execução.
+f5c17fde	Não foi possível registrar de novo a inicialização automática (veja o log).
+467c4a19	Não foi possível mover para {0}: {1}
+14d2e005	Captura de áudio
+c08fb050	 /
+48ccab47	Um sensor em uso não foi encontrado
+9c32a53a	Mudanças de hardware detectadas
+58f4eb35	ProFanController: mudança de hardware
+646e0b57	{0}. Confirme a troca para os novos sensores na tela do PC.
+9dddc76a	Há um problema no controle das ventoinhas
+8ad6890e	{0} (a BIOS está no controle por segurança; a recuperação é tentada automaticamente)
+cdfd31fc	ProFanController: problema no controle das ventoinhas
+30b6b07e	Algumas peças não podem ser lidas
+465384a0	O controle das ventoinhas foi restabelecido
+2a57fe9c	Voltou ao controle normal.
+96429453	ProFanController: normalizado
+a8e2e175	O controle das ventoinhas voltou ao normal.
+0d78d54c	Não foi possível ler o config.json porque outro programa o mantém aberto (o arquivo não foi alterado).
+9b03cdae	O arquivo original foi mantido como config.broken_<data>.json.
+b07af289	Não foi possível carregar o config.json nem restaurá-lo de nenhum backup.\n{0}\n\n{1}\nIniciando com configurações vazias.
+645b237e	Turbo
+169abc6e	Todas as ventoinhas, exceto bombas, a 100% por {0} minutos.
+c342d519	O perfil usado no "Silencioso" não foi encontrado. Escolha-o em "Ações rápidas" nas configurações.
+77a0d0ea	Não foi possível iniciar o servidor web para o celular (porta {0}): {1}
+eec05191	Velocidade máxima de emergência
+0413f77c	Pausado
+45fadb4f	Controlando
+404e2134	Widget
+1f2511a8	Janela
+0f13893a	Bandeja
+e6a34da2	Parado
+652c7b75	Não é possível capturar o áudio (nova tentativa em {0} s): {1}
+2674d6a9	Nenhuma saída de áudio (caixas de som ou fones) encontrada
+b43ec2f4	Este formato de áudio não é suportado ({0}, {1} bits, {2} Hz)
+cfbdd9a8	Capturando áudio: {0}
+a4cae56b	Não é possível abrir o processo (sem permissão)
+0db7fdbc	Nova tentativa quando {0} reiniciar
+b2f0b650	Nova tentativa em {0}
+eaca42d5	{0:0} min
+16ed2a19	{0:0} s
+3eba78ae	Capturando só o áudio do app
+6c8ed347	O app está tocando som, mas nenhum áudio chega
+f7cc10dc	O app está tocando som, mas só chega silêncio
+f0d6d50a	A captura parou: {0}
+ddf3f681	A captura não está pronta
+2788b714	Não é possível criar o ponto de captura ({0})
+0737216f	O serviço de áudio do Windows não responde
+c4cea099	O som de clique parou: {0}
+60d54065	Não é possível tocar o som de clique: {0}
+b49ebc51	O Ollama retornou um erro ({0}): {1}
+e4abf7e1	Ainda não há registros.
+12b1b1d4	# Período registrado: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} min; antes da inicialização, médias por minuto; depois, a cada segundo)
+ffa27fbb	# Perfil ativo: {0}
+fc54838c	# Velocidade máxima de emergência: CPU etc. {0:F0} °C / Hot Spot da GPU {1:F0} °C
+84e02914	## Temperaturas (mín / média / percentil 95 / máx, °C)
+64a1986f	({0} foram excluídos por serem sensores não conectados ou com valores inválidos. Não os mencione)
+04258b8c	,
+e059f424	## Carga e outros (média / máx)
+3da93ace	## Configurações e resultados das ventoinhas
+3bd31dc4	- {0} ({1}, controle: {2})
+22f7e502	Bomba
+343d27f0	Deixado para a BIOS
+e6a77abc	 Duty médio {0:F0}% / máx {1:F0}%
+7a001c56	, rotação média {0:F0} / máx {1:F0} rpm
+9100819e	  - Curva "{0}" sensor: {1} / {2} / histerese {3:F1} °C
+de44c455	  - Mínimo {0:F0}%, subida {1:F1}%/s, descida {2:F1}%/s
+c25f9522	  - Calibração: máx {0:F0} rpm, para abaixo de {1:F0}%, parte em {2:F0}%
+34cfa91d	## Resultados do diagnóstico automático
+fec5f212	## Último teste de resfriamento
+0fb6099a	## Tendência de longo prazo (de várias semanas de registros; desgaste e poeira das ventoinhas)
+193ad442	## Pergunta do usuário
+b0bc7eac	Alvo {0:F0} °C
+7d5e41f2	Fixo {0:F0}%
+f87c3ac9	Segue outra ventoinha
+1b56d605	O config.json está vazio.
+c8d58466	Padrão
+52ed0fe4	Máximo
+91302315	Diferença
+8e4f9981	Ao iniciar
+b6d7dbf8	Auto
+ae81cf8d	Manual
+7aebcb13	Antes da importação
+44fc16c5	Antes do pareamento após troca de peças

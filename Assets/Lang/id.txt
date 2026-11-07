@@ -609,3 +609,103 @@ df6134ea	\n\nSetelah menutup pemberitahuan ini, hapus seluruh folder berikut:\n{
 2d7f91ad	ProFanController sudah berjalan.\nBuka dari ikon di baki sistem.
 ec6a9bb6	Menyimpan rekaman
 c0fd45c5	Tetap berjalan di baki sistem. Untuk keluar, klik kanan ikonnya.
+77d62ee9	ProFanController: pulih
+977b8544	Profil diganti otomatis
+790c11cc	{0} terdeteksi → {1}
+fa5d05c3	ProFanController: pemeliharaan
+5b860ae3	Berjalan dalam DRY RUN (mode uji). Hanya menghitung putaran berdasarkan suhu; kipas tidak dikendalikan.
+874003cc	Mulai kendali
+812bba50	File pengaturan rusak, jadi dipulihkan dari cadangan ({0:yyyy/MM/dd HH:mm}). File yang rusak disimpan sebagai config.broken_*.json.
+9ca7b4fa	ProFanController berhenti tiba-tiba, jadi proses pengawas memulainya ulang secara otomatis. Kendali dilanjutkan setelah kipas disetel ke putaran aman. Penyebabnya bisa dilihat di log.
+7b249720	Buka log
+3a7e2e72	Berhenti tiba-tiba dan dimulai ulang secara otomatis.
+c51b6c55	Aplikasi yang mulai otomatis bersama Windows ada di lokasi lain ({0}). Mungkin versi lama yang berjalan.
+268b2432	Aplikasi ini berjalan dari dalam folder "{0}". Agar tidak terhapus saat beres-beres atau muncul beberapa versi,
+80df7870	 pindahkan ke {0} dengan tombol di bawah (pengaturan ikut dibawa, mulai otomatis didaftarkan ulang di tempat baru, lalu aplikasi dimulai ulang).
+8d7ede7f	{0} sedang berjalan. Program itu mengendalikan LED dan kipas yang sama, sehingga warna kembali sendiri, berkedip, atau putaran tidak berlaku. Matikan kendali LED dan kipas di program itu, atau tutup programnya.
+7e24b89a	•
+0cac6658	Pindahkan ke {0}
+f8529664	Mulai otomatis dari sini
+c674f1d5	Mulai otomatis kini mengarah ke aplikasi yang sedang berjalan ini.
+f5c17fde	Mulai otomatis tidak bisa didaftarkan ulang (periksa log).
+467c4a19	Tidak bisa memindahkan ke {0}: {1}
+14d2e005	Penangkapan suara
+c08fb050	 /
+48ccab47	Sensor yang dipakai tidak ditemukan
+9c32a53a	Perubahan perangkat keras terdeteksi
+58f4eb35	ProFanController: perubahan perangkat keras
+646e0b57	{0}. Konfirmasikan penggantian ke sensor baru di layar PC.
+9dddc76a	Ada masalah pada kendali kipas
+8ad6890e	{0} (demi keamanan dikendalikan BIOS; pemulihan dicoba otomatis)
+cdfd31fc	ProFanController: masalah kendali kipas
+30b6b07e	Beberapa komponen tidak bisa dibaca
+465384a0	Kendali kipas pulih
+2a57fe9c	Kembali ke kendali normal.
+96429453	ProFanController: pulih
+a8e2e175	Kendali kipas kembali normal.
+0d78d54c	config.json tidak bisa dibaca karena program lain terus membukanya (file tidak diubah).
+9b03cdae	File asli disimpan sebagai config.broken_<tanggal>.json.
+b07af289	config.json tidak bisa dimuat, dan tidak ada cadangan yang bisa memulihkannya.\n{0}\n\n{1}\nMemulai dengan pengaturan kosong.
+645b237e	Boost
+169abc6e	Semua kipas kecuali pompa berjalan 100% selama {0} menit.
+c342d519	Profil untuk "Senyap" tidak ditemukan. Pilih di "Aksi cepat" pada pengaturan.
+77a0d0ea	Server web untuk ponsel tidak bisa dimulai (port {0}): {1}
+eec05191	Kecepatan penuh darurat
+0413f77c	Dijeda
+45fadb4f	Mengendalikan
+404e2134	Widget
+1f2511a8	Jendela
+0f13893a	Baki sistem
+e6a34da2	Berhenti
+652c7b75	Tidak bisa menangkap suara (dicoba lagi dalam {0} dtk): {1}
+2674d6a9	Keluaran suara (speaker atau headphone) tidak ditemukan
+b43ec2f4	Format suara ini tidak didukung ({0}, {1} bit, {2} Hz)
+cfbdd9a8	Menangkap suara: {0}
+a4cae56b	Tidak bisa membuka proses (tidak ada izin)
+0db7fdbc	Akan dicoba lagi saat {0} dimulai ulang
+b2f0b650	Akan dicoba lagi dalam {0}
+eaca42d5	{0:0} mnt
+16ed2a19	{0:0} dtk
+3eba78ae	Hanya menangkap suara aplikasi
+6c8ed347	Aplikasi sedang bersuara, tetapi tidak ada suara yang masuk
+f7cc10dc	Aplikasi sedang bersuara, tetapi yang masuk hanya hening
+f0d6d50a	Penangkapan berhenti: {0}
+ddf3f681	Penangkapan belum siap
+2788b714	Tidak bisa membuat titik penangkapan ({0})
+0737216f	Layanan audio Windows tidak merespons
+c4cea099	Suara klik berhenti: {0}
+60d54065	Tidak bisa memutar suara klik: {0}
+b49ebc51	Ollama mengembalikan galat ({0}): {1}
+e4abf7e1	Belum ada rekaman.
+12b1b1d4	# Periode rekaman: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} mnt; sebelum mulai rata-rata per menit, setelah mulai setiap detik)
+ffa27fbb	# Profil aktif: {0}
+fc54838c	# Kecepatan penuh darurat: CPU dll. {0:F0}°C / GPU Hot Spot {1:F0}°C
+84e02914	## Suhu (min / rata-rata / persentil ke-95 / maks, °C)
+64a1986f	({0} dikecualikan karena sensor tidak tersambung atau nilainya tidak valid. Jangan sebutkan sensor-sensor ini)
+04258b8c	,
+e059f424	## Beban dan lainnya (rata-rata / maks)
+3da93ace	## Pengaturan dan hasil kipas
+3bd31dc4	- {0} ({1}, kendali: {2})
+22f7e502	Pompa
+343d27f0	Diserahkan ke BIOS
+e6a77abc	 Duty rata-rata {0:F0}% / maks {1:F0}%
+7a001c56	, putaran rata-rata {0:F0} / maks {1:F0} rpm
+9100819e	  - Kurva "{0}" sensor: {1} / {2} / histeresis {3:F1}°C
+de44c455	  - Minimum {0:F0}%, naik {1:F1}%/dtk, turun {2:F1}%/dtk
+c25f9522	  - Kalibrasi: maks {0:F0} rpm, berhenti di bawah {1:F0}%, mulai di {2:F0}%
+34cfa91d	## Hasil diagnosis otomatis
+fec5f212	## Uji pendinginan terakhir
+0fb6099a	## Tren jangka panjang (dari rekaman beberapa minggu; pemeriksaan keausan dan debu kipas)
+193ad442	## Pertanyaan dari pengguna
+b0bc7eac	Target {0:F0}°C
+7d5e41f2	Tetap {0:F0}%
+f87c3ac9	Mengikuti kipas lain
+1b56d605	config.json kosong.
+c8d58466	Standar
+52ed0fe4	Maksimum
+91302315	Selisih
+8e4f9981	Saat mulai
+b6d7dbf8	Otomatis
+ae81cf8d	Manual
+7aebcb13	Sebelum impor
+44fc16c5	Sebelum pencocokan setelah ganti komponen

@@ -609,3 +609,103 @@ df6134ea	\n\nPo zamknięciu tego komunikatu usuń cały ten folder:\n{0}
 2d7f91ad	ProFanController już działa.\nOtwórz go ikoną w zasobniku.
 ec6a9bb6	Zapisywanie zapisów
 c0fd45c5	Nadal działa w zasobniku. Aby zakończyć, kliknij ikonę prawym przyciskiem.
+77d62ee9	ProFanController: przywrócono
+977b8544	Profil został przełączony automatycznie
+790c11cc	Wykryto {0} → {1}
+fa5d05c3	ProFanController: konserwacja
+5b860ae3	Działa w trybie DRY RUN (tryb testowy). Tylko oblicza obroty dla temperatur; wentylatory nie są sterowane.
+874003cc	Rozpocznij sterowanie
+812bba50	Plik ustawień był uszkodzony, więc przywrócono go z kopii ({0:yyyy/MM/dd HH:mm}). Uszkodzony plik zachowano jako config.broken_*.json.
+9ca7b4fa	ProFanController nieoczekiwanie się zamknął, więc proces nadzorczy automatycznie uruchomił go ponownie. Sterowanie wznowiono po ustawieniu bezpiecznych obrotów. Przyczynę znajdziesz w dzienniku.
+7b249720	Otwórz dziennik
+3a7e2e72	Aplikacja nieoczekiwanie się zamknęła i została automatycznie uruchomiona ponownie.
+c51b6c55	Z Windows automatycznie uruchamia się aplikacja z innego miejsca ({0}). Może uruchamia się stara wersja.
+268b2432	Ta aplikacja działa z folderu „{0}”. Aby nie zniknęła przy porządkach i nie powstało kilka wersji,
+80df7870	 przenieś ją do {0} przyciskiem poniżej (ustawienia przejdą razem z nią, autostart zostanie ponownie zarejestrowany w nowym miejscu, a aplikacja się uruchomi ponownie).
+8d7ede7f	Działa {0}. Steruje tymi samymi LED-ami i wentylatorami, przez co kolory same wracają, migoczą albo obroty nie są stosowane. Wyłącz w tym programie sterowanie LED-ami i wentylatorami albo go zamknij.
+7e24b89a	•
+0cac6658	Przenieś do {0}
+f8529664	Autostart z tego miejsca
+c674f1d5	Autostart wskazuje teraz na tę działającą aplikację.
+f5c17fde	Nie udało się ponownie zarejestrować autostartu (sprawdź dziennik).
+467c4a19	Nie udało się przenieść do {0}: {1}
+14d2e005	Przechwytywanie dźwięku
+c08fb050	 /
+48ccab47	Nie znaleziono używanego czujnika
+9c32a53a	Wykryto zmiany sprzętu
+58f4eb35	ProFanController: zmiana sprzętu
+646e0b57	{0}. Potwierdź przejście na nowe czujniki na ekranie komputera.
+9dddc76a	Problem ze sterowaniem wentylatorami
+8ad6890e	{0} (dla bezpieczeństwa steruje BIOS; przywracanie jest próbowane automatycznie)
+cdfd31fc	ProFanController: problem ze sterowaniem wentylatorami
+30b6b07e	Nie można odczytać niektórych podzespołów
+465384a0	Sterowanie wentylatorami przywrócone
+2a57fe9c	Powrót do normalnego sterowania.
+96429453	ProFanController: przywrócono
+a8e2e175	Sterowanie wentylatorami wróciło do normy.
+0d78d54c	Nie udało się odczytać config.json, bo inny program trzyma go otwartego (plik pozostał bez zmian).
+9b03cdae	Oryginalny plik zachowano jako config.broken_<data>.json.
+b07af289	Nie udało się wczytać config.json ani przywrócić go z żadnej kopii.\n{0}\n\n{1}\nStart z pustymi ustawieniami.
+645b237e	Boost
+169abc6e	Wszystkie wentylatory oprócz pomp na 100% przez {0} min.
+c342d519	Nie znaleziono profilu dla „Cicho”. Wybierz go w „Szybkie akcje” w ustawieniach.
+77a0d0ea	Nie udało się uruchomić serwera WWW dla telefonu (port {0}): {1}
+eec05191	Awaryjna pełna prędkość
+0413f77c	Wstrzymano
+45fadb4f	Sterowanie
+404e2134	Widżet
+1f2511a8	Okno
+0f13893a	Zasobnik
+e6a34da2	Zatrzymano
+652c7b75	Nie można przechwycić dźwięku (ponowna próba za {0} s): {1}
+2674d6a9	Nie znaleziono wyjścia audio (głośników ani słuchawek)
+b43ec2f4	Ten format dźwięku nie jest obsługiwany ({0}, {1} bit, {2} Hz)
+cfbdd9a8	Przechwytywanie dźwięku: {0}
+a4cae56b	Nie można otworzyć procesu (brak uprawnień)
+0db7fdbc	Ponowna próba po ponownym uruchomieniu {0}
+b2f0b650	Ponowna próba za {0}
+eaca42d5	{0:0} min
+16ed2a19	{0:0} s
+3eba78ae	Przechwytywany jest tylko dźwięk aplikacji
+6c8ed347	Aplikacja odtwarza dźwięk, ale nic nie dociera
+f7cc10dc	Aplikacja odtwarza dźwięk, ale dociera tylko cisza
+f0d6d50a	Przechwytywanie zatrzymane: {0}
+ddf3f681	Przechwytywanie nie jest gotowe
+2788b714	Nie można utworzyć punktu przechwytywania ({0})
+0737216f	Usługa audio Windows nie odpowiada
+c4cea099	Dźwięk kliknięcia ustał: {0}
+60d54065	Nie można odtworzyć kliknięcia: {0}
+b49ebc51	Ollama zwróciła błąd ({0}): {1}
+e4abf7e1	Brak zapisów.
+12b1b1d4	# Okres zapisu: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} min; przed uruchomieniem średnie minutowe, potem co sekundę)
+ffa27fbb	# Aktywny profil: {0}
+fc54838c	# Awaryjna pełna prędkość: CPU itp. {0:F0}°C / GPU Hot Spot {1:F0}°C
+84e02914	## Temperatury (min / średnia / 95. percentyl / maks, °C)
+64a1986f	({0} wykluczono jako niepodłączone czujniki lub czujniki z nieprawidłowymi wartościami. Nie wspominaj o nich)
+04258b8c	,
+e059f424	## Obciążenie i inne (średnia / maks)
+3da93ace	## Ustawienia i wyniki wentylatorów
+3bd31dc4	- {0} ({1}, sterowanie: {2})
+22f7e502	Pompa
+343d27f0	Pozostawione BIOS
+e6a77abc	 Wypełnienie śr. {0:F0}% / maks {1:F0}%
+7a001c56	, obroty śr. {0:F0} / maks {1:F0} rpm
+9100819e	  - Krzywa „{0}” czujnik: {1} / {2} / histereza {3:F1}°C
+de44c455	  - Minimum {0:F0}%, wzrost {1:F1}%/s, spadek {2:F1}%/s
+c25f9522	  - Kalibracja: maks {0:F0} rpm, zatrzymuje się poniżej {1:F0}%, startuje od {2:F0}%
+34cfa91d	## Wyniki automatycznej diagnozy
+fec5f212	## Ostatni test chłodzenia
+0fb6099a	## Trend długoterminowy (z kilku tygodni zapisów; kontrola zużycia i kurzu wentylatorów)
+193ad442	## Pytanie użytkownika
+b0bc7eac	Cel {0:F0}°C
+7d5e41f2	Stałe {0:F0}%
+f87c3ac9	Podąża za innym wentylatorem
+1b56d605	config.json jest pusty.
+c8d58466	Standardowy
+52ed0fe4	Maksimum
+91302315	Różnica
+8e4f9981	Przy starcie
+b6d7dbf8	Auto
+ae81cf8d	Ręcznie
+7aebcb13	Przed importem
+44fc16c5	Przed przypisaniem po wymianie części

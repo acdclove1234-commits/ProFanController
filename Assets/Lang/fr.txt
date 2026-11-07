@@ -609,3 +609,103 @@ df6134ea	\n\nAprès avoir fermé ce message, supprimez tout ce dossier :\n{0}
 2d7f91ad	ProFanController est déjà lancé.\nOuvrez-le depuis l'icône de la zone de notification.
 ec6a9bb6	Enregistrement des données
 c0fd45c5	Continue de tourner dans la zone de notification. Pour quitter, faites un clic droit sur l'icône.
+77d62ee9	ProFanController : rétabli
+977b8544	Le profil a été changé automatiquement
+790c11cc	{0} détecté → {1}
+fa5d05c3	ProFanController : maintenance
+5b860ae3	Fonctionne en DRY RUN (mode test). Il calcule seulement les vitesses selon les températures ; les ventilateurs ne sont pas pilotés.
+874003cc	Commencer le contrôle
+812bba50	Le fichier de réglages était endommagé ; il a été restauré depuis une sauvegarde ({0:yyyy/MM/dd HH:mm}). Le fichier endommagé est conservé sous config.broken_*.json.
+9ca7b4fa	ProFanController s'est arrêté de façon inattendue ; le processus de surveillance l'a relancé automatiquement. Le contrôle a repris après avoir mis les ventilateurs à une vitesse sûre. La cause figure dans le journal.
+7b249720	Ouvrir le journal
+3a7e2e72	L'application s'est arrêtée de façon inattendue et a été relancée automatiquement.
+c51b6c55	L'application lancée automatiquement avec Windows se trouve à un autre emplacement ({0}). Une ancienne version démarre peut-être.
+268b2432	Cette application tourne depuis le dossier « {0} ». Pour qu'elle ne disparaisse pas lors d'un rangement et qu'il n'y ait pas plusieurs versions,
+80df7870	 déplacez-la vers {0} avec le bouton ci-dessous (vos réglages suivent, le démarrage automatique est réinscrit au nouvel emplacement et l'application redémarre).
+8d7ede7f	{0} est en cours d'exécution. Il pilote les mêmes LED et ventilateurs, ce qui fait revenir ou scintiller les couleurs, ou empêche les vitesses de s'appliquer. Désactivez son contrôle des LED et des ventilateurs, ou quittez-le.
+7e24b89a	•
+0cac6658	Déplacer vers {0}
+f8529664	Démarrer automatiquement d'ici
+c674f1d5	Le démarrage automatique pointe désormais vers cette application en cours.
+f5c17fde	Impossible de réinscrire le démarrage automatique (consultez le journal).
+467c4a19	Impossible de déplacer vers {0} : {1}
+14d2e005	Capture audio
+c08fb050	 /
+48ccab47	Un capteur utilisé est introuvable
+9c32a53a	Changements matériels détectés
+58f4eb35	ProFanController : changement matériel
+646e0b57	{0}. Confirmez le passage aux nouveaux capteurs sur l'écran du PC.
+9dddc76a	Problème de contrôle des ventilateurs
+8ad6890e	{0} (le BIOS a la main par sécurité ; un rétablissement est tenté automatiquement)
+cdfd31fc	ProFanController : problème de contrôle des ventilateurs
+30b6b07e	Certains composants ne peuvent pas être lus
+465384a0	Contrôle des ventilateurs rétabli
+2a57fe9c	Retour au contrôle normal.
+96429453	ProFanController : rétabli
+a8e2e175	Le contrôle des ventilateurs est revenu à la normale.
+0d78d54c	Impossible de lire config.json : un autre programme le garde ouvert (le fichier n'est pas modifié).
+9b03cdae	Le fichier d'origine est conservé sous config.broken_<date>.json.
+b07af289	Impossible de charger config.json et aucune sauvegarde n'a pu le restaurer.\n{0}\n\n{1}\nDémarrage avec des réglages vides.
+645b237e	Boost
+169abc6e	Tous les ventilateurs sauf les pompes à 100 % pendant {0} minutes.
+c342d519	Le profil utilisé pour « Silencieux » est introuvable. Choisissez-le dans « Actions rapides » des paramètres.
+77a0d0ea	Impossible de démarrer le serveur web de la vue mobile (port {0}) : {1}
+eec05191	Pleine vitesse d'urgence
+0413f77c	En pause
+45fadb4f	Contrôle en cours
+404e2134	Widget
+1f2511a8	Fenêtre
+0f13893a	Zone de notification
+e6a34da2	Arrêté
+652c7b75	Capture audio impossible (nouvel essai dans {0} s) : {1}
+2674d6a9	Aucune sortie audio (haut-parleurs ou casque) trouvée
+b43ec2f4	Ce format audio n'est pas pris en charge ({0}, {1} bits, {2} Hz)
+cfbdd9a8	Capture audio : {0}
+a4cae56b	Impossible d'ouvrir le processus (pas d'autorisation)
+0db7fdbc	Nouvel essai au redémarrage de {0}
+b2f0b650	Nouvel essai dans {0}
+eaca42d5	{0:0} min
+16ed2a19	{0:0} s
+3eba78ae	Capture du son de l'application uniquement
+6c8ed347	L'application joue du son, mais aucun son n'arrive
+f7cc10dc	L'application joue du son, mais seul du silence arrive
+f0d6d50a	Capture arrêtée : {0}
+ddf3f681	La capture n'est pas prête
+2788b714	Impossible de créer le point de capture ({0})
+0737216f	Le service audio de Windows ne répond pas
+c4cea099	Le son de clic s'est arrêté : {0}
+60d54065	Impossible de jouer le son de clic : {0}
+b49ebc51	Ollama a renvoyé une erreur ({0}) : {1}
+e4abf7e1	Aucun enregistrement pour l'instant.
+12b1b1d4	# Période enregistrée : {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} min ; avant le démarrage, moyennes par minute ; après, chaque seconde)
+ffa27fbb	# Profil actif : {0}
+fc54838c	# Pleine vitesse d'urgence : CPU, etc. {0:F0} °C / Hot Spot GPU {1:F0} °C
+84e02914	## Températures (min / moyenne / 95e centile / max, °C)
+64a1986f	({0} ont été exclus comme capteurs non branchés ou aux valeurs invalides. N'en parle pas)
+04258b8c	,
+e059f424	## Charge et autres (moyenne / max)
+3da93ace	## Réglages et mesures des ventilateurs
+3bd31dc4	- {0} ({1}, contrôle : {2})
+22f7e502	Pompe
+343d27f0	Laissé au BIOS
+e6a77abc	 Consigne moy. {0:F0} % / max {1:F0} %
+7a001c56	, vitesse moy. {0:F0} / max {1:F0} rpm
+9100819e	  - Courbe « {0} » capteur : {1} / {2} / hystérésis {3:F1} °C
+de44c455	  - Minimum {0:F0} %, montée {1:F1} %/s, descente {2:F1} %/s
+c25f9522	  - Calibrage : max {0:F0} rpm, s'arrête sous {1:F0} %, démarre à {2:F0} %
+34cfa91d	## Résultats du diagnostic automatique
+fec5f212	## Dernier test de refroidissement
+0fb6099a	## Tendance à long terme (sur plusieurs semaines d'enregistrements ; usure et poussière des ventilateurs)
+193ad442	## Question de l'utilisateur
+b0bc7eac	Cible {0:F0} °C
+7d5e41f2	Fixe {0:F0} %
+f87c3ac9	Suit un autre ventilateur
+1b56d605	config.json est vide.
+c8d58466	Standard
+52ed0fe4	Maximum
+91302315	Différence
+8e4f9981	Au démarrage
+b6d7dbf8	Auto
+ae81cf8d	Manuel
+7aebcb13	Avant l'importation
+44fc16c5	Avant l'association après changement de pièce

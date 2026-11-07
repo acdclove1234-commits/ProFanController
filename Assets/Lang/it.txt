@@ -609,3 +609,103 @@ df6134ea	\n\nDopo aver chiuso questo messaggio, elimina l'intera cartella:\n{0}
 2d7f91ad	ProFanController è già in esecuzione.\nAprilo dall'icona nell'area di notifica.
 ec6a9bb6	Salvataggio delle registrazioni
 c0fd45c5	Continua a funzionare nell'area di notifica. Per uscire, fai clic destro sull'icona.
+77d62ee9	ProFanController: ripristinato
+977b8544	Il profilo è stato cambiato automaticamente
+790c11cc	{0} rilevato → {1}
+fa5d05c3	ProFanController: manutenzione
+5b860ae3	In esecuzione in DRY RUN (modalità di prova). Calcola solo le velocità in base alle temperature; le ventole non vengono comandate.
+874003cc	Avvia il controllo
+812bba50	Il file delle impostazioni era danneggiato ed è stato ripristinato da un backup ({0:yyyy/MM/dd HH:mm}). Il file danneggiato è conservato come config.broken_*.json.
+9ca7b4fa	ProFanController si è chiuso in modo inatteso, quindi il processo watchdog lo ha riavviato automaticamente. Il controllo è ripreso dopo aver portato le ventole a una velocità sicura. La causa è nel log.
+7b249720	Apri log
+3a7e2e72	Si è chiuso in modo inatteso ed è stato riavviato automaticamente.
+c51b6c55	L'app che si avvia automaticamente con Windows si trova in un altro percorso ({0}). Potrebbe avviarsi una versione vecchia.
+268b2432	Questa app è in esecuzione dalla cartella «{0}». Perché non sparisca riordinando e non ti ritrovi con più versioni,
+80df7870	 spostala in {0} con il pulsante qui sotto (le impostazioni la seguono, l'avvio automatico viene registrato di nuovo nella nuova posizione e l'app si riavvia).
+8d7ede7f	{0} è in esecuzione. Comanda gli stessi LED e ventole, quindi i colori tornano indietro, sfarfallano o le velocità non vengono applicate. Disattiva il controllo di LED e ventole in quel software, oppure chiudilo.
+7e24b89a	•
+0cac6658	Sposta in {0}
+f8529664	Avvio automatico da qui
+c674f1d5	L'avvio automatico ora punta a questa app in esecuzione.
+f5c17fde	Impossibile registrare di nuovo l'avvio automatico (controlla il log).
+467c4a19	Impossibile spostare in {0}: {1}
+14d2e005	Acquisizione audio
+c08fb050	 /
+48ccab47	Un sensore in uso non si trova
+9c32a53a	Rilevate modifiche all'hardware
+58f4eb35	ProFanController: modifica all'hardware
+646e0b57	{0}. Conferma il passaggio ai nuovi sensori sullo schermo del PC.
+9dddc76a	C'è un problema con il controllo delle ventole
+8ad6890e	{0} (per sicurezza il controllo è del BIOS; il ripristino viene tentato automaticamente)
+cdfd31fc	ProFanController: problema di controllo delle ventole
+30b6b07e	Alcuni componenti non si possono leggere
+465384a0	Il controllo delle ventole è stato ripristinato
+2a57fe9c	Tornato al controllo normale.
+96429453	ProFanController: ripristinato
+a8e2e175	Il controllo delle ventole è tornato normale.
+0d78d54c	Impossibile leggere config.json perché un altro programma lo tiene aperto (il file non è stato toccato).
+9b03cdae	Il file originale è conservato come config.broken_<data>.json.
+b07af289	Impossibile caricare config.json, e nessun backup è riuscito a ripristinarlo.\n{0}\n\n{1}\nAvvio con impostazioni vuote.
+645b237e	Boost
+169abc6e	Tutte le ventole tranne le pompe al 100% per {0} minuti.
+c342d519	Il profilo usato per «Silenzioso» non si trova. Sceglilo in «Azioni rapide» nelle impostazioni.
+77a0d0ea	Impossibile avviare il server web per il telefono (porta {0}): {1}
+eec05191	Massima velocità di emergenza
+0413f77c	In pausa
+45fadb4f	In controllo
+404e2134	Widget
+1f2511a8	Finestra
+0f13893a	Area di notifica
+e6a34da2	Fermo
+652c7b75	Impossibile acquisire l'audio (nuovo tentativo tra {0} s): {1}
+2674d6a9	Nessuna uscita audio (altoparlanti o cuffie) trovata
+b43ec2f4	Questo formato audio non è supportato ({0}, {1} bit, {2} Hz)
+cfbdd9a8	Acquisizione audio: {0}
+a4cae56b	Impossibile aprire il processo (nessuna autorizzazione)
+0db7fdbc	Nuovo tentativo al riavvio di {0}
+b2f0b650	Nuovo tentativo tra {0}
+eaca42d5	{0:0} min
+16ed2a19	{0:0} s
+3eba78ae	Acquisizione del solo audio dell'app
+6c8ed347	L'app sta riproducendo audio, ma non arriva nulla
+f7cc10dc	L'app sta riproducendo audio, ma arriva solo silenzio
+f0d6d50a	Acquisizione interrotta: {0}
+ddf3f681	L'acquisizione non è pronta
+2788b714	Impossibile creare il punto di acquisizione ({0})
+0737216f	Il servizio audio di Windows non risponde
+c4cea099	Il suono del clic si è fermato: {0}
+60d54065	Impossibile riprodurre il clic: {0}
+b49ebc51	Ollama ha restituito un errore ({0}): {1}
+e4abf7e1	Ancora nessuna registrazione.
+12b1b1d4	# Periodo registrato: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} min; prima dell'avvio medie al minuto, dopo ogni secondo)
+ffa27fbb	# Profilo attivo: {0}
+fc54838c	# Massima velocità di emergenza: CPU ecc. {0:F0} °C / Hot Spot GPU {1:F0} °C
+84e02914	## Temperature (min / media / 95° percentile / max, °C)
+64a1986f	({0} sono stati esclusi perché non collegati o con valori non validi. Non menzionarli)
+04258b8c	,
+e059f424	## Carico e altro (media / max)
+3da93ace	## Impostazioni e risultati delle ventole
+3bd31dc4	- {0} ({1}, controllo: {2})
+22f7e502	Pompa
+343d27f0	Lasciato al BIOS
+e6a77abc	 Duty medio {0:F0}% / max {1:F0}%
+7a001c56	, velocità media {0:F0} / max {1:F0} rpm
+9100819e	  - Curva «{0}» sensore: {1} / {2} / isteresi {3:F1} °C
+de44c455	  - Minimo {0:F0}%, salita {1:F1}%/s, discesa {2:F1}%/s
+c25f9522	  - Calibrazione: max {0:F0} rpm, si ferma sotto {1:F0}%, parte a {2:F0}%
+34cfa91d	## Risultati della diagnosi automatica
+fec5f212	## Ultimo test di raffreddamento
+0fb6099a	## Tendenza a lungo termine (da diverse settimane di registrazioni; usura e polvere delle ventole)
+193ad442	## Domanda dell'utente
+b0bc7eac	Obiettivo {0:F0} °C
+7d5e41f2	Fisso {0:F0}%
+f87c3ac9	Segue un'altra ventola
+1b56d605	config.json è vuoto.
+c8d58466	Standard
+52ed0fe4	Massimo
+91302315	Differenza
+8e4f9981	All'avvio
+b6d7dbf8	Auto
+ae81cf8d	Manuale
+7aebcb13	Prima dell'importazione
+44fc16c5	Prima dell'abbinamento dopo la sostituzione dei componenti

@@ -609,3 +609,103 @@ df6134ea	\n\nLöschen Sie nach dem Schließen dieser Meldung diesen ganzen Ordne
 2d7f91ad	ProFanController läuft bereits.\nÖffnen Sie es über das Symbol im Infobereich.
 ec6a9bb6	Aufzeichnungen speichern
 c0fd45c5	Läuft im Infobereich weiter. Zum Beenden mit der rechten Maustaste auf das Symbol klicken.
+77d62ee9	ProFanController: wiederhergestellt
+977b8544	Das Profil wurde automatisch gewechselt
+790c11cc	{0} erkannt → {1}
+fa5d05c3	ProFanController: Wartung
+5b860ae3	Läuft im DRY RUN (Testmodus). Es werden nur die Drehzahlen zu den Temperaturen berechnet; die Lüfter werden nicht angesteuert.
+874003cc	Steuerung starten
+812bba50	Die Einstellungsdatei war beschädigt und wurde aus einer Sicherung ({0:yyyy/MM/dd HH:mm}) wiederhergestellt. Die beschädigte Datei bleibt als config.broken_*.json erhalten.
+9ca7b4fa	ProFanController wurde unerwartet beendet, daher hat der Watchdog-Prozess es automatisch neu gestartet. Die Steuerung lief weiter, nachdem die Lüfter auf eine sichere Drehzahl gesetzt wurden. Die Ursache steht im Protokoll.
+7b249720	Protokoll öffnen
+3a7e2e72	Die App wurde unerwartet beendet und automatisch neu gestartet.
+c51b6c55	Mit Windows startet automatisch eine App an einem anderen Ort ({0}). Möglicherweise startet eine alte Version.
+268b2432	Diese App läuft aus dem Ordner „{0}“. Damit sie beim Aufräumen nicht verschwindet und keine mehreren Versionen entstehen,
+80df7870	 verschieben Sie sie mit der Schaltfläche unten nach {0} (die Einstellungen ziehen mit um, der Autostart wird am neuen Ort neu eingetragen und die App startet neu).
+8d7ede7f	{0} läuft. Es steuert dieselben LEDs und Lüfter, wodurch Farben zurückspringen, flackern oder Drehzahlen nicht greifen. Schalten Sie in dieser Software die LED- und Lüftersteuerung aus oder beenden Sie sie.
+7e24b89a	•
+0cac6658	Nach {0} verschieben
+f8529664	Autostart von hier
+c674f1d5	Der Autostart verweist jetzt auf diese laufende App.
+f5c17fde	Der Autostart konnte nicht neu eingetragen werden (Protokoll prüfen).
+467c4a19	Verschieben nach {0} fehlgeschlagen: {1}
+14d2e005	Audioaufnahme
+c08fb050	 /
+48ccab47	Ein verwendeter Sensor wurde nicht gefunden
+9c32a53a	Hardwareänderungen erkannt
+58f4eb35	ProFanController: Hardwareänderung
+646e0b57	{0}. Bestätigen Sie den Wechsel zu den neuen Sensoren am PC-Bildschirm.
+9dddc76a	Problem mit der Lüftersteuerung
+8ad6890e	{0} (aus Sicherheitsgründen steuert das BIOS; die Wiederherstellung wird automatisch versucht)
+cdfd31fc	ProFanController: Problem mit der Lüftersteuerung
+30b6b07e	Einige Bauteile können nicht gelesen werden
+465384a0	Lüftersteuerung wiederhergestellt
+2a57fe9c	Wieder normale Steuerung.
+96429453	ProFanController: wiederhergestellt
+a8e2e175	Die Lüftersteuerung ist wieder normal.
+0d78d54c	config.json konnte nicht gelesen werden, da ein anderes Programm sie geöffnet hält (die Datei bleibt unverändert).
+9b03cdae	Die Originaldatei bleibt als config.broken_<Datum>.json erhalten.
+b07af289	config.json konnte nicht geladen und aus keiner Sicherung wiederhergestellt werden.\n{0}\n\n{1}\nStart mit leeren Einstellungen.
+645b237e	Boost
+169abc6e	Alle Lüfter außer Pumpen {0} Minuten lang auf 100 %.
+c342d519	Das Profil für „Leise“ wurde nicht gefunden. Wählen Sie es in den Einstellungen unter „Schnellaktionen“.
+77a0d0ea	Der Webserver für die Handy-Ansicht konnte nicht gestartet werden (Port {0}): {1}
+eec05191	Notfall-Volllast
+0413f77c	Pausiert
+45fadb4f	Steuert
+404e2134	Widget
+1f2511a8	Fenster
+0f13893a	Infobereich
+e6a34da2	Gestoppt
+652c7b75	Audioaufnahme nicht möglich (neuer Versuch in {0} s): {1}
+2674d6a9	Keine Audioausgabe (Lautsprecher oder Kopfhörer) gefunden
+b43ec2f4	Dieses Audioformat wird nicht unterstützt ({0}, {1} Bit, {2} Hz)
+cfbdd9a8	Audio wird aufgenommen: {0}
+a4cae56b	Prozess kann nicht geöffnet werden (keine Berechtigung)
+0db7fdbc	Neuer Versuch, wenn {0} neu startet
+b2f0b650	Neuer Versuch in {0}
+eaca42d5	{0:0} Min.
+16ed2a19	{0:0} s
+3eba78ae	Nur der Ton der App wird aufgenommen
+6c8ed347	Die App gibt Ton aus, aber es kommt kein Ton an
+f7cc10dc	Die App gibt Ton aus, aber es kommt nur Stille an
+f0d6d50a	Aufnahme gestoppt: {0}
+ddf3f681	Aufnahme nicht bereit
+2788b714	Aufnahmeendpunkt kann nicht erstellt werden ({0})
+0737216f	Der Windows-Audiodienst antwortet nicht
+c4cea099	Der Klickton wurde gestoppt: {0}
+60d54065	Klickton kann nicht abgespielt werden: {0}
+b49ebc51	Ollama hat einen Fehler zurückgegeben ({0}): {1}
+e4abf7e1	Noch keine Aufzeichnungen.
+12b1b1d4	# Aufzeichnungszeitraum: {0:MM/dd HH:mm} – {1:MM/dd HH:mm} ({2:F0} Min.; vor dem Start 1-Minuten-Mittelwerte, danach jede Sekunde)
+ffa27fbb	# Aktives Profil: {0}
+fc54838c	# Notfall-Volllast: CPU usw. {0:F0} °C / GPU-Hot-Spot {1:F0} °C
+84e02914	## Temperaturen (Min. / Mittel / 95. Perzentil / Max., °C)
+64a1986f	({0} wurden als nicht angeschlossene Sensoren oder Sensoren mit ungültigen Werten ausgeschlossen. Erwähne sie nicht)
+04258b8c	,
+e059f424	## Last und mehr (Mittel / Max.)
+3da93ace	## Lüftereinstellungen und Messwerte
+3bd31dc4	- {0} ({1}, Steuerung: {2})
+22f7e502	Pumpe
+343d27f0	Dem BIOS überlassen
+e6a77abc	 Ansteuerung Ø {0:F0} % / max. {1:F0} %
+7a001c56	, Drehzahl Ø {0:F0} / max. {1:F0} rpm
+9100819e	  - Kurve „{0}“ Sensor: {1} / {2} / Hysterese {3:F1} °C
+de44c455	  - Minimum {0:F0} %, Anstieg {1:F1} %/s, Abfall {2:F1} %/s
+c25f9522	  - Kalibrierung: max. {0:F0} rpm, stoppt unter {1:F0} %, läuft ab {2:F0} % an
+34cfa91d	## Ergebnisse der automatischen Diagnose
+fec5f212	## Letzter Kühltest
+0fb6099a	## Langfristiger Trend (aus mehreren Wochen Aufzeichnungen; Prüfung auf Lüfterverschleiß und Staub)
+193ad442	## Frage des Benutzers
+b0bc7eac	Ziel {0:F0} °C
+7d5e41f2	Fest {0:F0} %
+f87c3ac9	Folgt einem anderen Lüfter
+1b56d605	config.json ist leer.
+c8d58466	Standard
+52ed0fe4	Maximum
+91302315	Differenz
+8e4f9981	Beim Start
+b6d7dbf8	Auto
+ae81cf8d	Manuell
+7aebcb13	Vor dem Import
+44fc16c5	Vor der Zuordnung nach Teiletausch
