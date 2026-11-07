@@ -667,6 +667,8 @@ public sealed class QuickConfig
 
 public sealed class AdvisorConfig
 {
+    /// <summary>AI 冷却アドバイザーを使うか（実験的な機能。既定はオフで、ツールの画面に出さず、Ollama にも問い合わせない）</summary>
+    public bool Enabled { get; set; }
     public string OllamaUrl { get; set; } = "http://localhost:11434";
     public string Model { get; set; } = "";
 }

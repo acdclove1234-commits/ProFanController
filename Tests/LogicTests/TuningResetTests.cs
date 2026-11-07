@@ -59,3 +59,19 @@ public static class TuningResetTests
         T.Check(cfg.Music.Preset == MusicPresets.Custom, "a style that no preset uses stays custom after the reset");
     }
 }
+
+public static class AdvisorOptionTests
+{
+    /// <summary>AI 冷却アドバイザーは実験的な機能: 既定はオフ。オンにしたら設定ファイルに残り、古い設定ファイル（項目がない）はオフ</summary>
+    public static void TestAdvisorIsOptInAndSaved()
+    {
+        var cfg = new AppConfig();
+        cfg.Normalize();
+        T.Check(!cfg.Advisor.Enabled, "the advisor is off by default");
+        cfg.Advisor.Enabled = true;
+        var back = AppConfig.FromJson(cfg.ToJson());
+        T.Check(back.Advisor.Enabled, "turning it on is saved");
+        var old = AppConfig.FromJson("{\"Advisor\":{\"OllamaUrl\":\"http://localhost:11434\",\"Model\":\"qwen2.5:7b\"}}");
+        T.Check(!old.Advisor.Enabled && old.Advisor.Model == "qwen2.5:7b", "an old config without the switch stays off and keeps its model");
+    }
+}

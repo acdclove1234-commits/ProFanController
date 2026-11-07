@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+    <!-- 入口は Program.Main（見張りプロセスを WPF なしで動かすため）。ふつうの起動はそこから App を作る -->
+    <StartupObject>ProFanController.Program</StartupObject>
     <TargetFramework>net8.0-windows</TargetFramework>
     <!-- LHM の x64 ランタイム版 DLL を使うため 64bit に固定 -->
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
@@ -33,6 +35,9 @@
   <ItemGroup>
     <!-- ロジックテストは別のプロジェクト（Tests/LogicTests）。本体には含めない -->
     <Compile Remove="Tests/**" />
+    <!-- 開発用の道具（tools/FontSubset など）も本体には含めない -->
+    <Compile Remove="tools/**" />
+    <None Remove="tools/**" />
     <None Remove="Tests/**" />
     <Page Remove="Tests/**" />
   </ItemGroup>

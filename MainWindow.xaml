@@ -1218,7 +1218,8 @@
                         </StackPanel>
                     </Border>
 
-                    <Border Style="{StaticResource Card}">
+                    <!-- AI 冷却アドバイザー: 実験的な機能。設定の「実験的な機能」でオンにしたときだけ出す -->
+                    <Border x:Name="AdvisorCard" Style="{StaticResource Card}" Visibility="Collapsed">
                         <StackPanel>
                             <TextBlock Text="AI 冷却アドバイザー（Ollama）" Style="{StaticResource H2}"/>
                             <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,14"
@@ -2487,6 +2488,19 @@
                                     <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource Caption}" Margin="0,2,0,0"
                                                Text="Radeon RX 7000 シリーズは Hot Spot 110°C で自動的に性能を下げます。全開の解除は、しきい値より 5°C 下がってからです。"/>
                                 </Grid>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                            <StackPanel>
+                                <TextBlock Text="実験的な機能" Style="{StaticResource H2}"/>
+                                <CheckBox x:Name="AdvisorEnabledSwitch" Style="{StaticResource Switch}" Margin="0,16,0,0" Click="OnAdvisorEnabledClick">
+                                    <StackPanel>
+                                        <TextBlock Text="AI 冷却アドバイザーを使う" FontWeight="SemiBold"/>
+                                        <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap"
+                                                   Text="オンにすると「ツール」の画面に出ます。記録の統計と設定を、この PC で動く Ollama に渡して分析させます（データは PC の外に出ません）。Ollama と AI のモデル（数 GB）を別に入れる必要があります。回答を作るあいだは CPU・GPU に負荷がかかるので、温度が上がることがあります。設定を書き換えることはありません"/>
+                                    </StackPanel>
+                                </CheckBox>
                             </StackPanel>
                         </Border>
 

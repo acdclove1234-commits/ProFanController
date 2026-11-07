@@ -58,17 +58,7 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
-        // 見張りプロセスとして起動された（画面は出さず、本体が終わるまで見張る）
-        int wd = Array.IndexOf(e.Args, Watchdog.Argument);
-        if (wd >= 0 && wd + 1 < e.Args.Length && int.TryParse(e.Args[wd + 1], out int parentPid))
-        {
-            Logger.FileSuffix = "watchdog"; // 本体と同じログファイルに同時に書かないように
-            Watchdog.ShowMessage = msg => MessageBox.Show(msg, "ProFanController 見張り", MessageBoxButton.OK, MessageBoxImage.Warning);
-            Watchdog.Run(parentPid);
-            Logger.Flush();
-            Shutdown();
-            return;
-        }
+        // 見張りプロセスは Program.Main で、App を作らずに動かす（ここには来ない）
         // シャットダウンの取り消しに備えたプロセス: 待ってから、まだ Windows が動いていればアプリを起動し直す
         int dr = Array.IndexOf(e.Args, DelayedRestartArgument);
         if (dr >= 0)

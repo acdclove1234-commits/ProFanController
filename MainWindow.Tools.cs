@@ -54,8 +54,28 @@ public partial class MainWindow
     // AI 冷却アドバイザー（Ollama）
     // =====================================================================
 
+    /// <summary>AI 冷却アドバイザー（実験的な機能）を使うかどうかを、設定のスイッチとツールのカードに反映する</summary>
+    private void ApplyAdvisorEnabled()
+    {
+        bool on = Config.Advisor.Enabled;
+        AdvisorEnabledSwitch.IsChecked = on;
+        AdvisorCard.Visibility = on ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    /// <summary>設定の「AI 冷却アドバイザーを使う」</summary>
+    private void OnAdvisorEnabledClick(object sender, RoutedEventArgs e)
+    {
+        Config.Advisor.Enabled = AdvisorEnabledSwitch.IsChecked == true;
+        ScheduleCommit();
+        Logger.Info(Config.Advisor.Enabled ? "AI 冷却アドバイザーを使う設定にしました" : "AI 冷却アドバイザーを使わない設定にしました");
+        LoadAdvisorSettings();
+    }
+
     private void LoadAdvisorSettings()
     {
+        ApplyAdvisorEnabled();
+        // 使わない設定のときは、Ollama に問い合わせない
+        if (!Config.Advisor.Enabled) return;
         OllamaUrlBox.Text = Config.Advisor.OllamaUrl;
         if (!string.IsNullOrEmpty(Config.Advisor.Model))
         {
