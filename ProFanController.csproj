@@ -58,6 +58,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- 画面の言葉の翻訳表（Core/Loc.cs が読む。1 行 1 件: 見出しのハッシュ TAB 訳） -->
+    <EmbeddedResource Include="Assets\Lang\*.txt" LogicalName="ProFanController.Lang.%(Filename).txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <!-- 発行先の設定（使っている本番の設定）を上書きしない -->

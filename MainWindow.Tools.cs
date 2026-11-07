@@ -88,7 +88,7 @@ public partial class MainWindow
     /// <summary>Ollama に入っているモデル一覧を取り直す。保存してあるモデルがなければ、使えるモデルに切り替える</summary>
     private async Task RefreshModelsAsync(bool quiet)
     {
-        if (!quiet) AdvisorStatus.Text = "Ollama に接続しています…";
+        if (!quiet) AdvisorStatus.Text = L("Ollama に接続しています…");
         try
         {
             var models = await OllamaClient.ListModelsAsync(Config.Advisor.OllamaUrl, CancellationToken.None);
@@ -96,15 +96,15 @@ public partial class MainWindow
             string? saved = Config.Advisor.Model;
             ModelCombo.SelectedItem = models.Contains(saved ?? "") ? saved : models.FirstOrDefault();
             if (models.Count == 0)
-                AdvisorStatus.Text = "モデルがありません。PowerShell で「ollama pull qwen2.5:7b」などを実行して取得してください";
+                AdvisorStatus.Text = L("モデルがありません。PowerShell で「ollama pull qwen2.5:7b」などを実行して取得してください");
             else if (!string.IsNullOrEmpty(saved) && !models.Contains(saved))
-                AdvisorStatus.Text = $"保存していたモデル「{saved}」が見つからないため、「{models[0]}」に切り替えました";
+                AdvisorStatus.Text = L($"保存していたモデル「{saved}」が見つからないため、「{models[0]}」に切り替えました");
             else if (!quiet)
-                AdvisorStatus.Text = $"{models.Count} 個のモデルが見つかりました";
+                AdvisorStatus.Text = L($"{models.Count} 個のモデルが見つかりました");
         }
         catch (Exception ex)
         {
-            if (!quiet) AdvisorStatus.Text = $"接続できません（Ollama は起動していますか？）: {ex.Message}";
+            if (!quiet) AdvisorStatus.Text = L($"接続できません（Ollama は起動していますか？）: {ex.Message}");
         }
     }
 
@@ -127,7 +127,7 @@ public partial class MainWindow
     {
         OnAdvisorSettingChanged(sender, e);
         try { await RefreshModelsAsync(quiet: false); }
-        catch (Exception ex) { Logger.Warn($"モデルの一覧を読めません: {ex}"); ShowAlert($"モデルの一覧を読めませんでした: {ex.Message}", AlertLevel.Warning); }
+        catch (Exception ex) { Logger.Warn($"モデルの一覧を読めません: {ex}"); ShowAlert(L($"モデルの一覧を読めませんでした: {ex.Message}"), AlertLevel.Warning); }
     }
 
     private string BuildAdvisorPrompt(bool includeTest)
@@ -141,7 +141,7 @@ public partial class MainWindow
             _lastFindings = Diagnostics.Run(_history, Config, _controller.EffectiveProfile, _catalog!.Temperatures, TimeSpan.FromHours(24));
         }
         var trend = _healthItems.Where(h => h.Item.Level != HealthLevel.Collecting)
-            .Select(h => $"{h.Title}: {h.Item.Level}（{h.Metric}）");
+            .Select(h => L($"{h.Title}: {h.Item.Level}（{h.Metric}）"));
         return AdvisorPrompt.Build(_history, Config, _controller.EffectiveProfile, temps, MetricHistoryKeys.ToList(),
             _lastFindings, includeTest ? _lastTestReport : null, QuestionBox.Text, trend);
     }
@@ -149,7 +149,7 @@ public partial class MainWindow
     private void OnShowPromptClick(object sender, RoutedEventArgs e)
     {
         if (_catalog is null) return;
-        AdvisorOutput.Text = "【AI に渡す内容】\n\n" + AdvisorPrompt.System + "\n\n---\n\n" + BuildAdvisorPrompt(includeTest: _lastTestReport is not null);
+        AdvisorOutput.Text = L("【AI に渡す内容】\n\n") + AdvisorPrompt.System + "\n\n---\n\n" + BuildAdvisorPrompt(includeTest: _lastTestReport is not null);
     }
 
     private void OnAnalyzeClick(object sender, RoutedEventArgs e) => _ = AnalyzeAsync(includeTest: _lastTestReport is not null);
@@ -161,12 +161,12 @@ public partial class MainWindow
         if (_catalog is null || _advisorCts is not null) return;
         if (ModelCombo.SelectedItem is not string model)
         {
-            AdvisorStatus.Text = "先に「一覧を更新」でモデルを選んでください";
+            AdvisorStatus.Text = L("先に「一覧を更新」でモデルを選んでください");
             return;
         }
         if (_history.Count < 60)
         {
-            AdvisorStatus.Text = "記録が少なすぎます。数分使ってから実行してください";
+            AdvisorStatus.Text = L("記録が少なすぎます。数分使ってから実行してください");
             return;
         }
 
@@ -175,7 +175,7 @@ public partial class MainWindow
         AnalyzeButton.IsEnabled = false;
         StopAnalyzeButton.Visibility = Visibility.Visible;
         AdvisorOutput.Text = "";
-        AdvisorStatus.Text = $"{model} が分析しています…（初回はモデルの読み込みに時間がかかります）";
+        AdvisorStatus.Text = L($"{model} が分析しています…（初回はモデルの読み込みに時間がかかります）");
         var sb = new StringBuilder();
         try
         {
@@ -185,20 +185,20 @@ public partial class MainWindow
                 AdvisorOutput.Text = sb.ToString().TrimStart();
                 AdvisorOutput.ScrollToEnd();
             }
-            AdvisorStatus.Text = $"完了（{DateTime.Now:HH:mm}）";
+            AdvisorStatus.Text = L($"完了（{DateTime.Now:HH:mm}）");
             SaveAdvisorReport(sb.ToString());
         }
         catch (OperationCanceledException)
         {
-            AdvisorStatus.Text = "停止しました";
+            AdvisorStatus.Text = L("停止しました");
         }
         catch (Exception ex) when (ex.Message.Contains("not found"))
         {
-            AdvisorStatus.Text = $"モデル「{model}」が Ollama にありません。「一覧を更新」で選び直すか、PowerShell で「ollama pull {model}」を実行してください";
+            AdvisorStatus.Text = L($"モデル「{model}」が Ollama にありません。「一覧を更新」で選び直すか、PowerShell で「ollama pull {model}」を実行してください");
         }
         catch (Exception ex)
         {
-            AdvisorStatus.Text = $"エラー: {ex.Message}";
+            AdvisorStatus.Text = L($"エラー: {ex.Message}");
         }
         finally
         {
@@ -233,23 +233,23 @@ public partial class MainWindow
         if (_catalog is null || _test is not null) return;
         if (_tuner is not null)
         {
-            MessageBox.Show(this, "おまかせ調整が実行中です。終わってから始めてください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("おまかせ調整が実行中です。終わってから始めてください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         var cpuTemp = SensorNames.CpuTemperature(_catalog.Temperatures)
                       ?? _catalog.Temperatures.FirstOrDefault(t => t.HardwareType.StartsWith("Cpu"));
         if (cpuTemp is null)
         {
-            MessageBox.Show(this, "CPU の温度センサーが見つかりません。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this, L("CPU の温度センサーが見つかりません。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         int minutes = Test5.IsChecked == true ? 5 : Test15.IsChecked == true ? 15 : 10;
         var answer = MessageBox.Show(this,
-            $"約 {minutes + 2} 分かけて冷却テストをします。\n\n" +
-            "・テスト中は CPU が全力で動くため、ファンの音が大きくなります。\n" +
-            $"・CPU 温度が {Config.EmergencyTemperature - 3:F0}°C に達したら自動で負荷を止めます。\n" +
-            "・ほかの重いアプリは閉じておいてください。",
-            "冷却テスト", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            L($"約 {minutes + 2} 分かけて冷却テストをします。\n\n") +
+            L("・テスト中は CPU が全力で動くため、ファンの音が大きくなります。\n") +
+            L($"・CPU 温度が {Config.EmergencyTemperature - 3:F0}°C に達したら自動で負荷を止めます。\n") +
+            L("・ほかの重いアプリは閉じておいてください。"),
+            L("冷却テスト"), MessageBoxButton.OKCancel, MessageBoxImage.Information);
         if (answer != MessageBoxResult.OK) return;
 
         var all = _catalog.AllSensors.ToList();
@@ -282,7 +282,7 @@ public partial class MainWindow
         _test.OnSnapshot(s);
         TestProgress.Value = Math.Clamp(_test.Progress * 100, 0, 100);
         TestStatus.Text = _test.StatusText;
-        TestLive.Text = $"現在 {_test.LastTemp:F0}°C ／ 最高 {_test.MaxTemp:F0}°C";
+        TestLive.Text = L($"現在 {_test.LastTemp:F0}°C ／ 最高 {_test.MaxTemp:F0}°C");
         TestChart.Range = (s.Time - _test.StartedAt) + TimeSpan.FromSeconds(10);
         if (TestPage.Visibility == Visibility.Visible) TestChart.Refresh();
         if (_test.Current == CoolingTestRunner.Phase.Done) FinishTest();
@@ -300,17 +300,18 @@ public partial class MainWindow
         TestProgress.Value = 100;
         if (_lastTestReport is null) return;
 
-        TestStatus.Text = _lastTestReport.AbortReason ?? "完了しました";
-        TestVerdict.Text = $"{_lastTestReport.Verdict}（安定時 {_lastTestReport.SteadyTemp:F0}°C）";
-        TestVerdict.Foreground = _lastTestReport.Verdict switch
+        TestStatus.Text = _lastTestReport.AbortReason ?? L("完了しました");
+        TestVerdict.Text = L($"{_lastTestReport.Verdict}（安定時 {_lastTestReport.SteadyTemp:F0}°C）");
+        // 色は温度で決める（判定の文字は画面の言語に訳してあるので、文字では比べない。判定の境目は CoolingTest.Verdict と同じ）
+        TestVerdict.Foreground = _lastTestReport.AbortReason is not null ? Palette.Warn : _lastTestReport.SteadyTemp switch
         {
-            "とても良好" or "良好" => Palette.Ok,
-            "やや高め" or "中断" => Palette.Warn,
+            < 85 => Palette.Ok,
+            < 92 => Palette.Warn,
             _ => Palette.Danger,
         };
         TestReportText.Text = _lastTestReport.ToText();
         TestResultCard.Visibility = Visibility.Visible;
-        ShowAlert($"冷却テストが終わりました: {_lastTestReport.Verdict}", AlertLevel.Info);
+        ShowAlert(L($"冷却テストが終わりました: {_lastTestReport.Verdict}"), AlertLevel.Info);
         Logger.Info("冷却テスト終了\n" + _lastTestReport.ToText());
     }
 
@@ -319,8 +320,8 @@ public partial class MainWindow
         if (_lastTestReport is null) return;
         var dialog = new SaveFileDialog
         {
-            Title = "冷却テストのレポートを保存",
-            Filter = "テキスト (*.txt)|*.txt",
+            Title = L("冷却テストのレポートを保存"),
+            Filter = L("テキスト (*.txt)|*.txt"),
             FileName = $"CoolingTest_{_lastTestReport.StartedAt:yyyyMMdd_HHmm}.txt",
         };
         if (dialog.ShowDialog(this) == true) File.WriteAllText(dialog.FileName, _lastTestReport.ToText(), new UTF8Encoding(true));
@@ -330,7 +331,7 @@ public partial class MainWindow
     {
         NavTools.IsChecked = true;
         if (string.IsNullOrWhiteSpace(QuestionBox.Text))
-            QuestionBox.Text = "直近の冷却テストの結果を評価して、ファン設定の改善案を教えてください。";
+            QuestionBox.Text = L("直近の冷却テストの結果を評価して、ファン設定の改善案を教えてください。");
         _ = AnalyzeAsync(includeTest: true);
     }
 

@@ -90,16 +90,16 @@ public sealed class FlightRecorder
             var sb = new StringBuilder();
             sb.AppendLine(events[0].Message);
             sb.AppendLine();
-            sb.AppendLine($"発生: {first:yyyy/MM/dd HH:mm:ss} ／ プロファイル: {_profile}");
-            sb.AppendLine($"記録: {from:HH:mm:ss} 〜 {h.TimeAt(h.Count - 1):HH:mm:ss}（{rows:N0} 行）");
+            sb.AppendLine(L($"発生: {first:yyyy/MM/dd HH:mm:ss} ／ プロファイル: {_profile}"));
+            sb.AppendLine(L($"記録: {from:HH:mm:ss} 〜 {h.TimeAt(h.Count - 1):HH:mm:ss}（{rows:N0} 行）"));
             if (events.Count > 1)
             {
                 sb.AppendLine();
-                sb.AppendLine("この間に起きたこと:");
+                sb.AppendLine(L("この間に起きたこと:"));
                 foreach (var (t, m) in events) sb.AppendLine($"  {t:HH:mm:ss}  {m}");
             }
             sb.AppendLine();
-            sb.AppendLine("最高値:");
+            sb.AppendLine(L("最高値:"));
             int start = h.LowerBound(from);
             foreach (var key in keys.Where(k => !k.StartsWith("duty:")))
             {

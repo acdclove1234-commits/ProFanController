@@ -50,7 +50,7 @@ public static class OllamaClient
         if (!res.IsSuccessStatusCode)
         {
             string err = await res.Content.ReadAsStringAsync(ct);
-            throw new HttpRequestException($"Ollama がエラーを返しました ({(int)res.StatusCode}): {err}");
+            throw new HttpRequestException(L($"Ollama がエラーを返しました ({(int)res.StatusCode}): {err}"));
         }
 
         using var reader = new StreamReader(await res.Content.ReadAsStreamAsync(ct));
@@ -80,7 +80,16 @@ public static class OllamaClient
 /// <summary>AI に渡す「PC の冷却状況の要約」を作る。生データではなく統計だけを渡す</summary>
 public static class AdvisorPrompt
 {
-    public const string System =
+    /// <summary>
+    /// AI への指示（指示そのものは日本語のまま。答えは画面の言語で書いてもらう。
+    /// 見出しの「## 全体の評価」なども、その言語に直して書くよう頼む）
+    /// </summary>
+    public static string System => Localization.IsSource
+        ? SystemJa
+        : SystemJa.Replace("日本語で分かりやすく", $"{Localization.Current.NativeName}（{Localization.Current.EnglishName}）で分かりやすく")
+          + $"\nWrite the whole answer, including the section headings, in {Localization.Current.EnglishName} ({Localization.Current.NativeName}), not in Japanese.";
+
+    private const string SystemJa =
         "あなたは自作 PC の冷却とファン制御に詳しいエンジニアです。" +
         "ユーザーの PC の計測データの要約を読み、日本語で分かりやすくアドバイスしてください。\n" +
         "出力の構成:\n" +
@@ -98,16 +107,16 @@ public static class AdvisorPrompt
     {
         var inv = CultureInfo.InvariantCulture;
         var sb = new StringBuilder();
-        if (h.Count == 0) return "記録がまだありません。";
+        if (h.Count == 0) return L("記録がまだありません。");
 
         var first = h.TimeAt(0);
         var last = h.TimeAt(h.Count - 1);
-        sb.AppendLine($"# 記録期間: {first:MM/dd HH:mm} 〜 {last:MM/dd HH:mm}（{(last - first).TotalMinutes:F0} 分。起動前の分は 1 分ごとの平均、起動後は 1 秒ごと）");
-        sb.AppendLine($"# 実行中のプロファイル: {profile}");
-        sb.AppendLine($"# 緊急全開: CPU 等 {cfg.EmergencyTemperature:F0}°C ／ GPU Hot Spot {cfg.EmergencyHotspotTemperature:F0}°C");
+        sb.AppendLine(L($"# 記録期間: {first:MM/dd HH:mm} 〜 {last:MM/dd HH:mm}（{(last - first).TotalMinutes:F0} 分。起動前の分は 1 分ごとの平均、起動後は 1 秒ごと）"));
+        sb.AppendLine(L($"# 実行中のプロファイル: {profile}"));
+        sb.AppendLine(L($"# 緊急全開: CPU 等 {cfg.EmergencyTemperature:F0}°C ／ GPU Hot Spot {cfg.EmergencyHotspotTemperature:F0}°C"));
         sb.AppendLine();
 
-        sb.AppendLine("## 温度（最小 / 平均 / 95パーセンタイル / 最大, °C）");
+        sb.AppendLine(L("## 温度（最小 / 平均 / 95パーセンタイル / 最大, °C）"));
         var skipped = new List<string>();
         foreach (var (id, name) in temps)
         {
@@ -122,25 +131,25 @@ public static class AdvisorPrompt
             sb.AppendLine(string.Format(inv, "- {0}: {1:F0} / {2:F0} / {3:F0} / {4:F0}", name, s.Min, s.Avg, s.P95, s.Max));
         }
         if (skipped.Count > 0)
-            sb.AppendLine($"（{string.Join("、", skipped)} は、未接続または値が不正なセンサーのため除外しました。これらについては言及しないでください）");
+            sb.AppendLine(L($"（{string.Join(L("、"), skipped)} は、未接続または値が不正なセンサーのため除外しました。これらについては言及しないでください）"));
 
         sb.AppendLine();
-        sb.AppendLine("## 負荷など（平均 / 最大）");
+        sb.AppendLine(L("## 負荷など（平均 / 最大）"));
         foreach (var (id, name, unit) in metrics)
         {
             if (Stats(h, id) is { } s) sb.AppendLine(string.Format(inv, "- {0}: {1:F0} / {2:F0} {3}", name, s.Avg, s.Max, unit));
         }
 
         sb.AppendLine();
-        sb.AppendLine("## ファンの設定と実績");
+        sb.AppendLine(L("## ファンの設定と実績"));
         foreach (var fan in cfg.FindProfile(profile)?.Fans ?? new())
         {
             var duty = Stats(h, HistoryStore.DutyKey(fan.ControlId));
             var rpm = Stats(h, HistoryStore.RpmKey(fan.ControlId));
             var cal = cfg.FindCalibration(fan.ControlId);
-            sb.Append($"- {fan.Name}（{(fan.IsPump ? "ポンプ" : "ファン")}、制御: {(fan.Enabled ? ModeText(fan) : "BIOS 任せ")}）");
-            if (duty is { } d) sb.Append(string.Format(inv, " Duty 平均 {0:F0}% / 最大 {1:F0}%", d.Avg, d.Max));
-            if (rpm is { } r) sb.Append(string.Format(inv, "、回転 平均 {0:F0} / 最大 {1:F0} rpm", r.Avg, r.Max));
+            sb.Append(L($"- {fan.Name}（{(fan.IsPump ? L("ポンプ") : L("ファン"))}、制御: {(fan.Enabled ? ModeText(fan) : L("BIOS 任せ"))}）"));
+            if (duty is { } d) sb.Append(string.Format(inv, L(" Duty 平均 {0:F0}% / 最大 {1:F0}%"), d.Avg, d.Max));
+            if (rpm is { } r) sb.Append(string.Format(inv, L("、回転 平均 {0:F0} / 最大 {1:F0} rpm"), r.Avg, r.Max));
             sb.AppendLine();
             if (fan.Mode == FanModes.Curve)
             {
@@ -148,26 +157,26 @@ public static class AdvisorPrompt
                 {
                     string pts = string.Join(" → ", c.Points.Select(p => string.Format(inv, "{0:F0}°C:{1:F0}%", p.Temp, p.Duty)));
                     string sensor = temps.FirstOrDefault(t => t.Id == c.SensorId).Name ?? c.SensorId;
-                    sb.AppendLine($"  - カーブ「{c.Name}」 センサー: {sensor} ／ {pts} ／ ヒステリシス {c.HysteresisCelsius:F1}°C");
+                    sb.AppendLine(L($"  - カーブ「{c.Name}」 センサー: {sensor} ／ {pts} ／ ヒステリシス {c.HysteresisCelsius:F1}°C"));
                 }
             }
-            sb.AppendLine(string.Format(inv, "  - 最低回転数 {0:F0}%、上昇 {1:F1}%/秒、下降 {2:F1}%/秒", fan.MinDuty, fan.MaxStepUpPerTick, fan.MaxStepDownPerTick));
+            sb.AppendLine(string.Format(inv, L("  - 最低回転数 {0:F0}%、上昇 {1:F1}%/秒、下降 {2:F1}%/秒"), fan.MinDuty, fan.MaxStepUpPerTick, fan.MaxStepDownPerTick));
             if (cal is not null)
-                sb.AppendLine(string.Format(inv, "  - キャリブレーション: 最大 {0:F0} rpm、{1:F0}% 未満で停止、{2:F0}% で始動", cal.MaxRpm, cal.StopDuty, cal.StartDuty));
+                sb.AppendLine(string.Format(inv, L("  - キャリブレーション: 最大 {0:F0} rpm、{1:F0}% 未満で停止、{2:F0}% で始動"), cal.MaxRpm, cal.StopDuty, cal.StartDuty));
         }
 
         var list = findings.ToList();
         if (list.Count > 0)
         {
             sb.AppendLine();
-            sb.AppendLine("## 自動診断の結果");
+            sb.AppendLine(L("## 自動診断の結果"));
             foreach (var f in list) sb.AppendLine($"- [{f.Level}] {f.Title}: {f.Detail}");
         }
 
         if (test is not null)
         {
             sb.AppendLine();
-            sb.AppendLine("## 直近の冷却テスト");
+            sb.AppendLine(L("## 直近の冷却テスト"));
             sb.AppendLine(test.ToText());
         }
 
@@ -175,14 +184,14 @@ public static class AdvisorPrompt
         if (trend.Count > 0)
         {
             sb.AppendLine();
-            sb.AppendLine("## 長期の傾向（数週間の記録から。ファンの劣化・ホコリのチェック）");
+            sb.AppendLine(L("## 長期の傾向（数週間の記録から。ファンの劣化・ホコリのチェック）"));
             foreach (var t in trend) sb.AppendLine($"- {t}");
         }
 
         if (!string.IsNullOrWhiteSpace(userQuestion))
         {
             sb.AppendLine();
-            sb.AppendLine("## ユーザーからの質問");
+            sb.AppendLine(L("## ユーザーからの質問"));
             sb.AppendLine(userQuestion.Trim());
         }
         return sb.ToString();
@@ -190,10 +199,10 @@ public static class AdvisorPrompt
 
     private static string ModeText(FanConfig f) => f.Mode switch
     {
-        FanModes.Target => $"目標温度 {f.TargetTemp:F0}°C",
-        FanModes.Fixed => $"固定 {f.FixedDuty:F0}%",
-        FanModes.Follow => "他のファンに連動",
-        _ => "カーブ",
+        FanModes.Target => L($"目標温度 {f.TargetTemp:F0}°C"),
+        FanModes.Fixed => L($"固定 {f.FixedDuty:F0}%"),
+        FanModes.Follow => L("他のファンに連動"),
+        _ => L("カーブ"),
     };
 
     private sealed record SeriesStats(double Min, double Avg, double P95, double Max);

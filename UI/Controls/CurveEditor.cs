@@ -174,7 +174,7 @@ public sealed class CurveEditor : FrameworkElement
             dc.DrawRectangle(BandBrush, null, new Rect(r.Left, top, r.Width, Math.Max(1, bottom - top)));
             dc.DrawLine(BandPen, new Point(r.Left, top), new Point(r.Right, top));
             dc.DrawLine(BandPen, new Point(r.Left, bottom), new Point(r.Right, bottom));
-            DrawText(dc, "共振回避", new Point(r.Right - 6, top + 2), dpi, BandLabel, rightAlign: true);
+            DrawText(dc, L("共振回避"), new Point(r.Right - 6, top + 2), dpi, BandLabel, rightAlign: true);
         }
 
         // 目盛り
@@ -238,7 +238,7 @@ public sealed class CurveEditor : FrameworkElement
             dc.DrawLine(LivePen, new Point(p.X, r.Top), new Point(p.X, r.Bottom));
             dc.DrawEllipse(LiveGlow, null, p, 11, 11);
             dc.DrawEllipse(LiveBrush, null, p, 5, 5);
-            DrawTip(dc, $"現在 {live:F1}°C → {d:F0}%{RpmSuffix(d)}", p, dpi, LiveBrush);
+            DrawTip(dc, L($"現在 {live:F1}°C → {d:F0}%{RpmSuffix(d)}"), p, dpi, LiveBrush);
         }
 
         // 編集点
@@ -255,7 +255,7 @@ public sealed class CurveEditor : FrameworkElement
     }
 
     private string RpmSuffix(double duty)
-        => _calibration?.EstimateRpm(duty) is double rpm ? $" (約 {rpm:N0} rpm)" : "";
+        => _calibration?.EstimateRpm(duty) is double rpm ? L($" (約 {rpm:N0} rpm)") : "";
 
     private void DrawText(DrawingContext dc, string text, Point at, double dpi, Brush brush, bool center = false, bool rightAlign = false)
     {

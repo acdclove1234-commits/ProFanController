@@ -68,13 +68,13 @@ public partial class PawnIoInstallPanel : UserControl
         bool running = Busy;
 
         InstallButton.IsEnabled = !running;
-        InstallButton.Content = running && !_mine ? "ほかの画面でインストール中です…" : "PawnIO をインストール";
+        InstallButton.Content = running && !_mine ? L("ほかの画面でインストール中です…") : L("PawnIO をインストール");
         RecheckButton.IsEnabled = !running;
 
         bool needsRestart = LoadedAtStartup == false || _installedThisRun;
         if (installed && !needsRestart)
         {
-            SetStatus("✔ PawnIO（ファン制御用のドライバー）はインストール済みです。ファンを制御できます。", Palette.Ok);
+            SetStatus(L("✔ PawnIO（ファン制御用のドライバー）はインストール済みです。ファンを制御できます。"), Palette.Ok);
             Explanation.Visibility = Visibility.Collapsed;
             InstallButton.Visibility = Visibility.Collapsed;
             SiteButton.Visibility = Visibility.Collapsed;
@@ -85,8 +85,8 @@ public partial class PawnIoInstallPanel : UserControl
         {
             // 仕上げに PC の再起動が要るときは、アプリを起動し直しても使えないので、そのボタンは出さない
             SetStatus(_pcRestartPending
-                    ? "PawnIO はインストールされましたが、仕上げに PC の再起動が必要です。PC を再起動すると、ファンを制御できるようになります。"
-                    : "PawnIO はインストールされましたが、まだ読み込まれていません。アプリを起動し直すと、ファンを制御できるようになります。",
+                    ? L("PawnIO はインストールされましたが、仕上げに PC の再起動が必要です。PC を再起動すると、ファンを制御できるようになります。")
+                    : L("PawnIO はインストールされましたが、まだ読み込まれていません。アプリを起動し直すと、ファンを制御できるようになります。"),
                 Palette.Warn);
             Explanation.Visibility = Visibility.Collapsed;
             InstallButton.Visibility = Visibility.Collapsed;
@@ -96,7 +96,7 @@ public partial class PawnIoInstallPanel : UserControl
         }
         else
         {
-            SetStatus("✖ PawnIO（ファン制御用のドライバー）が見つかりません。このままでは、温度の表示だけでファンは制御できません。", Palette.Danger);
+            SetStatus(L("✖ PawnIO（ファン制御用のドライバー）が見つかりません。このままでは、温度の表示だけでファンは制御できません。"), Palette.Danger);
             Explanation.Visibility = Visibility.Visible;
             InstallButton.Visibility = Visibility.Visible;
             SiteButton.Visibility = Visibility.Visible;
@@ -124,7 +124,7 @@ public partial class PawnIoInstallPanel : UserControl
         _mine = true;
         _result = null;
         ResultText.Visibility = Visibility.Collapsed;
-        _phase = "winget を起動しています…";
+        _phase = L("winget を起動しています…");
         _startedAt = DateTime.Now;
         ProgressText.Visibility = Visibility.Visible;
         ShowProgress();
@@ -137,21 +137,21 @@ public partial class PawnIoInstallPanel : UserControl
             {
                 if (Winget.Describe(line) is { } text) Dispatcher.InvokeAsync(() => { _phase = text; });
             }, PawnIoSetup.Timeout);
-            _phase = "PawnIO が入ったか確かめています…";
+            _phase = L("PawnIO が入ったか確かめています…");
             ShowProgress();
             bool detected = await Task.Run(PawnIoSetup.IsInstalled);
             // ボタンが出ていた = 押す前は入っていなかったので、いま動いているアプリは PawnIO なしでハードウェアを開いている
             if (detected) _installedThisRun = true;
             var result = PawnIoSetup.InterpretInstall(run, detected, loadedAtStartup: false);
             if (detected && result.Ok && result.NeedsPcRestart) _pcRestartPending = true;
-            LogRun("インストール", run, detected, result);
+            LogRun(L("インストール"), run, detected, result);
             _result = result;
             ShowResult(result);
         }
         catch (Exception ex)
         {
             Logger.Error($"PawnIO のインストールで例外: {ex}");
-            _result = new PawnIoResult(false, $"インストールの途中でエラーが起きました: {ex.Message}　公式サイトのインストーラーを使ってください。",
+            _result = new PawnIoResult(false, L($"インストールの途中でエラーが起きました: {ex.Message}　公式サイトのインストーラーを使ってください。"),
                 NeedsAppRestart: false, NeedsPcRestart: false, OfferOfficialSite: true);
             ShowResult(_result);
         }
@@ -186,7 +186,7 @@ public partial class PawnIoInstallPanel : UserControl
     private void ShowProgress()
     {
         int sec = (int)(DateTime.Now - _startedAt).TotalSeconds;
-        ProgressText.Text = $"{_phase}（{sec} 秒）　画面を閉じずにお待ちください。ほかの操作はできます。";
+        ProgressText.Text = L($"{_phase}（{sec} 秒）　画面を閉じずにお待ちください。ほかの操作はできます。");
     }
 
     private void ShowResult(PawnIoResult r)
@@ -208,7 +208,7 @@ public partial class PawnIoInstallPanel : UserControl
         catch (Exception ex)
         {
             Logger.Warn($"公式サイトを開けません: {ex.Message}");
-            MessageBox.Show($"ブラウザーを開けませんでした。{PawnIoSetup.OfficialSite} を開いてください。", "ProFanController",
+            MessageBox.Show(L($"ブラウザーを開けませんでした。{PawnIoSetup.OfficialSite} を開いてください。"), "ProFanController",
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
@@ -221,7 +221,7 @@ public partial class PawnIoInstallPanel : UserControl
         Refresh();
         if (!PawnIoSetup.IsInstalled())
         {
-            ResultText.Text = "まだ PawnIO が見つかりません。インストーラーを実行したあとなら、PC を再起動してからもう一度確かめてください。";
+            ResultText.Text = L("まだ PawnIO が見つかりません。インストーラーを実行したあとなら、PC を再起動してからもう一度確かめてください。");
             ResultText.Foreground = Palette.Warn;
             ResultText.Visibility = Visibility.Visible;
         }

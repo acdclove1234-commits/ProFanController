@@ -58,10 +58,10 @@ public sealed class Calibrator
 
     public string StatusText => _phase switch
     {
-        Phase.SpinUp => "最大回転数を測定中…",
-        Phase.Down => $"回転を下げながら測定中… ({DownSteps[_downIndex]:F0}%)",
-        Phase.Up => $"回り始める回転数を探しています… ({_upDuty:F0}%)",
-        _ => "完了",
+        Phase.SpinUp => L("最大回転数を測定中…"),
+        Phase.Down => L($"回転を下げながら測定中… ({DownSteps[_downIndex]:F0}%)"),
+        Phase.Up => L($"回り始める回転数を探しています… ({_upDuty:F0}%)"),
+        _ => L("完了"),
     };
 
     public Calibrator(string controlId, string fanName, DateTime now)
@@ -77,7 +77,7 @@ public sealed class Calibrator
         if (IsDone) return;
         if (rpm is null)
         {
-            Fail("回転数センサーが読めません。");
+            Fail(L("回転数センサーが読めません。"));
             return;
         }
 
@@ -90,7 +90,7 @@ public sealed class Calibrator
                 _maxRpm = Average();
                 if (_maxRpm < SpinThresholdRpm)
                 {
-                    Fail("100% でも回転していません。配線を確認してください。");
+                    Fail(L("100% でも回転していません。配線を確認してください。"));
                     return;
                 }
                 _points.Add(new CalibrationPoint { Duty = 100, Rpm = _maxRpm });

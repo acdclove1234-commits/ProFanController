@@ -16,7 +16,7 @@ public sealed record SensorInfo(string Id, string Name, string HardwareName, str
 
 public sealed record ControlInfo(string Id, string Name, string HardwareName, string? RpmSensorId)
 {
-    public string Display => IsGpu ? $"{Name}  ·  {HardwareName}（GPU・試験的）" : $"{Name}  ·  {HardwareName}";
+    public string Display => IsGpu ? L($"{Name}  ·  {HardwareName}（GPU・試験的）") : $"{Name}  ·  {HardwareName}";
     public bool IsGpu => Id.StartsWith("/gpu", StringComparison.OrdinalIgnoreCase);
 }
 

@@ -54,7 +54,7 @@ public partial class MainWindow
         {
             FanEditor.Visibility = Visibility.Collapsed;
             CurvesPlaceholder.Visibility = Visibility.Visible;
-            CurvesPlaceholderText.Text = "左下の「端子を追加」からファンを登録するか、設定画面のセットアップウィザードを使ってください";
+            CurvesPlaceholderText.Text = L("左下の「端子を追加」からファンを登録するか、設定画面のセットアップウィザードを使ってください");
         }
     }
 
@@ -69,7 +69,7 @@ public partial class MainWindow
         CurvesPlaceholder.Visibility = fan is null ? Visibility.Visible : Visibility.Collapsed;
         if (fan is null)
         {
-            CurvesPlaceholderText.Text = "左の一覧からファンを選ぶか、端子を追加してください";
+            CurvesPlaceholderText.Text = L("左の一覧からファンを選ぶか、端子を追加してください");
             return;
         }
         CurveTabs.SelectedIndex = fan.Curves.Count > 0 ? 0 : -1;
@@ -152,7 +152,7 @@ public partial class MainWindow
         var menu = new ContextMenu { PlacementTarget = CopyCurveButton, Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom };
         foreach (var target in profile.Fans.Where(f => f != fan && !f.IsPump))
         {
-            var item = new MenuItem { Header = $"「{target.Name}」にコピー" };
+            var item = new MenuItem { Header = L($"「{target.Name}」にコピー") };
             item.Click += (_, _) => CopyCurveTo(curve, new[] { target });
             menu.Items.Add(item);
         }
@@ -160,13 +160,13 @@ public partial class MainWindow
             .Select(p => p.Fans.FirstOrDefault(f => f.ControlId == fan.ControlId)).OfType<FanConfig>().ToList();
         if (others.Count > 0)
         {
-            var all = new MenuItem { Header = "他のプロファイルの同じファンにコピー" };
+            var all = new MenuItem { Header = L("他のプロファイルの同じファンにコピー") };
             all.Click += (_, _) => CopyCurveTo(curve, others);
             menu.Items.Add(all);
         }
         if (menu.Items.Count == 0)
         {
-            menu.Items.Add(new MenuItem { Header = "コピー先がありません", IsEnabled = false });
+            menu.Items.Add(new MenuItem { Header = L("コピー先がありません"), IsEnabled = false });
         }
         menu.IsOpen = true;
     }
@@ -182,7 +182,7 @@ public partial class MainWindow
         }
         WatchConfig();
         ScheduleCommit();
-        ShowAlert($"カーブ「{curve.Name}」をコピーしました。", AlertLevel.Info);
+        ShowAlert(L($"カーブ「{curve.Name}」をコピーしました。"), AlertLevel.Info);
     }
 
     private string DefaultSensorId()
@@ -193,18 +193,18 @@ public partial class MainWindow
         if (AddControlCombo.SelectedItem is not ControlInfo ci) return;
         if (Config.Profiles.SelectMany(p => p.Fans).Any(f => string.Equals(f.ControlId, ci.Id, StringComparison.OrdinalIgnoreCase)))
         {
-            MessageBox.Show(this, "この端子はすでに追加されています。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("この端子はすでに追加されています。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
 
         if (ci.IsGpu)
         {
             var ok = MessageBox.Show(this,
-                $"GPU のファン「{ci.Name}」を追加します（試験的な機能です）。\n\n" +
-                "・制御を始めると、GPU ドライバーの自動制御（アイドル時に止まる 0 RPM モードなど）が止まります。\n" +
-                $"・GPU 温度が {FanEngine.GpuGuardCoreTemp:F0}°C（Hot Spot {FanEngine.GpuGuardHotspotTemp:F0}°C）を超えると、設定に関係なく 100% にします。\n" +
-                "・追加した直後は「このツールで制御する」がオフ（今までどおり）です。カーブを確認してからオンにしてください。",
-                "GPU のファン", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                L($"GPU のファン「{ci.Name}」を追加します（試験的な機能です）。\n\n") +
+                L("・制御を始めると、GPU ドライバーの自動制御（アイドル時に止まる 0 RPM モードなど）が止まります。\n") +
+                L($"・GPU 温度が {FanEngine.GpuGuardCoreTemp:F0}°C（Hot Spot {FanEngine.GpuGuardHotspotTemp:F0}°C）を超えると、設定に関係なく 100% にします。\n") +
+                L("・追加した直後は「このツールで制御する」がオフ（今までどおり）です。カーブを確認してからオンにしてください。"),
+                L("GPU のファン"), MessageBoxButton.OKCancel, MessageBoxImage.Information);
             if (ok != MessageBoxResult.OK) return;
         }
 
@@ -218,7 +218,7 @@ public partial class MainWindow
         {
             var preset = ProfileRoles.Preset(profile.Role);
             var fan = new FanConfig { Name = ci.Name, ControlId = ci.Id, RpmSensorId = ci.RpmSensorId, Enabled = false, MinDuty = ci.IsGpu ? 30 : 25 };
-            fan.Curves.Add(new CurveConfig { Name = ci.IsGpu ? "GPU" : "CPU 連動", SensorId = sensor, Points = CurvePresets.Create(preset, kind) });
+            fan.Curves.Add(new CurveConfig { Name = ci.IsGpu ? "GPU" : L("CPU 連動"), SensorId = sensor, Points = CurvePresets.Create(preset, kind) });
             profile.Fans.Add(fan);
         }
         WatchConfig();
@@ -229,7 +229,7 @@ public partial class MainWindow
     private void OnRemoveFanClick(object sender, RoutedEventArgs e)
     {
         if (SelectedFan is not { } fan) return;
-        var answer = MessageBox.Show(this, $"「{fan.Name}」をすべてのプロファイルから削除しますか？\n削除した端子は BIOS 制御に戻ります。", "ProFanController",
+        var answer = MessageBox.Show(this, L($"「{fan.Name}」をすべてのプロファイルから削除しますか？\n削除した端子は BIOS 制御に戻ります。"), "ProFanController",
             MessageBoxButton.OKCancel, MessageBoxImage.Question);
         if (answer != MessageBoxResult.OK) return;
 
@@ -248,7 +248,7 @@ public partial class MainWindow
         var sensor = DefaultSensorId();
         var curve = new CurveConfig
         {
-            Name = $"カーブ {fan.Curves.Count + 1}",
+            Name = L($"カーブ {fan.Curves.Count + 1}"),
             SensorId = sensor,
             Points = CurvePresets.Create(CurvePresets.Balanced, FindSensorOption(sensor)?.Kind ?? SensorKind.Cpu),
         };
@@ -263,7 +263,7 @@ public partial class MainWindow
         if (SelectedFan is not { } fan || SelectedCurve is not { } curve) return;
         if (fan.Curves.Count <= 1)
         {
-            MessageBox.Show(this, "カーブは最低 1 つ必要です。一定の回転にしたい場合は「固定回転にする」を使ってください。",
+            MessageBox.Show(this, L("カーブは最低 1 つ必要です。一定の回転にしたい場合は「固定回転にする」を使ってください。"),
                 "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
@@ -290,25 +290,25 @@ public partial class MainWindow
         if (SelectedFan is not { } fan) return;
         if (_calibratingId is not null)
         {
-            MessageBox.Show(this, "ほかのファンのキャリブレーションが実行中です。終わってから始めてください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("ほかのファンのキャリブレーションが実行中です。終わってから始めてください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         if (_tuner is not null || _test is not null)
         {
-            MessageBox.Show(this, "おまかせ調整か冷却テストが実行中です。終わってから始めてください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("おまかせ調整か冷却テストが実行中です。終わってから始めてください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         // エンジンは実行中のプロファイルのファンしか扱わないため（結果は全プロファイル共通で使える）
         if (Config.FindProfile(_controller.EffectiveProfile)?.Fans.Any(f => f.ControlId == fan.ControlId) != true)
         {
-            MessageBox.Show(this, "このファンは実行中のプロファイルに含まれていません。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("このファンは実行中のプロファイルに含まれていません。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         var answer = MessageBox.Show(this,
-            $"「{fan.Name}」のキャリブレーションを開始します。\n\n" +
-            "・約 1〜2 分間、ファンが全開になったり止まったりします。\n" +
-            "・CPU/GPU に負荷をかけていない状態で実行してください（温度が 80°C を超えると自動で中止します）。",
-            "自動キャリブレーション", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            L($"「{fan.Name}」のキャリブレーションを開始します。\n\n") +
+            L("・約 1〜2 分間、ファンが全開になったり止まったりします。\n") +
+            L("・CPU/GPU に負荷をかけていない状態で実行してください（温度が 80°C を超えると自動で中止します）。"),
+            L("自動キャリブレーション"), MessageBoxButton.OKCancel, MessageBoxImage.Information);
         if (answer != MessageBoxResult.OK) return;
 
         _calibratingId = fan.ControlId;
@@ -317,7 +317,7 @@ public partial class MainWindow
         CancelCalibrationButton.Visibility = Visibility.Visible;
         CalibrationProgressBar.Visibility = Visibility.Visible;
         CalibrationProgressBar.Value = 0;
-        CalibrationText.Text = "開始しています…";
+        CalibrationText.Text = L("開始しています…");
     }
 
     private void OnCancelCalibrationClick(object sender, RoutedEventArgs e) => _controller.Engine.CancelCalibration();
@@ -361,14 +361,14 @@ public partial class MainWindow
         if (!running)
         {
             CalibrationText.Text = cal is null
-                ? "まだ測定していません。"
-                : $"最大 {cal.MaxRpm:N0} rpm ／ {cal.StopDuty:F0}% 未満で停止 ／ {cal.StartDuty:F0}% で回り始める（{cal.MeasuredAt:yyyy/MM/dd HH:mm} 測定）";
+                ? L("まだ測定していません。")
+                : L($"最大 {cal.MaxRpm:N0} rpm ／ {cal.StopDuty:F0}% 未満で停止 ／ {cal.StartDuty:F0}% で回り始める（{cal.MeasuredAt:yyyy/MM/dd HH:mm} 測定）");
         }
 
         // 最低回転数が停止域に入っていたら警告する
         if (cal is { StopDuty: > 0 } && fan.MinDuty < cal.StopDuty)
         {
-            MinDutyWarning.Text = $"⚠ このファンは {cal.StopDuty:F0}% 未満で止まります。止めたくない場合は {cal.StopDuty + 5:F0}% 以上にしてください。";
+            MinDutyWarning.Text = L($"⚠ このファンは {cal.StopDuty:F0}% 未満で止まります。止めたくない場合は {cal.StopDuty + 5:F0}% 以上にしてください。");
             MinDutyWarning.Visibility = Visibility.Visible;
         }
         else
@@ -384,7 +384,7 @@ public partial class MainWindow
         double min = Math.Min(60, cal.StopDuty + 5);
         foreach (var f in Config.Profiles.SelectMany(p => p.Fans).Where(f => f.ControlId == fan.ControlId)) f.MinDuty = min;
         UpdateCalibrationPanel();
-        ShowAlert($"「{fan.Name}」の最低回転数を全プロファイルで {min:F0}% にしました。", AlertLevel.Info);
+        ShowAlert(L($"「{fan.Name}」の最低回転数を全プロファイルで {min:F0}% にしました。"), AlertLevel.Info);
     }
 
     // =====================================================================
@@ -470,7 +470,7 @@ public partial class MainWindow
         double v = ListenSlider.Value;
         AddBand(fan, Math.Max(0, v - 4), Math.Min(100, v + 4));
         StopListening();
-        ShowAlert($"「{fan.Name}」の {Math.Max(0, v - 4):F0}〜{Math.Min(100, v + 4):F0}% を避けるようにしました。カーブのグラフに桃色の帯で表示されます。", AlertLevel.Info);
+        ShowAlert(L($"「{fan.Name}」の {Math.Max(0, v - 4):F0}〜{Math.Min(100, v + 4):F0}% を避けるようにしました。カーブのグラフに桃色の帯で表示されます。"), AlertLevel.Info);
     }
 
     private void OnAddBandClick(object sender, RoutedEventArgs e)
@@ -485,7 +485,7 @@ public partial class MainWindow
     {
         if (fan.AvoidBands.Count >= 4)
         {
-            MessageBox.Show(this, "共振回避帯は 1 つのファンに 4 つまでです。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("共振回避帯は 1 つのファンに 4 つまでです。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         var overlap = fan.AvoidBands.FirstOrDefault(b => from <= b.To && to >= b.From);

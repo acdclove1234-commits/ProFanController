@@ -38,7 +38,7 @@ public partial class MainWindow
         {
             _metricTiles.Add(new MetricTileVm
             {
-                Title = $"CPU ・ {cpuLoad.HardwareName}",
+                Title = L($"CPU ・ {cpuLoad.HardwareName}"),
                 ShortTitle = "CPU",
                 HistoryKey = cpuLoad.Id,
                 Brush = Palette.Series[0],
@@ -47,7 +47,7 @@ public partial class MainWindow
                     var load = V(v, cpuLoad);
                     var clock = cpuClocks.Select(c => V(v, c)).Where(c => c > 0).DefaultIfEmpty(null).Max();
                     var power = V(v, cpuPower);
-                    string sub = string.Join(" ・ ", new[]
+                    string sub = string.Join(L(" ・ "), new[]
                     {
                         clock is > 0 ? $"{clock / 1000:F2} GHz" : null,
                         power is > 0 ? $"{power:F0} W" : null,
@@ -65,7 +65,7 @@ public partial class MainWindow
         {
             _metricTiles.Add(new MetricTileVm
             {
-                Title = $"GPU ・ {gpuLoad.HardwareName}",
+                Title = L($"GPU ・ {gpuLoad.HardwareName}"),
                 ShortTitle = "GPU",
                 HistoryKey = gpuLoad.Id,
                 Brush = Palette.Series[1],
@@ -74,7 +74,7 @@ public partial class MainWindow
                     var load = V(v, gpuLoad);
                     var clock = V(v, gpuClock);
                     var power = V(v, gpuPower);
-                    string sub = string.Join(" ・ ", new[]
+                    string sub = string.Join(L(" ・ "), new[]
                     {
                         clock is > 0 ? $"{clock / 1000:F2} GHz" : null,
                         power is > 0 ? $"{power:F0} W" : null,
@@ -91,7 +91,7 @@ public partial class MainWindow
         {
             _metricTiles.Add(new MetricTileVm
             {
-                Title = "VRAM（ビデオメモリ）",
+                Title = L("VRAM（ビデオメモリ）"),
                 ShortTitle = "VRAM",
                 HistoryKey = vramUsed.Id,
                 HistoryUnit = "MB",
@@ -115,7 +115,7 @@ public partial class MainWindow
         {
             _metricTiles.Add(new MetricTileVm
             {
-                Title = "メモリ（RAM）",
+                Title = L("メモリ（RAM）"),
                 ShortTitle = "RAM",
                 HistoryKey = memLoad.Id,
                 Brush = Palette.Series[3],
@@ -140,7 +140,7 @@ public partial class MainWindow
             string name = group.Name.Length > 22 ? group.Name[..22] + "…" : group.Name;
             _metricTiles.Add(new MetricTileVm
             {
-                Title = $"SSD ・ {name}",
+                Title = L($"SSD ・ {name}"),
                 ShortTitle = "SSD",
                 HistoryKey = null, // 温度はすでに温度センサーとして記録している
                 Brush = Palette.Series[4],
@@ -148,7 +148,7 @@ public partial class MainWindow
                 {
                     var t = V(v, temp);
                     double? remain = V(v, used) is float u ? 100 - u : V(v, life);
-                    return (t, t is null ? "--" : $"{t:F0}°C", remain is null ? "" : $"寿命 {remain:F0}%", null);
+                    return (t, t is null ? "--" : $"{t:F0}°C", remain is null ? "" : L($"寿命 {remain:F0}%"), null);
                 },
             });
         }

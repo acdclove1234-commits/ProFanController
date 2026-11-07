@@ -43,15 +43,15 @@ public sealed class TrayIcon : IDisposable
         _command = command;
 
         var menu = new WinForms.ContextMenuStrip();
-        menu.Items.Add(new WinForms.ToolStripMenuItem("ProFanController を開く", null, (_, _) => open()) { Font = new Drawing.Font(menu.Font, Drawing.FontStyle.Bold) });
-        _profileMenu = new WinForms.ToolStripMenuItem("プロファイル");
+        menu.Items.Add(new WinForms.ToolStripMenuItem(L("ProFanController を開く"), null, (_, _) => open()) { Font = new Drawing.Font(menu.Font, Drawing.FontStyle.Bold) });
+        _profileMenu = new WinForms.ToolStripMenuItem(L("プロファイル"));
         menu.Items.Add(_profileMenu);
-        var quick = new WinForms.ToolStripMenuItem("ワンタッチ操作");
+        var quick = new WinForms.ToolStripMenuItem(L("ワンタッチ操作"));
         foreach (var (text, cmd) in new[]
         {
-            ("ブースト（全開）5 分", "boost:5"), ("ブースト（全開）15 分", "boost:15"),
-            ("静音 30 分", "quiet:30"), ("静音 1 時間", "quiet:60"), ("静音 2 時間", "quiet:120"),
-            ("解除", "cancel"),
+            (L("ブースト（全開）5 分"), "boost:5"), (L("ブースト（全開）15 分"), "boost:15"),
+            (L("静音 30 分"), "quiet:30"), (L("静音 1 時間"), "quiet:60"), (L("静音 2 時間"), "quiet:120"),
+            (L("解除"), "cancel"),
         })
         {
             quick.DropDownItems.Add(new WinForms.ToolStripMenuItem(text, null, (_, _) => command(cmd)));
@@ -59,7 +59,7 @@ public sealed class TrayIcon : IDisposable
         menu.Items.Add(quick);
         // LED: いまの光り方にチェックを付ける（メニューを開くたびに RefreshLightingMenu で更新）。
         // 選んだときは画面と同じ入口（App.ExecuteCommand）を通すので、「元に戻す」の履歴には残らない
-        _ledMenu = new WinForms.ToolStripMenuItem("LED の光り方");
+        _ledMenu = new WinForms.ToolStripMenuItem(L("LED の光り方"));
         foreach (var mode in new[] { RgbModes.Temperature, RgbModes.Rainbow, RgbModes.RainbowStatic, RgbModes.Breathing, RgbModes.Static, RgbModes.Music })
         {
             var item = new WinForms.ToolStripMenuItem(ModeLabel(mode), null, (_, _) => command($"led:{mode}"));
@@ -67,18 +67,18 @@ public sealed class TrayIcon : IDisposable
             _ledMenu.DropDownItems.Add(item);
         }
         _ledMenu.DropDownItems.Add(new WinForms.ToolStripSeparator());
-        _ledToggle = new WinForms.ToolStripMenuItem("LED 連携", null, (_, _) => ToggleLighting());
+        _ledToggle = new WinForms.ToolStripMenuItem(L("LED 連携"), null, (_, _) => ToggleLighting());
         _ledMenu.DropDownItems.Add(_ledToggle);
         // 消灯: 連携は続けたまま黒にする（連携をオフにすると、機器が自分の光り方（レインボーなど）に戻ってしまうため）
-        _lightsOffItem = new WinForms.ToolStripMenuItem("消灯（制御は続ける）", null, (_, _) => _command(CurrentLighting()?.LightsOff == true ? "lights:on" : "lights:off"))
+        _lightsOffItem = new WinForms.ToolStripMenuItem(L("消灯（制御は続ける）"), null, (_, _) => _command(CurrentLighting()?.LightsOff == true ? "lights:on" : "lights:off"))
         {
-            ToolTipText = "LED をすべて消します。連携は続けるので、機器が自分の光り方に戻りません",
+            ToolTipText = L("LED をすべて消します。連携は続けるので、機器が自分の光り方に戻りません"),
         };
         _ledMenu.DropDownItems.Add(_lightsOffItem);
         _ledMenu.DropDown.ShowItemToolTips = true;
         menu.Items.Add(_ledMenu);
 
-        _musicMenu = new WinForms.ToolStripMenuItem("音楽連動の光り方");
+        _musicMenu = new WinForms.ToolStripMenuItem(L("音楽連動の光り方"));
         foreach (var style in MusicStyles.All)
         {
             var (label, description) = MusicTuning.Describe(style);
@@ -89,12 +89,12 @@ public sealed class TrayIcon : IDisposable
         _musicMenu.DropDown.ShowItemToolTips = true; // 項目に乗せたとき説明を出す
         menu.Items.Add(_musicMenu);
         menu.Opening += (_, _) => RefreshLightingMenu();
-        _widgetItem = new WinForms.ToolStripMenuItem("ミニウィジェットを表示", null, (_, _) => toggleWidget());
+        _widgetItem = new WinForms.ToolStripMenuItem(L("ミニウィジェットを表示"), null, (_, _) => toggleWidget());
         menu.Items.Add(_widgetItem);
-        _pauseItem = new WinForms.ToolStripMenuItem("一時停止（BIOS に戻す）", null, (_, _) => togglePause());
+        _pauseItem = new WinForms.ToolStripMenuItem(L("一時停止（BIOS に戻す）"), null, (_, _) => togglePause());
         menu.Items.Add(_pauseItem);
         menu.Items.Add(new WinForms.ToolStripSeparator());
-        menu.Items.Add(new WinForms.ToolStripMenuItem("終了（BIOS 制御に戻す）", null, (_, _) => exit()));
+        menu.Items.Add(new WinForms.ToolStripMenuItem(L("終了（BIOS 制御に戻す）"), null, (_, _) => exit()));
 
         _icon = new WinForms.NotifyIcon
         {
@@ -112,12 +112,12 @@ public sealed class TrayIcon : IDisposable
     /// <summary>光り方の表示名（画面の「光り方」と同じ言葉）</summary>
     private static string ModeLabel(string mode) => mode switch
     {
-        RgbModes.Temperature => "温度",
-        RgbModes.Rainbow => "レインボー（流れる）",
-        RgbModes.RainbowStatic => "レインボー（固定）",
-        RgbModes.Breathing => "呼吸",
-        RgbModes.Static => "固定色",
-        RgbModes.Music => "音楽連動",
+        RgbModes.Temperature => L("温度"),
+        RgbModes.Rainbow => L("レインボー（流れる）"),
+        RgbModes.RainbowStatic => L("レインボー（固定）"),
+        RgbModes.Breathing => L("呼吸"),
+        RgbModes.Static => L("固定色"),
+        RgbModes.Music => L("音楽連動"),
         _ => mode,
     };
 
@@ -149,10 +149,10 @@ public sealed class TrayIcon : IDisposable
         bool enabled = cfg?.Enabled == true;
         foreach (var (item, mode) in _ledModeItems) item.Checked = enabled && cfg!.Mode == mode;
         _ledToggle.Checked = enabled;
-        _ledToggle.Text = enabled ? "LED 連携をオフにする" : "LED 連携をオンにする";
+        _ledToggle.Text = enabled ? L("LED 連携をオフにする") : L("LED 連携をオンにする");
         _lightsOffItem.Checked = enabled && cfg!.LightsOff;
         _lightsOffItem.Enabled = enabled;
-        _ledMenu.Text = cfg is null ? "LED の光り方" : !enabled ? "LED の光り方: オフ" : cfg.LightsOff ? "LED の光り方: 消灯中" : $"LED の光り方: {ModeLabel(cfg.Mode)}";
+        _ledMenu.Text = cfg is null ? L("LED の光り方") : !enabled ? L("LED の光り方: オフ") : cfg.LightsOff ? L("LED の光り方: 消灯中") : L($"LED の光り方: {ModeLabel(cfg.Mode)}");
 
         bool music = enabled && cfg!.Mode == RgbModes.Music;
         bool reduceFlashing = cfg?.Music?.ReduceFlashing ?? true;
@@ -164,7 +164,7 @@ public sealed class TrayIcon : IDisposable
             {
                 item.Enabled = !reduceFlashing;
                 item.ToolTipText = reduceFlashing
-                    ? "激しく点滅します。ライティング画面で「激しい点滅を抑える」をオフにすると選べます"
+                    ? L("激しく点滅します。ライティング画面で「激しい点滅を抑える」をオフにすると選べます")
                     : MusicTuning.Describe(style).Description;
             }
         }
@@ -175,7 +175,7 @@ public sealed class TrayIcon : IDisposable
         => _command(CurrentLighting()?.Enabled == true ? "led:off" : "led:on");
 
     public void SetPaused(bool paused)
-        => _pauseItem.Text = paused ? "制御を再開する" : "一時停止（BIOS に戻す）";
+        => _pauseItem.Text = paused ? L("制御を再開する") : L("一時停止（BIOS に戻す）");
 
     public void SetWidgetVisible(bool visible) => _widgetItem.Checked = visible;
 
@@ -186,10 +186,10 @@ public sealed class TrayIcon : IDisposable
         foreach (var name in names)
         {
             var item = new WinForms.ToolStripMenuItem(name, null, (_, _) => _selectProfile(name)) { Checked = name == manual };
-            if (reason is not null && name == effective && name != manual) item.Text += $"（{reason}）";
+            if (reason is not null && name == effective && name != manual) item.Text += L($"（{reason}）");
             _profileMenu.DropDownItems.Add(item);
         }
-        _profileMenu.Text = $"プロファイル: {effective}";
+        _profileMenu.Text = L($"プロファイル: {effective}");
     }
 
     /// <summary>マウスを乗せたときの表示（Windows の制限で 127 文字まで）</summary>

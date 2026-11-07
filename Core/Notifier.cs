@@ -62,12 +62,12 @@ public sealed class Notifier
     {
         try
         {
-            await SendCoreAsync(cfg, "ProFanController テスト通知", $"{Environment.MachineName} からのテスト通知です。この通知が届けば設定は完了です。", AlertLevel.Info);
-            return "送信しました。スマホに届いたか確認してください";
+            await SendCoreAsync(cfg, L("ProFanController テスト通知"), L($"{Environment.MachineName} からのテスト通知です。この通知が届けば設定は完了です。"), AlertLevel.Info);
+            return L("送信しました。スマホに届いたか確認してください");
         }
         catch (Exception ex)
         {
-            return $"送信できませんでした: {ex.Message}";
+            return L($"送信できませんでした: {ex.Message}");
         }
     }
 
@@ -79,7 +79,7 @@ public sealed class Notifier
             try
             {
                 await SendCoreAsync(cfg, title, message, level);
-                LastResult = $"{DateTime.Now:HH:mm} に送信: {title}";
+                LastResult = L($"{DateTime.Now:HH:mm} に送信: {title}");
                 return;
             }
             catch (Exception ex) when (attempt < 3 && ex is HttpRequestException or TaskCanceledException)
@@ -88,7 +88,7 @@ public sealed class Notifier
             }
             catch (Exception ex)
             {
-                LastResult = $"{DateTime.Now:HH:mm} 送信失敗: {ex.Message}";
+                LastResult = L($"{DateTime.Now:HH:mm} 送信失敗: {ex.Message}");
                 Logger.Warn($"通知の送信に失敗: {ex.Message}");
                 return;
             }
@@ -97,12 +97,12 @@ public sealed class Notifier
 
     private static async Task SendCoreAsync(NotifyConfig cfg, string title, string message, AlertLevel level)
     {
-        string body = $"{message}\n（{Environment.MachineName} ・ {DateTime.Now:MM/dd HH:mm}）";
+        string body = L($"{message}\n（{Environment.MachineName} ・ {DateTime.Now:MM/dd HH:mm}）");
         HttpResponseMessage res;
         if (cfg.Service == NotifyServices.Discord)
         {
             if (!Uri.TryCreate(cfg.DiscordWebhook, UriKind.Absolute, out var url) || url.Scheme != "https")
-                throw new InvalidOperationException("Discord の Webhook URL を入力してください");
+                throw new InvalidOperationException(L("Discord の Webhook URL を入力してください"));
             int color = level switch { AlertLevel.Danger => 0xF87171, AlertLevel.Warning => 0xFBBF24, _ => 0x22C7FF };
             var json = new JsonObject
             {
@@ -114,7 +114,7 @@ public sealed class Notifier
         }
         else
         {
-            if (string.IsNullOrWhiteSpace(cfg.NtfyTopic)) throw new InvalidOperationException("ntfy のトピック名を入力してください");
+            if (string.IsNullOrWhiteSpace(cfg.NtfyTopic)) throw new InvalidOperationException(L("ntfy のトピック名を入力してください"));
             var url = $"{cfg.NtfyServer.TrimEnd('/')}/{Uri.EscapeDataString(cfg.NtfyTopic.Trim())}";
             using var req = new HttpRequestMessage(HttpMethod.Post, url) { Content = new StringContent(body, Encoding.UTF8, "text/plain") };
             // ヘッダーには ASCII しか使えないので、日本語のタイトルは RFC 2047 の形式で送る（ntfy が対応している）
@@ -126,7 +126,7 @@ public sealed class Notifier
         using (res)
         {
             if (!res.IsSuccessStatusCode)
-                throw new HttpRequestException($"サーバーがエラーを返しました（{(int)res.StatusCode}）");
+                throw new HttpRequestException(L($"サーバーがエラーを返しました（{(int)res.StatusCode}）"));
         }
     }
 

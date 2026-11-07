@@ -91,31 +91,31 @@ public sealed class CoolingTestReport
 
     public string Verdict => SteadyTemp switch
     {
-        _ when AbortReason is not null => "中断",
-        < 75 => "とても良好",
-        < 85 => "良好",
-        < 92 => "やや高め",
-        _ => "冷却不足",
+        _ when AbortReason is not null => L("中断"),
+        < 75 => L("とても良好"),
+        < 85 => L("良好"),
+        < 92 => L("やや高め"),
+        _ => L("冷却不足"),
     };
 
     public string ToText()
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"ProFanController 冷却テスト  {StartedAt:yyyy/MM/dd HH:mm}");
-        sb.AppendLine($"プロファイル: {Profile} ／ 負荷時間: {LoadDuration.TotalMinutes:F0} 分（CPU 全コア）");
+        sb.AppendLine(L($"ProFanController 冷却テスト  {StartedAt:yyyy/MM/dd HH:mm}"));
+        sb.AppendLine(L($"プロファイル: {Profile} ／ 負荷時間: {LoadDuration.TotalMinutes:F0} 分（CPU 全コア）"));
         if (AbortReason is not null) sb.AppendLine($"※ {AbortReason}");
         sb.AppendLine();
-        sb.AppendLine($"判定              : {Verdict}");
-        sb.AppendLine($"待機時の CPU 温度  : {BaselineTemp:F1} °C");
-        sb.AppendLine($"最高温度          : {MaxTemp:F1} °C");
-        sb.AppendLine($"安定時の温度      : {SteadyTemp:F1} °C（負荷の最後 60 秒の平均）");
-        sb.AppendLine($"温度が上がりきるまで: 約 {SecondsTo90:F0} 秒（上昇幅の 90%）");
-        sb.AppendLine($"冷えるまで        : {(RecoverySeconds is double r ? $"約 {r:F0} 秒（待機温度 +3°C まで）" : "測定時間内に下がりきらず")}");
-        if (AvgPower is double p) sb.AppendLine($"CPU 消費電力（平均）: {p:F0} W");
+        sb.AppendLine(L($"判定              : {Verdict}"));
+        sb.AppendLine(L($"待機時の CPU 温度  : {BaselineTemp:F1} °C"));
+        sb.AppendLine(L($"最高温度          : {MaxTemp:F1} °C"));
+        sb.AppendLine(L($"安定時の温度      : {SteadyTemp:F1} °C（負荷の最後 60 秒の平均）"));
+        sb.AppendLine(L($"温度が上がりきるまで: 約 {SecondsTo90:F0} 秒（上昇幅の 90%）"));
+        sb.AppendLine(L($"冷えるまで        : {(RecoverySeconds is double r ? L($"約 {r:F0} 秒（待機温度 +3°C まで）") : L("測定時間内に下がりきらず"))}"));
+        if (AvgPower is double p) sb.AppendLine(L($"CPU 消費電力（平均）: {p:F0} W"));
         if (ClockStart is double c0 && ClockEnd is double c1)
-            sb.AppendLine($"CPU クロック      : {c0 / 1000:F2} GHz → {c1 / 1000:F2} GHz{(ClockDropped ? "（低下あり: 熱で性能が落ちている可能性）" : "")}");
+            sb.AppendLine(L($"CPU クロック      : {c0 / 1000:F2} GHz → {c1 / 1000:F2} GHz{(ClockDropped ? L("（低下あり: 熱で性能が落ちている可能性）") : "")}"));
         sb.AppendLine();
-        foreach (var f in Fans) sb.AppendLine($"{f.Name,-12}: 最大 {f.MaxRpm:N0} rpm ／ 負荷時の平均 {f.AvgDutyUnderLoad:F0}%");
+        foreach (var f in Fans) sb.AppendLine(L($"{f.Name,-12}: 最大 {f.MaxRpm:N0} rpm ／ 負荷時の平均 {f.AvgDutyUnderLoad:F0}%"));
         return sb.ToString();
     }
 }
@@ -176,10 +176,10 @@ public sealed class CoolingTestRunner : IDisposable
 
     public string StatusText => Current switch
     {
-        Phase.Baseline => $"待機時の温度を測定中…（{Remaining(BaselineTime)}）",
-        Phase.Load => $"CPU に負荷をかけています…（残り {Remaining(_loadDuration)}）",
-        Phase.Cooldown => "負荷を止めて、冷えるまでの時間を測定中…",
-        _ => _abortReason is null ? "完了" : $"中断: {_abortReason}",
+        Phase.Baseline => L($"待機時の温度を測定中…（{Remaining(BaselineTime)}）"),
+        Phase.Load => L($"CPU に負荷をかけています…（残り {Remaining(_loadDuration)}）"),
+        Phase.Cooldown => L("負荷を止めて、冷えるまでの時間を測定中…"),
+        _ => _abortReason is null ? L("完了") : L($"中断: {_abortReason}"),
     };
 
     private string Remaining(TimeSpan phaseLength)
@@ -218,7 +218,7 @@ public sealed class CoolingTestRunner : IDisposable
             case Phase.Load:
                 if (temp >= _abortTemp)
                 {
-                    _abortReason = $"CPU 温度が {temp:F0}°C に達したため、負荷を止めました";
+                    _abortReason = L($"CPU 温度が {temp:F0}°C に達したため、負荷を止めました");
                     EndLoad(s.Time);
                 }
                 else if (elapsed >= _loadDuration)
@@ -238,7 +238,7 @@ public sealed class CoolingTestRunner : IDisposable
     public void Cancel()
     {
         if (Current == Phase.Done) return;
-        _abortReason ??= "ユーザーが中止しました";
+        _abortReason ??= L("ユーザーが中止しました");
         if (Current == Phase.Load) EndLoad(DateTime.Now);
         Finish();
     }
@@ -268,7 +268,7 @@ public sealed class CoolingTestRunner : IDisposable
         Current = Phase.Done;
         if (_loadStart == default)
         {
-            Report = new CoolingTestReport { StartedAt = StartedAt, Profile = _profile, AbortReason = _abortReason ?? "負荷をかける前に終了しました" };
+            Report = new CoolingTestReport { StartedAt = StartedAt, Profile = _profile, AbortReason = _abortReason ?? L("負荷をかける前に終了しました") };
             return;
         }
         if (_loadEnd == default) _loadEnd = DateTime.Now;

@@ -34,7 +34,7 @@ public partial class MainWindow
         if (cpu is not null) list.Add(new DashboardCard { Title = "CPU", SensorId = cpu.Id, Warn = 75, Danger = 90 });
         if (gpuCore is not null) list.Add(new DashboardCard { Title = "GPU", SensorId = gpuCore.Id, Warn = 75, Danger = 90 });
         if (gpuHot is not null) list.Add(new DashboardCard { Title = "GPU Hot Spot", SensorId = gpuHot.Id, Warn = 85, Danger = 100 });
-        if (system is not null) list.Add(new DashboardCard { Title = "ケース内", SensorId = system.Id, Warn = 45, Danger = 55 });
+        if (system is not null) list.Add(new DashboardCard { Title = L("ケース内"), SensorId = system.Id, Warn = 45, Danger = 55 });
         return list;
     }
 
@@ -152,7 +152,7 @@ public partial class MainWindow
         bool editing = EditCardsToggle.IsChecked == true;
         foreach (var c in _tempCards) c.Editing = editing;
         AddCardPanel.Visibility = editing ? Visibility.Visible : Visibility.Collapsed;
-        EditCardsToggle.Content = editing ? "編集を終了" : "カードを編集";
+        EditCardsToggle.Content = editing ? L("編集を終了") : L("カードを編集");
     }
 
     /// <summary>自動選択のままなら、編集の前に今の並びを設定として確定させる</summary>
@@ -185,7 +185,7 @@ public partial class MainWindow
         if (card is null) return;
         if (Config.DashboardCards.Count <= 1)
         {
-            MessageBox.Show(this, "カードは最低 1 枚必要です。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("カードは最低 1 枚必要です。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         Config.DashboardCards.Remove(card);

@@ -283,13 +283,13 @@ public sealed class FanEngine : IDisposable
                 _suspended = true;
                 _resumeAtMs = -1;
                 _suspendedTicks = 0;
-                AbortCalibration("スリープに入ったため中止しました。");
+                AbortCalibration(L("スリープに入ったため中止しました。"));
                 _overrides.Clear();
                 _identify.Clear();
                 _pendingOutput.Clear();
                 foreach (var f in _fans) f.Pi = new PiState();
                 ok = RestoreAll();
-                SetHealth(EngineHealth.Suspended, "スリープ中");
+                SetHealth(EngineHealth.Suspended, L("スリープ中"));
                 Logger.Info(ok ? "スリープ: BIOS 制御に戻しました" : "スリープ: BIOS 制御に戻せなかった端子があります");
             }
             finally
@@ -307,7 +307,7 @@ public sealed class FanEngine : IDisposable
         if (!_suspended && _touched.Count > 0) RestoreAll();
         _suspended = true;
         _resumeAtMs = ClockMs() + ResumeDelayMs;
-        SetHealth(EngineHealth.Suspended, "スリープから復帰中");
+        SetHealth(EngineHealth.Suspended, L("スリープから復帰中"));
         Logger.Info("スリープから復帰: ハードウェアの準備を待っています");
     });
 
@@ -324,7 +324,7 @@ public sealed class FanEngine : IDisposable
         _catalogPublished = false;
         _reopenAttempt = 0;
         _reopenAtMs = ClockMs();
-        SetHealth(EngineHealth.Recovering, "ハードウェアを確認し直しています");
+        SetHealth(EngineHealth.Recovering, L("ハードウェアを確認し直しています"));
         Logger.Info("ハードウェアを確認し直します（開き直し）");
     });
 
@@ -353,35 +353,35 @@ public sealed class FanEngine : IDisposable
     {
         if (_calibration is not null)
         {
-            CalibrationFinished?.Invoke(controlId, null, "別のファンのキャリブレーションが実行中です。");
+            CalibrationFinished?.Invoke(controlId, null, L("別のファンのキャリブレーションが実行中です。"));
             return;
         }
         var fan = FindFan(controlId);
         if (fan?.Control is null || fan.Cfg.RpmSensorId is null)
         {
-            CalibrationFinished?.Invoke(controlId, null, "この端子は回転数を読めないため、キャリブレーションできません。");
+            CalibrationFinished?.Invoke(controlId, null, L("この端子は回転数を読めないため、キャリブレーションできません。"));
             return;
         }
         if (fan.GpuGuard || fan.PumpFailsafe)
         {
-            CalibrationFinished?.Invoke(controlId, null, "保護機能（GPU 保護・ポンプ保護）が働いているため、今はキャリブレーションできません。");
+            CalibrationFinished?.Invoke(controlId, null, L("保護機能（GPU 保護・ポンプ保護）が働いているため、今はキャリブレーションできません。"));
             return;
         }
         if (fan.Cfg.IsPump)
         {
-            CalibrationFinished?.Invoke(controlId, null, "ポンプは停止させると危険なため、キャリブレーションの対象外です。");
+            CalibrationFinished?.Invoke(controlId, null, L("ポンプは停止させると危険なため、キャリブレーションの対象外です。"));
             return;
         }
         if (_suspended || _hub is null)
         {
-            CalibrationFinished?.Invoke(controlId, null, "ハードウェアの準備ができていないため、今はキャリブレーションできません。");
+            CalibrationFinished?.Invoke(controlId, null, L("ハードウェアの準備ができていないため、今はキャリブレーションできません。"));
             return;
         }
         _calibration = new Calibrator(controlId, fan.Cfg.Name, Mono(ClockMs()));
         Logger.Info($"キャリブレーション開始: {fan.Cfg.Name}");
     });
 
-    public void CancelCalibration() => Enqueue(() => _calibration?.Fail("中止しました。"));
+    public void CancelCalibration() => Enqueue(() => _calibration?.Fail(L("中止しました。")));
 
     /// <summary>
     /// エンジンを止め、触ったすべての端子を BIOS 制御に戻す。何度呼んでもよい。
@@ -460,7 +460,7 @@ public sealed class FanEngine : IDisposable
         catch (Exception ex)
         {
             Logger.Error($"エンジンが予期しないエラーで止まりました: {ex}");
-            RaiseAlert($"ファン制御が予期しないエラーで止まりました。BIOS 制御に戻します: {ex.Message}", AlertLevel.Danger);
+            RaiseAlert(L($"ファン制御が予期しないエラーで止まりました。BIOS 制御に戻します: {ex.Message}"), AlertLevel.Danger);
             SetHealth(EngineHealth.Failed, ex.Message);
         }
         finally
@@ -469,7 +469,7 @@ public sealed class FanEngine : IDisposable
             DisposeHub();
             _heartbeat?.Dispose();
             _suspendWaiter?.TrySetResult(_restoredOk);
-            SetHealth(EngineHealth.Stopped, "停止");
+            SetHealth(EngineHealth.Stopped, L("停止"));
             Logger.Info("エンジン停止");
         }
     }
@@ -516,7 +516,7 @@ public sealed class FanEngine : IDisposable
     }
 
     private void OnStuckDetected(string id, string reason)
-        => RaiseAlert($"温度センサー「{_hub?.NameOf(id) ?? id}」の値が固まっています（{reason}）。このセンサーは異常として扱い、ファンを全開にしています。", AlertLevel.Warning);
+        => RaiseAlert(L($"温度センサー「{_hub?.NameOf(id) ?? id}」の値が固まっています（{reason}）。このセンサーは異常として扱い、ファンを全開にしています。"), AlertLevel.Warning);
 
     private static void OnStuckCleared(string id) => Logger.Info($"センサーの固着が解消: {id}");
 
@@ -537,7 +537,7 @@ public sealed class FanEngine : IDisposable
                 Logger.Error($"命令の処理で例外: {ex}");
                 // 同じ失敗が続いても通知を出しすぎないよう、最初の 3 回と以降 50 回ごとだけ知らせる
                 if (++_commandErrors <= 3 || _commandErrors % 50 == 0)
-                    RaiseAlert($"操作をファン制御に反映できませんでした: {ex.Message}", AlertLevel.Warning);
+                    RaiseAlert(L($"操作をファン制御に反映できませんでした: {ex.Message}"), AlertLevel.Warning);
             }
         }
     }
@@ -628,9 +628,9 @@ public sealed class FanEngine : IDisposable
         if (_recoverAlerted)
         {
             _recoverAlerted = false;
-            RaiseAlert("ハードウェアを開き直し、ファン制御を再開しました。", AlertLevel.Info);
+            RaiseAlert(L("ハードウェアを開き直し、ファン制御を再開しました。"), AlertLevel.Info);
         }
-        SetHealth(EngineHealth.Ok, "制御中");
+        SetHealth(EngineHealth.Ok, L("制御中"));
         if (_resumePending)
         {
             _resumePending = false;
@@ -647,12 +647,12 @@ public sealed class FanEngine : IDisposable
         int delay = FanSafety.ReopenDelayMs(_reopenAttempt);
         _reopenAttempt++;
         _reopenAtMs = nowMs + delay;
-        SetHealth(EngineHealth.Recovering, $"BIOS 制御で待機中（{delay / 1000} 秒後に開き直します）");
+        SetHealth(EngineHealth.Recovering, L($"BIOS 制御で待機中（{delay / 1000} 秒後に開き直します）"));
         Logger.Warn($"{delay / 1000} 秒後にハードウェアを開き直します（{_reopenAttempt} 回目）: {reason}");
         if (alertNow && !_recoverAlerted)
         {
             _recoverAlerted = true;
-            RaiseAlert($"ハードウェアを開けない・読み書きのエラーが続いているため、ファンを BIOS 制御に戻しました。自動で開き直しを試みています（{reason}）", AlertLevel.Danger);
+            RaiseAlert(L($"ハードウェアを開けない・読み書きのエラーが続いているため、ファンを BIOS 制御に戻しました。自動で開き直しを試みています（{reason}）"), AlertLevel.Danger);
         }
     }
 
@@ -855,7 +855,7 @@ public sealed class FanEngine : IDisposable
         int failedHw = hub.Update();
         // 全部の部品が読めないときは、どの値も信用できないので周期ごと失敗にする（続けば開き直す）
         if (hub.HardwareCount > 0 && failedHw >= hub.HardwareCount)
-            throw new IOException("すべての部品の読み取りに失敗しました");
+            throw new IOException(L("すべての部品の読み取りに失敗しました"));
         // 前の周期までに BIOS に戻した端子を、念のためもう一度戻す（戻す命令が黙って飛ばされていたときのため）
         RepeatPendingRestores();
 
@@ -903,9 +903,9 @@ public sealed class FanEngine : IDisposable
         }
         TickOrphanIdentify(nowMs);
 
-        if (failedHw > 0) SetHealth(EngineHealth.Degraded, $"{failedHw} 個の部品が読めません");
-        else if (fanTrouble) SetHealth(EngineHealth.Degraded, "一部のファンでエラー");
-        else SetHealth(EngineHealth.Ok, "制御中");
+        if (failedHw > 0) SetHealth(EngineHealth.Degraded, L($"{failedHw} 個の部品が読めません"));
+        else if (fanTrouble) SetHealth(EngineHealth.Degraded, L("一部のファンでエラー"));
+        else SetHealth(EngineHealth.Ok, L("制御中"));
 
         var values = hub.SnapshotValues();
         foreach (var (id, v) in _virtualValues) values[id] = v;
@@ -1017,17 +1017,17 @@ public sealed class FanEngine : IDisposable
         {
             _emergencySinceMs = nowMs;
             _emergencyLostAlerted = false;
-            RaiseAlert($"{hot!.Name} が {hotTemp:F0}°C に達しました（しきい値 {hot.Limit:F0}°C）。全ファンを 100% にしています。", AlertLevel.Danger);
+            RaiseAlert(L($"{hot!.Name} が {hotTemp:F0}°C に達しました（しきい値 {hot.Limit:F0}°C）。全ファンを 100% にしています。"), AlertLevel.Danger);
         }
         else if (emergency && lostTrigger is not null && !anyAboveRelease && !_emergencyLostAlerted)
         {
             _emergencyLostAlerted = true;
-            RaiseAlert($"緊急全開のきっかけになった温度センサー「{lostTrigger}」が読めなくなりました。温度が下がったか確認できないため、全開を続けています。", AlertLevel.Warning);
+            RaiseAlert(L($"緊急全開のきっかけになった温度センサー「{lostTrigger}」が読めなくなりました。温度が下がったか確認できないため、全開を続けています。"), AlertLevel.Warning);
         }
         else if (!emergency && _emergency)
         {
             _emergencyTriggers.Clear();
-            RaiseAlert("温度が下がったため、通常の制御に戻りました。", AlertLevel.Info);
+            RaiseAlert(L("温度が下がったため、通常の制御に戻りました。"), AlertLevel.Info);
         }
         _emergency = emergency;
     }
@@ -1040,24 +1040,24 @@ public sealed class FanEngine : IDisposable
 
         if (fan?.Control is null)
         {
-            cal.Fail("設定からファンが削除されました。");
+            cal.Fail(L("設定からファンが削除されました。"));
         }
         else if (_emergency)
         {
-            cal.Fail("緊急温度に達したため中止しました。");
+            cal.Fail(L("緊急温度に達したため中止しました。"));
         }
         else if (fan.GpuGuard || fan.PumpFailsafe)
         {
-            cal.Fail(fan.GpuGuard ? "GPU の温度が高いため中止しました（GPU 保護で全開にします）。" : "ポンプ保護が働いたため中止しました。");
+            cal.Fail(fan.GpuGuard ? L("GPU の温度が高いため中止しました（GPU 保護で全開にします）。") : L("ポンプ保護が働いたため中止しました。"));
         }
         else if (CalibrationTooHot(fan))
         {
-            cal.Fail($"温度が {CalibrationAbortTemp:F0}°C を超えたため中止しました。負荷の低い状態で実行してください。");
+            cal.Fail(L($"温度が {CalibrationAbortTemp:F0}°C を超えたため中止しました。負荷の低い状態で実行してください。"));
         }
         else if (CalibrationTempLost(fan))
         {
             // 温度が分からないまま回転を下げ続けるのは危ないので、測定をやめて通常の制御に戻す
-            cal.Fail("温度が読めなくなったため中止しました。センサーを確認してから、もう一度実行してください。");
+            cal.Fail(L("温度が読めなくなったため中止しました。センサーを確認してから、もう一度実行してください。"));
         }
         else
         {
@@ -1150,8 +1150,8 @@ public sealed class FanEngine : IDisposable
         _calibration = null;
         var result = cal.BuildResult();
         string message = result is null
-            ? $"キャリブレーションを中止しました: {cal.FailureReason}"
-            : $"キャリブレーション完了: 最大 {result.MaxRpm:N0} rpm / 停止 {result.StopDuty:F0}% 未満 / 始動 {result.StartDuty:F0}%";
+            ? L($"キャリブレーションを中止しました: {cal.FailureReason}")
+            : L($"キャリブレーション完了: 最大 {result.MaxRpm:N0} rpm / 停止 {result.StopDuty:F0}% 未満 / 始動 {result.StartDuty:F0}%");
         Logger.Info($"{cal.FanName}: {message}");
         CalibrationFinished?.Invoke(cal.ControlId, result, message);
         if (fan is not null) fan.Duty = null; // 通常制御は現在値から滑らかに再開する
@@ -1178,7 +1178,7 @@ public sealed class FanEngine : IDisposable
             f.Failures++;
             if (f.Failures == 1 || f.Failures % 60 == 0) Logger.Error($"'{f.Cfg.Name}' の処理で例外（{f.Failures} 回連続）: {ex}");
             if (f.Failures == FanFailureAlertCount)
-                RaiseAlert($"'{f.Cfg.Name}' の制御でエラーが続いています。安全のため全開（できなければ BIOS 制御）にしています。ログを確認してください。", f.Cfg.IsPump ? AlertLevel.Danger : AlertLevel.Warning);
+                RaiseAlert(L($"'{f.Cfg.Name}' の制御でエラーが続いています。安全のため全開（できなければ BIOS 制御）にしています。ログを確認してください。"), f.Cfg.IsPump ? AlertLevel.Danger : AlertLevel.Warning);
             return FanSafeAction(f);
         }
     }
@@ -1240,7 +1240,7 @@ public sealed class FanEngine : IDisposable
             reassert = action is ReadbackAction.Reassert or ReadbackAction.ReassertAndAlert;
             readbackMismatch = f.Readback.MismatchTicks >= FanSafety.ReadbackMismatchTicks;
             if (action == ReadbackAction.ReassertAndAlert)
-                RaiseAlert($"'{cfg.Name}' に書き込んだ回転数が反映されていません（指示 {lastW:F0}% / 実際 {readback:F0}%）。ほかのファン制御ソフトが動いていないか確認してください。",
+                RaiseAlert(L($"'{cfg.Name}' に書き込んだ回転数が反映されていません（指示 {lastW:F0}% / 実際 {readback:F0}%）。ほかのファン制御ソフトが動いていないか確認してください。"),
                     cfg.IsPump ? AlertLevel.Danger : AlertLevel.Warning);
             else if (action == ReadbackAction.Recovered)
                 Logger.Info($"'{cfg.Name}' の書き込みが反映されるようになりました");
@@ -1293,7 +1293,7 @@ public sealed class FanEngine : IDisposable
                 double? output = TargetControl(f, hwDuty);
                 float? t = ReadTemp(cfg.TargetSensorId);
                 bool missing = output is null && IsMissing(cfg.TargetSensorId);
-                curveStatuses.Insert(0, new CurveStatus($"目標 {cfg.TargetTemp:F0}°C", t, f.Pi.Ema, output ?? (missing ? missingDuty : 100), output is null && !missing, missing));
+                curveStatuses.Insert(0, new CurveStatus(L($"目標 {cfg.TargetTemp:F0}°C"), t, f.Pi.Ema, output ?? (missing ? missingDuty : 100), output is null && !missing, missing));
                 if (missing) { demand = missingDuty; state = FanState.SensorMissing; }
                 else if (output is null) { demand = 100; state = FanState.SensorError; }
                 else demand = output.Value;
@@ -1311,7 +1311,7 @@ public sealed class FanEngine : IDisposable
                     // 自分のカーブ（例: ケースファンの GPU 温度）が連動先より高く回したいときは、自分のカーブを優先する
                     // （連動はうなりを消すためのもの。連動先が見ていない温度で熱がこもらないように）
                     double follow = FollowDuty(cfg, leaderDuty.Value);
-                    curveStatuses.Insert(0, new CurveStatus("連動", null, null, follow, false));
+                    curveStatuses.Insert(0, new CurveStatus(L("連動"), null, null, follow, false));
                     demand = Math.Max(follow, demand);
                 }
                 break;
@@ -1433,7 +1433,7 @@ public sealed class FanEngine : IDisposable
                 if (!f.StallAlerted)
                 {
                     f.StallAlerted = true;
-                    RaiseAlert($"'{cfg.Name}' が回転していません。配線やファンを確認してください。", AlertLevel.Warning);
+                    RaiseAlert(L($"'{cfg.Name}' が回転していません。配線やファンを確認してください。"), AlertLevel.Warning);
                 }
             }
             else if (rpm.Value > 100)
@@ -1582,7 +1582,7 @@ public sealed class FanEngine : IDisposable
         bool hotNow = FanSafety.GpuTooHot(core, hotSpot, f.GpuGuard);
         bool guard = FanSafety.Debounce(f.GpuGuard, hotNow, ref f.GpuGuardCount, FanSafety.GpuGuardConfirmReadings);
         if (guard && !f.GpuGuard)
-            RaiseAlert($"GPU の温度が高いため、'{f.Cfg.Name}' を 100% にしています（GPU ファンの保護）。", AlertLevel.Warning);
+            RaiseAlert(L($"GPU の温度が高いため、'{f.Cfg.Name}' を 100% にしています（GPU ファンの保護）。"), AlertLevel.Warning);
         f.GpuGuard = guard;
         return guard;
     }
@@ -1613,7 +1613,7 @@ public sealed class FanEngine : IDisposable
     }
 
     /// <summary>テストモード（DRY RUN）中に保護のために書き込んだとき、知らせに添える一文</summary>
-    private string DryRunNote() => _cfg.DryRun ? "（テストモード中ですが、ポンプの保護のため 100% を書き込みました）" : "";
+    private string DryRunNote() => _cfg.DryRun ? L("（テストモード中ですが、ポンプの保護のため 100% を書き込みました）") : "";
 
     /// <summary>
     /// ポンプの監視（制御しているかどうか・端子が見つかるかどうかに関係なく、毎周期）:
@@ -1634,7 +1634,7 @@ public sealed class FanEngine : IDisposable
             {
                 f.PumpRpmLost = true;
                 f.PumpFailsafe = true;
-                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が読めません。回っているか確認できないため、100% で保護運転にしています。すぐに確認してください。{DryRunNote()}", AlertLevel.Danger);
+                RaiseAlert(L($"ポンプ '{cfg.Name}' の回転数が読めません。回っているか確認できないため、100% で保護運転にしています。すぐに確認してください。{DryRunNote()}"), AlertLevel.Danger);
             }
             return;
         }
@@ -1651,7 +1651,7 @@ public sealed class FanEngine : IDisposable
             if (++f.PumpLowTicks >= 3 && !f.PumpFailsafe)
             {
                 f.PumpFailsafe = true;
-                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が {rpm:F0} rpm に低下しています。100% で保護運転中です。すぐに確認してください。{DryRunNote()}", AlertLevel.Danger);
+                RaiseAlert(L($"ポンプ '{cfg.Name}' の回転数が {rpm:F0} rpm に低下しています。100% で保護運転中です。すぐに確認してください。{DryRunNote()}"), AlertLevel.Danger);
             }
         }
         else
@@ -1661,7 +1661,7 @@ public sealed class FanEngine : IDisposable
             {
                 f.PumpFailsafe = false;
                 f.PumpOkTicks = 0;
-                RaiseAlert($"ポンプ '{cfg.Name}' の回転数が回復しました ({rpm:F0} rpm)。", AlertLevel.Info);
+                RaiseAlert(L($"ポンプ '{cfg.Name}' の回転数が回復しました ({rpm:F0} rpm)。"), AlertLevel.Info);
             }
         }
     }

@@ -22,12 +22,13 @@ internal static class Program
         if (wd >= 0 && wd + 1 < args.Length && int.TryParse(args[wd + 1], out int parentPid))
         {
             Logger.FileSuffix = "watchdog"; // 本体と同じログファイルに同時に書かないように
+            Localization.Init(ConfigStore.ReadLanguage()); // 見張りが出す案内も、設定した言語で
             AppDomain.CurrentDomain.UnhandledException += (_, a) =>
             {
                 Logger.Error($"見張りで致命的な例外: {a.ExceptionObject}");
                 Logger.Flush();
             };
-            Watchdog.ShowMessage = msg => NativeMessageBox.Warn(msg, "ProFanController 見張り");
+            Watchdog.ShowMessage = msg => NativeMessageBox.Warn(msg, L("ProFanController 見張り"));
             Watchdog.Run(parentPid);
             Logger.Flush();
             return 0;

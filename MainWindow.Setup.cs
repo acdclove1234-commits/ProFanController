@@ -20,9 +20,9 @@ public partial class MainWindow
         PawnIoPanel.LoadedAtStartup = catalog.PawnIoInstalled;
         PawnIoPanel.Refresh();
         if (catalog.PawnIoInstalled) return;
-        ShowAlert("PawnIO（ファン制御用のドライバー）が見つかりません。このままでは温度の表示だけで、ファンは制御できません。"
-                  + "設定の「安全・バックアップ」から、ボタン 1 つでインストールできます。", AlertLevel.Danger,
-            "インストールの画面を開く", ShowDriverCard);
+        ShowAlert(L("PawnIO（ファン制御用のドライバー）が見つかりません。このままでは温度の表示だけで、ファンは制御できません。")
+                  + L("設定の「安全・バックアップ」から、ボタン 1 つでインストールできます。"), AlertLevel.Danger,
+            L("インストールの画面を開く"), ShowDriverCard);
     }
 
     /// <summary>設定 →「安全・バックアップ」の PawnIO のカードを表示する（押しただけではインストールしない）</summary>
@@ -39,7 +39,7 @@ public partial class MainWindow
     {
         if (PawnIoInstallPanel.Busy)
         {
-            MessageBox.Show(this, "PawnIO のインストールが終わってから、もう一度押してください。", "ProFanController",
+            MessageBox.Show(this, L("PawnIO のインストールが終わってから、もう一度押してください。"), "ProFanController",
                 MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }

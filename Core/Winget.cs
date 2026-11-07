@@ -68,7 +68,7 @@ public sealed record WingetRun(int? ExitCode, bool WingetMissing, bool TimedOut,
         : Winget.Classify(ExitCode ?? -1);
 
     /// <summary>ログ・画面に出す終了コード（16 進数）</summary>
-    public string CodeText => ExitCode is { } c ? Winget.CodeText(c) : "（なし）";
+    public string CodeText => ExitCode is { } c ? Winget.CodeText(c) : L("（なし）");
 }
 
 public static class Winget
@@ -200,7 +200,7 @@ public static class Winget
     public static async Task<WingetRun> RunAsync(string arguments, Action<string>? onLine, TimeSpan timeout, CancellationToken cancel = default)
     {
         string? exe = Locate();
-        if (exe is null) return WingetRun.Missing("winget.exe が見つかりません");
+        if (exe is null) return WingetRun.Missing(L("winget.exe が見つかりません"));
 
         var psi = new ProcessStartInfo(exe, arguments)
         {
@@ -237,7 +237,7 @@ public static class Winget
         p.ErrorDataReceived += (_, e) => Receive(e.Data);
         try
         {
-            if (!p.Start()) return WingetRun.Missing("winget を起動できませんでした");
+            if (!p.Start()) return WingetRun.Missing(L("winget を起動できませんでした"));
         }
         catch (Exception ex) when (ex is Win32Exception or InvalidOperationException or IOException)
         {
@@ -257,7 +257,7 @@ public static class Winget
         catch (OperationCanceledException)
         {
             try { p.Kill(entireProcessTree: true); } catch { /* もう終わっている */ }
-            lock (lines) return new WingetRun(null, false, true, lines.ToList(), cancel.IsCancellationRequested ? "取り消しました" : "時間切れ");
+            lock (lines) return new WingetRun(null, false, true, lines.ToList(), cancel.IsCancellationRequested ? L("取り消しました") : L("時間切れ"));
         }
         lock (lines) return new WingetRun(p.ExitCode, false, false, lines.ToList());
     }
@@ -291,15 +291,15 @@ public static class Winget
     {
         // 文字化けした行（読み取りの文字コードが合わなかった）は出さない
         if (line.Length == 0 || line.Contains('�')) return null;
-        if (Size.Match(line) is { Success: true } m) return $"ダウンロードしています… {m.Groups[1].Value} / {m.Groups[2].Value}";
+        if (Size.Match(line) is { Success: true } m) return L($"ダウンロードしています… {m.Groups[1].Value} / {m.Groups[2].Value}");
         bool Has(params string[] words) => words.Any(w => line.Contains(w, StringComparison.OrdinalIgnoreCase));
-        if (Has("Successfully uninstalled", "正常にアンインストール", "アンインストールが完了")) return "アンインストールが終わりました。確認しています…";
-        if (Has("Successfully installed", "正常にインストール", "インストールが完了")) return "インストールが終わりました。確認しています…";
-        if (Has("Starting package uninstall", "アンインストールを開始")) return "アンインストールしています…（少し時間がかかります）";
-        if (Has("Starting package install", "インストールを開始")) return "インストールしています…（少し時間がかかります）";
-        if (Has("hash", "ハッシュ")) return "ダウンロードしたファイルを確かめています…";
-        if (Has("Downloading", "ダウンロード")) return "ダウンロードしています…";
-        if (Percent.Match(line) is { Success: true } pm && line.Length <= 12) return $"進めています… {pm.Groups[1].Value}%";
+        if (Has("Successfully uninstalled", L("正常にアンインストール"), L("アンインストールが完了"))) return L("アンインストールが終わりました。確認しています…");
+        if (Has("Successfully installed", L("正常にインストール"), L("インストールが完了"))) return L("インストールが終わりました。確認しています…");
+        if (Has("Starting package uninstall", L("アンインストールを開始"))) return L("アンインストールしています…（少し時間がかかります）");
+        if (Has("Starting package install", L("インストールを開始"))) return L("インストールしています…（少し時間がかかります）");
+        if (Has("hash", L("ハッシュ"))) return L("ダウンロードしたファイルを確かめています…");
+        if (Has("Downloading", L("ダウンロード"))) return L("ダウンロードしています…");
+        if (Percent.Match(line) is { Success: true } pm && line.Length <= 12) return L($"進めています… {pm.Groups[1].Value}%");
         if (!line.Any(char.IsLetter)) return null;
         return "winget: " + (line.Length > 120 ? line[..117] + "…" : line);
     }

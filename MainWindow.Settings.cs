@@ -34,8 +34,8 @@ public partial class MainWindow
         {
             AutoSwitchText.Text = $"{reason} → {_controller.EffectiveProfile}";
             AutoSwitchText.Visibility = Visibility.Visible;
-            AutoSwitchStatus.Text = _controller.AutoProcess is { } process && reason.StartsWith("自動")
-                ? $"現在「{process}」が起動中のため「{_controller.EffectiveProfile}」を使っています"
+            AutoSwitchStatus.Text = _controller.AutoProcess is { } process && reason == L($"自動: {process}")
+                ? L($"現在「{process}」が起動中のため「{_controller.EffectiveProfile}」を使っています")
                 : "";
         }
         else
@@ -69,12 +69,12 @@ public partial class MainWindow
     private void OnNewProfileClick(object sender, RoutedEventArgs e)
     {
         var source = Config.FindProfile(Config.ActiveProfile) ?? Config.Profiles.First();
-        AddProfileCopy(source, UniqueProfileName("新しいプロファイル"));
+        AddProfileCopy(source, UniqueProfileName(L("新しいプロファイル")));
     }
 
     private void OnDuplicateProfileClick(object sender, RoutedEventArgs e)
     {
-        if (sender is Button { Tag: ProfileConfig p }) AddProfileCopy(p, UniqueProfileName($"{p.Name} のコピー"));
+        if (sender is Button { Tag: ProfileConfig p }) AddProfileCopy(p, UniqueProfileName(L($"{p.Name} のコピー")));
     }
 
     private void AddProfileCopy(ProfileConfig source, string name)
@@ -90,7 +90,7 @@ public partial class MainWindow
         if (sender is not Button { Tag: ProfileConfig p }) return;
         if (Config.Profiles.Count <= 1)
         {
-            MessageBox.Show(this, "プロファイルは最低 1 つ必要です。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("プロファイルは最低 1 つ必要です。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         // このプロファイルを使っているルールも一緒に消える（スケジュールは残りのプロファイルに切り替える）ことを、先に伝える
@@ -99,11 +99,11 @@ public partial class MainWindow
         bool quiet = Config.Quick.QuietProfile == p.Name;
         string fallback = Config.Profiles.First(x => x != p).Name;
         var notes = new List<string>();
-        if (autoRules > 0) notes.Add($"・アプリによる自動切り替えのルール {autoRules} 件を削除します");
-        if (schedules > 0) notes.Add($"・スケジュール {schedules} 件は「{fallback}」に切り替えます");
-        if (quiet) notes.Add($"・ワンタッチ操作の「静音」は「{fallback}」を使うようにします");
-        string detail = notes.Count > 0 ? "\n\n" + string.Join("\n", notes) + "\n\n（「元に戻す」で取り消せます）" : "";
-        if (MessageBox.Show(this, $"プロファイル「{p.Name}」を削除しますか？{detail}", "ProFanController", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+        if (autoRules > 0) notes.Add(L($"・アプリによる自動切り替えのルール {autoRules} 件を削除します"));
+        if (schedules > 0) notes.Add(L($"・スケジュール {schedules} 件は「{fallback}」に切り替えます"));
+        if (quiet) notes.Add(L($"・ワンタッチ操作の「静音」は「{fallback}」を使うようにします"));
+        string detail = notes.Count > 0 ? "\n\n" + string.Join("\n", notes) + L("\n\n（「元に戻す」で取り消せます）") : "";
+        if (MessageBox.Show(this, L($"プロファイル「{p.Name}」を削除しますか？{detail}"), "ProFanController", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
             return;
 
         Config.Profiles.Remove(p);
@@ -130,7 +130,7 @@ public partial class MainWindow
             item.Click += (_, _) => NewRuleProcess.Text = app;
             menu.Items.Add(item);
         }
-        if (menu.Items.Count == 0) menu.Items.Add(new MenuItem { Header = "ウィンドウのあるアプリが見つかりません", IsEnabled = false });
+        if (menu.Items.Count == 0) menu.Items.Add(new MenuItem { Header = L("ウィンドウのあるアプリが見つかりません"), IsEnabled = false });
         menu.MaxHeight = 420;
         menu.IsOpen = true;
     }
@@ -140,7 +140,7 @@ public partial class MainWindow
         string process = ProfileSwitcher.Normalize(NewRuleProcess.Text);
         if (process.Length == 0 || NewRuleProfile.SelectedItem is not ProfileConfig p)
         {
-            MessageBox.Show(this, "アプリ名とプロファイルを指定してください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("アプリ名とプロファイルを指定してください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         Config.AutoSwitchRules.Add(new AutoSwitchRule { ProcessName = process, ProfileName = p.Name });
@@ -191,7 +191,7 @@ public partial class MainWindow
         foreach (var vs in Config.VirtualSensors)
         {
             var names = vs.Sources.Select(id => FindSensorOption(id)?.Name ?? id);
-            string sources = vs.Kind == VirtualSensorKinds.Delta ? string.Join(" − ", names) : string.Join(" ／ ", names);
+            string sources = vs.Kind == VirtualSensorKinds.Delta ? string.Join(" − ", names) : string.Join(L(" ／ "), names);
             _virtualRows.Add(new VirtualRowVm { Config = vs, SourcesText = sources });
         }
     }
@@ -212,7 +212,7 @@ public partial class MainWindow
         {
             if (DeltaA.SelectedItem is not SensorOption a || DeltaB.SelectedItem is not SensorOption b || a.Id == b.Id)
             {
-                MessageBox.Show(this, "A と B に別々のセンサーを選んでください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(this, L("A と B に別々のセンサーを選んでください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             sources = new() { a.Id, b.Id };
@@ -223,7 +223,7 @@ public partial class MainWindow
                 .Where(s => s.Selected).Select(s => s.Option.Id).ToList();
             if (sources.Count < 2)
             {
-                MessageBox.Show(this, "2 つ以上のセンサーを選んでください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(this, L("2 つ以上のセンサーを選んでください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
         }
@@ -231,14 +231,14 @@ public partial class MainWindow
         var vs = new VirtualSensorConfig
         {
             Id = VirtualSensorConfig.NewId(),
-            Name = string.IsNullOrWhiteSpace(NewVirtualName.Text) ? "仮想センサー" : NewVirtualName.Text.Trim(),
+            Name = string.IsNullOrWhiteSpace(NewVirtualName.Text) ? L("仮想センサー") : NewVirtualName.Text.Trim(),
             Kind = kind,
             Sources = new ObservableCollection<string>(sources),
         };
         Config.VirtualSensors.Add(vs);
         foreach (var s in VirtualSourcePicker.ItemsSource as IEnumerable<SourcePickVm> ?? Enumerable.Empty<SourcePickVm>()) s.Selected = false;
         AfterVirtualSensorsChanged();
-        ShowAlert($"仮想センサー「{vs.Name}」を作成しました。ファンカーブの「連動する温度センサー」で選べます。", AlertLevel.Info);
+        ShowAlert(L($"仮想センサー「{vs.Name}」を作成しました。ファンカーブの「連動する温度センサー」で選べます。"), AlertLevel.Info);
     }
 
     private void OnRemoveVirtualClick(object sender, RoutedEventArgs e)
@@ -246,8 +246,8 @@ public partial class MainWindow
         if (sender is not Button { Tag: VirtualSensorConfig vs }) return;
         bool used = Config.Profiles.SelectMany(p => p.Fans).SelectMany(f => f.Curves).Any(c => c.SensorId == vs.Id);
         string msg = used
-            ? $"「{vs.Name}」はファンカーブで使われています。削除すると、そのカーブはセンサー異常（全開）になります。削除しますか？"
-            : $"「{vs.Name}」を削除しますか？";
+            ? L($"「{vs.Name}」はファンカーブで使われています。削除すると、そのカーブはセンサー異常（全開）になります。削除しますか？")
+            : L($"「{vs.Name}」を削除しますか？");
         if (MessageBox.Show(this, msg, "ProFanController", MessageBoxButton.OKCancel, used ? MessageBoxImage.Warning : MessageBoxImage.Question) != MessageBoxResult.OK)
             return;
         Config.VirtualSensors.Remove(vs);
@@ -292,14 +292,14 @@ public partial class MainWindow
 
         if (!ok)
         {
-            MessageBox.Show(this, "タスクスケジューラへの登録に失敗しました。ログを確認してください。", "ProFanController",
+            MessageBox.Show(this, L("タスクスケジューラへの登録に失敗しました。ログを確認してください。"), "ProFanController",
                 MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         else if (want && AppContext.BaseDirectory.Contains(@"\bin\Debug\", StringComparison.OrdinalIgnoreCase))
         {
             MessageBox.Show(this,
-                "開発用フォルダ（bin\\Debug）の exe を登録しました。\n" +
-                "ビルドし直すと場所が変わることがあるため、「発行」した exe から登録し直すことをおすすめします。",
+                L("開発用フォルダ（bin\\Debug）の exe を登録しました。\n") +
+                L("ビルドし直すと場所が変わることがあるため、「発行」した exe から登録し直すことをおすすめします。"),
                 "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
@@ -314,7 +314,7 @@ public partial class MainWindow
     {
         if (_catalog is null)
         {
-            MessageBox.Show(this, "ハードウェアの初期化が終わるまでお待ちください。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("ハードウェアの初期化が終わるまでお待ちください。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         FlushCommit();
@@ -324,7 +324,7 @@ public partial class MainWindow
         {
             if (wizard.ShowDialog() == true)
             {
-                ShowAlert("セットアップが完了しました。気に入らなければ、ファンカーブ画面の「元に戻す」で以前の設定に戻せます。", AlertLevel.Info);
+                ShowAlert(L("セットアップが完了しました。気に入らなければ、ファンカーブ画面の「元に戻す」で以前の設定に戻せます。"), AlertLevel.Info);
                 NavDashboard.IsChecked = true;
             }
         }
@@ -366,7 +366,7 @@ public sealed class VirtualRowVm : ObservableObject
 public partial class MainWindow
 {
     /// <summary>プロファイルごとの電源プランの選択肢（先頭は「変えない」）</summary>
-    public ObservableCollection<PowerPlan> PowerPlanOptions { get; } = new() { new PowerPlan("", "電源プランを変えない", false) };
+    public ObservableCollection<PowerPlan> PowerPlanOptions { get; } = new() { new PowerPlan("", L("電源プランを変えない"), false) };
     /// <summary>プロファイルの役割の選択肢（プロファイルの一覧で選ぶ）</summary>
     public IReadOnlyList<ChoiceOption> ProfileRoleOptions { get; } = ProfileRoles.All.Select(r => new ChoiceOption(r, ProfileRoles.Label(r))).ToList();
 
@@ -393,9 +393,9 @@ public partial class MainWindow
             _appearanceReady = true;
             ThemeCombo.ItemsSource = new[]
             {
-                new ChoiceOption(AppThemes.System, "Windows に合わせる"),
-                new ChoiceOption(AppThemes.Dark, "ダーク"),
-                new ChoiceOption(AppThemes.Light, "ライト"),
+                new ChoiceOption(AppThemes.System, L("Windows に合わせる")),
+                new ChoiceOption(AppThemes.Dark, L("ダーク")),
+                new ChoiceOption(AppThemes.Light, L("ライト")),
             };
             foreach (var hex in ThemeManager.AccentPalette)
             {
@@ -410,8 +410,8 @@ public partial class MainWindow
             ThemeManager.Changed += () => Dispatcher.BeginInvoke(RefreshAppearanceUi);
             var fonts = new List<ChoiceOption>
             {
-                new("", "既定（英数字 Montserrat・日本語 ProFan Maru）"),
-                new(ThemeManager.BundledMaruId, "ProFan Maru（同梱の丸ゴシック）"),
+                new("", L("既定（英数字 Montserrat・日本語 ProFan Maru）")),
+                new(ThemeManager.BundledMaruId, L("ProFan Maru（同梱の丸ゴシック）")),
             };
             var lang = System.Windows.Markup.XmlLanguage.GetLanguage("ja-jp");
             foreach (var f in Fonts.SystemFontFamilies
@@ -419,7 +419,7 @@ public partial class MainWindow
                          .Where(f => !f.Id.Contains('#'))
                          .DistinctBy(f => f.Id)
                          .OrderBy(f => f.Label, StringComparer.CurrentCulture))
-                fonts.Add(new ChoiceOption(f.Id, f.Label == f.Id ? f.Id : $"{f.Label}（{f.Id}）"));
+                fonts.Add(new ChoiceOption(f.Id, f.Label == f.Id ? f.Id : L($"{f.Label}（{f.Id}）")));
             FontCombo.ItemsSource = fonts;
         }
         RefreshAppearanceUi();
@@ -435,16 +435,16 @@ public partial class MainWindow
         if (_backgroundChoices.Count == 0)
         {
             // 見本は、実際の背景色ではなく、色合いと濃さが分かるはっきりした色で塗る（ダーク・ライト共通）
-            string[] rows = { "控えめ", "やや控えめ", "やや濃い", "濃い" };
+            string[] rows = { L("控えめ"), L("やや控えめ"), L("やや濃い"), L("濃い") };
             for (int i = 0; i < ThemeManager.BackgroundCount; i++)
             {
                 var brush = new SolidColorBrush(ThemeManager.BackgroundDisplay(i));
                 brush.Freeze();
-                string name = i % 16 == 15 ? "灰色" : $"色相 {i % 16 * 24}°";
+                string name = i % 16 == 15 ? L("灰色") : L($"色相 {i % 16 * 24}°");
                 _backgroundChoices.Add(new LightingChoiceVm
                 {
                     Kind = LightingChoiceKind.Background, Id = AppearanceConfig.BackgroundPrefix + i, Label = name,
-                    Tip = $"{name}・{rows[i / 16]}", Swatch = brush,
+                    Tip = L($"{name}・{rows[i / 16]}"), Swatch = brush,
                 });
             }
         }
@@ -454,17 +454,17 @@ public partial class MainWindow
         {
             _textSwatchesLight = light;
             _textColorChoices.Clear();
-            string[] rows = { "白に近い", "淡い", "やや濃い", "濃い" };
-            if (light) rows = new[] { "黒に近い", "淡い", "やや濃い", "濃い" };
+            string[] rows = { L("白に近い"), L("淡い"), L("やや濃い"), L("濃い") };
+            if (light) rows = new[] { L("黒に近い"), L("淡い"), L("やや濃い"), L("濃い") };
             for (int i = 0; i < ThemeManager.BackgroundCount; i++)
             {
                 var brush = new SolidColorBrush(ThemeManager.TextSwatch(i, light));
                 brush.Freeze();
-                string name = i % 16 == 15 ? "灰色" : $"色相 {i % 16 * 24}°";
+                string name = i % 16 == 15 ? L("灰色") : L($"色相 {i % 16 * 24}°");
                 _textColorChoices.Add(new LightingChoiceVm
                 {
                     Kind = LightingChoiceKind.TextColor, Id = AppearanceConfig.TextColorPrefix + i, Label = name,
-                    Tip = $"{name}・{rows[i / 16]}", Swatch = brush,
+                    Tip = L($"{name}・{rows[i / 16]}"), Swatch = brush,
                 });
             }
         }
@@ -590,8 +590,8 @@ public partial class MainWindow
 
         var urls = WebServer.LocalUrls(Config.Web.Port, Config.Web.Token);
         WebUrls.Text = running
-            ? (urls.Count > 0 ? string.Join("\n", urls) : "この PC のネットワークアドレスが見つかりません")
-            : "Web サーバーを開始できませんでした。ポート番号を変えて試してください（ログに詳細があります）";
+            ? (urls.Count > 0 ? string.Join("\n", urls) : L("この PC のネットワークアドレスが見つかりません"))
+            : L("Web サーバーを開始できませんでした。ポート番号を変えて試してください（ログに詳細があります）");
         WebQr.Source = urls.Count > 0 && running ? CreateQr(urls[0]) : null;
     }
 

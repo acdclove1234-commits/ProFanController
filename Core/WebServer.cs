@@ -75,7 +75,7 @@ public sealed class WebServer : IDisposable
             // 同じ家・会社のネットワーク（プライベートアドレス）とこの PC 自身からだけ受け付ける
             if (!IsLocalNetwork(req.RemoteEndPoint?.Address))
             {
-                Write(ctx, 403, "text/plain", "このネットワークからは使えません。");
+                Write(ctx, 403, "text/plain", L("このネットワークからは使えません。"));
                 return;
             }
             // ページ以外（ブラウザーが自動で取りに来るアイコンなど）は、鍵を調べずに 404 にする（鍵の間違いとして数えない）
@@ -88,7 +88,7 @@ public sealed class WebServer : IDisposable
             var client = req.RemoteEndPoint?.Address ?? IPAddress.None;
             if (TooManyFailures(client))
             {
-                Write(ctx, 429, "text/plain", "鍵の間違いが続いたため、しばらく受け付けません。1 分ほど待ってください。");
+                Write(ctx, 429, "text/plain", L("鍵の間違いが続いたため、しばらく受け付けません。1 分ほど待ってください。"));
                 return;
             }
             string key = req.Headers["X-Key"] ?? req.QueryString["k"] ?? "";
@@ -96,7 +96,7 @@ public sealed class WebServer : IDisposable
             if (_token.Length < MinTokenLength || key.Length < MinTokenLength || !CryptographicEquals(key, _token))
             {
                 RecordFailure(client);
-                Write(ctx, 401, "text/plain", "アクセス用の鍵が違います。PC の設定画面に表示されている URL を使ってください。");
+                Write(ctx, 401, "text/plain", L("アクセス用の鍵が違います。PC の設定画面に表示されている URL を使ってください。"));
                 return;
             }
 
@@ -254,7 +254,28 @@ public sealed class WebServer : IDisposable
 /// <summary>スマホ用の 1 ページだけの画面（2 秒ごとに状態を取得して表示）</summary>
 internal static class WebPage
 {
-    public const string Html = """
+    /// <summary>画面の言語に訳したページ（言語は起動時に決まるので、最初に作ったものを使い続ける）</summary>
+    public static string Html => _html ??= Localize(Template);
+    private static string? _html;
+
+    /// <summary>ページの中の日本語を、画面の言語に置き換える（HTML の文字は HTML 用に、JavaScript の文字は JSON の形で埋め込む）</summary>
+    internal static string Localize(string t)
+    {
+        static string H(string s) => WebUtility.HtmlEncode(s);
+        static string J(string s) => System.Text.Json.JsonSerializer.Serialize(s);
+        return t.Replace("<html lang=\"ja\">", $"<html lang=\"{Localization.Language}\">")
+            .Replace(">接続中…<", ">" + H(L("接続中…")) + "<")
+            .Replace(">ファン<", ">" + H(L("ファン")) + "<")
+            .Replace(">システム<", ">" + H(L("システム")) + "<")
+            .Replace(">プロファイル<", ">" + H(L("プロファイル")) + "<")
+            .Replace(">全開 5分<", ">" + H(L("全開 5分")) + "<")
+            .Replace(">静音 1時間<", ">" + H(L("静音 1時間")) + "<")
+            .Replace(">解除<", ">" + H(L("解除")) + "<")
+            .Replace("' 更新 ・ '", J(L(" 更新 ・ ")))
+            .Replace("'PC に接続できません'", J(L("PC に接続できません")));
+    }
+
+    private const string Template = """
 <!doctype html>
 <html lang="ja"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

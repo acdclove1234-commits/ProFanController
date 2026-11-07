@@ -70,7 +70,7 @@ public sealed class TempCardVm : ObservableObject
     public required string SensorId { get; init; }
     public required string Subtitle { get; init; }
     /// <summary>カードの 2 行目。センサーの値が固まっているときは、その警告に置き換える</summary>
-    public string DisplaySubtitle => _suspect is null ? Subtitle : "⚠ 値が固まっています（異常として扱い中）";
+    public string DisplaySubtitle => _suspect is null ? Subtitle : L("⚠ 値が固まっています（異常として扱い中）");
     public string? SuspectReason => _suspect;
     /// <summary>この温度以上で黄色、Danger 以上で赤</summary>
     public double Warn { get; init; } = 70;
@@ -147,7 +147,7 @@ public sealed class FanCardVm : ObservableObject
         ProfileText = profile;
         var lead = s.Curves.Where(c => !c.Error).OrderByDescending(c => c.Request).FirstOrDefault();
         TempText = lead?.Temp is double t ? $"{t:F0}°" : "--";
-        SourceText = fixedDuty ? "固定回転" : lead?.Name ?? "";
+        SourceText = fixedDuty ? L("固定回転") : lead?.Name ?? "";
 
         Name = s.Name;
         RpmText = s.Rpm.HasValue ? $"{s.Rpm.Value:N0}" : "--";
@@ -157,27 +157,27 @@ public sealed class FanCardVm : ObservableObject
 
         (StateText, StateBrush) = s.State switch
         {
-            FanState.Active => ("制御中", Palette.Ok),
-            FanState.DryRun => ($"DRY RUN（計算値 {s.Target:F0}%）", Palette.Warn),
-            FanState.Bios => (s.Role == FanRoles.Pump ? "BIOS 制御・監視中" : "BIOS 制御", Palette.Muted),
-            FanState.Paused => ("一時停止（BIOS）", Palette.Warn),
-            FanState.Identify => ("テスト中（100%）", Palette.Accent2),
-            FanState.Calibrating => ("キャリブレーション中", Palette.Accent2),
-            FanState.Boost => ("ブースト中（100%）", Palette.Accent2),
-            FanState.Emergency => ("緊急全開", Palette.Danger),
-            FanState.SensorError => ("センサー異常 → 全開", Palette.Danger),
-            FanState.Stall => ("停止を検知", Palette.Danger),
-            FanState.PumpAlert => ("ポンプ異常 → 保護運転", Palette.Danger),
-            FanState.NotFound => ("端子が見つかりません", Palette.Danger),
-            FanState.SensorMissing => ($"センサーなし → 安全な回転数 {s.Target:F0}%", Palette.Warn),
-            FanState.Manual => ("手動テスト中", Palette.Accent2),
-            FanState.GpuGuard => ("GPU 保護 → 100%", Palette.Danger),
+            FanState.Active => (L("制御中"), Palette.Ok),
+            FanState.DryRun => (L($"DRY RUN（計算値 {s.Target:F0}%）"), Palette.Warn),
+            FanState.Bios => (s.Role == FanRoles.Pump ? L("BIOS 制御・監視中") : L("BIOS 制御"), Palette.Muted),
+            FanState.Paused => (L("一時停止（BIOS）"), Palette.Warn),
+            FanState.Identify => (L("テスト中（100%）"), Palette.Accent2),
+            FanState.Calibrating => (L("キャリブレーション中"), Palette.Accent2),
+            FanState.Boost => (L("ブースト中（100%）"), Palette.Accent2),
+            FanState.Emergency => (L("緊急全開"), Palette.Danger),
+            FanState.SensorError => (L("センサー異常 → 全開"), Palette.Danger),
+            FanState.Stall => (L("停止を検知"), Palette.Danger),
+            FanState.PumpAlert => (L("ポンプ異常 → 保護運転"), Palette.Danger),
+            FanState.NotFound => (L("端子が見つかりません"), Palette.Danger),
+            FanState.SensorMissing => (L($"センサーなし → 安全な回転数 {s.Target:F0}%"), Palette.Warn),
+            FanState.Manual => (L("手動テスト中"), Palette.Accent2),
+            FanState.GpuGuard => (L("GPU 保護 → 100%"), Palette.Danger),
             _ => ("", Palette.Muted),
         };
 
         DetailText = s.Curves.Count == 0
             ? ""
-            : string.Join("   ", s.Curves.Select(c => c.Missing ? $"{c.Name}: センサーなし"
+            : string.Join("   ", s.Curves.Select(c => c.Missing ? L($"{c.Name}: センサーなし")
                                                       : c.Error ? $"{c.Name}: --"
                                                       : $"{c.Name}: {c.Temp:F0}°C → {c.Request:F0}%"));
     }
@@ -238,10 +238,10 @@ public sealed class FindingVm : ObservableObject
     };
     public string LevelText => Finding.Level switch
     {
-        FindingLevel.Danger => "要対応",
-        FindingLevel.Warning => "注意",
-        FindingLevel.Good => "良好",
-        _ => "ヒント",
+        FindingLevel.Danger => L("要対応"),
+        FindingLevel.Warning => L("注意"),
+        FindingLevel.Good => L("良好"),
+        _ => L("ヒント"),
     };
     public string ResultText { get => _resultText; private set => Set(ref _resultText, value); }
 
@@ -264,14 +264,14 @@ public sealed class DeviceCardVm : ObservableObject
     public string Kind => Info.Kind;
     public string KindText => Info.Kind switch
     {
-        "Motherboard" => "マザーボード",
+        "Motherboard" => L("マザーボード"),
         "Cpu" => "CPU",
-        "Gpu" => "グラフィックス",
-        _ => "コントローラー",
+        "Gpu" => L("グラフィックス"),
+        _ => L("コントローラー"),
     };
     public string DetailText => Info.ChipName is null
-        ? $"温度センサー {Info.TempCount} ・ ファン {Info.FanCount}"
-        : $"{Info.ChipName} ・ 温度センサー {Info.TempCount} ・ ファン端子 {Info.FanCount}";
+        ? L($"温度センサー {Info.TempCount} ・ ファン {Info.FanCount}")
+        : L($"{Info.ChipName} ・ 温度センサー {Info.TempCount} ・ ファン端子 {Info.FanCount}");
     public bool HasBadge => Info.FanCount > 0;
 
     /// <summary>自分で設定した画像（null ならイラスト）</summary>
@@ -296,15 +296,15 @@ public sealed class SensorRowVm : ObservableObject
     public string Id => Info.Id;
     public string TypeText => Info.SensorType switch
     {
-        "Temperature" => "温度",
-        "Fan" => "回転数",
-        "Control" => "制御",
-        "Virtual" => "仮想",
-        "Load" => "使用率",
-        "Clock" => "クロック",
-        "Power" => "電力",
-        "Data" or "SmallData" => "データ",
-        "Level" => "レベル",
+        "Temperature" => L("温度"),
+        "Fan" => L("回転数"),
+        "Control" => L("制御"),
+        "Virtual" => L("仮想"),
+        "Load" => L("使用率"),
+        "Clock" => L("クロック"),
+        "Power" => L("電力"),
+        "Data" or "SmallData" => L("データ"),
+        "Level" => L("レベル"),
         _ => Info.SensorType,
     };
     public string ValueText { get => _valueText; private set => Set(ref _valueText, value); }

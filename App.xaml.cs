@@ -59,6 +59,9 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        // 画面の言語は、何かを表示する前に決める（設定の「表示言語」。空なら Windows の表示言語）
+        Localization.Init(ConfigStore.ReadLanguage());
+        if (!Localization.IsSource) XamlLocalizer.Register();
 
         // 見張りプロセスは Program.Main で、App を作らずに動かす（ここには来ない）
         // シャットダウンの取り消しに備えたプロセス: 待ってから、まだ Windows が動いていればアプリを起動し直す
@@ -94,7 +97,7 @@ public partial class App : Application
         {
             // 自動起動（--minimized）で二重に起動したときは、何も出さずに終わる
             if (!e.Args.Contains("--minimized", StringComparer.OrdinalIgnoreCase))
-                MessageBox.Show("ProFanController はすでに起動しています。\nタスクトレイのアイコンから開いてください。",
+                MessageBox.Show(L("ProFanController はすでに起動しています。\nタスクトレイのアイコンから開いてください。"),
                     "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             _mutex.Dispose();
             _mutex = null;
@@ -154,7 +157,7 @@ public partial class App : Application
             try { restored = StopFanEngine(engine); } catch (Exception ex) { Logger.Error($"終了時の BIOS 制御への復帰に失敗: {ex.Message}"); }
             if (restored) Watchdog.SignalStop();
             Try("LED", () => Rgb.Dispose());
-            Try("記録の保存", () => _window?.SaveReportData());
+            Try(L("記録の保存"), () => _window?.SaveReportData());
             // この後アプリは終了する。ほかのアプリがシャットダウンを取り消すと、ファンが BIOS 制御のまま
             // アプリがない状態になるので、90 秒後にアプリを起動し直す小さなプロセスを残す
             // （本当にシャットダウンするなら、そのプロセスも一緒に終了させられる）
@@ -188,7 +191,7 @@ public partial class App : Application
         {
             if (_trayHintShown) return;
             _trayHintShown = true;
-            tray.ShowBalloon("ProFanController", "タスクトレイで動作を続けています。終了するにはアイコンを右クリックしてください。", AlertLevel.Info);
+            tray.ShowBalloon("ProFanController", L("タスクトレイで動作を続けています。終了するにはアイコンを右クリックしてください。"), AlertLevel.Info);
         };
         window.WidgetToggleRequested += ToggleWidget;
 
@@ -221,7 +224,7 @@ public partial class App : Application
         {
             window.ShowAlert(message, level);
             window.OnEngineAlert(message, level);
-            Notifier.Notify(level == AlertLevel.Info ? "ProFanController: 回復しました" : "ProFanController", message, level, isRecovery: level == AlertLevel.Info);
+            Notifier.Notify(level == AlertLevel.Info ? L("ProFanController: 回復しました") : "ProFanController", message, level, isRecovery: level == AlertLevel.Info);
             // 同じ通知は 5 分間出さない（温度が境目を行き来したときの連発防止。画面のバナーとログには毎回残す）
             if (_lastBalloon.TryGetValue(message, out var last) && DateTime.Now - last < TimeSpan.FromMinutes(5)) return;
             _lastBalloon[message] = DateTime.Now;
@@ -233,11 +236,11 @@ public partial class App : Application
         {
             controller.SetAutoMatch(process, profile);
             if (process is not null && profile is not null && controller.Config.FindProfile(profile) is not null)
-                tray.ShowBalloon("プロファイルを自動で切り替えました", $"{process} を検出 → {profile}", AlertLevel.Info);
+                tray.ShowBalloon(L("プロファイルを自動で切り替えました"), L($"{process} を検出 → {profile}"), AlertLevel.Info);
         });
 
         engine.Resumed += () => Dispatcher.InvokeAsync(() => Logger.Info("スリープ復帰後の制御を再開"));
-        window.MaintenanceNotice += (msg, level) => Notifier.Notify("ProFanController: メンテナンス", msg, level);
+        window.MaintenanceNotice += (msg, level) => Notifier.Notify(L("ProFanController: メンテナンス"), msg, level);
         window.RecordSaved += r => Logger.Info($"異常の記録: {r.CsvPath}");
 
         controller.EffectiveProfileChanged += UpdateTrayProfiles;
@@ -282,8 +285,8 @@ public partial class App : Application
         if (controller.Config.DryRun)
         {
             Logger.Info("DRY RUN の設定で起動しました（ファンには書き込みません）");
-            window.ShowAlert("DRY RUN（テストモード）で動いています。温度に応じた回転数を計算するだけで、ファンは動かしていません。", AlertLevel.Warning,
-                "制御を開始する", () =>
+            window.ShowAlert(L("DRY RUN（テストモード）で動いています。温度に応じた回転数を計算するだけで、ファンは動かしていません。"), AlertLevel.Warning,
+                L("制御を開始する"), () =>
                 {
                     controller.Config.DryRun = false;
                     controller.Commit(recordUndo: false);
@@ -293,13 +296,13 @@ public partial class App : Application
         if (ConfigStore.RecoveredFrom is { } from)
         {
             ShowMainWindow();
-            window.ShowAlert($"設定ファイルが壊れていたため、バックアップ（{File.GetLastWriteTime(from):yyyy/MM/dd HH:mm}）から復旧しました。壊れたファイルは config.broken_*.json として残しています。", AlertLevel.Warning);
+            window.ShowAlert(L($"設定ファイルが壊れていたため、バックアップ（{File.GetLastWriteTime(from):yyyy/MM/dd HH:mm}）から復旧しました。壊れたファイルは config.broken_*.json として残しています。"), AlertLevel.Warning);
         }
         if (recovered)
         {
-            const string msg = "ProFanController が予期せず終了したため、見張りプロセスが自動で起動し直しました。ファンは安全な回転数にしてから制御を再開しています。原因はログで確認できます。";
-            window.ShowAlert(msg, AlertLevel.Warning, "ログを開く", () => SystemTool.Open(Logger.Directory));
-            tray.ShowBalloon("ProFanController", "予期せず終了したため、自動で起動し直しました。", AlertLevel.Warning);
+            string msg = L("ProFanController が予期せず終了したため、見張りプロセスが自動で起動し直しました。ファンは安全な回転数にしてから制御を再開しています。原因はログで確認できます。");
+            window.ShowAlert(msg, AlertLevel.Warning, L("ログを開く"), () => SystemTool.Open(Logger.Directory));
+            tray.ShowBalloon("ProFanController", L("予期せず終了したため、自動で起動し直しました。"), AlertLevel.Warning);
             Notifier.Notify("ProFanController", msg, AlertLevel.Warning);
         }
         _ = CheckInstallAsync(window);
@@ -322,34 +325,34 @@ public partial class App : Application
             if (elsewhere)
             {
                 Logger.Warn($"自動起動が別の場所のアプリを指しています: {registered}（いまの場所: {exe}）");
-                parts.Add($"Windows の起動時に自動で立ち上がるのは、別の場所のアプリです（{registered}）。古い版が立ち上がっているかもしれません。");
+                parts.Add(L($"Windows の起動時に自動で立ち上がるのは、別の場所のアプリです（{registered}）。古い版が立ち上がっているかもしれません。"));
             }
             if (unstable is not null)
             {
                 Logger.Warn($"「{unstable}」フォルダーの中から動いています: {AppContext.BaseDirectory}");
-                parts.Add($"このアプリは「{unstable}」フォルダーの中から動いています。整理したときに消えたり、別の版が増えたりしないよう、"
-                    + $"下のボタンで {InstallCheck.RecommendedFolder} に移してください（設定はそのまま持っていき、自動起動も移した先に登録し直して、起動し直します）。");
+                parts.Add(L($"このアプリは「{unstable}」フォルダーの中から動いています。整理したときに消えたり、別の版が増えたりしないよう、")
+                    + L($"下のボタンで {InstallCheck.RecommendedFolder} に移してください（設定はそのまま持っていき、自動起動も移した先に登録し直して、起動し直します）。"));
             }
             if (conflicts.Count > 0)
             {
                 Logger.Warn($"LED・ファンを操作するほかのソフトが動いています: {string.Join("、", conflicts)}");
-                parts.Add($"{string.Join("・", conflicts)} が動いています。同じ LED やファンを操作するので、色が勝手に戻る・ちらつく・回転数が反映されない原因になります。そのソフトの LED・ファンの制御を止めるか、終了してください。");
+                parts.Add(L($"{string.Join(L("・"), conflicts)} が動いています。同じ LED やファンを操作するので、色が勝手に戻る・ちらつく・回転数が反映されない原因になります。そのソフトの LED・ファンの制御を止めるか、終了してください。"));
             }
             if (parts.Count == 0) return;
             if (unstable is not null)
             {
                 // 置き場所を直せば、自動起動も一緒に直る（自動起動を使っていたときは、移した先に登録し直す）
                 window.ShowAlert(string.Join("\n", parts), AlertLevel.Warning,
-                    $"{InstallCheck.RecommendedFolder} に移す", () => MoveToRecommended(window, registerAutoStart: registered is not null));
+                    L($"{InstallCheck.RecommendedFolder} に移す"), () => MoveToRecommended(window, registerAutoStart: registered is not null));
                 return;
             }
             window.ShowAlert(string.Join("\n", parts), AlertLevel.Warning,
-                elsewhere ? "自動起動をこの場所にする" : null,
+                elsewhere ? L("自動起動をこの場所にする") : null,
                 elsewhere ? () =>
                 {
                     bool ok = AutoStart.Enable();
                     Logger.Info(ok ? $"自動起動をこの場所に登録し直しました: {exe}" : "自動起動を登録し直せませんでした");
-                    window.ShowAlert(ok ? "自動起動を、いま動いているこのアプリに登録し直しました。" : "自動起動を登録し直せませんでした（ログを確認してください）。",
+                    window.ShowAlert(ok ? L("自動起動を、いま動いているこのアプリに登録し直しました。") : L("自動起動を登録し直せませんでした（ログを確認してください）。"),
                         ok ? AlertLevel.Info : AlertLevel.Warning);
                 } : null);
         }
@@ -384,7 +387,7 @@ public partial class App : Application
         catch (Exception ex)
         {
             Logger.Warn($"{InstallCheck.RecommendedFolder} へ移せませんでした: {ex}");
-            window.ShowAlert($"{InstallCheck.RecommendedFolder} へ移せませんでした: {ex.Message}", AlertLevel.Warning);
+            window.ShowAlert(L($"{InstallCheck.RecommendedFolder} へ移せませんでした: {ex.Message}"), AlertLevel.Warning);
         }
     }
 
@@ -417,7 +420,7 @@ public partial class App : Application
             case PowerModes.Resume:
                 _controller.Engine.Resume();
                 Try("LED", () => Rgb.Resume());
-                Try("音の取り込み", () => Audio.Restart());
+                Try(L("音の取り込み"), () => Audio.Restart());
                 break;
         }
     }
@@ -480,7 +483,7 @@ public partial class App : Application
     {
         try
         {
-            string exe = Environment.ProcessPath ?? throw new InvalidOperationException("実行ファイルのパスが分かりません。");
+            string exe = Environment.ProcessPath ?? throw new InvalidOperationException(L("実行ファイルのパスが分かりません。"));
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(exe, $"{DelayedRestartArgument} {seconds}")
             {
                 UseShellExecute = false,
@@ -498,7 +501,7 @@ public partial class App : Application
     {
         try
         {
-            string exe = Environment.ProcessPath ?? throw new InvalidOperationException("実行ファイルのパスが分かりません。");
+            string exe = Environment.ProcessPath ?? throw new InvalidOperationException(L("実行ファイルのパスが分かりません。"));
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(exe, args)
             {
                 UseShellExecute = false,
@@ -596,10 +599,10 @@ public partial class App : Application
             }
             if (report.HasChanges)
             {
-                string what = report.DeviceChanges.Count > 0 ? string.Join(" ／ ", report.DeviceChanges) : "使っていたセンサーが見つかりません";
+                string what = report.DeviceChanges.Count > 0 ? string.Join(L(" ／ "), report.DeviceChanges) : L("使っていたセンサーが見つかりません");
                 Logger.Warn($"ハードウェアの変更を検出: {what}");
-                _tray.ShowBalloon("ハードウェアの変更を検出しました", what, AlertLevel.Warning);
-                Notifier.Notify("ProFanController: ハードウェアの変更", $"{what}。PC の画面で、新しいセンサーへの置き換えを確認してください。", AlertLevel.Warning);
+                _tray.ShowBalloon(L("ハードウェアの変更を検出しました"), what, AlertLevel.Warning);
+                Notifier.Notify(L("ProFanController: ハードウェアの変更"), L($"{what}。PC の画面で、新しいセンサーへの置き換えを確認してください。"), AlertLevel.Warning);
                 ShowMainWindow();
                 _window.ShowHardwareChange(report);
                 return;
@@ -629,15 +632,15 @@ public partial class App : Application
         {
             // Recovering（探し直し・復帰直後の再試行）は、エンジン自身が必要なときだけ警告を出すので、ここでは知らせない
             case EngineHealth.Failed:
-                _tray?.ShowBalloon("ファン制御に問題があります", $"{reason}（安全のため BIOS の制御にしています。自動で復旧を試みます）", AlertLevel.Danger);
-                Notifier.Notify("ProFanController: ファン制御の問題", reason, AlertLevel.Danger);
+                _tray?.ShowBalloon(L("ファン制御に問題があります"), L($"{reason}（安全のため BIOS の制御にしています。自動で復旧を試みます）"), AlertLevel.Danger);
+                Notifier.Notify(L("ProFanController: ファン制御の問題"), reason, AlertLevel.Danger);
                 break;
             case EngineHealth.Degraded when before is EngineHealth.Ok:
-                _tray?.ShowBalloon("一部の部品を読み取れません", reason, AlertLevel.Warning);
+                _tray?.ShowBalloon(L("一部の部品を読み取れません"), reason, AlertLevel.Warning);
                 break;
             case EngineHealth.Ok when before is EngineHealth.Failed or EngineHealth.Degraded:
-                _tray?.ShowBalloon("ファン制御が復旧しました", "通常の制御に戻りました。", AlertLevel.Info);
-                Notifier.Notify("ProFanController: 復旧", "ファン制御が通常に戻りました。", AlertLevel.Info, isRecovery: true);
+                _tray?.ShowBalloon(L("ファン制御が復旧しました"), L("通常の制御に戻りました。"), AlertLevel.Info);
+                Notifier.Notify(L("ProFanController: 復旧"), L("ファン制御が通常に戻りました。"), AlertLevel.Info, isRecovery: true);
                 break;
         }
     }
@@ -653,9 +656,9 @@ public partial class App : Application
         {
             Logger.Error($"config.json の読み込みに失敗（バックアップからも復旧できず）: {ex}");
             string why = ex is IOException
-                ? "ほかのプログラムが config.json を開いたままにしているため読めませんでした（ファイルはそのままです）。"
-                : "元のファイルは config.broken_日時.json として残しました。";
-            MessageBox.Show($"config.json を読み込めず、バックアップからも復旧できませんでした。\n{ex.Message}\n\n{why}\n空の設定で起動します。",
+                ? L("ほかのプログラムが config.json を開いたままにしているため読めませんでした（ファイルはそのままです）。")
+                : L("元のファイルは config.broken_日時.json として残しました。");
+            MessageBox.Show(L($"config.json を読み込めず、バックアップからも復旧できませんでした。\n{ex.Message}\n\n{why}\n空の設定で起動します。"),
                 "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
             var fresh = new AppConfig();
             fresh.Normalize();
@@ -709,11 +712,11 @@ public partial class App : Application
             // 時間は常識的な範囲だけ受け付ける（スマホの画面から変な値が送られてきても長時間にしない）
             case "boost" when int.TryParse(arg, out int m) && m is >= 1 and <= 240:
                 _controller.StartBoost(TimeSpan.FromMinutes(m));
-                _tray?.ShowBalloon("ブースト", $"ポンプ以外の全ファンを {m} 分間 100% にします。", AlertLevel.Info);
+                _tray?.ShowBalloon(L("ブースト"), L($"ポンプ以外の全ファンを {m} 分間 100% にします。"), AlertLevel.Info);
                 break;
             case "quiet" when int.TryParse(arg, out int m) && m is >= 1 and <= 720:
                 ok = _controller.StartQuiet(TimeSpan.FromMinutes(m));
-                if (!ok) _window?.ShowAlert("「静音」で使うプロファイルが見つかりません。設定画面の「ワンタッチ操作」で選んでください。", AlertLevel.Warning);
+                if (!ok) _window?.ShowAlert(L("「静音」で使うプロファイルが見つかりません。設定画面の「ワンタッチ操作」で選んでください。"), AlertLevel.Warning);
                 break;
             case "cancel":
                 _controller.CancelQuick();
@@ -839,7 +842,7 @@ public partial class App : Application
         catch (Exception ex)
         {
             Logger.Error($"Web サーバーを開始できません: {ex.Message}");
-            _window?.ShowAlert($"スマホ用の Web サーバーを開始できませんでした（ポート {cfg.Port}）: {ex.Message}", AlertLevel.Warning);
+            _window?.ShowAlert(L($"スマホ用の Web サーバーを開始できませんでした（ポート {cfg.Port}）: {ex.Message}"), AlertLevel.Warning);
         }
     }
 
@@ -849,7 +852,7 @@ public partial class App : Application
     private string BuildStatusJson(EngineSnapshot s)
     {
         if (_window is null || _controller is null) return "{}";
-        string state = s.Emergency ? "緊急全開" : s.Paused ? "一時停止中" : s.DryRun ? "DRY RUN" : "制御中";
+        string state = s.Emergency ? L("緊急全開") : s.Paused ? L("一時停止中") : s.DryRun ? "DRY RUN" : L("制御中");
         var status = new
         {
             time = s.Time.ToString("HH:mm:ss"),
@@ -872,7 +875,7 @@ public partial class App : Application
                 duty = f.DutyText,
                 color = $"#{f.StateBrush.Color.R:X2}{f.StateBrush.Color.G:X2}{f.StateBrush.Color.B:X2}",
             }),
-            metrics = _window.MetricTileItems.Select(m => new { title = m.ShortTitle, text = m.ValueText + (m.SubText.Length > 0 ? $"（{m.SubText}）" : "") }),
+            metrics = _window.MetricTileItems.Select(m => new { title = m.ShortTitle, text = m.ValueText + (m.SubText.Length > 0 ? L($"（{m.SubText}）") : "") }),
         };
         return JsonSerializer.Serialize(status, StatusJsonOptions);
     }
@@ -927,11 +930,11 @@ public partial class App : Application
     {
         if (_exiting) return;
         ShutdownServices();
-        Try("ウィジェット", () => _widget?.Close());
+        Try(L("ウィジェット"), () => _widget?.Close());
         if (_window is not null)
         {
             _window.AllowClose = true;
-            Try("画面", () => _window.Close());
+            Try(L("画面"), () => _window.Close());
         }
         Shutdown();
     }
@@ -945,7 +948,7 @@ public partial class App : Application
     {
         if (_exiting) return;
         _exiting = true;
-        Try("テスト", () => _window?.StopTestIfRunning());
+        Try(L("テスト"), () => _window?.StopTestIfRunning());
         bool restored = true;
         if (_controller is not null)
         {
@@ -958,12 +961,12 @@ public partial class App : Application
             Logger.Warn("ファンを BIOS 制御に戻せたか確認できないため、見張りプロセスに安全な回転数にしてもらいます");
             if (_watchdogRunning) Watchdog.SignalStopUnsafe();
         }
-        Try("記録の保存", () => _window?.SaveReportData());
-        Try("同期テスト", () => SyncTestPlayer.Dispose());
+        Try(L("記録の保存"), () => _window?.SaveReportData());
+        Try(L("同期テスト"), () => SyncTestPlayer.Dispose());
         Try("LED", () => Rgb.Dispose());
-        Try("音の取り込み", () => Audio.Dispose());
-        Try("スマホ監視", () => _web?.Stop());
-        Try("設定", () => _controller?.Dispose());
+        Try(L("音の取り込み"), () => Audio.Dispose());
+        Try(L("スマホ監視"), () => _web?.Stop());
+        Try(L("設定"), () => _controller?.Dispose());
     }
 
     /// <summary>ファン制御を止めて BIOS 制御に戻す。戻せたことを確認できたら true</summary>
@@ -983,7 +986,7 @@ public partial class App : Application
     {
         SystemEvents.PowerModeChanged -= OnPowerModeChanged;
         ShutdownServices();
-        Try("タスクトレイ", () => _tray?.Dispose());
+        Try(L("タスクトレイ"), () => _tray?.Dispose());
         try { _mutex?.ReleaseMutex(); } catch { /* 持っていない */ }
         _mutex?.Dispose();
         Logger.Flush();

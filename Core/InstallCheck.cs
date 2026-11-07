@@ -20,7 +20,7 @@ public static class InstallCheck
     /// </summary>
     public static readonly IReadOnlyList<ConflictingApp> KnownConflicts = new ConflictingApp[]
     {
-        new("LightingService", "ASUS Aura（Armoury Crate の LED）"),
+        new("LightingService", L("ASUS Aura（Armoury Crate の LED）")),
         new("ArmouryCrate", "ASUS Armoury Crate"),
         new("LEDKeeper2", "MSI Mystic Light"),
         new("MSI.CentralServer", "MSI Center"),
@@ -77,9 +77,9 @@ public static class InstallCheck
         string user = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         var places = new (string Path, string Name)[]
         {
-            (Path.Combine(user, "Downloads"), "ダウンロード"),
-            (Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "デスクトップ"),
-            (Path.GetTempPath(), "一時フォルダー"),
+            (Path.Combine(user, "Downloads"), L("ダウンロード")),
+            (Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), L("デスクトップ")),
+            (Path.GetTempPath(), L("一時フォルダー")),
         };
         foreach (var (path, name) in places)
         {
@@ -116,7 +116,7 @@ public static class InstallCheck
             File.Copy(targetConfig, Path.Combine(backups, $"config_{DateTime.Now:yyyyMMdd_HHmmss}_before-move.json"), overwrite: true);
         }
         CopyTree(from, to, top: true);
-        if (!File.Exists(exe)) throw new IOException("ProFanController.exe を写せませんでした");
+        if (!File.Exists(exe)) throw new IOException(L("ProFanController.exe を写せませんでした"));
         return exe;
     }
 

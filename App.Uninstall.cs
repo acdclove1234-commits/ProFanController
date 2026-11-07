@@ -90,7 +90,7 @@ public partial class App
             }
             else
             {
-                report(new StepResult(step, StepStatus.Running, "行っています…"));
+                report(new StepResult(step, StepStatus.Running, L("行っています…")));
                 try
                 {
                     result = await RunCleanupStepAsync(step, text => report(new StepResult(step, StepStatus.Running, text)));
@@ -98,11 +98,11 @@ public partial class App
                 catch (Exception ex)
                 {
                     Logger.Error($"お片付けの {step} で例外: {ex}");
-                    result = new StepResult(step, StepStatus.Failed, $"失敗しました: {ex.Message}");
+                    result = new StepResult(step, StepStatus.Failed, L($"失敗しました: {ex.Message}"));
                 }
             }
             results.Add(result);
-            string line = $"お片付け: {step}: {result.Status}: {result.Message}";
+            string line = L($"お片付け: {step}: {result.Status}: {result.Message}");
             if (result.Status == StepStatus.Failed) Logger.Error(line);
             else if (result.Status is StepStatus.Warning or StepStatus.Skipped) Logger.Warn(line);
             else Logger.Info(line);
@@ -127,18 +127,18 @@ public partial class App
         {
             case CleanupStep.RestoreFans:
             {
-                if (_controller is null) return Done("ファンの制御は動いていませんでした");
-                Try("テスト", () => _window?.StopTestIfRunning());
+                if (_controller is null) return Done(L("ファンの制御は動いていませんでした"));
+                Try(L("テスト"), () => _window?.StopTestIfRunning());
                 // スリープに入るときと同じ道筋で、触ったすべての端子を BIOS に戻し、戻せたかを受け取る。
                 // ここで失敗しても、制御を再開すれば元どおり（このあとの手順は行わない）
                 var engine = _controller.Engine;
                 var suspend = engine.Suspend();
                 bool finished = await Task.WhenAny(suspend, Task.Delay(RestoreWait)) == suspend;
-                if (finished && suspend.Result) return Done("すべてのファンを BIOS の自動制御に戻しました");
+                if (finished && suspend.Result) return Done(L("すべてのファンを BIOS の自動制御に戻しました"));
                 engine.Resume();
                 return Fail(finished
-                    ? "BIOS 制御に戻せなかったファンの端子があります（端子の名前はログにあります）。"
-                    : $"{RestoreWait.TotalSeconds:F0} 秒たっても、ファンを BIOS 制御に戻し終わりませんでした。");
+                    ? L("BIOS 制御に戻せなかったファンの端子があります（端子の名前はログにあります）。")
+                    : L($"{RestoreWait.TotalSeconds:F0} 秒たっても、ファンを BIOS 制御に戻し終わりませんでした。"));
             }
             case CleanupStep.StopFanControl:
             {
@@ -152,40 +152,40 @@ public partial class App
                 _watchdogRunning = false;
                 if (stopped) Watchdog.SignalStop();
                 else await Task.Run(Watchdog.SignalStopUnsafe);
-                string watchdog = hadWatchdog ? (stopped ? "見張りプロセスも終わらせました" : "") : "";
+                string watchdog = hadWatchdog ? (stopped ? L("見張りプロセスも終わらせました") : "") : "";
                 return stopped
-                    ? Done("ファンの制御を止めて、ハードウェアを閉じました" + (watchdog.Length > 0 ? $"（{watchdog}）" : ""))
-                    : Fail("ファンの制御が 5 秒以内に止まりませんでした。ファンは BIOS 制御に戻してありますが、念のため"
-                           + (hadWatchdog ? "見張りプロセスが安全な回転数にしました" : "PC を再起動してください")
-                           + "（PC を再起動すると BIOS の制御に戻ります）。");
+                    ? Done(L("ファンの制御を止めて、ハードウェアを閉じました") + (watchdog.Length > 0 ? L($"（{watchdog}）") : ""))
+                    : Fail(L("ファンの制御が 5 秒以内に止まりませんでした。ファンは BIOS 制御に戻してありますが、念のため")
+                           + (hadWatchdog ? L("見張りプロセスが安全な回転数にしました") : L("PC を再起動してください"))
+                           + L("（PC を再起動すると BIOS の制御に戻ります）。"));
             }
             case CleanupStep.StopLighting:
             {
                 bool wasOn = _controller?.Config.Rgb.Enabled == true;
                 Rgb.Dispose();
-                return Done(wasOn ? "ライティングの制御を止めて、デバイスを離しました" : "ライティングの制御は使っていませんでした（接続を閉じました）");
+                return Done(wasOn ? L("ライティングの制御を止めて、デバイスを離しました") : L("ライティングの制御は使っていませんでした（接続を閉じました）"));
             }
             case CleanupStep.RemoveFirewallRule:
             {
-                Try("スマホ監視", () => _web?.Stop());
+                Try(L("スマホ監視"), () => _web?.Stop());
                 await Task.Run(WebServer.RemoveFirewall);
                 return await Task.Run(WebServer.FirewallRuleExists)
-                    ? Fail("ファイアウォールの許可を消せませんでした。「Windows セキュリティ」→「ファイアウォールとネットワーク保護」→「詳細設定」→「受信の規則」から「ProFanController Web」を削除してください。")
-                    : Done("スマホ監視を止めて、ファイアウォールの許可を消しました");
+                    ? Fail(L("ファイアウォールの許可を消せませんでした。「Windows セキュリティ」→「ファイアウォールとネットワーク保護」→「詳細設定」→「受信の規則」から「ProFanController Web」を削除してください。"))
+                    : Done(L("スマホ監視を止めて、ファイアウォールの許可を消しました"));
             }
             case CleanupStep.RemoveAutoStart:
             {
                 await Task.Run(AutoStart.Disable);
                 return await Task.Run(AutoStart.IsEnabled)
-                    ? Fail("自動起動を消せませんでした。タスクスケジューラ（タスク スケジューラ ライブラリ）から「ProFanController」を削除してください。")
-                    : Done("ログオン時の自動起動を消しました");
+                    ? Fail(L("自動起動を消せませんでした。タスクスケジューラ（タスク スケジューラ ライブラリ）から「ProFanController」を削除してください。"))
+                    : Done(L("ログオン時の自動起動を消しました"));
             }
             case CleanupStep.RemoveCrashDumpSetting:
             {
                 Registry.LocalMachine.DeleteSubKeyTree(CrashDumpKey, throwOnMissingSubKey: false);
                 return CrashDumpSettingExists()
-                    ? Warn($"クラッシュしたときの記録の設定を消せませんでした（HKEY_LOCAL_MACHINE\\{CrashDumpKey}）。そのままでも害はありません。")
-                    : Done("クラッシュしたときの記録の設定を消しました");
+                    ? Warn(L($"クラッシュしたときの記録の設定を消せませんでした（HKEY_LOCAL_MACHINE\\{CrashDumpKey}）。そのままでも害はありません。"))
+                    : Done(L("クラッシュしたときの記録の設定を消しました"));
             }
             case CleanupStep.UninstallPawnIo:
             {
@@ -196,11 +196,11 @@ public partial class App
                 }, PawnIoSetup.Timeout);
                 bool still = await Task.Run(PawnIoSetup.IsInstalled);
                 var r = PawnIoSetup.InterpretUninstall(run, still);
-                UI.PawnIoInstallPanel.LogRun("アンインストール", run, still, r);
-                return !r.Ok ? Fail(r.Message) : r.NeedsPcRestart ? Warn(r.Message) : Done(r.Message);
+                UI.PawnIoInstallPanel.LogRun(L("アンインストール"), run, still, r);
+                return !r.Ok ? Fail(r.Message) : r.NeedsPcRestart ? Warn(r.Message) with { PcRestart = true } : Done(r.Message);
             }
             default:
-                return new StepResult(step, StepStatus.Skipped, "ここでは行いません");
+                return new StepResult(step, StepStatus.Skipped, L("ここでは行いません"));
         }
     }
 
@@ -216,7 +216,7 @@ public partial class App
         {
             try
             {
-                string exe = Environment.ProcessPath ?? throw new InvalidOperationException("実行ファイルのパスが分かりません。");
+                string exe = Environment.ProcessPath ?? throw new InvalidOperationException(L("実行ファイルのパスが分かりません。"));
                 Process.Start(new ProcessStartInfo(exe, $"{CleanupDataArgument} {Environment.ProcessId}")
                 {
                     UseShellExecute = false,
@@ -228,11 +228,11 @@ public partial class App
             catch (Exception ex)
             {
                 Logger.Error($"設定・記録を消すプロセスを起動できません: {ex.Message}");
-                MessageBox.Show($"設定・ログ・記録を消す準備ができませんでした（{ex.Message}）。\nアプリが終了したあとに、フォルダーごと削除してください:\n{folder}",
+                MessageBox.Show(L($"設定・ログ・記録を消す準備ができませんでした（{ex.Message}）。\nアプリが終了したあとに、フォルダーごと削除してください:\n{folder}"),
                     "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-        if (!helperStarted) Try("フォルダーを開く", () => SystemTool.Reveal(folder));
+        if (!helperStarted) Try(L("フォルダーを開く"), () => SystemTool.Reveal(folder));
         Logger.Info($"お片付け: アプリを終了します（設定・記録を消す: {(helperStarted ? "終了後に行う" : "行わない")}）");
         ExitApplication();
     }
@@ -253,8 +253,8 @@ public partial class App
         var icon = MessageBoxImage.Information;
         if (!WaitForExit(parentPid, TimeSpan.FromSeconds(60)) || !WaitForOtherInstances(TimeSpan.FromSeconds(30)))
         {
-            message = "ProFanController がまだ動いているため、設定・ログ・記録は消しませんでした。\n"
-                      + $"アプリを終了してから、次のフォルダーをフォルダーごと削除してください:\n{folder}";
+            message = L("ProFanController がまだ動いているため、設定・ログ・記録は消しませんでした。\n")
+                      + L($"アプリを終了してから、次のフォルダーをフォルダーごと削除してください:\n{folder}");
             icon = MessageBoxImage.Warning;
         }
         else
@@ -262,19 +262,19 @@ public partial class App
             var failed = CleanUninstall.DeleteData(folder);
             if (failed.Count == 0)
             {
-                message = $"{CleanUninstall.DataDescription}を消しました。\n\n"
-                          + $"このお知らせを閉じると、エクスプローラーでアプリのフォルダーを開きます。フォルダーごと削除すれば、お片付けは終わりです:\n{folder}";
+                message = L($"{CleanUninstall.DataDescription}を消しました。\n\n")
+                          + L($"このお知らせを閉じると、エクスプローラーでアプリのフォルダーを開きます。フォルダーごと削除すれば、お片付けは終わりです:\n{folder}");
             }
             else
             {
-                message = "消せなかったものがあります（ほかのアプリが開いているかもしれません）:\n・"
-                          + string.Join("\n・", failed.Take(10)) + (failed.Count > 10 ? $"\n…ほか {failed.Count - 10} 個" : "")
-                          + $"\n\nこのお知らせを閉じたあと、次のフォルダーをフォルダーごと削除してください:\n{folder}";
+                message = L("消せなかったものがあります（ほかのアプリが開いているかもしれません）:\n・")
+                          + string.Join(L("\n・"), failed.Take(10)) + (failed.Count > 10 ? L($"\n…ほか {failed.Count - 10} 個") : "")
+                          + L($"\n\nこのお知らせを閉じたあと、次のフォルダーをフォルダーごと削除してください:\n{folder}");
                 icon = MessageBoxImage.Warning;
             }
         }
         // 本体の画面はもうないので、ほかのウィンドウの後ろに隠れないように出す（閉じるまでフォルダーを消せないため）
-        MessageBox.Show(message, "ProFanController のお片付け", MessageBoxButton.OK, icon, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+        MessageBox.Show(message, L("ProFanController のお片付け"), MessageBoxButton.OK, icon, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
         try { SystemTool.Reveal(folder); } catch { /* 開けなくても、お知らせで場所は伝えてある */ }
         return true;
     }

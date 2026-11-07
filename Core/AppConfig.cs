@@ -44,6 +44,9 @@ public sealed class AppConfig : ObservableObject
     public double EmergencyHotspotTemperature { get => _emergencyHotspotTemperature; set => Set(ref _emergencyHotspotTemperature, value); }
     /// <summary>手動起動時もウィンドウを出さずにタスクトレイで開始する（自動起動時は常にトレイ）</summary>
     public bool StartMinimized { get => _startMinimized; set => Set(ref _startMinimized, value); }
+    /// <summary>画面の言語（"ja"・"en"・"zh-Hans" など。空なら Windows の表示言語。変えたらアプリを起動し直して当てる）</summary>
+    public string Language { get => _language; set => Set(ref _language, value ?? ""); }
+    private string _language = "";
     /// <summary>手動で選んだプロファイル名（自動切り替えのルールに一致しないときに使う）</summary>
     public string ActiveProfile { get => _activeProfile; set => Set(ref _activeProfile, value); }
     public bool SetupCompleted { get => _setupCompleted; set => Set(ref _setupCompleted, value); }
@@ -92,7 +95,7 @@ public sealed class AppConfig : ObservableObject
     public static AppConfig FromJson(string json)
     {
         var cfg = JsonSerializer.Deserialize<AppConfig>(json, JsonOptions)
-                  ?? throw new InvalidDataException("config.json が空です。");
+                  ?? throw new InvalidDataException(L("config.json が空です。"));
         cfg.Normalize();
         return cfg;
     }
@@ -144,16 +147,16 @@ public sealed class AppConfig : ObservableObject
         // v1 → v2: ファン一覧をそのまま「標準」にし、静音／パフォーマンスを自動生成する
         if (Profiles.Count == 0 && Fans is { Count: > 0 })
         {
-            var standard = new ProfileConfig { Name = "標準", Role = ProfileRoles.Balanced, Fans = new ObservableCollection<FanConfig>(Fans) };
-            Profiles.Add(CurvePresets.DeriveProfile(standard, "静音", CurvePresets.Silent));
+            var standard = new ProfileConfig { Name = L("標準"), Role = ProfileRoles.Balanced, Fans = new ObservableCollection<FanConfig>(Fans) };
+            Profiles.Add(CurvePresets.DeriveProfile(standard, L("静音"), CurvePresets.Silent));
             Profiles.Add(standard);
-            Profiles.Add(CurvePresets.DeriveProfile(standard, "パフォーマンス", CurvePresets.Performance));
-            ActiveProfile = "標準";
+            Profiles.Add(CurvePresets.DeriveProfile(standard, L("パフォーマンス"), CurvePresets.Performance));
+            ActiveProfile = L("標準");
             SetupCompleted = true;
         }
         Fans = null;
 
-        if (Profiles.Count == 0) Profiles.Add(new ProfileConfig { Name = "標準", Role = ProfileRoles.Balanced });
+        if (Profiles.Count == 0) Profiles.Add(new ProfileConfig { Name = L("標準"), Role = ProfileRoles.Balanced });
         // 役割がまだないプロファイル（前の版の設定）は、名前から決める
         foreach (var p in Profiles) p.Role = string.IsNullOrEmpty(p.Role) ? ProfileRoles.FromName(p.Name) : ProfileRoles.Normalize(p.Role);
 
@@ -164,7 +167,7 @@ public sealed class AppConfig : ObservableObject
         foreach (var profile in Profiles)
         {
             string raw = profile.Name ?? "";
-            string name = string.IsNullOrWhiteSpace(raw) ? "プロファイル" : raw.Trim();
+            string name = string.IsNullOrWhiteSpace(raw) ? L("プロファイル") : raw.Trim();
             string unique = name;
             for (int i = 2; !names.Add(unique); i++) unique = $"{name} ({i})";
             renamed.TryAdd(raw, unique);
@@ -577,10 +580,10 @@ public sealed class VirtualSensorConfig : ObservableObject
     [JsonIgnore]
     public string KindText => Kind switch
     {
-        VirtualSensorKinds.Max => "最大値",
-        VirtualSensorKinds.Min => "最小値",
-        VirtualSensorKinds.Average => "平均値",
-        VirtualSensorKinds.Delta => "差分",
+        VirtualSensorKinds.Max => L("最大値"),
+        VirtualSensorKinds.Min => L("最小値"),
+        VirtualSensorKinds.Average => L("平均値"),
+        VirtualSensorKinds.Delta => L("差分"),
         _ => Kind,
     };
 }
@@ -1187,6 +1190,22 @@ public static class ConfigStore
     public static string FilePath => Path.Combine(AppContext.BaseDirectory, "config.json");
     public static string BackupDirectory => Path.Combine(AppContext.BaseDirectory, "backups");
 
+    /// <summary>
+    /// 設定の「表示言語」だけを、設定全体を読む前に取り出す（二重起動の案内・見張りプロセスの表示も、その言語で出すため）。
+    /// 読めなければ空（Windows の表示言語）
+    /// </summary>
+    public static string ReadLanguage(string? path = null)
+    {
+        try
+        {
+            using var doc = JsonDocument.Parse(File.ReadAllText(path ?? FilePath));
+            return doc.RootElement.TryGetProperty(nameof(AppConfig.Language), out var v) && v.ValueKind == JsonValueKind.String
+                ? v.GetString() ?? ""
+                : "";
+        }
+        catch { return ""; }
+    }
+
     /// <summary>復旧に使ったバックアップ（なければ null）。起動時の案内用</summary>
     public static string? RecoveredFrom { get; private set; }
 
@@ -1318,12 +1337,12 @@ public static class ConfigStore
         string reason = name.Split('_').Length >= 4 ? name.Split('_')[3] : "";
         return reason switch
         {
-            "startup" => "起動時",
-            "auto" => "自動",
-            "manual" => "手動",
-            "import" => "読み込み前",
-            "remap" => "部品交換の対応付け前",
-            "restore" => "復元前",
+            "startup" => L("起動時"),
+            "auto" => L("自動"),
+            "manual" => L("手動"),
+            "import" => L("読み込み前"),
+            "remap" => L("部品交換の対応付け前"),
+            "restore" => L("復元前"),
             _ => reason,
         };
     }
@@ -1331,5 +1350,5 @@ public static class ConfigStore
 
 public sealed record ConfigBackupInfo(string Path, DateTime Time, string Reason)
 {
-    public string Display => $"{Time:yyyy/MM/dd HH:mm}（{Reason}）";
+    public string Display => L($"{Time:yyyy/MM/dd HH:mm}（{Reason}）");
 }

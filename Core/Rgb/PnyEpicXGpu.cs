@@ -167,7 +167,7 @@ public sealed class PnyEpicXGpu
     public PnyEpicXGpu(II2cBlockWriter bus, string name)
     {
         _bus = bus;
-        var t = new Thread(Run) { IsBackground = true, Name = $"PNY 直接書き込み ({name})", Priority = ThreadPriority.AboveNormal };
+        var t = new Thread(Run) { IsBackground = true, Name = $"PNY 直接書き込み ({name})", /* no-loc: ログに出る名前 */ Priority = ThreadPriority.AboveNormal };
         t.Start();
     }
 

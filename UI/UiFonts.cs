@@ -10,8 +10,15 @@ namespace ProFanController.UI;
 
 public static class UiFonts
 {
-    /// <summary>グラフなど OnRender で描く文字用。XAML の UiFont と同じ組み合わせ</summary>
-    public static readonly FontFamily Family = new(
+    /// <summary>
+    /// グラフなど OnRender で描く文字用。XAML の UiFont と同じ組み合わせ。
+    /// 画面の言語のフォント（中国語・韓国語・タイ語など）を、日本語のフォントより先に探す（言語は起動時に決まるので、最初に使うときに作る）
+    /// </summary>
+    public static FontFamily Family => _family ??= new FontFamily(
         new Uri("pack://application:,,,/"),
-        "./Assets/Fonts/#Montserrat, ./Assets/Fonts/#ProFan Maru, Yu Gothic UI");
+        $"./Assets/Fonts/#Montserrat, {LanguageFonts}./Assets/Fonts/#ProFan Maru, Yu Gothic UI");
+    private static FontFamily? _family;
+
+    /// <summary>画面の言語で先に探すフォント（「…, 」の形。なければ空）</summary>
+    public static string LanguageFonts => Localization.Current.Fonts is { Length: > 0 } f ? f + ", " : "";
 }

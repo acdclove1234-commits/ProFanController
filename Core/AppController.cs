@@ -94,9 +94,9 @@ public sealed class AppController : IDisposable
         {
             string p = EffectiveProfile;
             if (p == Config.ActiveProfile) return null;
-            if (p == _quietProfile) return "ワンタッチ静音";
-            if (p == _autoProfile) return $"自動: {AutoProcess}";
-            if (p == _scheduleProfile) return "スケジュール";
+            if (p == _quietProfile) return L("ワンタッチ静音");
+            if (p == _autoProfile) return L($"自動: {AutoProcess}");
+            if (p == _scheduleProfile) return L("スケジュール");
             return null;
         }
     }
@@ -117,8 +117,8 @@ public sealed class AppController : IDisposable
                 if (t < TimeSpan.Zero) t = TimeSpan.Zero;
                 return t.TotalHours >= 1 ? $"{(int)t.TotalHours}:{t.Minutes:00}:{t.Seconds:00}" : $"{(int)t.TotalMinutes}:{t.Seconds:00}";
             }
-            if (_boostUntil is DateTime b) return $"ブースト中（残り {Left(b)}）";
-            if (_quietUntil is DateTime q) return $"静音モード中（残り {Left(q)}）";
+            if (_boostUntil is DateTime b) return L($"ブースト中（残り {Left(b)}）");
+            if (_quietUntil is DateTime q) return L($"静音モード中（残り {Left(q)}）");
             return null;
         }
     }

@@ -26,7 +26,7 @@ public partial class SetupWizard : Window
 
         if (catalog.PawnIoInstalled)
         {
-            PawnIoStatus.Text = $"✔ PawnIO ドライバ検出済み ／ ファン端子 {catalog.Controls.Count} 個を検出しました";
+            PawnIoStatus.Text = L($"✔ PawnIO ドライバ検出済み ／ ファン端子 {catalog.Controls.Count} 個を検出しました");
             PawnIoStatus.Foreground = Palette.Ok;
         }
         else
@@ -105,7 +105,7 @@ public partial class SetupWizard : Window
         }
 
         BackButton.Visibility = _step > 1 ? Visibility.Visible : Visibility.Hidden;
-        NextButton.Content = _step == 4 ? "完了して適用" : "次へ";
+        NextButton.Content = _step == 4 ? L("完了して適用") : L("次へ");
         if (_step == 4) SummaryText.Text = BuildSummary();
     }
 
@@ -113,12 +113,12 @@ public partial class SetupWizard : Window
     {
         if (_step == 2 && !_channels.Any(c => c.Role != WizardChannelVm.RoleUnused))
         {
-            MessageBox.Show(this, "少なくとも 1 つの端子を「ファン」か「ポンプ」にしてください。", Title, MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("少なくとも 1 つの端子を「ファン」か「ポンプ」にしてください。"), Title, MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         if (_step == 3 && CpuSensorCombo.SelectedItem is null)
         {
-            MessageBox.Show(this, "CPU の温度センサーを選んでください。", Title, MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("CPU の温度センサーを選んでください。"), Title, MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         if (_step < 4)
@@ -153,25 +153,25 @@ public partial class SetupWizard : Window
 
     private static string ProfileNameFor(string preset) => preset switch
     {
-        CurvePresets.Silent => "静音",
-        CurvePresets.Performance => "パフォーマンス",
-        _ => "標準",
+        CurvePresets.Silent => L("静音"),
+        CurvePresets.Performance => L("パフォーマンス"),
+        _ => L("標準"),
     };
 
     private string BuildSummary()
     {
         var used = _channels.Where(c => c.Role != WizardChannelVm.RoleUnused).ToList();
         var lines = used.Select(c => c.Role == FanRoles.Pump
-            ? $"・{c.Name}（ポンプ）: {(PumpControlSwitch.IsChecked == true ? "固定 70% で制御" : "BIOS 制御のまま監視")}"
-            : $"・{c.Name}（ファン）: {SourceText(c.Source)} に連動");
-        return $"作成するプロファイル: 静音 ／ 標準 ／ パフォーマンス\n普段使うプロファイル: {ProfileNameFor(SelectedPreset)}\n\n" +
+            ? L($"・{c.Name}（ポンプ）: {(PumpControlSwitch.IsChecked == true ? L("固定 70% で制御") : L("BIOS 制御のまま監視"))}")
+            : L($"・{c.Name}（ファン）: {SourceText(c.Source)} に連動"));
+        return L($"作成するプロファイル: {ProfileNameFor(CurvePresets.Silent)} ／ {ProfileNameFor(CurvePresets.Balanced)} ／ {ProfileNameFor(CurvePresets.Performance)}\n普段使うプロファイル: {ProfileNameFor(SelectedPreset)}\n\n") +
                string.Join("\n", lines);
     }
 
     private static string SourceText(string source) => source switch
     {
         WizardChannelVm.SourceGpu => "GPU",
-        WizardChannelVm.SourceBoth => "CPU と GPU",
+        WizardChannelVm.SourceBoth => L("CPU と GPU"),
         _ => "CPU",
     };
 

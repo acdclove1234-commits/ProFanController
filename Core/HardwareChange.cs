@@ -79,7 +79,7 @@ public static class SensorRemapper
         {
             // 同じ部品（名前まで同じ）にあれば最優先
             var exact = same.FirstOrDefault(t => t.Name == old.Name && t.HardwareName == old.Hardware) ?? same.FirstOrDefault(t => t.Name == old.Name);
-            if (exact is not null) return (exact, "同じ名前のセンサー");
+            if (exact is not null) return (exact, L("同じ名前のセンサー"));
         }
 
         string name = old?.Name ?? "";
@@ -89,22 +89,22 @@ public static class SensorRemapper
             if (name.Contains("Hot Spot", StringComparison.OrdinalIgnoreCase) || name.Contains("Junction", StringComparison.OrdinalIgnoreCase))
             {
                 var hs = same.FirstOrDefault(t => t.Name.Contains("Hot Spot", StringComparison.OrdinalIgnoreCase));
-                if (hs is not null) return (hs, "同じ役割のセンサー");
-                return (core, "新しい GPU には Hot Spot がないため、GPU 温度（Core）を使います");
+                if (hs is not null) return (hs, L("同じ役割のセンサー"));
+                return (core, L("新しい GPU には Hot Spot がないため、GPU 温度（Core）を使います"));
             }
             if (name.Contains("Memory", StringComparison.OrdinalIgnoreCase))
             {
                 var mem = same.FirstOrDefault(t => t.Name.Contains("Memory", StringComparison.OrdinalIgnoreCase));
-                if (mem is not null) return (mem, "同じ役割のセンサー");
+                if (mem is not null) return (mem, L("同じ役割のセンサー"));
             }
-            return (core, old is null ? "GPU の温度（Core）を使います" : "GPU の温度（Core）に読み替えます");
+            return (core, old is null ? L("GPU の温度（Core）を使います") : L("GPU の温度（Core）に読み替えます"));
         }
         if (cat == "Cpu")
         {
             var main = CpuMain.Select(n => same.FirstOrDefault(t => t.Name == n)).FirstOrDefault(t => t is not null) ?? same.FirstOrDefault();
-            return (main, "CPU の代表的な温度に読み替えます");
+            return (main, L("CPU の代表的な温度に読み替えます"));
         }
-        return (null, "対応するセンサーが見つかりません");
+        return (null, L("対応するセンサーが見つかりません"));
     }
 
     /// <summary>古い制御端子と同じ端子を探す（同じチップの同じ名前 → 同じ名前）</summary>
@@ -146,7 +146,7 @@ public static class HardwareChange
         {
             // ドライバの問題で何も見えていないときは判断しない
             report.NotReady = true;
-            report.NotReadyReason = "温度センサーがまだ 1 つも見えていません";
+            report.NotReadyReason = L("温度センサーがまだ 1 つも見えていません");
             return report;
         }
         if (!force && NotReadyReason(cfg, catalog) is { } why)
@@ -164,8 +164,8 @@ public static class HardwareChange
             var gone = before.Except(now).ToList();
             var added = now.Except(before).ToList();
             if (before.Count == 0 || (gone.Count == 0 && added.Count == 0)) continue;
-            string label = kind switch { "Gpu" => "グラフィックス", "Cpu" => "CPU", _ => "マザーボード" };
-            report.DeviceChanges.Add($"{label}: {(gone.Count > 0 ? string.Join(" / ", gone) : "なし")} → {(added.Count > 0 ? string.Join(" / ", added) : "なし")}");
+            string label = kind switch { "Gpu" => L("グラフィックス"), "Cpu" => "CPU", _ => L("マザーボード") };
+            report.DeviceChanges.Add($"{label}: {(gone.Count > 0 ? string.Join(" / ", gone) : L("なし"))} → {(added.Count > 0 ? string.Join(" / ", added) : L("なし"))}");
         }
 
         // --- 消えた温度センサー
@@ -181,7 +181,7 @@ public static class HardwareChange
                 OldId = id,
                 OldName = label?.Name ?? id,
                 OldHardware = label?.Hardware ?? "",
-                Usage = string.Join("、", usage[id].Distinct().Take(4)),
+                Usage = string.Join(L("、"), usage[id].Distinct().Take(4)),
                 NewId = match?.Id,
                 Note = note,
             });
@@ -206,9 +206,9 @@ public static class HardwareChange
                         OldId = fan.ControlId,
                         OldName = fan.Name,
                         OldHardware = l?.Hardware ?? "",
-                        Usage = fan.IsPump ? "ポンプ（回転数の監視）" : "ファン（回転数）",
+                        Usage = fan.IsPump ? L("ポンプ（回転数の監視）") : L("ファン（回転数）"),
                         NewId = fan.ControlId,
-                        Note = "回転数センサーが見つからないため、同じ端子の回転数センサーに付け替えます",
+                        Note = L("回転数センサーが見つからないため、同じ端子の回転数センサーに付け替えます"),
                     });
                 }
                 continue;
@@ -223,12 +223,12 @@ public static class HardwareChange
                 OldId = fan.ControlId,
                 OldName = fan.Name,
                 OldHardware = label?.Hardware ?? "",
-                Usage = fan.IsPump ? "ポンプ" : "ファン",
+                Usage = fan.IsPump ? L("ポンプ") : L("ファン"),
                 NewId = match?.Id,
-                Note = match is not null ? "同じ名前の端子"
-                    : !ControlCategoryPresent(catalog, fan.ControlId) ? "この種類の端子がまだ見えていません（消さずに BIOS 制御にして残します）"
-                    : fan.IsGpuFan ? "GPU のファンは交換した GPU では使えません（削除します）"
-                    : "対応する端子が見つかりません",
+                Note = match is not null ? L("同じ名前の端子")
+                    : !ControlCategoryPresent(catalog, fan.ControlId) ? L("この種類の端子がまだ見えていません（消さずに BIOS 制御にして残します）")
+                    : fan.IsGpuFan ? L("GPU のファンは交換した GPU では使えません（削除します）")
+                    : L("対応する端子が見つかりません"),
             });
         }
         return report;
@@ -242,14 +242,14 @@ public static class HardwareChange
     /// </summary>
     public static string? NotReadyReason(AppConfig cfg, HardwareCatalog catalog)
     {
-        if (catalog.Temperatures.Count == 0) return "温度センサーがまだ 1 つも見えていません";
+        if (catalog.Temperatures.Count == 0) return L("温度センサーがまだ 1 つも見えていません");
         var controls = catalog.Controls.Select(c => c.Id).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var fan in cfg.Profiles.SelectMany(p => p.Fans))
         {
             if (string.IsNullOrEmpty(fan.ControlId) || controls.Contains(fan.ControlId)) continue;
             if (fan.IsGpuFan && !cfg.Safety.AllowGpuFanControl) continue;
             if (!ControlCategoryPresent(catalog, fan.ControlId))
-                return fan.IsGpuFan ? "GPU がまだ見えていません" : "マザーボードのファン端子（Super I/O）がまだ 1 つも見えていません";
+                return fan.IsGpuFan ? L("GPU がまだ見えていません") : L("マザーボードのファン端子（Super I/O）がまだ 1 つも見えていません");
         }
         var known = catalog.AllSensors.Select(s => s.Id).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var id in UsageMap(cfg).Keys)
@@ -260,7 +260,7 @@ public static class HardwareChange
             // ファン制御に関わる種類だけ確かめる（SSD などは外すこともあるので、見えなくても待たない）
             if (cat is not ("Cpu" or "Gpu" or "Board")) continue;
             if (!catalog.Temperatures.Any(t => SensorRemapper.Category(t.HardwareType) == cat))
-                return $"{CategoryLabel(cat)}温度センサーがまだ 1 つも見えていません";
+                return L($"{CategoryLabel(cat)}温度センサーがまだ 1 つも見えていません");
         }
         return null;
     }
@@ -268,10 +268,10 @@ public static class HardwareChange
     /// <summary>「CPU の」のような、理由の文に使う部品の種類の名前</summary>
     private static string CategoryLabel(string cat) => cat switch
     {
-        "Cpu" => "CPU の",
-        "Gpu" => "GPU の",
-        "Board" => "マザーボードの",
-        _ => cat + " の",
+        "Cpu" => L("CPU の"),
+        "Gpu" => L("GPU の"),
+        "Board" => L("マザーボードの"),
+        _ => cat + L(" の"),
     };
 
     /// <summary>
@@ -339,15 +339,15 @@ public static class HardwareChange
         }
         foreach (var f in cfg.Profiles.SelectMany(p => p.Fans))
         {
-            foreach (var c in f.Curves) Add(c.SensorId, $"{f.Name}「{c.Name}」");
-            if (f.Mode == FanModes.Target) Add(f.TargetSensorId, $"{f.Name}（目標温度）");
+            foreach (var c in f.Curves) Add(c.SensorId, L($"{f.Name}「{c.Name}」"));
+            if (f.Mode == FanModes.Target) Add(f.TargetSensorId, L($"{f.Name}（目標温度）"));
         }
         foreach (var v in cfg.VirtualSensors)
         {
-            foreach (var s in v.Sources) Add(s, $"仮想センサー「{v.Name}」");
+            foreach (var s in v.Sources) Add(s, L($"仮想センサー「{v.Name}」"));
         }
-        foreach (var c in cfg.DashboardCards) Add(c.SensorId, $"ダッシュボード「{c.Title}」");
-        if (cfg.Rgb.SensorId.Length > 0) Add(cfg.Rgb.SensorId, "LED の色");
+        foreach (var c in cfg.DashboardCards) Add(c.SensorId, L($"ダッシュボード「{c.Title}」"));
+        if (cfg.Rgb.SensorId.Length > 0) Add(cfg.Rgb.SensorId, L("LED の色"));
         return map;
     }
 

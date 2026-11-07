@@ -66,8 +66,8 @@ public static class HealthAnalyzer
 
         var fanDutyKeys = cfg.Profiles.SelectMany(p => p.Fans).Where(f => !f.IsPump && !f.IsGpuFan)
             .Select(f => HistoryStore.DutyKey(f.ControlId)).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
-        AddCooling(list, "CPU の冷え方", StatRoles.CpuTemp, StatRoles.CpuPower, 30, 20, data, baseRows, recentRows, enough, days, fanDutyKeys);
-        AddCooling(list, "GPU の冷え方", StatRoles.GpuTemp, StatRoles.GpuPower, 60, 35, data, baseRows, recentRows, enough, days, fanDutyKeys);
+        AddCooling(list, L("CPU の冷え方"), StatRoles.CpuTemp, StatRoles.CpuPower, 30, 20, data, baseRows, recentRows, enough, days, fanDutyKeys);
+        AddCooling(list, L("GPU の冷え方"), StatRoles.GpuTemp, StatRoles.GpuPower, 60, 35, data, baseRows, recentRows, enough, days, fanDutyKeys);
         return list;
     }
 
@@ -82,7 +82,7 @@ public static class HealthAnalyzer
         var cal = cfg.FindCalibration(fan.ControlId);
         bool calBase = cal is not null && cal.Points.Count >= 3 && now - cal.MeasuredAt >= Window && cal.MeasuredAt >= since;
         if (!enough && !calBase)
-            return Collecting(fan.Name, $"データを集めています（比べられるまで あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。キャリブレーション済みなら、その 7 日後から判定できます。");
+            return Collecting(fan.Name, L($"データを集めています（比べられるまで あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。キャリブレーション済みなら、その 7 日後から判定できます。"));
 
         var recent = Buckets(recentRows, dutyKey, rpmKey);
         Dictionary<int, (double Median, int Count)> baseline;
@@ -90,29 +90,29 @@ public static class HealthAnalyzer
         if (calBase)
         {
             baseline = recent.Keys.Where(k => cal!.EstimateRpm(k) is double).ToDictionary(k => k, k => (cal!.EstimateRpm(k)!.Value, int.MaxValue));
-            baseText = $"{cal!.MeasuredAt:M/d} のキャリブレーション";
+            baseText = L($"{cal!.MeasuredAt:M/d} のキャリブレーション");
         }
         else
         {
             baseline = Buckets(baseRows, dutyKey, rpmKey).ToDictionary(b => b.Key, b => (Median(b.Value), b.Value.Count));
-            baseText = $"{baseRows.FirstOrDefault()?.Time:M/d} ごろ";
+            baseText = L($"{baseRows.FirstOrDefault()?.Time:M/d} ごろ");
         }
 
         var compare = recent.Where(b => b.Value.Count >= MinSamples && baseline.TryGetValue(b.Key, out var bv) && bv.Count >= MinSamples && bv.Median > 100)
             .Select(b => (Duty: b.Key, Recent: Median(b.Value), Base: baseline[b.Key].Median, Weight: Math.Min(b.Value.Count, baseline[b.Key].Count)))
             .ToList();
         if (compare.Count == 0)
-            return Collecting(fan.Name, "同じ回転の指示（Duty）で回っていた時間が、基準と最近の両方でまだ少ないため、比べられません。");
+            return Collecting(fan.Name, L("同じ回転の指示（Duty）で回っていた時間が、基準と最近の両方でまだ少ないため、比べられません。"));
 
         double change = compare.Sum(c => (c.Recent - c.Base) / c.Base * c.Weight) / compare.Sum(c => c.Weight);
         var main = compare.OrderByDescending(c => c.Weight).First();
-        string metric = $"{main.Duty}% 時 {main.Recent:N0} rpm（{baseText} {main.Base:N0} rpm）";
+        string metric = L($"{main.Duty}% 時 {main.Recent:N0} rpm（{baseText} {main.Base:N0} rpm）");
         int recentMinutes = compare.Sum(c => recent[c.Duty].Count);
 
         // 変わり方: 日ごとの「基準からの変化」の並びで、急な段差か、じわじわか
         var daily = DailyFanChange(data, dutyKey, rpmKey, compare.ToDictionary(c => c.Duty, c => c.Base));
         var shape = Shape(daily);
-        string when = shape.Sudden && shape.StepDay is DateTime d ? $"{d:M/d} ごろから急に" : "少しずつ";
+        string when = shape.Sudden && shape.StepDay is DateTime d ? L($"{d:M/d} ごろから急に") : L("少しずつ");
 
         HealthLevel level;
         string detail;
@@ -120,27 +120,27 @@ public static class HealthAnalyzer
         {
             level = change <= -0.20 ? HealthLevel.Danger : HealthLevel.Warning;
             detail = fan.IsPump
-                ? $"ポンプの回転数が{when}下がっています。ポンプの劣化や、冷却液の減少が考えられます。" + (level == HealthLevel.Danger ? "早めに点検してください。" : "さらに下がるようなら点検してください。")
+                ? L($"ポンプの回転数が{when}下がっています。ポンプの劣化や、冷却液の減少が考えられます。") + (level == HealthLevel.Danger ? L("早めに点検してください。") : L("さらに下がるようなら点検してください。"))
                 : shape.Sudden
-                    ? $"回転数が{when}下がっています。羽根にケーブルなどが当たっていないか、配線がゆるんでいないか確認してください。直らなければファンの不調が考えられます。"
-                    : "回転数が少しずつ下がっています。羽根やフィルターのホコリを掃除してください。掃除しても戻らなければ、軸受けの劣化が考えられるので交換を検討してください。";
+                    ? L($"回転数が{when}下がっています。羽根にケーブルなどが当たっていないか、配線がゆるんでいないか確認してください。直らなければファンの不調が考えられます。")
+                    : L("回転数が少しずつ下がっています。羽根やフィルターのホコリを掃除してください。掃除しても戻らなければ、軸受けの劣化が考えられるので交換を検討してください。");
         }
         else if (change >= 0.12)
         {
             // 回転が上がる: 交換・つなぎ替えのほか、吸気がふさがって空気が流れにくいとファンは軽く回って速くなる
             level = !shape.Sudden && change >= 0.20 && !fan.IsPump ? HealthLevel.Warning : HealthLevel.Info;
             detail = fan.IsPump
-                ? $"ポンプが{when}速く回るようになっています。ポンプを交換した・つなぎ替えた場合は問題ありません。そうでなければ、冷却液の減少（空回り）を確認してください。"
+                ? L($"ポンプが{when}速く回るようになっています。ポンプを交換した・つなぎ替えた場合は問題ありません。そうでなければ、冷却液の減少（空回り）を確認してください。")
                 : shape.Sudden
-                    ? $"{when}速く回るようになっています。ファンを交換した・つなぎ替えた場合は問題ありません。そうでなければ、吸気のフィルターがふさがっていないか確認してください（空気が流れにくいと、ファンは軽く回って速くなります）。"
-                    : "少しずつ速く回るようになっています。吸気のフィルターやラジエーターが目詰まりして、空気が流れにくくなっている可能性があります（空気が流れにくいと、ファンは軽く回って速くなります）。掃除してください。";
+                    ? L($"{when}速く回るようになっています。ファンを交換した・つなぎ替えた場合は問題ありません。そうでなければ、吸気のフィルターがふさがっていないか確認してください（空気が流れにくいと、ファンは軽く回って速くなります）。")
+                    : L("少しずつ速く回るようになっています。吸気のフィルターやラジエーターが目詰まりして、空気が流れにくくなっている可能性があります（空気が流れにくいと、ファンは軽く回って速くなります）。掃除してください。");
         }
         else
         {
             level = HealthLevel.Good;
-            detail = "回転数は以前と変わらず、正常です。";
+            detail = L("回転数は以前と変わらず、正常です。");
         }
-        detail += $"（比べた時間: 最近 {recentMinutes} 分）";
+        detail += L($"（比べた時間: 最近 {recentMinutes} 分）");
         return new HealthItem { Title = fan.Name, Level = level, Detail = detail, Metric = metric, Change = change };
     }
 
@@ -192,7 +192,7 @@ public static class HealthAnalyzer
         if (data.Count > 0 && !data.Any(r => r.Role(tempRole) is not null && r.Role(powerRole) is not null)) return;
         if (!enough)
         {
-            list.Add(Collecting(title, $"データを集めています（あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。"));
+            list.Add(Collecting(title, L($"データを集めています（あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。")));
             return;
         }
 
@@ -206,7 +206,7 @@ public static class HealthAnalyzer
             .ToList();
         if (compare.Count == 0 || bMin < MinLoadMinutes || rMin < MinLoadMinutes)
         {
-            list.Add(Collecting(title, $"負荷をかけた時間（ゲームなど）と、休んでいる時間の記録がまだ少ないため、比べられません（基準 {bMin} 分・最近 {rMin} 分。それぞれ {MinLoadMinutes} 分以上必要）。"));
+            list.Add(Collecting(title, L($"負荷をかけた時間（ゲームなど）と、休んでいる時間の記録がまだ少ないため、比べられません（基準 {bMin} 分・最近 {rMin} 分。それぞれ {MinLoadMinutes} 分以上必要）。")));
             return;
         }
 
@@ -219,9 +219,9 @@ public static class HealthAnalyzer
             {
                 Title = title,
                 Level = HealthLevel.Info,
-                Detail = $"負荷をかけたときのファンの回転の指示が、以前と変わっています（{dutyB:F0}% → {dutyR:F0}%）。ファンカーブを変えたなら、冷え方の違いはその影響なので、" +
-                         "ホコリかどうかは判定していません。新しい設定で比べ直すには「掃除した（ここを新しい基準にする）」を押してください。",
-                Metric = $"ファンの指示 {dutyB:F0}% → {dutyR:F0}%",
+                Detail = L($"負荷をかけたときのファンの回転の指示が、以前と変わっています（{dutyB:F0}% → {dutyR:F0}%）。ファンカーブを変えたなら、冷え方の違いはその影響なので、") +
+                         L("ホコリかどうかは判定していません。新しい設定で比べ直すには「掃除した（ここを新しい基準にする）」を押してください。"),
+                Metric = L($"ファンの指示 {dutyB:F0}% → {dutyR:F0}%"),
             });
             return;
         }
@@ -229,15 +229,15 @@ public static class HealthAnalyzer
         double change = compare.Sum(c => (c.Recent - c.Base) / c.Base * c.Weight) / compare.Sum(c => c.Weight);
         var main = compare.OrderByDescending(c => c.Weight).First();
         // 温度の上がり幅に直す（例: 休んでいるときより 80 W 多いとき、0.40°C/W → 32°C 上昇）
-        string metric = $"{main.Power} W 分の温度上昇 {main.Recent * main.Power:F0}°C（以前 {main.Base * main.Power:F0}°C）";
+        string metric = L($"{main.Power} W 分の温度上昇 {main.Recent * main.Power:F0}°C（以前 {main.Base * main.Power:F0}°C）");
         var (level, detail) = change switch
         {
-            >= 0.25 => (HealthLevel.Warning, "以前より明らかに冷えにくくなっています。フィルター・ラジエーター・ヒートシンクのホコリを掃除してください。改善しなければグリスの劣化も考えられます。"),
-            >= 0.12 => (HealthLevel.Info, "以前より少し冷えにくくなっています。そろそろフィルターやラジエーターの掃除をおすすめします。"),
-            <= -0.15 => (HealthLevel.Info, "以前よりよく冷えるようになっています。掃除・部品の交換・ファンの追加などをした場合は問題ありません。"),
-            _ => (HealthLevel.Good, "以前と同じように冷えています。"),
+            >= 0.25 => (HealthLevel.Warning, L("以前より明らかに冷えにくくなっています。フィルター・ラジエーター・ヒートシンクのホコリを掃除してください。改善しなければグリスの劣化も考えられます。")),
+            >= 0.12 => (HealthLevel.Info, L("以前より少し冷えにくくなっています。そろそろフィルターやラジエーターの掃除をおすすめします。")),
+            <= -0.15 => (HealthLevel.Info, L("以前よりよく冷えるようになっています。掃除・部品の交換・ファンの追加などをした場合は問題ありません。")),
+            _ => (HealthLevel.Good, L("以前と同じように冷えています。")),
         };
-        detail += $"（比べた時間: 基準 {bMin} 分・最近 {rMin} 分。室温の違いは差し引いています）";
+        detail += L($"（比べた時間: 基準 {bMin} 分・最近 {rMin} 分。室温の違いは差し引いています）");
         list.Add(new HealthItem { Title = title, Level = level, Detail = detail, Metric = metric, Change = change });
     }
 

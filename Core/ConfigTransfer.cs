@@ -29,7 +29,7 @@ public sealed class SettingsPackage
     /// <summary>使っているセンサー・端子の名前（別の PC で同じ役割のものを探すため）</summary>
     public Dictionary<string, SensorLabel> Labels { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
-    public string DevicesText => Devices.Count == 0 ? "" : string.Join(" ／ ", Devices.Where(d => d.Kind is "Motherboard" or "Cpu" or "Gpu").Select(d => d.Name));
+    public string DevicesText => Devices.Count == 0 ? "" : string.Join(L(" ／ "), Devices.Where(d => d.Kind is "Motherboard" or "Cpu" or "Gpu").Select(d => d.Name));
 }
 
 public static class ConfigTransfer
@@ -78,9 +78,9 @@ public static class ConfigTransfer
     public static SettingsPackage Load(string path)
     {
         var pkg = JsonSerializer.Deserialize<SettingsPackage>(File.ReadAllText(path), Options)
-                  ?? throw new InvalidDataException("ファイルが空です。");
-        if (pkg.Format != SettingsPackage.FormatName) throw new InvalidDataException("ProFanController の設定ファイルではありません。");
-        if (pkg.Profiles.Count == 0) throw new InvalidDataException("プロファイルが入っていません。");
+                  ?? throw new InvalidDataException(L("ファイルが空です。"));
+        if (pkg.Format != SettingsPackage.FormatName) throw new InvalidDataException(L("ProFanController の設定ファイルではありません。"));
+        if (pkg.Profiles.Count == 0) throw new InvalidDataException(L("プロファイルが入っていません。"));
         foreach (var f in pkg.Profiles.SelectMany(p => p.Fans)) f.Normalize();
         return pkg;
     }
@@ -99,9 +99,9 @@ public static class ConfigTransfer
                 OldId = fan.ControlId,
                 OldName = fan.Name,
                 OldHardware = label?.Hardware ?? "",
-                Usage = fan.IsPump ? "ポンプ" : "ファン",
+                Usage = fan.IsPump ? L("ポンプ") : L("ファン"),
                 NewId = match?.Id,
-                Note = match is null ? "対応する端子が見つかりません（読み込まない）" : match.Id == fan.ControlId ? "同じ端子" : "同じ名前の端子",
+                Note = match is null ? L("対応する端子が見つかりません（読み込まない）") : match.Id == fan.ControlId ? L("同じ端子") : L("同じ名前の端子"),
             });
         }
 
@@ -119,7 +119,7 @@ public static class ConfigTransfer
             if (here is not null && (label is null || here.Name == label.Name))
             {
                 match = here;
-                note = "同じセンサー";
+                note = L("同じセンサー");
             }
             else
             {
@@ -176,8 +176,8 @@ public static class ConfigTransfer
             {
                 if (existing is not null)
                 {
-                    string name = $"{p.Name}（読み込み）";
-                    for (int i = 2; cfg.FindProfile(name) is not null; i++) name = $"{p.Name}（読み込み {i}）";
+                    string name = L($"{p.Name}（読み込み）");
+                    for (int i = 2; cfg.FindProfile(name) is not null; i++) name = L($"{p.Name}（読み込み {i}）");
                     p.Name = name;
                 }
                 cfg.Profiles.Add(p);
@@ -211,9 +211,9 @@ public static class ConfigTransfer
         cfg.Normalize();
 
         int dropped = map.Count(m => m.IsControl && m.NewId is null);
-        summary = $"{added + replaced} 個のプロファイルを読み込みました（追加 {added}・置き換え {replaced}）"
-                  + (dropped > 0 ? $"。対応する端子がない {dropped} 個のファンは読み込んでいません" : "")
-                  + (otherPc ? "。安全のため、読み込んだファンは「このツールで制御する」をオフにしてあります" : "");
+        summary = L($"{added + replaced} 個のプロファイルを読み込みました（追加 {added}・置き換え {replaced}）")
+                  + (dropped > 0 ? L($"。対応する端子がない {dropped} 個のファンは読み込んでいません") : "")
+                  + (otherPc ? L("。安全のため、読み込んだファンは「このツールで制御する」をオフにしてあります") : "");
         return cfg;
     }
 }

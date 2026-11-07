@@ -24,7 +24,7 @@ public static class AutoStart
     /// </summary>
     public static bool Enable(string? exePath = null)
     {
-        string exe = exePath ?? Environment.ProcessPath ?? throw new InvalidOperationException("実行ファイルのパスを取得できません。");
+        string exe = exePath ?? Environment.ProcessPath ?? throw new InvalidOperationException(L("実行ファイルのパスを取得できません。"));
         string workDir = Path.GetDirectoryName(exe) ?? AppContext.BaseDirectory;
         string user = $"{Environment.UserDomainName}\\{Environment.UserName}";
 

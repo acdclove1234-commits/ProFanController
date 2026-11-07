@@ -20,7 +20,7 @@ public sealed class Fft
 
     public Fft(int size)
     {
-        if (size < 2 || (size & (size - 1)) != 0) throw new ArgumentException("FFT の大きさは 2 のべき乗にする", nameof(size));
+        if (size < 2 || (size & (size - 1)) != 0) throw new ArgumentException(L("FFT の大きさは 2 のべき乗にする"), nameof(size));
         Size = size;
         _rev = new int[size];
         int bits = 0;

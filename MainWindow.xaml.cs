@@ -86,8 +86,8 @@ public partial class MainWindow : Window
         var version = typeof(MainWindow).Assembly.GetName().Version;
         AboutText.Text =
             $"ProFanController {version?.ToString(3)}\n" +
-            "ハードウェアアクセス: LibreHardwareMonitor + PawnIO\n" +
-            $"設定ファイル: {ConfigStore.FilePath}";
+            L("ハードウェアアクセス: LibreHardwareMonitor + PawnIO\n") +
+            L($"設定ファイル: {ConfigStore.FilePath}");
 
         SourceInitialized += (_, _) => ThemeManager.ApplyTitleBar(this);
         Loaded += async (_, _) =>
@@ -374,7 +374,7 @@ public partial class MainWindow : Window
         if (SettingsPage.Visibility == Visibility.Visible && SettingsLink.Visibility == Visibility.Visible && s.Time.Second % 2 == 0)
         {
             UpdateRgbStatus();
-            if (CurrentApp.Notifier.LastResult.Length > 0 && !NotifyStatus.Text.StartsWith("送信")) NotifyStatus.Text = CurrentApp.Notifier.LastResult;
+            if (CurrentApp.Notifier.LastResult.Length > 0 && NotifyStatus.Text != L("送信しています…")) NotifyStatus.Text = CurrentApp.Notifier.LastResult;
         }
 
         var cpuCard = _tempCards.FirstOrDefault();
@@ -385,23 +385,23 @@ public partial class MainWindow : Window
     private void UpdateStatusPanel(EngineSnapshot s)
     {
         if (s.Emergency)
-            SetStatus("緊急全開", "温度が上限に達しています", Palette.Danger);
+            SetStatus(L("緊急全開"), L("温度が上限に達しています"), Palette.Danger);
         else if (s.BoostUntil is not null)
-            SetStatus("ブースト中", "ポンプ以外を 100% で回しています", Palette.Accent2);
+            SetStatus(L("ブースト中"), L("ポンプ以外を 100% で回しています"), Palette.Accent2);
         else if (s.Paused)
-            SetStatus("一時停止中", "BIOS 制御（ポンプ監視は継続）", Palette.Warn);
+            SetStatus(L("一時停止中"), L("BIOS 制御（ポンプ監視は継続）"), Palette.Warn);
         else if (s.DryRun)
-            SetStatus("DRY RUN", "計算だけで、ファンには書き込んでいません（ポンプ保護は働きます）。下のボタンで制御を始めます", Palette.Warn);
+            SetStatus("DRY RUN", L("計算だけで、ファンには書き込んでいません（ポンプ保護は働きます）。下のボタンで制御を始めます"), Palette.Warn);
         else if (s.Fans.Any(f => f.State == FanState.SensorMissing))
-            SetStatus("制御中（要確認）", "見つからないセンサーがあります（部品の交換など）", Palette.Warn);
+            SetStatus(L("制御中（要確認）"), L("見つからないセンサーがあります（部品の交換など）"), Palette.Warn);
         else if (s.Suspects is { Count: > 0 })
-            SetStatus("制御中（要確認）", "値が固まっているセンサーがあります", Palette.Warn);
+            SetStatus(L("制御中（要確認）"), L("値が固まっているセンサーがあります"), Palette.Warn);
         else
-            SetStatus("制御中", $"{s.Fans.Count(f => f.State is FanState.Active or FanState.Manual or FanState.GpuGuard)} 個を制御中", Palette.Ok);
+            SetStatus(L("制御中"), L($"{s.Fans.Count(f => f.State is FanState.Active or FanState.Manual or FanState.GpuGuard)} 個を制御中"), Palette.Ok);
 
         // DRY RUN 中は、ここから 1 回で制御を始められるようにする（設定画面の奥まで行かなくてよいように）
-        PauseButton.Content = s.DryRun && !s.Paused ? "制御を開始する（DRY RUN を解除）"
-            : s.Paused ? "制御を再開する" : "一時停止（BIOS に戻す）";
+        PauseButton.Content = s.DryRun && !s.Paused ? L("制御を開始する（DRY RUN を解除）")
+            : s.Paused ? L("制御を再開する") : L("一時停止（BIOS に戻す）");
     }
 
     private void SetStatus(string text, string sub, SolidColorBrush brush)
@@ -421,9 +421,9 @@ public partial class MainWindow : Window
         AlertActionButton.Visibility = actionLabel is not null && action is not null ? Visibility.Visible : Visibility.Collapsed;
         var (title, brush) = level switch
         {
-            AlertLevel.Danger => ("警告", Palette.Danger),
-            AlertLevel.Warning => ("注意", Palette.Warn),
-            _ => ("お知らせ", Palette.Accent2),
+            AlertLevel.Danger => (L("警告"), Palette.Danger),
+            AlertLevel.Warning => (L("注意"), Palette.Warn),
+            _ => (L("お知らせ"), Palette.Accent2),
         };
         var c = brush.Color;
         AlertBanner.Background = new SolidColorBrush(Color.FromArgb(0x22, c.R, c.G, c.B));
@@ -452,7 +452,7 @@ public partial class MainWindow : Window
         foreach (var vs in Config.VirtualSensors)
         {
             var kind = vs.Kind == VirtualSensorKinds.Delta ? SensorKind.Delta : SensorKind.Other;
-            _sensorOptions.Add(new SensorOption(vs.Id, vs.Name, $"仮想（{vs.KindText}）", kind));
+            _sensorOptions.Add(new SensorOption(vs.Id, vs.Name, L($"仮想（{vs.KindText}）"), kind));
         }
         foreach (var t in _catalog.Temperatures)
         {
@@ -490,16 +490,16 @@ public partial class MainWindow : Window
 
         (PageTitle.Text, PageSubtitle.Text) = sender switch
         {
-            _ when sender == NavDevices => ("デバイス", "検出したハードウェアの一覧です。画像のボタンから、自分で撮った写真などに差し替えられます"),
-            _ when sender == NavCurves => ("ファンカーブ", "ファンごとに温度と回転数の関係を設定します。変更はすぐに反映・保存されます"),
-            _ when sender == NavTools => ("診断", "記録からの自動診断と、ファンのホコリ・劣化のチェック（AI のアドバイスはオプション）"),
-            _ when sender == NavTest => ("テスト・調整", "負荷をかけて、カーブを自動で作ったり、今の設定でどこまで冷えるかを測ったりします"),
-            _ when sender == NavHistory => ("履歴", "最大 24 時間分の温度と回転数（アプリを閉じていた間を除く。再起動前の分は 1 分ごとの平均）"),
-            _ when sender == NavReport => ("レポート", "電気代の目安・異常の記録"),
-            _ when sender == NavLighting => ("ライティング", "OpenRGB 連携で、PC の LED を温度・レインボー・音楽などに合わせて光らせます"),
-            _ when sender == NavSensors => ("センサー", "このPCで検出されたすべての温度・回転数・制御チャネルと、仮想センサー"),
-            _ when sender == NavSettings => ("設定", "プロファイル・自動切り替え・起動方法・制御全体の動作"),
-            _ => ("ダッシュボード", "温度とファンの状態をリアルタイムに表示します"),
+            _ when sender == NavDevices => (L("デバイス"), L("検出したハードウェアの一覧です。画像のボタンから、自分で撮った写真などに差し替えられます")),
+            _ when sender == NavCurves => (L("ファンカーブ"), L("ファンごとに温度と回転数の関係を設定します。変更はすぐに反映・保存されます")),
+            _ when sender == NavTools => (L("診断"), L("記録からの自動診断と、ファンのホコリ・劣化のチェック（AI のアドバイスはオプション）")),
+            _ when sender == NavTest => (L("テスト・調整"), L("負荷をかけて、カーブを自動で作ったり、今の設定でどこまで冷えるかを測ったりします")),
+            _ when sender == NavHistory => (L("履歴"), L("最大 24 時間分の温度と回転数（アプリを閉じていた間を除く。再起動前の分は 1 分ごとの平均）")),
+            _ when sender == NavReport => (L("レポート"), L("電気代の目安・異常の記録")),
+            _ when sender == NavLighting => (L("ライティング"), L("OpenRGB 連携で、PC の LED を温度・レインボー・音楽などに合わせて光らせます")),
+            _ when sender == NavSensors => (L("センサー"), L("このPCで検出されたすべての温度・回転数・制御チャネルと、仮想センサー")),
+            _ when sender == NavSettings => (L("設定"), L("プロファイル・自動切り替え・起動方法・制御全体の動作")),
+            _ => (L("ダッシュボード"), L("温度とファンの状態をリアルタイムに表示します")),
         };
 
         if (HistoryPage.Visibility == Visibility.Visible) HistoryGraph.Refresh();
@@ -535,7 +535,7 @@ public partial class MainWindow : Window
             Config.DryRun = false;
             FlushCommit();
             Logger.Info("DRY RUN を解除しました（サイドバーのボタン）");
-            ShowAlert("DRY RUN を解除しました。ファンの制御を始めています。", AlertLevel.Info);
+            ShowAlert(L("DRY RUN を解除しました。ファンの制御を始めています。"), AlertLevel.Info);
             return;
         }
         ((App)Application.Current).TogglePause();

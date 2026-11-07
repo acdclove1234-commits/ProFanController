@@ -52,46 +52,46 @@ public static class PawnIoSetup
 
         if (outcome == WingetOutcome.SuccessRebootRequired)
         {
-            return new(true, "PawnIO をインストールしました。仕上げに PC の再起動が必要です。PC を再起動すると、ファンを制御できるようになります。",
+            return new(true, L("PawnIO をインストールしました。仕上げに PC の再起動が必要です。PC を再起動すると、ファンを制御できるようになります。"),
                 NeedsAppRestart: false, NeedsPcRestart: true, OfferOfficialSite: false);
         }
         if (detectedAfter && outcome is WingetOutcome.Success or WingetOutcome.AlreadyInstalled)
         {
-            string head = outcome == WingetOutcome.Success ? "PawnIO をインストールしました。" : "PawnIO はすでにインストールされています。";
+            string head = outcome == WingetOutcome.Success ? L("PawnIO をインストールしました。") : L("PawnIO はすでにインストールされています。");
             return restartApp
-                ? new(true, head + "アプリを起動し直すと、ファンを制御できるようになります（起動し直しても、ファンの端子が見つからないときは PC を再起動してください）。",
+                ? new(true, head + L("アプリを起動し直すと、ファンを制御できるようになります（起動し直しても、ファンの端子が見つからないときは PC を再起動してください）。"),
                     NeedsAppRestart: true, NeedsPcRestart: false, OfferOfficialSite: false)
-                : new(true, head + "このまま使えます。", NeedsAppRestart: false, NeedsPcRestart: false, OfferOfficialSite: false);
+                : new(true, head + L("このまま使えます。"), NeedsAppRestart: false, NeedsPcRestart: false, OfferOfficialSite: false);
         }
         if (detectedAfter)
         {
             // winget はエラーを返したが、PawnIO は入っている（途中まで進んだ・別の方法で入った など）
-            return new(true, $"winget はエラー（{code}）を返しましたが、PawnIO は見つかりました。アプリを起動し直してください。"
-                             + "それでもファンの端子が見つからないときは、PC を再起動するか、公式サイトのインストーラーで入れ直してください。",
+            return new(true, L($"winget はエラー（{code}）を返しましたが、PawnIO は見つかりました。アプリを起動し直してください。")
+                             + L("それでもファンの端子が見つからないときは、PC を再起動するか、公式サイトのインストーラーで入れ直してください。"),
                 NeedsAppRestart: restartApp, NeedsPcRestart: false, OfferOfficialSite: true);
         }
         if (outcome is WingetOutcome.Success or WingetOutcome.AlreadyInstalled)
         {
-            return new(false, "winget は「終わった」と返しましたが、PawnIO が見つかりません。PC を再起動してから、もう一度確かめてください。"
-                              + "それでも見つからないときは、公式サイトのインストーラーを使ってください。",
+            return new(false, L("winget は「終わった」と返しましたが、PawnIO が見つかりません。PC を再起動してから、もう一度確かめてください。")
+                              + L("それでも見つからないときは、公式サイトのインストーラーを使ってください。"),
                 NeedsAppRestart: false, NeedsPcRestart: true, OfferOfficialSite: true);
         }
         string why = outcome switch
         {
-            WingetOutcome.WingetMissing => "winget（Windows の「アプリ インストーラー」）が見つからない・起動できないため、インストールできませんでした。"
-                                           + "Microsoft Store で「アプリ インストーラー」を入れる・更新するか、公式サイトのインストーラーを使ってください。",
-            WingetOutcome.TimedOut => $"{Timeout.TotalMinutes:F0} 分たっても終わらなかったため、止めました。インターネットの接続を確かめて、もう一度試すか、公式サイトのインストーラーを使ってください。",
-            WingetOutcome.NetworkError => $"ダウンロードに失敗しました（{code}）。インターネットにつながっているか確かめて、もう一度試してください。",
-            WingetOutcome.SourceError => $"winget のパッケージの一覧を読めませんでした（{code}）。時間をおいてもう一度試すか、公式サイトのインストーラーを使ってください。",
-            WingetOutcome.PackageNotFound => $"winget で PawnIO（{PackageId}）が見つかりませんでした（{code}）。公式サイトのインストーラーを使ってください。",
-            WingetOutcome.BlockedByPolicy => $"この PC のポリシー（会社・学校の管理など）で、winget でのインストールが止められています（{code}）。管理している人に相談してください。",
-            WingetOutcome.AnotherInstallRunning => $"ほかのソフトのインストールが動いています（{code}）。終わってから、もう一度試してください。",
-            WingetOutcome.InUse => $"PawnIO が使われているため、入れられませんでした（{code}）。PawnIO を使うほかのソフト（FanControl・LibreHardwareMonitor など）を終了するか、PC を再起動してから試してください。",
-            WingetOutcome.RebootThenRetry => $"PC の再起動が必要です（{code}）。PC を再起動してから、もう一度インストールしてください。",
-            WingetOutcome.Cancelled => $"インストールが取り消されました（{code}）。",
-            WingetOutcome.WingetTooOld => $"winget が古いため、インストールできませんでした（{code}）。Microsoft Store で「アプリ インストーラー」を更新するか、公式サイトのインストーラーを使ってください。",
-            WingetOutcome.RequiresAdmin => $"管理者権限が必要です（{code}）。アプリを管理者として起動し直してから、もう一度試してください。",
-            _ => $"インストールに失敗しました（winget のエラー {code}）。公式サイトのインストーラーを使ってください。",
+            WingetOutcome.WingetMissing => L("winget（Windows の「アプリ インストーラー」）が見つからない・起動できないため、インストールできませんでした。")
+                                           + L("Microsoft Store で「アプリ インストーラー」を入れる・更新するか、公式サイトのインストーラーを使ってください。"),
+            WingetOutcome.TimedOut => L($"{Timeout.TotalMinutes:F0} 分たっても終わらなかったため、止めました。インターネットの接続を確かめて、もう一度試すか、公式サイトのインストーラーを使ってください。"),
+            WingetOutcome.NetworkError => L($"ダウンロードに失敗しました（{code}）。インターネットにつながっているか確かめて、もう一度試してください。"),
+            WingetOutcome.SourceError => L($"winget のパッケージの一覧を読めませんでした（{code}）。時間をおいてもう一度試すか、公式サイトのインストーラーを使ってください。"),
+            WingetOutcome.PackageNotFound => L($"winget で PawnIO（{PackageId}）が見つかりませんでした（{code}）。公式サイトのインストーラーを使ってください。"),
+            WingetOutcome.BlockedByPolicy => L($"この PC のポリシー（会社・学校の管理など）で、winget でのインストールが止められています（{code}）。管理している人に相談してください。"),
+            WingetOutcome.AnotherInstallRunning => L($"ほかのソフトのインストールが動いています（{code}）。終わってから、もう一度試してください。"),
+            WingetOutcome.InUse => L($"PawnIO が使われているため、入れられませんでした（{code}）。PawnIO を使うほかのソフト（FanControl・LibreHardwareMonitor など）を終了するか、PC を再起動してから試してください。"),
+            WingetOutcome.RebootThenRetry => L($"PC の再起動が必要です（{code}）。PC を再起動してから、もう一度インストールしてください。"),
+            WingetOutcome.Cancelled => L($"インストールが取り消されました（{code}）。"),
+            WingetOutcome.WingetTooOld => L($"winget が古いため、インストールできませんでした（{code}）。Microsoft Store で「アプリ インストーラー」を更新するか、公式サイトのインストーラーを使ってください。"),
+            WingetOutcome.RequiresAdmin => L($"管理者権限が必要です（{code}）。アプリを管理者として起動し直してから、もう一度試してください。"),
+            _ => L($"インストールに失敗しました（winget のエラー {code}）。公式サイトのインストーラーを使ってください。"),
         };
         bool pcRestart = outcome is WingetOutcome.RebootThenRetry or WingetOutcome.InUse;
         bool offerSite = outcome is not (WingetOutcome.Cancelled or WingetOutcome.AnotherInstallRunning or WingetOutcome.BlockedByPolicy or WingetOutcome.RequiresAdmin);
@@ -99,7 +99,7 @@ public static class PawnIoSetup
     }
 
     /// <summary>手でアンインストールするときの案内</summary>
-    public const string ManualUninstallHint = "Windows の「設定」→「アプリ」→「インストールされているアプリ」から PawnIO をアンインストールしてください。";
+    public static string ManualUninstallHint => L("Windows の「設定」→「アプリ」→「インストールされているアプリ」から PawnIO をアンインストールしてください。");
 
     /// <summary>
     /// アンインストールの結果を読み取る。stillInstalled: 終わったあとも PawnIO のアンインストールの情報が残っているか
@@ -113,35 +113,35 @@ public static class PawnIoSetup
 
         if (outcome == WingetOutcome.SuccessRebootRequired)
         {
-            return new(true, "PawnIO をアンインストールしました。仕上げに PC を再起動してください。",
+            return new(true, L("PawnIO をアンインストールしました。仕上げに PC を再起動してください。"),
                 NeedsAppRestart: false, NeedsPcRestart: true, OfferOfficialSite: false);
         }
         if (!stillInstalled && outcome is WingetOutcome.Success or WingetOutcome.NotInstalled)
         {
-            return new(true, outcome == WingetOutcome.Success ? "PawnIO をアンインストールしました。" : "PawnIO はインストールされていませんでした。",
+            return new(true, outcome == WingetOutcome.Success ? L("PawnIO をアンインストールしました。") : L("PawnIO はインストールされていませんでした。"),
                 NeedsAppRestart: false, NeedsPcRestart: false, OfferOfficialSite: false);
         }
         if (!stillInstalled)
         {
-            return new(true, $"winget はエラー（{code}）を返しましたが、PawnIO はなくなりました。念のため PC を再起動してください。",
+            return new(true, L($"winget はエラー（{code}）を返しましたが、PawnIO はなくなりました。念のため PC を再起動してください。"),
                 NeedsAppRestart: false, NeedsPcRestart: true, OfferOfficialSite: false);
         }
         if (outcome == WingetOutcome.Success)
         {
-            return new(false, "winget は「終わった」と返しましたが、PawnIO がまだ残っています。PC を再起動してから確かめ、残っていれば " + ManualUninstallHint,
+            return new(false, L("winget は「終わった」と返しましたが、PawnIO がまだ残っています。PC を再起動してから確かめ、残っていれば ") + ManualUninstallHint,
                 NeedsAppRestart: false, NeedsPcRestart: true, OfferOfficialSite: false);
         }
         string why = outcome switch
         {
-            WingetOutcome.WingetMissing => "winget が見つからない・起動できないため、PawnIO をアンインストールできませんでした。" + ManualUninstallHint,
-            WingetOutcome.TimedOut => $"{Timeout.TotalMinutes:F0} 分たっても終わらなかったため、止めました。" + ManualUninstallHint,
-            WingetOutcome.InUse => $"PawnIO がほかのソフト（FanControl・LibreHardwareMonitor など）に使われているため、アンインストールできませんでした（{code}）。"
-                                   + "PC を再起動してから、" + ManualUninstallHint,
-            WingetOutcome.NotInstalled => $"winget では PawnIO が見つかりませんでした（{code}）。" + ManualUninstallHint,
-            WingetOutcome.BlockedByPolicy => $"この PC のポリシーで止められています（{code}）。管理している人に相談してください。",
-            WingetOutcome.Cancelled => $"アンインストールが取り消されました（{code}）。" + ManualUninstallHint,
-            WingetOutcome.AnotherInstallRunning => $"ほかのソフトのインストールが動いています（{code}）。終わってから、" + ManualUninstallHint,
-            _ => $"PawnIO をアンインストールできませんでした（winget のエラー {code}）。" + ManualUninstallHint,
+            WingetOutcome.WingetMissing => L("winget が見つからない・起動できないため、PawnIO をアンインストールできませんでした。") + ManualUninstallHint,
+            WingetOutcome.TimedOut => L($"{Timeout.TotalMinutes:F0} 分たっても終わらなかったため、止めました。") + ManualUninstallHint,
+            WingetOutcome.InUse => L($"PawnIO がほかのソフト（FanControl・LibreHardwareMonitor など）に使われているため、アンインストールできませんでした（{code}）。")
+                                   + L("PC を再起動してから、") + ManualUninstallHint,
+            WingetOutcome.NotInstalled => L($"winget では PawnIO が見つかりませんでした（{code}）。") + ManualUninstallHint,
+            WingetOutcome.BlockedByPolicy => L($"この PC のポリシーで止められています（{code}）。管理している人に相談してください。"),
+            WingetOutcome.Cancelled => L($"アンインストールが取り消されました（{code}）。") + ManualUninstallHint,
+            WingetOutcome.AnotherInstallRunning => L($"ほかのソフトのインストールが動いています（{code}）。終わってから、") + ManualUninstallHint,
+            _ => L($"PawnIO をアンインストールできませんでした（winget のエラー {code}）。") + ManualUninstallHint,
         };
         return new(false, why, NeedsAppRestart: false, NeedsPcRestart: outcome == WingetOutcome.InUse, OfferOfficialSite: false);
     }

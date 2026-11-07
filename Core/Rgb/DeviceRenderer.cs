@@ -201,7 +201,7 @@ public sealed class DeviceRenderer
     public bool OwnColorStep { get; private set; }
 
     /// <summary>ほかのデバイスの色に合わせているときの、光り方の表示名</summary>
-    public const string FollowEffectName = "ほかのデバイスの色";
+    public static string FollowEffectName => L("ほかのデバイスの色");
 
     /// <summary>音が止まったときの光り方に切り替わってから、最後の色を 1 回送るまでの秒数（すぐ音が戻るときは送らない）</summary>
     public const double IdleFlushAfterSec = 0.5;

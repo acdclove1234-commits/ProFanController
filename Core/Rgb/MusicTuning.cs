@@ -16,10 +16,10 @@ public static class Intensities
 
     public static string Label(string id) => id switch
     {
-        Subtle => "控えめ",
-        Moderate => "ふつう",
-        High => "強め",
-        Intense => "激しい",
+        Subtle => L("控えめ"),
+        Moderate => L("ふつう"),
+        High => L("強め"),
+        Intense => L("激しい"),
         _ => id,
     };
 }
@@ -46,16 +46,16 @@ public static class Palettes
 
     public static string Label(string id) => id switch
     {
-        Rainbow => "レインボー",
-        Neon => "ネオン",
-        Sunset => "サンセット",
-        Ocean => "オーシャン",
-        Fire => "ファイア",
-        Vaporwave => "ヴェイパーウェイヴ",
-        Forest => "フォレスト",
-        Ice => "アイス",
-        Mono => "選んだ色と近い色",
-        Solid => "選んだ色だけ（単色）",
+        Rainbow => L("レインボー"),
+        Neon => L("ネオン"),
+        Sunset => L("サンセット"),
+        Ocean => L("オーシャン"),
+        Fire => L("ファイア"),
+        Vaporwave => L("ヴェイパーウェイヴ"),
+        Forest => L("フォレスト"),
+        Ice => L("アイス"),
+        Mono => L("選んだ色と近い色"),
+        Solid => L("選んだ色だけ（単色）"),
         _ => id,
     };
 }
@@ -73,13 +73,13 @@ public static class MusicPresets
 
     public static string Label(string id) => id switch
     {
-        Chill => "チル（ゆったり）",
-        Groove => "グルーヴ（標準）",
-        Party => "パーティー",
-        Club => "クラブ（激しい）",
-        Visualizer => "ビジュアライザー",
-        Cinema => "映画・ゲーム",
-        Custom => "カスタム",
+        Chill => L("チル（ゆったり）"),
+        Groove => L("グルーヴ（標準）"),
+        Party => L("パーティー"),
+        Club => L("クラブ（激しい）"),
+        Visualizer => L("ビジュアライザー"),
+        Cinema => L("映画・ゲーム"),
+        Custom => L("カスタム"),
         _ => id,
     };
 }
@@ -94,10 +94,10 @@ public static class IdleEffects
 
     public static string Label(string id) => id switch
     {
-        Mood => "ゆっくり色が変わる",
-        Breathing => "呼吸",
-        Static => "固定色",
-        Off => "消灯",
+        Mood => L("ゆっくり色が変わる"),
+        Breathing => L("呼吸"),
+        Static => L("固定色"),
+        Off => L("消灯"),
         _ => id,
     };
 }
@@ -201,22 +201,22 @@ public static class MusicTuning
         bool cinema = m.Preset == MusicPresets.Cinema;
         return new[]
         {
-            new TuningValue("感度", m.GainDb, d.GainDb, "{0:+0;-0;0} dB"),
-            new TuningValue("反応の感度", cfg.Sensitivity, dr.Sensitivity, "{0:F1}"),
-            new TuningValue("滑らかさ", m.SmoothnessMs, p.SmoothnessMs, "{0:F0} ms"),
-            new TuningValue("メリハリ", m.Punch, cinema ? CinemaPunch : p.Punch, "{0:F0}%"),
-            new TuningValue("いちばん暗いとき", m.MinBrightness, cinema ? CinemaMinBrightness : p.MinBrightness, "{0:F0}%"),
-            new TuningValue("反応の速さ", m.ReactionMs, p.ReactionMs, "{0:F0} ms"),
-            new TuningValue("明るさに使う音量の幅", m.DynamicRangeDb, d.DynamicRangeDb, "{0:F0} dB"),
-            new TuningValue("音の高さのバランス", m.AutoBalance, d.AutoBalance, "{0:F0}%"),
-            new TuningValue("高音の持ち上げ", m.TrebleTilt, d.TrebleTilt, "{0:F1} dB/oct"),
-            new TuningValue("コントラスト", m.Contrast, d.Contrast, "{0:F2}"),
+            new TuningValue(L("感度"), m.GainDb, d.GainDb, "{0:+0;-0;0} dB"),
+            new TuningValue(L("反応の感度"), cfg.Sensitivity, dr.Sensitivity, "{0:F1}"),
+            new TuningValue(L("滑らかさ"), m.SmoothnessMs, p.SmoothnessMs, "{0:F0} ms"),
+            new TuningValue(L("メリハリ"), m.Punch, cinema ? CinemaPunch : p.Punch, "{0:F0}%"),
+            new TuningValue(L("いちばん暗いとき"), m.MinBrightness, cinema ? CinemaMinBrightness : p.MinBrightness, "{0:F0}%"),
+            new TuningValue(L("反応の速さ"), m.ReactionMs, p.ReactionMs, "{0:F0} ms"),
+            new TuningValue(L("明るさに使う音量の幅"), m.DynamicRangeDb, d.DynamicRangeDb, "{0:F0} dB"),
+            new TuningValue(L("音の高さのバランス"), m.AutoBalance, d.AutoBalance, "{0:F0}%"),
+            new TuningValue(L("高音の持ち上げ"), m.TrebleTilt, d.TrebleTilt, "{0:F1} dB/oct"),
+            new TuningValue(L("コントラスト"), m.Contrast, d.Contrast, "{0:F2}"),
         };
     }
 
     /// <summary>初期値から変えている値の説明（例「反応の感度 2.0（初期 1.0）」。変えていなければ空）</summary>
     public static string ChangedTuningSummary(RgbConfig cfg) =>
-        string.Join("、", TuningValues(cfg).Where(v => v.Changed).Select(v => $"{v.Label} {v.Show(v.Current)}（初期 {v.Show(v.Default)}）"));
+        string.Join(L("、"), TuningValues(cfg).Where(v => v.Changed).Select(v => L($"{v.Label} {v.Show(v.Current)}（初期 {v.Show(v.Default)}）")));
 
     /// <summary>
     /// 「初期値に戻す」: 反応のしかたの値を初期値にする（光り方・強さ・色の組み合わせ・音の遅れの補正はそのまま）。
@@ -304,19 +304,19 @@ public static class MusicTuning
     /// <summary>光り方の表示名と説明（設定画面・タスクトレイ用）</summary>
     public static (string Label, string Description) Describe(string effect) => effect switch
     {
-        MusicStyles.BeatHue => ("ビートで色替え", "ビートのたびに次の色へ切り替わり、ぱっと光って消えていく"),
-        MusicStyles.Pulse => ("パルス", "選んだ色が低音に合わせて脈打ち、ふわっと残光が残る"),
-        MusicStyles.Mix => ("ミックス", "低音・中音・高音の強さで色が混ざる"),
-        MusicStyles.Meter => ("音量メーター", "音量の分だけ端から点き、ピークの点がゆっくり落ちてくる"),
-        MusicStyles.Spectrum => ("スペクトラム", "LED の並びに低音〜高音を並べ、それぞれの強さで光る"),
-        MusicStyles.Energy => ("エナジー", "低音・中音・高音の帯が、それぞれの強さの分だけ伸びる"),
-        MusicStyles.Scroll => ("流れる波", "今の音の色が端から流れていく（ウォーターフォール）"),
-        MusicStyles.Ripple => ("波紋", "キックのたびに光の輪が広がる"),
-        MusicStyles.Sparkle => ("きらめき", "キックで全体がふわっと、スネアでまとまった光、ハイハットで白い粒が光る"),
-        MusicStyles.Role => ("パーツごとの役割", "ファンは低音、グラボは中音、メモリは高音のように、パーツごとに決まった音で光る（ゾーンの設定「反応する音」で変えられる）"),
-        MusicStyles.Chase => ("テンポ追従", "ビートに合わせて光の帯が走る"),
-        MusicStyles.Mood => ("ムード", "曲の雰囲気で色がゆっくり変わる（点滅しない）"),
-        MusicStyles.Strobe => ("ストロボ", "ビートで強く点滅する（「激しい点滅を抑える」をオフにしたときだけ）"),
+        MusicStyles.BeatHue => (L("ビートで色替え"), L("ビートのたびに次の色へ切り替わり、ぱっと光って消えていく")),
+        MusicStyles.Pulse => (L("パルス"), L("選んだ色が低音に合わせて脈打ち、ふわっと残光が残る")),
+        MusicStyles.Mix => (L("ミックス"), L("低音・中音・高音の強さで色が混ざる")),
+        MusicStyles.Meter => (L("音量メーター"), L("音量の分だけ端から点き、ピークの点がゆっくり落ちてくる")),
+        MusicStyles.Spectrum => (L("スペクトラム"), L("LED の並びに低音〜高音を並べ、それぞれの強さで光る")),
+        MusicStyles.Energy => (L("エナジー"), L("低音・中音・高音の帯が、それぞれの強さの分だけ伸びる")),
+        MusicStyles.Scroll => (L("流れる波"), L("今の音の色が端から流れていく（ウォーターフォール）")),
+        MusicStyles.Ripple => (L("波紋"), L("キックのたびに光の輪が広がる")),
+        MusicStyles.Sparkle => (L("きらめき"), L("キックで全体がふわっと、スネアでまとまった光、ハイハットで白い粒が光る")),
+        MusicStyles.Role => (L("パーツごとの役割"), L("ファンは低音、グラボは中音、メモリは高音のように、パーツごとに決まった音で光る（ゾーンの設定「反応する音」で変えられる）")),
+        MusicStyles.Chase => (L("テンポ追従"), L("ビートに合わせて光の帯が走る")),
+        MusicStyles.Mood => (L("ムード"), L("曲の雰囲気で色がゆっくり変わる（点滅しない）")),
+        MusicStyles.Strobe => (L("ストロボ"), L("ビートで強く点滅する（「激しい点滅を抑える」をオフにしたときだけ）")),
         _ => (effect, ""),
     };
 }
@@ -347,11 +347,11 @@ public static class MusicSounds
 
     public static string Label(string id) => id switch
     {
-        Auto => "パーツに合わせる",
-        Bass => "低音（キック・ベース）",
-        Mid => "中音（スネア・ボーカル）",
-        Treble => "高音（ハイハット）",
-        All => "音全体（音量）",
+        Auto => L("パーツに合わせる"),
+        Bass => L("低音（キック・ベース）"),
+        Mid => L("中音（スネア・ボーカル）"),
+        Treble => L("高音（ハイハット）"),
+        All => L("音全体（音量）"),
         _ => id,
     };
 
@@ -373,7 +373,7 @@ public static class MusicSounds
         }
         if (CaseLayout.Find(place) is { } p)
         {
-            if (p.Group == "ファン" || p.Id == "cpu") return MusicRole.Bass;
+            if (p.Group == L("ファン") || p.Id == "cpu") return MusicRole.Bass; // Group は表示の名前（L を通した値）
             if (p.Id.StartsWith("gpu", StringComparison.Ordinal) || p.Id.StartsWith("board", StringComparison.Ordinal)) return MusicRole.Mid;
             if (p.Id.StartsWith("ram", StringComparison.Ordinal)) return MusicRole.Treble;
             return MusicRole.All;

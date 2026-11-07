@@ -73,7 +73,7 @@ public sealed class AudioCapture : IDisposable
     /// <summary>分析エンジン（出力先のサンプリング周波数が変わると作り直す。使うたびにこのプロパティから読む）</summary>
     public AudioEngine Engine { get; private set; } = new() { StatsLogging = true };
     /// <summary>状態（設定画面の表示用）</summary>
-    public string Status { get; private set; } = "停止中";
+    public string Status { get; private set; } = L("停止中");
     /// <summary>いま音を取り込んでいる出力先の名前（スピーカー・ヘッドホンなど）</summary>
     public string EndpointName { get; private set; } = "";
     /// <summary>いま音を取り込んでいる出力先の ID</summary>
@@ -121,7 +121,7 @@ public sealed class AudioCapture : IDisposable
         _wake.Set();
         thread.Join(3000);
         _thread = null;
-        Status = "停止中";
+        Status = L("停止中");
         EndpointName = "";
         EndpointId = "";
         AppOnly = false;
@@ -167,7 +167,7 @@ public sealed class AudioCapture : IDisposable
                     _failures++;
                     // 失敗が続くときは、待つ時間を 3 → 10 → 30 秒と延ばす（記録も同じ内容は繰り返さない）
                     int wait = _failures <= 1 ? 3 : _failures == 2 ? 10 : 30;
-                    Status = $"音を取り込めません（{wait} 秒後に再試行）: {Message(ex)}";
+                    Status = L($"音を取り込めません（{wait} 秒後に再試行）: {Message(ex)}");
                     Log($"音楽連動: 取り込みに失敗: {Message(ex)}");
                     // 取り込みを閉じたときの「止まった」合図が残っていると待たずに再試行してしまうので、消してから待つ
                     if (!_stop && !_restartRequested) _wake.Reset();
@@ -194,7 +194,7 @@ public sealed class AudioCapture : IDisposable
     {
         if (!enumerator.HasDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia))
         {
-            Status = "音の出力先（スピーカー・ヘッドホン）が見つかりません";
+            Status = L("音の出力先（スピーカー・ヘッドホン）が見つかりません");
             EndpointName = "";
             EndpointId = "";
             _wake.WaitOne(TimeSpan.FromSeconds(3));
@@ -210,7 +210,7 @@ public sealed class AudioCapture : IDisposable
         var kind = PcmConvert.Detect((int)format.Encoding, format.BitsPerSample, sub);
         if (kind == PcmKind.Unsupported || format.SampleRate <= 0)
         {
-            throw new NotSupportedException($"この音の形式には対応していません（{format.Encoding}・{format.BitsPerSample} bit・{format.SampleRate} Hz）");
+            throw new NotSupportedException(L($"この音の形式には対応していません（{format.Encoding}・{format.BitsPerSample} bit・{format.SampleRate} Hz）"));
         }
         int channels = Math.Max(1, format.Channels);
 
@@ -238,7 +238,7 @@ public sealed class AudioCapture : IDisposable
         EndpointName = device.FriendlyName;
         EndpointId = id;
         EventDriven = !polling;
-        Status = $"音を取り込み中: {device.FriendlyName}";
+        Status = L($"音を取り込み中: {device.FriendlyName}");
         Log($"音楽連動: 取り込み開始（{device.FriendlyName}・{format.SampleRate} Hz・{channels} ch・{kind}・{(polling ? "一定間隔" : "合図で読み取り")}）");
 
         AppOnly = false;
@@ -419,7 +419,7 @@ public sealed class AudioCapture : IDisposable
         if (process is null)
         {
             // 調べたあとに終了した: 失敗とはしない（起動し直していれば、次に調べたときに新しいプロセスですぐ試す）
-            if (!gone) AppFailed(source, pid, now, "プロセスを開けません（権限がありません）");
+            if (!gone) AppFailed(source, pid, now, L("プロセスを開けません（権限がありません）"));
             return null;
         }
         var capture = new ProcessLoopbackCapture(pid, includeTree: true);
@@ -442,8 +442,8 @@ public sealed class AudioCapture : IDisposable
     {
         double wait = _planner.Failed(pid, now);
         string retry = double.IsPositiveInfinity(wait)
-            ? $"{source} を起動し直すと、もう一度試します"
-            : $"{(wait >= 60 ? $"{wait / 60:0} 分" : $"{wait:0} 秒")}後にもう一度試します";
+            ? L($"{source} を起動し直すと、もう一度試します")
+            : L($"{(wait >= 60 ? L($"{wait / 60:0} 分") : L($"{wait:0} 秒"))}後にもう一度試します");
         _planLogged = $"{source}|{AppCaptureMode.EndpointGate}|{AppCaptureWhy.Failed}";
         Log($"音楽連動: {source}（PID {pid}）の音だけを取り込めないため、全体の音のうち {source} の音の割合で反応します（{retry}）: {why}");
     }
@@ -496,7 +496,7 @@ public sealed class AudioCapture : IDisposable
         EndpointId = id;
         EventDriven = true;
         AppOnly = true;
-        Status = "アプリの音だけを取り込み中";
+        Status = L("アプリの音だけを取り込み中");
         _planLogged = "";
         Log($"音楽連動: {source} の音だけを取り込み開始（PID {pid} とその子プロセス・{ProcessLoopbackCapture.SampleRate} Hz・{ProcessLoopbackCapture.Channels} ch・{PcmKind.Float32}・聞いている出力先: {device.FriendlyName}）");
 
@@ -548,8 +548,8 @@ public sealed class AudioCapture : IDisposable
                     if (since > StallAfter && appPeak > 0.01)
                     {
                         AppFailed(source, pid, now, double.IsNegativeInfinity(Volatile.Read(ref _lastArrival))
-                            ? "アプリの音が鳴っているのに、音が届きません"
-                            : "アプリの音が鳴っているのに、無音しか届きません");
+                            ? L("アプリの音が鳴っているのに、音が届きません")
+                            : L("アプリの音が鳴っているのに、無音しか届きません"));
                         break;
                     }
                     if (!healthy && !double.IsNegativeInfinity(lastSound) && now - started > AppCapturePlanner.HealthyAfter)
@@ -583,7 +583,7 @@ public sealed class AudioCapture : IDisposable
 
         if (Volatile.Read(ref stoppedFlag) && stopped is not null)
         {
-            AppFailed(source, pid, AudioClock.Now, $"取り込みが止まりました: {Message(stopped)}");
+            AppFailed(source, pid, AudioClock.Now, L($"取り込みが止まりました: {Message(stopped)}"));
             if (!_stop && !_restartRequested) _wake.Reset();
             _wake.WaitOne(500);
         }

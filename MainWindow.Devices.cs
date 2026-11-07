@@ -64,12 +64,12 @@ public partial class MainWindow
         if (sender is not Button { Tag: DeviceCardVm card } button) return;
 
         var menu = new ContextMenu { PlacementTarget = button, Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom };
-        var pick = new MenuItem { Header = "画像を選ぶ…" };
+        var pick = new MenuItem { Header = L("画像を選ぶ…") };
         pick.Click += (_, _) => PickDeviceImage(card);
         menu.Items.Add(pick);
         if (card.Image is not null)
         {
-            var reset = new MenuItem { Header = "イラストに戻す" };
+            var reset = new MenuItem { Header = L("イラストに戻す") };
             reset.Click += (_, _) => SetDeviceImage(card, null);
             menu.Items.Add(reset);
         }
@@ -80,8 +80,8 @@ public partial class MainWindow
     {
         var dialog = new OpenFileDialog
         {
-            Title = $"「{card.Name}」の画像を選ぶ",
-            Filter = "画像ファイル (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp",
+            Title = L($"「{card.Name}」の画像を選ぶ"),
+            Filter = L("画像ファイル (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp"),
         };
         if (dialog.ShowDialog(this) != true) return;
 
@@ -96,7 +96,7 @@ public partial class MainWindow
         catch (Exception ex)
         {
             Logger.Error($"画像のコピーに失敗: {ex}");
-            MessageBox.Show(this, $"画像を設定できませんでした。\n{ex.Message}", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this, L($"画像を設定できませんでした。\n{ex.Message}"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 

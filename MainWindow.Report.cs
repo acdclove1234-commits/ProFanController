@@ -33,11 +33,11 @@ public sealed class HealthItemVm
     };
     public string LevelText => Item.Level switch
     {
-        HealthLevel.Danger => "要点検",
-        HealthLevel.Warning => "注意",
-        HealthLevel.Good => "正常",
-        HealthLevel.Info => "参考",
-        _ => "収集中",
+        HealthLevel.Danger => L("要点検"),
+        HealthLevel.Warning => L("注意"),
+        HealthLevel.Good => L("正常"),
+        HealthLevel.Info => L("参考"),
+        _ => L("収集中"),
     };
 }
 
@@ -65,7 +65,7 @@ public partial class MainWindow
         _recorder.Saved += r =>
         {
             RefreshRecords();
-            ShowAlert($"異常の前後 10 分の記録を保存しました: {r.Title}", AlertLevel.Info, "記録を見る", () =>
+            ShowAlert(L($"異常の前後 10 分の記録を保存しました: {r.Title}"), AlertLevel.Info, L("記録を見る"), () =>
             {
                 NavReport.IsChecked = true;
                 ShowRecordSummary(r);
@@ -175,14 +175,14 @@ public partial class MainWindow
 
     private bool ShowYen => EnergyYen?.IsChecked == true;
 
-    private string Yen(double kwh) => $"{kwh * Config.Energy.PricePerKwh:N0} 円";
+    private string Yen(double kwh) => L($"{kwh * Config.Energy.PricePerKwh:N0} 円");
 
     private void RefreshEnergy()
     {
         double price = Config.Energy.PricePerKwh;
-        EnergyNote.Text = $"CPU・GPU はセンサーの値、それ以外は {Config.Energy.BaseWatts:F0} W として計算しています（単価 {price:0.##} 円/kWh）。アプリが動いている間だけ数えます。";
+        EnergyNote.Text = L($"CPU・GPU はセンサーの値、それ以外は {Config.Energy.BaseWatts:F0} W として計算しています（単価 {price:0.##} 円/kWh）。アプリが動いている間だけ数えます。");
         EnergyNow.Text = $"{_energy.CurrentWatts:F0} W";
-        EnergyNowSub.Text = $"CPU {_energy.CpuWatts:F0} W ・ GPU {_energy.GpuWatts:F0} W ・ その他 {Config.Energy.BaseWatts:F0} W";
+        EnergyNowSub.Text = L($"CPU {_energy.CpuWatts:F0} W ・ GPU {_energy.GpuWatts:F0} W ・ その他 {Config.Energy.BaseWatts:F0} W");
 
         var today = _energy.Day(DateTime.Today);
         double month = _energy.MonthKwh(DateTime.Today);
@@ -190,26 +190,26 @@ public partial class MainWindow
         if (ShowYen)
         {
             EnergyToday.Text = Yen(today.Kwh);
-            EnergyTodaySub.Text = $"{today.Kwh:F2} kWh ・ {today.Hours:F1} 時間";
+            EnergyTodaySub.Text = L($"{today.Kwh:F2} kWh ・ {today.Hours:F1} 時間");
             EnergyMonth.Text = Yen(month);
             EnergyMonthSub.Text = $"{month:F1} kWh";
             EnergyForecast.Text = Yen(forecast);
-            EnergyForecastSub.Text = $"{forecast:F1} kWh（記録のある日の平均から）";
+            EnergyForecastSub.Text = L($"{forecast:F1} kWh（記録のある日の平均から）");
         }
         else
         {
             EnergyToday.Text = $"{today.Kwh:F2} kWh";
-            EnergyTodaySub.Text = $"約 {Yen(today.Kwh)} ・ {today.Hours:F1} 時間";
+            EnergyTodaySub.Text = L($"約 {Yen(today.Kwh)} ・ {today.Hours:F1} 時間");
             EnergyMonth.Text = $"{month:F1} kWh";
-            EnergyMonthSub.Text = $"約 {Yen(month)}";
+            EnergyMonthSub.Text = L($"約 {Yen(month)}");
             EnergyForecast.Text = $"{forecast:F0} kWh";
-            EnergyForecastSub.Text = $"約 {Yen(forecast)}";
+            EnergyForecastSub.Text = L($"約 {Yen(forecast)}");
         }
 
         EnergyChart.Items = _energy.LastDays(30).Select(d =>
         {
             double v = ShowYen ? d.Energy.Kwh * price : d.Energy.Kwh;
-            string tip = $"{d.Date:M/d（ddd）}  {d.Energy.Kwh:F2} kWh ・ 約 {Yen(d.Energy.Kwh)} ・ {d.Energy.Hours:F1} 時間";
+            string tip = L($"{d.Date:M/d（ddd）}  {d.Energy.Kwh:F2} kWh ・ 約 {Yen(d.Energy.Kwh)} ・ {d.Energy.Hours:F1} 時間");
             return new BarItem(d.Date.ToString("M/d"), v, tip);
         }).ToList();
     }
@@ -227,7 +227,7 @@ public partial class MainWindow
     {
         if (_healthRunning) return;
         _healthRunning = true;
-        if (!automatic) HealthInfo.Text = "記録を読み込んで調べています…";
+        if (!automatic) HealthInfo.Text = L("記録を読み込んで調べています…");
         try
         {
             // 集計途中の 1 分はここでは書き出さない（書き出すと、その分が終わったときにもう 1 行書かれて同じ時刻の行が 2 つになる）
@@ -241,8 +241,8 @@ public partial class MainWindow
             });
             _healthItems.Clear();
             foreach (var i in items.OrderByDescending(i => i.Level == HealthLevel.Collecting ? -1 : (int)i.Level)) _healthItems.Add(new HealthItemVm { Item = i });
-            string cleaned = Config.Maintenance.LastCleaned is DateTime c ? $" ・ 基準: {c:yyyy/MM/dd} の掃除以降" : "";
-            HealthInfo.Text = $"{now:HH:mm} に確認 ・ 記録 {days:F0} 日分{cleaned}";
+            string cleaned = Config.Maintenance.LastCleaned is DateTime c ? L($" ・ 基準: {c:yyyy/MM/dd} の掃除以降") : "";
+            HealthInfo.Text = L($"{now:HH:mm} に確認 ・ 記録 {days:F0} 日分{cleaned}");
 
             // 注意以上が見つかったら、週に 1 回だけ知らせる
             var worst = items.Where(i => i.Level is HealthLevel.Warning or HealthLevel.Danger).ToList();
@@ -250,15 +250,15 @@ public partial class MainWindow
             {
                 Config.Maintenance.LastNotified = now;
                 _controller.Commit(recordUndo: false);
-                string msg = $"メンテナンスのお知らせ: {string.Join("、", worst.Select(w => w.Title))} に変化があります。";
+                string msg = L($"メンテナンスのお知らせ: {string.Join(L("、"), worst.Select(w => w.Title))} に変化があります。");
                 var level = worst.Any(w => w.Level == HealthLevel.Danger) ? AlertLevel.Danger : AlertLevel.Warning;
-                ShowAlert(msg, level, "診断を見る", () => NavTools.IsChecked = true);
+                ShowAlert(msg, level, L("診断を見る"), () => NavTools.IsChecked = true);
                 MaintenanceNotice?.Invoke(msg + string.Join(" ", worst.Select(w => w.Metric)), level);
             }
         }
         catch (Exception ex)
         {
-            HealthInfo.Text = $"調べられませんでした: {ex.Message}";
+            HealthInfo.Text = L($"調べられませんでした: {ex.Message}");
             Logger.Warn($"劣化チェックに失敗: {ex}");
         }
         finally
@@ -270,8 +270,8 @@ public partial class MainWindow
     private void OnCleanedClick(object sender, RoutedEventArgs e)
     {
         var answer = MessageBox.Show(this,
-            "ファンやフィルター・ラジエーターを掃除しましたか？\n\nこれ以降の記録を新しい基準にして比べます（判定できるまで 10 日ほどかかります）。",
-            "掃除した", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            L("ファンやフィルター・ラジエーターを掃除しましたか？\n\nこれ以降の記録を新しい基準にして比べます（判定できるまで 10 日ほどかかります）。"),
+            L("掃除した"), MessageBoxButton.OKCancel, MessageBoxImage.Question);
         if (answer != MessageBoxResult.OK) return;
         Config.Maintenance.LastCleaned = DateTime.Now;
         Config.Maintenance.LastNotified = null;
@@ -308,7 +308,7 @@ public partial class MainWindow
     {
         if (sender is not Button { Tag: FlightRecord r } || !File.Exists(r.CsvPath)) return;
         try { SystemTool.Open(r.CsvPath); }
-        catch (Exception ex) { MessageBox.Show(this, $"開けませんでした: {ex.Message}", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception ex) { MessageBox.Show(this, L($"開けませんでした: {ex.Message}"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
 
     private void OnOpenRecordsClick(object sender, RoutedEventArgs e)
@@ -320,15 +320,15 @@ public partial class MainWindow
     /// <summary>ダッシュボードの「電力」タイル（MainWindow.Monitoring.cs から作る）</summary>
     private MetricTileVm CreateEnergyTile() => new()
     {
-        Title = "消費電力（目安）",
-        ShortTitle = "電力",
+        Title = L("消費電力（目安）"),
+        ShortTitle = L("電力"),
         HistoryKey = null,
         Brush = Palette.Series[7],
         Read = _ =>
         {
             double w = _energy.CurrentWatts;
             double kwh = _energy.TodayKwh;
-            return (w, $"{w:F0} W", $"今日 {kwh:F2} kWh ・ 約 {kwh * Config.Energy.PricePerKwh:N0} 円", null);
+            return (w, $"{w:F0} W", L($"今日 {kwh:F2} kWh ・ 約 {kwh * Config.Energy.PricePerKwh:N0} 円"), null);
         },
     };
 }

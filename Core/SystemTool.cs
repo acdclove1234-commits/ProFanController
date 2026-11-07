@@ -47,7 +47,7 @@ public static class SystemTool
     public static void OpenUrl(string url)
     {
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || uri.Scheme != Uri.UriSchemeHttps)
-            throw new ArgumentException($"https のアドレスではありません: {url}", nameof(url));
+            throw new ArgumentException(L($"https のアドレスではありません: {url}"), nameof(url));
         Open(uri.AbsoluteUri);
     }
 

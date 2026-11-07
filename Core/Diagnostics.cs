@@ -31,7 +31,7 @@ public static class Diagnostics
         var list = new List<DiagnosticFinding>();
         if (h.Count < 120)
         {
-            list.Add(new() { Level = FindingLevel.Info, Title = "記録が足りません", Detail = "診断には 2 分以上の記録が必要です。しばらく使ってから（できればゲームなどで負荷をかけた後に）もう一度実行してください。" });
+            list.Add(new() { Level = FindingLevel.Info, Title = L("記録が足りません"), Detail = L("診断には 2 分以上の記録が必要です。しばらく使ってから（できればゲームなどで負荷をかけた後に）もう一度実行してください。") });
             return list;
         }
 
@@ -59,8 +59,8 @@ public static class Diagnostics
                     list.Add(new()
                     {
                         Level = FindingLevel.Warning,
-                        Title = $"{fan.Name}: ポンプの回転数に余裕がありません",
-                        Detail = $"最低 {rpm.Min():N0} rpm で、警告値 {fan.PumpAlertRpm:N0} rpm に近づいています。ポンプの劣化や、BIOS 側の設定が低すぎないか確認してください。",
+                        Title = L($"{fan.Name}: ポンプの回転数に余裕がありません"),
+                        Detail = L($"最低 {rpm.Min():N0} rpm で、警告値 {fan.PumpAlertRpm:N0} rpm に近づいています。ポンプの劣化や、BIOS 側の設定が低すぎないか確認してください。"),
                     });
                 }
                 continue;
@@ -84,9 +84,9 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Warning,
-                    Title = $"{fan.Name}: 回転が頻繁に上下しています",
-                    Detail = $"10 分あたり約 {rate:F0} 回、回転の上げ下げが入れ替わっています。耳につく「うなり」の原因になります。",
-                    ActionLabel = "反応を穏やかにする",
+                    Title = L($"{fan.Name}: 回転が頻繁に上下しています"),
+                    Detail = L($"10 分あたり約 {rate:F0} 回、回転の上げ下げが入れ替わっています。耳につく「うなり」の原因になります。"),
+                    ActionLabel = L("反応を穏やかにする"),
                     Apply = c =>
                     {
                         foreach (var f in FindFan(c, profileName, id))
@@ -102,7 +102,7 @@ public static class Diagnostics
                             }
                             f.MaxStepDownPerTick = Math.Max(0.5, Math.Round(f.MaxStepDownPerTick * 0.7, 1));
                         }
-                        return "ヒステリシスを +2°C、反応の速さを 0.6 倍、下降の速さを 0.7 倍にしました。";
+                        return L("ヒステリシスを +2°C、反応の速さを 0.6 倍、下降の速さを 0.7 倍にしました。");
                     },
                 });
             }
@@ -114,8 +114,8 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Warning,
-                    Title = $"{fan.Name}: 最大回転に張り付いている時間が長いです",
-                    Detail = $"記録の {full:P0} で 95% 以上でした。カーブではなく冷却能力の不足が考えられます。ケースのエアフロー（吸気と排気のバランス）やファンの追加を検討してください。",
+                    Title = L($"{fan.Name}: 最大回転に張り付いている時間が長いです"),
+                    Detail = L($"記録の {full:P0} で 95% 以上でした。カーブではなく冷却能力の不足が考えられます。ケースのエアフロー（吸気と排気のバランス）やファンの追加を検討してください。"),
                 });
             }
 
@@ -134,16 +134,16 @@ public static class Diagnostics
                     list.Add(new()
                     {
                         Level = FindingLevel.Info,
-                        Title = $"{fan.Name}: もっと静かにできます",
-                        Detail = $"「{curveName}」の温度は最高 {temps.Max():F0}°C と余裕がありますが、平均 {duty.Average():F0}% で回しています。カーブを右（高い温度側）へずらすと静かになります。",
-                        ActionLabel = "カーブを 5°C 右へずらす",
+                        Title = L($"{fan.Name}: もっと静かにできます"),
+                        Detail = L($"「{curveName}」の温度は最高 {temps.Max():F0}°C と余裕がありますが、平均 {duty.Average():F0}% で回しています。カーブを右（高い温度側）へずらすと静かになります。"),
+                        ActionLabel = L("カーブを 5°C 右へずらす"),
                         Apply = c =>
                         {
                             foreach (var cv in FindFan(c, profileName, id).SelectMany(f => f.Curves).Where(x => x.Name == curveName))
                             {
                                 foreach (var p in cv.Points) p.Temp = Math.Min(110, p.Temp + 5);
                             }
-                            return $"「{curveName}」のカーブを 5°C 右へずらしました。";
+                            return L($"「{curveName}」のカーブを 5°C 右へずらしました。");
                         },
                     });
                     break;
@@ -157,8 +157,8 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Info,
-                    Title = $"{fan.Name}: キャリブレーションをすると、より正確に調整できます",
-                    Detail = "ファンカーブ画面の「自動キャリブレーション」で、止まる回転数と最大回転数を測れます（約 1〜2 分）。",
+                    Title = L($"{fan.Name}: キャリブレーションをすると、より正確に調整できます"),
+                    Detail = L("ファンカーブ画面の「自動キャリブレーション」で、止まる回転数と最大回転数を測れます（約 1〜2 分）。"),
                 });
             }
             else if (fan.MinDuty < cal.StopDuty)
@@ -167,13 +167,13 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Warning,
-                    Title = $"{fan.Name}: 最低回転数が停止域に入っています",
-                    Detail = $"このファンは {cal.StopDuty:F0}% 未満で止まりますが、最低回転数が {fan.MinDuty:F0}% です。止まったり回ったりを繰り返すと、カチッという音や寿命の低下につながります。",
-                    ActionLabel = $"最低回転数を {newMin:F0}% にする",
+                    Title = L($"{fan.Name}: 最低回転数が停止域に入っています"),
+                    Detail = L($"このファンは {cal.StopDuty:F0}% 未満で止まりますが、最低回転数が {fan.MinDuty:F0}% です。止まったり回ったりを繰り返すと、カチッという音や寿命の低下につながります。"),
+                    ActionLabel = L($"最低回転数を {newMin:F0}% にする"),
                     Apply = c =>
                     {
                         foreach (var f in c.Profiles.SelectMany(p => p.Fans).Where(f => f.ControlId == id)) f.MinDuty = newMin;
-                        return $"全プロファイルで最低回転数を {newMin:F0}% にしました。";
+                        return L($"全プロファイルで最低回転数を {newMin:F0}% にしました。");
                     },
                 });
             }
@@ -190,8 +190,8 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Danger,
-                    Title = $"{fan.Name}: 回転していない時間がありました",
-                    Detail = $"30% 以上を指示しているのに 0 rpm だった記録が {stalls} 秒分あります。配線外れやファンの故障を確認してください。",
+                    Title = L($"{fan.Name}: 回転していない時間がありました"),
+                    Detail = L($"30% 以上を指示しているのに 0 rpm だった記録が {stalls} 秒分あります。配線外れやファンの故障を確認してください。"),
                 });
             }
         }
@@ -214,10 +214,10 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Warning,
-                    Title = $"{fan.Name}: GPU Hot Spot を基準に回しています",
-                    Detail = "Hot Spot は GPU チップ内でいちばん熱い一点の温度で、数秒ごとに大きく上下します。ケースファンを回してもほとんど下がらないため、"
-                           + "「ゲーム中ずっと高回転」の原因になりがちです。ケースファンは GPU 温度（Edge）を基準にするのがおすすめです。",
-                    ActionLabel = "GPU 温度（Edge）基準に切り替える",
+                    Title = L($"{fan.Name}: GPU Hot Spot を基準に回しています"),
+                    Detail = L("Hot Spot は GPU チップ内でいちばん熱い一点の温度で、数秒ごとに大きく上下します。ケースファンを回してもほとんど下がらないため、")
+                           + L("「ゲーム中ずっと高回転」の原因になりがちです。ケースファンは GPU 温度（Edge）を基準にするのがおすすめです。"),
+                    ActionLabel = L("GPU 温度（Edge）基準に切り替える"),
                     Apply = c =>
                     {
                         // センサーの選び方の問題なので、どのプロファイルでも同じように直す
@@ -236,7 +236,7 @@ public static class Diagnostics
                                 f.TargetTemp = Math.Min(f.TargetTemp, 75);
                             }
                         }
-                        return "全プロファイルで、GPU 温度（Edge）を基準にした標準のカーブに切り替えました（40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%）。";
+                        return L("全プロファイルで、GPU 温度（Edge）を基準にした標準のカーブに切り替えました（40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%）。");
                     },
                 });
             }
@@ -256,8 +256,8 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Warning,
-                    Title = "GPU の Hot Spot と GPU 温度の差が大きいです",
-                    Detail = $"負荷時に最大 {maxDelta:F0}°C の差がありました（目安は 20〜25°C 以内）。グリスの劣化やクーラーの取り付け圧の問題が考えられます。ケースファンでは改善しにくい症状です。",
+                    Title = L("GPU の Hot Spot と GPU 温度の差が大きいです"),
+                    Detail = L($"負荷時に最大 {maxDelta:F0}°C の差がありました（目安は 20〜25°C 以内）。グリスの劣化やクーラーの取り付け圧の問題が考えられます。ケースファンでは改善しにくい症状です。"),
                 });
             }
         }
@@ -278,9 +278,9 @@ public static class Diagnostics
                 list.Add(new()
                 {
                     Level = FindingLevel.Info,
-                    Title = $"{a.Name} と {b.Name} で「うなり」が出るかもしれません",
-                    Detail = $"平均回転数の差が約 {diff:F0} rpm です。近い回転数のファンは音が干渉して「ウォンウォン」と聞こえることがあります。同じ役割なら、回転を揃えると解消します。",
-                    ActionLabel = $"{followerName} を {leaderName} に連動させる",
+                    Title = L($"{a.Name} と {b.Name} で「うなり」が出るかもしれません"),
+                    Detail = L($"平均回転数の差が約 {diff:F0} rpm です。近い回転数のファンは音が干渉して「ウォンウォン」と聞こえることがあります。同じ役割なら、回転を揃えると解消します。"),
+                    ActionLabel = L($"{followerName} を {leaderName} に連動させる"),
                     Apply = c =>
                     {
                         foreach (var f in c.Profiles.SelectMany(p => p.Fans).Where(f => f.ControlId == follower))
@@ -289,7 +289,7 @@ public static class Diagnostics
                             f.FollowControlId = leader;
                             f.FollowMatchRpm = true;
                         }
-                        return $"全プロファイルで「{followerName}」を「{leaderName}」に連動させました。";
+                        return L($"全プロファイルで「{followerName}」を「{leaderName}」に連動させました。");
                     },
                 });
             }
@@ -297,7 +297,7 @@ public static class Diagnostics
 
         if (list.All(f => f.Level is FindingLevel.Info or FindingLevel.Good && f.Apply is null))
         {
-            list.Insert(0, new() { Level = FindingLevel.Good, Title = "大きな問題は見つかりませんでした", Detail = $"直近 {minutes:F0} 分の記録を確認しました。" });
+            list.Insert(0, new() { Level = FindingLevel.Good, Title = L("大きな問題は見つかりませんでした"), Detail = L($"直近 {minutes:F0} 分の記録を確認しました。") });
         }
         // 「問題なし」を先頭に、あとは重要なものから
         return list.OrderBy(f => f.Level == FindingLevel.Good ? 0 : 1).ThenByDescending(f => f.Level).ToList();

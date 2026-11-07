@@ -94,7 +94,7 @@ internal sealed class ProcessLoopbackCapture : IDisposable
     /// <summary>取り込みを始める（Open のあと）</summary>
     public void Start()
     {
-        var client = _client ?? throw new InvalidOperationException("取り込みの準備ができていません");
+        var client = _client ?? throw new InvalidOperationException(L("取り込みの準備ができていません"));
         if (_thread is not null) return;
         _stop = false;
         client.Start();
@@ -180,15 +180,15 @@ internal sealed class ProcessLoopbackCapture : IDisposable
             IntPtr variant = block + paramsSize;
             Marshal.StructureToPtr(new PropVariantBlob { Vt = 65 /* VT_BLOB */, Size = (uint)paramsSize, Data = block }, variant, false);
             int hr = ActivateAudioInterfaceAsync(VirtualDevice, IidAudioClient, variant, handler, out operation);
-            if (hr < 0) throw new ProcessLoopbackException($"取り込み口を作れません（{Hr(hr)}）", hr);
+            if (hr < 0) throw new ProcessLoopbackException(L($"取り込み口を作れません（{Hr(hr)}）"), hr);
             if (!handler.Done.Wait(timeout))
             {
                 // Windows がまだ中身を読むかもしれないので、渡したメモリは解放しない（わずかな量）
                 freeBlock = false;
-                throw new ProcessLoopbackException("Windows の音のサービスが応答しません", 0);
+                throw new ProcessLoopbackException(L("Windows の音のサービスが応答しません"), 0);
             }
             if (handler.Result < 0 || handler.Client is null)
-                throw new ProcessLoopbackException($"取り込み口を作れません（{Hr(handler.Result)}）", handler.Result);
+                throw new ProcessLoopbackException(L($"取り込み口を作れません（{Hr(handler.Result)}）"), handler.Result);
             return new AudioClient((IAudioClient)handler.Client);
         }
         finally

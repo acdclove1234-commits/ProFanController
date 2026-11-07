@@ -36,15 +36,15 @@ public partial class UninstallDialog : Window
         _run = run;
         StepList.ItemsSource = _rows;
 
-        DeleteDataCaption.Text = $"アプリのフォルダーの中の{CleanUninstall.DataDescription}を、アプリが終了したあとに消します。"
-                                 + "アプリ本体（exe など）と、ほかのファイルは残します。もう一度使うかもしれないときは、オフのままにしてください。";
+        DeleteDataCaption.Text = L($"アプリのフォルダーの中の{CleanUninstall.DataDescription}を、アプリが終了したあとに消します。")
+                                 + L("アプリ本体（exe など）と、ほかのファイルは残します。もう一度使うかもしれないときは、オフのままにしてください。");
         if (!facts.PawnIoInstalled)
         {
             PawnIoSwitch.IsEnabled = false;
             PawnIoSwitch.Opacity = 0.5;
-            PawnIoCaption.Text = "PawnIO はこの PC にインストールされていません（何もしません）。";
+            PawnIoCaption.Text = L("PawnIO はこの PC にインストールされていません（何もしません）。");
         }
-        FolderNote.Text = "アプリ本体は動いている間は消せません。終了したあとに、エクスプローラーで次のフォルダーを開くので、フォルダーごと削除してください:\n"
+        FolderNote.Text = L("アプリ本体は動いている間は消せません。終了したあとに、エクスプローラーで次のフォルダーを開くので、フォルダーごと削除してください:\n")
                           + _appFolder;
         BuildRows();
         Closing += OnClosing;
@@ -74,7 +74,7 @@ public partial class UninstallDialog : Window
         PawnIoSwitch.IsEnabled = false;
         StartButton.IsEnabled = false;
         CancelButton.Visibility = Visibility.Collapsed;
-        IntroText.Text = "お片付けをしています。終わるまで、この画面を閉じずにお待ちください（PawnIO のアンインストールには、数十秒〜数分かかることがあります）。";
+        IntroText.Text = L("お片付けをしています。終わるまで、この画面を閉じずにお待ちください（PawnIO のアンインストールには、数十秒〜数分かかることがあります）。");
 
         IReadOnlyList<StepResult> results;
         try
@@ -87,11 +87,11 @@ public partial class UninstallDialog : Window
             // どこまで進んだか分からないので、ふだんの終了（ファンを BIOS に戻す・戻せなければ見張りが安全な回転数にする）で終わる。設定・記録は消さない
             Logger.Error($"お片付けの途中で例外: {ex}");
             _running = false;
-            foreach (var row in _rows.Where(r => r.Status is StepStatus.Pending or StepStatus.Running)) row.Update(StepStatus.Skipped, "行いませんでした");
-            ShowFinished(exit: true, deleteData: false, intro: "お片付けを最後まで行えませんでした。",
-                summary: $"思いがけないエラーで、お片付けを最後まで行えませんでした: {ex.Message}\n"
-                         + "閉じると、アプリをふだんどおり終了します（ファンは BIOS の自動制御に戻ります）。設定・ログ・記録は残します。\n"
-                         + $"ログ: {Logger.Directory}");
+            foreach (var row in _rows.Where(r => r.Status is StepStatus.Pending or StepStatus.Running)) row.Update(StepStatus.Skipped, L("行いませんでした"));
+            ShowFinished(exit: true, deleteData: false, intro: L("お片付けを最後まで行えませんでした。"),
+                summary: L($"思いがけないエラーで、お片付けを最後まで行えませんでした: {ex.Message}\n")
+                         + L("閉じると、アプリをふだんどおり終了します（ファンは BIOS の自動制御に戻ります）。設定・ログ・記録は残します。\n")
+                         + L($"ログ: {Logger.Directory}"));
             return;
         }
         _running = false;
@@ -99,11 +99,11 @@ public partial class UninstallDialog : Window
         bool aborted = CleanUninstall.Aborted(results);
         foreach (var row in _rows.Where(r => r.Status == StepStatus.Pending))
         {
-            if (aborted) row.Update(StepStatus.Skipped, "行いませんでした");
-            else row.Update(StepStatus.Pending, "「閉じて終了する」を押すと行います");
+            if (aborted) row.Update(StepStatus.Skipped, L("行いませんでした"));
+            else row.Update(StepStatus.Pending, L("「閉じて終了する」を押すと行います"));
         }
         ShowFinished(exit: !aborted, deleteData: !aborted && Plan.Contains(CleanupStep.DeleteData),
-            intro: aborted ? "お片付けを中止しました。" : "お片付けが終わりました。内容を確かめてから、閉じてください。",
+            intro: aborted ? L("お片付けを中止しました。") : L("お片付けが終わりました。内容を確かめてから、閉じてください。"),
             summary: CleanUninstall.Summary(results, Plan, _appFolder));
     }
 
@@ -116,7 +116,7 @@ public partial class UninstallDialog : Window
         DeleteDataAfterExit = deleteData;
         StartButton.Visibility = Visibility.Collapsed;
         CancelButton.Visibility = Visibility.Collapsed;
-        CloseButton.Content = exit ? "閉じて終了する" : "閉じる";
+        CloseButton.Content = exit ? L("閉じて終了する") : L("閉じる");
         CloseButton.Visibility = Visibility.Visible;
         OptionsCard.Visibility = Visibility.Collapsed;
         FolderNote.Visibility = Visibility.Collapsed;
@@ -161,10 +161,10 @@ public sealed class CleanupStepVm : ObservableObject
     {
         StepStatus.Running => "…",
         StepStatus.Done => "✔",
-        StepStatus.Warning => "！",
+        StepStatus.Warning => L("！"),
         StepStatus.Failed => "✖",
-        StepStatus.Skipped => "－",
-        _ => "・",
+        StepStatus.Skipped => L("－"),
+        _ => L("・"),
     };
 
     public Brush GlyphBrush => _status switch

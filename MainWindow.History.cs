@@ -29,7 +29,7 @@ public partial class MainWindow
         {
             HistoryGraph.Refresh();
             var span = _history.Count > 0 ? s.Time - _history.TimeAt(0) : TimeSpan.Zero;
-            HistoryInfo.Text = $"記録期間: {span:hh\\:mm\\:ss}（{_history.Count:N0} サンプル）  ／  グラフにマウスを乗せると、その時刻の値を表示します";
+            HistoryInfo.Text = L($"記録期間: {span:hh\\:mm\\:ss}（{_history.Count:N0} サンプル）  ／  グラフにマウスを乗せると、その時刻の値を表示します");
         }
     }
 
@@ -38,7 +38,7 @@ public partial class MainWindow
     {
         if (_catalog is null) return;
         foreach (var t in _catalog.Temperatures) _history.SetName(t.Id, $"{t.Name} ({t.HardwareName}) [°C]");
-        foreach (var v in Config.VirtualSensors) _history.SetName(v.Id, $"{v.Name} (仮想) [°C]");
+        foreach (var v in Config.VirtualSensors) _history.SetName(v.Id, L($"{v.Name} (仮想) [°C]"));
         foreach (var (id, name, unit) in MetricHistoryKeys) _history.SetName(id, $"{name} [{unit}]");
         foreach (var f in Config.Profiles.SelectMany(p => p.Fans).GroupBy(f => f.ControlId).Select(g => g.First()))
         {
@@ -58,14 +58,14 @@ public partial class MainWindow
     {
         if (_history.Count == 0)
         {
-            MessageBox.Show(this, "まだ記録がありません。", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(this, L("まだ記録がありません。"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
 
         var dialog = new SaveFileDialog
         {
-            Title = "履歴を CSV に書き出す",
-            Filter = "CSV ファイル (*.csv)|*.csv",
+            Title = L("履歴を CSV に書き出す"),
+            Filter = L("CSV ファイル (*.csv)|*.csv"),
             FileName = $"ProFan_{DateTime.Now:yyyyMMdd_HHmm}.csv",
         };
         if (dialog.ShowDialog(this) != true) return;
@@ -79,12 +79,12 @@ public partial class MainWindow
         {
             var from = _history.TimeAt(_history.Count - 1) - HistoryGraph.Range;
             int rows = _history.ExportCsv(dialog.FileName, from, keys);
-            ShowAlert($"{rows:N0} 行を書き出しました: {dialog.FileName}", AlertLevel.Info);
+            ShowAlert(L($"{rows:N0} 行を書き出しました: {dialog.FileName}"), AlertLevel.Info);
         }
         catch (Exception ex)
         {
             Logger.Error($"CSV 出力に失敗: {ex}");
-            MessageBox.Show(this, $"書き出しに失敗しました。\n{ex.Message}", "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this, L($"書き出しに失敗しました。\n{ex.Message}"), "ProFanController", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

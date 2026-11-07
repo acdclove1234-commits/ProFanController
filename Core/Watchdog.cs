@@ -61,7 +61,7 @@ public static class Watchdog
             // 直前に止めた見張りが合図に気づく前に取り消さないよう、少し待つ
             if (_stop.WaitOne(0)) Thread.Sleep(1000);
             _stop.Reset();
-            string exe = Environment.ProcessPath ?? throw new InvalidOperationException("実行ファイルのパスが分かりません。");
+            string exe = Environment.ProcessPath ?? throw new InvalidOperationException(L("実行ファイルのパスが分かりません。"));
             _stopping = false;
             var p = Process.Start(new ProcessStartInfo(exe, $"{Argument} {Environment.ProcessId}")
             {
@@ -220,11 +220,11 @@ public static class Watchdog
         else
         {
             string why = cfg.Safety.WatchdogRestart
-                ? $"{CrashWindow.TotalMinutes:F0} 分間に {recent} 回終了したため、自動での再起動はやめました。"
-                : "自動での再起動はオフになっています。";
+                ? L($"{CrashWindow.TotalMinutes:F0} 分間に {recent} 回終了したため、自動での再起動はやめました。")
+                : L("自動での再起動はオフになっています。");
             ShowMessage?.Invoke(
-                $"ProFanController が予期せず終了しました。\n\nファンは安全な回転数（{cfg.Safety.WatchdogSafeDuty:F0}%、ポンプは 100%）に固定しています。{why}\n" +
-                "PC を再起動すると BIOS の制御に戻ります（ProFanController を起動し直すと、アプリの制御で動きます）。\n\nログ: " + Logger.Directory);
+                L($"ProFanController が予期せず終了しました。\n\nファンは安全な回転数（{cfg.Safety.WatchdogSafeDuty:F0}%、ポンプは 100%）に固定しています。{why}\n") +
+                L("PC を再起動すると BIOS の制御に戻ります（ProFanController を起動し直すと、アプリの制御で動きます）。\n\nログ: ") + Logger.Directory);
         }
     }
 

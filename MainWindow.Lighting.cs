@@ -86,11 +86,11 @@ public sealed class RgbZoneVm : ObservableObject
     public const string SameId = "device";
     public static readonly IReadOnlyList<ChoiceOption> MirrorChoices = new ChoiceOption[]
     {
-        new(SameId, "デバイスと同じ"), new("on", "オン"), new("off", "オフ"),
+        new(SameId, L("デバイスと同じ")), new("on", L("オン")), new("off", L("オフ")),
     };
     public static readonly IReadOnlyList<ChoiceOption> ReverseChoices = new ChoiceOption[]
     {
-        new(SameId, "デバイスと同じ"), new("on", "逆向き"), new("off", "そのまま"),
+        new(SameId, L("デバイスと同じ")), new("on", L("逆向き")), new("off", L("そのまま")),
     };
 
     public static readonly IReadOnlyList<ChoiceOption> SoundChoices = MusicSounds.Ids.Select(id => new ChoiceOption(id, MusicSounds.Label(id))).ToList();
@@ -102,7 +102,7 @@ public sealed class RgbZoneVm : ObservableObject
     /// <summary>OpenRGB のゾーン名（設定の保存にも使う）</summary>
     public required string Name { get; init; }
     public required int Leds { get; init; }
-    public string LedText => $"LED {Leds} 個";
+    public string LedText => L($"LED {Leds} 個");
     /// <summary>光り方の選択肢（先頭が「デバイスと同じ」）</summary>
     public required IReadOnlyList<ChoiceOption> EffectOptions { get; init; }
     public IReadOnlyList<ChoiceOption> MirrorOptions => MirrorChoices;
@@ -178,7 +178,7 @@ public sealed class CasePlaceVm : ObservableObject
 
     private static List<ChoiceOption> CreatePlaceChoices()
     {
-        var list = new List<ChoiceOption> { new(NoPlace, "決めない（デバイスの中の並びで光る）") };
+        var list = new List<ChoiceOption> { new(NoPlace, L("決めない（デバイスの中の並びで光る）")) };
         foreach (var p in CaseLayout.Places) list.Add(new ChoiceOption(p.Id, $"{p.Group}: {p.Label}"));
         return list;
     }
@@ -193,8 +193,8 @@ public sealed class CasePlaceVm : ObservableObject
     public required int Leds { get; init; }
     /// <summary>ゾーンが 1 つしかないデバイス（ゾーン名は出さない）</summary>
     public bool SingleZone { get; init; }
-    public string Title => SingleZone ? DeviceName : $"{DeviceName} ・ {ZoneName}";
-    public string LedText => $"LED {Leds} 個";
+    public string Title => SingleZone ? DeviceName : L($"{DeviceName} ・ {ZoneName}");
+    public string LedText => L($"LED {Leds} 個");
     public IReadOnlyList<ChoiceOption> PlaceOptions => PlaceChoices;
 
     public string PlaceId
@@ -224,24 +224,24 @@ public sealed class RgbDeviceVm : ObservableObject
     /// <summary>「左右対称」の選択肢（設定では null = 自動、true = オン、false = オフ）</summary>
     public static readonly IReadOnlyList<ChoiceOption> MirrorChoices = new ChoiceOption[]
     {
-        new("auto", "自動（30 個以上で対称）"), new("on", "オン"), new("off", "オフ"),
+        new("auto", L("自動（30 個以上で対称）")), new("on", L("オン")), new("off", L("オフ")),
     };
     /// <summary>「1 秒に送る回数」の選択肢（設定では 0 = 自動）</summary>
     public static readonly IReadOnlyList<ChoiceOption> FpsChoices = new ChoiceOption[]
     {
-        new("0", "自動"), new("4", "4 回"), new("8", "8 回"), new("12", "12 回"), new("15", "15 回"),
-        new("20", "20 回"), new("30", "30 回"), new("60", "60 回"),
+        new("0", L("自動")), new("4", L("4 回")), new("8", L("8 回")), new("12", L("12 回")), new("15", L("15 回")),
+        new("20", L("20 回")), new("30", L("30 回")), new("60", L("60 回")),
     };
     /// <summary>グラボの「1 秒に送る回数」の選択肢（グラボは自動の回数より上げられない。下げるのは可）</summary>
     public static readonly IReadOnlyList<ChoiceOption> GpuFpsChoices = new ChoiceOption[]
     {
-        new("0", "自動"), new("1", "1 回"), new("2", "2 回"), new("3", "3 回"), new("4", "4 回"), new("5", "5 回"),
+        new("0", L("自動")), new("1", L("1 回")), new("2", L("2 回")), new("3", L("3 回")), new("4", L("4 回")), new("5", L("5 回")),
     };
     /// <summary>「早めに光らせる」（デバイスの遅れ）の選択肢（ミリ秒。設定では -1 = 自動）</summary>
     public static readonly IReadOnlyList<ChoiceOption> LeadChoices = new ChoiceOption[]
     {
-        new("-1", "自動"), new("0", "0 ミリ秒"), new("20", "20 ミリ秒"), new("40", "40 ミリ秒"), new("60", "60 ミリ秒"),
-        new("80", "80 ミリ秒"), new("100", "100 ミリ秒"), new("150", "150 ミリ秒"), new("200", "200 ミリ秒"),
+        new("-1", L("自動")), new("0", L("0 ミリ秒")), new("20", L("20 ミリ秒")), new("40", L("40 ミリ秒")), new("60", L("60 ミリ秒")),
+        new("80", L("80 ミリ秒")), new("100", L("100 ミリ秒")), new("150", L("150 ミリ秒")), new("200", L("200 ミリ秒")),
     };
     private static readonly IReadOnlyList<ChoiceOption> FastEffects = CreateEffectOptions(slow: false);
     // 更新が遅いデバイスでは、ストロボは使わない（一部しか書き換わらずチカチカするため）
@@ -259,11 +259,11 @@ public sealed class RgbDeviceVm : ObservableObject
     public bool IsSlow { get; init; }
     /// <summary>色を送るたびにちかちかしやすいデバイス（ASRock の Radeon グラボ）</summary>
     public bool IsFlickerProne { get; init; }
-    public string LedText => $"LED {Leds} 個";
+    public string LedText => L($"LED {Leds} 個");
     /// <summary>更新が遅いデバイスの目印の文字</summary>
-    public string SlowBadgeText => IsFlickerProne ? "ちかちか対策中（色が変わったときだけ送る）"
-        : IsGpu ? $"グラボ: 書き込みを最小限に（1 秒に最大 {(MaxFps > 0 ? Math.Min(MaxFps, AutoFps) : AutoFps)} 回）"
-        : $"更新が遅いデバイス（1 秒に {(MaxFps > 0 ? MaxFps : AutoFps)} 回{(MaxFps > 0 ? "" : "・自動")}）";
+    public string SlowBadgeText => IsFlickerProne ? L("ちかちか対策中（色が変わったときだけ送る）")
+        : IsGpu ? L($"グラボ: 書き込みを最小限に（1 秒に最大 {(MaxFps > 0 ? Math.Min(MaxFps, AutoFps) : AutoFps)} 回）")
+        : L($"更新が遅いデバイス（1 秒に {(MaxFps > 0 ? MaxFps : AutoFps)} 回{(MaxFps > 0 ? "" : L("・自動"))}）");
     /// <summary>「自動」のときの 1 秒に送る回数（グラボ 5・メモリなど 8）</summary>
     public int AutoFps { get; init; } = 8;
     /// <summary>グラボ（書き込みに時間がかかる・ちかちかしやすい）</summary>
@@ -311,13 +311,13 @@ public sealed class RgbDeviceVm : ObservableObject
     /// <summary>設定に保存する形の「1 秒に送る回数」（0 = 自動）</summary>
     public int MaxFps => int.TryParse(_fpsId, out int v) ? v : 0;
     public string SlowBadgeTip => IsFlickerProne
-        ? "このグラボは、色を書き込むたびに一瞬ちかちかすることがあります（OpenRGB 1.1 の書き込み方が原因と考えられますが、この機種では確認中です）。書き込みを最小限にするため、明るさは変えず、色がはっきり変わったときだけ（0.25 秒以上あけて）送り、同じ色の送り直しもしません。レインボー（流れる）は止まった虹に、呼吸は固定色になります（光る場所ごとに 1 色しか出せないため）。音楽連動で音が止まったときは、色を 20 秒ごとに切り替えます。気になる場合は光り方を「固定色」にしてください"
+        ? L("このグラボは、色を書き込むたびに一瞬ちかちかすることがあります（OpenRGB 1.1 の書き込み方が原因と考えられますが、この機種では確認中です）。書き込みを最小限にするため、明るさは変えず、色がはっきり変わったときだけ（0.25 秒以上あけて）送り、同じ色の送り直しもしません。レインボー（流れる）は止まった虹に、呼吸は固定色になります（光る場所ごとに 1 色しか出せないため）。音楽連動で音が止まったときは、色を 20 秒ごとに切り替えます。気になる場合は光り方を「固定色」にしてください")
         : IsGpu
-            ? "グラボの LED は、OpenRGB が 1 個ずつ書き込むため、1 回の色替えに 20〜200 ミリ秒ほどかかります。書き込みが続くと、ちかちかしたり遅れたりするので、書き込みを最小限にしています: "
-              + "明るさは一定（色の切り替えでビートを見せる）、色がはっきり変わったときだけ送る（1 秒に最大 5 回）、温度モードは温度の段が変わったときだけ切り替える、"
-              + "レインボー（流れる）・呼吸は止まった虹・固定色（「虹・呼吸も動かす」で変えられます）、同じ色の送り直しは 60 秒ごと。"
-              + "ほかのデバイスとタイミングがずれるときは「早めに光らせる」で合わせてください"
-            : "メモリなど、基板の内側の配線（I2C）でつながる LED は、1 回送るのに時間がかかるため、自動では 1 秒に 8 回までにしています（右の「1 秒に送る回数」で変えられます）。音楽連動の色の切り替えは定期便を待たずにすぐ送ります。同じ色の送り直しは 60 秒ごとです";
+            ? L("グラボの LED は、OpenRGB が 1 個ずつ書き込むため、1 回の色替えに 20〜200 ミリ秒ほどかかります。書き込みが続くと、ちかちかしたり遅れたりするので、書き込みを最小限にしています: ")
+              + L("明るさは一定（色の切り替えでビートを見せる）、色がはっきり変わったときだけ送る（1 秒に最大 5 回）、温度モードは温度の段が変わったときだけ切り替える、")
+              + L("レインボー（流れる）・呼吸は止まった虹・固定色（「虹・呼吸も動かす」で変えられます）、同じ色の送り直しは 60 秒ごと。")
+              + L("ほかのデバイスとタイミングがずれるときは「早めに光らせる」で合わせてください")
+            : L("メモリなど、基板の内側の配線（I2C）でつながる LED は、1 回送るのに時間がかかるため、自動では 1 秒に 8 回までにしています（右の「1 秒に送る回数」で変えられます）。音楽連動の色の切り替えは定期便を待たずにすぐ送ります。同じ色の送り直しは 60 秒ごとです");
     public IReadOnlyList<ChoiceOption> EffectOptions => IsSlow ? SlowEffects : FastEffects;
     public IReadOnlyList<ChoiceOption> MirrorOptions => MirrorChoices;
 
@@ -356,7 +356,7 @@ public sealed class RgbDeviceVm : ObservableObject
         var zones = device.Zones;
         if (zones is not null && zones.Count(z => z > 0) >= 2)
         {
-            var options = new List<ChoiceOption> { new(RgbZoneSettings.SameAsDevice, "デバイスと同じ") };
+            var options = new List<ChoiceOption> { new(RgbZoneSettings.SameAsDevice, L("デバイスと同じ")) };
             options.AddRange(EffectOptions);
             for (int k = 0; k < zones.Count; k++)
             {
@@ -480,12 +480,12 @@ public sealed class RgbDeviceVm : ObservableObject
 
     private static IReadOnlyList<ChoiceOption> CreateEffectOptions(bool slow)
     {
-        var list = new List<ChoiceOption> { new("Auto", "自動（全体の設定）") };
+        var list = new List<ChoiceOption> { new("Auto", L("自動（全体の設定）")) };
         foreach (var style in MusicStyles.All)
         {
             if (slow && style == MusicStyles.Strobe) continue;
             string label = MusicTuning.Describe(style).Label;
-            list.Add(new(style, style == MusicStyles.Strobe ? label + "（激しい点滅）" : label));
+            list.Add(new(style, style == MusicStyles.Strobe ? label + L("（激しい点滅）") : label));
         }
         return list;
     }
@@ -694,16 +694,16 @@ public partial class MainWindow
     /// <summary>色の候補（固定色・呼吸・パレット「選んだ色」の色）と、その名前</summary>
     private static readonly (string Hex, string Name)[] SwatchColors =
     {
-        ("#6A00FF", "紫"), ("#0040FF", "青"), ("#00B4FF", "水色"), ("#00FF50", "緑"),
-        ("#FFB000", "オレンジ"), ("#FF0000", "赤"), ("#FF0080", "ピンク"), ("#FFFFFF", "白"),
+        ("#6A00FF", L("紫")), ("#0040FF", L("青")), ("#00B4FF", L("水色")), ("#00FF50", L("緑")),
+        ("#FFB000", L("オレンジ")), ("#FF0000", L("赤")), ("#FF0080", L("ピンク")), ("#FFFFFF", L("白")),
     };
 
     /// <summary>「止めるときの LED」の選択肢</summary>
     private static readonly IReadOnlyList<ChoiceOption> StopOptions = new ChoiceOption[]
     {
-        new(RgbStopBehaviors.Off, "消灯（LED を消す）"),
-        new(RgbStopBehaviors.Static, "固定色（「色」で選んだ色にする）"),
-        new(RgbStopBehaviors.Keep, "そのまま（最後の色で止まる）"),
+        new(RgbStopBehaviors.Off, L("消灯（LED を消す）")),
+        new(RgbStopBehaviors.Static, L("固定色（「色」で選んだ色にする）")),
+        new(RgbStopBehaviors.Keep, L("そのまま（最後の色で止まる）")),
     };
 
     /// <summary>画面の動きの更新は最大 1 秒に 60 回（秒）</summary>
@@ -805,9 +805,9 @@ public partial class MainWindow
             {
                 Kind = LightingChoiceKind.Effect, Id = id, Label = label, Description = description,
                 Tip = strobe
-                    ? description + "\n光に敏感な方は使わないでください。「激しい点滅を抑える」がオンのあいだは選べません"
+                    ? description + L("\n光に敏感な方は使わないでください。「激しい点滅を抑える」がオンのあいだは選べません")
                     : description,
-                Warning = strobe ? "⚠ 激しく点滅します" : "",
+                Warning = strobe ? L("⚠ 激しく点滅します") : "",
             });
         }
 
@@ -820,19 +820,19 @@ public partial class MainWindow
             {
                 Kind = LightingChoiceKind.Palette, Id = id, Label = Palettes.Label(id),
                 Tip = id == Palettes.Solid
-                    ? "「色と明るさ」で選んだ色だけで光ります。色は変わらず、音に合わせて明るさだけが変わります"
+                    ? L("「色と明るさ」で選んだ色だけで光ります。色は変わらず、音に合わせて明るさだけが変わります")
                     : id == Palettes.Mono
-                    ? "「色と明るさ」で選んだ色と、その両隣の色で光ります"
-                    : $"{Palettes.Label(id)}の色で光ります。ビートのたびに、この中の次の色へ切り替わります",
+                    ? L("「色と明るさ」で選んだ色と、その両隣の色で光ります")
+                    : L($"{Palettes.Label(id)}の色で光ります。ビートのたびに、この中の次の色へ切り替わります"),
                 Swatch = LightingRules.PaletteStops.TryGetValue(id, out var stops) ? GradientBrush(stops) : null,
             });
         }
 
         foreach (var (id, label, tip) in new[]
         {
-            (TempoModes.Auto, "自動（先読み）", "曲のテンポをつかんだら、次のビートを先読みして遅れなく光らせます（おすすめ）"),
-            (TempoModes.KickOnly, "キックだけ", "先読みはせず、バスドラムが鳴ったときだけ光ります。テンポが変わる曲向け"),
-            (TempoModes.Off, "使わない", "テンポもビートも使わず、音の大きさだけで光ります"),
+            (TempoModes.Auto, L("自動（先読み）"), L("曲のテンポをつかんだら、次のビートを先読みして遅れなく光らせます（おすすめ）")),
+            (TempoModes.KickOnly, L("キックだけ"), L("先読みはせず、バスドラムが鳴ったときだけ光ります。テンポが変わる曲向け")),
+            (TempoModes.Off, L("使わない"), L("テンポもビートも使わず、音の大きさだけで光ります")),
         })
         {
             _tempoChoices.Add(new LightingChoiceVm { Kind = LightingChoiceKind.Tempo, Id = id, Label = label, Tip = tip });
@@ -842,37 +842,37 @@ public partial class MainWindow
         {
             string tip = id switch
             {
-                IdleEffects.Mood => "パレットの色で、ゆっくり色が移り変わります",
-                IdleEffects.Breathing => "「色」で選んだ色が、ゆっくり明るくなったり暗くなったりします",
-                IdleEffects.Static => "「色」で選んだ色で光り続けます",
-                IdleEffects.Off => "音が止まったら LED を消します",
+                IdleEffects.Mood => L("パレットの色で、ゆっくり色が移り変わります"),
+                IdleEffects.Breathing => L("「色」で選んだ色が、ゆっくり明るくなったり暗くなったりします"),
+                IdleEffects.Static => L("「色」で選んだ色で光り続けます"),
+                IdleEffects.Off => L("音が止まったら LED を消します"),
                 _ => IdleEffects.Label(id),
             };
             _idleChoices.Add(new LightingChoiceVm { Kind = LightingChoiceKind.Idle, Id = id, Label = IdleEffects.Label(id), Tip = tip });
         }
 
         foreach (var (hex, name) in SwatchColors)
-            _colorChoices.Add(new LightingChoiceVm { Kind = LightingChoiceKind.Color, Id = hex, Label = name, Tip = $"{name}（{hex}）", Swatch = SolidBrush(hex) });
+            _colorChoices.Add(new LightingChoiceVm { Kind = LightingChoiceKind.Color, Id = hex, Label = name, Tip = L($"{name}（{hex}）"), Swatch = SolidBrush(hex) });
     }
 
     /// <summary>プリセットの説明（中身は実際に当てて調べるので、MusicTuning の表とずれない）</summary>
     private static string PresetTip(string id)
     {
-        if (id == MusicPresets.Custom) return "下の設定を自分で調整した状態です。ほかのプリセットを選ぶと、その組み合わせに戻ります";
+        if (id == MusicPresets.Custom) return L("下の設定を自分で調整した状態です。ほかのプリセットを選ぶと、その組み合わせに戻ります");
         var sample = new RgbConfig();
         MusicTuning.ApplyPreset(sample, id);
         string scene = id switch
         {
-            MusicPresets.Chill => "作業中や夜に。ゆったりと色が移り変わります",
-            MusicPresets.Groove => "迷ったらこれ。低音に合わせて気持ちよく脈打ちます",
-            MusicPresets.Party => "ドラムのたびに光の輪が広がる、にぎやかな光り方です",
-            MusicPresets.Club => "ビートごとに強く色が切り替わる、いちばん激しい光り方です",
-            MusicPresets.Visualizer => "LED の並びに低音〜高音を並べて、音を目で見る光り方です",
-            MusicPresets.Cinema => "映画やゲームの邪魔をしない、控えめで暖かい光り方です",
+            MusicPresets.Chill => L("作業中や夜に。ゆったりと色が移り変わります"),
+            MusicPresets.Groove => L("迷ったらこれ。低音に合わせて気持ちよく脈打ちます"),
+            MusicPresets.Party => L("ドラムのたびに光の輪が広がる、にぎやかな光り方です"),
+            MusicPresets.Club => L("ビートごとに強く色が切り替わる、いちばん激しい光り方です"),
+            MusicPresets.Visualizer => L("LED の並びに低音〜高音を並べて、音を目で見る光り方です"),
+            MusicPresets.Cinema => L("映画やゲームの邪魔をしない、控えめで暖かい光り方です"),
             _ => "",
         };
-        string tip = $"{scene}\n光り方: {MusicTuning.Describe(sample.MusicStyle).Label} ・ 強さ: {Intensities.Label(sample.Music.Intensity)} ・ 色: {Palettes.Label(sample.Music.Palette)}";
-        if (id == MusicPresets.Club) tip += "\n（「激しい点滅を抑える」をオフにすると、さらに激しく点滅します）";
+        string tip = L($"{scene}\n光り方: {MusicTuning.Describe(sample.MusicStyle).Label} ・ 強さ: {Intensities.Label(sample.Music.Intensity)} ・ 色: {Palettes.Label(sample.Music.Palette)}");
+        if (id == MusicPresets.Club) tip += L("\n（「激しい点滅を抑える」をオフにすると、さらに激しく点滅します）");
         return tip;
     }
 
@@ -882,13 +882,13 @@ public partial class MainWindow
         var p = MusicTuning.Profile(id);
         string feel = id switch
         {
-            Intensities.Subtle => "ゆったり穏やか。色は小節ごとにゆっくり変わります",
-            Intensities.Moderate => "ほどよい反応。色は 2 拍ごとに変わります",
-            Intensities.High => "キビキビ反応。色は 1 拍ごとに変わります",
-            Intensities.Intense => "最大の反応。色は 1 拍ごとに一瞬で変わり、小節の頭を強調します",
+            Intensities.Subtle => L("ゆったり穏やか。色は小節ごとにゆっくり変わります"),
+            Intensities.Moderate => L("ほどよい反応。色は 2 拍ごとに変わります"),
+            Intensities.High => L("キビキビ反応。色は 1 拍ごとに変わります"),
+            Intensities.Intense => L("最大の反応。色は 1 拍ごとに一瞬で変わり、小節の頭を強調します"),
             _ => "",
         };
-        return $"{feel}\n選ぶと: 反応の速さ {p.ReactionMs:F0} ms ・ 滑らかさ {p.SmoothnessMs:F0} ms ・ メリハリ {p.Punch:F0}% ・ いちばん暗いとき {p.MinBrightness:F0}%";
+        return L($"{feel}\n選ぶと: 反応の速さ {p.ReactionMs:F0} ms ・ 滑らかさ {p.SmoothnessMs:F0} ms ・ メリハリ {p.Punch:F0}% ・ いちばん暗いとき {p.MinBrightness:F0}%");
     }
 
     // =====================================================================
@@ -1028,7 +1028,7 @@ public partial class MainWindow
         // 選んだ光り方で使う設定だけを表示する
         bool music = rgb.Mode == RgbModes.Music;
         SpeedRow.Visibility = VisibleIf(rgb.Mode is RgbModes.Rainbow or RgbModes.Breathing || (music && LightingRules.UsesSpeed(rgb.MusicStyle)));
-        SpeedLabel.Text = music ? "流れる速さ" : "速さ";
+        SpeedLabel.Text = music ? L("流れる速さ") : L("速さ");
         PunchRow.Visibility = VisibleIf(LightingRules.UsesPunch(rgb.MusicStyle));
         RefreshTuningDefaults();
         TempoRow.Visibility = VisibleIf(LightingRules.UsesTempo(rgb.MusicStyle));
@@ -1037,7 +1037,7 @@ public partial class MainWindow
         FlashWarning.Visibility = VisibleIf(!m.ReduceFlashing);
 
         // テンポの倍率（×2・÷2）
-        TempoFactorText.Text = m.TempoFactor < 0.75 ? "いまは半分のテンポ" : m.TempoFactor > 1.5 ? "いまは 2 倍のテンポ" : "";
+        TempoFactorText.Text = m.TempoFactor < 0.75 ? L("いまは半分のテンポ") : m.TempoFactor > 1.5 ? L("いまは 2 倍のテンポ") : "";
         TempoHalfButton.IsEnabled = m.TempoFactor > 0.75;
         TempoDoubleButton.IsEnabled = m.TempoFactor < 1.5;
 
@@ -1128,8 +1128,8 @@ public partial class MainWindow
         var rgb = Config.Rgb;
         string changed = MusicTuning.ChangedTuningSummary(rgb);
         TuningChangedText.Text = changed.Length == 0
-            ? $"すべて初期値です（強さ「{Intensities.Label(rgb.Music.Intensity)}」の値）"
-            : "初期値から変えている値: " + changed;
+            ? L($"すべて初期値です（強さ「{Intensities.Label(rgb.Music.Intensity)}」の値）")
+            : L("初期値から変えている値: ") + changed;
         ResetTuningButton.IsEnabled = changed.Length > 0;
     }
 
@@ -1144,7 +1144,7 @@ public partial class MainWindow
         finally { _applyingPreset = false; }
         FlushCommit(); // すぐに「元に戻す」を押せるようにする
         Logger.Info($"音楽連動の反応のしかたを初期値に戻しました（{changed}）");
-        ShowAlert("反応のしかたの値を初期値に戻しました。右上の「元に戻す」で、戻す前の値にできます。", AlertLevel.Info);
+        ShowAlert(L("反応のしかたの値を初期値に戻しました。右上の「元に戻す」で、戻す前の値にできます。"), AlertLevel.Info);
     }
 
     /// <summary>
@@ -1161,8 +1161,8 @@ public partial class MainWindow
             return;
         }
         var answer = MessageBox.Show(this,
-            "激しい点滅を許可しますか？\n\n強い光の点滅は、光に敏感な方の体調（光過敏性発作など）に影響することがあります。" +
-            "気分が悪くなったら、すぐに「激しい点滅を抑える」をオンに戻してください。",
+            L("激しい点滅を許可しますか？\n\n強い光の点滅は、光に敏感な方の体調（光過敏性発作など）に影響することがあります。") +
+            L("気分が悪くなったら、すぐに「激しい点滅を抑える」をオンに戻してください。"),
             "ProFanController", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel);
         if (answer == MessageBoxResult.OK) m.ReduceFlashing = false;
         else box.SetCurrentValue(ToggleButton.IsCheckedProperty, true); // 結び付けを残したまま元に戻す
@@ -1217,20 +1217,20 @@ public partial class MainWindow
     private async void OnTestRgbClick(object sender, RoutedEventArgs e)
     {
         FlushCommit();
-        ShowRgbMessage("OpenRGB に接続しています…");
+        ShowRgbMessage(L("OpenRGB に接続しています…"));
         try
         {
             var devices = await RgbSync.TestAsync(Config.Rgb.Host, Config.Rgb.Port);
             SetKnownRgbDevices(devices);
             int count = devices.Count(d => d.LedCount > 0);
             ShowRgbMessage(count == 0
-                ? "接続できましたが、色を変えられるデバイスが見つかりません。OpenRGB の画面にデバイスが表示されているか確認してください"
-                : $"接続できました。{count} 個のデバイスが見つかりました。" + (Config.Rgb.Enabled ? "" : "「OpenRGB と連携する」をオンにすると始まります"));
+                ? L("接続できましたが、色を変えられるデバイスが見つかりません。OpenRGB の画面にデバイスが表示されているか確認してください")
+                : L($"接続できました。{count} 個のデバイスが見つかりました。") + (Config.Rgb.Enabled ? "" : L("「OpenRGB と連携する」をオンにすると始まります")));
         }
         catch (Exception ex)
         {
             var inner = ex is AggregateException { InnerException: { } x } ? x : ex;
-            ShowRgbMessage($"接続できません: {inner.Message}\nOpenRGB を起動して「SDK Server」タブの「Start Server」を押してから、もう一度試してください。");
+            ShowRgbMessage(L($"接続できません: {inner.Message}\nOpenRGB を起動して「SDK Server」タブの「Start Server」を押してから、もう一度試してください。"));
         }
     }
 
@@ -1240,11 +1240,11 @@ public partial class MainWindow
         FlushCommit();
         if (!Config.Rgb.Enabled)
         {
-            ShowRgbMessage("「OpenRGB と連携する」がオフです。オンにすると接続します");
+            ShowRgbMessage(L("「OpenRGB と連携する」がオフです。オンにすると接続します"));
             return;
         }
         CurrentApp.Rgb.Kick();
-        ShowRgbMessage("OpenRGB に繋ぎ直しています…");
+        ShowRgbMessage(L("OpenRGB に繋ぎ直しています…"));
     }
 
     /// <summary>設定の「通知・連携」からの案内</summary>
@@ -1264,7 +1264,7 @@ public partial class MainWindow
         var sync = CurrentApp.Rgb;
         string text = _rgbMessage is not null && AudioClock.Now < _rgbMessageUntil ? _rgbMessage
             : Config.Rgb.Enabled ? sync.Status
-            : "オフ（「OpenRGB と連携する」をオンにすると、LED の色を変え始めます）";
+            : L("オフ（「OpenRGB と連携する」をオンにすると、LED の色を変え始めます）");
         SetText(RgbStatus, text);
 
         var (r, g, b) = sync.CurrentColor;
@@ -1424,7 +1424,7 @@ public partial class MainWindow
             if (_rgbDeviceRows.Count == 0)
             {
                 AllDevicesSwitch.IsChecked = true;
-                ShowDeviceHint("デバイスの一覧を読み込んでから選べます。上の「接続テスト」を押してください");
+                ShowDeviceHint(L("デバイスの一覧を読み込んでから選べます。上の「接続テスト」を押してください"));
                 return;
             }
             // まずは全部を選んだ状態にする（光り方は変わらない）。ここから、色を変えたくないデバイスのチェックを外す
@@ -1451,7 +1451,7 @@ public partial class MainWindow
         {
             // 「何も選ばない」は「すべて」と同じ意味になってしまうので、最後の 1 つは外せないようにする
             vm.Selected = true;
-            ShowDeviceHint("少なくとも 1 つは選んでください（LED を消したいときは、上の「OpenRGB と連携する」をオフにします）");
+            ShowDeviceHint(L("少なくとも 1 つは選んでください（LED を消したいときは、上の「OpenRGB と連携する」をオフにします）"));
             return;
         }
         rgb.Devices = LightingRules.MergeNames(rgb.Devices, PresentRgbNames(), chosen);
@@ -1499,7 +1499,7 @@ public partial class MainWindow
         var present = PresentRgbNames();
         var missing = rgb.Devices.Concat(rgb.SwapRedGreen).Concat(rgb.DeviceSettings.Select(d => d.Name))
             .Where(n => !string.IsNullOrEmpty(n) && !present.Contains(n)).Distinct().ToList();
-        MissingDevicesText.Text = $"いま見つからないデバイスの設定も残してあります（つなぎ直すと元どおりに使えます）: {string.Join("、", missing)}";
+        MissingDevicesText.Text = L($"いま見つからないデバイスの設定も残してあります（つなぎ直すと元どおりに使えます）: {string.Join(L("、"), missing)}");
         MissingDevicesText.Visibility = VisibleIf(missing.Count > 0);
     }
 
@@ -1526,7 +1526,7 @@ public partial class MainWindow
     private async void OnPickMusicAppClick(object sender, RoutedEventArgs e)
     {
         var menu = new ContextMenu { PlacementTarget = (UIElement)sender, Placement = PlacementMode.Bottom, MaxHeight = 420 };
-        menu.Items.Add(new MenuItem { Header = "音を出しているアプリを探しています…", IsEnabled = false });
+        menu.Items.Add(new MenuItem { Header = L("音を出しているアプリを探しています…"), IsEnabled = false });
         menu.IsOpen = true;
 
         List<(string Name, float Peak, bool Active)> apps;
@@ -1552,7 +1552,7 @@ public partial class MainWindow
         menu.Items.Clear();
         foreach (var (name, peak, active) in apps)
         {
-            string state = peak > 0.001f ? "　（音が出ています）" : active ? "　（再生中）" : "";
+            string state = peak > 0.001f ? L("　（音が出ています）") : active ? L("　（再生中）") : "";
             var item = new MenuItem { Header = name + state };
             item.Click += (_, _) => Config.Rgb.MusicSource = name;
             menu.Items.Add(item);
@@ -1563,7 +1563,7 @@ public partial class MainWindow
             item.Click += (_, _) => Config.Rgb.MusicSource = app;
             menu.Items.Add(item);
         }
-        if (menu.Items.Count == 0) menu.Items.Add(new MenuItem { Header = "アプリが見つかりません。曲を再生してから、もう一度押してください", IsEnabled = false });
+        if (menu.Items.Count == 0) menu.Items.Add(new MenuItem { Header = L("アプリが見つかりません。曲を再生してから、もう一度押してください"), IsEnabled = false });
     }
 
     /// <summary>
@@ -1632,21 +1632,21 @@ public partial class MainWindow
         if (!rgb.Enabled || rgb.Mode != RgbModes.Music || !app.Audio.Running)
         {
             SyncTestToggle.IsChecked = false;
-            ShowSyncHelp("同期テストは、「OpenRGB と連携する」がオンで、光り方が「音楽連動」のときに使えます。", warn: true);
+            ShowSyncHelp(L("同期テストは、「OpenRGB と連携する」がオンで、光り方が「音楽連動」のときに使えます。"), warn: true);
             return;
         }
         app.SyncTestPlayer.Start(app.Audio.Engine);
         if (!app.SyncTestPlayer.Running)
         {
             SyncTestToggle.IsChecked = false;
-            ShowSyncHelp(app.SyncTestPlayer.Error.Length > 0 ? app.SyncTestPlayer.Error : "クリック音を鳴らせませんでした", warn: true);
+            ShowSyncHelp(app.SyncTestPlayer.Error.Length > 0 ? app.SyncTestPlayer.Error : L("クリック音を鳴らせませんでした"), warn: true);
             return;
         }
         app.Rgb.SyncTest = true;
         _syncTestOn = true;
         SyncTestToggle.IsChecked = true;
-        ShowSyncHelp("0.6 秒ごとに「カチッ」と鳴り、LED が白く光ります。光が音より早ければ「+」、遅ければ「−」で、音と光がそろうところを探してください。" +
-                     "もう一度押すか、この画面を離れると止まります。", warn: false);
+        ShowSyncHelp(L("0.6 秒ごとに「カチッ」と鳴り、LED が白く光ります。光が音より早ければ「+」、遅ければ「−」で、音と光がそろうところを探してください。") +
+                     L("もう一度押すか、この画面を離れると止まります。"), warn: false);
     }
 
     /// <summary>同期テストを止める（動いていなければ何もしない）</summary>
@@ -1719,14 +1719,14 @@ public partial class MainWindow
                 var list = new List<string>();
                 var conflicts = InstallCheck.FindRunningConflicts();
                 if (conflicts.Count > 0)
-                    list.Add($"{string.Join("・", conflicts)} が動いています。同じ LED を操作するので、色が勝手に戻る・ちらつく・ほかのデバイスとそろわない原因になります。"
-                        + "そのソフトの LED の制御（ライティング）を止めるか、終了してください（Lian Li の L-Connect は、ファンの回転だけ使う設定にできます）。");
+                    list.Add(L($"{string.Join(L("・"), conflicts)} が動いています。同じ LED を操作するので、色が勝手に戻る・ちらつく・ほかのデバイスとそろわない原因になります。")
+                        + L("そのソフトの LED の制御（ライティング）を止めるか、終了してください（Lian Li の L-Connect は、ファンの回転だけ使う設定にできます）。"));
                 string? path = OpenRgbSettings.FindUnsharedSmbus();
                 if (path is not null)
-                    list.Add("OpenRGB の設定で「Shared SMBus Access」（SMBus をほかのソフトと共有する）がオフになっています。"
-                        + "このアプリはメモリの温度を同じ配線（SMBus）で読むので、ぶつかって温度が読めなくなることがあります。"
-                        + "OpenRGB の Settings で「Shared SMBus Access」をオンにして、OpenRGB を起動し直してください（または、設定 →「メモリの温度を読む」をオフに）。"
-                        + $"\n設定ファイル: {path}");
+                    list.Add(L("OpenRGB の設定で「Shared SMBus Access」（SMBus をほかのソフトと共有する）がオフになっています。")
+                        + L("このアプリはメモリの温度を同じ配線（SMBus）で読むので、ぶつかって温度が読めなくなることがあります。")
+                        + L("OpenRGB の Settings で「Shared SMBus Access」をオンにして、OpenRGB を起動し直してください（または、設定 →「メモリの温度を読む」をオフに）。")
+                        + L($"\n設定ファイル: {path}"));
                 return list;
             });
         }
@@ -1882,7 +1882,7 @@ public partial class MainWindow
                 vm.ErrorText = "";
                 continue;
             }
-            string effect = st.ActiveEffect.Length > 0 ? " ・ " + MusicTuning.Describe(st.ActiveEffect).Label : "";
+            string effect = st.ActiveEffect.Length > 0 ? L(" ・ ") + MusicTuning.Describe(st.ActiveEffect).Label : "";
             vm.StatusText = $"{st.Fps:F0} fps{effect}";
             vm.ErrorText = st.LastError;
         }
@@ -1894,11 +1894,11 @@ public partial class MainWindow
         var audio = CurrentApp.Audio;
         var rgb = Config.Rgb;
         var m = rgb.Music;
-        string status = !rgb.Enabled ? "「OpenRGB と連携する」をオンにすると、音の取り込みが始まります"
+        string status = !rgb.Enabled ? L("「OpenRGB と連携する」をオンにすると、音の取り込みが始まります")
             : rgb.Mode != RgbModes.Music ? ""
-            : rgb.MusicSource.Length > 0 ? $"{audio.Status}（{rgb.MusicSource} の音だけに反応）"
+            : rgb.MusicSource.Length > 0 ? L($"{audio.Status}（{rgb.MusicSource} の音だけに反応）")
             : audio.Status;
-        if (audio.Running && audio.EndpointName.Length > 0) status += $"\n聞いている出力先: {audio.EndpointName}";
+        if (audio.Running && audio.EndpointName.Length > 0) status += L($"\n聞いている出力先: {audio.EndpointName}");
         SetText(AudioStatus, status);
         BluetoothHint.Visibility = VisibleIf(audio.Running && LightingRules.LooksLikeBluetooth(audio.EndpointName) && m.AudioDelayMs < BluetoothHintBelowMs);
 
@@ -1906,7 +1906,7 @@ public partial class MainWindow
         if (engine is null)
         {
             SetText(BpmText, "—");
-            SetText(BeatInfoText, rgb.Enabled && rgb.Mode == RgbModes.Music ? "音の取り込みを準備しています…" : "音楽連動で OpenRGB と連携しているときに表示します");
+            SetText(BeatInfoText, rgb.Enabled && rgb.Mode == RgbModes.Music ? L("音の取り込みを準備しています…") : L("音楽連動で OpenRGB と連携しているときに表示します"));
             SetText(LevelText, "");
             SetText(GateText, "");
             return;
@@ -1914,22 +1914,22 @@ public partial class MainWindow
         var beat = engine.Beat;
         if (m.TempoMode == TempoModes.Off)
         {
-            SetText(BpmText, "テンポ: 使わない");
-            SetText(BeatInfoText, "音の大きさだけで光っています");
+            SetText(BpmText, L("テンポ: 使わない"));
+            SetText(BeatInfoText, L("音の大きさだけで光っています"));
         }
         else if (beat.Locked)
         {
             SetText(BpmText, $"{beat.Bpm:F0} BPM");
             SetText(BeatInfoText, m.TempoMode == TempoModes.KickOnly
-                ? "キックに合わせて光っています"
-                : $"テンポをつかんでいます（確かさ {beat.Confidence * 100:F0}%）");
+                ? L("キックに合わせて光っています")
+                : L($"テンポをつかんでいます（確かさ {beat.Confidence * 100:F0}%）"));
         }
         else
         {
-            SetText(BpmText, "テンポ検出中…");
+            SetText(BpmText, L("テンポ検出中…"));
             SetText(BeatInfoText, beat.HasTempo && beat.Confidence > 0.05
-                ? $"候補 {beat.Bpm:F0} BPM（確かさ {beat.Confidence * 100:F0}%）"
-                : "ビートがはっきりした曲なら、数秒でテンポをつかみます");
+                ? L($"候補 {beat.Bpm:F0} BPM（確かさ {beat.Confidence * 100:F0}%）")
+                : L("ビートがはっきりした曲なら、数秒でテンポをつかみます"));
         }
         if (!_liveHasFrame)
         {
@@ -1938,8 +1938,8 @@ public partial class MainWindow
             return;
         }
         string rms = _liveFrame.RmsDb <= -100 ? "—" : $"{_liveFrame.RmsDb:F0} dBFS";
-        SetText(LevelText, $"音量 {rms} ・ 基準 {_liveFrame.CeilingDb:F0} dBFS");
-        SetText(GateText, _liveFrame.GateOpen ? "● 音を検出しています" : "○ 無音（音が鳴ると反応します）");
+        SetText(LevelText, L($"音量 {rms} ・ 基準 {_liveFrame.CeilingDb:F0} dBFS"));
+        SetText(GateText, _liveFrame.GateOpen ? L("● 音を検出しています") : L("○ 無音（音が鳴ると反応します）"));
     }
 
     /// <summary>文字が変わったときだけ書き換える（同じ文字を入れ直して描き直しを起こさない）</summary>

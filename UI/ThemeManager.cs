@@ -99,10 +99,13 @@ public static class ThemePalette
 
 public static class ThemeManager
 {
-    /// <summary>アプリの既定のフォント（英数字は Montserrat、日本語は ProFan Maru。足りない文字は Yu Gothic UI）</summary>
-    public const string DefaultFont = "pack://application:,,,/Assets/Fonts/#Montserrat, pack://application:,,,/Assets/Fonts/#ProFan Maru, Yu Gothic UI";
+    /// <summary>
+    /// アプリの既定のフォント（英数字は Montserrat、日本語は ProFan Maru。足りない文字は Yu Gothic UI）。
+    /// 中国語・韓国語・タイ語などの画面では、その言語のフォントを日本語のフォントより先に探す（漢字をその言語の字形にするため）
+    /// </summary>
+    public static string DefaultFont => $"pack://application:,,,/Assets/Fonts/#Montserrat, {UiFonts.LanguageFonts}pack://application:,,,/Assets/Fonts/#ProFan Maru, Yu Gothic UI";
     /// <summary>同梱の丸ゴシックだけ（英数字も ProFan Maru）</summary>
-    public const string BundledMaru = "pack://application:,,,/Assets/Fonts/#ProFan Maru, Yu Gothic UI";
+    public static string BundledMaru => $"pack://application:,,,/Assets/Fonts/#ProFan Maru, {UiFonts.LanguageFonts}Yu Gothic UI";
     /// <summary>フォントの選択肢で「同梱の丸ゴシック」を表す値</summary>
     public const string BundledMaruId = "ProFan Maru";
 
@@ -306,7 +309,7 @@ public static class ThemeManager
     /// <summary>フォントの設定 → 画面に使うフォント</summary>
     public static FontFamily FontFor(string? setting) => string.IsNullOrWhiteSpace(setting)
         ? new FontFamily(DefaultFont)
-        : setting == BundledMaruId ? new FontFamily(BundledMaru) : new FontFamily($"{setting}, Yu Gothic UI");
+        : setting == BundledMaruId ? new FontFamily(BundledMaru) : new FontFamily($"{setting}, {UiFonts.LanguageFonts}Yu Gothic UI");
 
     /// <summary>
     /// 見た目を入れ替える: 色の資源（DynamicResource で参照しているもの）・フォント・開いている画面のタイトルバーと文字の大きさ。

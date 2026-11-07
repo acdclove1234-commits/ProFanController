@@ -104,10 +104,10 @@ public static class ProfileRoles
 
     public static string Label(string id) => id switch
     {
-        Silent => "静音",
-        Balanced => "標準",
-        Performance => "冷却重視",
-        _ => "その他",
+        Silent => L("静音"),
+        Balanced => L("標準"),
+        Performance => L("冷却重視"),
+        _ => L("その他"),
     };
 
     /// <summary>役割がまだないプロファイル（前の版の設定）は、名前から決める（1 回だけ）</summary>

@@ -33,16 +33,16 @@ public sealed class AutoTuneResult
     public string ToText(double target)
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"自動調整  {MeasuredAt:yyyy/MM/dd HH:mm} ／ 温度センサー: {SensorName}");
+        sb.AppendLine(L($"自動調整  {MeasuredAt:yyyy/MM/dd HH:mm} ／ 温度センサー: {SensorName}"));
         if (AbortReason is not null) sb.AppendLine($"※ {AbortReason}");
-        sb.AppendLine($"待機時の温度: {IdleTemp:F1} °C");
+        sb.AppendLine(L($"待機時の温度: {IdleTemp:F1} °C"));
         foreach (var s in Steps)
-            sb.AppendLine($"  {s.Duty,3:F0}% → {s.SteadyTemp:F1} °C{(s.AvgRpm is double r ? $"（{r:N0} rpm）" : "")}");
+            sb.AppendLine($"  {s.Duty,3:F0}% → {s.SteadyTemp:F1} °C{(s.AvgRpm is double r ? L($"（{r:N0} rpm）") : "")}");
         var need = AutoTuner.RequiredDuty(Steps, target);
         var top = Steps.OrderByDescending(x => x.Duty).FirstOrDefault();
         sb.AppendLine(need.Insufficient
-            ? $"目標 {target:F0}°C は全開でも届きません（全開で {top?.SteadyTemp:F1}°C）"
-            : $"目標 {target:F0}°C を守るのに必要な回転数: 約 {need.Duty:F0}%");
+            ? L($"目標 {target:F0}°C は全開でも届きません（全開で {top?.SteadyTemp:F1}°C）")
+            : L($"目標 {target:F0}°C を守るのに必要な回転数: 約 {need.Duty:F0}%"));
         return sb.ToString();
     }
 }
@@ -139,13 +139,13 @@ public sealed class AutoTuner : IDisposable
 
     public string StatusText => Current switch
     {
-        Phase.Idle => "待機時の温度を測っています…",
-        Phase.WaitLoad when _builtInLoad => "負荷を開始しています…",
-        Phase.WaitLoad => "ゲームやベンチマークを起動してください（GPU 使用率が 70% を超えたら自動で始まります）",
-        Phase.Warmup => "全開で温まるまで待っています…",
-        Phase.Steps => $"{_duties[_stepIndex]:F0}% で温度が落ち着くのを待っています…（{_stepIndex + 1} / {_duties.Count} 段目）",
-        Phase.Cooldown => "負荷を止めて、いつもの制御に戻しています…",
-        _ => _abortReason is null ? "完了しました" : $"中断: {_abortReason}",
+        Phase.Idle => L("待機時の温度を測っています…"),
+        Phase.WaitLoad when _builtInLoad => L("負荷を開始しています…"),
+        Phase.WaitLoad => L("ゲームやベンチマークを起動してください（GPU 使用率が 70% を超えたら自動で始まります）"),
+        Phase.Warmup => L("全開で温まるまで待っています…"),
+        Phase.Steps => L($"{_duties[_stepIndex]:F0}% で温度が落ち着くのを待っています…（{_stepIndex + 1} / {_duties.Count} 段目）"),
+        Phase.Cooldown => L("負荷を止めて、いつもの制御に戻しています…"),
+        _ => _abortReason is null ? L("完了しました") : L($"中断: {_abortReason}"),
     };
 
     public void OnSnapshot(EngineSnapshot s)
@@ -153,7 +153,7 @@ public sealed class AutoTuner : IDisposable
         if (Current == Phase.Done) return;
         if (!s.Values.TryGetValue(_sensorId, out var tv) || tv is null)
         {
-            Abort("温度センサーが読めません");
+            Abort(L("温度センサーが読めません"));
             return;
         }
         double temp = tv.Value;
@@ -169,7 +169,7 @@ public sealed class AutoTuner : IDisposable
             if (Current is Phase.Warmup or Phase.Steps)
             {
                 if (Current == Phase.Steps) Record(now, aborted: true);
-                Abort(s.Emergency ? "緊急全開になったため中止しました" : $"温度が {temp:F0}°C に達したため中止しました");
+                Abort(s.Emergency ? L("緊急全開になったため中止しました") : L($"温度が {temp:F0}°C に達したため中止しました"));
                 return;
             }
         }
@@ -177,7 +177,7 @@ public sealed class AutoTuner : IDisposable
         // 外部の負荷（ゲームなど）がやめられたら中止
         if (!_builtInLoad && Current is Phase.Warmup or Phase.Steps && LoadOf(s) is double load && load < 40)
         {
-            Abort("GPU の負荷がなくなったため中止しました（ゲームやベンチマークを動かし続けてください）");
+            Abort(L("GPU の負荷がなくなったため中止しました（ゲームやベンチマークを動かし続けてください）"));
             return;
         }
 
@@ -214,7 +214,7 @@ public sealed class AutoTuner : IDisposable
                 }
                 else if (now - _phaseStart >= WaitLoadTimeout)
                 {
-                    Abort("負荷がかからなかったため中止しました");
+                    Abort(L("負荷がかからなかったため中止しました"));
                 }
                 break;
 

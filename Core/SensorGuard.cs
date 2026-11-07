@@ -95,7 +95,7 @@ public sealed class SensorGuard
             if (!s.Stuck && v < NoStuckAbove && now - s.UnchangedSince >= StuckTime && s.LoadMax - s.LoadMin >= StuckLoadSwing)
             {
                 s.Stuck = true;
-                string reason = $"使用率が {s.LoadMin:F0}〜{s.LoadMax:F0}% と変わっているのに、{(now - s.UnchangedSince).TotalMinutes:F0} 分以上 {v:F1}°C のまま変化していません";
+                string reason = L($"使用率が {s.LoadMin:F0}〜{s.LoadMax:F0}% と変わっているのに、{(now - s.UnchangedSince).TotalMinutes:F0} 分以上 {v:F1}°C のまま変化していません");
                 _suspects[id] = reason;
                 StuckDetected?.Invoke(id, reason);
             }

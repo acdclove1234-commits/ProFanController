@@ -42,7 +42,7 @@ public sealed class SyncTestPlayer : IDisposable
             // 出力先が抜かれた・使えなくなったときは止まる（画面の「同期テスト中」も自動で消える）
             _out.PlaybackStopped += (_, e) =>
             {
-                if (e.Exception is not null) Error = $"クリック音が止まりました: {e.Exception.Message}";
+                if (e.Exception is not null) Error = L($"クリック音が止まりました: {e.Exception.Message}");
                 Running = false;
             };
             DeviceId = _device.ID;
@@ -53,7 +53,7 @@ public sealed class SyncTestPlayer : IDisposable
         }
         catch (Exception ex)
         {
-            Error = $"クリック音を鳴らせません: {ex.Message}";
+            Error = L($"クリック音を鳴らせません: {ex.Message}");
             Logger.Warn($"同期テスト: {Error}");
             Stop(engine);
         }

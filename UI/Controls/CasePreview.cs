@@ -56,10 +56,10 @@ public sealed class CasePreview : FrameworkElement
             var ft = new FormattedText(s, CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Yu Gothic UI"), 11, label, dpi);
             dc.DrawText(ft, new Point(x - ft.Width / 2, y - ft.Height / 2));
         }
-        Text("背面", box.Left - PadLeft / 2, box.Top + box.Height / 2);
-        Text("前", box.Right + PadRight / 2, box.Top + box.Height / 2);
-        Text("上", box.Left + box.Width / 2, box.Top - PadTop / 2);
-        Text("下", box.Left + box.Width / 2, box.Bottom + PadBottom / 2);
+        Text(L("背面"), box.Left - PadLeft / 2, box.Top + box.Height / 2);
+        Text(L("前"), box.Right + PadRight / 2, box.Top + box.Height / 2);
+        Text(L("上"), box.Left + box.Width / 2, box.Top - PadTop / 2);
+        Text(L("下"), box.Left + box.Width / 2, box.Bottom + PadBottom / 2);
 
         // LED を並べる範囲（枠の線に点が乗らないよう、少し内側）
         double inset = cw * 0.035;
@@ -90,7 +90,7 @@ public sealed class CasePreview : FrameworkElement
             }
             else
             {
-                double thick = place.Group == "テープ" ? dot * 2.2 : place.Id.StartsWith("gpu") ? dot * 6 : dot * 4;
+                double thick = place.Group == L("テープ") ? dot * 2.2 : place.Id.StartsWith("gpu") ? dot * 6 : dot * 4;
                 var pen = new Pen(body, thick) { StartLineCap = PenLineCap.Round, EndLineCap = PenLineCap.Round };
                 pen.Freeze();
                 dc.DrawLine(pen, At(place.X1, place.Y1), At(place.X2, place.Y2));
@@ -119,7 +119,7 @@ public sealed class CasePreview : FrameworkElement
             }
         }
         if (_items.Count == 0)
-            Text("下の一覧で場所を選ぶと、ここに表示されます", box.Left + box.Width / 2, box.Top + box.Height / 2);
+            Text(L("下の一覧で場所を選ぶと、ここに表示されます"), box.Left + box.Width / 2, box.Top + box.Height / 2);
     }
 
     private static byte[] CreateInverseGamma()

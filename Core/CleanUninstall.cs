@@ -40,7 +40,7 @@ public sealed record CleanupFacts(bool AutoStartRegistered, bool FirewallRuleExi
 public enum StepStatus { Pending, Running, Done, Warning, Failed, Skipped }
 
 /// <summary>手順 1 つの結果</summary>
-public sealed record StepResult(CleanupStep Step, StepStatus Status, string Message);
+public sealed record StepResult(CleanupStep Step, StepStatus Status, string Message, bool PcRestart = false);
 
 public static class CleanUninstall
 {
@@ -51,7 +51,7 @@ public static class CleanUninstall
     public static readonly IReadOnlyList<string> DataFilePatterns = new[] { "config.json", "config.json.tmp", "config.broken_*.json" };
 
     /// <summary>確認の画面と結果に出す、消すものの説明</summary>
-    public static string DataDescription => "設定（config.json）・ログ（logs）・記録（data・records・reports）・設定のバックアップ（backups）・デバイスの画像（images）";
+    public static string DataDescription => L("設定（config.json）・ログ（logs）・記録（data・records・reports）・設定のバックアップ（backups）・デバイスの画像（images）");
 
     /// <summary>
     /// 行う手順を、行う順番に並べる。
@@ -73,15 +73,15 @@ public static class CleanUninstall
     /// <summary>確認の画面に出す、手順の説明</summary>
     public static string Describe(CleanupStep step) => step switch
     {
-        CleanupStep.RestoreFans => "すべてのファンを BIOS（マザーボード）の自動制御に戻し、戻ったことを確かめます（戻せなかったときは、ここで中止して何も変えません）",
-        CleanupStep.StopFanControl => "ファンの制御を止めて、ハードウェア（PawnIO ドライバー）を閉じます。見張りプロセスにも「正しい終了」を伝えて終わらせます（止めたファンの制御を異常と見なして、起動し直さないように）",
-        CleanupStep.StopLighting => "ライティングの制御を止めて、LED のデバイス（OpenRGB など）を離します（ふだんの終了と同じ光り方で止めます）",
-        CleanupStep.RemoveFirewallRule => "スマホ監視を止めて、Windows ファイアウォールに追加した許可（ProFanController Web）を消します",
-        CleanupStep.RemoveAutoStart => "ログオン時の自動起動（タスクスケジューラの「ProFanController」）を消します",
-        CleanupStep.RemoveCrashDumpSetting => "クラッシュしたときの記録の設定（レジストリの Windows Error Reporting\\LocalDumps）を消します",
-        CleanupStep.UninstallPawnIo => $"PawnIO（ファン制御用のドライバー）を winget でアンインストールします",
-        CleanupStep.ExitApp => "アプリを終了します（ふだんの終了と同じ後片付けをします。自動で起動し直しません）",
-        CleanupStep.DeleteData => $"アプリが終わったあとに、{DataDescription}を消します（アプリ本体の exe などは残します）",
+        CleanupStep.RestoreFans => L("すべてのファンを BIOS（マザーボード）の自動制御に戻し、戻ったことを確かめます（戻せなかったときは、ここで中止して何も変えません）"),
+        CleanupStep.StopFanControl => L("ファンの制御を止めて、ハードウェア（PawnIO ドライバー）を閉じます。見張りプロセスにも「正しい終了」を伝えて終わらせます（止めたファンの制御を異常と見なして、起動し直さないように）"),
+        CleanupStep.StopLighting => L("ライティングの制御を止めて、LED のデバイス（OpenRGB など）を離します（ふだんの終了と同じ光り方で止めます）"),
+        CleanupStep.RemoveFirewallRule => L("スマホ監視を止めて、Windows ファイアウォールに追加した許可（ProFanController Web）を消します"),
+        CleanupStep.RemoveAutoStart => L("ログオン時の自動起動（タスクスケジューラの「ProFanController」）を消します"),
+        CleanupStep.RemoveCrashDumpSetting => L("クラッシュしたときの記録の設定（レジストリの Windows Error Reporting\\LocalDumps）を消します"),
+        CleanupStep.UninstallPawnIo => L($"PawnIO（ファン制御用のドライバー）を winget でアンインストールします"),
+        CleanupStep.ExitApp => L("アプリを終了します（ふだんの終了と同じ後片付けをします。自動で起動し直しません）"),
+        CleanupStep.DeleteData => L($"アプリが終わったあとに、{DataDescription}を消します（アプリ本体の exe などは残します）"),
         _ => step.ToString(),
     };
 
@@ -94,10 +94,10 @@ public static class CleanUninstall
     /// </summary>
     public static string? SkipReason(CleanupStep step, IReadOnlyList<StepResult> done)
     {
-        if (done.Any(r => AbortsOnFailure(r.Step) && r.Status == StepStatus.Failed)) return "ファンを BIOS 制御に戻せなかったため、中止しました";
+        if (done.Any(r => AbortsOnFailure(r.Step) && r.Status == StepStatus.Failed)) return L("ファンを BIOS 制御に戻せなかったため、中止しました");
         if (step == CleanupStep.UninstallPawnIo
             && done.Any(r => r.Step == CleanupStep.StopFanControl && r.Status == StepStatus.Failed))
-            return "ファンの制御を止めきれず、PawnIO ドライバーが使われたままの可能性があるため、アンインストールしませんでした（" + PawnIoSetup.ManualUninstallHint + "）";
+            return L("ファンの制御を止めきれず、PawnIO ドライバーが使われたままの可能性があるため、アンインストールしませんでした（") + PawnIoSetup.ManualUninstallHint + L("）");
         return null;
     }
 
@@ -115,24 +115,24 @@ public static class CleanUninstall
         if (Aborted(results))
         {
             var fail = results.First(r => r.Step == CleanupStep.RestoreFans);
-            lines.Add("お片付けを中止しました。何も変えていません。");
+            lines.Add(L("お片付けを中止しました。何も変えていません。"));
             lines.Add(fail.Message);
-            lines.Add("ファンは、これまでどおりこのアプリが制御しています。PC を再起動してから、もう一度お試しください。");
+            lines.Add(L("ファンは、これまでどおりこのアプリが制御しています。PC を再起動してから、もう一度お試しください。"));
             return string.Join("\n", lines);
         }
 
         var problems = results.Where(r => r.Status is StepStatus.Failed or StepStatus.Warning or StepStatus.Skipped).ToList();
         lines.Add(problems.Count == 0
-            ? "お片付けが終わりました。ファンは BIOS（マザーボード）の自動制御に戻っています。"
-            : "お片付けが終わりました。うまくいかなかったことがあります（下のとおり）。");
-        foreach (var p in problems) lines.Add($"・{p.Message}");
-        if (results.Any(r => r.Message.Contains("PC を再起動", StringComparison.Ordinal)))
-            lines.Add("・PC を再起動すると、すべてが元どおりになります。");
+            ? L("お片付けが終わりました。ファンは BIOS（マザーボード）の自動制御に戻っています。")
+            : L("お片付けが終わりました。うまくいかなかったことがあります（下のとおり）。"));
+        foreach (var p in problems) lines.Add(L($"・{p.Message}"));
+        if (results.Any(r => r.PcRestart || r.Message.Contains("PC を再起動", StringComparison.Ordinal)))
+            lines.Add(L("・PC を再起動すると、すべてが元どおりになります。"));
         lines.Add("");
         lines.Add(plan.Contains(CleanupStep.DeleteData)
-            ? $"閉じるとアプリが終了し、そのあとで{DataDescription}を消します。"
-            : "閉じるとアプリが終了します（自動では起動し直しません）。設定・ログ・記録はフォルダーに残します。");
-        lines.Add($"アプリ本体は動いている間は消せません。使うのをやめるなら、終了したあとに次のフォルダーを削除してください（エクスプローラーで開きます）:\n{appFolder}");
+            ? L($"閉じるとアプリが終了し、そのあとで{DataDescription}を消します。")
+            : L("閉じるとアプリが終了します（自動では起動し直しません）。設定・ログ・記録はフォルダーに残します。"));
+        lines.Add(L($"アプリ本体は動いている間は消せません。使うのをやめるなら、終了したあとに次のフォルダーを削除してください（エクスプローラーで開きます）:\n{appFolder}"));
         return string.Join("\n", lines);
     }
 

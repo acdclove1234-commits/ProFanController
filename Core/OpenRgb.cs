@@ -41,7 +41,7 @@ public sealed record RgbDevice(int Index, string Name, int LedCount, int Type = 
     public IReadOnlyList<string>? ZoneNames { get; init; }
 
     /// <summary>k 番目のゾーンの名前（分からなければ「ゾーン k+1」）。ゾーンの設定はこの名前で探す</summary>
-    public string ZoneName(int k) => ZoneNames is { } n && k >= 0 && k < n.Count && n[k].Length > 0 ? n[k] : $"ゾーン {k + 1}";
+    public string ZoneName(int k) => ZoneNames is { } n && k >= 0 && k < n.Count && n[k].Length > 0 ? n[k] : L($"ゾーン {k + 1}");
 
     /// <summary>
     /// 更新が遅いデバイス（GPU・メモリなど、I2C／SMBus でつながっているもの）。
@@ -146,7 +146,7 @@ public sealed class OpenRgbClient : IDisposable
         connect.ContinueWith(t => _ = t.Exception, TaskContinuationOptions.OnlyOnFaulted);
         try
         {
-            if (!connect.Wait(TimeSpan.FromSeconds(ConnectTimeoutSec))) throw new TimeoutException("OpenRGB に接続できません（タイムアウト）");
+            if (!connect.Wait(TimeSpan.FromSeconds(ConnectTimeoutSec))) throw new TimeoutException(L("OpenRGB に接続できません（タイムアウト）"));
         }
         catch (AggregateException ex) when (ex.InnerException is not null)
         {
@@ -224,7 +224,7 @@ public sealed class OpenRgbClient : IDisposable
         DeviceListChanged = false;
         Send(0, RequestControllerCount, ReadOnlySpan<byte>.Empty);
         var countData = Receive(RequestControllerCount);
-        if (countData.Length < 4) throw new InvalidDataException("OpenRGB からの応答が不正です（デバイスの数）");
+        if (countData.Length < 4) throw new InvalidDataException(L("OpenRGB からの応答が不正です（デバイスの数）"));
         int count = (int)Math.Min(BinaryPrimitives.ReadUInt32LittleEndian(countData), 1024);
         var list = new List<RgbDevice>();
         Span<byte> version = stackalloc byte[4];
@@ -373,7 +373,7 @@ public sealed class OpenRgbClient : IDisposable
     /// <summary>_packet の先頭 length バイトを書き、かかった時間（ミリ秒）を返す</summary>
     private double WritePacket(int length)
     {
-        var stream = _stream ?? throw new IOException("OpenRGB に接続していません");
+        var stream = _stream ?? throw new IOException(L("OpenRGB に接続していません"));
         long t0 = Stopwatch.GetTimestamp();
         stream.Write(_packet, 0, length);
         return (Stopwatch.GetTimestamp() - t0) * 1000.0 / Stopwatch.Frequency;
@@ -409,7 +409,7 @@ public sealed class OpenRgbClient : IDisposable
             long left = until - Environment.TickCount64;
             // 読めるデータがある（または接続が閉じた）まで待つ。閉じていれば次の読み込みが IOException になる
             if (_tcp.Available < HeaderSize && (left <= 0 || !_tcp.Client.Poll((int)Math.Min(left * 1000, int.MaxValue), SelectMode.SelectRead)))
-                throw new TimeoutException("OpenRGB から返事がありません");
+                throw new TimeoutException(L("OpenRGB から返事がありません"));
             ReadExactly(_header, HeaderSize);
             var (id, size) = ParseHeader(_header);
             if (id == expected && BinaryPrimitives.ReadUInt32LittleEndian(_header.AsSpan(4)) == device)
@@ -425,21 +425,21 @@ public sealed class OpenRgbClient : IDisposable
 
     private static (uint Id, int Size) ParseHeader(byte[] header)
     {
-        if (header[0] != 'O' || header[1] != 'R' || header[2] != 'G' || header[3] != 'B') throw new IOException("OpenRGB からの応答が不正です");
+        if (header[0] != 'O' || header[1] != 'R' || header[2] != 'G' || header[3] != 'B') throw new IOException(L("OpenRGB からの応答が不正です"));
         uint id = BinaryPrimitives.ReadUInt32LittleEndian(header.AsSpan(8));
         uint size = BinaryPrimitives.ReadUInt32LittleEndian(header.AsSpan(12));
-        if (size > MaxPayload) throw new IOException("OpenRGB からの応答が大きすぎます");
+        if (size > MaxPayload) throw new IOException(L("OpenRGB からの応答が大きすぎます"));
         return (id, (int)size);
     }
 
     private void ReadExactly(byte[] buf, int n)
     {
-        var stream = _stream ?? throw new IOException("OpenRGB に接続していません");
+        var stream = _stream ?? throw new IOException(L("OpenRGB に接続していません"));
         int read = 0;
         while (read < n)
         {
             int r = stream.Read(buf, read, n - read);
-            if (r == 0) throw new IOException("OpenRGB との接続が切れました");
+            if (r == 0) throw new IOException(L("OpenRGB との接続が切れました"));
             read += r;
         }
     }
@@ -518,7 +518,7 @@ public sealed class OpenRgbClient : IDisposable
     {
         zoneNames?.Clear();
         int p = 4; // データ長
-        if (d.Length < 8) throw new InvalidDataException("コントローラー情報が短すぎます");
+        if (d.Length < 8) throw new InvalidDataException(L("コントローラー情報が短すぎます"));
         int type = BinaryPrimitives.ReadInt32LittleEndian(d.AsSpan(p));
         p += 4;    // 種類
         string name = ReadString(d, ref p);
@@ -544,7 +544,7 @@ public sealed class OpenRgbClient : IDisposable
         {
             string zoneName = ReadString(d, ref p);
             zoneNames?.Add(zoneName);
-            if (p + 16 > d.Length) throw new InvalidDataException("コントローラー情報が途中で切れています");
+            if (p + 16 > d.Length) throw new InvalidDataException(L("コントローラー情報が途中で切れています"));
             zoneSizes.Add((int)BinaryPrimitives.ReadUInt32LittleEndian(d.AsSpan(p + 12)));
             p += 4 * 4; // 種類・LED 数の最小/最大/現在
             int matrix = U16(d, ref p);
@@ -558,13 +558,13 @@ public sealed class OpenRgbClient : IDisposable
             p += 4;
         }
         int colorCount = U16(d, ref p);
-        if (p + colorCount * 4 > d.Length) throw new InvalidDataException("コントローラー情報を読み取れません");
+        if (p + colorCount * 4 > d.Length) throw new InvalidDataException(L("コントローラー情報を読み取れません"));
         return (name, colorCount, type, zoneSizes, location);
     }
 
     private static int U16(byte[] d, ref int p)
     {
-        if (p + 2 > d.Length) throw new InvalidDataException("コントローラー情報が途中で切れています");
+        if (p + 2 > d.Length) throw new InvalidDataException(L("コントローラー情報が途中で切れています"));
         int v = BinaryPrimitives.ReadUInt16LittleEndian(d.AsSpan(p));
         p += 2;
         return v;
@@ -573,7 +573,7 @@ public sealed class OpenRgbClient : IDisposable
     private static string ReadString(byte[] d, ref int p)
     {
         int len = U16(d, ref p);
-        if (p + len > d.Length) throw new InvalidDataException("コントローラー情報が途中で切れています");
+        if (p + len > d.Length) throw new InvalidDataException(L("コントローラー情報が途中で切れています"));
         string s = Encoding.UTF8.GetString(d, p, Math.Max(0, len - 1)); // 末尾の \0 を除く
         p += len;
         return s;
@@ -866,7 +866,7 @@ public sealed class RgbDeviceChannel
         catch (Exception ex)
         {
             if (LastError.Length == 0 || Input.T - _lastErrorAt > ErrorShowSec) Logger.Warn($"LED の描画でエラー（{Device.Name}）: {ex.Message}");
-            LastError = $"描画できません: {ex.Message}";
+            LastError = L($"描画できません: {ex.Message}");
             _lastErrorAt = Input.T;
             return false;
         }
@@ -954,7 +954,7 @@ public sealed class RgbDeviceChannel
     public string StatusNote(double now)
     {
         if (LastError.Length > 0 && now - _lastErrorAt < ErrorShowSec) return LastError;
-        if (Governor.Limited) return $"OpenRGB の処理が追いつかないため、1 秒に {EffectiveFps:0} 回に下げています";
+        if (Governor.Limited) return L($"OpenRGB の処理が追いつかないため、1 秒に {EffectiveFps:0} 回に下げています");
         return "";
     }
 
@@ -1042,7 +1042,7 @@ public sealed class RgbSync : IDisposable
     private volatile bool _whiteTest;
     /// <summary>最後にログに残したデバイスの一覧（同じ一覧なら繋ぎ直しても書かない）</summary>
     private string _loggedDevices = "";
-    private volatile string _status = "停止中";
+    private volatile string _status = L("停止中");
     private volatile RgbDeviceChannel[] _published = Array.Empty<RgbDeviceChannel>();
     private volatile IReadOnlyList<RgbDevice> _devices = Array.Empty<RgbDevice>();
     private volatile IReadOnlyList<RgbDeviceStatus> _deviceStatus = Array.Empty<RgbDeviceStatus>();
@@ -1126,7 +1126,7 @@ public sealed class RgbSync : IDisposable
         {
             if (_disposed) return;
             _suspended = true;
-            if (_loop is not null) StopLocked(SnapshotConfig(), "スリープ中");
+            if (_loop is not null) StopLocked(SnapshotConfig(), L("スリープ中"));
         }
     }
 
@@ -1167,8 +1167,8 @@ public sealed class RgbSync : IDisposable
             if (_disposed) return;
             if (!cfg.Enabled)
             {
-                if (_loop is not null) StopLocked(cfg, "停止中");
-                else if (!_suspended) Status = "停止中";
+                if (_loop is not null) StopLocked(cfg, L("停止中"));
+                else if (!_suspended) Status = L("停止中");
                 return;
             }
             if (_suspended) return;
@@ -1260,7 +1260,7 @@ public sealed class RgbSync : IDisposable
     /// <summary>LED を「止めるときの光り方」にしてから、送るのをやめる（アプリの終了時など。画面を止めるのは長くても約 0.6 秒）</summary>
     public void Stop()
     {
-        lock (_life) StopLocked(SnapshotConfig(), "停止中");
+        lock (_life) StopLocked(SnapshotConfig(), L("停止中"));
     }
 
     /// <summary>設定画面の「接続テスト」: デバイス一覧を返す</summary>
@@ -1276,7 +1276,7 @@ public sealed class RgbSync : IDisposable
         lock (_life)
         {
             if (_disposed) return;
-            StopLocked(SnapshotConfig(), "停止中");
+            StopLocked(SnapshotConfig(), L("停止中"));
             _disposed = true;
         }
     }
@@ -1316,12 +1316,12 @@ public sealed class RgbSync : IDisposable
     {
         var h = new LoopHandle(++_generation);
         var previous = _lastThread;
-        var thread = new Thread(() => RunLoop(h, previous)) { IsBackground = true, Name = $"OpenRGB 描画 #{h.Generation}" };
+        var thread = new Thread(() => RunLoop(h, previous)) { IsBackground = true, Name = $"OpenRGB 描画 #{h.Generation}" }; // no-loc（ログに出る名前）
         try { thread.Priority = ThreadPriority.AboveNormal; } catch { /* 優先度を変えられない環境 */ }
         h.Thread = thread;
         _loop = h;
         _lastThread = thread;
-        Status = "OpenRGB に接続しています…";
+        Status = L("OpenRGB に接続しています…");
         thread.Start();
     }
 
@@ -1391,7 +1391,7 @@ public sealed class RgbSync : IDisposable
             // 前のスレッドがまだ終わっていなければ、終わるまで待つ（2 本が同時に送らないように）
             if (previous is not null && previous.IsAlive)
             {
-                SetStatus(h, "前の接続が終わるのを待っています…");
+                SetStatus(h, L("前の接続が終わるのを待っています…"));
                 long until = Environment.TickCount64 + PreviousLoopWaitMs;
                 while (previous.IsAlive && !token.IsCancellationRequested && Environment.TickCount64 < until) previous.Join(50);
             }
@@ -1416,7 +1416,7 @@ public sealed class RgbSync : IDisposable
                 {
                     client = new OpenRgbClient();
                     h.Client = client;
-                    SetStatus(h, "OpenRGB に接続しています…");
+                    SetStatus(h, L("OpenRGB に接続しています…"));
                     client.Connect(cfg.Host, cfg.Port);
                     var devices = client.GetDevices();
                     connected = true;
@@ -1443,8 +1443,8 @@ public sealed class RgbSync : IDisposable
                     int delay = ReconnectBackoff.DelaySec(failures);
                     string msg = OpenRgbClient.Describe(ex);
                     SetStatus(h, connected
-                        ? $"OpenRGB との接続が切れました（{delay} 秒後に繋ぎ直します）: {msg}"
-                        : $"接続できません（{delay} 秒後に再試行）: {msg}");
+                        ? L($"OpenRGB との接続が切れました（{delay} 秒後に繋ぎ直します）: {msg}")
+                        : L($"接続できません（{delay} 秒後に再試行）: {msg}"));
                     PublishDisconnected(h, msg);
                     if (msg != lastLogged)
                     {
@@ -1463,7 +1463,7 @@ public sealed class RgbSync : IDisposable
         catch (Exception ex) when (!token.IsCancellationRequested)
         {
             Logger.Error($"OpenRGB の描画スレッドが止まりました: {ex}");
-            SetStatus(h, $"エラーで止まりました: {OpenRgbClient.Describe(ex)}");
+            SetStatus(h, L($"エラーで止まりました: {OpenRgbClient.Describe(ex)}"));
         }
         catch
         {
@@ -1535,7 +1535,7 @@ public sealed class RgbSync : IDisposable
                 {
                     // 接続先が変わった → 今のデバイスを「止めるときの光り方」にしてから、新しい接続先へ
                     SendStopFrames(client, channels, cfg, double.PositiveInfinity);
-                    SetStatus(h, "OpenRGB の接続先が変わったので、繋ぎ直しています…");
+                    SetStatus(h, L("OpenRGB の接続先が変わったので、繋ぎ直しています…"));
                     return;
                 }
                 string key = SelectionKey(cfg);
@@ -1551,13 +1551,13 @@ public sealed class RgbSync : IDisposable
 
             if (Interlocked.Exchange(ref h.KickFlag, 0) != 0)
             {
-                SetStatus(h, "OpenRGB に繋ぎ直しています…");
+                SetStatus(h, L("OpenRGB に繋ぎ直しています…"));
                 return;
             }
             client.PollIncoming();
             if (client.DeviceListChanged)
             {
-                SetStatus(h, "OpenRGB のデバイスの一覧が変わったので、繋ぎ直しています…");
+                SetStatus(h, L("OpenRGB のデバイスの一覧が変わったので、繋ぎ直しています…"));
                 Logger.Info("OpenRGB: デバイスの一覧が変わったので繋ぎ直します");
                 return;
             }
@@ -1598,7 +1598,7 @@ public sealed class RgbSync : IDisposable
                 nextStatus = now + StatusEverySec;
                 // 直接書き込みに失敗し続けたグラボは、OpenRGB を通す作り方に切り替える
                 if (channels.Exists(c => c.Direct is { Faulted: true })) RebuildChannels(client, devices, cfg, channels, missing, now);
-                if (client.IsClosedByServer()) throw new IOException("OpenRGB との接続が切れました");
+                if (client.IsClosedByServer()) throw new IOException(L("OpenRGB との接続が切れました"));
                 PublishStatus(h, channels, missing, renderFps.Sample(now), animated, now);
             }
         }
@@ -1801,22 +1801,22 @@ public sealed class RgbSync : IDisposable
                 ch.Renderer.ActiveEffect, ch.StatusNote(now));
         }
         for (int i = 0; i < missing.Count; i++)
-            list[channels.Count + i] = new RgbDeviceStatus(missing[i], 0, false, 0, "", "OpenRGB に見つかりません");
+            list[channels.Count + i] = new RgbDeviceStatus(missing[i], 0, false, 0, "", L("OpenRGB に見つかりません"));
         _deviceStatus = list;
 
-        string notFound = missing.Count > 0 ? string.Join("、", missing) : "";
+        string notFound = missing.Count > 0 ? string.Join(L("、"), missing) : "";
         string text;
         if (channels.Count == 0)
         {
             text = missing.Count > 0
-                ? $"選んだデバイスが見つかりません: {notFound}（OpenRGB の画面に表示されているか確認してください）"
-                : "接続できましたが、色を変えられるデバイスが見つかりません。OpenRGB の画面にデバイスが表示されているか確認してください";
+                ? L($"選んだデバイスが見つかりません: {notFound}（OpenRGB の画面に表示されているか確認してください）")
+                : L("接続できましたが、色を変えられるデバイスが見つかりません。OpenRGB の画面にデバイスが表示されているか確認してください");
         }
         else
         {
-            text = $"接続中: {channels.Count} 個のデバイスの色を変えています";
-            if (animated && fps > 0) text += $"（1 秒に {fps:0} コマ）";
-            if (missing.Count > 0) text += $"。選んだデバイスが見つかりません: {notFound}";
+            text = L($"接続中: {channels.Count} 個のデバイスの色を変えています");
+            if (animated && fps > 0) text += L($"（1 秒に {fps:0} コマ）");
+            if (missing.Count > 0) text += L($"。選んだデバイスが見つかりません: {notFound}");
         }
         Status = text;
     }
@@ -1845,7 +1845,7 @@ public sealed class RgbSync : IDisposable
 
     /// <summary>ログ用のデバイスの一覧（名前・LED の数・つながっている場所）</summary>
     public static string DescribeDevices(IReadOnlyList<RgbDevice> devices) =>
-        string.Join("、", devices.Select(d => $"{d.Name}（LED {d.LedCount} 個・{(d.Location.Length > 0 ? d.Location : "場所不明")}）"));
+        string.Join(L("、"), devices.Select(d => L($"{d.Name}（LED {d.LedCount} 個・{(d.Location.Length > 0 ? d.Location : L("場所不明"))}）")));
 
     private static string SelectionKey(RgbConfig cfg) =>
         (cfg.DirectGpuWrite ? "direct\n" : "openrgb\n") + (cfg.Devices is { Count: > 0 } d ? string.Join("\n", d) : "");
