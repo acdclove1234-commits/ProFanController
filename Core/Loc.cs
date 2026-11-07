@@ -167,6 +167,22 @@ public static class Localization
     /// <summary>表にその言葉の訳があるか</summary>
     public static bool Has(string ja) => _table.ContainsKey(Hash(ja));
 
+    /// <summary>
+    /// 文と文をつなぐ。前の文が「。」「、」などの全角の文字で終わるとき（日本語・中国語）はそのまま、
+    /// それ以外（英語・韓国語・タイ語など、文の間に空白を入れる言語）は空白を 1 つ挟む。
+    /// 訳の表は行末の空白が消えやすいので、つなぎ目の空白は訳に持たせずここで足す
+    /// </summary>
+    public static string JoinSentences(string first, string second)
+    {
+        if (first.Length == 0 || second.Length == 0 || char.IsWhiteSpace(first[^1]) || char.IsWhiteSpace(second[0])) return first + second;
+        return IsWide(first[^1]) ? first + second : first + " " + second;
+    }
+
+    /// <summary>全角の文字（かな・漢字・全角の記号）か。これで終わる文のあとには空白を入れない</summary>
+    internal static bool IsWide(char c) =>
+        c is >= '　' and <= 'ヿ' or >= '㐀' and <= '䶿' or >= '一' and <= '鿿'
+          or >= '豈' and <= '﫿' or >= '＀' and <= '￯';
+
     /// <summary>見出しのハッシュ（FNV-1a 32 ビット。UTF-16 の文字ごと）</summary>
     public static uint Hash(string s)
     {

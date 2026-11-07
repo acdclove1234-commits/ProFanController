@@ -68,6 +68,17 @@ public static class LocalizationTests
         T.Check(t.Count == 1 && t[Localization.Hash(s)] == s, "escaped text reads back unchanged");
     }
 
+    public static void TestJoinSentences()
+    {
+        T.Check(Localization.JoinSentences("止めました。", "設定から") == "止めました。設定から", "Japanese: no space after 。");
+        T.Check(Localization.JoinSentences("已停止。", "请在") == "已停止。请在", "Chinese: no space after 。");
+        T.Check(Localization.JoinSentences("Stopped.", "Uninstall it") == "Stopped. Uninstall it", "English: one space between sentences");
+        T.Check(Localization.JoinSentences("중지했습니다.", "제거하세요") == "중지했습니다. 제거하세요", "Korean: one space");
+        T.Check(Localization.JoinSentences("ถ้ายังอยู่", "โปรด") == "ถ้ายังอยู่ โปรด", "Thai: one space");
+        T.Check(Localization.JoinSentences("残っていれば ", "Windows") == "残っていれば Windows", "an existing space is not doubled");
+        T.Check(Localization.JoinSentences("", "x") == "x" && Localization.JoinSentences("x", "") == "x", "empty parts");
+    }
+
     /// <summary>
     /// 翻訳表が見出しの一覧（keys.tsv）と合っているか: 知らない見出しがない・番号（{0} {1:F1}）がそろっている・見出しが重ならない。
     /// 言語ごとの訳した割合も出す
@@ -90,15 +101,23 @@ public static class LocalizationTests
             var badPlaceholders = table.Where(kv => keys.ContainsKey(kv.Key) && Placeholders(kv.Value) != Placeholders(keys[kv.Key]))
                 .Select(kv => $"{kv.Key:x8} 「{keys[kv.Key]}」→「{kv.Value}」").ToList();
             var empty = table.Where(kv => kv.Value.Trim().Length == 0).Select(kv => kv.Key.ToString("x8")).ToList();
+            // 見出しが空白で終わる（あとに数字や別の文が続く）なら、訳も空白で終わる（「，」「：」など全角の記号で終わる訳は除く）
+            var lostSpace = table.Where(kv => keys.TryGetValue(kv.Key, out var ja) && ja.Length > 0 && char.IsWhiteSpace(ja[^1])
+                                              && kv.Value.Length > 0 && !char.IsWhiteSpace(kv.Value[^1]) && !IsWidePunctuation(kv.Value[^1]))
+                .Select(kv => kv.Key.ToString("x8")).ToList();
             int done = keys.Keys.Count(table.ContainsKey);
             T.Check(unknown.Count == 0, $"{code}: no translations for text that is gone ({unknown.Count}: {string.Join(", ", unknown.Take(5).Select(h => h.ToString("x8")))})");
             T.Check(badPlaceholders.Count == 0, $"{code}: placeholders match the source ({badPlaceholders.Count}) {string.Join(" / ", badPlaceholders.Take(3))}");
             T.Check(empty.Count == 0, $"{code}: no empty translations ({string.Join(", ", empty.Take(5))})");
+            T.Check(lostSpace.Count == 0, $"{code}: a trailing space in the source is kept ({lostSpace.Count}: {string.Join(", ", lostSpace.Take(5))})");
             Console.WriteLine($"     {code,-8} {done,5} / {keys.Count} translated ({100.0 * done / keys.Count:F1}%)");
         }
     }
 
     private static string Entry(string ja, string text) => Localization.HashText(ja) + "\t" + Localization.Escape(text);
+
+    /// <summary>全角の句読点・記号（「，」「。」「：」など。それ自体に余白があるので、あとに空白は要らない）</summary>
+    private static bool IsWidePunctuation(char c) => c is >= '　' and <= '〿' or >= '＀' and <= '￯';
 
     /// <summary>番号の並び（{0} {1:F1} …。{{ }} は文字なので数えない）。順番は問わない</summary>
     private static string Placeholders(string s)
