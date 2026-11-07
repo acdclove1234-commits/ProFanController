@@ -171,7 +171,6 @@ public partial class MainWindow
     {
         RefreshEnergy();
         RefreshRecords();
-        if (_healthItems.Count == 0 && !_healthRunning) _ = AnalyzeHealthAsync(automatic: false);
     }
 
     private bool ShowYen => EnergyYen?.IsChecked == true;
@@ -253,7 +252,7 @@ public partial class MainWindow
                 _controller.Commit(recordUndo: false);
                 string msg = $"メンテナンスのお知らせ: {string.Join("、", worst.Select(w => w.Title))} に変化があります。";
                 var level = worst.Any(w => w.Level == HealthLevel.Danger) ? AlertLevel.Danger : AlertLevel.Warning;
-                ShowAlert(msg, level, "レポートを見る", () => NavReport.IsChecked = true);
+                ShowAlert(msg, level, "診断を見る", () => NavTools.IsChecked = true);
                 MaintenanceNotice?.Invoke(msg + string.Join(" ", worst.Select(w => w.Metric)), level);
             }
         }

@@ -1,5 +1,5 @@
 <!-- ==================================================
-     MainWindow.xaml - メイン画面 (ダッシュボード / デバイス / ファンカーブ / 履歴 / レポート / 診断・AI /
+     MainWindow.xaml - メイン画面 (ダッシュボード / デバイス / ファンカーブ / 履歴 / レポート / 診断 /
                        テスト・調整 / ライティング / センサー / 設定)
      Dependencies: WPF / .NET 8 (MIT License)
      See CREDITS.txt for full license details.
@@ -374,7 +374,7 @@
                         <RadioButton x:Name="NavReport" Style="{StaticResource NavItem}" Tag="&#xE9D2;"
                                      Content="レポート" Checked="OnNavChanged"/>
                         <RadioButton x:Name="NavTools" Style="{StaticResource NavItem}" Tag="&#xE946;"
-                                     Content="診断・AI" Checked="OnNavChanged"/>
+                                     Content="診断" Checked="OnNavChanged"/>
                         <RadioButton x:Name="NavTest" Style="{StaticResource NavItem}" Tag="&#xE945;"
                                      Content="テスト・調整" Checked="OnNavChanged"/>
                         <RadioButton x:Name="NavLighting" Style="{StaticResource NavItem}" Tag="&#xE790;"
@@ -1172,9 +1172,61 @@
                 </Border>
             </Grid>
 
-            <!-- ================= 診断・AI ================= -->
+            <!-- ================= 診断（自動診断・ファンのホコリと劣化・AI はオプション） ================= -->
             <ScrollViewer x:Name="ToolsPage" Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="36,0,36,30" Visibility="Collapsed">
                 <StackPanel>
+                    <!-- オプション機能: AI 冷却アドバイザー（既定はオフ。オンにすると、すぐ下にカードが出る） -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+                        <DockPanel>
+                            <Border DockPanel.Dock="Left" CornerRadius="6" Padding="8,3" Margin="0,0,14,0" VerticalAlignment="Top"
+                                    BorderThickness="1" BorderBrush="{DynamicResource Accent2Brush}">
+                                <TextBlock Text="オプション" FontSize="11" FontWeight="Bold" Foreground="{DynamicResource Accent2Brush}"/>
+                            </Border>
+                            <CheckBox x:Name="AdvisorEnabledSwitch" Style="{StaticResource Switch}" Click="OnAdvisorEnabledClick">
+                                <StackPanel>
+                                    <TextBlock Text="AI 冷却アドバイザーを使う（実験的な機能）" FontWeight="SemiBold"/>
+                                    <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap"
+                                               Text="オンにすると、すぐ下に AI のアドバイスの欄が出ます。記録の統計と設定を、この PC で動く Ollama に渡して分析させます（データは PC の外に出ません）。Ollama と AI のモデル（数 GB）を別に入れる必要があります。回答を作るあいだは CPU・GPU に負荷がかかるので、温度が上がることがあります。設定を書き換えることはありません"/>
+                                </StackPanel>
+                            </CheckBox>
+                        </DockPanel>
+                    </Border>
+
+                    <!-- AI 冷却アドバイザー: 上の「オプション」のスイッチでオンにしたときだけ出す -->
+                    <Border x:Name="AdvisorCard" Style="{StaticResource Card}" Margin="0,0,0,14" Visibility="Collapsed">
+                        <StackPanel>
+                            <TextBlock Text="AI 冷却アドバイザー（Ollama）" Style="{StaticResource H2}"/>
+                            <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,14"
+                                       Text="記録の統計（最小・平均・最大など）と設定・診断・冷却テストの結果を、この PC で動いている Ollama に渡して分析させます。データは PC の外に送信されません。"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="16"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Ollama の URL" Style="{StaticResource Label}"/>
+                                <TextBox x:Name="OllamaUrlBox" Grid.Column="1" LostFocus="OnAdvisorSettingChanged"/>
+                                <TextBlock Grid.Column="3" Text="モデル" Style="{StaticResource Label}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="ModelCombo" Grid.Column="4" SelectionChanged="OnModelChanged"/>
+                                <Button Grid.Column="5" Style="{StaticResource SmallGhost}" Content="一覧を更新" Click="OnRefreshModelsClick" Margin="8,0,0,0"/>
+                            </Grid>
+                            <TextBox x:Name="QuestionBox" Margin="0,12,0,0" ToolTip="AI に聞きたいこと（任意）"
+                                     Text="" Tag="質問（任意）"/>
+                            <TextBlock Style="{StaticResource Caption}" FontSize="12" Margin="2,4,0,0" Text="例: ゲーム中のファンの音を静かにしたい ／ ラジエーターファンのカーブを見直したい（空欄でも分析できます）"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                <Button x:Name="AnalyzeButton" Style="{StaticResource AccentButton}" Content="分析する" Click="OnAnalyzeClick" Margin="0,0,8,0"/>
+                                <Button x:Name="StopAnalyzeButton" Style="{StaticResource DangerButton}" Content="停止" Click="OnStopAnalyzeClick" Margin="0,0,8,0" Visibility="Collapsed"/>
+                                <Button Style="{StaticResource GhostButton}" Content="AI に渡す内容を見る" Click="OnShowPromptClick"/>
+                                <TextBlock x:Name="AdvisorStatus" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            </StackPanel>
+                            <TextBox x:Name="AdvisorOutput" Margin="0,12,0,0" MinHeight="320" IsReadOnly="True" TextWrapping="Wrap"
+                                     VerticalScrollBarVisibility="Auto" AcceptsReturn="True" FontSize="14" VerticalContentAlignment="Top"/>
+                        </StackPanel>
+                    </Border>
+
                     <Border Style="{StaticResource Card}" Margin="0,0,0,14">
                         <StackPanel>
                             <DockPanel>
@@ -1218,38 +1270,45 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- AI 冷却アドバイザー: 実験的な機能。設定の「実験的な機能」でオンにしたときだけ出す -->
-                    <Border x:Name="AdvisorCard" Style="{StaticResource Card}" Visibility="Collapsed">
+                    <!-- ファンの劣化・ホコリ -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,14">
                         <StackPanel>
-                            <TextBlock Text="AI 冷却アドバイザー（Ollama）" Style="{StaticResource H2}"/>
-                            <TextBlock Style="{StaticResource Caption}" Margin="0,4,0,14"
-                                       Text="記録の統計（最小・平均・最大など）と設定・診断・冷却テストの結果を、この PC で動いている Ollama に渡して分析させます。データは PC の外に送信されません。"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="110"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="16"/>
-                                    <ColumnDefinition Width="80"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Ollama の URL" Style="{StaticResource Label}"/>
-                                <TextBox x:Name="OllamaUrlBox" Grid.Column="1" LostFocus="OnAdvisorSettingChanged"/>
-                                <TextBlock Grid.Column="3" Text="モデル" Style="{StaticResource Label}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                                <ComboBox x:Name="ModelCombo" Grid.Column="4" SelectionChanged="OnModelChanged"/>
-                                <Button Grid.Column="5" Style="{StaticResource SmallGhost}" Content="一覧を更新" Click="OnRefreshModelsClick" Margin="8,0,0,0"/>
-                            </Grid>
-                            <TextBox x:Name="QuestionBox" Margin="0,12,0,0" ToolTip="AI に聞きたいこと（任意）"
-                                     Text="" Tag="質問（任意）"/>
-                            <TextBlock Style="{StaticResource Caption}" FontSize="12" Margin="2,4,0,0" Text="例: ゲーム中のファンの音を静かにしたい ／ ラジエーターファンのカーブを見直したい（空欄でも分析できます）"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                                <Button x:Name="AnalyzeButton" Style="{StaticResource AccentButton}" Content="分析する" Click="OnAnalyzeClick" Margin="0,0,8,0"/>
-                                <Button x:Name="StopAnalyzeButton" Style="{StaticResource DangerButton}" Content="停止" Click="OnStopAnalyzeClick" Margin="0,0,8,0" Visibility="Collapsed"/>
-                                <Button Style="{StaticResource GhostButton}" Content="AI に渡す内容を見る" Click="OnShowPromptClick"/>
-                                <TextBlock x:Name="AdvisorStatus" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            </StackPanel>
-                            <TextBox x:Name="AdvisorOutput" Margin="0,12,0,0" MinHeight="320" IsReadOnly="True" TextWrapping="Wrap"
-                                     VerticalScrollBarVisibility="Auto" AcceptsReturn="True" FontSize="14" VerticalContentAlignment="Top"/>
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Top">
+                                    <Button Style="{StaticResource GhostButton}" Content="掃除した（ここを新しい基準にする）" Click="OnCleanedClick" Margin="0,0,8,0"
+                                            ToolTip="フィルターやファンを掃除したら押してください。これ以降の記録を新しい基準にして比べます"/>
+                                    <Button Style="{StaticResource AccentButton}" Content="今すぐ調べる" Click="OnAnalyzeHealthClick"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,16,0">
+                                    <TextBlock Text="ファンの劣化・ホコリのチェック" Style="{StaticResource H2}"/>
+                                    <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap"
+                                               Text="1 分ごとの記録を保存して、「同じ回転の指示なのに回転数が下がっていないか（軸受けの劣化・ホコリ）」「同じ消費電力なのに温度が上がっていないか（フィルター・ラジエーターの目詰まり）」を、以前と比べます。"/>
+                                    <TextBlock x:Name="HealthInfo" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}" Margin="0,6,0,0"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <ItemsControl x:Name="HealthList" Margin="0,14,0,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Margin="0,0,0,8">
+                                            <DockPanel>
+                                                <Border DockPanel.Dock="Left" Width="4" CornerRadius="10,0,0,10" Background="{Binding LevelBrush}"/>
+                                                <TextBlock DockPanel.Dock="Right" Text="{Binding ChangeText}" FontSize="18" FontWeight="SemiBold" Foreground="{Binding LevelBrush}"
+                                                           VerticalAlignment="Center" Margin="12,0,16,0"/>
+                                                <StackPanel Margin="14,12">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Border CornerRadius="6" Padding="7,1" Background="{Binding LevelBrush}" VerticalAlignment="Center">
+                                                            <TextBlock Text="{Binding LevelText}" FontSize="11" FontWeight="Bold" Foreground="#10111A"/>
+                                                        </Border>
+                                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" Margin="8,0,0,0"/>
+                                                        <TextBlock Text="{Binding Metric}" Style="{StaticResource Caption}" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                    <TextBlock Text="{Binding Detail}" Style="{StaticResource Caption}" Margin="0,6,0,0" TextWrapping="Wrap"/>
+                                                </StackPanel>
+                                            </DockPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -1461,48 +1520,6 @@
                             </UniformGrid>
                             <ctl:BarChart x:Name="EnergyChart" Height="200" Margin="0,16,0,0"/>
                             <TextBlock Style="{StaticResource Caption}" FontSize="12" Margin="0,6,0,0" Text="直近 30 日 ／ 棒にマウスを乗せると、その日の値を表示します。単価などは 設定 →「通知・連携」で変更できます"/>
-                        </StackPanel>
-                    </Border>
-
-                    <!-- ファンの劣化・ホコリ -->
-                    <Border Style="{StaticResource Card}" Margin="0,0,0,14">
-                        <StackPanel>
-                            <DockPanel>
-                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Top">
-                                    <Button Style="{StaticResource GhostButton}" Content="掃除した（ここを新しい基準にする）" Click="OnCleanedClick" Margin="0,0,8,0"
-                                            ToolTip="フィルターやファンを掃除したら押してください。これ以降の記録を新しい基準にして比べます"/>
-                                    <Button Style="{StaticResource AccentButton}" Content="今すぐ調べる" Click="OnAnalyzeHealthClick"/>
-                                </StackPanel>
-                                <StackPanel Margin="0,0,16,0">
-                                    <TextBlock Text="ファンの劣化・ホコリのチェック" Style="{StaticResource H2}"/>
-                                    <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap"
-                                               Text="1 分ごとの記録を保存して、「同じ回転の指示なのに回転数が下がっていないか（軸受けの劣化・ホコリ）」「同じ消費電力なのに温度が上がっていないか（フィルター・ラジエーターの目詰まり）」を、以前と比べます。"/>
-                                    <TextBlock x:Name="HealthInfo" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}" Margin="0,6,0,0"/>
-                                </StackPanel>
-                            </DockPanel>
-                            <ItemsControl x:Name="HealthList" Margin="0,14,0,0">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Background="{DynamicResource InputBrush}" CornerRadius="10" Margin="0,0,0,8">
-                                            <DockPanel>
-                                                <Border DockPanel.Dock="Left" Width="4" CornerRadius="10,0,0,10" Background="{Binding LevelBrush}"/>
-                                                <TextBlock DockPanel.Dock="Right" Text="{Binding ChangeText}" FontSize="18" FontWeight="SemiBold" Foreground="{Binding LevelBrush}"
-                                                           VerticalAlignment="Center" Margin="12,0,16,0"/>
-                                                <StackPanel Margin="14,12">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Border CornerRadius="6" Padding="7,1" Background="{Binding LevelBrush}" VerticalAlignment="Center">
-                                                            <TextBlock Text="{Binding LevelText}" FontSize="11" FontWeight="Bold" Foreground="#10111A"/>
-                                                        </Border>
-                                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" Margin="8,0,0,0"/>
-                                                        <TextBlock Text="{Binding Metric}" Style="{StaticResource Caption}" Margin="12,0,0,0" VerticalAlignment="Center"/>
-                                                    </StackPanel>
-                                                    <TextBlock Text="{Binding Detail}" Style="{StaticResource Caption}" Margin="0,6,0,0" TextWrapping="Wrap"/>
-                                                </StackPanel>
-                                            </DockPanel>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
                         </StackPanel>
                     </Border>
 
@@ -2488,19 +2505,6 @@
                                     <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource Caption}" Margin="0,2,0,0"
                                                Text="Radeon RX 7000 シリーズは Hot Spot 110°C で自動的に性能を下げます。全開の解除は、しきい値より 5°C 下がってからです。"/>
                                 </Grid>
-                            </StackPanel>
-                        </Border>
-
-                        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
-                            <StackPanel>
-                                <TextBlock Text="実験的な機能" Style="{StaticResource H2}"/>
-                                <CheckBox x:Name="AdvisorEnabledSwitch" Style="{StaticResource Switch}" Margin="0,16,0,0" Click="OnAdvisorEnabledClick">
-                                    <StackPanel>
-                                        <TextBlock Text="AI 冷却アドバイザーを使う" FontWeight="SemiBold"/>
-                                        <TextBlock Style="{StaticResource Caption}" TextWrapping="Wrap"
-                                                   Text="オンにすると「ツール」の画面に出ます。記録の統計と設定を、この PC で動く Ollama に渡して分析させます（データは PC の外に出ません）。Ollama と AI のモデル（数 GB）を別に入れる必要があります。回答を作るあいだは CPU・GPU に負荷がかかるので、温度が上がることがあります。設定を書き換えることはありません"/>
-                                    </StackPanel>
-                                </CheckBox>
                             </StackPanel>
                         </Border>
 

@@ -1,5 +1,5 @@
 // ==================================================
-// MainWindow.Tools.cs - 診断・AI アドバイザー・冷却テストの画面
+// MainWindow.Tools.cs - 診断の画面（自動診断・AI アドバイザー（オプション））・冷却テストの画面
 // Dependencies: WPF / .NET 8 (MIT License), Ollama (MIT License・別途インストール)
 // See CREDITS.txt for full license details.
 // ==================================================

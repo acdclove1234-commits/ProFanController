@@ -488,10 +488,10 @@ public partial class MainWindow : Window
         {
             _ when sender == NavDevices => ("デバイス", "検出したハードウェアの一覧です。画像のボタンから、自分で撮った写真などに差し替えられます"),
             _ when sender == NavCurves => ("ファンカーブ", "ファンごとに温度と回転数の関係を設定します。変更はすぐに反映・保存されます"),
-            _ when sender == NavTools => ("診断・AI", "記録からの自動診断と、ローカル AI（Ollama）による冷却アドバイス"),
+            _ when sender == NavTools => ("診断", "記録からの自動診断と、ファンのホコリ・劣化のチェック（AI のアドバイスはオプション）"),
             _ when sender == NavTest => ("テスト・調整", "負荷をかけて、カーブを自動で作ったり、今の設定でどこまで冷えるかを測ったりします"),
             _ when sender == NavHistory => ("履歴", "最大 24 時間分の温度と回転数（アプリを閉じていた間を除く。再起動前の分は 1 分ごとの平均）"),
-            _ when sender == NavReport => ("レポート", "電気代の目安・ファンの劣化やホコリのチェック・異常の記録"),
+            _ when sender == NavReport => ("レポート", "電気代の目安・異常の記録"),
             _ when sender == NavLighting => ("ライティング", "OpenRGB 連携で、PC の LED を温度・レインボー・音楽などに合わせて光らせます"),
             _ when sender == NavSensors => ("センサー", "このPCで検出されたすべての温度・回転数・制御チャネルと、仮想センサー"),
             _ when sender == NavSettings => ("設定", "プロファイル・自動切り替え・起動方法・制御全体の動作"),
@@ -500,6 +500,8 @@ public partial class MainWindow : Window
 
         if (HistoryPage.Visibility == Visibility.Visible) HistoryGraph.Refresh();
         if (ReportPage.Visibility == Visibility.Visible) RefreshReport();
+        // 診断: ホコリ・劣化のチェックを、まだ調べていなければ調べる
+        if (ToolsPage.Visibility == Visibility.Visible && _healthItems.Count == 0 && !_healthRunning) _ = AnalyzeHealthAsync(automatic: false);
         if (SettingsPage.Visibility == Visibility.Visible) RefreshSettingsInfo();
         if (TestPage.Visibility == Visibility.Visible && _tuner is null && _catalog is not null) RebuildTuneFans();
     }

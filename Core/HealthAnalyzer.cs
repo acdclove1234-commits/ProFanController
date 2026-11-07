@@ -1,6 +1,6 @@
 // ==================================================
-// HealthAnalyzer.cs - 長期の記録から、ファンの劣化（同じ Duty で回転数が下がる）と
-//                     ホコリ（同じ電力で温度が上がる）を見つける
+// HealthAnalyzer.cs - 長期の記録から、ファンの劣化（同じ Duty で回転数が変わる）と
+//                     ホコリ・目詰まり（同じ電力の差で温度の上がり方が大きくなる）を見つける
 // Dependencies: .NET 8 (MIT License)
 // See CREDITS.txt for full license details.
 // ==================================================
@@ -24,15 +24,30 @@ public sealed class HealthItem
 /// 比べ方:
 ///   ・基準 … 「掃除した」日以降（なければ記録の最初）の 7 日間。キャリブレーション済みのファンは、その測定値も基準に使える
 ///   ・最近 … 直近 7 日間
-/// 同じ条件（同じ Duty・同じくらいの消費電力）の時間どうしを比べるので、使い方が変わっても判定がぶれにくい。
+/// 同じ条件の時間どうしを比べるので、使い方が変わっても判定がぶれにくい:
+///   ・ファン … 同じ Duty（5% ごと）で回転が安定していた分の回転数。基準・最近の両方に 20 分以上ある Duty だけ
+///   ・冷え方 … 同じ日の「休んでいるとき」と「負荷をかけているとき」の温度差 ÷ 消費電力の差（°C/W）。
+///              室温は両方に同じだけ入るので打ち消し合い、季節（夏・冬）で判定が変わらない。
+///              休んでいる時間のない日は、室温のセンサーがあればそれとの差を使う（なければその日は使わない）
+/// 変わり方も見る: 日ごとの値の並びから、ある日を境に急に変わった（交換・つなぎ替え・何かが当たった）のか、
+/// じわじわ変わった（劣化・ホコリ）のかを見分けて、原因の候補を書き分ける。
+/// 冷え方は、比べる時間のファンの回転の指示が基準と大きく違えば（ファンカーブを変えた）、ホコリとは判定しない
 /// </summary>
 public static class HealthAnalyzer
 {
     public static readonly TimeSpan Window = TimeSpan.FromDays(7);
     /// <summary>判定に必要な、記録の最低日数</summary>
     public const int MinDays = 10;
-    /// <summary>1 つの条件（Duty の区切り）で比べるのに必要な分数</summary>
+    /// <summary>1 つの条件（Duty・電力の区切り）で比べるのに必要な分数（基準・最近のそれぞれ）</summary>
     private const int MinSamples = 20;
+    /// <summary>冷え方を比べるのに必要な、負荷をかけた時間の合計（分。基準・最近のそれぞれ）</summary>
+    private const int MinLoadMinutes = 60;
+    /// <summary>休んでいるときの温度を決めるのに必要な、その日の休んでいた時間（分）</summary>
+    private const int MinIdleMinutes = 10;
+    /// <summary>冷え方を比べる時間のファンの Duty が、基準とこれ以上違えば「設定が変わった」とみなす（ポイント）</summary>
+    private const double FanSettingChangeDuty = 8;
+    /// <summary>「急に変わった」とみなす: 変化のうち、ある日を境にした段差で説明できる割合</summary>
+    private const double StepShare = 0.7;
 
     public static List<HealthItem> Analyze(IReadOnlyList<MinuteRow> rows, AppConfig cfg, DateTime now)
     {
@@ -46,72 +61,87 @@ public static class HealthAnalyzer
         var recentRows = data.Where(r => r.Time >= recentFrom).ToList();
         bool enough = days >= MinDays;
 
-        // --- ファン・ポンプ（同じ Duty での回転数）
         foreach (var fan in cfg.Profiles.SelectMany(p => p.Fans).GroupBy(f => f.ControlId, StringComparer.OrdinalIgnoreCase).Select(g => g.First()))
+            list.Add(AnalyzeFan(fan, cfg, data, baseRows, recentRows, enough, days, since, now));
+
+        var fanDutyKeys = cfg.Profiles.SelectMany(p => p.Fans).Where(f => !f.IsPump && !f.IsGpuFan)
+            .Select(f => HistoryStore.DutyKey(f.ControlId)).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        AddCooling(list, "CPU の冷え方", StatRoles.CpuTemp, StatRoles.CpuPower, 30, 20, data, baseRows, recentRows, enough, days, fanDutyKeys);
+        AddCooling(list, "GPU の冷え方", StatRoles.GpuTemp, StatRoles.GpuPower, 60, 35, data, baseRows, recentRows, enough, days, fanDutyKeys);
+        return list;
+    }
+
+    // =====================================================================
+    // ファン・ポンプ
+    // =====================================================================
+
+    private static HealthItem AnalyzeFan(FanConfig fan, AppConfig cfg, List<MinuteRow> data, List<MinuteRow> baseRows, List<MinuteRow> recentRows,
+        bool enough, double days, DateTime since, DateTime now)
+    {
+        string rpmKey = HistoryStore.RpmKey(fan.ControlId), dutyKey = HistoryStore.DutyKey(fan.ControlId);
+        var cal = cfg.FindCalibration(fan.ControlId);
+        bool calBase = cal is not null && cal.Points.Count >= 3 && now - cal.MeasuredAt >= Window && cal.MeasuredAt >= since;
+        if (!enough && !calBase)
+            return Collecting(fan.Name, $"データを集めています（比べられるまで あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。キャリブレーション済みなら、その 7 日後から判定できます。");
+
+        var recent = Buckets(recentRows, dutyKey, rpmKey);
+        Dictionary<int, (double Median, int Count)> baseline;
+        string baseText;
+        if (calBase)
         {
-            string rpmKey = HistoryStore.RpmKey(fan.ControlId), dutyKey = HistoryStore.DutyKey(fan.ControlId);
-            var cal = cfg.FindCalibration(fan.ControlId);
-            bool calBase = cal is not null && cal.Points.Count >= 3 && now - cal.MeasuredAt >= Window && cal.MeasuredAt >= since;
-            if (!enough && !calBase)
-            {
-                list.Add(new HealthItem
-                {
-                    Title = fan.Name,
-                    Level = HealthLevel.Collecting,
-                    Detail = $"データを集めています（比べられるまで あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。キャリブレーション済みなら、その 7 日後から判定できます。",
-                });
-                continue;
-            }
-
-            var recent = Buckets(recentRows, dutyKey, rpmKey);
-            Dictionary<int, double> baseline;
-            string baseText;
-            if (calBase)
-            {
-                baseline = recent.Keys.ToDictionary(k => k, k => cal!.EstimateRpm(k) ?? double.NaN);
-                baseText = $"{cal!.MeasuredAt:M/d} のキャリブレーション";
-            }
-            else
-            {
-                baseline = Buckets(baseRows, dutyKey, rpmKey).ToDictionary(b => b.Key, b => Median(b.Value));
-                baseText = $"{baseRows.FirstOrDefault()?.Time:M/d} ごろ";
-            }
-
-            var compare = recent.Where(b => b.Value.Count >= MinSamples && baseline.TryGetValue(b.Key, out var bv) && bv > 100)
-                .Select(b => (Duty: b.Key, Recent: Median(b.Value), Base: baseline[b.Key], Weight: b.Value.Count))
-                .ToList();
-            if (compare.Count == 0)
-            {
-                list.Add(new HealthItem
-                {
-                    Title = fan.Name,
-                    Level = HealthLevel.Collecting,
-                    Detail = "同じ回転数（Duty）で回っていた時間がまだ少ないため、比べられません。",
-                });
-                continue;
-            }
-
-            double change = compare.Sum(c => (c.Recent - c.Base) / c.Base * c.Weight) / compare.Sum(c => c.Weight);
-            var main = compare.OrderByDescending(c => c.Weight).First();
-            string metric = $"{main.Duty}% 時 {main.Recent:N0} rpm（{baseText} {main.Base:N0} rpm）";
-            var (level, detail) = change switch
-            {
-                <= -0.20 => (HealthLevel.Danger, fan.IsPump
-                    ? "ポンプの回転数が大きく下がっています。ポンプの劣化や、冷却液の減少が考えられます。早めに点検してください。"
-                    : "回転数が大きく下がっています。軸受けの劣化か、羽根やフィルターにホコリが溜まっている可能性があります。掃除しても戻らなければ交換を検討してください。"),
-                <= -0.10 => (HealthLevel.Warning, fan.IsPump
-                    ? "ポンプの回転数が下がってきています。しばらく様子を見て、さらに下がるようなら点検してください。"
-                    : "回転数が少し下がってきています。ファンの羽根やフィルターのホコリを掃除してみてください。"),
-                >= 0.15 => (HealthLevel.Info, "以前より速く回っています。ファンを交換した・つなぎ替えた場合は問題ありません。"),
-                _ => (HealthLevel.Good, "回転数は以前と変わらず、正常です。"),
-            };
-            list.Add(new HealthItem { Title = fan.Name, Level = level, Detail = detail, Metric = metric, Change = change });
+            baseline = recent.Keys.Where(k => cal!.EstimateRpm(k) is double).ToDictionary(k => k, k => (cal!.EstimateRpm(k)!.Value, int.MaxValue));
+            baseText = $"{cal!.MeasuredAt:M/d} のキャリブレーション";
+        }
+        else
+        {
+            baseline = Buckets(baseRows, dutyKey, rpmKey).ToDictionary(b => b.Key, b => (Median(b.Value), b.Value.Count));
+            baseText = $"{baseRows.FirstOrDefault()?.Time:M/d} ごろ";
         }
 
-        // --- 冷え方（同じ消費電力での温度上昇＝熱抵抗）
-        AddCooling(list, "CPU の冷え方", StatRoles.CpuTemp, StatRoles.CpuPower, 30, data, baseRows, recentRows, enough, days);
-        AddCooling(list, "GPU の冷え方", StatRoles.GpuTemp, StatRoles.GpuPower, 60, data, baseRows, recentRows, enough, days);
-        return list;
+        var compare = recent.Where(b => b.Value.Count >= MinSamples && baseline.TryGetValue(b.Key, out var bv) && bv.Count >= MinSamples && bv.Median > 100)
+            .Select(b => (Duty: b.Key, Recent: Median(b.Value), Base: baseline[b.Key].Median, Weight: Math.Min(b.Value.Count, baseline[b.Key].Count)))
+            .ToList();
+        if (compare.Count == 0)
+            return Collecting(fan.Name, "同じ回転の指示（Duty）で回っていた時間が、基準と最近の両方でまだ少ないため、比べられません。");
+
+        double change = compare.Sum(c => (c.Recent - c.Base) / c.Base * c.Weight) / compare.Sum(c => c.Weight);
+        var main = compare.OrderByDescending(c => c.Weight).First();
+        string metric = $"{main.Duty}% 時 {main.Recent:N0} rpm（{baseText} {main.Base:N0} rpm）";
+        int recentMinutes = compare.Sum(c => recent[c.Duty].Count);
+
+        // 変わり方: 日ごとの「基準からの変化」の並びで、急な段差か、じわじわか
+        var daily = DailyFanChange(data, dutyKey, rpmKey, compare.ToDictionary(c => c.Duty, c => c.Base));
+        var shape = Shape(daily);
+        string when = shape.Sudden && shape.StepDay is DateTime d ? $"{d:M/d} ごろから急に" : "少しずつ";
+
+        HealthLevel level;
+        string detail;
+        if (change <= -0.10)
+        {
+            level = change <= -0.20 ? HealthLevel.Danger : HealthLevel.Warning;
+            detail = fan.IsPump
+                ? $"ポンプの回転数が{when}下がっています。ポンプの劣化や、冷却液の減少が考えられます。" + (level == HealthLevel.Danger ? "早めに点検してください。" : "さらに下がるようなら点検してください。")
+                : shape.Sudden
+                    ? $"回転数が{when}下がっています。羽根にケーブルなどが当たっていないか、配線がゆるんでいないか確認してください。直らなければファンの不調が考えられます。"
+                    : "回転数が少しずつ下がっています。羽根やフィルターのホコリを掃除してください。掃除しても戻らなければ、軸受けの劣化が考えられるので交換を検討してください。";
+        }
+        else if (change >= 0.12)
+        {
+            // 回転が上がる: 交換・つなぎ替えのほか、吸気がふさがって空気が流れにくいとファンは軽く回って速くなる
+            level = !shape.Sudden && change >= 0.20 && !fan.IsPump ? HealthLevel.Warning : HealthLevel.Info;
+            detail = fan.IsPump
+                ? $"ポンプが{when}速く回るようになっています。ポンプを交換した・つなぎ替えた場合は問題ありません。そうでなければ、冷却液の減少（空回り）を確認してください。"
+                : shape.Sudden
+                    ? $"{when}速く回るようになっています。ファンを交換した・つなぎ替えた場合は問題ありません。そうでなければ、吸気のフィルターがふさがっていないか確認してください（空気が流れにくいと、ファンは軽く回って速くなります）。"
+                    : "少しずつ速く回るようになっています。吸気のフィルターやラジエーターが目詰まりして、空気が流れにくくなっている可能性があります（空気が流れにくいと、ファンは軽く回って速くなります）。掃除してください。";
+        }
+        else
+        {
+            level = HealthLevel.Good;
+            detail = "回転数は以前と変わらず、正常です。";
+        }
+        detail += $"（比べた時間: 最近 {recentMinutes} 分）";
+        return new HealthItem { Title = fan.Name, Level = level, Detail = detail, Metric = metric, Change = change };
     }
 
     /// <summary>Duty を 5% 単位に丸めて、回転が安定していた分の回転数を集める</summary>
@@ -129,56 +159,181 @@ public static class HealthAnalyzer
         return map;
     }
 
+    /// <summary>日ごとの、基準からの回転数の変化（比べられる Duty の分だけ。1 日 10 分以上ある日）</summary>
+    private static List<(DateTime Day, double Change)> DailyFanChange(List<MinuteRow> data, string dutyKey, string rpmKey, Dictionary<int, double> baseByDuty)
+    {
+        var res = new List<(DateTime, double)>();
+        foreach (var g in data.GroupBy(r => r.Time.Date).OrderBy(g => g.Key))
+        {
+            var changes = new List<double>();
+            foreach (var r in g)
+            {
+                if (r.Get(dutyKey) is not float duty || r.Get(rpmKey) is not float rpm || rpm < 100) continue;
+                if (r.DutySpread.TryGetValue(dutyKey, out var spread) && spread > 3) continue;
+                int bucket = (int)(Math.Round(duty / 5) * 5);
+                if (baseByDuty.TryGetValue(bucket, out var b) && b > 100) changes.Add((rpm - b) / b);
+            }
+            if (changes.Count >= 10) res.Add((g.Key, Median(changes)));
+        }
+        return res;
+    }
+
+    // =====================================================================
+    // 冷え方
+    // =====================================================================
+
     /// <summary>
-    /// 熱抵抗 = (温度 − 室温の代わり) ÷ 消費電力。値が大きいほど冷えにくい。
-    /// 消費電力を区切って、同じくらいの電力の時間どうしを比べる
+    /// 冷え方 = 温度の上がり方 ÷ 消費電力（°C/W。大きいほど冷えにくい）。
+    /// 同じ日の休んでいるとき（消費電力 idleMax 未満の中央値）との差で求めるので、室温が変わっても判定が変わらない
     /// </summary>
-    private static void AddCooling(List<HealthItem> list, string title, string tempRole, string powerRole, double minPower,
-        List<MinuteRow> data, List<MinuteRow> baseRows, List<MinuteRow> recentRows, bool enough, double days)
+    private static void AddCooling(List<HealthItem> list, string title, string tempRole, string powerRole, double minPower, double idleMax,
+        List<MinuteRow> data, List<MinuteRow> baseRows, List<MinuteRow> recentRows, bool enough, double days, List<string> fanDutyKeys)
     {
         if (data.Count > 0 && !data.Any(r => r.Role(tempRole) is not null && r.Role(powerRole) is not null)) return;
         if (!enough)
         {
-            list.Add(new HealthItem { Title = title, Level = HealthLevel.Collecting, Detail = $"データを集めています（あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。" });
+            list.Add(Collecting(title, $"データを集めています（あと {Math.Max(1, Math.Ceiling(MinDays - days)):F0} 日）。"));
             return;
         }
 
-        Dictionary<int, List<double>> Resistance(IEnumerable<MinuteRow> rows)
-        {
-            var map = new Dictionary<int, List<double>>();
-            foreach (var r in rows)
-            {
-                if (r.Role(tempRole) is not float t || r.Role(powerRole) is not float p || p < minPower) continue;
-                double ambient = r.Role(StatRoles.Ambient) is float a and > 10 and < 60 ? a : 25;
-                if (t <= ambient) continue;
-                int bucket = (int)(Math.Round(p / 20) * 20);
-                if (!map.TryGetValue(bucket, out var l)) map[bucket] = l = new();
-                l.Add((t - ambient) / p);
-            }
-            return map;
-        }
-
-        var b = Resistance(baseRows);
-        var r = Resistance(recentRows);
+        var b = Resistance(baseRows, tempRole, powerRole, minPower, idleMax, fanDutyKeys);
+        var r = Resistance(recentRows, tempRole, powerRole, minPower, idleMax, fanDutyKeys);
+        int bMin = b.Values.Sum(v => v.Count), rMin = r.Values.Sum(v => v.Count);
         var compare = r.Where(x => x.Value.Count >= MinSamples && b.TryGetValue(x.Key, out var bl) && bl.Count >= MinSamples)
-            .Select(x => (Power: x.Key, Recent: Median(x.Value), Base: Median(b[x.Key]), Weight: x.Value.Count))
+            .Select(x => (Power: x.Key, Recent: Median(x.Value.Select(s => s.R).ToList()), Base: Median(b[x.Key].Select(s => s.R).ToList()),
+                RecentDuty: AverageOrNaN(x.Value.Select(s => s.Duty)), BaseDuty: AverageOrNaN(b[x.Key].Select(s => s.Duty)),
+                Weight: Math.Min(x.Value.Count, b[x.Key].Count)))
             .ToList();
-        if (compare.Count == 0)
+        if (compare.Count == 0 || bMin < MinLoadMinutes || rMin < MinLoadMinutes)
         {
-            list.Add(new HealthItem { Title = title, Level = HealthLevel.Collecting, Detail = "負荷をかけた時間（ゲームなど）がまだ少ないため、比べられません。" });
+            list.Add(Collecting(title, $"負荷をかけた時間（ゲームなど）と、休んでいる時間の記録がまだ少ないため、比べられません（基準 {bMin} 分・最近 {rMin} 分。それぞれ {MinLoadMinutes} 分以上必要）。"));
             return;
         }
+
+        // 比べる時間のファンの回転の指示が大きく違う: ファンカーブを変えた。冷え方の違いはホコリではないかもしれない
+        double dutyB = WeightedOrNaN(compare.Select(c => (c.BaseDuty, (double)c.Weight)));
+        double dutyR = WeightedOrNaN(compare.Select(c => (c.RecentDuty, (double)c.Weight)));
+        if (!double.IsNaN(dutyB) && !double.IsNaN(dutyR) && Math.Abs(dutyR - dutyB) >= FanSettingChangeDuty)
+        {
+            list.Add(new HealthItem
+            {
+                Title = title,
+                Level = HealthLevel.Info,
+                Detail = $"負荷をかけたときのファンの回転の指示が、以前と変わっています（{dutyB:F0}% → {dutyR:F0}%）。ファンカーブを変えたなら、冷え方の違いはその影響なので、" +
+                         "ホコリかどうかは判定していません。新しい設定で比べ直すには「掃除した（ここを新しい基準にする）」を押してください。",
+                Metric = $"ファンの指示 {dutyB:F0}% → {dutyR:F0}%",
+            });
+            return;
+        }
+
         double change = compare.Sum(c => (c.Recent - c.Base) / c.Base * c.Weight) / compare.Sum(c => c.Weight);
         var main = compare.OrderByDescending(c => c.Weight).First();
-        // 温度の上がり幅に直す（例: 100W で 0.40°C/W → 40°C 上昇）
-        string metric = $"{main.Power} W 時の温度上昇 {main.Recent * main.Power:F0}°C（以前 {main.Base * main.Power:F0}°C）";
+        // 温度の上がり幅に直す（例: 休んでいるときより 80 W 多いとき、0.40°C/W → 32°C 上昇）
+        string metric = $"{main.Power} W 分の温度上昇 {main.Recent * main.Power:F0}°C（以前 {main.Base * main.Power:F0}°C）";
         var (level, detail) = change switch
         {
             >= 0.25 => (HealthLevel.Warning, "以前より明らかに冷えにくくなっています。フィルター・ラジエーター・ヒートシンクのホコリを掃除してください。改善しなければグリスの劣化も考えられます。"),
-            >= 0.12 => (HealthLevel.Info, "以前より少し冷えにくくなっています。そろそろフィルターやラジエーターの掃除をおすすめします。夏で室温が高い場合もこうなります。"),
+            >= 0.12 => (HealthLevel.Info, "以前より少し冷えにくくなっています。そろそろフィルターやラジエーターの掃除をおすすめします。"),
+            <= -0.15 => (HealthLevel.Info, "以前よりよく冷えるようになっています。掃除・部品の交換・ファンの追加などをした場合は問題ありません。"),
             _ => (HealthLevel.Good, "以前と同じように冷えています。"),
         };
+        detail += $"（比べた時間: 基準 {bMin} 分・最近 {rMin} 分。室温の違いは差し引いています）";
         list.Add(new HealthItem { Title = title, Level = level, Detail = detail, Metric = metric, Change = change });
+    }
+
+    /// <summary>
+    /// 電力の差（20 W ごと）ごとの、温度の上がり方 ÷ 電力の差（°C/W）と、そのときのファンの Duty の平均。
+    /// 日ごとに「休んでいるとき」の温度・電力を求め、そこからの差を使う。休んでいる時間のない日は、室温のセンサーとの差（電力そのもので割る）
+    /// </summary>
+    private static Dictionary<int, List<(double R, double Duty)>> Resistance(IEnumerable<MinuteRow> rows, string tempRole, string powerRole,
+        double minPower, double idleMax, List<string> fanDutyKeys)
+    {
+        var map = new Dictionary<int, List<(double, double)>>();
+        foreach (var day in rows.GroupBy(r => r.Time.Date))
+        {
+            var idle = day.Where(r => r.Role(tempRole) is float && r.Role(powerRole) is float p && p < idleMax).ToList();
+            double? tIdle = null, pIdle = null;
+            if (idle.Count >= MinIdleMinutes)
+            {
+                tIdle = Median(idle.Select(r => (double)r.Role(tempRole)!.Value).ToList());
+                pIdle = Median(idle.Select(r => (double)r.Role(powerRole)!.Value).ToList());
+            }
+            foreach (var r in day)
+            {
+                if (r.Role(tempRole) is not float t || r.Role(powerRole) is not float p || p < minPower) continue;
+                double rise, dp;
+                if (tIdle is double ti && pIdle is double pi)
+                {
+                    rise = t - ti;
+                    dp = p - pi;
+                }
+                else if (r.Role(StatRoles.Ambient) is float a and > 10 and < 60)
+                {
+                    rise = t - a;
+                    dp = p;
+                }
+                else continue; // 休んでいる時間も室温もない日は使わない（25°C と決めつけると、季節で判定が変わる）
+                if (dp < 10 || rise <= 0) continue;
+                int bucket = (int)(Math.Round(dp / 20) * 20);
+                if (bucket <= 0) continue;
+                double duty = AverageOrNaN(fanDutyKeys.Select(k => r.Get(k) is float d ? d : double.NaN).Where(d => !double.IsNaN(d)));
+                if (!map.TryGetValue(bucket, out var l)) map[bucket] = l = new();
+                l.Add((rise / dp, duty));
+            }
+        }
+        return map;
+    }
+
+    // =====================================================================
+    // 共通
+    // =====================================================================
+
+    /// <summary>
+    /// 日ごとの変化の並びの形: いちばん大きな段差（その日の前後の平均の差）が、全体の変化の StepShare 以上を説明し、
+    /// 段差の前後がそれぞれ平らなら「急に変わった」（その日を返す）
+    /// </summary>
+    private static (bool Sudden, DateTime? StepDay) Shape(List<(DateTime Day, double Change)> daily)
+    {
+        if (daily.Count < 6) return (false, null);
+        double total = daily.Skip(daily.Count - 3).Average(d => d.Change) - daily.Take(3).Average(d => d.Change);
+        if (Math.Abs(total) < 0.05) return (false, null);
+        int bestK = -1;
+        double bestScore = 0, bestStep = 0;
+        for (int k = 2; k <= daily.Count - 2; k++)
+        {
+            double before = daily.Take(k).Average(d => d.Change), after = daily.Skip(k).Average(d => d.Change);
+            double step = after - before;
+            double score = Math.Abs(step) * Math.Sqrt(k * (double)(daily.Count - k) / daily.Count);
+            if (score > bestScore) { bestScore = score; bestK = k; bestStep = step; }
+        }
+        if (bestK < 0 || Math.Sign(bestStep) != Math.Sign(total)) return (false, null);
+        // 段差の前後のばらつき（平らか）
+        double Spread(IEnumerable<double> xs)
+        {
+            var a = xs.ToList();
+            double m = a.Average();
+            return Math.Sqrt(a.Sum(x => (x - m) * (x - m)) / a.Count);
+        }
+        double within = Math.Max(Spread(daily.Take(bestK).Select(d => d.Change)), Spread(daily.Skip(bestK).Select(d => d.Change)));
+        bool sudden = Math.Abs(bestStep) >= StepShare * Math.Abs(total) && within <= 0.35 * Math.Abs(bestStep);
+        return (sudden, sudden ? daily[bestK].Day : null);
+    }
+
+    private static HealthItem Collecting(string title, string detail) => new() { Title = title, Level = HealthLevel.Collecting, Detail = detail };
+
+    private static double AverageOrNaN(IEnumerable<double> xs)
+    {
+        double s = 0;
+        int n = 0;
+        foreach (var x in xs) if (!double.IsNaN(x)) { s += x; n++; }
+        return n > 0 ? s / n : double.NaN;
+    }
+
+    private static double WeightedOrNaN(IEnumerable<(double Value, double Weight)> xs)
+    {
+        double s = 0, w = 0;
+        foreach (var (v, wt) in xs) if (!double.IsNaN(v)) { s += v * wt; w += wt; }
+        return w > 0 ? s / w : double.NaN;
     }
 
     private static double Median(List<double> v)
