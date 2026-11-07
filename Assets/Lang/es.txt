@@ -809,3 +809,101 @@ e61a98f9	{0}: la velocidad sube y baja con frecuencia
 24a699e7	La velocidad alterna entre subir y bajar unas {0:F0} veces cada 10 minutos. Eso causa un zumbido ondulante molesto.
 5f91ae1b	Hacer la respuesta más tranquila
 4ce44846	Aplicado: histéresis +2 °C, suavizado ×0,6, bajada ×0,7.
+7a5bb4c7	{0}: pasa mucho tiempo a la velocidad máxima
+ea0f0b04	Estuvo al 95 % o más durante el {0:P0} de los registros. Probablemente falta capacidad de refrigeración y no es cosa de la curva. Revise el flujo de aire de la caja (equilibrio entre admisión y extracción) o añada ventiladores.
+61340ad0	{0}: puede ser más silencioso
+486d2b30	«{0}» llega como máximo a {1:F0} °C y tiene margen, pero gira de media al {2:F0} %. Desplazar la curva a la derecha (hacia temperaturas más altas) lo hará más silencioso.
+8b53f64d	Desplazar la curva 5 °C a la derecha
+fe86db70	Se desplazó la curva de «{0}» 5 °C a la derecha.
+9cf10287	{0}: con una calibración se puede ajustar con más precisión
+65f73a32	La «Calibración automática» de la pantalla Curvas de ventiladores mide la velocidad de parada y la velocidad máxima (tarda 1–2 minutos).
+afae536a	{0}: la velocidad mínima está en la zona de parada
+f8161c81	Este ventilador se detiene por debajo del {0:F0} %, pero su velocidad mínima es del {1:F0} %. Pararse y arrancar una y otra vez provoca chasquidos y acorta su vida útil.
+3272f28b	Fijar la velocidad mínima en {0:F0} %
+1a7f02be	Se fijó la velocidad mínima en {0:F0} % en todos los perfiles.
+acabb617	{0}: hubo momentos en que no giraba
+26052933	Hay {0} segundos de registros con 0 rpm aunque se pedía un 30 % o más. Compruebe si hay un cable suelto o un ventilador averiado.
+e6474d63	{0}: gira según el GPU Hot Spot
+26726ec2	El Hot Spot es la temperatura del punto más caliente del chip de la GPU y sube y baja mucho cada pocos segundos. Como los ventiladores de la caja apenas lo bajan,
+933fe6fc	 suele causar «velocidad alta durante toda la partida». Para los ventiladores de la caja se recomienda usar la temperatura de la GPU (Edge).
+496d9a04	Cambiar a temperatura de la GPU (Edge)
+2751e276	Todos los perfiles usan ahora una curva estándar basada en la temperatura de la GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Gran diferencia entre el GPU Hot Spot y la temperatura de la GPU
+7f57baae	Con carga, la diferencia llegó a {0:F0} °C (lo normal es no pasar de 20–25 °C). Puede deberse a pasta térmica degradada o a poca presión de montaje del disipador. Los ventiladores de la caja apenas pueden mejorarlo.
+4e905d43	{0} y {1} pueden producir un zumbido de «batido»
+df017055	Sus velocidades medias difieren en unas {0:F0} rpm. Los ventiladores a velocidades parecidas pueden interferir y producir un sonido ondulante. Si tienen la misma función, igualar las velocidades lo soluciona.
+fd620ab2	Hacer que {0} siga a {1}
+e7a34665	En todos los perfiles, «{0}» ahora sigue a «{1}».
+c240c65a	No se encontraron problemas importantes
+093b1c02	Se revisaron los registros de los últimos {0:F0} minutos.
+4da047ad	Detenido porque el PC entró en suspensión.
+4e66f356	En suspensión
+dc704e71	Saliendo de la suspensión
+d32a6206	Volviendo a comprobar el hardware
+e0227840	Ya se está calibrando otro ventilador.
+35849632	Este conector no puede leer la velocidad, así que no se puede calibrar.
+b7687e63	Hay una protección activa (protección de la GPU / protección de la bomba); ahora no se puede calibrar.
+354919fe	Las bombas no se calibran porque detenerlas es peligroso.
+a1975abc	El hardware no está listo; ahora no se puede calibrar.
+765494c5	Detenido.
+ad347e65	El control de ventiladores se detuvo por un error inesperado. Se devuelve el control a la BIOS: {0}
+545d5191	El valor del sensor de temperatura «{0}» está congelado ({1}). El sensor se trata como defectuoso y los ventiladores giran a velocidad máxima.
+f54788b9	No se pudo aplicar la acción al control de ventiladores: {0}
+a83568a1	Se volvió a abrir el hardware y se reanudó el control de ventiladores.
+ea102565	Esperando con control de la BIOS (se reabrirá en {0} s)
+f798fd47	No se puede abrir el hardware o los errores de lectura/escritura continúan, así que los ventiladores se devolvieron al control de la BIOS. Intentando reabrir automáticamente ({0})
+df185bcc	No se pudo leer ningún componente
+81e18f8b	{0} componentes no se pueden leer
+6d8ea12e	Errores en algunos ventiladores
+fa2e3ec5	{0} llegó a {1:F0} °C (umbral {2:F0} °C). Todos los ventiladores están al 100 %.
+b908aa5c	El sensor de temperatura «{0}», que activó la velocidad máxima de emergencia, ya no se puede leer. Como no se puede confirmar que la temperatura haya bajado, se mantiene la velocidad máxima.
+3944c7df	La temperatura bajó y se volvió al control normal.
+2aba3d8a	El ventilador se eliminó de los ajustes.
+382df4c0	Detenido porque se alcanzó la temperatura de emergencia.
+d65b89e2	Detenido porque la temperatura de la GPU es alta (la protección de la GPU pone los ventiladores al máximo).
+700bc7ea	Detenido porque se activó la protección de la bomba.
+8170b926	Detenido porque la temperatura superó {0:F0} °C. Ejecútelo con poca carga.
+3c0266a9	Detenido porque ya no se puede leer la temperatura. Compruebe el sensor y vuelva a ejecutarlo.
+304a706a	Calibración detenida: {0}
+1dcd95cd	Calibración completada: máx {0:N0} rpm / se detiene por debajo del {1:F0} % / arranca al {2:F0} %
+a486c5b7	Los errores continúan al controlar «{0}». Por seguridad gira a velocidad máxima (o con control de la BIOS si no es posible). Revise el registro.
+4ec5ec9c	La velocidad escrita en «{0}» no se aplica (indicada {1:F0} % / real {2:F0} %). Compruebe si hay otro software de control de ventiladores en marcha.
+f9ccaf79	Objetivo {0:F0} °C
+47a60245	Seguir
+bb366b6c	«{0}» no gira. Compruebe el cableado y el ventilador.
+2ba4b838	La temperatura de la GPU es alta, así que «{0}» está al 100 % (protección de los ventiladores de la GPU).
+e6825d4b	(El modo de prueba está activo, pero se escribió 100 % para proteger la bomba)
+14f61819	No se puede leer la velocidad de la bomba «{0}». Como no se puede confirmar que gira, funciona al 100 % por protección. Compruébela de inmediato.{1}
+06027eff	La velocidad de la bomba «{0}» bajó a {1:F0} rpm. Funcionando al 100 % por protección. Compruébela de inmediato.{2}
+fab09721	La velocidad de la bomba «{0}» se recuperó ({1:F0} rpm).
+9b226151	Ocurrió: {0:yyyy/MM/dd HH:mm:ss} / perfil: {1}
+ecc04ddd	Registro: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} filas)
+f7957ed6	Lo que pasó en este tiempo:
+2fadbaab	Valores máximos:
+c0a45084	Sensor con el mismo nombre
+7c829457	Sensor con la misma función
+6041718b	Las GPU nuevas no tienen Hot Spot, así que se usa la temperatura de la GPU (Core)
+de95d832	Usa la temperatura de la GPU (Core)
+3ee718a9	Se sustituye por la temperatura de la GPU (Core)
+18c03838	Se sustituye por una temperatura representativa de la CPU
+7bdc8aa6	No se encontró un sensor correspondiente
+86d1b117	Aún no se ve ningún sensor de temperatura
+1f24a8e7	Tarjeta gráfica
+e7d96086	Placa base
+a1ccf01e	ninguno
+22881060	Bomba (control de velocidad)
+57223d5b	Ventilador (velocidad)
+f65a235e	No se encontró un sensor de velocidad, así que se usa el sensor de velocidad del mismo conector
+d98de496	Aún no se ven conectores de este tipo (no se elimina; se mantiene con control de la BIOS)
+40bf637e	Los ventiladores de la GPU no se pueden usar con una GPU cambiada (se eliminarán)
+13e471aa	No se encontró un conector correspondiente
+6299c5f6	Aún no se ve la GPU
+9949a3db	Aún no se ve ningún conector de ventilador de la placa base (Super I/O)
+c7c97e29	{0} «{1}»
+a028762c	{0} (temperatura objetivo)
+8464452e	Sensor virtual «{0}»
+bb74ce90	Panel «{0}»
+5dbc40a6	Color del LED
+d354ab0d	Aún no se ve ningún sensor de temperatura de la CPU
+2a815b01	Aún no se ve ningún sensor de temperatura de la GPU
+98a78d2c	Aún no se ve ningún sensor de temperatura de la placa base

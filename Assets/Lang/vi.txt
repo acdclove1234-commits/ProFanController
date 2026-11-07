@@ -809,3 +809,101 @@ e61a98f9	{0}: tốc độ quay lên xuống liên tục
 24a699e7	Khoảng {0:F0} lần mỗi 10 phút tốc độ đổi giữa tăng và giảm. Điều này gây tiếng ù ù dao động khó chịu.
 5f91ae1b	Làm phản ứng êm hơn
 4ce44846	Đã áp dụng: độ trễ +2°C, làm mượt ×0,6, tốc độ giảm ×0,7.
+7a5bb4c7	{0}: chạy ở tốc độ tối đa trong thời gian dài
+ea0f0b04	{0:P0} số bản ghi ở mức 95% trở lên. Nguyên nhân có lẽ là thiếu khả năng làm mát chứ không phải do đường cong. Hãy xem lại luồng gió trong thùng máy (cân bằng hút vào và thổi ra) hoặc lắp thêm quạt.
+61340ad0	{0}: có thể chạy êm hơn
+486d2b30	Nhiệt độ của "{0}" cao nhất chỉ {1:F0}°C, vẫn còn dư địa, nhưng quạt chạy trung bình {2:F0}%. Dịch đường cong sang phải (về phía nhiệt độ cao) sẽ êm hơn.
+8b53f64d	Dịch đường cong sang phải 5°C
+fe86db70	Đã dịch đường cong của "{0}" sang phải 5°C.
+9cf10287	{0}: hiệu chỉnh sẽ giúp tinh chỉnh chính xác hơn
+65f73a32	"Hiệu chỉnh tự động" ở màn hình Đường cong quạt sẽ đo tốc độ dừng và tốc độ tối đa (khoảng 1–2 phút).
+afae536a	{0}: tốc độ tối thiểu nằm trong vùng dừng
+f8161c81	Quạt này dừng khi dưới {0:F0}%, nhưng tốc độ tối thiểu lại là {1:F0}%. Dừng rồi quay liên tục sẽ gây tiếng lách cách và giảm tuổi thọ.
+3272f28b	Đặt tốc độ tối thiểu {0:F0}%
+1a7f02be	Đã đặt tốc độ tối thiểu {0:F0}% cho mọi cấu hình.
+acabb617	{0}: có lúc quạt không quay
+26052933	Có {0} giây bản ghi ở 0 rpm dù đã yêu cầu từ 30% trở lên. Hãy kiểm tra dây có bị tuột hoặc quạt có hỏng không.
+e6474d63	{0}: đang chạy theo GPU Hot Spot
+26726ec2	Hot Spot là nhiệt độ của điểm nóng nhất trong chip GPU, cứ vài giây lại dao động mạnh. Vì quạt thùng máy hầu như không làm nó giảm được,
+933fe6fc	 nên dễ gây ra tình trạng "quạt chạy nhanh suốt lúc chơi game". Với quạt thùng máy, nên dựa theo nhiệt độ GPU (Edge).
+496d9a04	Chuyển sang nhiệt độ GPU (Edge)
+2751e276	Đã chuyển mọi cấu hình sang đường cong tiêu chuẩn dựa theo nhiệt độ GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Chênh lệch lớn giữa GPU Hot Spot và nhiệt độ GPU
+7f57baae	Khi tải, chênh lệch lên tới {0:F0}°C (thường nên trong khoảng 20–25°C). Có thể keo tản nhiệt đã xuống cấp hoặc lực ép của tản nhiệt chưa đủ. Quạt thùng máy khó cải thiện được tình trạng này.
+4e905d43	{0} và {1} có thể gây tiếng "ù ù"
+df017055	Tốc độ trung bình chênh nhau khoảng {0:F0} rpm. Các quạt có tốc độ gần nhau có thể giao thoa và nghe như tiếng ù ù dao động. Nếu cùng vai trò, đồng bộ tốc độ sẽ hết.
+fd620ab2	Cho {0} theo {1}
+e7a34665	Đã cho "{0}" theo "{1}" trong mọi cấu hình.
+c240c65a	Không phát hiện vấn đề lớn
+093b1c02	Đã kiểm tra bản ghi trong {0:F0} phút gần nhất.
+4da047ad	Đã dừng vì máy chuyển sang chế độ ngủ.
+4e66f356	Đang ngủ
+dc704e71	Đang thức dậy từ chế độ ngủ
+d32a6206	Đang kiểm tra lại phần cứng
+e0227840	Một quạt khác đang được hiệu chỉnh.
+35849632	Cổng này không đọc được tốc độ nên không thể hiệu chỉnh.
+b7687e63	Chức năng bảo vệ (bảo vệ GPU / bảo vệ bơm) đang hoạt động nên hiện không thể hiệu chỉnh.
+354919fe	Bơm không được hiệu chỉnh vì dừng bơm rất nguy hiểm.
+a1975abc	Phần cứng chưa sẵn sàng nên hiện không thể hiệu chỉnh.
+765494c5	Đã dừng.
+ad347e65	Điều khiển quạt bị dừng do lỗi không mong muốn. Trả quyền điều khiển lại cho BIOS: {0}
+545d5191	Giá trị của cảm biến nhiệt độ "{0}" bị đứng yên ({1}). Cảm biến này được coi là bất thường và quạt đang chạy tối đa.
+f54788b9	Không áp dụng được thao tác vào điều khiển quạt: {0}
+a83568a1	Đã mở lại phần cứng và tiếp tục điều khiển quạt.
+ea102565	Đang chờ dưới quyền điều khiển của BIOS (mở lại sau {0} giây)
+f798fd47	Không mở được phần cứng hoặc lỗi đọc/ghi liên tục, nên quạt đã được trả về cho BIOS điều khiển. Đang tự động thử mở lại ({0})
+df185bcc	Không đọc được linh kiện nào
+81e18f8b	Không đọc được {0} linh kiện
+6d8ea12e	Một số quạt bị lỗi
+fa2e3ec5	{0} đã đạt {1:F0}°C (ngưỡng {2:F0}°C). Mọi quạt đang chạy 100%.
+b908aa5c	Không còn đọc được cảm biến nhiệt độ "{0}", là cảm biến đã kích hoạt tốc độ tối đa khẩn cấp. Vì không xác nhận được nhiệt độ đã giảm nên vẫn giữ tốc độ tối đa.
+3944c7df	Nhiệt độ đã giảm, đã trở lại điều khiển bình thường.
+2aba3d8a	Quạt đã bị xóa khỏi cài đặt.
+382df4c0	Đã dừng vì đạt nhiệt độ khẩn cấp.
+d65b89e2	Đã dừng vì nhiệt độ GPU cao (bảo vệ GPU sẽ cho quạt chạy tối đa).
+700bc7ea	Đã dừng vì bảo vệ bơm được kích hoạt.
+8170b926	Đã dừng vì nhiệt độ vượt {0:F0}°C. Hãy chạy khi tải thấp.
+3c0266a9	Đã dừng vì không đọc được nhiệt độ. Hãy kiểm tra cảm biến rồi chạy lại.
+304a706a	Đã dừng hiệu chỉnh: {0}
+1dcd95cd	Hiệu chỉnh xong: tối đa {0:N0} rpm / dừng khi dưới {1:F0}% / bắt đầu quay ở {2:F0}%
+a486c5b7	Lỗi liên tục khi điều khiển '{0}'. Để an toàn, quạt đang chạy tối đa (nếu không được thì giao cho BIOS). Hãy xem nhật ký.
+4ec5ec9c	Tốc độ ghi vào '{0}' không có tác dụng (yêu cầu {1:F0}% / thực tế {2:F0}%). Hãy kiểm tra xem có phần mềm điều khiển quạt khác đang chạy không.
+f9ccaf79	Mục tiêu {0:F0}°C
+47a60245	Theo
+bb366b6c	'{0}' không quay. Hãy kiểm tra dây và quạt.
+2ba4b838	Nhiệt độ GPU cao nên '{0}' đang chạy 100% (bảo vệ quạt GPU).
+e6825d4b	(Đang ở chế độ thử, nhưng đã ghi 100% để bảo vệ bơm)
+14f61819	Không đọc được tốc độ của bơm '{0}'. Vì không xác nhận được bơm có quay không, đang chạy bảo vệ ở 100%. Hãy kiểm tra ngay.{1}
+06027eff	Tốc độ của bơm '{0}' đã giảm xuống {1:F0} rpm. Đang chạy bảo vệ ở 100%. Hãy kiểm tra ngay.{2}
+fab09721	Tốc độ của bơm '{0}' đã hồi phục ({1:F0} rpm).
+9b226151	Xảy ra: {0:yyyy/MM/dd HH:mm:ss} / cấu hình: {1}
+ecc04ddd	Bản ghi: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} dòng)
+f7957ed6	Những gì đã xảy ra trong khoảng này:
+2fadbaab	Giá trị cao nhất:
+c0a45084	Cảm biến cùng tên
+7c829457	Cảm biến cùng vai trò
+6041718b	GPU mới không có Hot Spot nên dùng nhiệt độ GPU (Core)
+de95d832	Dùng nhiệt độ GPU (Core)
+3ee718a9	Thay bằng nhiệt độ GPU (Core)
+18c03838	Thay bằng nhiệt độ đại diện của CPU
+7bdc8aa6	Không tìm thấy cảm biến tương ứng
+86d1b117	Chưa thấy cảm biến nhiệt độ nào
+1f24a8e7	Card đồ họa
+e7d96086	Bo mạch chủ
+a1ccf01e	không có
+22881060	Bơm (giám sát tốc độ)
+57223d5b	Quạt (tốc độ)
+f65a235e	Không tìm thấy cảm biến tốc độ nên chuyển sang cảm biến tốc độ của cùng cổng
+d98de496	Chưa thấy loại cổng này (không xóa, giữ lại dưới quyền điều khiển của BIOS)
+40bf637e	Không dùng được quạt GPU với GPU đã thay (sẽ bị xóa)
+13e471aa	Không tìm thấy cổng tương ứng
+6299c5f6	Chưa thấy GPU
+9949a3db	Chưa thấy cổng quạt nào của bo mạch chủ (Super I/O)
+c7c97e29	{0} "{1}"
+a028762c	{0} (nhiệt độ mục tiêu)
+8464452e	Cảm biến ảo "{0}"
+bb74ce90	Bảng điều khiển "{0}"
+5dbc40a6	Màu LED
+d354ab0d	Chưa thấy cảm biến nhiệt độ CPU nào
+2a815b01	Chưa thấy cảm biến nhiệt độ GPU nào
+98a78d2c	Chưa thấy cảm biến nhiệt độ bo mạch chủ nào

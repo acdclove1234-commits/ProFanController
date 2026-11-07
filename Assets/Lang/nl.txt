@@ -809,3 +809,101 @@ e61a98f9	{0}: het toerental gaat steeds op en neer
 24a699e7	Het toerental wisselt ongeveer {0:F0} keer per 10 minuten tussen stijgen en dalen. Dat veroorzaakt een hinderlijk zwevend gebrom.
 5f91ae1b	Reactie rustiger maken
 4ce44846	Toegepast: hysterese +2 °C, demping ×0,6, daalsnelheid ×0,7.
+7a5bb4c7	{0}: draait lang op maximaal toerental
+ea0f0b04	In {0:P0} van de metingen zat hij op 95% of hoger. Waarschijnlijk ligt het aan te weinig koelcapaciteit en niet aan de curve. Kijk naar de luchtstroom in de behuizing (balans tussen aan- en afvoer) of voeg ventilatoren toe.
+61340ad0	{0}: kan stiller
+486d2b30	"{0}" komt niet boven {1:F0} °C en heeft dus marge, maar draait gemiddeld op {2:F0}%. Als je de curve naar rechts (naar hogere temperaturen) schuift, wordt het stiller.
+8b53f64d	Curve 5 °C naar rechts schuiven
+fe86db70	De curve van "{0}" is 5 °C naar rechts geschoven.
+9cf10287	{0}: met kalibratie kun je nauwkeuriger afstemmen
+65f73a32	"Automatisch kalibreren" op het scherm Ventilatorcurves meet het stoptoerental en het maximale toerental (ongeveer 1–2 minuten).
+afae536a	{0}: minimumtoerental ligt in het stopgebied
+f8161c81	Deze ventilator stopt onder {0:F0}%, maar het minimumtoerental is {1:F0}%. Steeds stoppen en weer aanlopen geeft tikgeluiden en verkort de levensduur.
+3272f28b	Minimumtoerental op {0:F0}% zetten
+1a7f02be	Het minimumtoerental is in alle profielen op {0:F0}% gezet.
+acabb617	{0}: stond soms stil
+26052933	{0} seconden aan metingen tonen 0 rpm terwijl 30% of meer was opgegeven. Controleer of er een kabel los zit of de ventilator defect is.
+e6474d63	{0}: draait op basis van GPU Hot Spot
+26726ec2	Hot Spot is de temperatuur van het heetste punt in de GPU-chip en schommelt elke paar seconden sterk. Omdat behuizingsventilatoren hem nauwelijks omlaag krijgen,
+933fe6fc	 leidt dat vaak tot "hoog toerental tijdens het hele spel". Voor behuizingsventilatoren is de GPU-temperatuur (Edge) als basis aan te raden.
+496d9a04	Overschakelen naar GPU-temperatuur (Edge)
+2751e276	Alle profielen gebruiken nu een standaardcurve op basis van de GPU-temperatuur (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Groot verschil tussen GPU Hot Spot en GPU-temperatuur
+7f57baae	Onder belasting liep het verschil op tot {0:F0} °C (normaal hooguit 20–25 °C). Mogelijk is de koelpasta verouderd of de montagedruk van de koeler te laag. Behuizingsventilatoren helpen hier weinig.
+4e905d43	{0} en {1} kunnen een "zwevend" gebrom geven
+df017055	De gemiddelde toerentallen verschillen ongeveer {0:F0} rpm. Ventilatoren met bijna gelijke toerentallen kunnen elkaar beïnvloeden en een golvend geluid geven. Hebben ze dezelfde rol, dan helpt het om de toerentallen gelijk te trekken.
+fd620ab2	{0} {1} laten volgen
+e7a34665	In alle profielen volgt "{0}" nu "{1}".
+c240c65a	Geen grote problemen gevonden
+093b1c02	De metingen van de laatste {0:F0} minuten zijn gecontroleerd.
+4da047ad	Afgebroken omdat de pc in slaapstand ging.
+4e66f356	In slaapstand
+dc704e71	Ontwaken uit slaapstand
+d32a6206	Hardware wordt opnieuw gecontroleerd
+e0227840	Er wordt al een andere ventilator gekalibreerd.
+35849632	Deze aansluiting kan het toerental niet lezen en kan dus niet worden gekalibreerd.
+b7687e63	Een beveiliging (GPU-beveiliging / pompbeveiliging) is actief, dus kalibreren kan nu niet.
+354919fe	Pompen worden niet gekalibreerd, omdat het gevaarlijk is ze stil te zetten.
+a1975abc	De hardware is nog niet klaar, dus kalibreren kan nu niet.
+765494c5	Afgebroken.
+ad347e65	De ventilatorregeling is gestopt door een onverwachte fout. Terug naar BIOS-regeling: {0}
+545d5191	De waarde van temperatuursensor "{0}" staat vast ({1}). Deze sensor wordt als defect behandeld en de ventilatoren draaien op volle snelheid.
+f54788b9	De actie kon niet worden doorgegeven aan de ventilatorregeling: {0}
+a83568a1	Hardware opnieuw geopend en ventilatorregeling hervat.
+ea102565	Wachten onder BIOS-regeling (opnieuw openen over {0} s)
+f798fd47	De hardware kan niet worden geopend of er blijven lees-/schrijffouten optreden, dus de ventilatoren zijn teruggegeven aan de BIOS-regeling. Er wordt automatisch geprobeerd opnieuw te openen ({0})
+df185bcc	Geen enkel onderdeel kon worden gelezen
+81e18f8b	{0} onderdelen kunnen niet worden gelezen
+6d8ea12e	Fouten bij sommige ventilatoren
+fa2e3ec5	{0} heeft {1:F0} °C bereikt (drempel {2:F0} °C). Alle ventilatoren staan op 100%.
+b908aa5c	Temperatuursensor "{0}", die de noodvolle snelheid activeerde, kan niet meer worden gelezen. Omdat niet vast te stellen is of de temperatuur gedaald is, blijft de volle snelheid aan.
+3944c7df	De temperatuur is gedaald; de normale regeling is hervat.
+2aba3d8a	De ventilator is uit de instellingen verwijderd.
+382df4c0	Afgebroken omdat de noodtemperatuur werd bereikt.
+d65b89e2	Afgebroken omdat de GPU-temperatuur hoog is (de GPU-beveiliging zet de ventilatoren op volle snelheid).
+700bc7ea	Afgebroken omdat de pompbeveiliging ingreep.
+8170b926	Afgebroken omdat de temperatuur boven {0:F0} °C kwam. Voer het uit bij lage belasting.
+3c0266a9	Afgebroken omdat de temperatuur niet meer gelezen kon worden. Controleer de sensor en probeer het opnieuw.
+304a706a	Kalibratie afgebroken: {0}
+1dcd95cd	Kalibratie klaar: max {0:N0} rpm / stopt onder {1:F0}% / start bij {2:F0}%
+a486c5b7	Bij het regelen van '{0}' blijven fouten optreden. Voor de veiligheid draait hij op volle snelheid (of onder BIOS-regeling als dat niet lukt). Bekijk het logboek.
+4ec5ec9c	Het toerental dat naar '{0}' is geschreven, wordt niet overgenomen (ingesteld {1:F0}% / werkelijk {2:F0}%). Controleer of er andere ventilatorsoftware draait.
+f9ccaf79	Doel {0:F0} °C
+47a60245	Volgen
+bb366b6c	'{0}' draait niet. Controleer de bedrading en de ventilator.
+2ba4b838	De GPU-temperatuur is hoog, dus '{0}' staat op 100% (beveiliging van de GPU-ventilatoren).
+e6825d4b	(De testmodus staat aan, maar ter bescherming van de pomp is 100% geschreven)
+14f61819	Het toerental van pomp '{0}' kan niet worden gelezen. Omdat niet vast te stellen is of hij draait, draait hij ter bescherming op 100%. Controleer dit meteen.{1}
+06027eff	Het toerental van pomp '{0}' is gedaald tot {1:F0} rpm. Beschermingsstand op 100%. Controleer dit meteen.{2}
+fab09721	Het toerental van pomp '{0}' is hersteld ({1:F0} rpm).
+9b226151	Opgetreden: {0:yyyy/MM/dd HH:mm:ss} / profiel: {1}
+ecc04ddd	Metingen: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} regels)
+f7957ed6	Wat er in deze periode gebeurde:
+2fadbaab	Hoogste waarden:
+c0a45084	Sensor met dezelfde naam
+7c829457	Sensor met dezelfde rol
+6041718b	Nieuwere GPU's hebben geen Hot Spot, dus wordt de GPU-temperatuur (Core) gebruikt
+de95d832	Gebruikt de GPU-temperatuur (Core)
+3ee718a9	Vervangen door de GPU-temperatuur (Core)
+18c03838	Vervangen door een representatieve CPU-temperatuur
+7bdc8aa6	Geen passende sensor gevonden
+86d1b117	Nog geen temperatuursensor zichtbaar
+1f24a8e7	Videokaart
+e7d96086	Moederbord
+a1ccf01e	geen
+22881060	Pomp (toerentalbewaking)
+57223d5b	Ventilator (toerental)
+f65a235e	Geen toerentalsensor gevonden, dus wordt de toerentalsensor van dezelfde aansluiting gebruikt
+d98de496	Aansluitingen van dit type zijn nog niet zichtbaar (niet verwijderd, blijft onder BIOS-regeling)
+40bf637e	GPU-ventilatoren zijn niet bruikbaar met een vervangen GPU (worden verwijderd)
+13e471aa	Geen passende aansluiting gevonden
+6299c5f6	De GPU is nog niet zichtbaar
+9949a3db	Nog geen ventilatoraansluiting van het moederbord (Super I/O) zichtbaar
+c7c97e29	{0} "{1}"
+a028762c	{0} (doeltemperatuur)
+8464452e	Virtuele sensor "{0}"
+bb74ce90	Dashboard "{0}"
+5dbc40a6	Ledkleur
+d354ab0d	Nog geen CPU-temperatuursensor zichtbaar
+2a815b01	Nog geen GPU-temperatuursensor zichtbaar
+98a78d2c	Nog geen temperatuursensor van het moederbord zichtbaar

@@ -809,3 +809,101 @@ e61a98f9	{0} : la vitesse monte et descend sans cesse
 24a699e7	La vitesse alterne entre montée et descente environ {0:F0} fois par 10 minutes, ce qui cause un « pompage » gênant.
 5f91ae1b	Rendre la réaction plus calme
 4ce44846	Appliqué : hystérésis +2 °C, lissage ×0,6, vitesse de descente ×0,7.
+7a5bb4c7	{0} : reste longtemps à la vitesse maximale
+ea0f0b04	Pendant {0:P0} des enregistrements, il était à 95 % ou plus. Le problème vient sans doute d'un manque de capacité de refroidissement plutôt que de la courbe. Pensez au flux d'air du boîtier (équilibre entre admission et extraction) ou à ajouter des ventilateurs.
+61340ad0	{0} : pourrait être plus silencieux
+486d2b30	« {0} » ne dépasse pas {1:F0} °C et garde de la marge, mais tourne en moyenne à {2:F0} %. Décaler la courbe vers la droite (vers les températures plus élevées) le rendra plus silencieux.
+8b53f64d	Décaler la courbe de 5 °C vers la droite
+fe86db70	La courbe de « {0} » a été décalée de 5 °C vers la droite.
+9cf10287	{0} : un calibrage permet un réglage plus précis
+65f73a32	Le « Calibrage automatique » de l'écran Courbes des ventilateurs mesure la vitesse d'arrêt et la vitesse maximale (environ 1 à 2 minutes).
+afae536a	{0} : la vitesse minimale est dans la zone d'arrêt
+f8161c81	Ce ventilateur s'arrête en dessous de {0:F0} %, mais sa vitesse minimale est de {1:F0} %. Les arrêts et redémarrages répétés provoquent des cliquetis et réduisent sa durée de vie.
+3272f28b	Régler la vitesse minimale à {0:F0} %
+1a7f02be	La vitesse minimale a été réglée à {0:F0} % dans tous les profils.
+acabb617	{0} : il a parfois cessé de tourner
+26052933	{0} secondes d'enregistrement indiquent 0 rpm alors que 30 % ou plus était demandé. Vérifiez qu'aucun câble n'est débranché et que le ventilateur n'est pas en panne.
+e6474d63	{0} : piloté par le GPU Hot Spot
+26726ec2	Le Hot Spot est la température du point le plus chaud de la puce GPU et varie fortement toutes les quelques secondes. Comme les ventilateurs du boîtier ne le font presque pas baisser,
+933fe6fc	 il provoque souvent une « vitesse élevée pendant toute la partie ». Pour les ventilateurs du boîtier, mieux vaut se baser sur la température GPU (Edge).
+496d9a04	Passer à la température GPU (Edge)
+2751e276	Tous les profils utilisent désormais une courbe standard basée sur la température GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Grand écart entre le GPU Hot Spot et la température GPU
+7f57baae	Sous charge, l'écart atteignait {0:F0} °C (normalement 20 à 25 °C maximum). La pâte thermique est peut-être usée, ou la pression de montage du ventirad insuffisante. Les ventilateurs du boîtier n'y peuvent pas grand-chose.
+4e905d43	{0} et {1} peuvent produire un bourdonnement de « battement »
+df017055	Leurs vitesses moyennes diffèrent d'environ {0:F0} rpm. Des ventilateurs à vitesses proches peuvent interférer et produire un son ondulant. S'ils ont le même rôle, aligner leurs vitesses règle le problème.
+fd620ab2	{0} suit {1}
+e7a34665	Dans tous les profils, « {0} » suit désormais « {1} ».
+c240c65a	Aucun problème majeur détecté
+093b1c02	Les enregistrements des {0:F0} dernières minutes ont été vérifiés.
+4da047ad	Arrêté car le PC s'est mis en veille.
+4e66f356	En veille
+dc704e71	Sortie de veille
+d32a6206	Nouvelle vérification du matériel
+e0227840	Un autre ventilateur est en cours de calibrage.
+35849632	Ce connecteur ne peut pas lire la vitesse et ne peut donc pas être calibré.
+b7687e63	Une protection (protection GPU / protection de la pompe) est active ; le calibrage est impossible pour l'instant.
+354919fe	Les pompes sont exclues du calibrage, car il est dangereux de les arrêter.
+a1975abc	Le matériel n'est pas prêt ; le calibrage est impossible pour l'instant.
+765494c5	Arrêté.
+ad347e65	Le contrôle des ventilateurs s'est arrêté à cause d'une erreur inattendue. Retour au contrôle par le BIOS : {0}
+545d5191	La valeur du capteur de température « {0} » est figée ({1}). Ce capteur est considéré comme défaillant et les ventilateurs tournent à pleine vitesse.
+f54788b9	Impossible d'appliquer l'action au contrôle des ventilateurs : {0}
+a83568a1	Matériel rouvert, contrôle des ventilateurs repris.
+ea102565	En attente sous contrôle du BIOS (réouverture dans {0} s)
+f798fd47	Le matériel ne peut pas être ouvert ou des erreurs de lecture/écriture se répètent ; les ventilateurs ont été rendus au contrôle du BIOS. Tentative de réouverture automatique ({0})
+df185bcc	Échec de lecture de tous les composants
+81e18f8b	{0} composants illisibles
+6d8ea12e	Erreurs sur certains ventilateurs
+fa2e3ec5	{0} a atteint {1:F0} °C (seuil {2:F0} °C). Tous les ventilateurs sont à 100 %.
+b908aa5c	Le capteur de température « {0} », qui a déclenché la pleine vitesse d'urgence, n'est plus lisible. Comme on ne peut pas vérifier que la température a baissé, la pleine vitesse est maintenue.
+3944c7df	La température a baissé ; le contrôle normal a repris.
+2aba3d8a	Le ventilateur a été supprimé des paramètres.
+382df4c0	Arrêté car la température d'urgence a été atteinte.
+d65b89e2	Arrêté car la température du GPU est élevée (la protection GPU passe à pleine vitesse).
+700bc7ea	Arrêté car la protection de la pompe s'est déclenchée.
+8170b926	Arrêté car la température a dépassé {0:F0} °C. Lancez-le avec une charge faible.
+3c0266a9	Arrêté car la température n'est plus lisible. Vérifiez le capteur, puis relancez.
+304a706a	Calibrage arrêté : {0}
+1dcd95cd	Calibrage terminé : max {0:N0} rpm / arrêt sous {1:F0} % / démarrage à {2:F0} %
+a486c5b7	Les erreurs se répètent lors du contrôle de « {0} ». Par sécurité, il tourne à pleine vitesse (ou sous contrôle du BIOS si c'est impossible). Consultez le journal.
+4ec5ec9c	La vitesse écrite sur « {0} » n'est pas appliquée (consigne {1:F0} % / réelle {2:F0} %). Vérifiez qu'aucun autre logiciel de contrôle des ventilateurs n'est lancé.
+f9ccaf79	Cible {0:F0} °C
+47a60245	Suivre
+bb366b6c	« {0} » ne tourne pas. Vérifiez le câblage et le ventilateur.
+2ba4b838	La température du GPU est élevée ; « {0} » est à 100 % (protection des ventilateurs GPU).
+e6825d4b	(Mode test actif, mais 100 % a été écrit pour protéger la pompe)
+14f61819	Impossible de lire la vitesse de la pompe « {0} ». Comme on ne peut pas vérifier qu'elle tourne, elle fonctionne à 100 % par protection. Vérifiez-la immédiatement.{1}
+06027eff	La vitesse de la pompe « {0} » est tombée à {1:F0} rpm. Fonctionnement de protection à 100 %. Vérifiez-la immédiatement.{2}
+fab09721	La vitesse de la pompe « {0} » est revenue à la normale ({1:F0} rpm).
+9b226151	Survenu le : {0:yyyy/MM/dd HH:mm:ss} / profil : {1}
+ecc04ddd	Enregistrement : {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} lignes)
+f7957ed6	Ce qui s'est passé pendant ce temps :
+2fadbaab	Valeurs maximales :
+c0a45084	Capteur du même nom
+7c829457	Capteur ayant le même rôle
+6041718b	Les GPU récents n'ont pas de Hot Spot ; la température GPU (Core) est utilisée
+de95d832	Utilise la température GPU (Core)
+3ee718a9	Remplacé par la température GPU (Core)
+18c03838	Remplacé par une température CPU représentative
+7bdc8aa6	Aucun capteur correspondant trouvé
+86d1b117	Aucun capteur de température n'est encore visible
+1f24a8e7	Carte graphique
+e7d96086	Carte mère
+a1ccf01e	aucun
+22881060	Pompe (surveillance de la vitesse)
+57223d5b	Ventilateur (vitesse)
+f65a235e	Aucun capteur de vitesse trouvé ; le capteur de vitesse du même connecteur est utilisé à la place
+d98de496	Les connecteurs de ce type ne sont pas encore visibles (conservé sous contrôle du BIOS au lieu d'être supprimé)
+40bf637e	Les ventilateurs GPU ne sont pas utilisables avec un GPU remplacé (seront supprimés)
+13e471aa	Aucun connecteur correspondant trouvé
+6299c5f6	Le GPU n'est pas encore visible
+9949a3db	Aucun connecteur de ventilateur de la carte mère (Super I/O) n'est encore visible
+c7c97e29	{0} « {1} »
+a028762c	{0} (température cible)
+8464452e	Capteur virtuel « {0} »
+bb74ce90	Tableau de bord « {0} »
+5dbc40a6	Couleur des LED
+d354ab0d	Aucun capteur de température du CPU n'est encore visible
+2a815b01	Aucun capteur de température du GPU n'est encore visible
+98a78d2c	Aucun capteur de température de la carte mère n'est encore visible

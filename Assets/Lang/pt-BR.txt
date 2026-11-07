@@ -809,3 +809,101 @@ e61a98f9	{0}: a rotação sobe e desce com frequência
 24a699e7	A rotação alterna entre subir e descer cerca de {0:F0} vezes a cada 10 minutos. Isso causa um zumbido ondulado incômodo.
 5f91ae1b	Deixar a resposta mais calma
 4ce44846	Aplicado: histerese +2 °C, suavização ×0,6, descida ×0,7.
+7a5bb4c7	{0}: passa muito tempo na rotação máxima
+ea0f0b04	Ficou em 95% ou mais em {0:P0} dos registros. Provavelmente falta capacidade de resfriamento, e o problema não é a curva. Avalie o fluxo de ar do gabinete (equilíbrio entre entrada e exaustão) ou adicione ventoinhas.
+61340ad0	{0}: pode ficar mais silenciosa
+486d2b30	"{0}" chega no máximo a {1:F0} °C e tem folga, mas gira em média a {2:F0}%. Deslocar a curva para a direita (para temperaturas mais altas) deixa tudo mais silencioso.
+8b53f64d	Deslocar a curva 5 °C para a direita
+fe86db70	A curva de "{0}" foi deslocada 5 °C para a direita.
+9cf10287	{0}: com a calibração o ajuste fica mais preciso
+65f73a32	A "Calibração automática" na tela Curvas das ventoinhas mede a rotação de parada e a rotação máxima (cerca de 1–2 minutos).
+afae536a	{0}: a rotação mínima está na faixa de parada
+f8161c81	Esta ventoinha para abaixo de {0:F0}%, mas a rotação mínima é {1:F0}%. Parar e voltar a girar repetidamente causa estalos e reduz a vida útil.
+3272f28b	Definir rotação mínima em {0:F0}%
+1a7f02be	A rotação mínima foi definida em {0:F0}% em todos os perfis.
+acabb617	{0}: houve momentos em que não girava
+26052933	Há {0} segundos de registros com 0 rpm enquanto 30% ou mais era pedido. Verifique se há cabo solto ou ventoinha com defeito.
+e6474d63	{0}: gira com base no GPU Hot Spot
+26726ec2	O Hot Spot é a temperatura do ponto mais quente do chip da GPU e oscila muito a cada poucos segundos. Como as ventoinhas do gabinete quase não o reduzem,
+933fe6fc	 ele costuma causar "rotação alta durante todo o jogo". Para as ventoinhas do gabinete, recomenda-se usar a temperatura da GPU (Edge).
+496d9a04	Mudar para temperatura da GPU (Edge)
+2751e276	Todos os perfis agora usam uma curva padrão baseada na temperatura da GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Grande diferença entre GPU Hot Spot e temperatura da GPU
+7f57baae	Sob carga, a diferença chegou a {0:F0} °C (o normal é até 20–25 °C). Pode ser pasta térmica degradada ou pouca pressão de montagem do cooler. As ventoinhas do gabinete pouco ajudam nisso.
+4e905d43	{0} e {1} podem produzir um zumbido de "batimento"
+df017055	As rotações médias diferem em cerca de {0:F0} rpm. Ventoinhas com rotações próximas podem interferir e produzir um som ondulante. Se têm a mesma função, igualar as rotações resolve.
+fd620ab2	Fazer {0} seguir {1}
+e7a34665	Em todos os perfis, "{0}" agora segue "{1}".
+c240c65a	Nenhum problema importante encontrado
+093b1c02	Os registros dos últimos {0:F0} minutos foram verificados.
+4da047ad	Interrompido porque o PC entrou em suspensão.
+4e66f356	Em suspensão
+dc704e71	Saindo da suspensão
+d32a6206	Verificando o hardware novamente
+e0227840	Outra ventoinha está sendo calibrada.
+35849632	Este conector não lê a rotação, por isso não pode ser calibrado.
+b7687e63	Uma proteção (proteção da GPU / proteção da bomba) está ativa; não é possível calibrar agora.
+354919fe	Bombas ficam fora da calibração porque pará-las é perigoso.
+a1975abc	O hardware não está pronto; não é possível calibrar agora.
+765494c5	Interrompido.
+ad347e65	O controle das ventoinhas parou por um erro inesperado. Devolvendo o controle à BIOS: {0}
+545d5191	O valor do sensor de temperatura "{0}" está travado ({1}). O sensor é tratado como defeituoso e as ventoinhas estão na velocidade máxima.
+f54788b9	Não foi possível aplicar a ação ao controle das ventoinhas: {0}
+a83568a1	Hardware reaberto e controle das ventoinhas retomado.
+ea102565	Aguardando sob controle da BIOS (reabrindo em {0} s)
+f798fd47	O hardware não abre ou os erros de leitura/gravação continuam, por isso as ventoinhas voltaram ao controle da BIOS. Tentando reabrir automaticamente ({0})
+df185bcc	Falha ao ler todos os componentes
+81e18f8b	{0} componentes não podem ser lidos
+6d8ea12e	Erros em algumas ventoinhas
+fa2e3ec5	{0} chegou a {1:F0} °C (limite {2:F0} °C). Todas as ventoinhas estão em 100%.
+b908aa5c	O sensor de temperatura "{0}", que acionou a velocidade máxima de emergência, não pode mais ser lido. Como não dá para confirmar que a temperatura caiu, a velocidade máxima continua.
+3944c7df	A temperatura caiu e o controle normal foi retomado.
+2aba3d8a	A ventoinha foi removida das configurações.
+382df4c0	Interrompido porque a temperatura de emergência foi atingida.
+d65b89e2	Interrompido porque a temperatura da GPU está alta (a proteção da GPU coloca as ventoinhas no máximo).
+700bc7ea	Interrompido porque a proteção da bomba foi acionada.
+8170b926	Interrompido porque a temperatura passou de {0:F0} °C. Execute com pouca carga.
+3c0266a9	Interrompido porque a temperatura não pode mais ser lida. Verifique o sensor e execute de novo.
+304a706a	Calibração interrompida: {0}
+1dcd95cd	Calibração concluída: máx {0:N0} rpm / para abaixo de {1:F0}% / parte em {2:F0}%
+a486c5b7	Os erros continuam no controle de '{0}'. Por segurança, está na velocidade máxima (ou sob controle da BIOS, se não for possível). Verifique o log.
+4ec5ec9c	A rotação gravada em '{0}' não está sendo aplicada (definida {1:F0}% / real {2:F0}%). Verifique se outro software de controle de ventoinhas está em execução.
+f9ccaf79	Alvo {0:F0} °C
+47a60245	Seguir
+bb366b6c	'{0}' não está girando. Verifique a fiação e a ventoinha.
+2ba4b838	A temperatura da GPU está alta, então '{0}' está em 100% (proteção das ventoinhas da GPU).
+e6825d4b	(O modo de teste está ativo, mas 100% foi gravado para proteger a bomba)
+14f61819	Não é possível ler a rotação da bomba '{0}'. Como não dá para confirmar que ela gira, está em 100% por proteção. Verifique imediatamente.{1}
+06027eff	A rotação da bomba '{0}' caiu para {1:F0} rpm. Em 100% por proteção. Verifique imediatamente.{2}
+fab09721	A rotação da bomba '{0}' se recuperou ({1:F0} rpm).
+9b226151	Ocorrido: {0:yyyy/MM/dd HH:mm:ss} / perfil: {1}
+ecc04ddd	Registro: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} linhas)
+f7957ed6	O que aconteceu nesse período:
+2fadbaab	Valores máximos:
+c0a45084	Sensor com o mesmo nome
+7c829457	Sensor com a mesma função
+6041718b	GPUs novas não têm Hot Spot, então é usada a temperatura da GPU (Core)
+de95d832	Usa a temperatura da GPU (Core)
+3ee718a9	Substituído pela temperatura da GPU (Core)
+18c03838	Substituído por uma temperatura representativa da CPU
+7bdc8aa6	Nenhum sensor correspondente encontrado
+86d1b117	Nenhum sensor de temperatura visível ainda
+1f24a8e7	Placa de vídeo
+e7d96086	Placa-mãe
+a1ccf01e	nenhum
+22881060	Bomba (monitoramento da rotação)
+57223d5b	Ventoinha (rotação)
+f65a235e	Nenhum sensor de rotação encontrado, então é usado o sensor de rotação do mesmo conector
+d98de496	Conectores deste tipo ainda não estão visíveis (não é excluído; fica sob controle da BIOS)
+40bf637e	As ventoinhas da GPU não podem ser usadas com uma GPU trocada (serão excluídas)
+13e471aa	Nenhum conector correspondente encontrado
+6299c5f6	A GPU ainda não está visível
+9949a3db	Nenhum conector de ventoinha da placa-mãe (Super I/O) visível ainda
+c7c97e29	{0} "{1}"
+a028762c	{0} (temperatura-alvo)
+8464452e	Sensor virtual "{0}"
+bb74ce90	Painel "{0}"
+5dbc40a6	Cor do LED
+d354ab0d	Nenhum sensor de temperatura da CPU visível ainda
+2a815b01	Nenhum sensor de temperatura da GPU visível ainda
+98a78d2c	Nenhum sensor de temperatura da placa-mãe visível ainda

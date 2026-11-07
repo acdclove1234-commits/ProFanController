@@ -809,3 +809,101 @@ e61a98f9	{0}: the speed keeps going up and down
 24a699e7	The speed switches between rising and falling about {0:F0} times per 10 minutes. This causes an annoying "hunting" noise.
 5f91ae1b	Make the response calmer
 4ce44846	Applied: hysteresis +2°C, smoothing ×0.6, ramp-down rate ×0.7.
+7a5bb4c7	{0}: spends a long time stuck at maximum speed
+ea0f0b04	It was at 95% or more for {0:P0} of the records. This points to a lack of cooling capacity rather than the curve. Consider the case airflow (balance of intake and exhaust) or adding fans.
+61340ad0	{0}: could be quieter
+486d2b30	"{0}" peaks at only {1:F0}°C, so there is headroom, yet it runs at {2:F0}% on average. Shifting the curve to the right (toward higher temperatures) makes it quieter.
+8b53f64d	Shift the curve 5°C to the right
+fe86db70	Shifted the curve of "{0}" 5°C to the right.
+9cf10287	{0}: calibrating allows more accurate tuning
+65f73a32	"Auto calibration" on the Fan curves screen measures the stop speed and the maximum speed (takes about 1–2 minutes).
+afae536a	{0}: minimum speed is in the stall range
+f8161c81	This fan stops below {0:F0}%, but its minimum speed is {1:F0}%. Repeated stopping and starting causes clicking and shortens its life.
+3272f28b	Set minimum speed to {0:F0}%
+1a7f02be	Set the minimum speed to {0:F0}% in all profiles.
+acabb617	{0}: there were times it wasn't spinning
+26052933	There are {0} seconds of records showing 0 rpm while 30% or more was commanded. Check for a loose cable or a failed fan.
+e6474d63	{0}: runs based on GPU Hot Spot
+26726ec2	Hot Spot is the temperature of the single hottest point inside the GPU chip and swings widely every few seconds. Since case fans barely bring it down,
+933fe6fc	 it often causes "high fan speed throughout gaming". For case fans, basing them on the GPU temperature (Edge) is recommended.
+496d9a04	Switch to GPU temperature (Edge)
+2751e276	Switched all profiles to a standard curve based on GPU temperature (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Large gap between GPU Hot Spot and GPU temperature
+7f57baae	Under load the gap reached {0:F0}°C (it should normally be within 20–25°C). Degraded thermal paste or poor cooler mounting pressure may be the cause. Case fans can do little about this.
+4e905d43	{0} and {1} may produce a "beating" hum
+df017055	Their average speeds differ by about {0:F0} rpm. Fans at similar speeds can interfere and produce a wavering "wow-wow" sound. If they have the same role, matching their speeds fixes it.
+fd620ab2	Make {0} follow {1}
+e7a34665	Set "{0}" to follow "{1}" in all profiles.
+c240c65a	No major problems found
+093b1c02	Checked the last {0:F0} minutes of records.
+4da047ad	Stopped because the PC went to sleep.
+4e66f356	Sleeping
+dc704e71	Resuming from sleep
+d32a6206	Rechecking hardware
+e0227840	Another fan is being calibrated.
+35849632	This header can't read speed, so it can't be calibrated.
+b7687e63	Calibration isn't possible right now because a protection feature (GPU protection / pump protection) is active.
+354919fe	Pumps are excluded from calibration because stopping them is dangerous.
+a1975abc	Calibration isn't possible right now because the hardware isn't ready.
+765494c5	Stopped.
+ad347e65	Fan control stopped due to an unexpected error. Returning to BIOS control: {0}
+545d5191	Temperature sensor "{0}" is stuck at the same value ({1}). The sensor is treated as faulty and the fans are at full speed.
+f54788b9	Couldn't apply the action to fan control: {0}
+a83568a1	Reopened the hardware and resumed fan control.
+ea102565	Waiting under BIOS control (reopening in {0} s)
+f798fd47	The hardware can't be opened or read/write errors keep occurring, so the fans were returned to BIOS control. Trying to reopen automatically ({0})
+df185bcc	Failed to read all components
+81e18f8b	{0} components can't be read
+6d8ea12e	Errors on some fans
+fa2e3ec5	{0} reached {1:F0}°C (threshold {2:F0}°C). All fans are at 100%.
+b908aa5c	Temperature sensor "{0}", which triggered emergency full speed, can no longer be read. Since it can't be confirmed that the temperature has dropped, full speed continues.
+3944c7df	The temperature has dropped, so normal control has resumed.
+2aba3d8a	The fan was removed from the settings.
+382df4c0	Stopped because the emergency temperature was reached.
+d65b89e2	Stopped because the GPU temperature is high (GPU protection runs the fans at full speed).
+700bc7ea	Stopped because pump protection was triggered.
+8170b926	Stopped because the temperature exceeded {0:F0}°C. Run it under low load.
+3c0266a9	Stopped because the temperature could no longer be read. Check the sensor and run it again.
+304a706a	Calibration stopped: {0}
+1dcd95cd	Calibration complete: max {0:N0} rpm / stops below {1:F0}% / starts at {2:F0}%
+a486c5b7	Errors keep occurring while controlling '{0}'. For safety it runs at full speed (or under BIOS control if that fails). Check the log.
+4ec5ec9c	The speed written to '{0}' isn't taking effect (set {1:F0}% / actual {2:F0}%). Check whether other fan control software is running.
+f9ccaf79	Target {0:F0}°C
+47a60245	Follow
+bb366b6c	'{0}' isn't spinning. Check the wiring and the fan.
+2ba4b838	'{0}' is at 100% because the GPU temperature is high (GPU fan protection).
+e6825d4b	(Test mode is on, but 100% was written to protect the pump)
+14f61819	Can't read the speed of pump '{0}'. Since it can't be confirmed that it is spinning, it runs at 100% for protection. Check it right away.{1}
+06027eff	The speed of pump '{0}' has dropped to {1:F0} rpm. Running at 100% for protection. Check it right away.{2}
+fab09721	The speed of pump '{0}' has recovered ({1:F0} rpm).
+9b226151	Occurred: {0:yyyy/MM/dd HH:mm:ss} / profile: {1}
+ecc04ddd	Records: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} rows)
+f7957ed6	What happened during this time:
+2fadbaab	Peak values:
+c0a45084	Sensor with the same name
+7c829457	Sensor with the same role
+6041718b	Newer GPUs have no Hot Spot, so the GPU temperature (Core) is used
+de95d832	Uses the GPU temperature (Core)
+3ee718a9	Mapped to the GPU temperature (Core)
+18c03838	Mapped to a representative CPU temperature
+7bdc8aa6	No matching sensor found
+86d1b117	No temperature sensors are visible yet
+1f24a8e7	Graphics
+e7d96086	Motherboard
+a1ccf01e	none
+22881060	Pump (speed monitoring)
+57223d5b	Fan (speed)
+f65a235e	No speed sensor found, so it is reassigned to the speed sensor of the same header
+d98de496	Headers of this type aren't visible yet (kept under BIOS control instead of being deleted)
+40bf637e	GPU fans can't be used with a replaced GPU (will be deleted)
+13e471aa	No matching header found
+6299c5f6	The GPU isn't visible yet
+9949a3db	No motherboard fan headers (Super I/O) are visible yet
+c7c97e29	{0} "{1}"
+a028762c	{0} (target temperature)
+8464452e	Virtual sensor "{0}"
+bb74ce90	Dashboard "{0}"
+5dbc40a6	LED color
+d354ab0d	No CPU temperature sensors are visible yet
+2a815b01	No GPU temperature sensors are visible yet
+98a78d2c	No motherboard temperature sensors are visible yet

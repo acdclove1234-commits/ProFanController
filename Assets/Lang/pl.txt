@@ -809,3 +809,101 @@ e61a98f9	{0}: obroty często rosną i spadają
 24a699e7	Wzrost i spadek obrotów zmieniają się około {0:F0} razy na 10 minut. To powoduje irytujące „falowanie” dźwięku.
 5f91ae1b	Uspokój reakcję
 4ce44846	Zastosowano: histereza +2°C, wygładzanie ×0,6, spadek ×0,7.
+7a5bb4c7	{0}: długo pracuje na maksymalnych obrotach
+ea0f0b04	Przez {0:P0} zapisów obroty wynosiły 95% lub więcej. Raczej brakuje wydajności chłodzenia, a nie chodzi o krzywą. Rozważ przepływ powietrza w obudowie (równowagę nawiewu i wywiewu) lub dodanie wentylatorów.
+61340ad0	{0}: może pracować ciszej
+486d2b30	„{0}” osiąga najwyżej {1:F0}°C i ma zapas, ale średnio pracuje na {2:F0}%. Przesunięcie krzywej w prawo (w stronę wyższych temperatur) go wyciszy.
+8b53f64d	Przesuń krzywą o 5°C w prawo
+fe86db70	Krzywa „{0}” została przesunięta o 5°C w prawo.
+9cf10287	{0}: kalibracja pozwala na dokładniejsze strojenie
+65f73a32	„Automatyczna kalibracja” na ekranie Krzywe wentylatorów mierzy obroty zatrzymania i obroty maksymalne (około 1–2 minut).
+afae536a	{0}: minimalne obroty są w strefie zatrzymania
+f8161c81	Ten wentylator zatrzymuje się poniżej {0:F0}%, a minimalne obroty to {1:F0}%. Ciągłe zatrzymywanie i ruszanie powoduje klikanie i skraca żywotność.
+3272f28b	Ustaw minimalne obroty na {0:F0}%
+1a7f02be	We wszystkich profilach ustawiono minimalne obroty na {0:F0}%.
+acabb617	{0}: były chwile, gdy się nie obracał
+26052933	{0} s zapisów pokazuje 0 rpm mimo zadanych 30% lub więcej. Sprawdź, czy kabel nie jest odłączony i czy wentylator jest sprawny.
+e6474d63	{0}: pracuje według GPU Hot Spot
+26726ec2	Hot Spot to temperatura najgorętszego punktu w układzie GPU, która mocno skacze co kilka sekund. Wentylatory obudowy prawie jej nie obniżają,
+933fe6fc	 więc często powoduje „wysokie obroty przez całą grę”. Dla wentylatorów obudowy zalecana jest temperatura GPU (Edge).
+496d9a04	Przełącz na temperaturę GPU (Edge)
+2751e276	We wszystkich profilach włączono standardową krzywą według temperatury GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Duża różnica między GPU Hot Spot a temperaturą GPU
+7f57baae	Pod obciążeniem różnica sięgała {0:F0}°C (zwykle do 20–25°C). Przyczyną może być zużyta pasta termoprzewodząca lub zbyt słaby docisk chłodzenia. Wentylatory obudowy niewiele tu pomogą.
+4e905d43	{0} i {1} mogą wywoływać „dudnienie”
+df017055	Średnie obroty różnią się o około {0:F0} rpm. Wentylatory o podobnych obrotach mogą interferować i wydawać falujący dźwięk. Jeśli pełnią tę samą rolę, wyrównanie obrotów to usuwa.
+fd620ab2	{0} podąża za {1}
+e7a34665	We wszystkich profilach „{0}” podąża teraz za „{1}”.
+c240c65a	Nie znaleziono poważnych problemów
+093b1c02	Sprawdzono zapisy z ostatnich {0:F0} min.
+4da047ad	Przerwano, bo komputer przeszedł w stan uśpienia.
+4e66f356	Uśpienie
+dc704e71	Wybudzanie z uśpienia
+d32a6206	Ponowne sprawdzanie sprzętu
+e0227840	Trwa kalibracja innego wentylatora.
+35849632	To złącze nie odczytuje obrotów, więc nie można go skalibrować.
+b7687e63	Działa funkcja ochrony (ochrona GPU / ochrona pompy), więc teraz nie można kalibrować.
+354919fe	Pompy są wyłączone z kalibracji, bo ich zatrzymanie jest niebezpieczne.
+a1975abc	Sprzęt nie jest gotowy, więc teraz nie można kalibrować.
+765494c5	Przerwano.
+ad347e65	Sterowanie wentylatorami zatrzymało się z powodu nieoczekiwanego błędu. Powrót do sterowania BIOS: {0}
+545d5191	Wartość czujnika temperatury „{0}” zamarła ({1}). Czujnik jest traktowany jako uszkodzony, a wentylatory pracują na pełnej prędkości.
+f54788b9	Nie udało się przekazać działania do sterowania wentylatorami: {0}
+a83568a1	Sprzęt otwarto ponownie i wznowiono sterowanie wentylatorami.
+ea102565	Oczekiwanie pod sterowaniem BIOS (ponowne otwarcie za {0} s)
+f798fd47	Sprzętu nie da się otworzyć lub ciągle występują błędy odczytu/zapisu, więc wentylatory oddano pod sterowanie BIOS. Trwają automatyczne próby ponownego otwarcia ({0})
+df185bcc	Nie udało się odczytać żadnego podzespołu
+81e18f8b	Nie można odczytać podzespołów: {0}
+6d8ea12e	Błędy części wentylatorów
+fa2e3ec5	{0}: osiągnięto {1:F0}°C (próg {2:F0}°C). Wszystkie wentylatory pracują na 100%.
+b908aa5c	Czujnika temperatury „{0}”, który wywołał awaryjną pełną prędkość, nie da się już odczytać. Nie można potwierdzić spadku temperatury, więc pełna prędkość jest utrzymywana.
+3944c7df	Temperatura spadła, przywrócono normalne sterowanie.
+2aba3d8a	Wentylator usunięto z ustawień.
+382df4c0	Przerwano, bo osiągnięto temperaturę awaryjną.
+d65b89e2	Przerwano, bo temperatura GPU jest wysoka (ochrona GPU włącza pełną prędkość).
+700bc7ea	Przerwano, bo zadziałała ochrona pompy.
+8170b926	Przerwano, bo temperatura przekroczyła {0:F0}°C. Uruchom przy niskim obciążeniu.
+3c0266a9	Przerwano, bo nie można już odczytać temperatury. Sprawdź czujnik i uruchom ponownie.
+304a706a	Kalibrację przerwano: {0}
+1dcd95cd	Kalibracja zakończona: maks {0:N0} rpm / zatrzymanie poniżej {1:F0}% / start od {2:F0}%
+a486c5b7	Przy sterowaniu „{0}” ciągle występują błędy. Dla bezpieczeństwa pracuje na pełnej prędkości (lub pod sterowaniem BIOS, jeśli to niemożliwe). Sprawdź dziennik.
+4ec5ec9c	Obroty zapisane do „{0}” nie są stosowane (zadane {1:F0}% / rzeczywiste {2:F0}%). Sprawdź, czy nie działa inny program do sterowania wentylatorami.
+f9ccaf79	Cel {0:F0}°C
+47a60245	Podążanie
+bb366b6c	„{0}” się nie obraca. Sprawdź okablowanie i wentylator.
+2ba4b838	Temperatura GPU jest wysoka, więc „{0}” pracuje na 100% (ochrona wentylatorów GPU).
+e6825d4b	(Tryb testowy jest włączony, ale dla ochrony pompy zapisano 100%)
+14f61819	Nie można odczytać obrotów pompy „{0}”. Nie da się potwierdzić, że się obraca, więc pracuje ochronnie na 100%. Sprawdź to natychmiast.{1}
+06027eff	Obroty pompy „{0}” spadły do {1:F0} rpm. Praca ochronna na 100%. Sprawdź to natychmiast.{2}
+fab09721	Obroty pompy „{0}” wróciły do normy ({1:F0} rpm).
+9b226151	Wystąpiło: {0:yyyy/MM/dd HH:mm:ss} / profil: {1}
+ecc04ddd	Zapis: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} wierszy)
+f7957ed6	Co się działo w tym czasie:
+2fadbaab	Wartości maksymalne:
+c0a45084	Czujnik o tej samej nazwie
+7c829457	Czujnik o tej samej roli
+6041718b	Nowe GPU nie mają Hot Spot, więc używana jest temperatura GPU (Core)
+de95d832	Używa temperatury GPU (Core)
+3ee718a9	Zastąpiono temperaturą GPU (Core)
+18c03838	Zastąpiono reprezentatywną temperaturą CPU
+7bdc8aa6	Nie znaleziono pasującego czujnika
+86d1b117	Nie widać jeszcze żadnego czujnika temperatury
+1f24a8e7	Karta graficzna
+e7d96086	Płyta główna
+a1ccf01e	brak
+22881060	Pompa (monitorowanie obrotów)
+57223d5b	Wentylator (obroty)
+f65a235e	Nie znaleziono czujnika obrotów, więc używany jest czujnik obrotów tego samego złącza
+d98de496	Złącza tego typu nie są jeszcze widoczne (nie usunięto, zostaje pod sterowaniem BIOS)
+40bf637e	Wentylatorów GPU nie można używać z wymienioną kartą graficzną (zostaną usunięte)
+13e471aa	Nie znaleziono pasującego złącza
+6299c5f6	GPU nie jest jeszcze widoczne
+9949a3db	Nie widać jeszcze żadnego złącza wentylatora płyty głównej (Super I/O)
+c7c97e29	{0} „{1}”
+a028762c	{0} (temperatura docelowa)
+8464452e	Czujnik wirtualny „{0}”
+bb74ce90	Pulpit „{0}”
+5dbc40a6	Kolor LED
+d354ab0d	Nie widać jeszcze żadnego czujnika temperatury CPU
+2a815b01	Nie widać jeszcze żadnego czujnika temperatury GPU
+98a78d2c	Nie widać jeszcze żadnego czujnika temperatury płyty głównej

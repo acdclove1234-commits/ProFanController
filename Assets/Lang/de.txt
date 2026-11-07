@@ -809,3 +809,101 @@ e61a98f9	{0}: Die Drehzahl geht ständig hoch und runter
 24a699e7	Steigen und Fallen der Drehzahl wechseln etwa {0:F0}-mal pro 10 Minuten. Das verursacht ein lästiges „Pumpen“.
 5f91ae1b	Reaktion ruhiger machen
 4ce44846	Angewendet: Hysterese +2 °C, Glättung ×0,6, Abfallrate ×0,7.
+7a5bb4c7	{0}: läuft lange am Drehzahlmaximum
+ea0f0b04	In {0:P0} der Aufzeichnungen lag die Drehzahl bei 95 % oder mehr. Vermutlich fehlt es an Kühlleistung und nicht an der Kurve. Prüfen Sie den Luftstrom im Gehäuse (Verhältnis von Zu- und Abluft) oder zusätzliche Lüfter.
+61340ad0	{0}: geht leiser
+486d2b30	„{0}“ erreicht höchstens {1:F0} °C und hat damit Reserve, läuft aber im Mittel mit {2:F0} %. Wenn Sie die Kurve nach rechts (zu höheren Temperaturen) verschieben, wird es leiser.
+8b53f64d	Kurve um 5 °C nach rechts verschieben
+fe86db70	Die Kurve von „{0}“ wurde um 5 °C nach rechts verschoben.
+9cf10287	{0}: mit einer Kalibrierung lässt sich genauer abstimmen
+65f73a32	Die „Automatische Kalibrierung“ auf der Seite Lüfterkurven misst die Stoppdrehzahl und die Höchstdrehzahl (etwa 1–2 Minuten).
+afae536a	{0}: Mindestdrehzahl liegt im Stoppbereich
+f8161c81	Dieser Lüfter bleibt unter {0:F0} % stehen, die Mindestdrehzahl ist aber {1:F0} %. Ständiges Anhalten und Anlaufen verursacht Klickgeräusche und verkürzt die Lebensdauer.
+3272f28b	Mindestdrehzahl auf {0:F0} % setzen
+1a7f02be	Die Mindestdrehzahl wurde in allen Profilen auf {0:F0} % gesetzt.
+acabb617	{0}: stand zeitweise still
+26052933	{0} Sekunden der Aufzeichnungen zeigen 0 rpm, obwohl 30 % oder mehr vorgegeben waren. Prüfen Sie, ob ein Kabel lose oder der Lüfter defekt ist.
+e6474d63	{0}: richtet sich nach GPU Hot Spot
+26726ec2	Hot Spot ist die Temperatur des heißesten Punkts im GPU-Chip und schwankt alle paar Sekunden stark. Da Gehäuselüfter sie kaum senken,
+933fe6fc	 führt das oft zu „hoher Drehzahl während des ganzen Spiels“. Für Gehäuselüfter empfiehlt sich die GPU-Temperatur (Edge) als Grundlage.
+496d9a04	Auf GPU-Temperatur (Edge) umstellen
+2751e276	Alle Profile wurden auf eine Standardkurve nach GPU-Temperatur (Edge) umgestellt (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Großer Abstand zwischen GPU Hot Spot und GPU-Temperatur
+7f57baae	Unter Last betrug der Abstand bis zu {0:F0} °C (üblich sind höchstens 20–25 °C). Mögliche Ursachen sind gealterte Wärmeleitpaste oder ein zu geringer Anpressdruck des Kühlers. Gehäuselüfter helfen hier kaum.
+4e905d43	{0} und {1} können ein „Schwebungsbrummen“ erzeugen
+df017055	Die mittleren Drehzahlen unterscheiden sich um etwa {0:F0} rpm. Lüfter mit ähnlicher Drehzahl können sich überlagern und ein an- und abschwellendes Wummern erzeugen. Bei gleicher Aufgabe hilft es, die Drehzahlen anzugleichen.
+fd620ab2	{0} folgt {1}
+e7a34665	In allen Profilen folgt „{0}“ jetzt „{1}“.
+c240c65a	Keine größeren Probleme gefunden
+093b1c02	Die Aufzeichnungen der letzten {0:F0} Minuten wurden geprüft.
+4da047ad	Abgebrochen, weil der PC in den Energiesparmodus gewechselt ist.
+4e66f356	Im Energiesparmodus
+dc704e71	Aufwachen aus dem Energiesparmodus
+d32a6206	Hardware wird erneut geprüft
+e0227840	Ein anderer Lüfter wird gerade kalibriert.
+35849632	Dieser Anschluss kann die Drehzahl nicht lesen und lässt sich daher nicht kalibrieren.
+b7687e63	Eine Schutzfunktion (GPU-Schutz / Pumpenschutz) ist aktiv, daher ist jetzt keine Kalibrierung möglich.
+354919fe	Pumpen werden nicht kalibriert, weil es gefährlich ist, sie anzuhalten.
+a1975abc	Die Hardware ist noch nicht bereit, daher ist jetzt keine Kalibrierung möglich.
+765494c5	Abgebrochen.
+ad347e65	Die Lüftersteuerung wurde durch einen unerwarteten Fehler gestoppt. Zurück an die BIOS-Steuerung: {0}
+545d5191	Der Wert des Temperatursensors „{0}“ ändert sich nicht mehr ({1}). Der Sensor wird als fehlerhaft behandelt, und die Lüfter laufen mit voller Drehzahl.
+f54788b9	Die Aktion konnte nicht an die Lüftersteuerung übergeben werden: {0}
+a83568a1	Hardware neu geöffnet und Lüftersteuerung fortgesetzt.
+ea102565	Warten unter BIOS-Steuerung (erneutes Öffnen in {0} s)
+f798fd47	Die Hardware lässt sich nicht öffnen oder es treten ständig Lese-/Schreibfehler auf, daher wurden die Lüfter an die BIOS-Steuerung zurückgegeben. Es wird automatisch versucht, sie neu zu öffnen ({0})
+df185bcc	Keine Komponente konnte gelesen werden
+81e18f8b	{0} Komponenten können nicht gelesen werden
+6d8ea12e	Fehler bei einigen Lüftern
+fa2e3ec5	{0} hat {1:F0} °C erreicht (Schwelle {2:F0} °C). Alle Lüfter laufen mit 100 %.
+b908aa5c	Der Temperatursensor „{0}“, der die Notfall-Volllast ausgelöst hat, ist nicht mehr lesbar. Da sich nicht prüfen lässt, ob die Temperatur gesunken ist, bleibt die volle Drehzahl bestehen.
+3944c7df	Die Temperatur ist gesunken, die normale Steuerung läuft wieder.
+2aba3d8a	Der Lüfter wurde aus den Einstellungen entfernt.
+382df4c0	Abgebrochen, weil die Notfalltemperatur erreicht wurde.
+d65b89e2	Abgebrochen, weil die GPU-Temperatur hoch ist (der GPU-Schutz schaltet auf volle Drehzahl).
+700bc7ea	Abgebrochen, weil der Pumpenschutz ausgelöst hat.
+8170b926	Abgebrochen, weil die Temperatur {0:F0} °C überschritten hat. Führen Sie es bei geringer Last aus.
+3c0266a9	Abgebrochen, weil die Temperatur nicht mehr lesbar ist. Prüfen Sie den Sensor und starten Sie erneut.
+304a706a	Kalibrierung abgebrochen: {0}
+1dcd95cd	Kalibrierung abgeschlossen: max. {0:N0} rpm / Stopp unter {1:F0} % / Anlauf bei {2:F0} %
+a486c5b7	Bei der Steuerung von „{0}“ treten ständig Fehler auf. Zur Sicherheit läuft er mit voller Drehzahl (falls nicht möglich, unter BIOS-Steuerung). Prüfen Sie das Protokoll.
+4ec5ec9c	Die an „{0}“ geschriebene Drehzahl wird nicht übernommen (Vorgabe {1:F0} % / tatsächlich {2:F0} %). Prüfen Sie, ob eine andere Lüftersteuerungssoftware läuft.
+f9ccaf79	Ziel {0:F0} °C
+47a60245	Folgen
+bb366b6c	„{0}“ dreht sich nicht. Prüfen Sie Verkabelung und Lüfter.
+2ba4b838	Die GPU-Temperatur ist hoch, daher läuft „{0}“ mit 100 % (Schutz der GPU-Lüfter).
+e6825d4b	(Testmodus aktiv, zum Schutz der Pumpe wurden aber 100 % geschrieben)
+14f61819	Die Drehzahl der Pumpe „{0}“ ist nicht lesbar. Da sich nicht prüfen lässt, ob sie läuft, arbeitet sie zum Schutz mit 100 %. Bitte sofort prüfen.{1}
+06027eff	Die Drehzahl der Pumpe „{0}“ ist auf {1:F0} rpm gefallen. Schutzbetrieb mit 100 %. Bitte sofort prüfen.{2}
+fab09721	Die Drehzahl der Pumpe „{0}“ hat sich erholt ({1:F0} rpm).
+9b226151	Aufgetreten: {0:yyyy/MM/dd HH:mm:ss} / Profil: {1}
+ecc04ddd	Aufzeichnung: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} Zeilen)
+f7957ed6	Was in dieser Zeit passiert ist:
+2fadbaab	Höchstwerte:
+c0a45084	Sensor mit gleichem Namen
+7c829457	Sensor mit gleicher Rolle
+6041718b	Neuere GPUs haben keinen Hot Spot, daher wird die GPU-Temperatur (Core) verwendet
+de95d832	Verwendet die GPU-Temperatur (Core)
+3ee718a9	Wird auf die GPU-Temperatur (Core) umgestellt
+18c03838	Wird auf eine repräsentative CPU-Temperatur umgestellt
+7bdc8aa6	Kein passender Sensor gefunden
+86d1b117	Noch kein Temperatursensor sichtbar
+1f24a8e7	Grafikkarte
+e7d96086	Mainboard
+a1ccf01e	keine
+22881060	Pumpe (Drehzahlüberwachung)
+57223d5b	Lüfter (Drehzahl)
+f65a235e	Kein Drehzahlsensor gefunden, daher wird der Drehzahlsensor desselben Anschlusses verwendet
+d98de496	Anschlüsse dieser Art sind noch nicht sichtbar (wird nicht gelöscht, sondern unter BIOS-Steuerung behalten)
+40bf637e	GPU-Lüfter sind mit einer getauschten GPU nicht nutzbar (werden gelöscht)
+13e471aa	Kein passender Anschluss gefunden
+6299c5f6	Die GPU ist noch nicht sichtbar
+9949a3db	Noch kein Lüfteranschluss des Mainboards (Super I/O) sichtbar
+c7c97e29	{0} „{1}“
+a028762c	{0} (Zieltemperatur)
+8464452e	Virtueller Sensor „{0}“
+bb74ce90	Übersicht „{0}“
+5dbc40a6	LED-Farbe
+d354ab0d	Noch kein CPU-Temperatursensor sichtbar
+2a815b01	Noch kein GPU-Temperatursensor sichtbar
+98a78d2c	Noch kein Mainboard-Temperatursensor sichtbar

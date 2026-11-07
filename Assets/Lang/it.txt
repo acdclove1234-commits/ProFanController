@@ -809,3 +809,101 @@ e61a98f9	{0}: la velocità sale e scende di continuo
 24a699e7	La velocità alterna salite e discese circa {0:F0} volte ogni 10 minuti. Questo causa un fastidioso ronzio ondulato.
 5f91ae1b	Rendi la risposta più calma
 4ce44846	Applicato: isteresi +2 °C, smorzamento ×0,6, discesa ×0,7.
+7a5bb4c7	{0}: resta a lungo alla velocità massima
+ea0f0b04	Per il {0:P0} delle registrazioni era al 95% o più. Più che la curva, probabilmente manca capacità di raffreddamento. Valuta il flusso d'aria del case (equilibrio tra immissione ed espulsione) o l'aggiunta di ventole.
+61340ad0	{0}: può essere più silenziosa
+486d2b30	«{0}» arriva al massimo a {1:F0} °C e ha margine, ma gira in media al {2:F0}%. Spostando la curva a destra (verso temperature più alte) diventa più silenziosa.
+8b53f64d	Sposta la curva di 5 °C a destra
+fe86db70	La curva di «{0}» è stata spostata di 5 °C a destra.
+9cf10287	{0}: con la calibrazione la regolazione è più precisa
+65f73a32	La «Calibrazione automatica» nella schermata Curve ventole misura la velocità di arresto e quella massima (circa 1–2 minuti).
+afae536a	{0}: la velocità minima è nella zona di arresto
+f8161c81	Questa ventola si ferma sotto il {0:F0}%, ma la velocità minima è {1:F0}%. Fermarsi e ripartire di continuo provoca ticchettii e ne riduce la durata.
+3272f28b	Imposta la velocità minima al {0:F0}%
+1a7f02be	La velocità minima è stata impostata al {0:F0}% in tutti i profili.
+acabb617	{0}: in alcuni momenti non girava
+26052933	Ci sono {0} secondi di registrazioni a 0 rpm mentre era richiesto il 30% o più. Controlla se un cavo è staccato o la ventola è guasta.
+e6474d63	{0}: gira in base al GPU Hot Spot
+26726ec2	L'Hot Spot è la temperatura del punto più caldo del chip della GPU e oscilla molto ogni pochi secondi. Poiché le ventole del case quasi non lo abbassano,
+933fe6fc	 spesso causa «velocità alta per tutta la partita». Per le ventole del case è consigliato basarsi sulla temperatura GPU (Edge).
+496d9a04	Passa alla temperatura GPU (Edge)
+2751e276	Tutti i profili ora usano una curva standard basata sulla temperatura GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Grande differenza tra GPU Hot Spot e temperatura GPU
+7f57baae	Sotto carico la differenza arrivava a {0:F0} °C (di norma entro 20–25 °C). Possibili cause: pasta termica degradata o pressione di montaggio del dissipatore insufficiente. Le ventole del case possono fare poco.
+4e905d43	{0} e {1} potrebbero produrre un ronzio a «battimenti»
+df017055	Le velocità medie differiscono di circa {0:F0} rpm. Ventole a velocità simili possono interferire e produrre un suono ondeggiante. Se hanno lo stesso ruolo, allineare le velocità risolve il problema.
+fd620ab2	{0} segue {1}
+e7a34665	In tutti i profili «{0}» ora segue «{1}».
+c240c65a	Nessun problema rilevante trovato
+093b1c02	Controllate le registrazioni degli ultimi {0:F0} minuti.
+4da047ad	Interrotto perché il PC è andato in sospensione.
+4e66f356	In sospensione
+dc704e71	Ripresa dalla sospensione
+d32a6206	Nuovo controllo dell'hardware
+e0227840	È in corso la calibrazione di un'altra ventola.
+35849632	Questo connettore non legge la velocità, quindi non è possibile calibrarlo.
+b7687e63	È attiva una protezione (protezione GPU / protezione pompa); ora non è possibile calibrare.
+354919fe	Le pompe sono escluse dalla calibrazione perché fermarle è pericoloso.
+a1975abc	L'hardware non è pronto; ora non è possibile calibrare.
+765494c5	Interrotto.
+ad347e65	Il controllo ventole si è fermato per un errore imprevisto. Ritorno al controllo del BIOS: {0}
+545d5191	Il valore del sensore di temperatura «{0}» è bloccato ({1}). Il sensore viene considerato guasto e le ventole girano alla massima velocità.
+f54788b9	Impossibile applicare l'azione al controllo ventole: {0}
+a83568a1	Hardware riaperto e controllo ventole ripreso.
+ea102565	In attesa sotto controllo del BIOS (riapertura tra {0} s)
+f798fd47	L'hardware non si apre o gli errori di lettura/scrittura continuano, quindi le ventole sono tornate al controllo del BIOS. Tentativo di riapertura automatica ({0})
+df185bcc	Lettura di tutti i componenti non riuscita
+81e18f8b	{0} componenti non leggibili
+6d8ea12e	Errori su alcune ventole
+fa2e3ec5	{0} ha raggiunto {1:F0} °C (soglia {2:F0} °C). Tutte le ventole sono al 100%.
+b908aa5c	Il sensore di temperatura «{0}», che ha attivato la massima velocità di emergenza, non è più leggibile. Poiché non si può verificare che la temperatura sia scesa, la massima velocità continua.
+3944c7df	La temperatura è scesa, è ripreso il controllo normale.
+2aba3d8a	La ventola è stata rimossa dalle impostazioni.
+382df4c0	Interrotto perché è stata raggiunta la temperatura di emergenza.
+d65b89e2	Interrotto perché la temperatura della GPU è alta (la protezione GPU porta le ventole al massimo).
+700bc7ea	Interrotto perché è intervenuta la protezione pompa.
+8170b926	Interrotto perché la temperatura ha superato {0:F0} °C. Eseguilo con carico basso.
+3c0266a9	Interrotto perché la temperatura non è più leggibile. Controlla il sensore ed eseguilo di nuovo.
+304a706a	Calibrazione interrotta: {0}
+1dcd95cd	Calibrazione completata: max {0:N0} rpm / si ferma sotto il {1:F0}% / parte al {2:F0}%
+a486c5b7	Gli errori continuano nel controllo di «{0}». Per sicurezza gira alla massima velocità (o sotto controllo del BIOS se non è possibile). Controlla il log.
+4ec5ec9c	La velocità scritta su «{0}» non viene applicata (impostata {1:F0}% / reale {2:F0}%). Controlla se è in esecuzione un altro software di controllo ventole.
+f9ccaf79	Obiettivo {0:F0} °C
+47a60245	Segui
+bb366b6c	«{0}» non gira. Controlla il cablaggio e la ventola.
+2ba4b838	La temperatura della GPU è alta, quindi «{0}» è al 100% (protezione delle ventole GPU).
+e6825d4b	(Modalità test attiva, ma è stato scritto 100% per proteggere la pompa)
+14f61819	Impossibile leggere la velocità della pompa «{0}». Non potendo verificare che giri, funziona al 100% per protezione. Controllala subito.{1}
+06027eff	La velocità della pompa «{0}» è scesa a {1:F0} rpm. Funzionamento di protezione al 100%. Controllala subito.{2}
+fab09721	La velocità della pompa «{0}» è tornata normale ({1:F0} rpm).
+9b226151	Avvenuto: {0:yyyy/MM/dd HH:mm:ss} / profilo: {1}
+ecc04ddd	Registrazione: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} righe)
+f7957ed6	Cosa è successo in questo intervallo:
+2fadbaab	Valori massimi:
+c0a45084	Sensore con lo stesso nome
+7c829457	Sensore con lo stesso ruolo
+6041718b	Le GPU recenti non hanno Hot Spot, quindi si usa la temperatura GPU (Core)
+de95d832	Usa la temperatura GPU (Core)
+3ee718a9	Sostituito con la temperatura GPU (Core)
+18c03838	Sostituito con una temperatura CPU rappresentativa
+7bdc8aa6	Nessun sensore corrispondente trovato
+86d1b117	Nessun sensore di temperatura ancora visibile
+1f24a8e7	Scheda video
+e7d96086	Scheda madre
+a1ccf01e	nessuno
+22881060	Pompa (monitoraggio velocità)
+57223d5b	Ventola (velocità)
+f65a235e	Nessun sensore di velocità trovato, quindi si usa quello dello stesso connettore
+d98de496	Connettori di questo tipo non ancora visibili (non eliminato, resta sotto controllo del BIOS)
+40bf637e	Le ventole della GPU non si possono usare con una GPU sostituita (verranno eliminate)
+13e471aa	Nessun connettore corrispondente trovato
+6299c5f6	GPU non ancora visibile
+9949a3db	Nessun connettore ventola della scheda madre (Super I/O) ancora visibile
+c7c97e29	{0} «{1}»
+a028762c	{0} (temperatura obiettivo)
+8464452e	Sensore virtuale «{0}»
+bb74ce90	Pannello «{0}»
+5dbc40a6	Colore LED
+d354ab0d	Nessun sensore di temperatura della CPU ancora visibile
+2a815b01	Nessun sensore di temperatura della GPU ancora visibile
+98a78d2c	Nessun sensore di temperatura della scheda madre ancora visibile

@@ -809,3 +809,101 @@ e61a98f9	{0}: putaran sering naik-turun
 24a699e7	Putaran berganti antara naik dan turun sekitar {0:F0} kali per 10 menit. Ini menimbulkan dengung bergelombang yang mengganggu.
 5f91ae1b	Buat respons lebih tenang
 4ce44846	Diterapkan: histeresis +2°C, penghalusan ×0,6, laju turun ×0,7.
+7a5bb4c7	{0}: lama tertahan di putaran maksimum
+ea0f0b04	Selama {0:P0} rekaman, putaran berada di 95% atau lebih. Kemungkinan masalahnya kurangnya kapasitas pendinginan, bukan kurvanya. Pertimbangkan aliran udara casing (keseimbangan udara masuk dan keluar) atau menambah kipas.
+61340ad0	{0}: bisa dibuat lebih senyap
+486d2b30	Suhu "{0}" paling tinggi hanya {1:F0}°C dan masih longgar, tetapi kipas berputar rata-rata {2:F0}%. Menggeser kurva ke kanan (ke arah suhu lebih tinggi) membuatnya lebih senyap.
+8b53f64d	Geser kurva 5°C ke kanan
+fe86db70	Kurva "{0}" sudah digeser 5°C ke kanan.
+9cf10287	{0}: kalibrasi membuat penyetelan lebih akurat
+65f73a32	"Kalibrasi otomatis" di layar Kurva kipas mengukur putaran berhenti dan putaran maksimum (sekitar 1–2 menit).
+afae536a	{0}: putaran minimum ada di zona berhenti
+f8161c81	Kipas ini berhenti di bawah {0:F0}%, tetapi putaran minimumnya {1:F0}%. Berhenti dan berputar berulang kali menimbulkan bunyi klik dan memperpendek umur kipas.
+3272f28b	Jadikan putaran minimum {0:F0}%
+1a7f02be	Putaran minimum diatur ke {0:F0}% di semua profil.
+acabb617	{0}: ada waktu kipas tidak berputar
+26052933	Ada {0} detik rekaman dengan 0 rpm padahal diperintahkan 30% atau lebih. Periksa apakah kabel terlepas atau kipas rusak.
+e6474d63	{0}: berputar berdasarkan GPU Hot Spot
+26726ec2	Hot Spot adalah suhu satu titik terpanas di dalam chip GPU dan naik-turun tajam setiap beberapa detik. Karena kipas casing hampir tidak bisa menurunkannya,
+933fe6fc	 hal ini sering menyebabkan "putaran tinggi terus selama bermain gim". Untuk kipas casing, sebaiknya gunakan suhu GPU (Edge) sebagai acuan.
+496d9a04	Beralih ke suhu GPU (Edge)
+2751e276	Semua profil dialihkan ke kurva standar berdasarkan suhu GPU (Edge) (40°C:30% → 60°C:45% → 75°C:70% → 88°C:100%).
+b2f98f05	Selisih besar antara GPU Hot Spot dan suhu GPU
+7f57baae	Saat beban, selisihnya mencapai {0:F0}°C (biasanya dalam 20–25°C). Mungkin pasta termal sudah menurun kualitasnya atau tekanan pemasangan pendingin kurang. Kipas casing sulit memperbaiki gejala ini.
+4e905d43	{0} dan {1} mungkin menimbulkan "dengung"
+df017055	Selisih putaran rata-ratanya sekitar {0:F0} rpm. Kipas dengan putaran berdekatan bisa saling mengganggu sehingga terdengar dengung bergelombang. Jika perannya sama, menyamakan putaran akan menghilangkannya.
+fd620ab2	Buat {0} mengikuti {1}
+e7a34665	"{0}" kini mengikuti "{1}" di semua profil.
+c240c65a	Tidak ditemukan masalah besar
+093b1c02	Rekaman {0:F0} menit terakhir sudah diperiksa.
+4da047ad	Dihentikan karena PC masuk mode tidur.
+4e66f356	Tidur
+dc704e71	Bangun dari mode tidur
+d32a6206	Memeriksa ulang perangkat keras
+e0227840	Kipas lain sedang dikalibrasi.
+35849632	Konektor ini tidak bisa membaca putaran, jadi tidak bisa dikalibrasi.
+b7687e63	Fitur perlindungan (perlindungan GPU / perlindungan pompa) sedang aktif, jadi kalibrasi tidak bisa dilakukan sekarang.
+354919fe	Pompa tidak dikalibrasi karena menghentikannya berbahaya.
+a1975abc	Perangkat keras belum siap, jadi kalibrasi tidak bisa dilakukan sekarang.
+765494c5	Dihentikan.
+ad347e65	Kendali kipas berhenti karena galat tak terduga. Mengembalikan ke kendali BIOS: {0}
+545d5191	Nilai sensor suhu "{0}" macet ({1}). Sensor ini dianggap bermasalah dan kipas berputar dengan kecepatan penuh.
+f54788b9	Tindakan tidak bisa diterapkan ke kendali kipas: {0}
+a83568a1	Perangkat keras dibuka ulang dan kendali kipas dilanjutkan.
+ea102565	Menunggu dengan kendali BIOS (dibuka ulang dalam {0} dtk)
+f798fd47	Perangkat keras tidak bisa dibuka atau galat baca/tulis terus terjadi, jadi kipas dikembalikan ke kendali BIOS. Mencoba membuka ulang secara otomatis ({0})
+df185bcc	Gagal membaca semua komponen
+81e18f8b	{0} komponen tidak bisa dibaca
+6d8ea12e	Galat pada sebagian kipas
+fa2e3ec5	{0} mencapai {1:F0}°C (ambang {2:F0}°C). Semua kipas di 100%.
+b908aa5c	Sensor suhu "{0}", yang memicu kecepatan penuh darurat, tidak bisa dibaca lagi. Karena tidak bisa dipastikan suhunya sudah turun, kecepatan penuh dipertahankan.
+3944c7df	Suhu sudah turun, kembali ke kendali normal.
+2aba3d8a	Kipas dihapus dari pengaturan.
+382df4c0	Dihentikan karena suhu darurat tercapai.
+d65b89e2	Dihentikan karena suhu GPU tinggi (perlindungan GPU memutar kipas dengan kecepatan penuh).
+700bc7ea	Dihentikan karena perlindungan pompa aktif.
+8170b926	Dihentikan karena suhu melewati {0:F0}°C. Jalankan saat beban rendah.
+3c0266a9	Dihentikan karena suhu tidak bisa dibaca lagi. Periksa sensornya lalu jalankan lagi.
+304a706a	Kalibrasi dihentikan: {0}
+1dcd95cd	Kalibrasi selesai: maks {0:N0} rpm / berhenti di bawah {1:F0}% / mulai berputar di {2:F0}%
+a486c5b7	Galat terus terjadi saat mengendalikan '{0}'. Demi keamanan, kipas berputar penuh (atau dengan kendali BIOS jika tidak bisa). Periksa log.
+4ec5ec9c	Putaran yang ditulis ke '{0}' tidak diterapkan (perintah {1:F0}% / aktual {2:F0}%). Periksa apakah ada perangkat lunak kendali kipas lain yang berjalan.
+f9ccaf79	Target {0:F0}°C
+47a60245	Ikuti
+bb366b6c	'{0}' tidak berputar. Periksa kabel dan kipasnya.
+2ba4b838	Suhu GPU tinggi, jadi '{0}' di 100% (perlindungan kipas GPU).
+e6825d4b	(Mode uji sedang aktif, tetapi 100% ditulis untuk melindungi pompa)
+14f61819	Putaran pompa '{0}' tidak bisa dibaca. Karena tidak bisa dipastikan pompa berputar, pompa dijalankan pada 100% untuk perlindungan. Segera periksa.{1}
+06027eff	Putaran pompa '{0}' turun ke {1:F0} rpm. Berjalan pada 100% untuk perlindungan. Segera periksa.{2}
+fab09721	Putaran pompa '{0}' sudah pulih ({1:F0} rpm).
+9b226151	Terjadi: {0:yyyy/MM/dd HH:mm:ss} / profil: {1}
+ecc04ddd	Rekaman: {0:HH:mm:ss} – {1:HH:mm:ss} ({2:N0} baris)
+f7957ed6	Yang terjadi selama periode ini:
+2fadbaab	Nilai tertinggi:
+c0a45084	Sensor dengan nama sama
+7c829457	Sensor dengan peran sama
+6041718b	GPU baru tidak punya Hot Spot, jadi suhu GPU (Core) yang digunakan
+de95d832	Menggunakan suhu GPU (Core)
+3ee718a9	Diganti ke suhu GPU (Core)
+18c03838	Diganti ke suhu perwakilan CPU
+7bdc8aa6	Sensor yang cocok tidak ditemukan
+86d1b117	Belum ada sensor suhu yang terlihat
+1f24a8e7	Kartu grafis
+e7d96086	Motherboard
+a1ccf01e	tidak ada
+22881060	Pompa (pemantauan putaran)
+57223d5b	Kipas (putaran)
+f65a235e	Sensor putaran tidak ditemukan, jadi diganti ke sensor putaran pada konektor yang sama
+d98de496	Konektor jenis ini belum terlihat (tidak dihapus, dibiarkan dengan kendali BIOS)
+40bf637e	Kipas GPU tidak bisa dipakai dengan GPU yang sudah diganti (akan dihapus)
+13e471aa	Konektor yang cocok tidak ditemukan
+6299c5f6	GPU belum terlihat
+9949a3db	Belum ada konektor kipas motherboard (Super I/O) yang terlihat
+c7c97e29	{0} "{1}"
+a028762c	{0} (suhu target)
+8464452e	Sensor virtual "{0}"
+bb74ce90	Dasbor "{0}"
+5dbc40a6	Warna LED
+d354ab0d	Belum ada sensor suhu CPU yang terlihat
+2a815b01	Belum ada sensor suhu GPU yang terlihat
+98a78d2c	Belum ada sensor suhu motherboard yang terlihat
