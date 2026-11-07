@@ -1500,3 +1500,93 @@ e210ecbe	Bande di risonanza
 487d0d7b	PawnIO è stato installato, ma per completare serve un riavvio del PC. Dopo il riavvio sarà possibile controllare le ventole.
 1f017018	PawnIO è stato installato ma non è ancora caricato. Riavvia l'app per controllare le ventole.
 2dcc9e2e	✖ PawnIO (il driver per il controllo ventole) non trovato. Così vengono mostrate solo le temperature e le ventole non si possono controllare.
+77545609	Avvio di winget…
+ce5c7208	Verifica dell'installazione di PawnIO…
+5424a4cc	Installa
+df36daf0	Si è verificato un errore durante l'installazione: {0}  Usa il programma di installazione del sito ufficiale.
+09d11793	{0} ({1} s)  Attendi senza chiudere questa schermata. Puoi fare altre operazioni.
+27daf2fe	Impossibile aprire il browser. Apri {0}.
+f0a541e0	PawnIO non è ancora stato trovato. Se hai già eseguito il programma di installazione, riavvia il PC e controlla di nuovo.
+3699179e	Usato in: {0}
+841ef786	(non usare)
+cbfdf76e	(elimina questa ventola)
+ad4fff7c	Modifica dell'hardware - ProFanController
+41580e6f	Non si trovano sensori o connettori usati nelle impostazioni. Sul nuovo hardware sono stati scelti automaticamente quelli con lo stesso ruolo.
+80403780	 Controlla il contenuto e premi «Sostituisci e applica» (le impostazioni attuali vengono salvate prima della modifica; in seguito puoi anche «Annulla»).\n
+8f763b23	Nel frattempo, le curve che usano sensori non trovati girano a velocità costante per sicurezza (modificabile in Impostazioni → «Sicurezza e backup»).
+6dc976fa	Importa impostazioni - ProFanController
+63ed3acb	Controlla a quali connettori ventola e sensori di temperatura di questo PC corrispondono quelli del file.
+65901272	 Gli elementi con lo stesso nome vengono scelti automaticamente. Le ventole impostate su «(elimina questa ventola)» non vengono importate.
+ecf8e3b5	PC di origine: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Importa
+39a0848e	Scegli almeno un profilo da importare.
+390affbd	✔ Driver PawnIO rilevato / {0} connettori ventola rilevati
+e92bc9eb	Completa e applica
+e051dd30	Imposta almeno un connettore su «Ventola» o «Pompa».
+fb7c18a5	Scegli il sensore di temperatura della CPU.
+9fba3a25	• {0} (pompa): {1}
+fe5a2b13	Controlla al 70% fisso
+0c1d2ab2	Monitora sotto controllo del BIOS
+d6d4423a	• {0} (ventola): segue {1}
+9833252d	Profili da creare: {0} / {1} / {2}\nProfilo per l'uso quotidiano: {3}\n\n
+0c5502cd	Apri ProFanController
+9a801bfe	Boost (massima velocità) 15 min
+46dbb6b6	Silenzioso 30 min
+670ac712	Silenzioso 2 ore
+f64f01ee	Effetto LED
+bc541527	Collegamento LED
+555e63bb	Spento (il controllo continua)
+16b197c1	Spegne tutti i LED. Il collegamento continua, quindi i dispositivi non tornano ai propri effetti
+08f31115	Effetto della sincronizzazione musicale
+a673c69a	Mostra il mini widget
+df9fa4f9	Esci (ritorno al BIOS)
+bb5165cb	Disattiva il collegamento LED
+5d04ed25	Attiva il collegamento LED
+9803ac5d	Effetto LED: disattivo
+633b3564	Effetto LED: spento
+79fe6abe	Effetto LED: {0}
+88443ff4	Lampeggia intensamente. Selezionabile dopo aver disattivato «Riduci i lampeggi» nella schermata Illuminazione
+d6903426	Profilo: {0}
+9dc4a781	Dopo la chiusura dell'app elimina {0} nella cartella dell'app.
+e0cb734a	L'app stessa (exe, ecc.) e gli altri file vengono mantenuti. Se pensi di riusarla, lascia questa opzione disattivata.
+d8539cf0	PawnIO non è installato su questo PC (non viene fatto nulla).
+f5961425	L'app stessa non può essere eliminata mentre è in esecuzione. Dopo la chiusura, Esplora file aprirà la cartella seguente: eliminala per intero:\n
+8125ee1f	Pulizia in corso. Attendi senza chiudere questa schermata fino al termine (la disinstallazione di PawnIO può richiedere da qualche decina di secondi a qualche minuto).
+67157246	Non eseguito
+66046db1	Non è stato possibile completare la pulizia.
+d01c3e3a	Un errore imprevisto ha impedito di completare la pulizia: {0}\n
+97606d71	Alla chiusura, l'app viene chiusa normalmente (le ventole tornano al controllo automatico del BIOS). Impostazioni, log e registrazioni vengono mantenuti.\n
+ebf429d4	Log: {0}
+21ebfcdd	Eseguito quando premi «Chiudi ed esci»
+9a4de971	La pulizia è stata annullata.
+64f4fe48	La pulizia è terminata. Controlla il risultato, poi chiudi.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Valore bloccato (trattato come guasto)
+5ad9af09	Velocità fissa
+59484892	DRY RUN (calcolato {0:F0}%)
+69958ecc	Controllo del BIOS · monitoraggio
+cb8668b7	Controllo del BIOS
+a303ffab	In pausa (BIOS)
+b14be516	Test (100%)
+ae90e8b7	Calibrazione
+2c363240	Boost (100%)
+22aa21f5	Guasto sensore → massima velocità
+5088ca70	Arresto rilevato
+5eea4ff5	Guasto pompa → modalità protezione
+3a56de38	Connettore non trovato
+2a9206c9	Nessun sensore → velocità sicura {0:F0}%
+9b317207	Test manuale
+f41e83e9	Protezione GPU → 100%
+704516b3	{0}: nessun sensore
+11c03f1e	Azione richiesta
+cdd6a80e	Suggerimento
+ed59cd6d	Controller
+f9fcd07e	Sensori di temperatura: {0} · ventole: {1}
+59dc8886	{0} · sensori di temperatura: {1} · connettori ventola: {2}
+09f6c70b	Velocità
+4a334be6	Virtuale
+a10ec68f	Carico
+ba90de43	Clock
+1044c343	Dati
+f951f047	Livello

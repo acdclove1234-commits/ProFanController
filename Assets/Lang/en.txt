@@ -1500,3 +1500,93 @@ e210ecbe	Resonance bands
 487d0d7b	PawnIO has been installed, but a PC restart is needed to finish. After restarting the PC, the fans can be controlled.
 1f017018	PawnIO has been installed but isn't loaded yet. Restart the app to control the fans.
 2dcc9e2e	✖ PawnIO (the fan control driver) can't be found. As it is, only temperatures are shown and the fans can't be controlled.
+77545609	Starting winget…
+ce5c7208	Checking whether PawnIO was installed…
+5424a4cc	Install
+df36daf0	An error occurred during installation: {0}  Use the installer from the official site.
+09d11793	{0} ({1} s)  Please wait without closing this screen. You can do other things.
+27daf2fe	Couldn't open the browser. Open {0}.
+f0a541e0	PawnIO still can't be found. If you have already run the installer, restart the PC and check again.
+3699179e	Used in: {0}
+841ef786	(not used)
+cbfdf76e	(delete this fan)
+ad4fff7c	Hardware change - ProFanController
+41580e6f	Sensors or headers used in the settings can't be found. Ones with the same role on the new hardware were chosen automatically.
+80403780	 Check the contents and press "Replace and apply" (the current settings are backed up before the change, and you can also "Undo" later).\n
+8f763b23	Until then, curves that use missing sensors run at a constant speed for safety (change it in Settings → "Safety & backup").
+6dc976fa	Import settings - ProFanController
+63ed3acb	Check which fan headers and temperature sensors on this PC the ones in the file should correspond to.
+65901272	 Ones with the same name are chosen automatically. Fans set to "(delete this fan)" are not imported.
+ecf8e3b5	Exported from PC: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Import
+39a0848e	Choose at least one profile to import.
+390affbd	✔ PawnIO driver detected / {0} fan headers detected
+e92bc9eb	Finish and apply
+e051dd30	Set at least one header to "Fan" or "Pump".
+fb7c18a5	Choose the CPU temperature sensor.
+9fba3a25	• {0} (pump): {1}
+fe5a2b13	Control at a fixed 70%
+0c1d2ab2	Monitor under BIOS control
+d6d4423a	• {0} (fan): follows {1}
+9833252d	Profiles to create: {0} / {1} / {2}\nProfile for everyday use: {3}\n\n
+0c5502cd	Open ProFanController
+9a801bfe	Boost (full speed) 15 min
+46dbb6b6	Silent 30 min
+670ac712	Silent 2 hours
+f64f01ee	LED effect
+bc541527	LED link
+555e63bb	Off (keep control)
+16b197c1	Turns all LEDs off. The link stays active, so the devices don't go back to their own effects
+08f31115	Music sync effect
+a673c69a	Show mini widget
+df9fa4f9	Exit (hand back to BIOS)
+bb5165cb	Turn LED link off
+5d04ed25	Turn LED link on
+9803ac5d	LED effect: off
+633b3564	LED effect: lights off
+79fe6abe	LED effect: {0}
+88443ff4	Flashes intensely. Can be chosen after turning off "Reduce flashing" on the Lighting screen
+d6903426	Profile: {0}
+9dc4a781	Deletes the {0} in the app folder after the app exits.
+e0cb734a	The app itself (exe, etc.) and other files are kept. If you might use it again, leave this off.
+d8539cf0	PawnIO isn't installed on this PC (nothing is done).
+f5961425	The app itself can't be deleted while it is running. After it exits, File Explorer opens the following folder, so delete the whole folder:\n
+8125ee1f	Cleaning up. Please wait without closing this screen until it finishes (uninstalling PawnIO can take from tens of seconds to a few minutes).
+67157246	Not done
+66046db1	The clean-up couldn't be completed.
+d01c3e3a	An unexpected error prevented the clean-up from completing: {0}\n
+97606d71	Closing exits the app as usual (the fans return to automatic BIOS control). Settings, logs and records are kept.\n
+ebf429d4	Log: {0}
+21ebfcdd	Done when you press "Close and exit"
+9a4de971	The clean-up was canceled.
+64f4fe48	The clean-up is finished. Check the results, then close.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Value is stuck (treated as faulty)
+5ad9af09	Fixed speed
+59484892	DRY RUN (calculated {0:F0}%)
+69958ecc	BIOS control · monitoring
+cb8668b7	BIOS control
+a303ffab	Paused (BIOS)
+b14be516	Testing (100%)
+ae90e8b7	Calibrating
+2c363240	Boost (100%)
+22aa21f5	Sensor fault → full speed
+5088ca70	Stall detected
+5eea4ff5	Pump fault → protective mode
+3a56de38	Header not found
+2a9206c9	No sensor → safe speed {0:F0}%
+9b317207	Manual test
+f41e83e9	GPU protection → 100%
+704516b3	{0}: no sensor
+11c03f1e	Action needed
+cdd6a80e	Tip
+ed59cd6d	Controller
+f9fcd07e	Temp sensors: {0} · Fans: {1}
+59dc8886	{0} · Temp sensors: {1} · Fan headers: {2}
+09f6c70b	Speed
+4a334be6	Virtual
+a10ec68f	Load
+ba90de43	Clock
+1044c343	Data
+f951f047	Level

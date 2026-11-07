@@ -1500,3 +1500,93 @@ e210ecbe	Pasy rezonansu
 487d0d7b	PawnIO zostało zainstalowane, ale na koniec wymagany jest restart komputera. Po restarcie będzie można sterować wentylatorami.
 1f017018	PawnIO zostało zainstalowane, ale nie jest jeszcze wczytane. Uruchom aplikację ponownie, aby sterować wentylatorami.
 2dcc9e2e	✖ Nie znaleziono PawnIO (sterownika do sterowania wentylatorami). W tym stanie wyświetlane są tylko temperatury, a wentylatorami nie można sterować.
+77545609	Uruchamianie winget…
+ce5c7208	Sprawdzanie, czy PawnIO zostało zainstalowane…
+5424a4cc	Zainstaluj
+df36daf0	Podczas instalacji wystąpił błąd: {0}  Użyj instalatora z oficjalnej strony.
+09d11793	{0} ({1} s)  Poczekaj, nie zamykając tego ekranu. Możesz robić inne rzeczy.
+27daf2fe	Nie udało się otworzyć przeglądarki. Otwórz {0}.
+f0a541e0	Nadal nie znaleziono PawnIO. Jeśli instalator został już uruchomiony, uruchom ponownie komputer i sprawdź jeszcze raz.
+3699179e	Używane w: {0}
+841ef786	(nie używaj)
+cbfdf76e	(usuń ten wentylator)
+ad4fff7c	Zmiana sprzętu - ProFanController
+41580e6f	Nie znaleziono czujników lub złączy używanych w ustawieniach. Na nowym sprzęcie automatycznie wybrano te o tej samej roli.
+80403780	 Sprawdź zawartość i naciśnij „Zastąp i zastosuj” (przed zmianą zostanie zrobiona kopia bieżących ustawień; później można też „Cofnij”).\n
+8f763b23	Do tego czasu krzywe korzystające z nieznalezionych czujników dla bezpieczeństwa pracują na stałych obrotach (zmienisz to w Ustawienia → „Bezpieczeństwo i kopie zapasowe”).
+6dc976fa	Import ustawień - ProFanController
+63ed3acb	Sprawdź, którym złączom wentylatorów i czujnikom temperatury tego komputera odpowiadają te z pliku.
+65901272	 Elementy o tej samej nazwie są wybierane automatycznie. Wentylatory ustawione na „(usuń ten wentylator)” nie są importowane.
+ecf8e3b5	Wyeksportowano z komputera: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Importuj
+39a0848e	Wybierz co najmniej jeden profil do importu.
+390affbd	✔ Wykryto sterownik PawnIO / wykryto złącza wentylatorów: {0}
+e92bc9eb	Zakończ i zastosuj
+e051dd30	Ustaw co najmniej jedno złącze jako „Wentylator” lub „Pompa”.
+fb7c18a5	Wybierz czujnik temperatury CPU.
+9fba3a25	• {0} (pompa): {1}
+fe5a2b13	Steruj na stałych 70%
+0c1d2ab2	Monitoruj pod sterowaniem BIOS
+d6d4423a	• {0} (wentylator): podąża za {1}
+9833252d	Tworzone profile: {0} / {1} / {2}\nProfil na co dzień: {3}\n\n
+0c5502cd	Otwórz ProFanController
+9a801bfe	Boost (pełna prędkość) 15 min
+46dbb6b6	Cichy 30 min
+670ac712	Cichy 2 godz.
+f64f01ee	Efekt LED
+bc541527	Połączenie LED
+555e63bb	Wyłączone (sterowanie trwa)
+16b197c1	Gasi wszystkie diody. Połączenie trwa, więc urządzenia nie wracają do własnych efektów
+08f31115	Efekt synchronizacji z muzyką
+a673c69a	Pokaż miniwidżet
+df9fa4f9	Zakończ (oddaj BIOS)
+bb5165cb	Wyłącz połączenie LED
+5d04ed25	Włącz połączenie LED
+9803ac5d	Efekt LED: wył.
+633b3564	Efekt LED: zgaszone
+79fe6abe	Efekt LED: {0}
+88443ff4	Intensywnie miga. Można wybrać po wyłączeniu „Ogranicz miganie” na ekranie Podświetlenie
+d6903426	Profil: {0}
+9dc4a781	Po zakończeniu aplikacji usuwa {0} z folderu aplikacji.
+e0cb734a	Sama aplikacja (exe itp.) i inne pliki zostają. Jeśli być może będzie jeszcze potrzebna, zostaw tę opcję wyłączoną.
+d8539cf0	PawnIO nie jest zainstalowane na tym komputerze (nic nie jest robione).
+f5961425	Samej aplikacji nie można usunąć, gdy działa. Po zakończeniu Eksplorator otworzy poniższy folder — usuń go w całości:\n
+8125ee1f	Trwają porządki. Poczekaj, nie zamykając tego ekranu, aż się zakończą (odinstalowanie PawnIO może potrwać od kilkudziesięciu sekund do kilku minut).
+67157246	Nie wykonano
+66046db1	Nie udało się dokończyć porządków.
+d01c3e3a	Nieoczekiwany błąd uniemożliwił dokończenie porządków: {0}\n
+97606d71	Zamknięcie zakończy aplikację jak zwykle (wentylatory wrócą do automatycznego sterowania BIOS). Ustawienia, dzienniki i zapisy zostają.\n
+ebf429d4	Dziennik: {0}
+21ebfcdd	Wykonywane po naciśnięciu „Zamknij i zakończ”
+9a4de971	Porządki przerwano.
+64f4fe48	Porządki zakończone. Sprawdź wynik, a potem zamknij.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Wartość zamarła (traktowana jako usterka)
+5ad9af09	Stałe obroty
+59484892	DRY RUN (obliczone {0:F0}%)
+69958ecc	Sterowanie BIOS · monitorowanie
+cb8668b7	Sterowanie BIOS
+a303ffab	Wstrzymane (BIOS)
+b14be516	Test (100%)
+ae90e8b7	Kalibracja
+2c363240	Boost (100%)
+22aa21f5	Usterka czujnika → pełna prędkość
+5088ca70	Wykryto zatrzymanie
+5eea4ff5	Usterka pompy → praca ochronna
+3a56de38	Nie znaleziono złącza
+2a9206c9	Brak czujnika → bezpieczne obroty {0:F0}%
+9b317207	Test ręczny
+f41e83e9	Ochrona GPU → 100%
+704516b3	{0}: brak czujnika
+11c03f1e	Wymaga działania
+cdd6a80e	Wskazówka
+ed59cd6d	Kontroler
+f9fcd07e	Czujniki temperatury: {0} · wentylatory: {1}
+59dc8886	{0} · czujniki temperatury: {1} · złącza wentylatorów: {2}
+09f6c70b	Obroty
+4a334be6	Wirtualny
+a10ec68f	Obciążenie
+ba90de43	Taktowanie
+1044c343	Dane
+f951f047	Poziom

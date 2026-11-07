@@ -1500,3 +1500,93 @@ e210ecbe	Pita resonansi
 487d0d7b	PawnIO sudah dipasang, tetapi PC perlu dimulai ulang untuk menyelesaikan. Setelah PC dimulai ulang, kipas bisa dikendalikan.
 1f017018	PawnIO sudah dipasang tetapi belum dimuat. Mulai ulang aplikasi untuk mengendalikan kipas.
 2dcc9e2e	✖ PawnIO (driver kendali kipas) tidak ditemukan. Dalam keadaan ini, hanya suhu yang ditampilkan dan kipas tidak bisa dikendalikan.
+77545609	Menjalankan winget…
+ce5c7208	Memeriksa apakah PawnIO sudah terpasang…
+5424a4cc	Pasang
+df36daf0	Terjadi galat saat pemasangan: {0}  Gunakan penginstal dari situs resmi.
+09d11793	{0} ({1} dtk)  Tunggu tanpa menutup layar ini. Anda tetap bisa melakukan hal lain.
+27daf2fe	Browser tidak bisa dibuka. Buka {0}.
+f0a541e0	PawnIO masih belum ditemukan. Jika penginstal sudah dijalankan, mulai ulang PC lalu periksa lagi.
+3699179e	Dipakai di: {0}
+841ef786	(tidak dipakai)
+cbfdf76e	(hapus kipas ini)
+ad4fff7c	Perubahan perangkat keras - ProFanController
+41580e6f	Sensor atau konektor yang dipakai di pengaturan tidak ditemukan. Yang berperan sama di perangkat keras baru sudah dipilih otomatis.
+80403780	 Periksa isinya lalu tekan "Ganti dan terapkan" (pengaturan saat ini dicadangkan sebelum diubah; nanti juga bisa "Urungkan").\n
+8f763b23	Sampai saat itu, kurva yang memakai sensor yang tidak ditemukan berputar dengan putaran tetap demi keamanan (bisa diubah di Pengaturan → "Keamanan & cadangan").
+6dc976fa	Impor pengaturan - ProFanController
+63ed3acb	Periksa konektor kipas dan sensor suhu di file ini akan dicocokkan ke yang mana di PC ini.
+65901272	 Yang bernama sama dipilih otomatis. Kipas yang diatur ke "(hapus kipas ini)" tidak diimpor.
+ecf8e3b5	PC asal ekspor: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Impor
+39a0848e	Pilih minimal satu profil untuk diimpor.
+390affbd	✔ Driver PawnIO terdeteksi / {0} konektor kipas terdeteksi
+e92bc9eb	Selesai dan terapkan
+e051dd30	Atur minimal satu konektor ke "Kipas" atau "Pompa".
+fb7c18a5	Pilih sensor suhu CPU.
+9fba3a25	• {0} (pompa): {1}
+fe5a2b13	Kendalikan tetap 70%
+0c1d2ab2	Pantau dengan kendali BIOS
+d6d4423a	• {0} (kipas): mengikuti {1}
+9833252d	Profil yang dibuat: {0} / {1} / {2}\nProfil untuk sehari-hari: {3}\n\n
+0c5502cd	Buka ProFanController
+9a801bfe	Boost (kecepatan penuh) 15 menit
+46dbb6b6	Senyap 30 menit
+670ac712	Senyap 2 jam
+f64f01ee	Efek LED
+bc541527	Tautan LED
+555e63bb	Mati (kendali berlanjut)
+16b197c1	Mematikan semua LED. Tautan tetap berjalan, jadi perangkat tidak kembali ke efeknya sendiri
+08f31115	Efek sinkron musik
+a673c69a	Tampilkan widget mini
+df9fa4f9	Keluar (kembalikan ke BIOS)
+bb5165cb	Matikan tautan LED
+5d04ed25	Nyalakan tautan LED
+9803ac5d	Efek LED: mati
+633b3564	Efek LED: dipadamkan
+79fe6abe	Efek LED: {0}
+88443ff4	Berkedip intens. Bisa dipilih setelah "Kurangi kedipan" dimatikan di layar Pencahayaan
+d6903426	Profil: {0}
+9dc4a781	Setelah aplikasi ditutup, menghapus {0} di folder aplikasi.
+e0cb734a	Aplikasi itu sendiri (exe, dll.) dan file lain tetap ada. Jika mungkin akan dipakai lagi, biarkan mati.
+d8539cf0	PawnIO tidak terpasang di PC ini (tidak ada yang dilakukan).
+f5961425	Aplikasi tidak bisa dihapus selagi berjalan. Setelah ditutup, File Explorer akan membuka folder berikut; hapus seluruh foldernya:\n
+8125ee1f	Sedang membersihkan. Tunggu tanpa menutup layar ini sampai selesai (mencopot PawnIO bisa memakan waktu puluhan detik hingga beberapa menit).
+67157246	Tidak dilakukan
+66046db1	Pembersihan tidak bisa diselesaikan.
+d01c3e3a	Galat tak terduga membuat pembersihan tidak bisa diselesaikan: {0}\n
+97606d71	Saat ditutup, aplikasi keluar seperti biasa (kipas kembali ke kendali otomatis BIOS). Pengaturan, log, dan rekaman tetap disimpan.\n
+ebf429d4	Log: {0}
+21ebfcdd	Dilakukan saat menekan "Tutup dan keluar"
+9a4de971	Pembersihan dihentikan.
+64f4fe48	Pembersihan selesai. Periksa hasilnya, lalu tutup.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Nilai macet (dianggap bermasalah)
+5ad9af09	Putaran tetap
+59484892	DRY RUN (nilai hitungan {0:F0}%)
+69958ecc	Kendali BIOS · memantau
+cb8668b7	Kendali BIOS
+a303ffab	Dijeda (BIOS)
+b14be516	Menguji (100%)
+ae90e8b7	Mengkalibrasi
+2c363240	Boost (100%)
+22aa21f5	Sensor bermasalah → kecepatan penuh
+5088ca70	Kipas berhenti terdeteksi
+5eea4ff5	Pompa bermasalah → mode perlindungan
+3a56de38	Konektor tidak ditemukan
+2a9206c9	Tanpa sensor → putaran aman {0:F0}%
+9b317207	Uji manual
+f41e83e9	Perlindungan GPU → 100%
+704516b3	{0}: tanpa sensor
+11c03f1e	Perlu tindakan
+cdd6a80e	Tips
+ed59cd6d	Pengontrol
+f9fcd07e	Sensor suhu: {0} · kipas: {1}
+59dc8886	{0} · sensor suhu: {1} · konektor kipas: {2}
+09f6c70b	Putaran
+4a334be6	Virtual
+a10ec68f	Penggunaan
+ba90de43	Clock
+1044c343	Data
+f951f047	Level

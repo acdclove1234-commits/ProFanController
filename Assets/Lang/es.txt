@@ -1500,3 +1500,93 @@ e210ecbe	Franjas de resonancia
 487d0d7b	PawnIO se instaló, pero para terminar hay que reiniciar el PC. Tras reiniciar el PC, se podrán controlar los ventiladores.
 1f017018	PawnIO se instaló, pero aún no se ha cargado. Reinicie la aplicación para controlar los ventiladores.
 2dcc9e2e	✖ No se encuentra PawnIO (el controlador para controlar ventiladores). Así solo se muestran temperaturas y no se pueden controlar los ventiladores.
+77545609	Iniciando winget…
+ce5c7208	Comprobando si se instaló PawnIO…
+5424a4cc	Instalar
+df36daf0	Se produjo un error durante la instalación: {0}  Use el instalador del sitio oficial.
+09d11793	{0} ({1} s)  Espere sin cerrar esta pantalla. Puede hacer otras cosas.
+27daf2fe	No se pudo abrir el navegador. Abra {0}.
+f0a541e0	Todavía no se encuentra PawnIO. Si ya ejecutó el instalador, reinicie el PC y vuelva a comprobarlo.
+3699179e	Se usa en: {0}
+841ef786	(no usar)
+cbfdf76e	(eliminar este ventilador)
+ad4fff7c	Cambio de hardware - ProFanController
+41580e6f	No se encuentran sensores o conectores usados en los ajustes. Se eligieron automáticamente los de la misma función en el hardware nuevo.
+80403780	 Revise el contenido y pulse «Reemplazar y aplicar» (los ajustes actuales se guardan antes del cambio; luego también puede «Deshacer»).\n
+8f763b23	Mientras tanto, las curvas que usan sensores que no se encuentran giran a velocidad constante por seguridad (se cambia en Ajustes → «Seguridad y copia de seguridad»).
+6dc976fa	Importar ajustes - ProFanController
+63ed3acb	Compruebe a qué conectores de ventilador y sensores de temperatura de este PC corresponden los del archivo.
+65901272	 Se eligen automáticamente los que tienen el mismo nombre. Los ventiladores puestos en «(eliminar este ventilador)» no se importan.
+ecf8e3b5	PC de origen: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Importar
+39a0848e	Elija al menos un perfil para importar.
+390affbd	✔ Controlador PawnIO detectado / {0} conectores de ventilador detectados
+e92bc9eb	Terminar y aplicar
+e051dd30	Ponga al menos un conector en «Ventilador» o «Bomba».
+fb7c18a5	Elija el sensor de temperatura de la CPU.
+9fba3a25	• {0} (bomba): {1}
+fe5a2b13	Controlar al 70 % fijo
+0c1d2ab2	Vigilar con control de la BIOS
+d6d4423a	• {0} (ventilador): sigue a {1}
+9833252d	Perfiles que se crearán: {0} / {1} / {2}\nPerfil de uso diario: {3}\n\n
+0c5502cd	Abrir ProFanController
+9a801bfe	Impulso (velocidad máxima) 15 min
+46dbb6b6	Silencioso 30 min
+670ac712	Silencioso 2 h
+f64f01ee	Efecto de los LED
+bc541527	Enlace con LED
+555e63bb	Apagado (sigue el control)
+16b197c1	Apaga todos los LED. El enlace continúa, así que los dispositivos no vuelven a sus propios efectos
+08f31115	Efecto de sincronización musical
+a673c69a	Mostrar el minipanel
+df9fa4f9	Salir (devolver a la BIOS)
+bb5165cb	Desactivar el enlace con LED
+5d04ed25	Activar el enlace con LED
+9803ac5d	Efecto de los LED: desactivado
+633b3564	Efecto de los LED: apagados
+79fe6abe	Efecto de los LED: {0}
+88443ff4	Parpadea intensamente. Se puede elegir tras desactivar «Reducir destellos» en la pantalla Iluminación
+d6903426	Perfil: {0}
+9dc4a781	Elimina {0} de la carpeta de la aplicación después de que se cierre.
+e0cb734a	La aplicación en sí (exe, etc.) y los demás archivos se conservan. Si quizá vuelva a usarla, deje esto desactivado.
+d8539cf0	PawnIO no está instalado en este PC (no se hace nada).
+f5961425	La aplicación no se puede eliminar mientras está en marcha. Después de cerrarla, el Explorador abrirá la carpeta siguiente; elimínela entera:\n
+8125ee1f	Limpiando. Espere sin cerrar esta pantalla hasta que termine (desinstalar PawnIO puede tardar de decenas de segundos a unos minutos).
+67157246	No realizado
+66046db1	No se pudo completar la limpieza.
+d01c3e3a	Un error inesperado impidió completar la limpieza: {0}\n
+97606d71	Al cerrar, la aplicación sale como de costumbre (los ventiladores vuelven al control automático de la BIOS). Se conservan los ajustes, registros y datos registrados.\n
+ebf429d4	Registro: {0}
+21ebfcdd	Se hace al pulsar «Cerrar y salir»
+9a4de971	Se canceló la limpieza.
+64f4fe48	La limpieza ha terminado. Revise el resultado y cierre.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Valor congelado (se trata como fallo)
+5ad9af09	Velocidad fija
+59484892	DRY RUN (cálculo {0:F0} %)
+69958ecc	Control de la BIOS · vigilando
+cb8668b7	Control de la BIOS
+a303ffab	En pausa (BIOS)
+b14be516	Prueba (100 %)
+ae90e8b7	Calibrando
+2c363240	Impulso (100 %)
+22aa21f5	Fallo de sensor → velocidad máxima
+5088ca70	Parada detectada
+5eea4ff5	Fallo de bomba → modo de protección
+3a56de38	No se encuentra el conector
+2a9206c9	Sin sensor → velocidad segura {0:F0} %
+9b317207	Prueba manual
+f41e83e9	Protección de la GPU → 100 %
+704516b3	{0}: sin sensor
+11c03f1e	Requiere acción
+cdd6a80e	Consejo
+ed59cd6d	Controlador
+f9fcd07e	Sensores de temperatura: {0} · ventiladores: {1}
+59dc8886	{0} · sensores de temperatura: {1} · conectores de ventilador: {2}
+09f6c70b	Velocidad
+4a334be6	Virtual
+a10ec68f	Uso
+ba90de43	Frecuencia
+1044c343	Datos
+f951f047	Nivel

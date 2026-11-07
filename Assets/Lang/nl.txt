@@ -1500,3 +1500,93 @@ e210ecbe	Resonantiebanden
 487d0d7b	PawnIO is geïnstalleerd, maar om af te ronden moet de pc opnieuw worden opgestart. Daarna kunnen de ventilatoren worden geregeld.
 1f017018	PawnIO is geïnstalleerd, maar nog niet geladen. Start de app opnieuw om de ventilatoren te regelen.
 2dcc9e2e	✖ PawnIO (het stuurprogramma voor ventilatorregeling) is niet gevonden. Zo worden alleen temperaturen getoond en kunnen de ventilatoren niet worden geregeld.
+77545609	winget wordt gestart…
+ce5c7208	Controleren of PawnIO is geïnstalleerd…
+5424a4cc	Installeren
+df36daf0	Er is een fout opgetreden tijdens de installatie: {0}  Gebruik het installatieprogramma van de officiële website.
+09d11793	{0} ({1} s)  Wacht zonder dit scherm te sluiten. Je kunt wel andere dingen doen.
+27daf2fe	Kan de browser niet openen. Open {0}.
+f0a541e0	PawnIO is nog steeds niet gevonden. Heb je het installatieprogramma al uitgevoerd, start de pc dan opnieuw op en controleer het nog eens.
+3699179e	Gebruikt in: {0}
+841ef786	(niet gebruiken)
+cbfdf76e	(deze ventilator verwijderen)
+ad4fff7c	Hardwarewijziging - ProFanController
+41580e6f	Sensoren of aansluitingen uit de instellingen zijn niet gevonden. Op de nieuwe hardware zijn automatisch onderdelen met dezelfde rol gekozen.
+80403780	 Controleer de inhoud en klik op "Vervangen en toepassen" (de huidige instellingen worden vóór de wijziging geback-upt; later kan ook "Ongedaan maken").\n
+8f763b23	Tot die tijd draaien curves die niet gevonden sensoren gebruiken voor de veiligheid op een constant toerental (te wijzigen bij Instellingen → "Veiligheid & back-up").
+6dc976fa	Instellingen importeren - ProFanController
+63ed3acb	Controleer met welke ventilatoraansluitingen en temperatuursensoren van deze pc die uit het bestand overeenkomen.
+65901272	 Items met dezelfde naam worden automatisch gekozen. Ventilatoren die op "(deze ventilator verwijderen)" staan, worden niet geïmporteerd.
+ecf8e3b5	Geëxporteerd vanaf pc: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Importeren
+39a0848e	Kies minstens één profiel om te importeren.
+390affbd	✔ PawnIO-stuurprogramma gevonden / {0} ventilatoraansluitingen gevonden
+e92bc9eb	Voltooien en toepassen
+e051dd30	Zet minstens één aansluiting op "Ventilator" of "Pomp".
+fb7c18a5	Kies de CPU-temperatuursensor.
+9fba3a25	• {0} (pomp): {1}
+fe5a2b13	Regelen op vaste 70%
+0c1d2ab2	Bewaken onder BIOS-regeling
+d6d4423a	• {0} (ventilator): volgt {1}
+9833252d	Profielen die worden gemaakt: {0} / {1} / {2}\nProfiel voor dagelijks gebruik: {3}\n\n
+0c5502cd	ProFanController openen
+9a801bfe	Boost (volle snelheid) 15 min
+46dbb6b6	Stil 30 min
+670ac712	Stil 2 uur
+f64f01ee	Ledeffect
+bc541527	Ledkoppeling
+555e63bb	Uit (regeling loopt door)
+16b197c1	Zet alle leds uit. De koppeling blijft actief, dus de apparaten gaan niet terug naar hun eigen effecten
+08f31115	Effect voor muzieksynchronisatie
+a673c69a	Miniwidget tonen
+df9fa4f9	Afsluiten (terug naar BIOS)
+bb5165cb	Ledkoppeling uitzetten
+5d04ed25	Ledkoppeling aanzetten
+9803ac5d	Ledeffect: uit
+633b3564	Ledeffect: gedoofd
+79fe6abe	Ledeffect: {0}
+88443ff4	Knippert heftig. Te kiezen nadat je "Flitsen beperken" op het scherm Verlichting hebt uitgezet
+d6903426	Profiel: {0}
+9dc4a781	Wist na het afsluiten van de app de {0} in de app-map.
+e0cb734a	De app zelf (exe enz.) en andere bestanden blijven bewaard. Gebruik je hem misschien nog eens, laat dit dan uit.
+d8539cf0	PawnIO is niet op deze pc geïnstalleerd (er gebeurt niets).
+f5961425	De app zelf kan niet worden gewist terwijl hij draait. Na het afsluiten opent Verkenner de volgende map; verwijder de hele map:\n
+8125ee1f	Bezig met opruimen. Wacht zonder dit scherm te sluiten tot het klaar is (het verwijderen van PawnIO kan tientallen seconden tot enkele minuten duren).
+67157246	Niet uitgevoerd
+66046db1	Het opruimen kon niet volledig worden afgerond.
+d01c3e3a	Door een onverwachte fout kon het opruimen niet volledig worden afgerond: {0}\n
+97606d71	Bij sluiten wordt de app zoals gewoonlijk afgesloten (de ventilatoren gaan terug naar automatische BIOS-regeling). Instellingen, logs en metingen blijven bewaard.\n
+ebf429d4	Logboek: {0}
+21ebfcdd	Wordt uitgevoerd als je op "Sluiten en afsluiten" klikt
+9a4de971	Het opruimen is afgebroken.
+64f4fe48	Het opruimen is klaar. Controleer het resultaat en sluit dan.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Waarde staat vast (als defect behandeld)
+5ad9af09	Vast toerental
+59484892	DRY RUN (berekend {0:F0}%)
+69958ecc	BIOS-regeling · bewaking
+cb8668b7	BIOS-regeling
+a303ffab	Gepauzeerd (BIOS)
+b14be516	Test (100%)
+ae90e8b7	Kalibreren
+2c363240	Boost (100%)
+22aa21f5	Sensorstoring → volle snelheid
+5088ca70	Stilstand gedetecteerd
+5eea4ff5	Pompstoring → beschermingsstand
+3a56de38	Aansluiting niet gevonden
+2a9206c9	Geen sensor → veilig toerental {0:F0}%
+9b317207	Handmatige test
+f41e83e9	GPU-beveiliging → 100%
+704516b3	{0}: geen sensor
+11c03f1e	Actie nodig
+cdd6a80e	Tip
+ed59cd6d	Controller
+f9fcd07e	Temperatuursensoren: {0} · ventilatoren: {1}
+59dc8886	{0} · temperatuursensoren: {1} · ventilatoraansluitingen: {2}
+09f6c70b	Toerental
+4a334be6	Virtueel
+a10ec68f	Belasting
+ba90de43	Kloksnelheid
+1044c343	Gegevens
+f951f047	Niveau

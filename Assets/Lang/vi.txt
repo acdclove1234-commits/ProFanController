@@ -1500,3 +1500,93 @@ e210ecbe	Tránh cộng hưởng
 487d0d7b	Đã cài PawnIO nhưng cần khởi động lại PC để hoàn tất. Sau khi khởi động lại PC, có thể điều khiển quạt.
 1f017018	Đã cài PawnIO nhưng chưa được nạp. Khởi động lại ứng dụng để điều khiển quạt.
 2dcc9e2e	✖ Không tìm thấy PawnIO (driver điều khiển quạt). Như vậy chỉ hiển thị được nhiệt độ, không điều khiển được quạt.
+77545609	Đang khởi động winget…
+ce5c7208	Đang kiểm tra PawnIO đã được cài chưa…
+5424a4cc	Cài đặt
+df36daf0	Đã xảy ra lỗi khi cài đặt: {0}  Hãy dùng trình cài đặt trên trang chính thức.
+09d11793	{0} ({1} giây)  Hãy đợi, đừng đóng màn hình này. Bạn vẫn có thể làm việc khác.
+27daf2fe	Không mở được trình duyệt. Hãy mở {0}.
+f0a541e0	Vẫn chưa tìm thấy PawnIO. Nếu đã chạy trình cài đặt, hãy khởi động lại PC rồi kiểm tra lại.
+3699179e	Nơi sử dụng: {0}
+841ef786	(không dùng)
+cbfdf76e	(xóa quạt này)
+ad4fff7c	Thay đổi phần cứng - ProFanController
+41580e6f	Không tìm thấy cảm biến hoặc cổng dùng trong cài đặt. Đã tự chọn các mục có cùng vai trò trên phần cứng mới.
+80403780	 Hãy kiểm tra nội dung rồi nhấn "Thay thế và áp dụng" (cài đặt hiện tại sẽ được sao lưu trước khi thay đổi; sau này cũng có thể "Hoàn tác").\n
+8f763b23	Trong lúc đó, các đường cong dùng cảm biến không tìm thấy chạy ở tốc độ cố định để an toàn (có thể đổi trong Cài đặt → "An toàn & sao lưu").
+6dc976fa	Nhập cài đặt - ProFanController
+63ed3acb	Hãy kiểm tra cổng quạt và cảm biến nhiệt độ trong tệp sẽ ứng với mục nào trên PC này.
+65901272	 Các mục cùng tên được tự động chọn. Quạt đặt là "(xóa quạt này)" sẽ không được nhập.
+ecf8e3b5	PC đã xuất: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Nhập
+39a0848e	Hãy chọn ít nhất một cấu hình để nhập.
+390affbd	✔ Đã phát hiện driver PawnIO / phát hiện {0} cổng quạt
+e92bc9eb	Hoàn tất và áp dụng
+e051dd30	Hãy đặt ít nhất một cổng là "Quạt" hoặc "Bơm".
+fb7c18a5	Hãy chọn cảm biến nhiệt độ CPU.
+9fba3a25	• {0} (bơm): {1}
+fe5a2b13	Điều khiển cố định 70%
+0c1d2ab2	Giữ BIOS điều khiển và giám sát
+d6d4423a	• {0} (quạt): theo {1}
+9833252d	Các cấu hình sẽ tạo: {0} / {1} / {2}\nCấu hình dùng thường ngày: {3}\n\n
+0c5502cd	Mở ProFanController
+9a801bfe	Tăng tốc (tối đa) 15 phút
+46dbb6b6	Yên tĩnh 30 phút
+670ac712	Yên tĩnh 2 giờ
+f64f01ee	Hiệu ứng LED
+bc541527	Liên kết LED
+555e63bb	Tắt đèn (vẫn điều khiển)
+16b197c1	Tắt mọi LED. Liên kết vẫn tiếp tục nên thiết bị không trở về hiệu ứng riêng
+08f31115	Hiệu ứng đồng bộ nhạc
+a673c69a	Hiện tiện ích mini
+df9fa4f9	Thoát (trả về BIOS)
+bb5165cb	Tắt liên kết LED
+5d04ed25	Bật liên kết LED
+9803ac5d	Hiệu ứng LED: tắt
+633b3564	Hiệu ứng LED: đang tắt đèn
+79fe6abe	Hiệu ứng LED: {0}
+88443ff4	Nhấp nháy mạnh. Có thể chọn sau khi tắt "Giảm nhấp nháy" ở màn hình Đèn LED
+d6903426	Cấu hình: {0}
+9dc4a781	Sau khi ứng dụng thoát, xóa {0} trong thư mục ứng dụng.
+e0cb734a	Bản thân ứng dụng (exe…) và các tệp khác được giữ lại. Nếu có thể sẽ dùng lại, hãy để tắt.
+d8539cf0	PawnIO chưa được cài trên PC này (không làm gì cả).
+f5961425	Không thể xóa ứng dụng khi đang chạy. Sau khi thoát, Explorer sẽ mở thư mục sau, hãy xóa cả thư mục:\n
+8125ee1f	Đang dọn dẹp. Hãy đợi, đừng đóng màn hình này cho đến khi xong (gỡ PawnIO có thể mất từ vài chục giây đến vài phút).
+67157246	Không thực hiện
+66046db1	Không dọn dẹp được đến cuối.
+d01c3e3a	Lỗi không mong muốn khiến không dọn dẹp được đến cuối: {0}\n
+97606d71	Khi đóng, ứng dụng sẽ thoát như bình thường (quạt trở về chế độ tự điều khiển của BIOS). Cài đặt, nhật ký và bản ghi được giữ lại.\n
+ebf429d4	Nhật ký: {0}
+21ebfcdd	Sẽ thực hiện khi nhấn "Đóng và thoát"
+9a4de971	Đã dừng việc dọn dẹp.
+64f4fe48	Đã dọn dẹp xong. Hãy xem kết quả rồi đóng.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Giá trị bị đứng (đang coi là bất thường)
+5ad9af09	Tốc độ cố định
+59484892	DRY RUN (giá trị tính {0:F0}%)
+69958ecc	BIOS điều khiển · đang giám sát
+cb8668b7	BIOS điều khiển
+a303ffab	Tạm dừng (BIOS)
+b14be516	Đang thử (100%)
+ae90e8b7	Đang hiệu chỉnh
+2c363240	Đang tăng tốc (100%)
+22aa21f5	Cảm biến lỗi → tối đa
+5088ca70	Phát hiện dừng quay
+5eea4ff5	Bơm lỗi → chạy bảo vệ
+3a56de38	Không tìm thấy cổng
+2a9206c9	Không có cảm biến → tốc độ an toàn {0:F0}%
+9b317207	Đang thử thủ công
+f41e83e9	Bảo vệ GPU → 100%
+704516b3	{0}: không có cảm biến
+11c03f1e	Cần xử lý
+cdd6a80e	Mẹo
+ed59cd6d	Bộ điều khiển
+f9fcd07e	Cảm biến nhiệt độ: {0} · quạt: {1}
+59dc8886	{0} · cảm biến nhiệt độ: {1} · cổng quạt: {2}
+09f6c70b	Tốc độ quay
+4a334be6	Ảo
+a10ec68f	Mức dùng
+ba90de43	Xung nhịp
+1044c343	Dữ liệu
+f951f047	Mức

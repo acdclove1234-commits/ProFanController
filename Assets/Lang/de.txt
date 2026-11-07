@@ -1500,3 +1500,93 @@ e210ecbe	Resonanzbereiche
 487d0d7b	PawnIO wurde installiert, zum Abschluss ist aber ein Neustart des PCs nötig. Nach dem Neustart lassen sich die Lüfter steuern.
 1f017018	PawnIO wurde installiert, ist aber noch nicht geladen. Starten Sie die App neu, um die Lüfter zu steuern.
 2dcc9e2e	✖ PawnIO (der Treiber für die Lüftersteuerung) wurde nicht gefunden. So werden nur Temperaturen angezeigt, die Lüfter lassen sich nicht steuern.
+77545609	winget wird gestartet…
+ce5c7208	Es wird geprüft, ob PawnIO installiert wurde…
+5424a4cc	Installieren
+df36daf0	Bei der Installation ist ein Fehler aufgetreten: {0}  Verwenden Sie den Installer der offiziellen Website.
+09d11793	{0} ({1} s)  Bitte warten Sie, ohne diese Seite zu schließen. Andere Aktionen sind möglich.
+27daf2fe	Der Browser konnte nicht geöffnet werden. Öffnen Sie {0}.
+f0a541e0	PawnIO wurde noch nicht gefunden. Wenn Sie den Installer bereits ausgeführt haben, starten Sie den PC neu und prüfen Sie es erneut.
+3699179e	Verwendet in: {0}
+841ef786	(nicht verwenden)
+cbfdf76e	(diesen Lüfter löschen)
+ad4fff7c	Hardwareänderung - ProFanController
+41580e6f	In den Einstellungen verwendete Sensoren oder Anschlüsse wurden nicht gefunden. Auf der neuen Hardware wurden automatisch solche mit gleicher Rolle gewählt.
+80403780	 Prüfen Sie den Inhalt und klicken Sie auf „Ersetzen und anwenden“ (die aktuellen Einstellungen werden vorher gesichert; später ist auch „Rückgängig“ möglich).\n
+8f763b23	Bis dahin laufen Kurven mit nicht gefundenen Sensoren zur Sicherheit mit konstanter Drehzahl (änderbar unter Einstellungen → „Sicherheit & Sicherung“).
+6dc976fa	Einstellungen importieren - ProFanController
+63ed3acb	Prüfen Sie, welchen Lüfteranschlüssen und Temperatursensoren dieses PCs die Einträge der Datei entsprechen sollen.
+65901272	 Gleichnamige Einträge werden automatisch gewählt. Lüfter, die auf „(diesen Lüfter löschen)“ gesetzt sind, werden nicht importiert.
+ecf8e3b5	Exportiert von PC: {0} ({1:yyyy/MM/dd HH:mm})
+b44944a1	Importieren
+39a0848e	Wählen Sie mindestens ein Profil zum Importieren.
+390affbd	✔ PawnIO-Treiber erkannt / {0} Lüfteranschlüsse erkannt
+e92bc9eb	Fertigstellen und anwenden
+e051dd30	Stellen Sie mindestens einen Anschluss auf „Lüfter“ oder „Pumpe“.
+fb7c18a5	Wählen Sie den CPU-Temperatursensor.
+9fba3a25	• {0} (Pumpe): {1}
+fe5a2b13	Fest mit 70 % steuern
+0c1d2ab2	Unter BIOS-Steuerung überwachen
+d6d4423a	• {0} (Lüfter): folgt {1}
+9833252d	Zu erstellende Profile: {0} / {1} / {2}\nProfil für den Alltag: {3}\n\n
+0c5502cd	ProFanController öffnen
+9a801bfe	Boost (volle Drehzahl) 15 Min.
+46dbb6b6	Leise 30 Min.
+670ac712	Leise 2 Std.
+f64f01ee	LED-Effekt
+bc541527	LED-Verbindung
+555e63bb	Aus (Steuerung läuft weiter)
+16b197c1	Schaltet alle LEDs aus. Die Verbindung bleibt bestehen, daher kehren die Geräte nicht zu ihren eigenen Effekten zurück
+08f31115	Effekt der Musiksynchronisation
+a673c69a	Mini-Widget anzeigen
+df9fa4f9	Beenden (zurück an BIOS)
+bb5165cb	LED-Verbindung ausschalten
+5d04ed25	LED-Verbindung einschalten
+9803ac5d	LED-Effekt: aus
+633b3564	LED-Effekt: ausgeschaltet
+79fe6abe	LED-Effekt: {0}
+88443ff4	Blinkt heftig. Wählbar, wenn Sie auf der Seite Beleuchtung „Blitzen reduzieren“ ausschalten
+d6903426	Profil: {0}
+9dc4a781	Löscht nach dem Beenden der App die {0} im App-Ordner.
+e0cb734a	Die App selbst (exe usw.) und andere Dateien bleiben erhalten. Wenn Sie sie vielleicht wieder nutzen, lassen Sie dies aus.
+d8539cf0	PawnIO ist auf diesem PC nicht installiert (es wird nichts getan).
+f5961425	Die App selbst lässt sich nicht löschen, solange sie läuft. Nach dem Beenden öffnet der Explorer den folgenden Ordner – löschen Sie den ganzen Ordner:\n
+8125ee1f	Es wird aufgeräumt. Bitte warten Sie, ohne diese Seite zu schließen, bis es fertig ist (das Deinstallieren von PawnIO kann zehn Sekunden bis einige Minuten dauern).
+67157246	Nicht ausgeführt
+66046db1	Das Aufräumen konnte nicht vollständig abgeschlossen werden.
+d01c3e3a	Wegen eines unerwarteten Fehlers konnte das Aufräumen nicht vollständig abgeschlossen werden: {0}\n
+97606d71	Beim Schließen wird die App wie gewohnt beendet (die Lüfter kehren zur automatischen BIOS-Steuerung zurück). Einstellungen, Protokolle und Aufzeichnungen bleiben erhalten.\n
+ebf429d4	Protokoll: {0}
+21ebfcdd	Wird ausgeführt, wenn Sie auf „Schließen und beenden“ klicken
+9a4de971	Das Aufräumen wurde abgebrochen.
+64f4fe48	Das Aufräumen ist fertig. Prüfen Sie das Ergebnis und schließen Sie dann.
+03af7a8c	!
+07af80d8	–
+c7abcb9b	⚠ Wert hängt fest (wird als fehlerhaft behandelt)
+5ad9af09	Feste Drehzahl
+59484892	DRY RUN (berechnet {0:F0} %)
+69958ecc	BIOS-Steuerung · Überwachung
+cb8668b7	BIOS-Steuerung
+a303ffab	Pausiert (BIOS)
+b14be516	Test (100 %)
+ae90e8b7	Kalibrierung
+2c363240	Boost (100 %)
+22aa21f5	Sensorfehler → volle Drehzahl
+5088ca70	Stillstand erkannt
+5eea4ff5	Pumpenfehler → Schutzbetrieb
+3a56de38	Anschluss nicht gefunden
+2a9206c9	Kein Sensor → sichere Drehzahl {0:F0} %
+9b317207	Manueller Test
+f41e83e9	GPU-Schutz → 100 %
+704516b3	{0}: kein Sensor
+11c03f1e	Handlungsbedarf
+cdd6a80e	Tipp
+ed59cd6d	Controller
+f9fcd07e	Temperatursensoren: {0} · Lüfter: {1}
+59dc8886	{0} · Temperatursensoren: {1} · Lüfteranschlüsse: {2}
+09f6c70b	Drehzahl
+4a334be6	Virtuell
+a10ec68f	Auslastung
+ba90de43	Takt
+1044c343	Daten
+f951f047	Pegel
