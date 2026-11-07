@@ -337,10 +337,10 @@ a28e3556	Stem tint en helderheid van dit apparaat af, of wijzig effect, richting
 8847ea7e	Kleurafstemming en zone-instellingen openen
 43c6336e	Kleurafstemming (hele apparaat)
 ee85a976	Dezelfde kleur kan op verschillende leds anders ogen in tint en helderheid. Zet hierboven "Wit oplichten om te vergelijken" aan en verlaag rood, groen en blauw tot het wit gelijk is (verhogen kan niet, dus verlaag de te sterke kleuren)
-3bb159a9	Rood
-4fc93dd4	Groen
-b0ba1b8f	Blauw
-387da053	Helderheid
+3bb159a9	Rood 
+4fc93dd4	Groen 
+b0ba1b8f	Blauw 
+387da053	Helderheid 
 4cba9eab	Instellingen per zone (aansluiting)
 d64827fc	Wijzig per moederbordaansluiting effect, richting en tint passend bij wat er aangesloten is (ventilatoren, voeding, waterkoelingskop enz.). "Zelfde als apparaat" houdt de instellingen hierboven. Wat aan dezelfde aansluiting is doorgelust, vormt één zone
 41860c08	Wijzigt het muziekeffect alleen voor deze zone (bijv. niveaumeter voor de radiatorventilatoren, kleur op de maat voor de voeding)
@@ -630,7 +630,7 @@ c674f1d5	Het automatisch opstarten wijst nu naar deze draaiende app.
 f5c17fde	Kon het automatisch opstarten niet opnieuw instellen (controleer de log).
 467c4a19	Kon niet verplaatsen naar {0}: {1}
 14d2e005	Geluidsopname
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Een gebruikte sensor is niet gevonden
 9c32a53a	Hardwarewijzigingen gedetecteerd
 58f4eb35	ProFanController: hardwarewijziging
@@ -1007,3 +1007,103 @@ fdb07eba	De installatie is geannuleerd ({0}).
 8725a2c5	De installatie is mislukt (winget-fout {0}). Gebruik het installatieprogramma van de officiële website.
 6bb09a84	Verwijder PawnIO via Windows-instellingen → Apps → Geïnstalleerde apps.
 3436ee7f	PawnIO is verwijderd. Start de pc opnieuw op om af te ronden.
+71b727fe	PawnIO is verwijderd.
+e6a01093	PawnIO was niet geïnstalleerd.
+9dec80dc	winget gaf een fout terug ({0}), maar PawnIO is weg. Start de pc voor de zekerheid opnieuw op.
+8029d561	winget meldde dat het klaar was, maar PawnIO is er nog. Start de pc opnieuw op en controleer het; is het er nog: 
+4b39d605	Kan PawnIO niet verwijderen, omdat winget ontbreekt of niet start.
+587aab10	Gestopt, omdat het na {0:F0} minuten nog niet klaar was.
+0853b695	Verwijderen is niet gelukt, omdat PawnIO wordt gebruikt door andere software (FanControl, LibreHardwareMonitor enz.) ({0}).
+2019a1d7	 Start de pc opnieuw op en daarna:
+3203c5a3	winget heeft PawnIO niet gevonden ({0}).
+1214ea06	Geblokkeerd door het beleid van deze pc ({0}). Neem contact op met je beheerder.
+fa206abb	Het verwijderen is geannuleerd ({0}).
+3d287832	Er loopt al een andere installatie ({0}). Als die klaar is:
+2f57cd74	Kan PawnIO niet verwijderen (winget-fout {0}).
+fdc538fc	Van onder naar boven
+d8dd2f02	Van boven naar onder
+d26407fa	Van achter naar voor
+ad4d7e26	Van voor naar achter
+d20e03f3	Van het midden naar buiten
+3c957a43	Van buiten naar het midden
+a4a3fddd	3 ventilatoren voor (van boven)
+5f05f426	3 ventilatoren voor (van onder)
+ddc8e746	2 ventilatoren voor (van boven)
+57464a90	Ventilator voor (boven)
+3ef45d3f	Ventilator voor (midden)
+434a387d	Ventilator voor (onder)
+be82dbb4	3 ventilatoren boven (van voren)
+cb58decc	3 ventilatoren boven (van achteren)
+91bda7f3	2 ventilatoren boven (van voren)
+b71e6d1a	Achterventilator
+1091fb70	3 ventilatoren onder (van voren)
+1a85a2f8	3 ventilatoren onder (van achteren)
+b066a299	CPU-koeler / AIO-pompkop
+5a66eda2	Onderdelen
+c662c824	Videokaart (van achterkant naar voren)
+aa463c32	Videokaart (van voren naar achterkant)
+d28e8e28	Geheugen (van boven naar onder)
+0b4a03fa	Geheugen (van onder naar boven)
+bc4075b9	Moederbord (I/O-kap achter)
+06e66fb6	Moederbord (onderkant, chipset)
+03940065	Verticale strip voor (van boven naar onder)
+a2b18858	Ledstrip
+cb71e013	Verticale strip voor (van onder naar boven)
+face4d45	Strip langs de bovenrand (van voor naar achter)
+a1303c99	Strip langs de onderrand (van voor naar achter)
+f18c7cb3	Kleur van andere apparaten
+1ad230d1	Subtiel
+7c96252e	Normaal
+9c7d5155	Sterk
+99b317d4	Heftig
+f564ef3a	Regenboog
+87a3b19f	Neon
+234460f5	Zonsondergang
+25bc0f2a	Oceaan
+87e00005	Vuur
+a2aace5a	Vaporwave
+73ed0164	Bos
+65d57d9e	IJs
+6b03e35b	Kleuren dicht bij de gekozen kleur
+b1ecda1c	Alleen de gekozen kleur (één kleur)
+f7121884	Chill (rustig)
+864fde76	Groove (standaard)
+40238fad	Feest
+4c4b9639	Club (heftig)
+58c4acf6	Visualizer
+1ffc1da1	Films en games
+a4d4ce26	Aangepast
+68a0416e	Langzaam wisselende kleuren
+2ee44588	Uit
+9a137ab5	{0} {1} (standaard {2})
+975db0d4	Kleurwissel op de beat
+6f6c9db1	Wisselt bij elke beat naar de volgende kleur, licht fel op en dooft
+1acb0fe4	Puls
+3735677c	De gekozen kleur pulseert met de bas en laat een zachte nagloed achter
+fac18e83	Mix
+143bf4c6	Kleuren mengen op basis van de sterkte van lage, midden- en hoge tonen
+d47d8919	VU-meter
+c9601c4a	Licht vanaf de rand op zover het volume reikt, met een piekpunt dat langzaam zakt
+b9056e5c	Spectrum
+1f55a216	Verdeelt laag tot hoog over de leds, elk oplichtend naar zijn sterkte
+ae14d063	Energie
+9097b7af	Banden voor lage, midden- en hoge tonen groeien elk naar hun sterkte
+a8728d89	Stromende golf
+0dbddecd	De kleur van het huidige geluid stroomt vanaf de rand (waterval)
+7579942a	Rimpeling
+8f1dc3a2	Bij elke kick verspreidt zich een ring van licht
+5c1949b1	Fonkeling
+6ddfa1c0	Bij de kick gloeit alles zacht, bij de snare een gebundelde lichtflits, bij de hi-hat fonkelen witte puntjes
+fa793be1	Elk onderdeel zijn rol
+07493f35	Elk onderdeel licht op bij zijn eigen geluid, zoals ventilatoren bij de bas, de videokaart bij de middentonen en het geheugen bij de hoge tonen (te wijzigen in de zone-instelling "Geluid om op te reageren")
+74a4376d	Tempo volgen
+934997b6	Een lichtband loopt mee op de beat
+5d88da90	Sfeer
+e134b40a	De kleur verandert langzaam met de sfeer van het nummer (zonder knipperen)
+c3873745	Stroboscoop
+e266b3b4	Knippert sterk op de beat (alleen als "Flitsen beperken" uit staat)
+3cada106	Volgens onderdeel
+78733543	Laag (kick, bas)
+23099007	Midden (snare, zang)
+b599c0f6	Hoog (hi-hat)
+34c5e8d2	Hele geluid (volume)

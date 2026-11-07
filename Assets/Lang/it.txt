@@ -337,10 +337,10 @@ a28e3556	Allinea tinta e luminosità di questo dispositivo, oppure cambia effett
 8847ea7e	Apri allineamento colore e impostazioni per zona
 43c6336e	Allineamento colore (tutto il dispositivo)
 ee85a976	Lo stesso colore può apparire diverso per tinta e luminosità su LED diversi. Attiva «Illumina di bianco per confrontare» qui sopra e abbassa rosso, verde e blu finché i bianchi coincidono (non si può alzare, quindi abbassa i colori troppo forti)
-3bb159a9	Rosso
-4fc93dd4	Verde
-b0ba1b8f	Blu
-387da053	Luminosità
+3bb159a9	Rosso 
+4fc93dd4	Verde 
+b0ba1b8f	Blu 
+387da053	Luminosità 
 4cba9eab	Impostazioni per zona (connettore)
 d64827fc	Cambia effetto, direzione e tinta per ogni connettore della scheda madre in base a ciò che vi è collegato (ventole, alimentatore, testa del liquido ecc.). «Come il dispositivo» mantiene le impostazioni sopra. Ciò che è collegato in serie sullo stesso connettore forma una zona
 41860c08	Cambia l'effetto di sincronizzazione musicale solo per questa zona (es. VU meter per le ventole del radiatore, colore a tempo per l'alimentatore)
@@ -630,7 +630,7 @@ c674f1d5	L'avvio automatico ora punta a questa app in esecuzione.
 f5c17fde	Impossibile registrare di nuovo l'avvio automatico (controlla il log).
 467c4a19	Impossibile spostare in {0}: {1}
 14d2e005	Acquisizione audio
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Un sensore in uso non si trova
 9c32a53a	Rilevate modifiche all'hardware
 58f4eb35	ProFanController: modifica all'hardware
@@ -1007,3 +1007,103 @@ fdb07eba	L'installazione è stata annullata ({0}).
 8725a2c5	Installazione non riuscita (errore winget {0}). Usa il programma di installazione del sito ufficiale.
 6bb09a84	Disinstalla PawnIO da Impostazioni di Windows → App → App installate.
 3436ee7f	PawnIO è stato disinstallato. Per completare, riavvia il PC.
+71b727fe	PawnIO è stato disinstallato.
+e6a01093	PawnIO non era installato.
+9dec80dc	winget ha restituito un errore ({0}), ma PawnIO non c'è più. Per sicurezza riavvia il PC.
+8029d561	winget ha segnalato il completamento, ma PawnIO è ancora presente. Riavvia il PC e controlla; se è ancora presente: 
+4b39d605	Impossibile disinstallare PawnIO perché winget manca o non si avvia.
+587aab10	Interrotto perché dopo {0:F0} minuti non era finito.
+0853b695	Impossibile disinstallare perché PawnIO è usato da altri software (FanControl, LibreHardwareMonitor, ecc.) ({0}).
+2019a1d7	 Riavvia il PC, poi:
+3203c5a3	winget non ha trovato PawnIO ({0}).
+1214ea06	Bloccato dai criteri di questo PC ({0}). Rivolgiti all'amministratore.
+fa206abb	La disinstallazione è stata annullata ({0}).
+3d287832	È in corso un'altra installazione ({0}). Al termine:
+2f57cd74	Impossibile disinstallare PawnIO (errore winget {0}).
+fdc538fc	Dal basso verso l'alto
+d8dd2f02	Dall'alto verso il basso
+d26407fa	Da dietro in avanti
+ad4d7e26	Da davanti all'indietro
+d20e03f3	Dal centro verso l'esterno
+3c957a43	Dall'esterno verso il centro
+a4a3fddd	3 ventole frontali (dall'alto)
+5f05f426	3 ventole frontali (dal basso)
+ddc8e746	2 ventole frontali (dall'alto)
+57464a90	Ventola frontale (in alto)
+3ef45d3f	Ventola frontale (al centro)
+434a387d	Ventola frontale (in basso)
+be82dbb4	3 ventole superiori (da davanti)
+cb58decc	3 ventole superiori (da dietro)
+91bda7f3	2 ventole superiori (da davanti)
+b71e6d1a	Ventola posteriore
+1091fb70	3 ventole inferiori (da davanti)
+1a85a2f8	3 ventole inferiori (da dietro)
+b066a299	Dissipatore CPU / testa della pompa AIO
+5a66eda2	Componenti
+c662c824	Scheda video (dal lato posteriore in avanti)
+aa463c32	Scheda video (da davanti al lato posteriore)
+d28e8e28	Memoria (dall'alto verso il basso)
+0b4a03fa	Memoria (dal basso verso l'alto)
+bc4075b9	Scheda madre (copertura I/O posteriore)
+06e66fb6	Scheda madre (parte inferiore, chipset)
+03940065	Striscia verticale frontale (dall'alto verso il basso)
+a2b18858	Striscia LED
+cb71e013	Striscia verticale frontale (dal basso verso l'alto)
+face4d45	Striscia del bordo superiore (da davanti a dietro)
+a1303c99	Striscia del bordo inferiore (da davanti a dietro)
+f18c7cb3	Colore degli altri dispositivi
+1ad230d1	Leggero
+7c96252e	Normale
+9c7d5155	Forte
+99b317d4	Intenso
+f564ef3a	Arcobaleno
+87a3b19f	Neon
+234460f5	Tramonto
+25bc0f2a	Oceano
+87e00005	Fuoco
+a2aace5a	Vaporwave
+73ed0164	Foresta
+65d57d9e	Ghiaccio
+6b03e35b	Colori vicini a quello scelto
+b1ecda1c	Solo il colore scelto (tinta unita)
+f7121884	Chill (rilassato)
+864fde76	Groove (standard)
+40238fad	Festa
+4c4b9639	Club (intenso)
+58c4acf6	Visualizzatore
+1ffc1da1	Film e giochi
+a4d4ce26	Personalizzato
+68a0416e	Colori che cambiano lentamente
+2ee44588	Spento
+9a137ab5	{0} {1} (predefinito {2})
+975db0d4	Cambio colore a ritmo
+6f6c9db1	A ogni battito passa al colore successivo, si accende di colpo e svanisce
+1acb0fe4	Pulsazione
+3735677c	Il colore scelto pulsa con i bassi e lascia un morbido bagliore residuo
+fac18e83	Mix
+143bf4c6	I colori si mescolano in base all'intensità di bassi, medi e alti
+d47d8919	VU meter
+c9601c4a	Si accende dal bordo in base al volume, con un punto di picco che scende lentamente
+b9056e5c	Spettro
+1f55a216	Distribuisce dai bassi agli alti lungo i LED, ciascuno acceso in base alla sua intensità
+ae14d063	Energia
+9097b7af	Le bande di bassi, medi e alti si allungano ciascuna in base alla sua intensità
+a8728d89	Onda che scorre
+0dbddecd	Il colore del suono attuale scorre dal bordo (cascata)
+7579942a	Increspature
+8f1dc3a2	A ogni cassa si espande un anello di luce
+5c1949b1	Scintillio
+6ddfa1c0	Con la cassa tutto si illumina dolcemente, con il rullante una luce concentrata, con l'hi-hat scintillano punti bianchi
+fa793be1	Ogni componente il suo ruolo
+07493f35	Ogni componente si illumina con il proprio suono, ad esempio le ventole con i bassi, la scheda video con i medi e la memoria con gli alti (modificabile nell'impostazione di zona «Suono da seguire»)
+74a4376d	Segui il tempo
+934997b6	Una banda di luce corre a ritmo
+5d88da90	Atmosfera
+e134b40a	Il colore cambia lentamente con l'atmosfera del brano (senza lampeggi)
+c3873745	Stroboscopio
+e266b3b4	Lampeggia forte a ritmo (solo se «Riduci i lampeggi» è disattivato)
+3cada106	In base al componente
+78733543	Bassi (cassa, basso)
+23099007	Medi (rullante, voce)
+b599c0f6	Alti (hi-hat)
+34c5e8d2	Suono complessivo (volume)

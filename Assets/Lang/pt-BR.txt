@@ -337,10 +337,10 @@ a28e3556	Iguala o tom e o brilho deste dispositivo, ou muda efeito, direção e 
 8847ea7e	Abrir ajuste de cor e configurações por zona
 43c6336e	Ajuste de cor (dispositivo inteiro)
 ee85a976	A mesma cor pode parecer diferente em tom e brilho em LEDs diferentes. Ligue "Acender em branco para comparar" acima e abaixe vermelho, verde e azul até os brancos ficarem iguais (não dá para aumentar, então abaixe as cores fortes demais)
-3bb159a9	Vermelho
-4fc93dd4	Verde
-b0ba1b8f	Azul
-387da053	Brilho
+3bb159a9	Vermelho 
+4fc93dd4	Verde 
+b0ba1b8f	Azul 
+387da053	Brilho 
 4cba9eab	Configurações por zona (conector)
 d64827fc	Mude efeito, direção e tom de cada conector da placa-mãe conforme o que estiver ligado (ventoinhas, fonte, bloco do water cooler etc.). "Igual ao dispositivo" mantém as configurações acima. O que estiver encadeado no mesmo conector forma uma zona
 41860c08	Muda o efeito de sincronização com música só desta zona (ex.: medidor de volume nas ventoinhas do radiador, cor no ritmo para a fonte)
@@ -630,7 +630,7 @@ c674f1d5	A inicialização automática agora aponta para este app em execução.
 f5c17fde	Não foi possível registrar de novo a inicialização automática (veja o log).
 467c4a19	Não foi possível mover para {0}: {1}
 14d2e005	Captura de áudio
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Um sensor em uso não foi encontrado
 9c32a53a	Mudanças de hardware detectadas
 58f4eb35	ProFanController: mudança de hardware
@@ -1007,3 +1007,103 @@ fdb07eba	A instalação foi cancelada ({0}).
 8725a2c5	A instalação falhou (erro do winget {0}). Use o instalador do site oficial.
 6bb09a84	Desinstale o PawnIO em Configurações do Windows → Aplicativos → Aplicativos instalados.
 3436ee7f	O PawnIO foi desinstalado. Para concluir, reinicie o PC.
+71b727fe	O PawnIO foi desinstalado.
+e6a01093	O PawnIO não estava instalado.
+9dec80dc	O winget retornou um erro ({0}), mas o PawnIO não está mais lá. Por garantia, reinicie o PC.
+8029d561	O winget informou que terminou, mas o PawnIO ainda está lá. Reinicie o PC e verifique; se ainda estiver lá: 
+4b39d605	Não foi possível desinstalar o PawnIO porque o winget não existe ou não inicia.
+587aab10	Interrompido porque não terminou em {0:F0} minutos.
+0853b695	Não foi possível desinstalar porque o PawnIO está sendo usado por outros programas (FanControl, LibreHardwareMonitor etc.) ({0}).
+2019a1d7	 Reinicie o PC e depois:
+3203c5a3	O winget não encontrou o PawnIO ({0}).
+1214ea06	Bloqueado pela política deste PC ({0}). Fale com o administrador.
+fa206abb	A desinstalação foi cancelada ({0}).
+3d287832	Outra instalação está em andamento ({0}). Quando ela terminar:
+2f57cd74	Não foi possível desinstalar o PawnIO (erro do winget {0}).
+fdc538fc	De baixo para cima
+d8dd2f02	De cima para baixo
+d26407fa	De trás para a frente
+ad4d7e26	Da frente para trás
+d20e03f3	Do centro para fora
+3c957a43	De fora para o centro
+a4a3fddd	3 ventoinhas frontais (de cima)
+5f05f426	3 ventoinhas frontais (de baixo)
+ddc8e746	2 ventoinhas frontais (de cima)
+57464a90	Ventoinha frontal (superior)
+3ef45d3f	Ventoinha frontal (do meio)
+434a387d	Ventoinha frontal (inferior)
+be82dbb4	3 ventoinhas superiores (da frente)
+cb58decc	3 ventoinhas superiores (de trás)
+91bda7f3	2 ventoinhas superiores (da frente)
+b71e6d1a	Ventoinha traseira
+1091fb70	3 ventoinhas inferiores (da frente)
+1a85a2f8	3 ventoinhas inferiores (de trás)
+b066a299	Cooler da CPU / cabeça do water cooler
+5a66eda2	Peças
+c662c824	Placa de vídeo (da traseira para a frente)
+aa463c32	Placa de vídeo (da frente para a traseira)
+d28e8e28	Memória (de cima para baixo)
+0b4a03fa	Memória (de baixo para cima)
+bc4075b9	Placa-mãe (tampa de E/S traseira)
+06e66fb6	Placa-mãe (parte inferior, chipset)
+03940065	Fita vertical frontal (de cima para baixo)
+a2b18858	Fita de LED
+cb71e013	Fita vertical frontal (de baixo para cima)
+face4d45	Fita da borda superior (da frente para trás)
+a1303c99	Fita da borda inferior (da frente para trás)
+f18c7cb3	Cor dos outros dispositivos
+1ad230d1	Suave
+7c96252e	Normal
+9c7d5155	Forte
+99b317d4	Intenso
+f564ef3a	Arco-íris
+87a3b19f	Neon
+234460f5	Pôr do sol
+25bc0f2a	Oceano
+87e00005	Fogo
+a2aace5a	Vaporwave
+73ed0164	Floresta
+65d57d9e	Gelo
+6b03e35b	Cores próximas da escolhida
+b1ecda1c	Somente a cor escolhida (cor única)
+f7121884	Chill (tranquilo)
+864fde76	Groove (padrão)
+40238fad	Festa
+4c4b9639	Club (intenso)
+58c4acf6	Visualizador
+1ffc1da1	Filmes e jogos
+a4d4ce26	Personalizado
+68a0416e	Cores que mudam devagar
+2ee44588	Desligado
+9a137ab5	{0} {1} (padrão {2})
+975db0d4	Troca de cor na batida
+6f6c9db1	A cada batida muda para a próxima cor, acende forte e se apaga
+1acb0fe4	Pulso
+3735677c	A cor escolhida pulsa com os graves e deixa um brilho residual suave
+fac18e83	Mistura
+143bf4c6	As cores se misturam conforme a força dos graves, médios e agudos
+d47d8919	Medidor de volume
+c9601c4a	Acende a partir da borda conforme o volume, com um ponto de pico que cai devagar
+b9056e5c	Espectro
+1f55a216	Distribui dos graves aos agudos ao longo dos LEDs, cada um aceso conforme sua força
+ae14d063	Energia
+9097b7af	As faixas de graves, médios e agudos crescem conforme sua força
+a8728d89	Onda que corre
+0dbddecd	A cor do som atual corre a partir da borda (cascata)
+7579942a	Ondulação
+8f1dc3a2	A cada bumbo, um anel de luz se espalha
+5c1949b1	Brilho
+6ddfa1c0	No bumbo tudo acende suavemente, na caixa uma luz concentrada, no chimbal pontos brancos cintilam
+fa793be1	Cada peça no seu papel
+07493f35	Cada peça acende com seu próprio som, como as ventoinhas com os graves, a placa de vídeo com os médios e a memória com os agudos (altere na configuração de zona "Som a acompanhar")
+74a4376d	Seguir o tempo
+934997b6	Uma faixa de luz corre no ritmo
+5d88da90	Clima
+e134b40a	A cor muda devagar conforme o clima da música (sem piscar)
+c3873745	Estroboscópio
+e266b3b4	Pisca forte na batida (somente quando "Reduzir piscadas" estiver desligado)
+3cada106	Conforme a peça
+78733543	Graves (bumbo, baixo)
+23099007	Médios (caixa, vocal)
+b599c0f6	Agudos (chimbal)
+34c5e8d2	Som inteiro (volume)

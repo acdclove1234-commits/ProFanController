@@ -337,10 +337,10 @@ a28e3556	Farbton und Helligkeit dieses Geräts abgleichen oder Effekt, Richtung 
 8847ea7e	Farbabgleich und Zoneneinstellungen öffnen
 43c6336e	Farbabgleich (ganzes Gerät)
 ee85a976	Dieselbe Farbe kann auf verschiedenen LEDs in Farbton und Helligkeit unterschiedlich aussehen. Schalten Sie oben „Zum Vergleich weiß leuchten“ ein und senken Sie Rot, Grün und Blau, bis das Weiß übereinstimmt (erhöhen geht nicht, also die zu starken Farben senken)
-3bb159a9	Rot
-4fc93dd4	Grün
-b0ba1b8f	Blau
-387da053	Helligkeit
+3bb159a9	Rot 
+4fc93dd4	Grün 
+b0ba1b8f	Blau 
+387da053	Helligkeit 
 4cba9eab	Einstellungen pro Zone (Anschluss)
 d64827fc	Ändern Sie Effekt, Richtung und Farbton für jeden Mainboard-Anschluss passend zum Angeschlossenen (Lüfter, Netzteil, Wasserkühlungskopf usw.). „Wie Gerät“ behält die Einstellungen oben. Was am selben Anschluss in Reihe hängt, ist eine Zone
 41860c08	Ändert den Musikeffekt nur für diese Zone (z. B. Pegelanzeige für die Radiatorlüfter, Farbwechsel im Takt für das Netzteil)
@@ -630,7 +630,7 @@ c674f1d5	Der Autostart verweist jetzt auf diese laufende App.
 f5c17fde	Der Autostart konnte nicht neu eingetragen werden (Protokoll prüfen).
 467c4a19	Verschieben nach {0} fehlgeschlagen: {1}
 14d2e005	Audioaufnahme
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Ein verwendeter Sensor wurde nicht gefunden
 9c32a53a	Hardwareänderungen erkannt
 58f4eb35	ProFanController: Hardwareänderung
@@ -1007,3 +1007,103 @@ fdb07eba	Die Installation wurde abgebrochen ({0}).
 8725a2c5	Die Installation ist fehlgeschlagen (winget-Fehler {0}). Verwenden Sie den Installer der offiziellen Website.
 6bb09a84	Deinstallieren Sie PawnIO unter Windows-Einstellungen → Apps → Installierte Apps.
 3436ee7f	PawnIO wurde deinstalliert. Starten Sie zum Abschluss den PC neu.
+71b727fe	PawnIO wurde deinstalliert.
+e6a01093	PawnIO war nicht installiert.
+9dec80dc	winget hat einen Fehler gemeldet ({0}), PawnIO ist aber entfernt. Starten Sie den PC sicherheitshalber neu.
+8029d561	winget hat „fertig“ gemeldet, PawnIO ist aber noch vorhanden. Starten Sie den PC neu und prüfen Sie es; falls es noch vorhanden ist: 
+4b39d605	PawnIO konnte nicht deinstalliert werden, weil winget fehlt oder nicht startet.
+587aab10	Abgebrochen, weil es nach {0:F0} Minuten nicht fertig war.
+0853b695	Deinstallation nicht möglich, weil PawnIO von anderer Software (FanControl, LibreHardwareMonitor usw.) verwendet wird ({0}).
+2019a1d7	 Starten Sie den PC neu, dann:
+3203c5a3	winget hat PawnIO nicht gefunden ({0}).
+1214ea06	Durch die Richtlinie dieses PCs blockiert ({0}). Wenden Sie sich an Ihren Administrator.
+fa206abb	Die Deinstallation wurde abgebrochen ({0}).
+3d287832	Eine andere Installation läuft gerade ({0}). Wenn sie fertig ist:
+2f57cd74	PawnIO konnte nicht deinstalliert werden (winget-Fehler {0}).
+fdc538fc	Von unten nach oben
+d8dd2f02	Von oben nach unten
+d26407fa	Von hinten nach vorn
+ad4d7e26	Von vorn nach hinten
+d20e03f3	Von der Mitte nach außen
+3c957a43	Von außen zur Mitte
+a4a3fddd	3 Frontlüfter (von oben)
+5f05f426	3 Frontlüfter (von unten)
+ddc8e746	2 Frontlüfter (von oben)
+57464a90	Frontlüfter (oben)
+3ef45d3f	Frontlüfter (Mitte)
+434a387d	Frontlüfter (unten)
+be82dbb4	3 Deckellüfter (von vorn)
+cb58decc	3 Deckellüfter (von hinten)
+91bda7f3	2 Deckellüfter (von vorn)
+b71e6d1a	Hecklüfter
+1091fb70	3 Bodenlüfter (von vorn)
+1a85a2f8	3 Bodenlüfter (von hinten)
+b066a299	CPU-Kühler / AiO-Pumpenkopf
+5a66eda2	Bauteile
+c662c824	Grafikkarte (von der Rückseite nach vorn)
+aa463c32	Grafikkarte (von vorn zur Rückseite)
+d28e8e28	Arbeitsspeicher (von oben nach unten)
+0b4a03fa	Arbeitsspeicher (von unten nach oben)
+bc4075b9	Mainboard (I/O-Blende hinten)
+06e66fb6	Mainboard (Unterseite, Chipsatz)
+03940065	Senkrechter Streifen vorn (von oben nach unten)
+a2b18858	LED-Streifen
+cb71e013	Senkrechter Streifen vorn (von unten nach oben)
+face4d45	Streifen an der Oberkante (von vorn nach hinten)
+a1303c99	Streifen an der Unterkante (von vorn nach hinten)
+f18c7cb3	Farbe anderer Geräte
+1ad230d1	Dezent
+7c96252e	Normal
+9c7d5155	Kräftig
+99b317d4	Heftig
+f564ef3a	Regenbogen
+87a3b19f	Neon
+234460f5	Sonnenuntergang
+25bc0f2a	Ozean
+87e00005	Feuer
+a2aace5a	Vaporwave
+73ed0164	Wald
+65d57d9e	Eis
+6b03e35b	Farben ähnlich der gewählten Farbe
+b1ecda1c	Nur die gewählte Farbe (einfarbig)
+f7121884	Chill (entspannt)
+864fde76	Groove (Standard)
+40238fad	Party
+4c4b9639	Club (heftig)
+58c4acf6	Visualizer
+1ffc1da1	Filme & Spiele
+a4d4ce26	Benutzerdefiniert
+68a0416e	Langsamer Farbwechsel
+2ee44588	Aus
+9a137ab5	{0} {1} (Standard {2})
+975db0d4	Farbwechsel im Beat
+6f6c9db1	Wechselt bei jedem Beat zur nächsten Farbe, leuchtet kurz hell auf und verblasst
+1acb0fe4	Puls
+3735677c	Die gewählte Farbe pulsiert mit dem Bass und hinterlässt ein sanftes Nachleuchten
+fac18e83	Mix
+143bf4c6	Farben mischen sich nach der Stärke von Bässen, Mitten und Höhen
+d47d8919	Pegelanzeige
+c9601c4a	Leuchtet vom Rand aus so weit, wie die Lautstärke reicht; der Spitzenpunkt sinkt langsam
+b9056e5c	Spektrum
+1f55a216	Verteilt Bässe bis Höhen über die LEDs, jeweils nach ihrer Stärke
+ae14d063	Energie
+9097b7af	Bänder für Bässe, Mitten und Höhen wachsen jeweils mit ihrer Stärke
+a8728d89	Fließende Welle
+0dbddecd	Die Farbe des aktuellen Klangs fließt vom Rand aus (Wasserfall)
+7579942a	Wellenringe
+8f1dc3a2	Bei jedem Kick breitet sich ein Lichtring aus
+5c1949b1	Funkeln
+6ddfa1c0	Bei Kicks leuchtet alles sanft, bei Snares gebündeltes Licht, bei Hi-Hats funkeln weiße Punkte
+fa793be1	Bauteile in ihren Rollen
+07493f35	Jedes Bauteil leuchtet zu seinem eigenen Klang, etwa Lüfter zum Bass, Grafikkarte zu den Mitten und Arbeitsspeicher zu den Höhen (änderbar in der Zoneneinstellung „Ton, auf den reagiert wird“)
+74a4376d	Tempo folgen
+934997b6	Ein Lichtband läuft im Takt
+5d88da90	Stimmung
+e134b40a	Die Farbe ändert sich langsam mit der Stimmung des Songs (ohne Blinken)
+c3873745	Stroboskop
+e266b3b4	Blinkt im Beat stark (nur wenn „Blitzen reduzieren“ aus ist)
+3cada106	Zum Bauteil passend
+78733543	Bässe (Kick, Bass)
+23099007	Mitten (Snare, Gesang)
+b599c0f6	Höhen (Hi-Hat)
+34c5e8d2	Gesamter Klang (Lautstärke)

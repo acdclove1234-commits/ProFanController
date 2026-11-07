@@ -337,10 +337,10 @@ a28e3556	Samakan rona dan kecerahan perangkat ini, atau ubah efek, arah, dan ron
 8847ea7e	Buka penyamaan warna dan pengaturan per zona
 43c6336e	Penyamaan warna (seluruh perangkat)
 ee85a976	Warna yang sama bisa tampak berbeda rona dan kecerahannya pada LED yang berbeda. Aktifkan "Nyalakan putih untuk membandingkan" di atas lalu turunkan merah, hijau, dan biru sampai putihnya sama (tidak bisa dinaikkan, jadi turunkan warna yang terlalu kuat)
-3bb159a9	Merah
-4fc93dd4	Hijau
-b0ba1b8f	Biru
-387da053	Kecerahan
+3bb159a9	Merah 
+4fc93dd4	Hijau 
+b0ba1b8f	Biru 
+387da053	Kecerahan 
 4cba9eab	Pengaturan per zona (konektor)
 d64827fc	Ubah efek, arah, dan rona tiap konektor motherboard sesuai yang tersambung (kipas, PSU, kepala water cooling, dll.). "Sama dengan perangkat" memakai pengaturan di atas. Yang dirangkai di konektor yang sama dihitung satu zona
 41860c08	Mengubah efek sinkron musik hanya untuk zona ini (mis. meter volume untuk kipas radiator, ganti warna per ketukan untuk PSU)
@@ -630,7 +630,7 @@ c674f1d5	Mulai otomatis kini mengarah ke aplikasi yang sedang berjalan ini.
 f5c17fde	Mulai otomatis tidak bisa didaftarkan ulang (periksa log).
 467c4a19	Tidak bisa memindahkan ke {0}: {1}
 14d2e005	Penangkapan suara
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Sensor yang dipakai tidak ditemukan
 9c32a53a	Perubahan perangkat keras terdeteksi
 58f4eb35	ProFanController: perubahan perangkat keras
@@ -1007,3 +1007,103 @@ fdb07eba	Pemasangan dibatalkan ({0}).
 8725a2c5	Pemasangan gagal (galat winget {0}). Gunakan penginstal dari situs resmi.
 6bb09a84	Copot PawnIO dari "Pengaturan" Windows → "Aplikasi" → "Aplikasi terinstal".
 3436ee7f	PawnIO sudah dicopot. Untuk menyelesaikan, mulai ulang PC.
+71b727fe	PawnIO sudah dicopot.
+e6a01093	PawnIO memang tidak terpasang.
+9dec80dc	winget mengembalikan galat ({0}), tetapi PawnIO sudah tidak ada. Untuk berjaga-jaga, mulai ulang PC.
+8029d561	winget melaporkan "selesai", tetapi PawnIO masih ada. Mulai ulang PC lalu periksa; jika masih ada: 
+4b39d605	PawnIO tidak bisa dicopot karena winget tidak ditemukan atau tidak bisa dijalankan.
+587aab10	Dihentikan karena belum selesai setelah {0:F0} menit.
+0853b695	Tidak bisa dicopot karena PawnIO sedang dipakai perangkat lunak lain (FanControl, LibreHardwareMonitor, dll.) ({0}).
+2019a1d7	 Mulai ulang PC, lalu:
+3203c5a3	winget tidak menemukan PawnIO ({0}).
+1214ea06	Diblokir oleh kebijakan PC ini ({0}). Hubungi pengelolanya.
+fa206abb	Pencopotan dibatalkan ({0}).
+3d287832	Pemasangan perangkat lunak lain sedang berjalan ({0}). Setelah selesai:
+2f57cd74	PawnIO tidak bisa dicopot (galat winget {0}).
+fdc538fc	Dari bawah ke atas
+d8dd2f02	Dari atas ke bawah
+d26407fa	Dari belakang ke depan
+ad4d7e26	Dari depan ke belakang
+d20e03f3	Dari tengah ke luar
+3c957a43	Dari luar ke tengah
+a4a3fddd	3 kipas depan (urut dari atas)
+5f05f426	3 kipas depan (urut dari bawah)
+ddc8e746	2 kipas depan (urut dari atas)
+57464a90	Kipas depan (atas)
+3ef45d3f	Kipas depan (tengah)
+434a387d	Kipas depan (bawah)
+be82dbb4	3 kipas atas (urut dari depan)
+cb58decc	3 kipas atas (urut dari belakang)
+91bda7f3	2 kipas atas (urut dari depan)
+b71e6d1a	Kipas belakang
+1091fb70	3 kipas bawah (urut dari depan)
+1a85a2f8	3 kipas bawah (urut dari belakang)
+b066a299	Pendingin CPU / kepala pompa AIO
+5a66eda2	Komponen
+c662c824	Kartu grafis (dari sisi belakang ke depan)
+aa463c32	Kartu grafis (dari depan ke sisi belakang)
+d28e8e28	Memori (dari atas ke bawah)
+0b4a03fa	Memori (dari bawah ke atas)
+bc4075b9	Motherboard (penutup I/O belakang)
+06e66fb6	Motherboard (sisi bawah, chipset)
+03940065	Strip vertikal depan (dari atas ke bawah)
+a2b18858	Strip LED
+cb71e013	Strip vertikal depan (dari bawah ke atas)
+face4d45	Strip tepi atas (dari depan ke belakang)
+a1303c99	Strip tepi bawah (dari depan ke belakang)
+f18c7cb3	Warna perangkat lain
+1ad230d1	Lembut
+7c96252e	Normal
+9c7d5155	Kuat
+99b317d4	Intens
+f564ef3a	Pelangi
+87a3b19f	Neon
+234460f5	Senja
+25bc0f2a	Samudra
+87e00005	Api
+a2aace5a	Vaporwave
+73ed0164	Hutan
+65d57d9e	Es
+6b03e35b	Warna yang mirip dengan warna pilihan
+b1ecda1c	Hanya warna pilihan (satu warna)
+f7121884	Chill (santai)
+864fde76	Groove (standar)
+40238fad	Pesta
+4c4b9639	Klub (intens)
+58c4acf6	Visualizer
+1ffc1da1	Film & gim
+a4d4ce26	Kustom
+68a0416e	Warna berubah perlahan
+2ee44588	Mati
+9a137ab5	{0} {1} (bawaan {2})
+975db0d4	Ganti warna tiap ketukan
+6f6c9db1	Berganti ke warna berikutnya pada setiap ketukan, menyala terang lalu memudar
+1acb0fe4	Denyut
+3735677c	Warna pilihan berdenyut mengikuti bass dan meninggalkan cahaya sisa yang lembut
+fac18e83	Campur
+143bf4c6	Warna bercampur menurut kekuatan nada rendah, tengah, dan tinggi
+d47d8919	Meter volume
+c9601c4a	Menyala dari tepi sesuai volume, dengan titik puncak yang turun perlahan
+b9056e5c	Spektrum
+1f55a216	Menyusun nada rendah sampai tinggi di sepanjang LED, masing-masing menyala sesuai kekuatannya
+ae14d063	Energi
+9097b7af	Pita nada rendah, tengah, dan tinggi memanjang sesuai kekuatannya masing-masing
+a8728d89	Gelombang mengalir
+0dbddecd	Warna suara saat ini mengalir dari tepi (air terjun)
+7579942a	Riak
+8f1dc3a2	Cincin cahaya menyebar pada setiap kick
+5c1949b1	Kilau
+6ddfa1c0	Pada kick semuanya menyala lembut, pada snare cahaya terkumpul, pada hi-hat butiran putih berkilau
+fa793be1	Setiap komponen dengan perannya
+07493f35	Setiap komponen menyala mengikuti suaranya sendiri, misalnya kipas pada nada rendah, kartu grafis pada nada tengah, dan memori pada nada tinggi (bisa diubah di pengaturan zona "Suara yang diikuti")
+74a4376d	Ikuti tempo
+934997b6	Pita cahaya berlari mengikuti ketukan
+5d88da90	Suasana
+e134b40a	Warna berubah perlahan mengikuti suasana lagu (tanpa berkedip)
+c3873745	Strobo
+e266b3b4	Berkedip kuat mengikuti ketukan (hanya jika "Kurangi kedipan" dimatikan)
+3cada106	Sesuai komponen
+78733543	Nada rendah (kick, bass)
+23099007	Nada tengah (snare, vokal)
+b599c0f6	Nada tinggi (hi-hat)
+34c5e8d2	Seluruh suara (volume)

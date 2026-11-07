@@ -337,10 +337,10 @@ a28e3556	Ajustez la teinte et la luminosité de cet appareil, ou changez l'effet
 8847ea7e	Ouvrir l'étalonnage et les réglages par zone
 43c6336e	Étalonnage des couleurs (appareil entier)
 ee85a976	Une même couleur peut paraître différente en teinte et en luminosité selon les LED. Activez « Allumer en blanc pour comparer » ci-dessus et baissez le rouge, le vert et le bleu jusqu'à ce que les blancs correspondent (on ne peut pas monter, donc baissez les couleurs trop fortes)
-3bb159a9	Rouge
-4fc93dd4	Vert
-b0ba1b8f	Bleu
-387da053	Luminosité
+3bb159a9	Rouge 
+4fc93dd4	Vert 
+b0ba1b8f	Bleu 
+387da053	Luminosité 
 4cba9eab	Réglages par zone (connecteur)
 d64827fc	Changez l'effet, le sens et la teinte pour chaque connecteur de la carte mère selon ce qui y est branché (ventilateurs, alimentation, tête de watercooling, etc.). « Comme l'appareil » garde les réglages ci-dessus. Les éléments chaînés sur un même connecteur forment une zone
 41860c08	Change l'effet de synchro musicale pour cette zone seulement (ex. : vumètre pour les ventilateurs du radiateur, couleur au rythme pour l'alimentation)
@@ -630,7 +630,7 @@ c674f1d5	Le démarrage automatique pointe désormais vers cette application en c
 f5c17fde	Impossible de réinscrire le démarrage automatique (consultez le journal).
 467c4a19	Impossible de déplacer vers {0} : {1}
 14d2e005	Capture audio
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Un capteur utilisé est introuvable
 9c32a53a	Changements matériels détectés
 58f4eb35	ProFanController : changement matériel
@@ -1007,3 +1007,103 @@ fdb07eba	L'installation a été annulée ({0}).
 8725a2c5	L'installation a échoué (erreur winget {0}). Utilisez le programme d'installation du site officiel.
 6bb09a84	Désinstallez PawnIO depuis Paramètres Windows → Applications → Applications installées.
 3436ee7f	PawnIO a été désinstallé. Redémarrez le PC pour terminer.
+71b727fe	PawnIO a été désinstallé.
+e6a01093	PawnIO n'était pas installé.
+9dec80dc	winget a renvoyé une erreur ({0}), mais PawnIO n'est plus là. Par précaution, redémarrez le PC.
+8029d561	winget a indiqué que c'était terminé, mais PawnIO est toujours présent. Redémarrez le PC et vérifiez ; s'il est toujours là : 
+4b39d605	Impossible de désinstaller PawnIO : winget est absent ou ne démarre pas.
+587aab10	Arrêté car l'opération n'était pas terminée après {0:F0} minutes.
+0853b695	Désinstallation impossible car PawnIO est utilisé par d'autres logiciels (FanControl, LibreHardwareMonitor, etc.) ({0}).
+2019a1d7	 Redémarrez le PC, puis :
+3203c5a3	winget n'a pas trouvé PawnIO ({0}).
+1214ea06	Bloqué par la stratégie de ce PC ({0}). Adressez-vous à votre administrateur.
+fa206abb	La désinstallation a été annulée ({0}).
+3d287832	Une autre installation est en cours ({0}). Quand elle sera terminée :
+2f57cd74	Impossible de désinstaller PawnIO (erreur winget {0}).
+fdc538fc	De bas en haut
+d8dd2f02	De haut en bas
+d26407fa	De l'arrière vers l'avant
+ad4d7e26	De l'avant vers l'arrière
+d20e03f3	Du centre vers l'extérieur
+3c957a43	De l'extérieur vers le centre
+a4a3fddd	3 ventilateurs avant (depuis le haut)
+5f05f426	3 ventilateurs avant (depuis le bas)
+ddc8e746	2 ventilateurs avant (depuis le haut)
+57464a90	Ventilateur avant (haut)
+3ef45d3f	Ventilateur avant (milieu)
+434a387d	Ventilateur avant (bas)
+be82dbb4	3 ventilateurs supérieurs (depuis l'avant)
+cb58decc	3 ventilateurs supérieurs (depuis l'arrière)
+91bda7f3	2 ventilateurs supérieurs (depuis l'avant)
+b71e6d1a	Ventilateur arrière
+1091fb70	3 ventilateurs inférieurs (depuis l'avant)
+1a85a2f8	3 ventilateurs inférieurs (depuis l'arrière)
+b066a299	Ventirad CPU / tête de pompe AIO
+5a66eda2	Composants
+c662c824	Carte graphique (de l'arrière vers l'avant)
+aa463c32	Carte graphique (de l'avant vers l'arrière)
+d28e8e28	Mémoire (de haut en bas)
+0b4a03fa	Mémoire (de bas en haut)
+bc4075b9	Carte mère (cache I/O arrière)
+06e66fb6	Carte mère (partie basse, chipset)
+03940065	Bande verticale avant (de haut en bas)
+a2b18858	Bande LED
+cb71e013	Bande verticale avant (de bas en haut)
+face4d45	Bande du bord supérieur (de l'avant vers l'arrière)
+a1303c99	Bande du bord inférieur (de l'avant vers l'arrière)
+f18c7cb3	Couleur des autres appareils
+1ad230d1	Discret
+7c96252e	Normal
+9c7d5155	Fort
+99b317d4	Intense
+f564ef3a	Arc-en-ciel
+87a3b19f	Néon
+234460f5	Coucher de soleil
+25bc0f2a	Océan
+87e00005	Feu
+a2aace5a	Vaporwave
+73ed0164	Forêt
+65d57d9e	Glace
+6b03e35b	Couleurs proches de la couleur choisie
+b1ecda1c	Couleur choisie uniquement (unie)
+f7121884	Chill (détendu)
+864fde76	Groove (standard)
+40238fad	Fête
+4c4b9639	Club (intense)
+58c4acf6	Visualiseur
+1ffc1da1	Films et jeux
+a4d4ce26	Personnalisé
+68a0416e	Couleurs qui changent lentement
+2ee44588	Éteint
+9a137ab5	{0} {1} (par défaut {2})
+975db0d4	Changement de couleur au rythme
+6f6c9db1	Passe à la couleur suivante à chaque temps, s'allume vivement puis s'estompe
+1acb0fe4	Pulsation
+3735677c	La couleur choisie pulse avec les basses et laisse une douce rémanence
+fac18e83	Mélange
+143bf4c6	Les couleurs se mélangent selon l'intensité des basses, médiums et aigus
+d47d8919	VU-mètre
+c9601c4a	S'allume depuis le bord selon le volume, avec un point de crête qui retombe lentement
+b9056e5c	Spectre
+1f55a216	Répartit les basses aux aigus le long des LED, chacune selon son intensité
+ae14d063	Énergie
+9097b7af	Les bandes des basses, médiums et aigus s'allongent chacune selon leur intensité
+a8728d89	Vague qui défile
+0dbddecd	La couleur du son actuel défile depuis le bord (cascade)
+7579942a	Ondes
+8f1dc3a2	Un anneau de lumière s'étend à chaque grosse caisse
+5c1949b1	Scintillement
+6ddfa1c0	Avec la grosse caisse tout s'éclaire doucement, avec la caisse claire une lumière concentrée, avec le charleston des points blancs scintillent
+fa793be1	Rôles des composants
+07493f35	Chaque composant s'allume selon son propre son, par exemple les ventilateurs sur les basses, la carte graphique sur les médiums et la mémoire sur les aigus (modifiable dans le réglage de zone « Son à suivre »)
+74a4376d	Suivi du tempo
+934997b6	Une bande de lumière court au rythme
+5d88da90	Ambiance
+e134b40a	La couleur change lentement selon l'ambiance du morceau (sans clignotement)
+c3873745	Stroboscope
+e266b3b4	Clignote fortement au rythme (uniquement si « Réduire les flashs » est désactivé)
+3cada106	Selon le composant
+78733543	Basses (grosse caisse, basse)
+23099007	Médiums (caisse claire, voix)
+b599c0f6	Aigus (charleston)
+34c5e8d2	Son global (volume)

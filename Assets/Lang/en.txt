@@ -337,10 +337,10 @@ a28e3556	Match this device's tint and brightness, or change the effect, directio
 8847ea7e	Open color matching and per-zone settings
 43c6336e	Color matching (whole device)
 ee85a976	The same color can look different in tint and brightness on different LEDs. Turn on "Light white to compare" above and lower red, green and blue until the whites match (they cannot go higher, so lower the colors that are too strong)
-3bb159a9	Red
-4fc93dd4	Green
-b0ba1b8f	Blue
-387da053	Brightness
+3bb159a9	Red 
+4fc93dd4	Green 
+b0ba1b8f	Blue 
+387da053	Brightness 
 4cba9eab	Per-zone (header) settings
 d64827fc	Change the effect, direction and tint for each motherboard header to suit what is connected (fans, PSU, the water-cooling head and so on). "Same as device" keeps the settings above. Things daisy-chained on the same header form one zone
 41860c08	Changes the music sync effect for this zone only (e.g. a level meter for the radiator fans, beat-color for the PSU)
@@ -630,7 +630,7 @@ c674f1d5	The automatic start now points to this running app.
 f5c17fde	Could not register the automatic start again (check the log).
 467c4a19	Could not move to {0}: {1}
 14d2e005	Audio capture
-c08fb050	 /
+c08fb050	 / 
 48ccab47	A sensor in use cannot be found
 9c32a53a	Hardware changes detected
 58f4eb35	ProFanController: hardware change
@@ -1007,3 +1007,103 @@ fdb07eba	The installation was canceled ({0}).
 8725a2c5	The installation failed (winget error {0}). Use the installer from the official site.
 6bb09a84	Uninstall PawnIO from Windows Settings → Apps → Installed apps.
 3436ee7f	PawnIO has been uninstalled. Restart the PC to finish.
+71b727fe	PawnIO has been uninstalled.
+e6a01093	PawnIO wasn't installed.
+9dec80dc	winget returned an error ({0}), but PawnIO is gone. Restart the PC just in case.
+8029d561	winget reported that it finished, but PawnIO is still there. Restart the PC and check; if it's still there: 
+4b39d605	Couldn't uninstall PawnIO because winget is missing or won't start.
+587aab10	Stopped because it didn't finish after {0:F0} minutes.
+0853b695	Couldn't uninstall because PawnIO is being used by other software (FanControl, LibreHardwareMonitor, etc.) ({0}).
+2019a1d7	 Restart the PC, then:
+3203c5a3	winget couldn't find PawnIO ({0}).
+1214ea06	Blocked by this PC's policy ({0}). Ask your administrator.
+fa206abb	The uninstallation was canceled ({0}).
+3d287832	Another installation is running ({0}). When it finishes:
+2f57cd74	Couldn't uninstall PawnIO (winget error {0}).
+fdc538fc	Bottom to top
+d8dd2f02	Top to bottom
+d26407fa	Back (rear) to front
+ad4d7e26	Front to back (rear)
+d20e03f3	Center outward
+3c957a43	Outside inward
+a4a3fddd	3 front fans (from the top)
+5f05f426	3 front fans (from the bottom)
+ddc8e746	2 front fans (from the top)
+57464a90	Front fan (top)
+3ef45d3f	Front fan (middle)
+434a387d	Front fan (bottom)
+be82dbb4	3 top fans (from the front)
+cb58decc	3 top fans (from the back)
+91bda7f3	2 top fans (from the front)
+b71e6d1a	Rear fan
+1091fb70	3 bottom fans (from the front)
+1a85a2f8	3 bottom fans (from the back)
+b066a299	CPU cooler / AIO pump head
+5a66eda2	Parts
+c662c824	Graphics card (rear side to front)
+aa463c32	Graphics card (front to rear side)
+d28e8e28	Memory (top to bottom)
+0b4a03fa	Memory (bottom to top)
+bc4075b9	Motherboard (rear I/O cover)
+06e66fb6	Motherboard (lower side, chipset)
+03940065	Front vertical strip (top to bottom)
+a2b18858	LED strip
+cb71e013	Front vertical strip (bottom to top)
+face4d45	Top edge strip (front to back)
+a1303c99	Bottom edge strip (front to back)
+f18c7cb3	Other devices' color
+1ad230d1	Subtle
+7c96252e	Normal
+9c7d5155	Strong
+99b317d4	Intense
+f564ef3a	Rainbow
+87a3b19f	Neon
+234460f5	Sunset
+25bc0f2a	Ocean
+87e00005	Fire
+a2aace5a	Vaporwave
+73ed0164	Forest
+65d57d9e	Ice
+6b03e35b	Colors close to the selected color
+b1ecda1c	Selected color only (single color)
+f7121884	Chill (relaxed)
+864fde76	Groove (standard)
+40238fad	Party
+4c4b9639	Club (intense)
+58c4acf6	Visualizer
+1ffc1da1	Movies & games
+a4d4ce26	Custom
+68a0416e	Slowly changing colors
+2ee44588	Off
+9a137ab5	{0} {1} (default {2})
+975db0d4	Color change on beat
+6f6c9db1	Switches to the next color on every beat, flashes brightly and fades out
+1acb0fe4	Pulse
+3735677c	The selected color pulses with the bass and leaves a soft afterglow
+fac18e83	Mix
+143bf4c6	Colors blend according to the strength of the bass, mids and highs
+d47d8919	VU meter
+c9601c4a	Lights up from the edge as far as the volume reaches, with a peak dot that slowly falls
+b9056e5c	Spectrum
+1f55a216	Spreads bass to treble along the LEDs, each lighting up by its strength
+ae14d063	Energy
+9097b7af	Bands for the bass, mids and highs each grow by their strength
+a8728d89	Flowing wave
+0dbddecd	The color of the current sound flows in from the edge (waterfall)
+7579942a	Ripple
+8f1dc3a2	A ring of light spreads out on every kick
+5c1949b1	Sparkle
+6ddfa1c0	Kicks make everything glow softly, snares give a burst of light, and hi-hats make white specks sparkle
+fa793be1	Parts play their roles
+07493f35	Each part lights up to its own sound, such as fans to the bass, the graphics card to the mids and memory to the highs (change it with the zone setting "Sound to react to")
+74a4376d	Tempo follow
+934997b6	A band of light runs to the beat
+5d88da90	Mood
+e134b40a	Colors change slowly with the mood of the song (no flashing)
+c3873745	Strobe
+e266b3b4	Flashes strongly on the beat (only when "Reduce flashing" is off)
+3cada106	Match the part
+78733543	Bass (kick, bass)
+23099007	Mids (snare, vocals)
+b599c0f6	Highs (hi-hat)
+34c5e8d2	Whole sound (volume)

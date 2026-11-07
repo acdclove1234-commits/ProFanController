@@ -337,10 +337,10 @@ a28e3556	Bu cihazın renk tonunu ve parlaklığını eşleştirin ya da anakart 
 8847ea7e	Renk eşleştirme ve bölge ayarlarını aç
 43c6336e	Renk eşleştirme (tüm cihaz)
 ee85a976	Aynı renk farklı LED'lerde ton ve parlaklık bakımından farklı görünebilir. Yukarıdaki "Karşılaştırmak için beyaz yak"ı açın ve beyazlar eşleşene kadar kırmızı, yeşil ve maviyi düşürün (artırılamaz, bu yüzden fazla güçlü renkleri düşürün)
-3bb159a9	Kırmızı
-4fc93dd4	Yeşil
-b0ba1b8f	Mavi
-387da053	Parlaklık
+3bb159a9	Kırmızı 
+4fc93dd4	Yeşil 
+b0ba1b8f	Mavi 
+387da053	Parlaklık 
 4cba9eab	Bölge (konnektör) ayarları
 d64827fc	Her anakart konnektörü için bağlı olana (fanlar, PSU, su soğutma bloğu vb.) göre efekti, yönü ve tonu değiştirin. "Cihazla aynı" yukarıdaki ayarları korur. Aynı konnektöre zincirleme bağlananlar tek bir bölgedir
 41860c08	Müzik senkronu efektini yalnızca bu bölge için değiştirir (örn. radyatör fanları için ses seviyesi göstergesi, PSU için ritimle renk değiştirme)
@@ -630,7 +630,7 @@ c674f1d5	Otomatik başlatma artık çalışan bu uygulamayı gösteriyor.
 f5c17fde	Otomatik başlatma yeniden kaydedilemedi (günlüğe bakın).
 467c4a19	{0} konumuna taşınamadı: {1}
 14d2e005	Ses yakalama
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Kullanılan bir sensör bulunamıyor
 9c32a53a	Donanım değişikliği algılandı
 58f4eb35	ProFanController: donanım değişikliği
@@ -1007,3 +1007,103 @@ fdb07eba	Kurulum iptal edildi ({0}).
 8725a2c5	Kurulum başarısız oldu (winget hatası {0}). Resmî sitedeki kurulum programını kullanın.
 6bb09a84	PawnIO'yu Windows "Ayarlar" → "Uygulamalar" → "Yüklü uygulamalar" bölümünden kaldırın.
 3436ee7f	PawnIO kaldırıldı. Tamamlamak için bilgisayarı yeniden başlatın.
+71b727fe	PawnIO kaldırıldı.
+e6a01093	PawnIO kurulu değildi.
+9dec80dc	winget bir hata ({0}) döndürdü, ancak PawnIO artık yok. Ne olur ne olmaz, bilgisayarı yeniden başlatın.
+8029d561	winget "tamamlandı" dedi, ancak PawnIO hâlâ duruyor. Bilgisayarı yeniden başlatıp kontrol edin; hâlâ duruyorsa: 
+4b39d605	winget bulunamadığı veya başlatılamadığı için PawnIO kaldırılamadı.
+587aab10	{0:F0} dakika geçtiği hâlde bitmediği için durduruldu.
+0853b695	PawnIO başka yazılımlar (FanControl, LibreHardwareMonitor vb.) tarafından kullanıldığı için kaldırılamadı ({0}).
+2019a1d7	 Bilgisayarı yeniden başlatın, ardından:
+3203c5a3	winget, PawnIO'yu bulamadı ({0}).
+1214ea06	Bu bilgisayarın ilkesi tarafından engellendi ({0}). Yöneticinize danışın.
+fa206abb	Kaldırma iptal edildi ({0}).
+3d287832	Başka bir yazılımın kurulumu sürüyor ({0}). Bittikten sonra:
+2f57cd74	PawnIO kaldırılamadı (winget hatası {0}).
+fdc538fc	Aşağıdan yukarıya
+d8dd2f02	Yukarıdan aşağıya
+d26407fa	Arkadan öne
+ad4d7e26	Önden arkaya
+d20e03f3	Merkezden dışa
+3c957a43	Dıştan merkeze
+a4a3fddd	Ön panelde 3 fan (yukarıdan)
+5f05f426	Ön panelde 3 fan (aşağıdan)
+ddc8e746	Ön panelde 2 fan (yukarıdan)
+57464a90	Ön fan (üst)
+3ef45d3f	Ön fan (orta)
+434a387d	Ön fan (alt)
+be82dbb4	Üst panelde 3 fan (önden)
+cb58decc	Üst panelde 3 fan (arkadan)
+91bda7f3	Üst panelde 2 fan (önden)
+b71e6d1a	Arka fan
+1091fb70	Alt panelde 3 fan (önden)
+1a85a2f8	Alt panelde 3 fan (arkadan)
+b066a299	CPU soğutucu / sıvı soğutma başlığı
+5a66eda2	Parçalar
+c662c824	Ekran kartı (arka taraftan öne)
+aa463c32	Ekran kartı (önden arka tarafa)
+d28e8e28	Bellek (yukarıdan aşağıya)
+0b4a03fa	Bellek (aşağıdan yukarıya)
+bc4075b9	Anakart (arka G/Ç kapağı)
+06e66fb6	Anakart (alt taraf, yonga seti)
+03940065	Öndeki dikey şerit (yukarıdan aşağıya)
+a2b18858	LED şerit
+cb71e013	Öndeki dikey şerit (aşağıdan yukarıya)
+face4d45	Üst kenar şeridi (önden arkaya)
+a1303c99	Alt kenar şeridi (önden arkaya)
+f18c7cb3	Diğer cihazların rengi
+1ad230d1	Hafif
+7c96252e	Normal
+9c7d5155	Güçlü
+99b317d4	Yoğun
+f564ef3a	Gökkuşağı
+87a3b19f	Neon
+234460f5	Gün batımı
+25bc0f2a	Okyanus
+87e00005	Ateş
+a2aace5a	Vaporwave
+73ed0164	Orman
+65d57d9e	Buz
+6b03e35b	Seçilen renge yakın renkler
+b1ecda1c	Yalnızca seçilen renk (tek renk)
+f7121884	Chill (sakin)
+864fde76	Groove (standart)
+40238fad	Parti
+4c4b9639	Kulüp (yoğun)
+58c4acf6	Görselleştirici
+1ffc1da1	Film ve oyun
+a4d4ce26	Özel
+68a0416e	Yavaşça değişen renkler
+2ee44588	Kapalı
+9a137ab5	{0} {1} (varsayılan {2})
+975db0d4	Vuruşta renk değiştir
+6f6c9db1	Her vuruşta sonraki renge geçer, parlayıp söner
+1acb0fe4	Nabız
+3735677c	Seçilen renk basla birlikte atar ve yumuşak bir iz bırakır
+fac18e83	Karışım
+143bf4c6	Renkler bas, orta ve tiz seslerin gücüne göre karışır
+d47d8919	Ses seviyesi göstergesi
+c9601c4a	Ses seviyesi kadar kenardan yanar, tepe noktası yavaşça düşer
+b9056e5c	Spektrum
+1f55a216	Bastan tize kadar sesleri LED'lere dizer, her biri kendi gücüyle yanar
+ae14d063	Enerji
+9097b7af	Bas, orta ve tiz bantları kendi güçleri kadar uzar
+a8728d89	Akan dalga
+0dbddecd	Şu anki sesin rengi kenardan akar (şelale)
+7579942a	Halkalar
+8f1dc3a2	Her kick'te bir ışık halkası yayılır
+5c1949b1	Pırıltı
+6ddfa1c0	Kick'te her şey yumuşakça parlar, trampette toplu bir ışık, hi-hat'te beyaz noktalar pırıldar
+fa793be1	Her parça kendi rolünde
+07493f35	Fanlar basla, ekran kartı orta seslerle, bellek tiz seslerle olduğu gibi her parça kendi sesiyle yanar (bölge ayarındaki "Tepki verilecek ses" ile değiştirilebilir)
+74a4376d	Tempo takibi
+934997b6	Vuruşa göre bir ışık şeridi koşar
+5d88da90	Ruh hâli
+e134b40a	Renk, şarkının havasına göre yavaşça değişir (yanıp sönmez)
+c3873745	Stroboskop
+e266b3b4	Vuruşta güçlü yanıp söner (yalnızca "Yanıp sönmeyi azalt" kapalıyken)
+3cada106	Parçaya göre
+78733543	Bas (kick, bas gitar)
+23099007	Orta (trampet, vokal)
+b599c0f6	Tiz (hi-hat)
+34c5e8d2	Tüm ses (ses seviyesi)

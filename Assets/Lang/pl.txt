@@ -337,10 +337,10 @@ a28e3556	Dopasuj odcień i jasność tego urządzenia albo zmieniaj efekt, kieru
 8847ea7e	Otwórz dopasowanie koloru i ustawienia stref
 43c6336e	Dopasowanie koloru (całe urządzenie)
 ee85a976	Ten sam kolor może wyglądać inaczej pod względem odcienia i jasności na różnych LED-ach. Włącz powyżej „Świeć na biało do porównania” i zmniejszaj czerwony, zielony i niebieski, aż biel się zgra (nie da się zwiększać, więc zmniejsz zbyt mocne kolory)
-3bb159a9	Czerwony
-4fc93dd4	Zielony
-b0ba1b8f	Niebieski
-387da053	Jasność
+3bb159a9	Czerwony 
+4fc93dd4	Zielony 
+b0ba1b8f	Niebieski 
+387da053	Jasność 
 4cba9eab	Ustawienia stref (złączy)
 d64827fc	Dla każdego złącza płyty głównej możesz zmienić efekt, kierunek i odcień zależnie od podłączonego sprzętu (wentylatory, zasilacz, głowica chłodzenia wodnego itp.). „Jak urządzenie” zachowuje ustawienia powyżej. Elementy połączone szeregowo do jednego złącza tworzą jedną strefę
 41860c08	Zmienia efekt synchronizacji z muzyką tylko dla tej strefy (np. wskaźnik głośności dla wentylatorów chłodnicy, kolor w rytm dla zasilacza)
@@ -630,7 +630,7 @@ c674f1d5	Autostart wskazuje teraz na tę działającą aplikację.
 f5c17fde	Nie udało się ponownie zarejestrować autostartu (sprawdź dziennik).
 467c4a19	Nie udało się przenieść do {0}: {1}
 14d2e005	Przechwytywanie dźwięku
-c08fb050	 /
+c08fb050	 / 
 48ccab47	Nie znaleziono używanego czujnika
 9c32a53a	Wykryto zmiany sprzętu
 58f4eb35	ProFanController: zmiana sprzętu
@@ -1007,3 +1007,103 @@ fdb07eba	Instalację anulowano ({0}).
 8725a2c5	Instalacja nie powiodła się (błąd winget {0}). Użyj instalatora z oficjalnej strony.
 6bb09a84	Odinstaluj PawnIO w Ustawieniach Windows → Aplikacje → Zainstalowane aplikacje.
 3436ee7f	PawnIO zostało odinstalowane. Na koniec uruchom ponownie komputer.
+71b727fe	PawnIO zostało odinstalowane.
+e6a01093	PawnIO nie było zainstalowane.
+9dec80dc	winget zwrócił błąd ({0}), ale PawnIO już nie ma. Na wszelki wypadek uruchom ponownie komputer.
+8029d561	winget zgłosił zakończenie, ale PawnIO nadal jest obecne. Uruchom ponownie komputer i sprawdź; jeśli nadal jest: 
+4b39d605	Nie udało się odinstalować PawnIO, bo winget nie istnieje lub się nie uruchamia.
+587aab10	Przerwano, bo nie zakończyło się w {0:F0} min.
+0853b695	Nie udało się odinstalować, bo PawnIO jest używane przez inne programy (FanControl, LibreHardwareMonitor itp.) ({0}).
+2019a1d7	 Uruchom ponownie komputer, a potem:
+3203c5a3	winget nie znalazł PawnIO ({0}).
+1214ea06	Zablokowane przez zasady tego komputera ({0}). Skontaktuj się z administratorem.
+fa206abb	Odinstalowanie anulowano ({0}).
+3d287832	Trwa inna instalacja ({0}). Po jej zakończeniu:
+2f57cd74	Nie udało się odinstalować PawnIO (błąd winget {0}).
+fdc538fc	Od dołu do góry
+d8dd2f02	Od góry do dołu
+d26407fa	Od tyłu do przodu
+ad4d7e26	Od przodu do tyłu
+d20e03f3	Od środka na zewnątrz
+3c957a43	Od zewnątrz do środka
+a4a3fddd	3 wentylatory przednie (od góry)
+5f05f426	3 wentylatory przednie (od dołu)
+ddc8e746	2 wentylatory przednie (od góry)
+57464a90	Wentylator przedni (górny)
+3ef45d3f	Wentylator przedni (środkowy)
+434a387d	Wentylator przedni (dolny)
+be82dbb4	3 wentylatory górne (od przodu)
+cb58decc	3 wentylatory górne (od tyłu)
+91bda7f3	2 wentylatory górne (od przodu)
+b71e6d1a	Wentylator tylny
+1091fb70	3 wentylatory dolne (od przodu)
+1a85a2f8	3 wentylatory dolne (od tyłu)
+b066a299	Chłodzenie CPU / blok pompy AIO
+5a66eda2	Podzespoły
+c662c824	Karta graficzna (od tyłu do przodu)
+aa463c32	Karta graficzna (od przodu do tyłu)
+d28e8e28	Pamięć (od góry do dołu)
+0b4a03fa	Pamięć (od dołu do góry)
+bc4075b9	Płyta główna (osłona I/O z tyłu)
+06e66fb6	Płyta główna (dół, chipset)
+03940065	Pionowa taśma z przodu (od góry do dołu)
+a2b18858	Taśma LED
+cb71e013	Pionowa taśma z przodu (od dołu do góry)
+face4d45	Taśma na górnej krawędzi (od przodu do tyłu)
+a1303c99	Taśma na dolnej krawędzi (od przodu do tyłu)
+f18c7cb3	Kolor innych urządzeń
+1ad230d1	Subtelnie
+7c96252e	Normalnie
+9c7d5155	Mocno
+99b317d4	Intensywnie
+f564ef3a	Tęcza
+87a3b19f	Neon
+234460f5	Zachód słońca
+25bc0f2a	Ocean
+87e00005	Ogień
+a2aace5a	Vaporwave
+73ed0164	Las
+65d57d9e	Lód
+6b03e35b	Kolory zbliżone do wybranego
+b1ecda1c	Tylko wybrany kolor (jednolity)
+f7121884	Chill (spokojnie)
+864fde76	Groove (standard)
+40238fad	Impreza
+4c4b9639	Klub (intensywnie)
+58c4acf6	Wizualizer
+1ffc1da1	Filmy i gry
+a4d4ce26	Własne
+68a0416e	Powolna zmiana kolorów
+2ee44588	Wyłączone
+9a137ab5	{0} {1} (domyślnie {2})
+975db0d4	Zmiana koloru w rytm
+6f6c9db1	Na każde uderzenie przechodzi do następnego koloru, rozbłyskuje i gaśnie
+1acb0fe4	Puls
+3735677c	Wybrany kolor pulsuje z basem i zostawia łagodną poświatę
+fac18e83	Miks
+143bf4c6	Kolory mieszają się według siły basów, średnich i wysokich tonów
+d47d8919	Wskaźnik głośności
+c9601c4a	Świeci od krawędzi na tyle, na ile pozwala głośność, a punkt szczytowy powoli opada
+b9056e5c	Widmo
+1f55a216	Rozkłada tony od niskich do wysokich wzdłuż LED, każdy świeci według swojej siły
+ae14d063	Energia
+9097b7af	Pasma basów, średnich i wysokich tonów wydłużają się według swojej siły
+a8728d89	Płynąca fala
+0dbddecd	Kolor bieżącego dźwięku płynie od krawędzi (wodospad)
+7579942a	Fale
+8f1dc3a2	Przy każdym uderzeniu stopy rozchodzi się pierścień światła
+5c1949b1	Iskrzenie
+6ddfa1c0	Przy stopie wszystko łagodnie świeci, przy werblu skupiony błysk, przy hi-hacie iskrzą białe punkty
+fa793be1	Każda część w swojej roli
+07493f35	Każda część świeci w rytm własnego dźwięku, np. wentylatory do basów, karta graficzna do średnich, pamięć do wysokich (zmienisz to w ustawieniu strefy „Dźwięk, na który reagować”)
+74a4376d	Podążanie za tempem
+934997b6	Pasmo światła biegnie w rytm
+5d88da90	Nastrój
+e134b40a	Kolor zmienia się powoli według nastroju utworu (bez migania)
+c3873745	Stroboskop
+e266b3b4	Mocno miga w rytm (tylko gdy „Ogranicz miganie” jest wyłączone)
+3cada106	Według części
+78733543	Niskie (stopa, bas)
+23099007	Średnie (werbel, wokal)
+b599c0f6	Wysokie (hi-hat)
+34c5e8d2	Cały dźwięk (głośność)

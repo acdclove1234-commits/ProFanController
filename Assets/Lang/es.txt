@@ -337,10 +337,10 @@ a28e3556	Iguala el tono y el brillo de este dispositivo, o cambia el efecto, la 
 8847ea7e	Abrir ajuste de color y ajustes por zona
 43c6336e	Ajuste de color (todo el dispositivo)
 ee85a976	El mismo color puede verse distinto en tono y brillo según el LED. Activa «Iluminar en blanco para comparar» arriba y baja rojo, verde y azul hasta que los blancos coincidan (no se pueden subir, así que baja los colores demasiado fuertes)
-3bb159a9	Rojo
-4fc93dd4	Verde
-b0ba1b8f	Azul
-387da053	Brillo
+3bb159a9	Rojo 
+4fc93dd4	Verde 
+b0ba1b8f	Azul 
+387da053	Brillo 
 4cba9eab	Ajustes por zona (conector)
 d64827fc	Cambia el efecto, la dirección y el tono de cada conector de la placa base según lo que tenga conectado (ventiladores, fuente, bloque de refrigeración líquida, etc.). «Igual que el dispositivo» mantiene los ajustes de arriba. Lo que va encadenado en un mismo conector forma una zona
 41860c08	Cambia el efecto de sincronización musical solo para esta zona (p. ej. vúmetro para los ventiladores del radiador, color al ritmo para la fuente)
@@ -630,7 +630,7 @@ c674f1d5	El inicio automático apunta ahora a esta aplicación en ejecución.
 f5c17fde	No se pudo volver a registrar el inicio automático (revisa el registro).
 467c4a19	No se pudo mover a {0}: {1}
 14d2e005	Captura de audio
-c08fb050	 /
+c08fb050	 / 
 48ccab47	No se encuentra un sensor en uso
 9c32a53a	Cambios de hardware detectados
 58f4eb35	ProFanController: cambio de hardware
@@ -1007,3 +1007,103 @@ fdb07eba	La instalación se canceló ({0}).
 8725a2c5	La instalación falló (error de winget {0}). Use el instalador del sitio oficial.
 6bb09a84	Desinstale PawnIO desde Configuración de Windows → Aplicaciones → Aplicaciones instaladas.
 3436ee7f	PawnIO se ha desinstalado. Para terminar, reinicie el PC.
+71b727fe	PawnIO se ha desinstalado.
+e6a01093	PawnIO no estaba instalado.
+9dec80dc	winget devolvió un error ({0}), pero PawnIO ya no está. Por si acaso, reinicie el PC.
+8029d561	winget indicó que terminó, pero PawnIO sigue ahí. Reinicie el PC y compruébelo; si sigue ahí: 
+4b39d605	No se pudo desinstalar PawnIO porque winget no está o no se inicia.
+587aab10	Se detuvo porque no terminó en {0:F0} minutos.
+0853b695	No se pudo desinstalar porque PawnIO lo están usando otros programas (FanControl, LibreHardwareMonitor, etc.) ({0}).
+2019a1d7	 Reinicie el PC y después:
+3203c5a3	winget no encontró PawnIO ({0}).
+1214ea06	Bloqueado por la directiva de este PC ({0}). Consulte al administrador.
+fa206abb	La desinstalación se canceló ({0}).
+3d287832	Hay otra instalación en curso ({0}). Cuando termine:
+2f57cd74	No se pudo desinstalar PawnIO (error de winget {0}).
+fdc538fc	De abajo arriba
+d8dd2f02	De arriba abajo
+d26407fa	De atrás hacia delante
+ad4d7e26	De delante hacia atrás
+d20e03f3	Del centro hacia fuera
+3c957a43	De fuera hacia el centro
+a4a3fddd	3 ventiladores frontales (desde arriba)
+5f05f426	3 ventiladores frontales (desde abajo)
+ddc8e746	2 ventiladores frontales (desde arriba)
+57464a90	Ventilador frontal (superior)
+3ef45d3f	Ventilador frontal (central)
+434a387d	Ventilador frontal (inferior)
+be82dbb4	3 ventiladores superiores (desde delante)
+cb58decc	3 ventiladores superiores (desde atrás)
+91bda7f3	2 ventiladores superiores (desde delante)
+b71e6d1a	Ventilador trasero
+1091fb70	3 ventiladores inferiores (desde delante)
+1a85a2f8	3 ventiladores inferiores (desde atrás)
+b066a299	Disipador de CPU / cabezal de refrigeración líquida
+5a66eda2	Componentes
+c662c824	Tarjeta gráfica (de la parte trasera hacia delante)
+aa463c32	Tarjeta gráfica (de delante hacia la parte trasera)
+d28e8e28	Memoria (de arriba abajo)
+0b4a03fa	Memoria (de abajo arriba)
+bc4075b9	Placa base (cubierta de E/S trasera)
+06e66fb6	Placa base (parte inferior, chipset)
+03940065	Tira vertical frontal (de arriba abajo)
+a2b18858	Tira LED
+cb71e013	Tira vertical frontal (de abajo arriba)
+face4d45	Tira del borde superior (de delante hacia atrás)
+a1303c99	Tira del borde inferior (de delante hacia atrás)
+f18c7cb3	Color de otros dispositivos
+1ad230d1	Suave
+7c96252e	Normal
+9c7d5155	Fuerte
+99b317d4	Intenso
+f564ef3a	Arcoíris
+87a3b19f	Neón
+234460f5	Atardecer
+25bc0f2a	Océano
+87e00005	Fuego
+a2aace5a	Vaporwave
+73ed0164	Bosque
+65d57d9e	Hielo
+6b03e35b	Colores parecidos al elegido
+b1ecda1c	Solo el color elegido (un color)
+f7121884	Chill (relajado)
+864fde76	Groove (estándar)
+40238fad	Fiesta
+4c4b9639	Club (intenso)
+58c4acf6	Visualizador
+1ffc1da1	Películas y juegos
+a4d4ce26	Personalizado
+68a0416e	Colores que cambian despacio
+2ee44588	Apagado
+9a137ab5	{0} {1} (predeterminado {2})
+975db0d4	Cambio de color con el ritmo
+6f6c9db1	Cambia al siguiente color en cada golpe, destella y se apaga
+1acb0fe4	Pulso
+3735677c	El color elegido late con los graves y deja un suave resplandor
+fac18e83	Mezcla
+143bf4c6	Los colores se mezclan según la fuerza de graves, medios y agudos
+d47d8919	Vúmetro
+c9601c4a	Se enciende desde el borde según el volumen y el punto de pico baja despacio
+b9056e5c	Espectro
+1f55a216	Reparte de graves a agudos a lo largo de los LED, cada uno según su fuerza
+ae14d063	Energía
+9097b7af	Las bandas de graves, medios y agudos crecen según su fuerza
+a8728d89	Onda que fluye
+0dbddecd	El color del sonido actual fluye desde el borde (cascada)
+7579942a	Ondas
+8f1dc3a2	Con cada bombo se expande un anillo de luz
+5c1949b1	Destellos
+6ddfa1c0	Con el bombo todo brilla suavemente, con la caja una luz concentrada y con el charles destellan puntos blancos
+fa793be1	Cada pieza en su papel
+07493f35	Cada pieza se ilumina con su propio sonido: los ventiladores con los graves, la tarjeta gráfica con los medios y la memoria con los agudos (se cambia en el ajuste de zona «Sonido al que reaccionar»)
+74a4376d	Seguir el tempo
+934997b6	Una banda de luz corre al ritmo
+5d88da90	Ambiente
+e134b40a	El color cambia despacio según el ambiente de la canción (sin parpadeo)
+c3873745	Estroboscopio
+e266b3b4	Parpadea con fuerza al ritmo (solo si «Reducir destellos» está desactivado)
+3cada106	Según la pieza
+78733543	Graves (bombo, bajo)
+23099007	Medios (caja, voz)
+b599c0f6	Agudos (charles)
+34c5e8d2	Todo el sonido (volumen)
