@@ -260,18 +260,21 @@ public static class HardwareChange
             // ファン制御に関わる種類だけ確かめる（SSD などは外すこともあるので、見えなくても待たない）
             if (cat is not ("Cpu" or "Gpu" or "Board")) continue;
             if (!catalog.Temperatures.Any(t => SensorRemapper.Category(t.HardwareType) == cat))
-                return L($"{CategoryLabel(cat)}温度センサーがまだ 1 つも見えていません");
+                return NoTemperatureSensorReason(cat);
         }
         return null;
     }
 
-    /// <summary>「CPU の」のような、理由の文に使う部品の種類の名前</summary>
-    private static string CategoryLabel(string cat) => cat switch
+    /// <summary>
+    /// その種類の温度センサーが見えないときの理由の文。
+    /// 「CPU の」＋「温度センサーが…」のようにつなぐと語順の違う言語に訳せないので、文ごと分ける
+    /// </summary>
+    private static string NoTemperatureSensorReason(string cat) => cat switch
     {
-        "Cpu" => L("CPU の"),
-        "Gpu" => L("GPU の"),
-        "Board" => L("マザーボードの"),
-        _ => cat + L(" の"),
+        "Cpu" => L("CPU の温度センサーがまだ 1 つも見えていません"),
+        "Gpu" => L("GPU の温度センサーがまだ 1 つも見えていません"),
+        "Board" => L("マザーボードの温度センサーがまだ 1 つも見えていません"),
+        _ => L("温度センサーがまだ 1 つも見えていません"),
     };
 
     /// <summary>

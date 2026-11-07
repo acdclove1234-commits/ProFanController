@@ -899,16 +899,14 @@ d98de496	この種類の端子がまだ見えていません（消さずに BIOS
 13e471aa	対応する端子が見つかりません	Core/HardwareChange.cs:231
 6299c5f6	GPU がまだ見えていません	Core/HardwareChange.cs:252
 9949a3db	マザーボードのファン端子（Super I/O）がまだ 1 つも見えていません	Core/HardwareChange.cs:252
-44d598eb	{0}温度センサーがまだ 1 つも見えていません	Core/HardwareChange.cs:263
-e672cb1f	CPU の	Core/HardwareChange.cs:271
-a2c243b3	GPU の	Core/HardwareChange.cs:272
-e31a5d38	マザーボードの	Core/HardwareChange.cs:273
-6410c7c3	 の	Core/HardwareChange.cs:274
-c7c97e29	{0}「{1}」	Core/HardwareChange.cs:342
-a028762c	{0}（目標温度）	Core/HardwareChange.cs:343
-8464452e	仮想センサー「{0}」	Core/HardwareChange.cs:347
-bb74ce90	ダッシュボード「{0}」	Core/HardwareChange.cs:349
-5dbc40a6	LED の色	Core/HardwareChange.cs:350
+d354ab0d	CPU の温度センサーがまだ 1 つも見えていません	Core/HardwareChange.cs:274
+2a815b01	GPU の温度センサーがまだ 1 つも見えていません	Core/HardwareChange.cs:275
+98a78d2c	マザーボードの温度センサーがまだ 1 つも見えていません	Core/HardwareChange.cs:276
+c7c97e29	{0}「{1}」	Core/HardwareChange.cs:345
+a028762c	{0}（目標温度）	Core/HardwareChange.cs:346
+8464452e	仮想センサー「{0}」	Core/HardwareChange.cs:350
+bb74ce90	ダッシュボード「{0}」	Core/HardwareChange.cs:352
+5dbc40a6	LED の色	Core/HardwareChange.cs:353
 7bd6fc4c	{0}  ·  {1}（GPU・試験的）	Core/HardwareHub.cs:19
 b961088b	CPU の冷え方	Core/HealthAnalyzer.cs:69
 a9a03eaf	GPU の冷え方	Core/HealthAnalyzer.cs:70
