@@ -1951,12 +1951,14 @@
                                     </DockPanel>
                                     <TextBlock x:Name="SyncTestHelp" Style="{StaticResource Caption}" Foreground="{DynamicResource Accent2Brush}" Margin="170,0,0,6"
                                                Visibility="Collapsed"/>
+                                    <!-- 出力先（Bluetooth・HDMI・仮想の出力先）に合わせた、音の遅れの補正の案内（MainWindow.Lighting.cs の UpdateAudioTexts） -->
                                     <StackPanel x:Name="BluetoothHint" Orientation="Horizontal" Margin="170,0,0,6" Visibility="Collapsed">
-                                        <TextBlock Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" VerticalAlignment="Center"
-                                                   Text="Bluetooth は音が遅れるので +150〜200 ms がおすすめ"/>
-                                        <Button Style="{StaticResource SmallGhost}" Content="+180 ms にする" Click="OnBluetoothDelayClick" Margin="10,0,0,0" Padding="9,3"
-                                                ToolTip="音の遅れの補正を +180 ミリ秒にします（あとで同期テストで微調整できます）"/>
+                                        <TextBlock x:Name="OutputHintText" Style="{StaticResource Caption}" Foreground="{DynamicResource WarnBrush}" VerticalAlignment="Center"
+                                                   TextWrapping="Wrap" MaxWidth="460" Text="Bluetooth は音が遅れるので +150〜200 ms がおすすめ"/>
+                                        <Button x:Name="OutputHintButton" Style="{StaticResource SmallGhost}" Content="+180 ms にする" Click="OnBluetoothDelayClick" Margin="10,0,0,0" Padding="9,3"
+                                                VerticalAlignment="Center" ToolTip="音の遅れの補正をこの出力先の目安にします（あとで同期テストで微調整できます）"/>
                                     </StackPanel>
+                                    <TextBlock x:Name="OutputSoftwareNote" Style="{StaticResource Caption}" TextWrapping="Wrap" Margin="170,0,0,6" Visibility="Collapsed"/>
 
                                     <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding Rgb.Music.ReduceFlashing, Mode=OneWay}" Click="OnReduceFlashingClick" Margin="0,8,0,0"
                                               ToolTip="オンのあいだは、強い点滅を 1 秒に 3 回までにします（光に敏感な方の目や体調を守るため）。ストロボも使いません">
