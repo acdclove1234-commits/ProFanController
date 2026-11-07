@@ -53,6 +53,8 @@ public partial class App : Application
     /// <summary>update.ps1 がこのイベントをセットすると、アプリが正しく終了する</summary>
     private const string ExitSignalName = @"Global\ProFanController.Exit";
     private EventWaitHandle? _exitSignal;
+    /// <summary>メモリの使い方を 10 分ごとにログに書くタイマー（常駐の重さの内訳を見るため）</summary>
+    private System.Threading.Timer? _memoryLog;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -105,6 +107,8 @@ public partial class App : Application
         ThreadPool.RegisterWaitForSingleObject(_exitSignal, (_, _) => Dispatcher.InvokeAsync(ExitApplication), null, Timeout.Infinite, true);
 
         EnableCrashDumps();
+        // メモリの使い方（使用中・専用・.NET が管理する分）を 10 分ごとにログへ（最初は起動の 1 分後）
+        _memoryLog = new System.Threading.Timer(_ => LogMemory(), null, TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(10));
         var controller = new AppController(LoadConfig());
         _controller = controller;
         var engine = controller.Engine;
@@ -508,6 +512,18 @@ public partial class App : Application
     }
 
     /// <summary>「○秒後に起動し直す」プロセスとして起動されたときの引数</summary>
+    /// <summary>メモリの使い方を 1 行でログに書く（使用中・専用・.NET のヒープ・.NET が OS から確保した分）</summary>
+    private static void LogMemory()
+    {
+        try
+        {
+            using var p = System.Diagnostics.Process.GetCurrentProcess();
+            var gc = GC.GetGCMemoryInfo();
+            Logger.Info($"メモリ: 使用中 {p.WorkingSet64 / 1048576} MB・専用 {p.PrivateMemorySize64 / 1048576} MB（.NET のヒープ {gc.HeapSizeBytes / 1048576} MB・.NET が確保 {gc.TotalCommittedBytes / 1048576} MB・スレッド {p.Threads.Count}）");
+        }
+        catch (Exception ex) { Logger.Warn($"メモリの記録に失敗: {ex.Message}"); }
+    }
+
     private const string DelayedRestartArgument = "--restart-after";
 
     private bool _watchdogHooked;
