@@ -1,92 +1,96 @@
 # ProFanController
 
-Windows 用のファン制御・監視ツールです。マザーボードのファン端子を温度に合わせて制御し、OpenRGB と連携して PC の LED も光らせます（温度・レインボー・音楽連動など）。
+**English** | [日本語](README.ja.md)
 
-A fan control and monitoring tool for Windows. It drives motherboard fan headers from temperature curves and, with OpenRGB, lights the PC's LEDs (temperature, rainbow, music sync, and more). The UI is in Japanese.
+A fan control and monitoring tool for Windows. It drives the motherboard's fan headers from temperature curves and, together with OpenRGB, lights the PC's LEDs (temperature, rainbow, music sync and more).
 
-> 個人で作ったツールです。ファンやポンプの制御を誤ると、部品が熱くなりすぎることがあります。ご利用は自己責任でお願いします（LICENSE の「無保証」のとおりです）。
+> **The user interface is in Japanese for now.** An English UI is in progress (the app already reads its language setting; screens are being translated one by one). This README and the bundled `README_en.txt` are in English.
 
-## できること
+> This is a personal project. Wrong fan or pump control can let parts get too hot. Use it at your own risk (see the "no warranty" clause in the LICENSE).
 
-- **ファン制御**: 温度カーブ・目標温度・固定値・ほかのファンへの連動。複数の温度センサー、ヒステリシス、回転の上がり下がりの速さ、共振する回転数を避ける設定
-- **おまかせ調整**: 負荷をかけて測り、目標温度を守れるいちばん静かなカーブを作る
-- **安全機能**: 緊急全開、センサーの異常値の除外・固着の検知、ポンプの回転の見張り、見張りプロセス（本体が落ちたらファンを安全な回転数にして起動し直す）、終了・スリープ時は BIOS 制御に戻す
-- **監視・記録**: ダッシュボード、履歴、電気代の目安、ファンの劣化・ホコリの検知、異常の前後の記録
-- **LED（OpenRGB 連携）**: 温度・レインボー・呼吸・固定色・音楽連動（キック・スネアの検出、テンポの追従、12 種類の光り方）。デバイス・端子（ゾーン）ごとの設定と色合わせ。PNY ARGB Epic-X のグラボは OpenRGB を通さず直接書き込み
-- **そのほか**: プロファイルの自動切り替え、スマホからの確認（同じネットワーク内）、ntfy / Discord への通知、タスクトレイ常駐・ログオン時の自動起動
+## Features
 
-## 必要なもの
+- **Fan control**: temperature curves, target temperature, fixed duty, following another fan. Several sensors per curve, hysteresis, ramp-up/down rates, and resonance bands to skip
+- **Auto-tune**: loads the PC, measures, and builds the quietest curve that still holds your target temperature
+- **Safety**: emergency full speed (also watches the CPU and GPU temperatures when no curve uses them), filtering of bad sensor values and stuck sensors, pump speed watch, a watchdog process (sets safe fan speeds and restarts the app if it crashes), and handing the fans back to the BIOS on exit and sleep
+- **Monitoring and diagnostics**: dashboard, history, electricity estimate, fan wear and dust checks that compare like with like (room temperature and fan-curve changes are taken into account), and a flight recorder for incidents
+- **LEDs (with OpenRGB)**: temperature, rainbow, breathing, static colour and music sync (kick and snare detection, beat tracking, a dozen styles), per device and per zone. Music sync can listen to one app only (for example Spotify). PNY ARGB Epic-X graphics cards are written directly, without OpenRGB
+- **Other**: automatic profile switching, a phone view on the same network, ntfy / Discord notifications, tray icon and start at logon
+- **Optional**: an AI cooling advisor using a local [Ollama](https://ollama.com/) model (off by default; turn it on at the top of the Diagnostics page; your data stays on the PC)
 
-- Windows 10 / 11（64bit）のデスクトップ PC
-- [PawnIO](https://pawnio.eu/)（ファンの制御用のドライバー。LibreHardwareMonitor 0.9.6 以降で必要）
-- 管理者権限（Super I/O にアクセスするため、起動時に UAC の確認が出ます）
-- LED を使う場合: [OpenRGB](https://openrgb.org/)（起動しておき、SDK サーバーをオンにする）
+## Requirements
 
-ノート PC と、ファン制御に対応していないマザーボードでは使えません。
+- A Windows 10 / 11 (64-bit) desktop PC
+- [PawnIO](https://pawnio.eu/) (the driver used for fan control; required by LibreHardwareMonitor 0.9.6 and later). The app can install it for you
+- Administrator rights (needed for the Super I/O chip; Windows asks for confirmation at start)
+- For LEDs: [OpenRGB](https://openrgb.org/) running with its SDK server turned on
 
-## 動作確認済みの環境（ベータ版）
+Laptops and motherboards without fan control support are not supported.
 
-開発と動作確認は、次の PC で行っています（対応機種の一覧ではなく、確かめた例です）。
+## Verified environment (beta)
 
-| 部品 | 型番 |
+The app is developed and tested on this PC. This is an example that has been checked, not a list of supported hardware.
+
+| Part | Model |
 |---|---|
-| OS | Windows 11 Pro（64bit） |
-| マザーボード | ASRock B860 Steel Legend WiFi（Super I/O: Nuvoton NCT6686D） |
+| OS | Windows 11 Pro (64-bit) |
+| Motherboard | ASRock B860 Steel Legend WiFi (Super I/O: Nuvoton NCT6686D) |
 | CPU | Intel Core Ultra 5 245KF |
-| グラボ | PNY GeForce RTX 5070 Ti 16GB ARGB Epic-X OC |
+| Graphics card | PNY GeForce RTX 5070 Ti 16GB ARGB Epic-X OC |
 
-ほかのマザーボード・グラボでも、[LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor)（ファン・温度）と OpenRGB（LED）が対応している部品なら動きます。ただし、機種ごとの仕様やセンサーの並びによって、動きが違うことがあります。うまく動かないときは、お使いの部品の型番を添えて知らせてください。
+Other motherboards and graphics cards work as long as [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) (fans and temperatures) and OpenRGB (LEDs) support them, but behaviour can differ with each model's specifics and sensor layout. If something does not work, please report it with your hardware models.
 
-対応していない・確かめていない部品のときの動き:
+What happens with unsupported or unchecked parts:
 
-- **ファン端子が見つからないマザーボード**: ファンの一覧が空になり、温度・使用率の監視だけになります。ファンには何も書き込まず、BIOS の制御のままです
-- **PawnIO が入っていない**: ファン端子と一部の温度（CPU など）を読めません。セットアップの画面から入れられます
-- **書き込みが反映されないマザーボード**（ほかのソフトがチップを使っているなど）: 書いた値と実際の値を毎回比べ、反映されないときは書き直して知らせます
-- **ファンが回らない・温度が読めない・固まる**: 値がおかしいセンサーは全開、センサーごと無くなったときは安全側の固定値にします。CPU・GPU が緊急温度に達したら（カーブで使っていない温度でも）全ファンを全開にします
-- **グラボの LED の直接書き込み**: 上の型番だけです。ほかのグラボは OpenRGB を通して光らせます（ライティング →「詳細」で、確かめていない型番でも試せます）
-- **グラボのファンの制御**: 既定ではオフです（設定でオンにしたときだけ）
+- **No fan headers found**: the fan list is empty and the app only monitors temperatures and load. Nothing is written to the fans; the BIOS stays in control
+- **PawnIO missing**: fan headers and some temperatures (such as the CPU) cannot be read. It can be installed from the setup screen
+- **Writes do not take effect** (another program is using the chip, for example): every write is read back; if it does not stick, the app writes again and tells you
+- **A fan stops, or a sensor fails or freezes**: a sensor with bad values sets its fans to full speed; a sensor that disappears sets a safe fixed speed. If the CPU or GPU reaches the emergency temperature, all fans go to full speed
+- **Direct LED writes to graphics cards**: only for the model above. Other cards are lit through OpenRGB (you can try unchecked models under Lighting → Advanced)
+- **Graphics card fan control**: off by default (only when you turn it on in Settings)
 
-## 使い方（配布用の zip）
+## Getting started (release zip)
 
-1. [Releases](../../releases) から `ProFanController-<版>-windows-x64.zip` をダウンロードして展開し、`ProFanController` フォルダーを `C:\Tools\ProFanController` など動かさない場所に置く
-2. `ProFanController.exe` を起動する。PawnIO が入っていなければ、セットアップの最初の画面の「PawnIO をインストール」で入れて（winget を使います）、「アプリを起動し直す」を押す
-   （うまくいかないときは「1_PawnIO をインストール.bat」を右クリック →「管理者として実行」するか、[公式サイト](https://pawnio.eu/)のインストーラーを使う）
-3. セットアップの案内に沿って、ファン端子に名前を付ける
+1. Download `ProFanController-<version>-windows-x64.zip` from [Releases](../../releases), extract it, and put the `ProFanController` folder somewhere it will stay, such as `C:\Tools\ProFanController`
+2. Start `ProFanController.exe`. If PawnIO is not installed, press "Install PawnIO" on the first setup screen (it uses winget), then "Restart the app"
+   (if that fails, right-click `1_PawnIO をインストール.bat` ("install PawnIO") → Run as administrator, or use the installer from the [official site](https://pawnio.eu/))
+3. Follow the setup to name your fan headers
 
-詳しくは、zip に入っている「はじめにお読みください.txt」（このリポジトリでは `Distribution/` の中）を見てください。新しい版への更新は、新しい zip を展開せずにダウンロードフォルダーに置いて「2_更新.bat」を実行します（設定・記録はそのまま）。
+See `README_en.txt` in the zip (in this repository under `Distribution/`) for details. To update, put the new zip — still zipped — in your Downloads folder and run `2_更新.bat` ("update"); settings and records are kept.
 
-使うのをやめるときは、設定 →「安全・バックアップ」→「アンインストール（お片付け）」を使います。ファンを BIOS の自動制御に戻したことを確かめてから、ライティングの制御・ログオン時の自動起動・ファイアウォールの許可などを片付けて終了します（設定・記録の削除と PawnIO のアンインストールは、選んだときだけ）。最後に、アプリのフォルダーを自分で削除します。
+To stop using the app, use Settings → Safety & backup → Uninstall (clean up). It checks that the fans are back under BIOS control, then removes the lighting control, the logon start, the firewall rule and so on (deleting settings and records, and uninstalling PawnIO, only if you choose). Finally, delete the app folder yourself.
 
-## ソースからのビルド
+## Building from source
 
-.NET 8 SDK が必要です。
+Requires the .NET 8 SDK.
 
 ```powershell
-# 動作確認（Release でビルドして起動）
+# Build and run (Release)
 dotnet build -c Release
-# ロジックのテスト
+# Logic tests
 dotnet run -c Release --project Tests/LogicTests
-# 配布用の zip を作る（.NET ランタイムごと exe 1 つに発行し、Distribution の中身と一緒にまとめる）
+# Release zip (publishes one exe including the .NET runtime, packed with the contents of Distribution)
 powershell -ExecutionPolicy Bypass -File Distribution/make-dist.ps1
 ```
 
-`Properties/PublishProfiles` に発行のプロファイルが 2 つあります。
+`Properties/PublishProfiles` has two publish profiles:
 
-- `Portable`: .NET ランタイムごと 1 つの exe（配布用。make-dist.ps1 が使う）
-- `SingleExe`: .NET 8 デスクトップランタイムが入っている PC 用の軽い exe
+- `Portable`: one exe including the .NET runtime (for distribution; used by make-dist.ps1)
+- `SingleExe`: a small exe for PCs that have the .NET 8 Desktop Runtime
 
-一番上の `config.json` は開発用の見本です（ビルドしたときの出力フォルダーにだけ写され、配布用には入りません）。
+The `config.json` at the top is a development sample (copied to the build output only, not into the release).
 
-## フォルダーの構成
+## Repository layout
 
-| 場所 | 中身 |
+| Path | Contents |
 |---|---|
-| `Core/` | ファン制御のエンジン、センサー、設定、OpenRGB との通信、LED の描画（`Core/Rgb`） |
-| `Audio/`・`Core/Audio/` | 音楽連動の音の取り込みと分析（帯域・キック・テンポ） |
-| `UI/`・`MainWindow*` | 画面（WPF） |
-| `Tests/LogicTests/` | ロジックのテスト（画面・実機なしで動く） |
-| `Distribution/` | 配布用の zip に入れる説明書・バッチ・ライセンスと、zip を作るスクリプト |
+| `Core/` | fan control engine, sensors, settings, OpenRGB communication, LED rendering (`Core/Rgb`) |
+| `Audio/`, `Core/Audio/` | music sync: audio capture and analysis (bands, kicks, tempo) |
+| `UI/`, `MainWindow*` | user interface (WPF) |
+| `Tests/LogicTests/` | logic tests (run without the UI or hardware) |
+| `Distribution/` | guides (Japanese and English), batch files and licences for the release zip, and the script that builds it |
+| `tools/` | development tools (for example `FontSubset`, which trims the bundled font; not part of the app) |
 
-## ライセンス
+## License
 
-ProFanController は [MIT License](LICENSE) です。使っている部品（LibreHardwareMonitorLib は MPL-2.0、NAudio・QRCoder・.NET は MIT、フォントは SIL Open Font License 1.1 など）のライセンスは [CREDITS.txt](CREDITS.txt) にまとめています。OpenRGB・PawnIO・Ollama はこのリポジトリに含まず、別に入れて使います。
+ProFanController is under the [MIT License](LICENSE). Licences of the components it uses (LibreHardwareMonitorLib: MPL-2.0; NAudio, QRCoder, .NET: MIT; fonts: SIL Open Font License 1.1; and others) are listed in [CREDITS.txt](CREDITS.txt). OpenRGB, PawnIO and Ollama are not included in this repository; install them separately.
