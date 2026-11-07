@@ -1006,20 +1006,20 @@ fdb07eba	インストールが取り消されました（{0}）。	Core/PawnIoSe
 66b9357b	管理者権限が必要です（{0}）。アプリを管理者として起動し直してから、もう一度試してください。	Core/PawnIoSetup.cs:93
 8725a2c5	インストールに失敗しました（winget のエラー {0}）。公式サイトのインストーラーを使ってください。	Core/PawnIoSetup.cs:94
 6bb09a84	Windows の「設定」→「アプリ」→「インストールされているアプリ」から PawnIO をアンインストールしてください。	Core/PawnIoSetup.cs:102
-3436ee7f	PawnIO をアンインストールしました。仕上げに PC を再起動してください。	Core/PawnIoSetup.cs:116
-71b727fe	PawnIO をアンインストールしました。	Core/PawnIoSetup.cs:121
-e6a01093	PawnIO はインストールされていませんでした。	Core/PawnIoSetup.cs:121
-9dec80dc	winget はエラー（{0}）を返しましたが、PawnIO はなくなりました。念のため PC を再起動してください。	Core/PawnIoSetup.cs:126
-8029d561	winget は「終わった」と返しましたが、PawnIO がまだ残っています。PC を再起動してから確かめ、残っていれば 	Core/PawnIoSetup.cs:131
-4b39d605	winget が見つからない・起動できないため、PawnIO をアンインストールできませんでした。	Core/PawnIoSetup.cs:136
-587aab10	{0:F0} 分たっても終わらなかったため、止めました。	Core/PawnIoSetup.cs:137
-0853b695	PawnIO がほかのソフト（FanControl・LibreHardwareMonitor など）に使われているため、アンインストールできませんでした（{0}）。	Core/PawnIoSetup.cs:138
-2019a1d7	PC を再起動してから、	Core/PawnIoSetup.cs:139
-3203c5a3	winget では PawnIO が見つかりませんでした（{0}）。	Core/PawnIoSetup.cs:140
-1214ea06	この PC のポリシーで止められています（{0}）。管理している人に相談してください。	Core/PawnIoSetup.cs:141
-fa206abb	アンインストールが取り消されました（{0}）。	Core/PawnIoSetup.cs:142
-3d287832	ほかのソフトのインストールが動いています（{0}）。終わってから、	Core/PawnIoSetup.cs:143
-2f57cd74	PawnIO をアンインストールできませんでした（winget のエラー {0}）。	Core/PawnIoSetup.cs:144
+3436ee7f	PawnIO をアンインストールしました。仕上げに PC を再起動してください。	Core/PawnIoSetup.cs:119
+71b727fe	PawnIO をアンインストールしました。	Core/PawnIoSetup.cs:124
+e6a01093	PawnIO はインストールされていませんでした。	Core/PawnIoSetup.cs:124
+9dec80dc	winget はエラー（{0}）を返しましたが、PawnIO はなくなりました。念のため PC を再起動してください。	Core/PawnIoSetup.cs:129
+8029d561	winget は「終わった」と返しましたが、PawnIO がまだ残っています。PC を再起動してから確かめ、残っていれば 	Core/PawnIoSetup.cs:134
+4b39d605	winget が見つからない・起動できないため、PawnIO をアンインストールできませんでした。	Core/PawnIoSetup.cs:139
+587aab10	{0:F0} 分たっても終わらなかったため、止めました。	Core/PawnIoSetup.cs:140
+0853b695	PawnIO がほかのソフト（FanControl・LibreHardwareMonitor など）に使われているため、アンインストールできませんでした（{0}）。	Core/PawnIoSetup.cs:141
+2019a1d7	PC を再起動してから、	Core/PawnIoSetup.cs:142
+3203c5a3	winget では PawnIO が見つかりませんでした（{0}）。	Core/PawnIoSetup.cs:143
+1214ea06	この PC のポリシーで止められています（{0}）。管理している人に相談してください。	Core/PawnIoSetup.cs:144
+fa206abb	アンインストールが取り消されました（{0}）。	Core/PawnIoSetup.cs:145
+3d287832	ほかのソフトのインストールが動いています（{0}）。終わってから、	Core/PawnIoSetup.cs:146
+2f57cd74	PawnIO をアンインストールできませんでした（winget のエラー {0}）。	Core/PawnIoSetup.cs:147
 fdc538fc	下から上へ	Core/Rgb/CaseLayout.cs:22
 d8dd2f02	上から下へ	Core/Rgb/CaseLayout.cs:23
 d26407fa	後ろ（背面）から前へ	Core/Rgb/CaseLayout.cs:24
@@ -1127,20 +1127,13 @@ f20bb342	winget を起動できませんでした	Core/Winget.cs:240
 7c7e0834	取り消しました	Core/Winget.cs:260
 fd770949	時間切れ	Core/Winget.cs:260
 1ca63358	ダウンロードしています… {0} / {1}	Core/Winget.cs:294
-d615537d	正常にアンインストール	Core/Winget.cs:296
-4465e11f	アンインストールが完了	Core/Winget.cs:296
-eb7cfe73	アンインストールが終わりました。確認しています…	Core/Winget.cs:296
-6f872556	正常にインストール	Core/Winget.cs:297
-89524046	インストールが完了	Core/Winget.cs:297
-792a1ca8	インストールが終わりました。確認しています…	Core/Winget.cs:297
-0c06a0a9	アンインストールを開始	Core/Winget.cs:298
-0a1e33ea	アンインストールしています…（少し時間がかかります）	Core/Winget.cs:298
-16dff0f8	インストールを開始	Core/Winget.cs:299
-41209895	インストールしています…（少し時間がかかります）	Core/Winget.cs:299
-6e0862ef	ハッシュ	Core/Winget.cs:300
-3487b9bc	ダウンロードしたファイルを確かめています…	Core/Winget.cs:300
-dbd5b1f0	ダウンロードしています…	Core/Winget.cs:301
-9e8ebaf4	進めています… {0}%	Core/Winget.cs:302
+eb7cfe73	アンインストールが終わりました。確認しています…	Core/Winget.cs:297
+792a1ca8	インストールが終わりました。確認しています…	Core/Winget.cs:298
+0a1e33ea	アンインストールしています…（少し時間がかかります）	Core/Winget.cs:299
+41209895	インストールしています…（少し時間がかかります）	Core/Winget.cs:300
+3487b9bc	ダウンロードしたファイルを確かめています…	Core/Winget.cs:301
+dbd5b1f0	ダウンロードしています…	Core/Winget.cs:302
+9e8ebaf4	進めています… {0}%	Core/Winget.cs:303
 305b4308	（{0} 連動）	MainWindow.AutoTune.cs:65
 0f6e5123	冷却テストかキャリブレーションが実行中です。終わってから始めてください。	MainWindow.AutoTune.cs:111
 5b079133	調整するファンを 1 つ以上選んでください。	MainWindow.AutoTune.cs:117

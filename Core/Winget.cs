@@ -293,12 +293,13 @@ public static class Winget
         if (line.Length == 0 || line.Contains('�')) return null;
         if (Size.Match(line) is { Success: true } m) return L($"ダウンロードしています… {m.Groups[1].Value} / {m.Groups[2].Value}");
         bool Has(params string[] words) => words.Any(w => line.Contains(w, StringComparison.OrdinalIgnoreCase));
-        if (Has("Successfully uninstalled", L("正常にアンインストール"), L("アンインストールが完了"))) return L("アンインストールが終わりました。確認しています…");
-        if (Has("Successfully installed", L("正常にインストール"), L("インストールが完了"))) return L("インストールが終わりました。確認しています…");
-        if (Has("Starting package uninstall", L("アンインストールを開始"))) return L("アンインストールしています…（少し時間がかかります）");
-        if (Has("Starting package install", L("インストールを開始"))) return L("インストールしています…（少し時間がかかります）");
-        if (Has("hash", L("ハッシュ"))) return L("ダウンロードしたファイルを確かめています…");
-        if (Has("Downloading", L("ダウンロード"))) return L("ダウンロードしています…");
+        // 探す言葉は winget の出力（Windows の表示言語で出る）の英語と日本語。アプリの表示言語に合わせて訳してはいけない
+        if (Has("Successfully uninstalled", "正常にアンインストール", "アンインストールが完了")) return L("アンインストールが終わりました。確認しています…"); // no-loc（探す言葉）
+        if (Has("Successfully installed", "正常にインストール", "インストールが完了")) return L("インストールが終わりました。確認しています…"); // no-loc（探す言葉）
+        if (Has("Starting package uninstall", "アンインストールを開始")) return L("アンインストールしています…（少し時間がかかります）"); // no-loc（探す言葉）
+        if (Has("Starting package install", "インストールを開始")) return L("インストールしています…（少し時間がかかります）"); // no-loc（探す言葉）
+        if (Has("hash", "ハッシュ")) return L("ダウンロードしたファイルを確かめています…"); // no-loc（探す言葉）
+        if (Has("Downloading", "ダウンロード")) return L("ダウンロードしています…"); // no-loc（探す言葉）
         if (Percent.Match(line) is { Success: true } pm && line.Length <= 12) return L($"進めています… {pm.Groups[1].Value}%");
         if (!line.Any(char.IsLetter)) return null;
         return "winget: " + (line.Length > 120 ? line[..117] + "…" : line);
