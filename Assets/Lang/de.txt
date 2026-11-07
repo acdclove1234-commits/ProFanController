@@ -409,3 +409,103 @@ b373eaee	Aktualisierungsintervall
 14e1cbc6	Notfall-Volllast (CPU und andere)
 35593dc1	Erreicht ein in einer Kurve verwendeter Sensor diese Temperatur, laufen alle Lüfter mit 100 %
 53ef686b	Notfall-Volllast (GPU-Hot-Spot)
+279d8c16	Der Hot Spot ist der heißeste Punkt in der GPU und liegt 10–20 °C über dem Edge-Wert
+9bcc9b8c	Radeon-RX-7000-Karten drosseln sich bei 110 °C Hot Spot selbst. Die volle Drehzahl wird aufgehoben, sobald es 5 °C unter dem Schwellenwert liegt.
+1ac4b576	Über diese App
+81d90dca	+ Neues Profil
+4cdf9ede	Speichern Sie eine Zusammenstellung von Lüfterkurven unter einem Namen und wechseln Sie zwischen ihnen
+774923ad	Die Rolle dieses Profils. Auch nach einer Umbenennung arbeiten die automatische Abstimmung (Leise mit Ziel +5 °C, Maximale Kühlung −5 °C), die Kurven neuer Lüfter und die Schnellaktion „Leise“ über diese Rolle richtig
+82ac5e85	Windows-Energiesparplan für dieses Profil
+d663551d	Standardmäßig verwenden
+80173301	Duplizieren
+1aafcfce	Beim Beenden den ursprünglichen Energiesparplan wiederherstellen
+935428de	Der Energiesparplan wechselt automatisch mit dem Profil („Nicht ändern“ lässt ihn unverändert)
+02bd77a9	+ Regel hinzufügen
+95dbf04d	Zeitplan
+c6ae093f	Wechselt Profile nach Tageszeit (z. B. täglich 23:00–7:00 Leise). Der Wechsel nach Apps hat Vorrang
+b30b1d5c	Täglich
+1b0c1825	Werktags
+c16e0695	Wochenende
+9b7e9425	Startzeit (z. B. 23:00)
+1925ac9b	bis
+a297edb9	Endzeit (z. B. 7:00). Liegt sie vor der Startzeit, gilt der nächste Tag
+8d3afa5f	Automatischer Profilwechsel
+a6a78db0	Wechselt das Profil automatisch, solange eine gewählte App läuft. Weiter oben stehende Regeln haben Vorrang. Beim Beenden der App gilt wieder das Standardprofil.
+235c5be1	Prozessname (z. B. eldenring). Mit oder ohne .exe
+92b89c34	Aus laufenden Apps wählen ▾
+850bfcd1	Schnellaktionen
+b7230497	Vorübergehend Boost (volle Drehzahl) oder Leise über Übersicht, Infobereich, Mini-Widget oder Smartphone
+37cd5718	Tastenkürzel verwenden (funktionieren auch im Spiel)
+18d0cc13	Strg+Alt+B: 5 Min. Boost / Strg+Alt+Q: 1 Std. Leise / Strg+Alt+N: Aufheben
+7ae7ed01	Profil für „Leise“
+77a57db6	Vom Smartphone aus überwachen
+fe9fdb92	Anzeige im Smartphone-Browser erlauben
+49d300c9	Ein Smartphone im selben WLAN kann Temperaturen und Drehzahlen sehen und Profile wechseln. Fügt eine Windows-Firewall-Regel nur für private Netzwerke (etwa zu Hause) hinzu
+6ac0a5cf	Port
+cf308cb2	Zugriffsschlüssel neu erzeugen
+389a7b03	Die bisherige URL funktioniert dann nicht mehr
+ac3a6f94	Scannen Sie den QR-Code mit der Smartphone-Kamera oder öffnen Sie diese URL
+12e17da1	Die URL enthält den Zugriffsschlüssel. Geben Sie sie nicht an andere weiter
+967f26f5	Benachrichtigungen aufs Smartphone
+9fcdd35a	Smartphone über Notfall-Volllast, Pumpenprobleme, stehende Lüfter und mehr benachrichtigen
+1fe03718	So bemerken Sie es auch unterwegs oder beim Spielen. Dieselbe Benachrichtigung wird 10 Minuten lang nicht erneut gesendet
+5bd9ee6f	ntfy (nur die App installieren; empfohlen)
+a643ae88	1. Installieren Sie die App „ntfy“ auf dem Smartphone (App Store / Google Play, kostenlos, ohne Registrierung)\n2. Tippen Sie in der App auf „+“ und abonnieren Sie den Themennamen unten (oder scannen Sie den QR-Code links)
+6ced87ba	Themenname
+19b272e4	Neu erzeugen
+084d7180	Server
+172228d8	Jeder, der den Themennamen kennt, kann die Benachrichtigungen lesen. Behalten Sie den aktuellen, schwer zu erratenden Namen
+88a4ad91	In Discord erhältlich: Servereinstellungen → „Integrationen“ → „Webhooks“ → „Neuer Webhook“ → „Webhook-URL kopieren“
+cb5c4d63	Auch „Warnungen“ melden (stehende Lüfter, Sensorprobleme usw.)
+a000b788	Auch bei Wiederherstellung melden
+a15f890e	Test senden
+c114b738	Beleuchtung öffnen
+3f597f38	Öffnet die Seite für die LED-Beleuchtung (OpenRGB-Integration)
+c0c9a6ba	LED-Beleuchtung (OpenRGB-Integration)
+158ada0f	Die LED-Einstellungen sind in das Menü links unter „Beleuchtung“ umgezogen. Verbindung, Effekte, Musiksynchronisation und Geräteeinstellungen finden Sie dort.
+c1eb5397	Stromkostenberechnung
+6da48835	Zeigt Energieverbrauch und geschätzte Stromkosten auf der Übersicht und der Berichtsseite
+db0f8cfc	Strompreis pro kWh
+306750cc	Yen (der Preis auf Ihrer Rechnung; wenn unbekannt, den Richtwert 31 Yen lassen)
+1405c464	Leistungsaufnahme außer CPU und GPU
+665cef72	W (Mainboard, Arbeitsspeicher, SSD, Lüfter, Netzteilverluste usw.; meist 40–80 W)
+b4d79a66	CPU und GPU verwenden ihre Sensorwerte. Monitore und Lautsprecher sind nicht enthalten. Es ist keine Messung an der Steckdose, nur eine Schätzung.
+69355ed4	Sicherheit
+619b1ea2	Watchdog-Prozess verwenden (empfohlen)
+d1086ffa	Verhindert, dass die Lüfter auf niedriger Drehzahl hängen bleiben, wenn die App abgeschossen wird oder einfriert. Der Task-Manager zeigt zwei ProFanController-Prozesse; einer davon ist der Watchdog
+f739cc9b	Drehzahl in diesem Fall
+43c454af	Pumpen laufen immer mit 100 %
+d063c0c0	App automatisch neu starten (bis zu 3-mal in 10 Minuten, danach erscheint eine Meldung)
+f2eae029	Ungewöhnliche Sensorwerte ignorieren
+2487009f	Verhindert volle Drehzahl durch einen Wert, der nur kurz springt (Lesefehler). Ein „eingefrorener“ Sensor, dessen Wert sich trotz Laständerung nicht bewegt, gilt als defekt
+3616d69f	Beim Start auf ausgetauschte Teile prüfen
+f47011bb	Ändern sich nach dem Tausch etwa der GPU die Sensoren, führt die App durch die Zuordnung zu den neuen Sensoren
+35eb3141	Drehzahl bei fehlendem Sensor
+90554019	Kurven, deren Sensor gar nicht mehr gefunden wird (Teil ausgebaut oder getauscht), laufen mit dieser Drehzahl (ist der Sensor da, aber sein Wert ungewöhnlich, aus Sicherheitsgründen 100 %)
+963fb48e	Vor und nach Vorfällen automatisch aufzeichnen
+e424608f	Bei Notfall-Volllast, Pumpenproblemen und Ähnlichem werden 10 Minuten davor und danach gespeichert (auf der Berichtsseite einsehbar)
+f4e32f07	Steuerung der GPU-Lüfter erlauben (experimentell)
+f73d1f9b	GPU-Lüfter erscheinen auf der Seite Lüfterkurven unter „Anschluss hinzufügen“. Während der Steuerung ist die eigene Regelung des GPU-Treibers (0-RPM-Modus usw.) aus; verwenden Sie daher eine Kurve auf Basis einer GPU-Temperatur
+f04fb800	Arbeitsspeichertemperaturen lesen
+5ac1bfd9	Speichertemperaturen werden über denselben Bus (SMBus) wie die Speicher-LEDs gelesen. Nutzen OpenRGB oder andere Programme diesen Bus, ohne zu warten, kann es zu Kollisionen kommen und die Speichertemperaturen sind nicht mehr lesbar. Schalten Sie es dann aus (Kurven mit Speichertemperatur laufen dann mit der Drehzahl bei fehlendem Sensor)
+8154441c	Sicherung & Weitergabe der Einstellungen
+894c08f0	Einstellungen werden bei jeder Änderung automatisch gesichert (höchstens alle 10 Minuten, bis zu 30 Kopien). Ist config.json beschädigt, wird sie beim Start automatisch wiederhergestellt. Exportieren Sie Profile in eine Datei, um sie auf einem anderen PC zu laden (Anschlüsse und Sensoren werden nach Namen zugeordnet)
+b187e750	Einstellungen exportieren…
+7c186faa	Einstellungen importieren…
+077e159d	Aus Sicherung wiederherstellen ▾
+4222af0e	Jetzt sichern
+8d711ab6	Einrichtung & Dateien
+f8cfb37f	Einrichtungsassistent öffnen
+0cdb9795	Einstellungsordner öffnen
+e252e493	Protokollordner öffnen
+c7cbd09a	Treiber für die Lüftersteuerung (PawnIO)
+6234a43c	Deinstallieren (aufräumen)
+29c38de6	Wenn Sie die App nicht mehr verwenden möchten. Nachdem bestätigt ist, dass die Lüfter wieder unter BIOS-Steuerung stehen, werden Lichtsteuerung, Autostart bei der Anmeldung, Firewall-Regel und mehr entfernt und die App beendet. Auf dem nächsten Bildschirm sehen Sie vorher, was passiert (Sie können auch wählen, Einstellungen und Aufzeichnungen zu löschen und PawnIO zu deinstallieren)
+b2abf4ee	Deinstallieren (aufräumen)…
+276c23be	Um Lüfterdrehzahlen zu ändern, braucht die App PawnIO, einen Treiber, der den Lüftersteuerchip des Mainboards liest und beschreibt (kostenlos; auch von LibreHardwareMonitor und anderen genutzt).\n„PawnIO installieren“ installiert das offizielle Paket (namazso.PawnIO) mit dem in Windows enthaltenen winget. Dafür ist eine Internetverbindung nötig; es dauert einige zehn Sekunden bis wenige Minuten. Starten Sie die App danach neu.
+32818dc0	PawnIO installieren
+8d7b411c	App neu starten
+a4de3937	Beendet die App und startet sie sofort wieder (in diesen Sekunden stehen die Lüfter unter BIOS-Steuerung)
+7d0ab5b6	Offizielle Website öffnen (pawnio.eu)
+2b7f4cbf	Wenn winget nicht verfügbar ist, laden Sie das Installationsprogramm von der offiziellen Website und führen Sie es aus
+e6974b1a	Erneut prüfen

@@ -409,3 +409,103 @@ b373eaee	Update interval
 14e1cbc6	Emergency full speed (CPU and others)
 35593dc1	When any sensor used in a curve reaches this temperature, every fan goes to 100%
 53ef686b	Emergency full speed (GPU hot spot)
+279d8c16	The hot spot is the hottest point inside the GPU and reads 10–20°C higher than the edge
+9bcc9b8c	Radeon RX 7000 series cards throttle themselves at a 110°C hot spot. Full speed is released once it is 5°C below the threshold.
+1ac4b576	About this app
+81d90dca	+ New profile
+4cdf9ede	Save a set of fan curves under a name and switch between them
+774923ad	This profile's role. Even if you rename it, auto-tune (Silent targets +5°C, Max cooling −5°C), the curves for new fans and the quick "Silent" action keep working through this role
+82ac5e85	Windows power plan to use with this profile
+d663551d	Use by default
+80173301	Duplicate
+1aafcfce	Restore the original power plan on exit
+935428de	The power plan changes automatically when the profile switches ("Don't change" leaves it as is)
+02bd77a9	+ Add rule
+95dbf04d	Schedule
+c6ae093f	Switches profiles by time of day (e.g. Silent every day 23:00–7:00). App-based switching takes priority
+b30b1d5c	Every day
+1b0c1825	Weekdays
+c16e0695	Weekends
+9b7e9425	Start time (e.g. 23:00)
+1925ac9b	to
+a297edb9	End time (e.g. 7:00). If earlier than the start, it is the next day
+8d3afa5f	Automatic profile switching
+a6a78db0	Switches the profile automatically while a chosen app is running. Rules higher in the list take priority. When the app exits, the default profile is used again.
+235c5be1	Process name (e.g. eldenring). With or without .exe
+92b89c34	Choose from running apps ▾
+850bfcd1	Quick actions
+b7230497	Temporarily boost (full speed) or go silent from the dashboard, the tray, the mini widget or your phone
+37cd5718	Use hotkeys (work even in games)
+18d0cc13	Ctrl+Alt+B: boost 5 min / Ctrl+Alt+Q: silent 1 h / Ctrl+Alt+N: cancel
+7ae7ed01	Profile used for "Silent"
+77a57db6	Monitor from your phone
+fe9fdb92	Allow viewing from a phone browser
+49d300c9	A phone on the same Wi-Fi can check temperatures and speeds and switch profiles. Adds a Windows Firewall rule for private networks (such as home) only
+6ac0a5cf	Port
+cf308cb2	Regenerate the access key
+389a7b03	The old URL will no longer work
+ac3a6f94	Scan the QR code with your phone's camera or open this URL
+12e17da1	The URL contains the access key. Do not share it with others
+967f26f5	Phone notifications
+9fcdd35a	Notify my phone of emergency full speed, pump problems, stopped fans and more
+1fe03718	So you notice even when away or gaming. The same notification is not sent again for 10 minutes
+5bd9ee6f	ntfy (just install the app; recommended)
+a643ae88	1. Install the "ntfy" app on your phone (App Store / Google Play, free, no sign-up)\n2. In the app, tap "+" and subscribe to the topic name below (or scan the QR code on the left)
+6ced87ba	Topic name
+19b272e4	Regenerate
+084d7180	Server
+172228d8	Anyone who knows the topic name can read the notifications. Keep the current hard-to-guess name
+88a4ad91	Get it in Discord: Server Settings → "Integrations" → "Webhooks" → "New Webhook" → "Copy Webhook URL"
+cb5c4d63	Also notify "warnings" (stopped fans, sensor problems and so on)
+a000b788	Also notify when things recover
+a15f890e	Send test
+c114b738	Open Lighting
+3f597f38	Opens the LED lighting (OpenRGB integration) page
+c0c9a6ba	LED lighting (OpenRGB integration)
+158ada0f	The LED settings moved to "Lighting" in the left menu. Connection, effects, music sync and per-device settings are all there.
+c1eb5397	Electricity cost
+6da48835	Shows the energy used and an estimated electricity cost on the dashboard and the report page
+db0f8cfc	Electricity price per kWh
+306750cc	yen (the unit price on your bill; if unsure, keep the typical 31 yen)
+1405c464	Power draw besides CPU and GPU
+665cef72	W (motherboard, memory, SSD, fans, PSU losses and so on; typically 40–80 W)
+b4d79a66	CPU and GPU use their sensor values. Monitors and speakers are not included. This is not measured at the wall, so it is only an estimate.
+69355ed4	Safety
+619b1ea2	Use the watchdog process (recommended)
+d1086ffa	Prevents the fans from staying at a low speed if the app is killed or freezes. Task Manager shows two ProFanController processes; one of them is the watchdog
+f739cc9b	Speed in that case
+43c454af	Pumps always go to 100%
+d063c0c0	Restart the app automatically (up to 3 times in 10 minutes; after that a message is shown)
+f2eae029	Ignore abnormal sensor values
+2487009f	Prevents full speed from a value that jumps for just a moment (read errors). A "frozen" sensor whose value does not move even when the load changes is treated as faulty
+3616d69f	Check for replaced parts at startup
+f47011bb	When a part such as the GPU is replaced and its sensors change, guides you through mapping them to the new sensors
+35eb3141	Speed when a sensor is missing
+90554019	Curves whose sensor cannot be found at all (part removed or replaced) run at this speed (if the sensor exists but its value is abnormal, 100% for safety)
+963fb48e	Record before and after incidents automatically
+e424608f	On emergency full speed, pump problems and the like, saves 10 minutes before and after (viewable on the report page)
+f4e32f07	Allow control of GPU fans (experimental)
+f73d1f9b	GPU fans appear under "Add header" on the Fan curves page. While controlled, the GPU driver's own control (0 RPM mode and so on) stops, so use them with a curve based on a GPU temperature
+f04fb800	Read memory temperatures
+5ac1bfd9	Memory temperatures are read over the same bus (SMBus) as memory LEDs. If OpenRGB or another program uses this bus without waiting its turn, they can collide and memory temperatures may become unreadable. Turn this off in that case (curves using memory temperature then run at the missing-sensor speed)
+8154441c	Settings backup & sharing
+894c08f0	Settings are backed up automatically on every change (at most once per 10 minutes, up to 30 copies). If config.json is damaged, it is restored automatically at startup. Export profiles to a file to load them on another PC (headers and sensors are matched by name)
+b187e750	Export settings…
+7c186faa	Import settings…
+077e159d	Restore from backup ▾
+4222af0e	Back up now
+8d711ab6	Setup & files
+f8cfb37f	Open the setup wizard
+0cdb9795	Open settings folder
+e252e493	Open log folder
+c7cbd09a	Fan control driver (PawnIO)
+6234a43c	Uninstall (clean up)
+29c38de6	Use this when you stop using the app. After confirming that the fans are back under BIOS control, it removes the lighting control, the logon start, the firewall rule and more, then exits. The next screen shows what it will do before it starts (you can also choose to delete settings and records and to uninstall PawnIO)
+b2abf4ee	Uninstall (clean up)…
+276c23be	To change fan speeds, the app needs PawnIO, a driver that reads and writes the motherboard's fan control chip (free; also used by LibreHardwareMonitor and others).\n"Install PawnIO" installs the official package (namazso.PawnIO) with winget, which comes with Windows. It needs an internet connection and takes from tens of seconds to a few minutes. When it is done, restart the app to use it.
+32818dc0	Install PawnIO
+8d7b411c	Restart the app
+a4de3937	Closes the app and starts it again right away (for those few seconds the fans are under BIOS control)
+7d0ab5b6	Open the official site (pawnio.eu)
+2b7f4cbf	If winget is not available, get the installer from the official site and run it
+e6974b1a	Check again

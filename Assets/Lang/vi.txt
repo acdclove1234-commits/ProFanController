@@ -409,3 +409,103 @@ b373eaee	Chu kỳ cập nhật
 14e1cbc6	Tốc độ tối đa khẩn cấp (CPU và khác)
 35593dc1	Khi bất kỳ cảm biến nào dùng trong đường cong đạt nhiệt độ này, mọi quạt sẽ chạy 100%
 53ef686b	Tốc độ tối đa khẩn cấp (GPU Hot Spot)
+279d8c16	Hot Spot là điểm nóng nhất bên trong GPU, thường cao hơn Edge 10–20°C
+9bcc9b8c	Dòng Radeon RX 7000 tự giảm hiệu năng khi Hot Spot đạt 110°C. Tốc độ tối đa chỉ được bỏ khi xuống dưới ngưỡng 5°C.
+1ac4b576	Giới thiệu ứng dụng
+81d90dca	+ Cấu hình mới
+4cdf9ede	Lưu một bộ đường cong quạt với tên riêng và chuyển đổi giữa chúng
+774923ad	Vai trò của cấu hình này. Dù đổi tên, tự tinh chỉnh (Yên tĩnh lấy mục tiêu +5°C, Làm mát tối đa −5°C), đường cong của quạt mới và thao tác nhanh "Yên tĩnh" vẫn hoạt động đúng nhờ vai trò này
+82ac5e85	Gói điện năng Windows dùng với cấu hình này
+d663551d	Dùng thường ngày
+80173301	Nhân bản
+1aafcfce	Khôi phục gói điện năng ban đầu khi thoát
+935428de	Gói điện năng tự đổi khi chuyển cấu hình (chọn "Không đổi" thì giữ nguyên)
+02bd77a9	+ Thêm quy tắc
+95dbf04d	Lịch
+c6ae093f	Chuyển cấu hình theo khung giờ (VD: mỗi ngày 23:00–7:00 dùng Yên tĩnh). Chuyển tự động theo ứng dụng được ưu tiên hơn
+b30b1d5c	Mỗi ngày
+1b0c1825	Ngày thường
+c16e0695	Cuối tuần
+9b7e9425	Giờ bắt đầu (VD: 23:00)
+1925ac9b	–
+a297edb9	Giờ kết thúc (VD: 7:00). Nếu sớm hơn giờ bắt đầu thì là của ngày hôm sau
+8d3afa5f	Tự động chuyển cấu hình
+a6a78db0	Tự động chuyển cấu hình khi ứng dụng đã chọn đang chạy. Quy tắc càng ở trên càng được ưu tiên. Khi ứng dụng thoát sẽ quay về cấu hình "Dùng thường ngày".
+235c5be1	Tên tiến trình (VD: eldenring). Có hay không có .exe đều được
+92b89c34	Chọn từ ứng dụng đang chạy ▾
+850bfcd1	Thao tác nhanh
+b7230497	Tạm thời tăng tốc (tối đa) hoặc chuyển yên tĩnh từ bảng điều khiển, khay hệ thống, tiện ích mini hoặc điện thoại
+37cd5718	Dùng phím tắt (dùng được cả khi chơi game)
+18d0cc13	Ctrl+Alt+B: tăng tốc 5 phút / Ctrl+Alt+Q: yên tĩnh 1 giờ / Ctrl+Alt+N: hủy
+7ae7ed01	Cấu hình dùng cho "Yên tĩnh"
+77a57db6	Giám sát từ điện thoại
+fe9fdb92	Cho phép xem từ trình duyệt điện thoại
+49d300c9	Điện thoại cùng Wi-Fi có thể xem nhiệt độ, tốc độ quay và đổi cấu hình. Thêm quy tắc cho phép vào Tường lửa Windows chỉ cho mạng riêng (như ở nhà)
+6ac0a5cf	Cổng
+cf308cb2	Tạo lại khóa truy cập
+389a7b03	URL cũ sẽ không mở được nữa
+ac3a6f94	Hãy quét mã QR bằng camera điện thoại hoặc mở URL sau
+12e17da1	URL có chứa khóa truy cập. Đừng chia sẻ cho người khác
+967f26f5	Thông báo tới điện thoại
+9fcdd35a	Thông báo tới điện thoại khi chạy tối đa khẩn cấp, bơm bất thường, quạt dừng…
+1fe03718	Biết ngay cả khi đang ra ngoài hay chơi game. Thông báo trùng nội dung sẽ không gửi lại trong 10 phút
+5bd9ee6f	ntfy (chỉ cần cài ứng dụng · khuyên dùng)
+a643ae88	1. Cài ứng dụng "ntfy" trên điện thoại (App Store / Google Play · miễn phí · không cần đăng ký)\n2. Trong ứng dụng, bấm "+" và đăng ký tên chủ đề bên dưới (quét mã QR bên trái cũng được)
+6ced87ba	Tên chủ đề
+19b272e4	Tạo lại
+084d7180	Máy chủ
+172228d8	Ai biết tên chủ đề cũng có thể đọc thông báo. Hãy giữ tên hiện tại khó đoán này
+88a4ad91	Lấy trong Discord: Cài đặt máy chủ → "Tích hợp" → "Webhook" → "Webhook mới" → "Sao chép URL webhook"
+cb5c4d63	Thông báo cả mức "Lưu ý" (quạt dừng, cảm biến bất thường…)
+a000b788	Thông báo cả khi đã phục hồi
+a15f890e	Gửi thử
+c114b738	Mở Đèn LED
+3f597f38	Mở trang đèn LED (liên kết OpenRGB)
+c0c9a6ba	Đèn LED (liên kết OpenRGB)
+158ada0f	Cài đặt LED đã chuyển sang "Đèn LED" ở menu bên trái. Kết nối, hiệu ứng, đồng bộ nhạc và cài đặt từng thiết bị đều ở đó.
+c1eb5397	Tính tiền điện
+6da48835	Hiển thị lượng điện tiêu thụ và tiền điện ước tính trên bảng điều khiển và trang báo cáo
+db0f8cfc	Giá điện mỗi kWh
+306750cc	yên (đơn giá trên hóa đơn; nếu không rõ, giữ mức ước tính 31 yên)
+1405c464	Công suất ngoài CPU và GPU
+665cef72	W (bo mạch chủ, RAM, SSD, quạt, hao hụt nguồn…; thường 40–80 W)
+b4d79a66	CPU và GPU dùng giá trị cảm biến. Không tính màn hình và loa. Không phải đo tại ổ cắm nên chỉ là ước tính.
+69355ed4	Tính năng an toàn
+619b1ea2	Dùng tiến trình giám sát (khuyên dùng)
+d1086ffa	Tránh để quạt bị kẹt ở tốc độ thấp khi ứng dụng bị buộc tắt hoặc bị treo. Task Manager sẽ hiện 2 ProFanController, một trong số đó là tiến trình giám sát
+f739cc9b	Tốc độ quay lúc đó
+43c454af	Bơm luôn ở 100%
+d063c0c0	Tự khởi động lại ứng dụng (tối đa 3 lần trong 10 phút, quá mức sẽ hiện thông báo)
+f2eae029	Bỏ qua giá trị cảm biến bất thường
+2487009f	Tránh chạy tối đa vì giá trị chỉ nhảy vọt trong chốc lát (lỗi đọc). Cảm biến "đứng yên" có giá trị không đổi dù tải thay đổi sẽ bị coi là bất thường
+3616d69f	Kiểm tra linh kiện bị thay khi khởi động
+f47011bb	Khi thay GPU hoặc linh kiện khác làm cảm biến thay đổi, hướng dẫn chuyển sang cảm biến mới
+35eb3141	Tốc độ khi thiếu cảm biến
+90554019	Đường cong mà cảm biến không còn tìm thấy (do tháo hoặc thay linh kiện) sẽ chạy ở tốc độ này (nếu cảm biến vẫn có nhưng giá trị bất thường thì 100% để an toàn)
+963fb48e	Tự ghi lại trước và sau sự cố
+e424608f	Khi chạy tối đa khẩn cấp, bơm bất thường…, lưu lại 10 phút trước và sau (xem được ở trang báo cáo)
+f4e32f07	Cho phép điều khiển cả quạt GPU (thử nghiệm)
+f73d1f9b	Quạt GPU sẽ hiện trong "Thêm cổng" ở trang Đường cong quạt. Khi điều khiển, chế độ tự điều khiển của driver GPU (chế độ 0 RPM…) sẽ dừng, hãy dùng với đường cong theo nhiệt độ GPU
+f04fb800	Đọc nhiệt độ RAM
+5ac1bfd9	Nhiệt độ RAM được đọc qua cùng đường dây (SMBus) với LED của RAM. Nếu OpenRGB hay phần mềm khác dùng đường dây này mà không chờ lượt, có thể xung đột và không đọc được nhiệt độ RAM. Khi đó hãy tắt đi (đường cong dùng nhiệt độ RAM sẽ chạy ở tốc độ khi thiếu cảm biến)
+8154441c	Sao lưu và chia sẻ cài đặt
+894c08f0	Cài đặt được tự sao lưu mỗi khi thay đổi (tối đa 1 lần mỗi 10 phút, tối đa 30 bản). Nếu config.json bị hỏng, sẽ tự khôi phục khi khởi động. Xuất cấu hình ra tệp để nạp trên PC khác (cổng và cảm biến được ghép theo tên)
+b187e750	Xuất cài đặt…
+7c186faa	Nhập cài đặt…
+077e159d	Khôi phục từ bản sao lưu ▾
+4222af0e	Sao lưu ngay
+8d711ab6	Thiết lập và tệp
+f8cfb37f	Mở trình hướng dẫn thiết lập
+0cdb9795	Mở thư mục cài đặt
+e252e493	Mở thư mục nhật ký
+c7cbd09a	Driver điều khiển quạt (PawnIO)
+6234a43c	Gỡ cài đặt (dọn dẹp)
+29c38de6	Dùng khi bạn ngừng sử dụng ứng dụng. Sau khi xác nhận quạt đã trở về chế độ tự điều khiển của BIOS, ứng dụng sẽ dọn dẹp điều khiển đèn, tự khởi động khi đăng nhập, quy tắc tường lửa… rồi thoát. Có thể xem trước những việc sẽ làm ở màn hình tiếp theo (cũng có thể chọn xóa cài đặt, bản ghi và gỡ cả PawnIO)
+b2abf4ee	Gỡ cài đặt (dọn dẹp)…
+276c23be	Để đổi tốc độ quạt, ứng dụng cần driver PawnIO đọc/ghi chip điều khiển quạt trên bo mạch chủ (miễn phí; LibreHardwareMonitor và nhiều phần mềm khác cũng dùng).\nNhấn "Cài PawnIO" sẽ cài gói chính thức (namazso.PawnIO) bằng winget có sẵn trong Windows. Cần kết nối Internet, mất từ vài chục giây đến vài phút. Xong thì khởi động lại ứng dụng là dùng được.
+32818dc0	Cài PawnIO
+8d7b411c	Khởi động lại ứng dụng
+a4de3937	Thoát ứng dụng và khởi động lại ngay (trong vài giây đó quạt do BIOS tự điều khiển)
+7d0ab5b6	Mở trang chính thức (pawnio.eu)
+2b7f4cbf	Nếu không dùng được winget, hãy tải trình cài đặt từ trang chính thức và chạy nó
+e6974b1a	Kiểm tra lại

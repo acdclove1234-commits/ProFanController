@@ -409,3 +409,103 @@ b373eaee	Intervallo di aggiornamento
 14e1cbc6	Massima velocità di emergenza (CPU e altro)
 35593dc1	Quando un sensore usato in una curva raggiunge questa temperatura, tutte le ventole vanno al 100%
 53ef686b	Massima velocità di emergenza (Hot Spot GPU)
+279d8c16	L'Hot Spot è il punto più caldo della GPU e segna 10–20 °C in più dell'Edge
+9bcc9b8c	Le Radeon RX 7000 riducono da sole le prestazioni a 110 °C di Hot Spot. La massima velocità si toglie quando scende di 5 °C sotto la soglia.
+1ac4b576	Informazioni su questa app
+81d90dca	+ Nuovo profilo
+4cdf9ede	Salva un insieme di curve delle ventole con un nome e passa dall'uno all'altro
+774923ad	Il ruolo di questo profilo. Anche rinominandolo, la regolazione automatica (Silenzioso mira a +5 °C, Massimo raffreddamento a −5 °C), le curve delle nuove ventole e l'azione rapida «Silenzioso» funzionano correttamente grazie a questo ruolo
+82ac5e85	Combinazione di risparmio energia di Windows per questo profilo
+d663551d	Usa come predefinito
+80173301	Duplica
+1aafcfce	Ripristina la combinazione di energia originale all'uscita
+935428de	La combinazione di energia cambia automaticamente con il profilo («Non cambiare» la lascia com'è)
+02bd77a9	+ Aggiungi regola
+95dbf04d	Pianificazione
+c6ae093f	Cambia profilo in base all'ora (es. Silenzioso ogni giorno dalle 23:00 alle 7:00). Il cambio in base alle app ha la precedenza
+b30b1d5c	Ogni giorno
+1b0c1825	Feriali
+c16e0695	Fine settimana
+9b7e9425	Ora di inizio (es. 23:00)
+1925ac9b	a
+a297edb9	Ora di fine (es. 7:00). Se è prima dell'inizio, è del giorno dopo
+8d3afa5f	Cambio automatico del profilo
+a6a78db0	Cambia profilo automaticamente mentre un'app scelta è in esecuzione. Le regole più in alto hanno la precedenza. Alla chiusura dell'app torna il profilo predefinito.
+235c5be1	Nome del processo (es. eldenring). Con o senza .exe
+92b89c34	Scegli tra le app in esecuzione ▾
+850bfcd1	Azioni rapide
+b7230497	Attiva temporaneamente il boost (massima velocità) o il silenzio da pannello, area di notifica, mini widget o telefono
+37cd5718	Usa i tasti di scelta rapida (funzionano anche in gioco)
+18d0cc13	Ctrl+Alt+B: boost 5 min / Ctrl+Alt+Q: silenzioso 1 h / Ctrl+Alt+N: annulla
+7ae7ed01	Profilo usato per «Silenzioso»
+77a57db6	Monitoraggio dal telefono
+fe9fdb92	Consenti la visualizzazione dal browser del telefono
+49d300c9	Un telefono sulla stessa rete Wi-Fi può vedere temperature e velocità e cambiare profilo. Aggiunge una regola a Windows Firewall solo per le reti private (come quella di casa)
+6ac0a5cf	Porta
+cf308cb2	Rigenera la chiave di accesso
+389a7b03	Il vecchio URL non funzionerà più
+ac3a6f94	Inquadra il codice QR con la fotocamera del telefono o apri questo URL
+12e17da1	L'URL contiene la chiave di accesso. Non condividerlo con altri
+967f26f5	Notifiche sul telefono
+9fcdd35a	Avvisa il telefono di massima velocità di emergenza, problemi alla pompa, ventole ferme e altro
+1fe03718	Per accorgertene anche fuori casa o mentre giochi. La stessa notifica non viene ripetuta per 10 minuti
+5bd9ee6f	ntfy (basta installare l'app; consigliato)
+a643ae88	1. Installa l'app «ntfy» sul telefono (App Store / Google Play, gratis, senza registrazione)\n2. Nell'app tocca «+» e iscriviti al nome dell'argomento qui sotto (o inquadra il codice QR a sinistra)
+6ced87ba	Nome dell'argomento
+19b272e4	Rigenera
+084d7180	Server
+172228d8	Chiunque conosca il nome dell'argomento può leggere le notifiche. Mantieni il nome attuale, difficile da indovinare
+88a4ad91	Si ottiene in Discord: Impostazioni server → «Integrazioni» → «Webhook» → «Nuovo webhook» → «Copia URL webhook»
+cb5c4d63	Avvisa anche per gli «avvertimenti» (ventole ferme, problemi ai sensori ecc.)
+a000b788	Avvisa anche al ripristino
+a15f890e	Invia prova
+c114b738	Apri Illuminazione
+3f597f38	Apre la pagina dell'illuminazione LED (integrazione OpenRGB)
+c0c9a6ba	Illuminazione LED (integrazione OpenRGB)
+158ada0f	Le impostazioni LED sono state spostate in «Illuminazione» nel menu a sinistra. Connessione, effetti, sincronizzazione musicale e impostazioni per dispositivo sono lì.
+c1eb5397	Calcolo del costo dell'elettricità
+6da48835	Mostra l'energia consumata e un costo stimato dell'elettricità sul pannello e nella pagina del rapporto
+db0f8cfc	Prezzo dell'elettricità per kWh
+306750cc	yen (il prezzo unitario in bolletta; se non lo sai, lascia i 31 yen indicativi)
+1405c464	Consumo oltre a CPU e GPU
+665cef72	W (scheda madre, memoria, SSD, ventole, perdite dell'alimentatore ecc.; di solito 40–80 W)
+b4d79a66	CPU e GPU usano i valori dei loro sensori. Monitor e altoparlanti non sono inclusi. Non è misurato alla presa, quindi è solo una stima.
+69355ed4	Sicurezza
+619b1ea2	Usa il processo watchdog (consigliato)
+d1086ffa	Evita che le ventole restino a bassa velocità se l'app viene chiusa a forza o si blocca. Il Gestione attività mostra due ProFanController; uno dei due è il watchdog
+f739cc9b	Velocità in quel caso
+43c454af	Le pompe vanno sempre al 100%
+d063c0c0	Riavvia l'app automaticamente (fino a 3 volte in 10 minuti; poi viene mostrato un avviso)
+f2eae029	Ignora i valori anomali dei sensori
+2487009f	Evita la massima velocità per un valore che salta solo per un attimo (errori di lettura). Un sensore «bloccato» il cui valore non cambia nemmeno al variare del carico viene considerato guasto
+3616d69f	Controlla le parti sostituite all'avvio
+f47011bb	Se dopo aver sostituito una parte come la GPU i sensori cambiano, ti guida a passare ai nuovi sensori
+35eb3141	Velocità con sensore mancante
+90554019	Le curve il cui sensore non si trova più (parte rimossa o sostituita) girano a questa velocità (se il sensore c'è ma il valore è anomalo, al 100% per sicurezza)
+963fb48e	Registra automaticamente prima e dopo gli incidenti
+e424608f	In caso di massima velocità di emergenza, problemi alla pompa e simili, salva 10 minuti prima e dopo (visibile nella pagina del rapporto)
+f4e32f07	Consenti il controllo delle ventole della GPU (sperimentale)
+f73d1f9b	Le ventole della GPU compaiono in «Aggiungi connettore» nella pagina Curve. Durante il controllo si ferma il controllo del driver della GPU (modalità 0 RPM ecc.), quindi usale con una curva basata su una temperatura della GPU
+f04fb800	Leggi la temperatura della memoria
+5ac1bfd9	La temperatura della memoria viene letta sullo stesso bus (SMBus) dei LED della memoria. Se OpenRGB o un altro programma usa questo bus senza attendere il turno, possono verificarsi conflitti e la temperatura della memoria non si legge più. In tal caso disattivalo (le curve con la temperatura della memoria gireranno alla velocità di sensore mancante)
+8154441c	Backup e condivisione delle impostazioni
+894c08f0	Le impostazioni vengono salvate automaticamente a ogni modifica (al massimo una volta ogni 10 minuti, fino a 30 copie). Se config.json si danneggia, all'avvio viene ripristinato automaticamente. Esporta i profili in un file per caricarli su un altro PC (connettori e sensori vengono abbinati per nome)
+b187e750	Esporta impostazioni…
+7c186faa	Importa impostazioni…
+077e159d	Ripristina da backup ▾
+4222af0e	Esegui backup ora
+8d711ab6	Configurazione e file
+f8cfb37f	Apri la procedura guidata
+0cdb9795	Apri la cartella delle impostazioni
+e252e493	Apri la cartella dei log
+c7cbd09a	Driver per il controllo delle ventole (PawnIO)
+6234a43c	Disinstalla (pulizia)
+29c38de6	Da usare quando smetti di usare l'app. Dopo aver verificato che le ventole sono tornate sotto il controllo del BIOS, rimuove il controllo dell'illuminazione, l'avvio all'accesso, la regola del firewall e altro, poi si chiude. La schermata successiva mostra cosa farà prima di iniziare (puoi anche scegliere di eliminare impostazioni e registrazioni e di disinstallare PawnIO)
+b2abf4ee	Disinstalla (pulizia)…
+276c23be	Per cambiare la velocità delle ventole, l'app ha bisogno di PawnIO, un driver che legge e scrive il chip di controllo delle ventole della scheda madre (gratuito; usato anche da LibreHardwareMonitor e altri).\n«Installa PawnIO» installa il pacchetto ufficiale (namazso.PawnIO) con winget, incluso in Windows. Serve una connessione a Internet e richiede da qualche decina di secondi a qualche minuto. Al termine, riavvia l'app per usarlo.
+32818dc0	Installa PawnIO
+8d7b411c	Riavvia l'app
+a4de3937	Chiude l'app e la riavvia subito (in quei pochi secondi le ventole sono sotto il controllo del BIOS)
+7d0ab5b6	Apri il sito ufficiale (pawnio.eu)
+2b7f4cbf	Se winget non è disponibile, scarica il programma di installazione dal sito ufficiale ed eseguilo
+e6974b1a	Ricontrolla

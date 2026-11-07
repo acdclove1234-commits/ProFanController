@@ -409,3 +409,103 @@ b373eaee	Güncelleme aralığı
 14e1cbc6	Acil tam hız (CPU ve diğerleri)
 35593dc1	Bir eğride kullanılan herhangi bir sensör bu sıcaklığa ulaşınca tüm fanlar %100'e çıkar
 53ef686b	Acil tam hız (GPU Hot Spot)
+279d8c16	Hot Spot, GPU içindeki en sıcak noktadır ve Edge'den 10–20°C yüksek okunur
+9bcc9b8c	Radeon RX 7000 serisi, Hot Spot 110°C'de performansı kendiliğinden düşürür. Tam hız, eşiğin 5°C altına inince kaldırılır.
+1ac4b576	Bu uygulama hakkında
+81d90dca	+ Yeni profil
+4cdf9ede	Bir fan eğrisi takımını adla kaydedip aralarında geçiş yapın
+774923ad	Bu profilin rolü. Adını değiştirseniz de otomatik ayar (Sessiz hedef +5°C, Maksimum soğutma −5°C), yeni fanların eğrileri ve hızlı "Sessiz" işlemi bu role göre doğru çalışır
+82ac5e85	Bu profille kullanılacak Windows güç planı
+d663551d	Varsayılan olarak kullan
+80173301	Çoğalt
+1aafcfce	Çıkışta asıl güç planına dön
+935428de	Güç planı profil değişince otomatik değişir ("Değiştirme" olduğu gibi bırakır)
+02bd77a9	+ Kural ekle
+95dbf04d	Zamanlama
+c6ae093f	Profilleri günün saatine göre değiştirir (örn. her gün 23:00–7:00 Sessiz). Uygulamaya göre geçiş önceliklidir
+b30b1d5c	Her gün
+1b0c1825	Hafta içi
+c16e0695	Hafta sonu
+9b7e9425	Başlangıç saati (örn. 23:00)
+1925ac9b	–
+a297edb9	Bitiş saati (örn. 7:00). Başlangıçtan önceyse ertesi gündür
+8d3afa5f	Otomatik profil geçişi
+a6a78db0	Seçilen uygulama çalıştığı sürece profili otomatik değiştirir. Listede üstteki kurallar önceliklidir. Uygulama kapanınca varsayılan profile dönülür.
+235c5be1	İşlem adı (örn. eldenring). .exe ile veya olmadan
+92b89c34	Çalışan uygulamalardan seç ▾
+850bfcd1	Hızlı işlemler
+b7230497	Panodan, sistem tepsisinden, mini pencere öğesinden veya telefondan geçici olarak güçlendirme (tam hız) veya sessiz moda geçin
+37cd5718	Kısayol tuşlarını kullan (oyunda da çalışır)
+18d0cc13	Ctrl+Alt+B: 5 dk güçlendir / Ctrl+Alt+Q: 1 sa sessiz / Ctrl+Alt+N: iptal
+7ae7ed01	"Sessiz" için kullanılan profil
+77a57db6	Telefondan izle
+fe9fdb92	Telefon tarayıcısından görüntülemeye izin ver
+49d300c9	Aynı Wi-Fi'deki bir telefon sıcaklıkları ve devirleri görebilir ve profil değiştirebilir. Windows Güvenlik Duvarı'na yalnızca özel ağlar (ev gibi) için izin kuralı ekler
+6ac0a5cf	Bağlantı noktası
+cf308cb2	Erişim anahtarını yeniden oluştur
+389a7b03	Eski URL artık açılmaz
+ac3a6f94	QR kodu telefon kamerasıyla okutun veya bu URL'yi açın
+12e17da1	URL erişim anahtarını içerir. Başkalarıyla paylaşmayın
+967f26f5	Telefona bildirim
+9fcdd35a	Acil tam hız, pompa sorunu, duran fan ve benzerlerini telefona bildir
+1fe03718	Dışarıdayken veya oyundayken bile fark edersiniz. Aynı bildirim 10 dakika içinde tekrar gönderilmez
+5bd9ee6f	ntfy (yalnızca uygulamayı kurun; önerilen)
+a643ae88	1. Telefona "ntfy" uygulamasını kurun (App Store / Google Play, ücretsiz, kayıt gerekmez)\n2. Uygulamada "+"ya dokunun ve aşağıdaki konu adına abone olun (veya soldaki QR kodu okutun)
+6ced87ba	Konu adı
+19b272e4	Yeniden oluştur
+084d7180	Sunucu
+172228d8	Konu adını bilen herkes bildirimleri okuyabilir. Tahmini zor olan mevcut adı kullanmaya devam edin
+88a4ad91	Discord'da şuradan alınır: Sunucu Ayarları → "Entegrasyonlar" → "Webhook'lar" → "Yeni Webhook" → "Webhook URL'sini kopyala"
+cb5c4d63	"Uyarıları" da bildir (duran fan, sensör sorunu vb.)
+a000b788	Düzelince de bildir
+a15f890e	Test gönder
+c114b738	Aydınlatmayı aç
+3f597f38	LED aydınlatma (OpenRGB entegrasyonu) sayfasını açar
+c0c9a6ba	LED aydınlatma (OpenRGB entegrasyonu)
+158ada0f	LED ayarları soldaki menüde "Aydınlatma"ya taşındı. Bağlantı, efektler, müzik senkronu ve cihaz ayarları orada.
+c1eb5397	Elektrik maliyeti hesabı
+6da48835	Pano ve rapor sayfasında harcanan enerjiyi ve tahmini elektrik maliyetini gösterir
+db0f8cfc	kWh başına elektrik fiyatı
+306750cc	yen (faturanızdaki birim fiyat; bilmiyorsanız tahmini 31 yen olarak bırakın)
+1405c464	CPU ve GPU dışındaki güç tüketimi
+665cef72	W (anakart, bellek, SSD, fanlar, PSU kayıpları vb.; genelde 40–80 W)
+b4d79a66	CPU ve GPU sensör değerlerini kullanır. Monitörler ve hoparlörler dahil değildir. Prizden ölçülmediği için yalnızca bir tahmindir.
+69355ed4	Güvenlik
+619b1ea2	Gözetleyici işlemi kullan (önerilen)
+d1086ffa	Uygulama zorla kapatıldığında veya donduğunda fanların düşük devirde takılı kalmasını önler. Görev Yöneticisi'nde iki ProFanController görünür; biri gözetleyicidir
+f739cc9b	O durumdaki devir
+43c454af	Pompalar her zaman %100'e çıkar
+d063c0c0	Uygulamayı otomatik yeniden başlat (10 dakikada en fazla 3 kez; sonra bir mesaj gösterilir)
+f2eae029	Anormal sensör değerlerini yok say
+2487009f	Anlık sıçrayan bir değer (okuma hatası) yüzünden tam hıza çıkmayı önler. Yük değişse bile değeri hareket etmeyen "donmuş" sensör arızalı sayılır
+3616d69f	Başlangıçta değişen parçaları kontrol et
+f47011bb	GPU gibi bir parça değiştirilip sensörleri değişince yeni sensörlere geçişte yol gösterir
+35eb3141	Sensör yokken devir
+90554019	Sensörü hiç bulunamayan eğriler (parça çıkarıldı veya değiştirildi) bu devirde döner (sensör var ama değeri anormalse güvenlik için %100)
+963fb48e	Olaylardan önceki ve sonraki durumu otomatik kaydet
+e424608f	Acil tam hız, pompa sorunu gibi durumlarda öncesi ve sonrasındaki 10 dakikayı kaydeder (rapor sayfasında görülebilir)
+f4e32f07	GPU fanlarının kontrolüne izin ver (deneysel)
+f73d1f9b	GPU fanları Fan eğrileri sayfasındaki "Konnektör ekle"de görünür. Kontrol sırasında GPU sürücüsünün kendi kontrolü (0 RPM modu vb.) durur, bu yüzden GPU sıcaklığına dayalı bir eğriyle kullanın
+f04fb800	Bellek sıcaklığını oku
+5ac1bfd9	Bellek sıcaklığı, bellek LED'leriyle aynı veri yolundan (SMBus) okunur. OpenRGB veya başka bir program bu yolu sırasını beklemeden kullanırsa çakışma olabilir ve bellek sıcaklığı okunamaz hâle gelebilir. Bu durumda kapatın (bellek sıcaklığını kullanan eğriler sensör yokken devirde döner)
+8154441c	Ayarların yedeklenmesi ve paylaşılması
+894c08f0	Ayarlar her değişiklikte otomatik yedeklenir (en fazla 10 dakikada bir, en çok 30 kopya). config.json bozulursa başlangıçta otomatik geri yüklenir. Profilleri bir dosyaya aktararak başka bir bilgisayarda yükleyebilirsiniz (konnektörler ve sensörler adlarına göre eşlenir)
+b187e750	Ayarları dışa aktar…
+7c186faa	Ayarları içe aktar…
+077e159d	Yedekten geri yükle ▾
+4222af0e	Şimdi yedekle
+8d711ab6	Kurulum ve dosyalar
+f8cfb37f	Kurulum sihirbazını aç
+0cdb9795	Ayar klasörünü aç
+e252e493	Günlük klasörünü aç
+c7cbd09a	Fan kontrol sürücüsü (PawnIO)
+6234a43c	Kaldır (temizlik)
+29c38de6	Uygulamayı kullanmayı bıraktığınızda kullanın. Fanların BIOS kontrolüne döndüğünü doğruladıktan sonra aydınlatma kontrolünü, oturum açılışında başlatmayı, güvenlik duvarı iznini vb. kaldırır ve kapanır. Başlamadan önce yapılacakları bir sonraki ekranda görebilirsiniz (ayarları ve kayıtları silmeyi, PawnIO'yu da kaldırmayı seçebilirsiniz)
+b2abf4ee	Kaldır (temizlik)…
+276c23be	Fan devirlerini değiştirmek için uygulama, anakartın fan kontrol çipini okuyup yazan PawnIO sürücüsüne ihtiyaç duyar (ücretsizdir; LibreHardwareMonitor ve diğerleri de kullanır).\n"PawnIO'yu kur", Windows ile gelen winget ile resmi paketi (namazso.PawnIO) kurar. İnternet bağlantısı gerekir ve onlarca saniye ile birkaç dakika sürer. Bitince kullanmak için uygulamayı yeniden başlatın.
+32818dc0	PawnIO'yu kur
+8d7b411c	Uygulamayı yeniden başlat
+a4de3937	Uygulamayı kapatıp hemen yeniden başlatır (bu birkaç saniye boyunca fanlar BIOS kontrolündedir)
+7d0ab5b6	Resmi siteyi aç (pawnio.eu)
+2b7f4cbf	winget kullanılamıyorsa yükleyiciyi resmi siteden indirip çalıştırın
+e6974b1a	Tekrar kontrol et

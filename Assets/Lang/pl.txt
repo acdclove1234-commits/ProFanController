@@ -409,3 +409,103 @@ b373eaee	Interwał odświeżania
 14e1cbc6	Awaryjna pełna prędkość (CPU i inne)
 35593dc1	Gdy dowolny czujnik użyty w krzywej osiągnie tę temperaturę, wszystkie wentylatory przechodzą na 100%
 53ef686b	Awaryjna pełna prędkość (Hot Spot GPU)
+279d8c16	Hot Spot to najgorętszy punkt wewnątrz GPU; pokazuje o 10–20°C więcej niż Edge
+9bcc9b8c	Karty Radeon RX 7000 same obniżają wydajność przy Hot Spot 110°C. Pełna prędkość jest zdejmowana, gdy temperatura spadnie 5°C poniżej progu.
+1ac4b576	O aplikacji
+81d90dca	+ Nowy profil
+4cdf9ede	Zapisz zestaw krzywych wentylatorów pod nazwą i przełączaj się między nimi
+774923ad	Rola tego profilu. Nawet po zmianie nazwy automatyczne strojenie (Cichy: cel +5°C, Maks. chłodzenie: −5°C), krzywe nowych wentylatorów i szybka akcja „Cicho” działają poprawnie dzięki tej roli
+82ac5e85	Plan zasilania Windows dla tego profilu
+d663551d	Używaj domyślnie
+80173301	Duplikuj
+1aafcfce	Przywracaj pierwotny plan zasilania przy wyjściu
+935428de	Plan zasilania zmienia się automatycznie wraz z profilem („Nie zmieniaj” zostawia go bez zmian)
+02bd77a9	+ Dodaj regułę
+95dbf04d	Harmonogram
+c6ae093f	Przełącza profile według pory dnia (np. Cichy codziennie 23:00–7:00). Przełączanie według aplikacji ma pierwszeństwo
+b30b1d5c	Codziennie
+1b0c1825	Dni robocze
+c16e0695	Weekendy
+9b7e9425	Godzina rozpoczęcia (np. 23:00)
+1925ac9b	–
+a297edb9	Godzina zakończenia (np. 7:00). Jeśli wcześniej niż start, to następnego dnia
+8d3afa5f	Automatyczne przełączanie profili
+a6a78db0	Automatycznie przełącza profil, gdy działa wybrana aplikacja. Reguły wyżej na liście mają pierwszeństwo. Po zamknięciu aplikacji wraca profil domyślny.
+235c5be1	Nazwa procesu (np. eldenring). Z .exe lub bez
+92b89c34	Wybierz z uruchomionych aplikacji ▾
+850bfcd1	Szybkie akcje
+b7230497	Tymczasowo włącz boost (pełną prędkość) lub ciszę z pulpitu, zasobnika, miniwidżetu lub telefonu
+37cd5718	Używaj skrótów klawiszowych (działają też w grach)
+18d0cc13	Ctrl+Alt+B: boost 5 min / Ctrl+Alt+Q: cicho 1 h / Ctrl+Alt+N: anuluj
+7ae7ed01	Profil dla „Cicho”
+77a57db6	Podgląd z telefonu
+fe9fdb92	Zezwalaj na podgląd w przeglądarce telefonu
+49d300c9	Telefon w tej samej sieci Wi-Fi może sprawdzać temperatury i obroty oraz przełączać profile. Dodaje regułę Zapory Windows tylko dla sieci prywatnych (np. domowej)
+6ac0a5cf	Port
+cf308cb2	Wygeneruj nowy klucz dostępu
+389a7b03	Stary adres URL przestanie działać
+ac3a6f94	Zeskanuj kod QR aparatem telefonu lub otwórz ten adres URL
+12e17da1	Adres URL zawiera klucz dostępu. Nie udostępniaj go innym
+967f26f5	Powiadomienia na telefon
+9fcdd35a	Powiadamiaj telefon o awaryjnej pełnej prędkości, problemach z pompą, zatrzymanych wentylatorach i innych
+1fe03718	Żebyś zauważył nawet poza domem lub w grze. To samo powiadomienie nie jest ponawiane przez 10 minut
+5bd9ee6f	ntfy (wystarczy zainstalować aplikację; zalecane)
+a643ae88	1. Zainstaluj na telefonie aplikację „ntfy” (App Store / Google Play, za darmo, bez rejestracji)\n2. W aplikacji dotknij „+” i zasubskrybuj poniższą nazwę tematu (albo zeskanuj kod QR po lewej)
+6ced87ba	Nazwa tematu
+19b272e4	Wygeneruj nową
+084d7180	Serwer
+172228d8	Każdy, kto zna nazwę tematu, może czytać powiadomienia. Zostaw obecną, trudną do odgadnięcia nazwę
+88a4ad91	Uzyskasz go w Discordzie: Ustawienia serwera → „Integracje” → „Webhooki” → „Nowy webhook” → „Kopiuj adres URL webhooka”
+cb5c4d63	Powiadamiaj także o „ostrzeżeniach” (zatrzymany wentylator, problem z czujnikiem itp.)
+a000b788	Powiadamiaj także o powrocie do normy
+a15f890e	Wyślij test
+c114b738	Otwórz Podświetlenie
+3f597f38	Otwiera stronę podświetlenia LED (integracja z OpenRGB)
+c0c9a6ba	Podświetlenie LED (integracja z OpenRGB)
+158ada0f	Ustawienia LED przeniesiono do „Podświetlenie” w menu po lewej. Połączenie, efekty, synchronizacja z muzyką i ustawienia urządzeń są w jednym miejscu.
+c1eb5397	Obliczanie kosztu energii
+6da48835	Pokazuje zużytą energię i szacunkowy koszt prądu na pulpicie i stronie raportu
+db0f8cfc	Cena prądu za kWh
+306750cc	jenów (cena jednostkowa z rachunku; jeśli nie wiesz, zostaw orientacyjne 31 jenów)
+1405c464	Pobór mocy poza CPU i GPU
+665cef72	W (płyta główna, pamięć, SSD, wentylatory, straty zasilacza itp.; zwykle 40–80 W)
+b4d79a66	Dla CPU i GPU używane są odczyty czujników. Monitory i głośniki nie są uwzględnione. To nie pomiar z gniazdka, tylko szacunek.
+69355ed4	Bezpieczeństwo
+619b1ea2	Używaj procesu nadzorczego (zalecane)
+d1086ffa	Zapobiega pozostaniu wentylatorów na niskich obrotach, gdy aplikacja zostanie zabita lub się zawiesi. Menedżer zadań pokazuje dwa ProFanController — jeden z nich to proces nadzorczy
+f739cc9b	Obroty w takim przypadku
+43c454af	Pompy zawsze na 100%
+d063c0c0	Automatycznie uruchamiaj aplikację ponownie (do 3 razy w 10 minut, potem wyświetla komunikat)
+f2eae029	Ignoruj nieprawidłowe wartości czujników
+2487009f	Zapobiega pełnej prędkości z powodu wartości, która skacze tylko na chwilę (błąd odczytu). „Zamrożony” czujnik, którego wartość nie zmienia się mimo zmian obciążenia, jest uznawany za uszkodzony
+3616d69f	Sprawdzaj wymienione części przy starcie
+f47011bb	Gdy po wymianie części, np. GPU, czujniki się zmienią, prowadzi przez przypisanie nowych czujników
+35eb3141	Obroty przy braku czujnika
+90554019	Krzywe, których czujnika w ogóle nie znaleziono (część wyjęta lub wymieniona), pracują z tymi obrotami (jeśli czujnik istnieje, ale wartość jest nieprawidłowa, ze względów bezpieczeństwa 100%)
+963fb48e	Automatycznie zapisuj przed i po zdarzeniach
+e424608f	Przy awaryjnej pełnej prędkości, problemach z pompą itp. zapisuje 10 minut przed i po (do podglądu na stronie raportu)
+f4e32f07	Zezwól na sterowanie wentylatorami GPU (eksperymentalne)
+f73d1f9b	Wentylatory GPU pojawią się w „Dodaj złącze” na stronie krzywych. Podczas sterowania własne sterowanie sterownika GPU (tryb 0 RPM itp.) jest wyłączone, więc używaj ich z krzywą opartą na temperaturze GPU
+f04fb800	Odczytuj temperaturę pamięci
+5ac1bfd9	Temperatura pamięci jest odczytywana tą samą magistralą (SMBus) co podświetlenie pamięci. Jeśli OpenRGB lub inny program używa tej magistrali bez czekania na kolejkę, mogą wystąpić kolizje i temperatura pamięci przestanie być odczytywana. Wtedy to wyłącz (krzywe z temperaturą pamięci będą pracować z obrotami przy braku czujnika)
+8154441c	Kopia zapasowa i udostępnianie ustawień
+894c08f0	Ustawienia są automatycznie kopiowane przy każdej zmianie (najwyżej raz na 10 minut, do 30 kopii). Jeśli config.json się uszkodzi, przy starcie zostanie automatycznie przywrócony. Wyeksportuj profile do pliku, aby wczytać je na innym komputerze (złącza i czujniki są dopasowywane po nazwie)
+b187e750	Eksportuj ustawienia…
+7c186faa	Importuj ustawienia…
+077e159d	Przywróć z kopii ▾
+4222af0e	Utwórz kopię teraz
+8d711ab6	Konfiguracja i pliki
+f8cfb37f	Otwórz kreator konfiguracji
+0cdb9795	Otwórz folder ustawień
+e252e493	Otwórz folder dzienników
+c7cbd09a	Sterownik do sterowania wentylatorami (PawnIO)
+6234a43c	Odinstaluj (porządki)
+29c38de6	Użyj, gdy przestajesz korzystać z aplikacji. Po potwierdzeniu, że wentylatory wróciły pod sterowanie BIOS, usuwa sterowanie podświetleniem, autostart przy logowaniu, regułę zapory itd., a potem się zamyka. Na następnym ekranie zobaczysz, co zostanie zrobione, zanim się zacznie (możesz też wybrać usunięcie ustawień i zapisów oraz odinstalowanie PawnIO)
+b2abf4ee	Odinstaluj (porządki)…
+276c23be	Aby zmieniać obroty wentylatorów, aplikacja potrzebuje PawnIO — sterownika, który odczytuje i zapisuje układ sterowania wentylatorami płyty głównej (darmowy; używany też przez LibreHardwareMonitor i inne).\n„Zainstaluj PawnIO” instaluje oficjalny pakiet (namazso.PawnIO) za pomocą wbudowanego w Windows narzędzia winget. Potrzebne jest połączenie z internetem; trwa to od kilkudziesięciu sekund do kilku minut. Po zakończeniu uruchom aplikację ponownie.
+32818dc0	Zainstaluj PawnIO
+8d7b411c	Uruchom aplikację ponownie
+a4de3937	Zamyka aplikację i od razu uruchamia ją ponownie (przez te kilka sekund wentylatory są pod sterowaniem BIOS)
+7d0ab5b6	Otwórz oficjalną stronę (pawnio.eu)
+2b7f4cbf	Jeśli winget jest niedostępny, pobierz instalator z oficjalnej strony i uruchom go
+e6974b1a	Sprawdź ponownie

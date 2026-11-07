@@ -409,3 +409,103 @@ b373eaee	Bijwerkinterval
 14e1cbc6	Noodvolle snelheid (CPU en overige)
 35593dc1	Als een sensor die in een curve wordt gebruikt deze temperatuur bereikt, gaan alle ventilatoren naar 100%
 53ef686b	Noodvolle snelheid (GPU-hotspot)
+279d8c16	De hotspot is het heetste punt in de GPU en ligt 10–20 °C hoger dan de edge-waarde
+9bcc9b8c	Radeon RX 7000-kaarten knijpen zichzelf af bij 110 °C hotspot. Volle snelheid wordt opgeheven zodra het 5 °C onder de drempel is.
+1ac4b576	Over deze app
+81d90dca	+ Nieuw profiel
+4cdf9ede	Sla een set ventilatorcurves onder een naam op en wissel ertussen
+774923ad	De rol van dit profiel. Ook als je het hernoemt, werken automatisch afstemmen (Stil richt op +5 °C, Maximale koeling op −5 °C), de curves voor nieuwe ventilatoren en de snelactie "Stil" goed via deze rol
+82ac5e85	Windows-energiebeheerschema voor dit profiel
+d663551d	Standaard gebruiken
+80173301	Dupliceren
+1aafcfce	Oorspronkelijk energiebeheerschema herstellen bij afsluiten
+935428de	Het energiebeheerschema wisselt automatisch mee met het profiel ("Niet wijzigen" laat het zoals het is)
+02bd77a9	+ Regel toevoegen
+95dbf04d	Planning
+c6ae093f	Wisselt profielen op tijd van de dag (bijv. elke dag 23:00–7:00 Stil). Wisselen op basis van apps gaat voor
+b30b1d5c	Elke dag
+1b0c1825	Werkdagen
+c16e0695	Weekend
+9b7e9425	Begintijd (bijv. 23:00)
+1925ac9b	tot
+a297edb9	Eindtijd (bijv. 7:00). Ligt die vóór de begintijd, dan is het de volgende dag
+8d3afa5f	Automatisch profiel wisselen
+a6a78db0	Wisselt het profiel automatisch zolang een gekozen app draait. Regels hoger in de lijst gaan voor. Sluit de app af, dan wordt het standaardprofiel weer gebruikt.
+235c5be1	Procesnaam (bijv. eldenring). Met of zonder .exe
+92b89c34	Kiezen uit actieve apps ▾
+850bfcd1	Snelacties
+b7230497	Zet tijdelijk boost (volle snelheid) of stil aan via het dashboard, het systeemvak, de miniwidget of je telefoon
+37cd5718	Sneltoetsen gebruiken (werken ook in games)
+18d0cc13	Ctrl+Alt+B: 5 min boost / Ctrl+Alt+Q: 1 u stil / Ctrl+Alt+N: opheffen
+7ae7ed01	Profiel voor "Stil"
+77a57db6	Bewaken vanaf je telefoon
+fe9fdb92	Weergave in telefoonbrowser toestaan
+49d300c9	Een telefoon op hetzelfde wifi-netwerk kan temperaturen en toerentallen bekijken en profielen wisselen. Voegt een Windows Firewall-regel toe alleen voor privénetwerken (zoals thuis)
+6ac0a5cf	Poort
+cf308cb2	Toegangssleutel opnieuw maken
+389a7b03	De oude URL werkt dan niet meer
+ac3a6f94	Scan de QR-code met de camera van je telefoon of open deze URL
+12e17da1	De URL bevat de toegangssleutel. Deel hem niet met anderen
+967f26f5	Meldingen op de telefoon
+9fcdd35a	Meld noodvolle snelheid, pompproblemen, stilstaande ventilatoren en meer op mijn telefoon
+1fe03718	Zodat je het merkt, ook onderweg of tijdens het gamen. Dezelfde melding wordt 10 minuten niet opnieuw verstuurd
+5bd9ee6f	ntfy (alleen de app installeren; aanbevolen)
+a643ae88	1. Installeer de app "ntfy" op je telefoon (App Store / Google Play, gratis, zonder registratie)\n2. Tik in de app op "+" en abonneer je op de onderwerpnaam hieronder (of scan de QR-code links)
+6ced87ba	Onderwerpnaam
+19b272e4	Opnieuw maken
+084d7180	Server
+172228d8	Iedereen die de onderwerpnaam kent, kan de meldingen lezen. Houd de huidige, moeilijk te raden naam
+88a4ad91	Te vinden in Discord: Serverinstellingen → "Integraties" → "Webhooks" → "Nieuwe webhook" → "Webhook-URL kopiëren"
+cb5c4d63	Ook "waarschuwingen" melden (stilstaande ventilatoren, sensorproblemen enz.)
+a000b788	Ook melden bij herstel
+a15f890e	Test versturen
+c114b738	Verlichting openen
+3f597f38	Opent de pagina voor ledverlichting (OpenRGB-koppeling)
+c0c9a6ba	Ledverlichting (OpenRGB-koppeling)
+158ada0f	De ledinstellingen zijn verhuisd naar "Verlichting" in het menu links. Verbinding, effecten, muzieksynchronisatie en instellingen per apparaat vind je daar.
+c1eb5397	Berekening stroomkosten
+6da48835	Toont het energieverbruik en geschatte stroomkosten op het dashboard en de rapportpagina
+db0f8cfc	Stroomprijs per kWh
+306750cc	yen (de prijs per eenheid op je rekening; weet je het niet, laat dan de richtwaarde van 31 yen staan)
+1405c464	Verbruik naast CPU en GPU
+665cef72	W (moederbord, geheugen, SSD, ventilatoren, voedingsverliezen enz.; meestal 40–80 W)
+b4d79a66	CPU en GPU gebruiken hun sensorwaarden. Monitoren en luidsprekers tellen niet mee. Dit is niet aan het stopcontact gemeten, dus alleen een schatting.
+69355ed4	Veiligheid
+619b1ea2	Watchdog-proces gebruiken (aanbevolen)
+d1086ffa	Voorkomt dat de ventilatoren op een laag toerental blijven hangen als de app wordt afgesloten of vastloopt. Taakbeheer toont twee ProFanController-processen; één daarvan is de watchdog
+f739cc9b	Toerental in dat geval
+43c454af	Pompen altijd op 100%
+d063c0c0	App automatisch herstarten (maximaal 3 keer in 10 minuten, daarna verschijnt een melding)
+f2eae029	Afwijkende sensorwaarden negeren
+2487009f	Voorkomt volle snelheid door een waarde die maar heel even uitschiet (leesfout). Een "bevroren" sensor waarvan de waarde niet beweegt als de belasting verandert, wordt als defect behandeld
+3616d69f	Bij het opstarten controleren op vervangen onderdelen
+f47011bb	Als na het vervangen van bijvoorbeeld de GPU de sensoren veranderen, helpt de app ze aan de nieuwe sensoren te koppelen
+35eb3141	Toerental bij ontbrekende sensor
+90554019	Curves waarvan de sensor helemaal niet meer gevonden wordt (onderdeel verwijderd of vervangen), draaien op dit toerental (is de sensor er wel maar is de waarde afwijkend, dan voor de veiligheid 100%)
+963fb48e	Automatisch vastleggen voor en na incidenten
+e424608f	Bij noodvolle snelheid, pompproblemen en dergelijke worden 10 minuten ervoor en erna opgeslagen (te bekijken op de rapportpagina)
+f4e32f07	Regeling van GPU-ventilatoren toestaan (experimenteel)
+f73d1f9b	GPU-ventilatoren verschijnen onder "Aansluiting toevoegen" op de pagina Ventilatorcurves. Tijdens het regelen stopt de eigen regeling van het GPU-stuurprogramma (0 RPM-modus enz.), dus gebruik ze met een curve op basis van een GPU-temperatuur
+f04fb800	Geheugentemperatuur lezen
+5ac1bfd9	Geheugentemperaturen worden via dezelfde bus (SMBus) gelezen als de geheugenleds. Als OpenRGB of een ander programma deze bus gebruikt zonder op zijn beurt te wachten, kunnen ze botsen en kunnen geheugentemperaturen onleesbaar worden. Zet dit dan uit (curves met geheugentemperatuur draaien dan op het toerental voor een ontbrekende sensor)
+8154441c	Back-up & delen van instellingen
+894c08f0	Instellingen worden bij elke wijziging automatisch geback-upt (hooguit eens per 10 minuten, tot 30 kopieën). Raakt config.json beschadigd, dan wordt hij bij het opstarten automatisch hersteld. Exporteer profielen naar een bestand om ze op een andere pc te laden (aansluitingen en sensoren worden op naam gekoppeld)
+b187e750	Instellingen exporteren…
+7c186faa	Instellingen importeren…
+077e159d	Terugzetten uit back-up ▾
+4222af0e	Nu back-up maken
+8d711ab6	Installatie & bestanden
+f8cfb37f	Installatiewizard openen
+0cdb9795	Instellingenmap openen
+e252e493	Logmap openen
+c7cbd09a	Stuurprogramma voor ventilatorregeling (PawnIO)
+6234a43c	Verwijderen (opruimen)
+29c38de6	Gebruik dit als je stopt met de app. Nadat bevestigd is dat de ventilatoren weer onder BIOS-regeling staan, worden de lichtregeling, het opstarten bij aanmelden, de firewallregel en meer verwijderd en sluit de app af. Het volgende scherm laat zien wat er gebeurt voordat het begint (je kunt ook kiezen om instellingen en metingen te wissen en PawnIO te verwijderen)
+b2abf4ee	Verwijderen (opruimen)…
+276c23be	Om ventilatortoerentallen te wijzigen heeft de app PawnIO nodig, een stuurprogramma dat de ventilatorregelchip van het moederbord leest en beschrijft (gratis; ook gebruikt door LibreHardwareMonitor en anderen).\n"PawnIO installeren" installeert het officiële pakket (namazso.PawnIO) met winget, dat bij Windows zit. Er is een internetverbinding nodig; het duurt tientallen seconden tot enkele minuten. Herstart daarna de app om het te gebruiken.
+32818dc0	PawnIO installeren
+8d7b411c	App herstarten
+a4de3937	Sluit de app af en start hem meteen opnieuw (gedurende die paar seconden staan de ventilatoren onder BIOS-regeling)
+7d0ab5b6	Officiële site openen (pawnio.eu)
+2b7f4cbf	Als winget niet beschikbaar is, haal dan het installatieprogramma van de officiële site en voer het uit
+e6974b1a	Opnieuw controleren

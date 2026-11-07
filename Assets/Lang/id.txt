@@ -409,3 +409,103 @@ b373eaee	Interval pembaruan
 14e1cbc6	Kecepatan penuh darurat (CPU dan lainnya)
 35593dc1	Jika sensor apa pun yang dipakai di kurva mencapai suhu ini, semua kipas menjadi 100%
 53ef686b	Kecepatan penuh darurat (GPU Hot Spot)
+279d8c16	Hot Spot adalah titik terpanas di dalam GPU dan terbaca 10–20°C lebih tinggi dari Edge
+9bcc9b8c	Seri Radeon RX 7000 otomatis menurunkan performa saat Hot Spot 110°C. Kecepatan penuh dilepas setelah turun 5°C di bawah ambang.
+1ac4b576	Tentang aplikasi ini
+81d90dca	+ Profil baru
+4cdf9ede	Simpan sekumpulan kurva kipas dengan nama dan beralih di antaranya
+774923ad	Peran profil ini. Meski namanya diganti, penyetelan otomatis (Senyap target +5°C, Pendinginan maksimum −5°C), kurva kipas baru, dan aksi cepat "Senyap" tetap bekerja benar lewat peran ini
+82ac5e85	Rencana daya Windows untuk profil ini
+d663551d	Pakai sehari-hari
+80173301	Duplikat
+1aafcfce	Kembalikan rencana daya semula saat keluar
+935428de	Rencana daya berubah otomatis saat profil berganti ("Jangan ubah" membiarkannya)
+02bd77a9	+ Tambah aturan
+95dbf04d	Jadwal
+c6ae093f	Mengganti profil menurut waktu (mis. Senyap setiap hari 23:00–7:00). Peralihan berdasarkan aplikasi lebih diutamakan
+b30b1d5c	Setiap hari
+1b0c1825	Hari kerja
+c16e0695	Akhir pekan
+9b7e9425	Waktu mulai (mis. 23:00)
+1925ac9b	–
+a297edb9	Waktu selesai (mis. 7:00). Jika lebih awal dari waktu mulai, berarti hari berikutnya
+8d3afa5f	Peralihan profil otomatis
+a6a78db0	Mengganti profil otomatis selama aplikasi yang dipilih berjalan. Aturan yang lebih atas lebih diutamakan. Saat aplikasi ditutup, profil "Pakai sehari-hari" dipakai lagi.
+235c5be1	Nama proses (mis. eldenring). Boleh dengan atau tanpa .exe
+92b89c34	Pilih dari aplikasi yang berjalan ▾
+850bfcd1	Aksi cepat
+b7230497	Boost (kecepatan penuh) atau senyap sementara dari dasbor, baki sistem, widget mini, atau ponsel
+37cd5718	Gunakan tombol pintas (berfungsi juga saat bermain gim)
+18d0cc13	Ctrl+Alt+B: boost 5 mnt / Ctrl+Alt+Q: senyap 1 jam / Ctrl+Alt+N: batal
+7ae7ed01	Profil untuk "Senyap"
+77a57db6	Pantau dari ponsel
+fe9fdb92	Izinkan dilihat dari browser ponsel
+49d300c9	Ponsel di Wi-Fi yang sama bisa melihat suhu dan putaran serta mengganti profil. Menambahkan aturan izin di Windows Firewall hanya untuk jaringan pribadi (seperti di rumah)
+6ac0a5cf	Port
+cf308cb2	Buat ulang kunci akses
+389a7b03	URL lama tidak akan bisa dibuka lagi
+ac3a6f94	Pindai kode QR dengan kamera ponsel atau buka URL berikut
+12e17da1	URL berisi kunci akses. Jangan bagikan ke orang lain
+967f26f5	Notifikasi ke ponsel
+9fcdd35a	Beri tahu ponsel saat kecepatan penuh darurat, masalah pompa, kipas berhenti, dan lainnya
+1fe03718	Agar tetap tahu meski sedang di luar atau bermain gim. Notifikasi yang sama tidak dikirim ulang selama 10 menit
+5bd9ee6f	ntfy (cukup pasang aplikasinya; disarankan)
+a643ae88	1. Pasang aplikasi "ntfy" di ponsel (App Store / Google Play, gratis, tanpa daftar)\n2. Di aplikasi, ketuk "+" lalu langganan nama topik di bawah (atau pindai kode QR di kiri)
+6ced87ba	Nama topik
+19b272e4	Buat ulang
+084d7180	Server
+172228d8	Siapa pun yang tahu nama topik bisa membaca notifikasi. Tetap pakai nama sekarang yang sulit ditebak
+88a4ad91	Dapatkan di Discord: Pengaturan Server → "Integrasi" → "Webhook" → "Webhook Baru" → "Salin URL Webhook"
+cb5c4d63	Beri tahu juga "peringatan" (kipas berhenti, masalah sensor, dll.)
+a000b788	Beri tahu juga saat pulih
+a15f890e	Kirim uji
+c114b738	Buka Pencahayaan
+3f597f38	Membuka halaman pencahayaan LED (integrasi OpenRGB)
+c0c9a6ba	Pencahayaan LED (integrasi OpenRGB)
+158ada0f	Pengaturan LED dipindahkan ke "Pencahayaan" di menu kiri. Koneksi, efek, sinkron musik, dan pengaturan per perangkat ada di sana.
+c1eb5397	Perhitungan biaya listrik
+6da48835	Menampilkan energi terpakai dan perkiraan biaya listrik di dasbor dan halaman laporan
+db0f8cfc	Harga listrik per kWh
+306750cc	yen (harga satuan di tagihan; jika tidak tahu, biarkan perkiraan 31 yen)
+1405c464	Konsumsi daya selain CPU dan GPU
+665cef72	W (motherboard, memori, SSD, kipas, rugi daya PSU, dll.; umumnya 40–80 W)
+b4d79a66	CPU dan GPU memakai nilai sensornya. Monitor dan speaker tidak termasuk. Ini bukan hasil ukur di stopkontak, jadi hanya perkiraan.
+69355ed4	Keamanan
+619b1ea2	Gunakan proses pengawas (disarankan)
+d1086ffa	Mencegah kipas tertahan di putaran rendah jika aplikasi dihentikan paksa atau macet. Task Manager menampilkan dua ProFanController; salah satunya pengawas
+f739cc9b	Putaran pada saat itu
+43c454af	Pompa selalu 100%
+d063c0c0	Mulai ulang aplikasi otomatis (maks. 3 kali dalam 10 menit; lebih dari itu ditampilkan pemberitahuan)
+f2eae029	Abaikan nilai sensor yang tidak wajar
+2487009f	Mencegah kecepatan penuh karena nilai yang melonjak sesaat (galat pembacaan). Sensor yang "membeku" dan nilainya tidak bergerak saat beban berubah dianggap rusak
+3616d69f	Periksa penggantian komponen saat mulai
+f47011bb	Saat komponen seperti GPU diganti dan sensornya berubah, memandu penggantian ke sensor baru
+35eb3141	Putaran saat sensor hilang
+90554019	Kurva yang sensornya sama sekali tidak ditemukan (komponen dilepas atau diganti) berputar pada putaran ini (jika sensor ada tetapi nilainya tidak wajar, 100% demi keamanan)
+963fb48e	Rekam otomatis sebelum dan sesudah insiden
+e424608f	Saat kecepatan penuh darurat, masalah pompa, dan sejenisnya, menyimpan 10 menit sebelum dan sesudahnya (bisa dilihat di halaman laporan)
+f4e32f07	Izinkan kendali kipas GPU (eksperimental)
+f73d1f9b	Kipas GPU muncul di "Tambah konektor" pada halaman Kurva kipas. Selama dikendalikan, kendali otomatis driver GPU (mode 0 RPM, dll.) berhenti, jadi gunakan dengan kurva berbasis suhu GPU
+f04fb800	Baca suhu memori
+5ac1bfd9	Suhu memori dibaca lewat jalur yang sama (SMBus) dengan LED memori. Jika OpenRGB atau program lain memakai jalur ini tanpa menunggu giliran, bisa terjadi tabrakan dan suhu memori tidak terbaca. Dalam hal itu, matikan (kurva yang memakai suhu memori berputar pada putaran saat sensor hilang)
+8154441c	Cadangan & berbagi pengaturan
+894c08f0	Pengaturan dicadangkan otomatis setiap kali berubah (paling sering sekali per 10 menit, hingga 30 salinan). Jika config.json rusak, dipulihkan otomatis saat mulai. Ekspor profil ke file untuk dimuat di PC lain (konektor dan sensor dicocokkan menurut nama)
+b187e750	Ekspor pengaturan…
+7c186faa	Impor pengaturan…
+077e159d	Pulihkan dari cadangan ▾
+4222af0e	Cadangkan sekarang
+8d711ab6	Penyiapan & file
+f8cfb37f	Buka wizard penyiapan
+0cdb9795	Buka folder pengaturan
+e252e493	Buka folder log
+c7cbd09a	Driver kendali kipas (PawnIO)
+6234a43c	Copot (bersihkan)
+29c38de6	Gunakan saat berhenti memakai aplikasi ini. Setelah memastikan kipas kembali ke kendali otomatis BIOS, aplikasi membereskan kendali pencahayaan, mulai otomatis saat masuk, izin firewall, dan lainnya, lalu keluar. Layar berikutnya menampilkan apa yang akan dilakukan sebelum mulai (Anda juga bisa memilih menghapus pengaturan dan rekaman serta mencopot PawnIO)
+b2abf4ee	Copot (bersihkan)…
+276c23be	Untuk mengubah putaran kipas, aplikasi membutuhkan PawnIO, driver yang membaca dan menulis chip kendali kipas motherboard (gratis; juga dipakai LibreHardwareMonitor dan lainnya).\n"Pasang PawnIO" memasang paket resmi (namazso.PawnIO) dengan winget bawaan Windows. Perlu koneksi internet; butuh puluhan detik hingga beberapa menit. Setelah selesai, mulai ulang aplikasi untuk memakainya.
+32818dc0	Pasang PawnIO
+8d7b411c	Mulai ulang aplikasi
+a4de3937	Menutup aplikasi lalu langsung memulainya lagi (selama beberapa detik itu kipas dikendalikan otomatis oleh BIOS)
+7d0ab5b6	Buka situs resmi (pawnio.eu)
+2b7f4cbf	Jika winget tidak tersedia, unduh penginstal dari situs resmi lalu jalankan
+e6974b1a	Periksa lagi

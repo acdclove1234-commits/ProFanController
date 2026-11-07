@@ -409,3 +409,103 @@ b373eaee	Intervalle de mise à jour
 14e1cbc6	Pleine vitesse d'urgence (CPU et autres)
 35593dc1	Quand un capteur utilisé dans une courbe atteint cette température, tous les ventilateurs passent à 100 %
 53ef686b	Pleine vitesse d'urgence (Hot Spot du GPU)
+279d8c16	Le Hot Spot est le point le plus chaud du GPU ; il affiche 10 à 20 °C de plus que l'Edge
+9bcc9b8c	Les Radeon RX 7000 se brident elles-mêmes à 110 °C de Hot Spot. La pleine vitesse est levée une fois 5 °C sous le seuil.
+1ac4b576	À propos de cette application
+81d90dca	+ Nouveau profil
+4cdf9ede	Enregistrez un ensemble de courbes de ventilateurs sous un nom et basculez de l'un à l'autre
+774923ad	Le rôle de ce profil. Même si vous le renommez, le réglage auto (Silencieux vise +5 °C, Refroidissement max −5 °C), les courbes des nouveaux ventilateurs et l'action rapide « Silencieux » fonctionnent correctement grâce à ce rôle
+82ac5e85	Mode d'alimentation Windows à utiliser avec ce profil
+d663551d	Utiliser par défaut
+80173301	Dupliquer
+1aafcfce	Rétablir le mode d'alimentation d'origine en quittant
+935428de	Le mode d'alimentation change automatiquement avec le profil (« Ne pas changer » le laisse tel quel)
+02bd77a9	+ Ajouter une règle
+95dbf04d	Planning
+c6ae093f	Change de profil selon l'heure (ex. : Silencieux tous les jours de 23:00 à 7:00). Le changement par application est prioritaire
+b30b1d5c	Tous les jours
+1b0c1825	En semaine
+c16e0695	Le week-end
+9b7e9425	Heure de début (ex. : 23:00)
+1925ac9b	à
+a297edb9	Heure de fin (ex. : 7:00). Si elle est avant le début, c'est le lendemain
+8d3afa5f	Changement automatique de profil
+a6a78db0	Change automatiquement de profil tant qu'une application choisie tourne. Les règles plus haut dans la liste sont prioritaires. Quand l'application se ferme, le profil par défaut revient.
+235c5be1	Nom du processus (ex. : eldenring). Avec ou sans .exe
+92b89c34	Choisir parmi les applications en cours ▾
+850bfcd1	Actions rapides
+b7230497	Passez temporairement en boost (pleine vitesse) ou en silencieux depuis le tableau de bord, la zone de notification, le mini-widget ou le téléphone
+37cd5718	Utiliser les raccourcis clavier (fonctionnent aussi en jeu)
+18d0cc13	Ctrl+Alt+B : boost 5 min / Ctrl+Alt+Q : silencieux 1 h / Ctrl+Alt+N : annuler
+7ae7ed01	Profil utilisé pour « Silencieux »
+77a57db6	Surveiller depuis le téléphone
+fe9fdb92	Autoriser l'affichage depuis le navigateur du téléphone
+49d300c9	Un téléphone sur le même Wi-Fi peut consulter températures et vitesses et changer de profil. Ajoute une règle au Pare-feu Windows uniquement pour les réseaux privés (comme à la maison)
+6ac0a5cf	Port
+cf308cb2	Régénérer la clé d'accès
+389a7b03	L'ancienne URL ne fonctionnera plus
+ac3a6f94	Scannez le code QR avec l'appareil photo du téléphone ou ouvrez cette URL
+12e17da1	L'URL contient la clé d'accès. Ne la communiquez à personne
+967f26f5	Notifications sur le téléphone
+9fcdd35a	Prévenir le téléphone en cas de pleine vitesse d'urgence, de problème de pompe, de ventilateur arrêté, etc.
+1fe03718	Pour être averti même à l'extérieur ou en jeu. La même notification n'est pas renvoyée pendant 10 minutes
+5bd9ee6f	ntfy (il suffit d'installer l'application ; recommandé)
+a643ae88	1. Installez l'application « ntfy » sur le téléphone (App Store / Google Play, gratuite, sans inscription)\n2. Dans l'application, touchez « + » et abonnez-vous au nom de sujet ci-dessous (ou scannez le code QR à gauche)
+6ced87ba	Nom du sujet
+19b272e4	Régénérer
+084d7180	Serveur
+172228d8	Toute personne connaissant le nom du sujet peut lire les notifications. Gardez le nom actuel, difficile à deviner
+88a4ad91	À obtenir dans Discord : Paramètres du serveur → « Intégrations » → « Webhooks » → « Nouveau webhook » → « Copier l'URL du webhook »
+cb5c4d63	Prévenir aussi des « avertissements » (ventilateur arrêté, problème de capteur, etc.)
+a000b788	Prévenir aussi au rétablissement
+a15f890e	Envoyer un test
+c114b738	Ouvrir l'éclairage
+3f597f38	Ouvre la page de l'éclairage LED (intégration OpenRGB)
+c0c9a6ba	Éclairage LED (intégration OpenRGB)
+158ada0f	Les réglages LED ont été déplacés dans « Éclairage » dans le menu de gauche. Connexion, effets, synchro musicale et réglages par appareil s'y trouvent.
+c1eb5397	Calcul du coût de l'électricité
+6da48835	Affiche l'énergie consommée et un coût d'électricité estimé sur le tableau de bord et la page Rapport
+db0f8cfc	Prix de l'électricité par kWh
+306750cc	yens (le prix unitaire de votre facture ; dans le doute, gardez la valeur indicative de 31 yens)
+1405c464	Consommation hors CPU et GPU
+665cef72	W (carte mère, mémoire, SSD, ventilateurs, pertes de l'alimentation, etc. ; en général 40 à 80 W)
+b4d79a66	Le CPU et le GPU utilisent les valeurs de leurs capteurs. Les écrans et enceintes ne sont pas inclus. Ce n'est pas une mesure à la prise, seulement une estimation.
+69355ed4	Sécurité
+619b1ea2	Utiliser le processus de surveillance (recommandé)
+d1086ffa	Empêche les ventilateurs de rester à basse vitesse si l'application est tuée ou se fige. Le Gestionnaire des tâches affiche deux ProFanController ; l'un d'eux est la surveillance
+f739cc9b	Vitesse dans ce cas
+43c454af	Les pompes passent toujours à 100 %
+d063c0c0	Redémarrer l'application automatiquement (jusqu'à 3 fois en 10 minutes ; ensuite un message s'affiche)
+f2eae029	Ignorer les valeurs anormales des capteurs
+2487009f	Évite la pleine vitesse due à une valeur qui saute un instant (erreur de lecture). Un capteur « figé » dont la valeur ne bouge pas malgré les changements de charge est considéré comme défectueux
+3616d69f	Vérifier les pièces remplacées au démarrage
+f47011bb	Si les capteurs changent après le remplacement d'une pièce comme le GPU, vous guide pour passer aux nouveaux capteurs
+35eb3141	Vitesse si un capteur manque
+90554019	Les courbes dont le capteur est introuvable (pièce retirée ou remplacée) tournent à cette vitesse (si le capteur existe mais que sa valeur est anormale, 100 % par sécurité)
+963fb48e	Enregistrer automatiquement avant et après les incidents
+e424608f	En cas de pleine vitesse d'urgence, de problème de pompe, etc., enregistre 10 minutes avant et après (consultable dans la page Rapport)
+f4e32f07	Autoriser le contrôle des ventilateurs du GPU (expérimental)
+f73d1f9b	Les ventilateurs du GPU apparaissent dans « Ajouter un connecteur » de la page Courbes. Pendant le contrôle, le pilotage propre du pilote GPU (mode 0 RPM, etc.) est arrêté : utilisez-les avec une courbe basée sur une température du GPU
+f04fb800	Lire la température de la mémoire
+5ac1bfd9	La température de la mémoire est lue sur le même bus (SMBus) que les LED de la mémoire. Si OpenRGB ou un autre programme utilise ce bus sans attendre son tour, il peut y avoir des collisions et la température de la mémoire devient illisible. Désactivez alors cette option (les courbes basées sur la mémoire tournent à la vitesse « capteur manquant »)
+8154441c	Sauvegarde et partage des réglages
+894c08f0	Les réglages sont sauvegardés automatiquement à chaque modification (au plus une fois toutes les 10 minutes, jusqu'à 30 copies). Si config.json est endommagé, il est restauré automatiquement au démarrage. Exportez les profils dans un fichier pour les charger sur un autre PC (connecteurs et capteurs associés par nom)
+b187e750	Exporter les réglages…
+7c186faa	Importer les réglages…
+077e159d	Restaurer une sauvegarde ▾
+4222af0e	Sauvegarder maintenant
+8d711ab6	Configuration et fichiers
+f8cfb37f	Ouvrir l'assistant de configuration
+0cdb9795	Ouvrir le dossier des réglages
+e252e493	Ouvrir le dossier des journaux
+c7cbd09a	Pilote de contrôle des ventilateurs (PawnIO)
+6234a43c	Désinstaller (nettoyer)
+29c38de6	À utiliser quand vous arrêtez d'utiliser l'application. Après avoir vérifié que les ventilateurs sont revenus sous contrôle du BIOS, elle retire le contrôle de l'éclairage, le démarrage à l'ouverture de session, la règle de pare-feu, etc., puis se ferme. L'écran suivant montre ce qui sera fait avant de commencer (vous pouvez aussi choisir de supprimer réglages et enregistrements, et de désinstaller PawnIO)
+b2abf4ee	Désinstaller (nettoyer)…
+276c23be	Pour changer la vitesse des ventilateurs, l'application a besoin de PawnIO, un pilote qui lit et écrit la puce de contrôle des ventilateurs de la carte mère (gratuit ; aussi utilisé par LibreHardwareMonitor et d'autres).\n« Installer PawnIO » installe le paquet officiel (namazso.PawnIO) avec winget, fourni avec Windows. Une connexion Internet est nécessaire ; cela prend de quelques dizaines de secondes à quelques minutes. Ensuite, redémarrez l'application pour l'utiliser.
+32818dc0	Installer PawnIO
+8d7b411c	Redémarrer l'application
+a4de3937	Ferme l'application et la relance aussitôt (pendant ces quelques secondes, les ventilateurs sont sous contrôle du BIOS)
+7d0ab5b6	Ouvrir le site officiel (pawnio.eu)
+2b7f4cbf	Si winget n'est pas disponible, récupérez le programme d'installation sur le site officiel et lancez-le
+e6974b1a	Vérifier à nouveau

@@ -409,3 +409,103 @@ b373eaee	Intervalo de atualização
 14e1cbc6	Velocidade máxima de emergência (CPU e outros)
 35593dc1	Quando qualquer sensor usado numa curva atinge esta temperatura, todas as ventoinhas vão a 100%
 53ef686b	Velocidade máxima de emergência (Hot Spot da GPU)
+279d8c16	O Hot Spot é o ponto mais quente da GPU e marca 10–20 °C a mais que o Edge
+9bcc9b8c	As Radeon RX 7000 reduzem o desempenho sozinhas com Hot Spot de 110 °C. A velocidade máxima é liberada quando fica 5 °C abaixo do limite.
+1ac4b576	Sobre este app
+81d90dca	+ Novo perfil
+4cdf9ede	Salve um conjunto de curvas das ventoinhas com um nome e alterne entre eles
+774923ad	O papel deste perfil. Mesmo se você renomeá-lo, o ajuste automático (Silencioso mira +5 °C, Máximo resfriamento −5 °C), as curvas de novas ventoinhas e a ação rápida "Silencioso" continuam funcionando certo graças a este papel
+82ac5e85	Plano de energia do Windows para este perfil
+d663551d	Usar como padrão
+80173301	Duplicar
+1aafcfce	Voltar ao plano de energia original ao sair
+935428de	O plano de energia muda automaticamente com o perfil ("Não mudar" deixa como está)
+02bd77a9	+ Adicionar regra
+95dbf04d	Agenda
+c6ae093f	Troca de perfil pelo horário (ex.: Silencioso todo dia das 23:00 às 7:00). A troca por app tem prioridade
+b30b1d5c	Todo dia
+1b0c1825	Dias úteis
+c16e0695	Fins de semana
+9b7e9425	Hora de início (ex.: 23:00)
+1925ac9b	a
+a297edb9	Hora de término (ex.: 7:00). Se for antes do início, é do dia seguinte
+8d3afa5f	Troca automática de perfil
+a6a78db0	Troca o perfil automaticamente enquanto um app escolhido estiver aberto. Regras mais acima têm prioridade. Quando o app fecha, volta o perfil padrão.
+235c5be1	Nome do processo (ex.: eldenring). Com ou sem .exe
+92b89c34	Escolher entre apps em execução ▾
+850bfcd1	Ações rápidas
+b7230497	Ative temporariamente o turbo (velocidade máxima) ou o silêncio pelo painel, bandeja, miniwidget ou celular
+37cd5718	Usar teclas de atalho (funcionam até nos jogos)
+18d0cc13	Ctrl+Alt+B: turbo 5 min / Ctrl+Alt+Q: silencioso 1 h / Ctrl+Alt+N: cancelar
+7ae7ed01	Perfil usado no "Silencioso"
+77a57db6	Monitorar pelo celular
+fe9fdb92	Permitir ver pelo navegador do celular
+49d300c9	Um celular na mesma rede Wi-Fi pode ver temperaturas e rotações e trocar de perfil. Adiciona uma regra no Firewall do Windows só para redes privadas (como a de casa)
+6ac0a5cf	Porta
+cf308cb2	Gerar nova chave de acesso
+389a7b03	A URL antiga vai parar de funcionar
+ac3a6f94	Leia o QR code com a câmera do celular ou abra esta URL
+12e17da1	A URL contém a chave de acesso. Não compartilhe com ninguém
+967f26f5	Notificações no celular
+9fcdd35a	Avisar o celular sobre velocidade máxima de emergência, problema na bomba, ventoinha parada e mais
+1fe03718	Para você saber mesmo fora de casa ou jogando. A mesma notificação não é repetida por 10 minutos
+5bd9ee6f	ntfy (basta instalar o app; recomendado)
+a643ae88	1. Instale o app "ntfy" no celular (App Store / Google Play, grátis, sem cadastro)\n2. No app, toque em "+" e assine o nome de tópico abaixo (ou leia o QR code à esquerda)
+6ced87ba	Nome do tópico
+19b272e4	Gerar novo
+084d7180	Servidor
+172228d8	Qualquer pessoa que saiba o nome do tópico pode ler as notificações. Mantenha o nome atual, difícil de adivinhar
+88a4ad91	Pegue no Discord: Configurações do servidor → "Integrações" → "Webhooks" → "Novo webhook" → "Copiar URL do webhook"
+cb5c4d63	Avisar também sobre "alertas" (ventoinha parada, problema em sensor etc.)
+a000b788	Avisar também quando normalizar
+a15f890e	Enviar teste
+c114b738	Abrir Iluminação
+3f597f38	Abre a página de iluminação de LED (integração com o OpenRGB)
+c0c9a6ba	Iluminação de LED (integração com o OpenRGB)
+158ada0f	As configurações de LED foram para "Iluminação" no menu à esquerda. Conexão, efeitos, sincronização com música e configurações por dispositivo ficam lá.
+c1eb5397	Cálculo do custo de energia
+6da48835	Mostra a energia consumida e um custo de energia estimado no painel e na página de relatório
+db0f8cfc	Preço da energia por kWh
+306750cc	ienes (o preço unitário da sua conta; se não souber, deixe os 31 ienes de referência)
+1405c464	Consumo além de CPU e GPU
+665cef72	W (placa-mãe, memória, SSD, ventoinhas, perdas da fonte etc.; geralmente 40–80 W)
+b4d79a66	A CPU e a GPU usam os valores dos sensores. Monitores e caixas de som não entram. Não é medido na tomada, então é só uma estimativa.
+69355ed4	Segurança
+619b1ea2	Usar o processo vigia (recomendado)
+d1086ffa	Evita que as ventoinhas fiquem em baixa rotação se o app for encerrado à força ou travar. O Gerenciador de Tarefas mostra dois ProFanController; um deles é o vigia
+f739cc9b	Rotação nesse caso
+43c454af	As bombas sempre vão a 100%
+d063c0c0	Reiniciar o app automaticamente (até 3 vezes em 10 minutos; depois aparece um aviso)
+f2eae029	Ignorar valores anormais dos sensores
+2487009f	Evita velocidade máxima por um valor que salta só por um instante (erro de leitura). Um sensor "travado", cujo valor não muda mesmo com a carga mudando, é tratado como defeituoso
+3616d69f	Verificar peças trocadas ao iniciar
+f47011bb	Quando uma peça como a GPU é trocada e os sensores mudam, guia você na troca para os novos sensores
+35eb3141	Rotação sem sensor
+90554019	Curvas cujo sensor não é encontrado (peça removida ou trocada) giram nesta rotação (se o sensor existe mas o valor é anormal, 100% por segurança)
+963fb48e	Gravar automaticamente antes e depois de incidentes
+e424608f	Em velocidade máxima de emergência, problema na bomba e afins, salva 10 minutos antes e depois (dá para ver na página de relatório)
+f4e32f07	Permitir controlar as ventoinhas da GPU (experimental)
+f73d1f9b	As ventoinhas da GPU aparecem em "Adicionar conector" na página de curvas. Durante o controle, o controle próprio do driver da GPU (modo 0 RPM etc.) para, então use com uma curva baseada numa temperatura da GPU
+f04fb800	Ler a temperatura da memória
+5ac1bfd9	A temperatura da memória é lida pelo mesmo barramento (SMBus) dos LEDs da memória. Se o OpenRGB ou outro programa usar esse barramento sem esperar a vez, pode haver conflito e a temperatura da memória deixa de ser lida. Nesse caso, desligue (curvas com temperatura da memória giram na rotação de sensor ausente)
+8154441c	Backup e compartilhamento das configurações
+894c08f0	As configurações são salvas automaticamente a cada mudança (no máximo uma vez a cada 10 minutos, até 30 cópias). Se o config.json se corromper, ele é restaurado automaticamente ao iniciar. Exporte os perfis para um arquivo para carregá-los em outro PC (conectores e sensores são pareados pelo nome)
+b187e750	Exportar configurações…
+7c186faa	Importar configurações…
+077e159d	Restaurar do backup ▾
+4222af0e	Fazer backup agora
+8d711ab6	Configuração e arquivos
+f8cfb37f	Abrir o assistente de configuração
+0cdb9795	Abrir pasta de configurações
+e252e493	Abrir pasta de logs
+c7cbd09a	Driver de controle das ventoinhas (PawnIO)
+6234a43c	Desinstalar (limpeza)
+29c38de6	Use quando parar de usar o app. Depois de confirmar que as ventoinhas voltaram ao controle da BIOS, ele remove o controle de iluminação, a inicialização no login, a regra do firewall e mais, e fecha. A próxima tela mostra o que será feito antes de começar (também dá para apagar configurações e registros e desinstalar o PawnIO)
+b2abf4ee	Desinstalar (limpeza)…
+276c23be	Para mudar a rotação das ventoinhas, o app precisa do PawnIO, um driver que lê e escreve o chip de controle de ventoinhas da placa-mãe (grátis; também usado pelo LibreHardwareMonitor e outros).\n"Instalar PawnIO" instala o pacote oficial (namazso.PawnIO) com o winget, que vem com o Windows. É preciso estar conectado à internet; leva de algumas dezenas de segundos a alguns minutos. Ao terminar, reinicie o app para usar.
+32818dc0	Instalar PawnIO
+8d7b411c	Reiniciar o app
+a4de3937	Fecha o app e abre de novo na hora (nesses segundos as ventoinhas ficam sob controle da BIOS)
+7d0ab5b6	Abrir o site oficial (pawnio.eu)
+2b7f4cbf	Se o winget não estiver disponível, baixe o instalador no site oficial e execute
+e6974b1a	Verificar de novo
