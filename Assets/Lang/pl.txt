@@ -907,3 +907,103 @@ bb74ce90	Pulpit „{0}”
 d354ab0d	Nie widać jeszcze żadnego czujnika temperatury CPU
 2a815b01	Nie widać jeszcze żadnego czujnika temperatury GPU
 98a78d2c	Nie widać jeszcze żadnego czujnika temperatury płyty głównej
+7bd6fc4c	{0}  ·  {1} (GPU, eksperymentalnie)
+b961088b	Chłodzenie CPU
+a9a03eaf	Chłodzenie GPU
+9aa1d93f	Zbieranie danych (do porównania zostało {0:F0} dni). Po kalibracji ocena jest możliwa 7 dni później.
+ad82ee64	kalibracja z {0:M/d}
+171d15ba	około {0:M/d}
+74443afa	Zarówno w zapisach bazowych, jak i ostatnich jest jeszcze za mało czasu z tym samym poleceniem obrotów (Duty), więc nie można ich porównać.
+6c1cd333	{1:N0} rpm przy {0}% ({2}: {3:N0} rpm)
+3b9d1efe	nagle, mniej więcej od {0:M/d},
+eff7a5cf	stopniowo
+5b34a396	Obroty pompy {0} spadają. Możliwe zużycie pompy lub ubytek płynu chłodzącego.
+31b87b50	 Sprawdź ją jak najszybciej.
+78cee055	 Jeśli spadną dalej, sprawdź ją.
+6e637e2e	Obroty {0} spadają. Sprawdź, czy kabel nie ociera o łopatki i czy połączenie nie jest luźne. Jeśli to nie pomoże, wentylator może być uszkodzony.
+736c890f	Obroty stopniowo spadają. Usuń kurz z łopatek i filtrów. Jeśli po czyszczeniu nie wrócą, łożysko może być zużyte — rozważ wymianę.
+0dd5ebcf	Pompa {0} zaczęła obracać się szybciej. Jeśli pompa była wymieniana lub ponownie podłączana, wszystko w porządku. W przeciwnym razie sprawdź, czy nie ubyło płynu chłodzącego (praca na sucho).
+66fc95af	Wentylator {0} zaczął obracać się szybciej. Jeśli wentylator był wymieniany lub ponownie podłączany, wszystko w porządku. W przeciwnym razie sprawdź, czy filtr wlotowy nie jest zatkany (gdy powietrze przepływa z trudem, wentylator kręci się lżej i szybciej).
+64e8b9f9	Wentylator stopniowo obraca się coraz szybciej. Filtr wlotowy lub chłodnica mogą być zatkane i powietrze przepływa z trudem (gdy powietrze przepływa z trudem, wentylator kręci się lżej i szybciej). Wyczyść je.
+063b56cb	Obroty są takie same jak wcześniej i w normie.
+e3a78dee	 (porównywany czas: ostatnie {0} min)
+d8fb178b	Zbieranie danych (zostało {0:F0} dni).
+0d593e94	Jest jeszcze za mało zapisów pod obciążeniem (gry itp.) i w spoczynku, więc nie można porównać (baza {0} min, ostatnie {1} min; potrzeba co najmniej {2} min każdego).
+b09085c8	Polecenie obrotów wentylatorów pod obciążeniem zmieniło się ({0:F0}% → {1:F0}%). Jeśli krzywa wentylatorów była zmieniana, różnica w chłodzeniu wynika z tego, dlatego
+2ddc0b27	 nie oceniono, czy przyczyną jest kurz. Aby porównać ponownie z nowymi ustawieniami, naciśnij „Wyczyściłem (od teraz nowy punkt odniesienia)”.
+ccf3a760	Polecenie wentylatorów {0:F0}% → {1:F0}%
+0090bb82	Wzrost temperatury na {0} W: {1:F0}°C (wcześniej {2:F0}°C)
+0449b7df	Chłodzenie jest wyraźnie gorsze niż wcześniej. Usuń kurz z filtrów, chłodnicy i radiatora. Jeśli to nie pomoże, pasta termoprzewodząca mogła się zużyć.
+f91be135	Chłodzenie jest nieco gorsze niż wcześniej. Zalecamy wkrótce wyczyścić filtry i chłodnicę.
+7ed2ece5	Chłodzenie jest lepsze niż wcześniej. Jeśli było czyszczenie, wymiana części lub dodanie wentylatorów, wszystko w porządku.
+58d9c8ca	Chłodzenie jest takie samo jak wcześniej.
+fcc150e0	 (porównywany czas: baza {0} min, ostatnie {1} min; różnice temperatury pokojowej zostały odjęte)
+5ba2a332	ASUS Aura (LED z Armoury Crate)
+d9bee020	Pobrane
+4a049af4	Pulpit
+4033fb1e	Folder tymczasowy
+e39c4b26	Nie udało się skopiować ProFanController.exe
+d6132623	Powiadomienie testowe ProFanController
+7be18f84	To jest powiadomienie testowe z {0}. Jeśli dotarło, konfiguracja jest zakończona.
+15278ea5	Wysłano. Sprawdź, czy dotarło na telefon
+4ce2da04	Nie udało się wysłać: {0}
+57750df1	Wysłano o {0:HH:mm}: {1}
+941d644c	Błąd wysyłania o {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Wpisz adres URL webhooka Discord
+fb1a5ec2	Wpisz nazwę tematu ntfy
+4b9eae19	Serwer zwrócił błąd ({0})
+727c88fe	Strefa {0}
+b889a59c	Nie można połączyć się z OpenRGB (przekroczono czas)
+ee426337	Nieprawidłowa odpowiedź OpenRGB (liczba urządzeń)
+b49ba6ef	Brak połączenia z OpenRGB
+70ae1eed	OpenRGB nie odpowiada
+640e3e0a	Nieprawidłowa odpowiedź OpenRGB
+eb603574	Odpowiedź OpenRGB jest zbyt duża
+991f1b38	Utracono połączenie z OpenRGB
+278cffe6	Dane kontrolera są zbyt krótkie
+a86cdb33	Dane kontrolera są ucięte
+a5ce650f	Nie można odczytać danych kontrolera
+0027866f	Nie można narysować: {0}
+c790979e	OpenRGB nie nadąża, więc obniżono do {0:0} razy na sekundę
+ffaf3cd2	Łączenie z OpenRGB…
+c19da9e8	Oczekiwanie na zakończenie poprzedniego połączenia…
+21503ff4	Utracono połączenie z OpenRGB (ponowne połączenie za {0} s): {1}
+91c695dc	Nie można połączyć (ponowna próba za {0} s): {1}
+b6c76b3b	Zatrzymano z powodu błędu: {0}
+a4a0e7be	Adres OpenRGB się zmienił, ponowne łączenie…
+a12cdd84	Ponowne łączenie z OpenRGB…
+b9eec9ec	Lista urządzeń OpenRGB się zmieniła, ponowne łączenie…
+ece981c1	Nie znaleziono w OpenRGB
+303ee7e1	Nie znaleziono wybranego urządzenia: {0} (sprawdź, czy jest widoczne w OpenRGB)
+f9706898	Połączono, ale nie znaleziono urządzeń, których kolor można zmieniać. Sprawdź, czy urządzenia są widoczne w OpenRGB
+a4da3fc4	Połączono: zmiana koloru urządzeń: {0}
+007ac9b1	 ({0:0} klatek/s)
+db01850a	. Nie znaleziono wybranego urządzenia: {0}
+9e6acdec	{0} (LED: {1} · {2})
+ad45bf76	nieznane położenie
+29f94095	PawnIO zostało zainstalowane. Na koniec wymagany jest restart komputera. Po restarcie będzie można sterować wentylatorami.
+3364480f	PawnIO zostało zainstalowane.
+129482fa	PawnIO jest już zainstalowane.
+222ab2aa	 Uruchom aplikację ponownie, aby sterować wentylatorami (jeśli nawet wtedy nie zostaną znalezione złącza wentylatorów, uruchom ponownie komputer).
+4d3e4c64	 Możesz dalej z niej korzystać.
+27e711c8	winget zwrócił błąd ({0}), ale PawnIO zostało znalezione. Uruchom aplikację ponownie.
+264923af	 Jeśli złącza wentylatorów nadal nie są znajdowane, uruchom ponownie komputer lub zainstaluj PawnIO ponownie instalatorem z oficjalnej strony.
+4a3d7778	winget zgłosił zakończenie, ale nie znaleziono PawnIO. Uruchom ponownie komputer i sprawdź jeszcze raz.
+b44937c0	 Jeśli nadal go nie ma, użyj instalatora z oficjalnej strony.
+2f4a62a1	Nie udało się zainstalować, bo winget („Instalator aplikacji” Windows) nie istnieje lub się nie uruchamia.
+1085d16a	 Zainstaluj lub zaktualizuj „Instalator aplikacji” w Microsoft Store albo użyj instalatora z oficjalnej strony.
+df23d3d2	Przerwano, bo instalacja nie zakończyła się w {0:F0} min. Sprawdź połączenie z internetem i spróbuj ponownie albo użyj instalatora z oficjalnej strony.
+571744e9	Pobieranie nie powiodło się ({0}). Sprawdź połączenie z internetem i spróbuj ponownie.
+29df0532	Nie udało się odczytać listy pakietów winget ({0}). Spróbuj ponownie później albo użyj instalatora z oficjalnej strony.
+cab95e39	winget nie znalazł PawnIO ({0}) ({1}). Użyj instalatora z oficjalnej strony.
+c2cdbdec	Zasady tego komputera (zarządzanie przez firmę, szkołę itp.) blokują instalację przez winget ({0}). Skontaktuj się z administratorem.
+43abeb95	Trwa inna instalacja ({0}). Spróbuj ponownie po jej zakończeniu.
+5e9a061f	Nie udało się zainstalować, bo PawnIO jest w użyciu ({0}). Zamknij inne programy korzystające z PawnIO (FanControl, LibreHardwareMonitor itp.) lub uruchom ponownie komputer, a potem spróbuj ponownie.
+c5885d00	Wymagany jest restart komputera ({0}). Uruchom ponownie komputer i zainstaluj jeszcze raz.
+fdb07eba	Instalację anulowano ({0}).
+3f126525	Nie udało się zainstalować, bo winget jest za stary ({0}). Zaktualizuj „Instalator aplikacji” w Microsoft Store albo użyj instalatora z oficjalnej strony.
+66b9357b	Wymagane są uprawnienia administratora ({0}). Uruchom aplikację ponownie jako administrator i spróbuj jeszcze raz.
+8725a2c5	Instalacja nie powiodła się (błąd winget {0}). Użyj instalatora z oficjalnej strony.
+6bb09a84	Odinstaluj PawnIO w Ustawieniach Windows → Aplikacje → Zainstalowane aplikacje.
+3436ee7f	PawnIO zostało odinstalowane. Na koniec uruchom ponownie komputer.

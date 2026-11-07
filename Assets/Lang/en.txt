@@ -907,3 +907,103 @@ bb74ce90	Dashboard "{0}"
 d354ab0d	No CPU temperature sensors are visible yet
 2a815b01	No GPU temperature sensors are visible yet
 98a78d2c	No motherboard temperature sensors are visible yet
+7bd6fc4c	{0}  ·  {1} (GPU, experimental)
+b961088b	CPU cooling
+a9a03eaf	GPU cooling
+9aa1d93f	Collecting data ({0:F0} more days until a comparison is possible). If the fans are calibrated, a verdict is possible from 7 days after the calibration.
+ad82ee64	calibration on {0:M/d}
+171d15ba	around {0:M/d}
+74443afa	There isn't enough time yet at the same speed command (duty) in both the baseline and the recent records, so they can't be compared.
+6c1cd333	{1:N0} rpm at {0}% ({2}: {3:N0} rpm)
+3b9d1efe	suddenly since around {0:M/d}
+eff7a5cf	gradually
+5b34a396	The pump speed has dropped {0}. The pump may be wearing out or the coolant may be running low.
+31b87b50	 Have it checked soon.
+78cee055	 If it drops further, have it checked.
+6e637e2e	The speed has dropped {0}. Check that no cable is touching the blades and that the wiring isn't loose. If that doesn't fix it, the fan may be failing.
+736c890f	The speed is gradually dropping. Clean the dust off the blades and filters. If it doesn't recover after cleaning, the bearing may be wearing out, so consider replacing the fan.
+0dd5ebcf	The pump has been spinning faster {0}. That's fine if you replaced or reconnected the pump. Otherwise, check for low coolant (the pump running dry).
+66fc95af	It has been spinning faster {0}. That's fine if you replaced or reconnected the fan. Otherwise, check that the intake filter isn't blocked (when air can't flow easily, a fan spins more freely and speeds up).
+64e8b9f9	It is gradually spinning faster. The intake filter or radiator may be clogged, making it hard for air to flow (when air can't flow easily, a fan spins more freely and speeds up). Clean them.
+063b56cb	The speed is the same as before and normal.
+e3a78dee	 (time compared: recent {0} min)
+d8fb178b	Collecting data ({0:F0} more days).
+0d593e94	There aren't enough records yet of time under load (such as gaming) and idle time, so they can't be compared (baseline {0} min, recent {1} min; {2} min or more needed for each).
+b09085c8	The fan speed command under load has changed since before ({0:F0}% → {1:F0}%). If you changed the fan curve, the difference in cooling comes from that, so
+2ddc0b27	 dust buildup isn't being judged. To compare again with the new settings, press "I cleaned it (use from here as the new baseline)".
+ccf3a760	Fan command {0:F0}% → {1:F0}%
+0090bb82	Temperature rise per {0} W: {1:F0}°C (before: {2:F0}°C)
+0449b7df	It now cools clearly worse than before. Clean the dust off the filters, radiator and heatsink. If that doesn't help, the thermal paste may have degraded.
+f91be135	It cools slightly worse than before. Cleaning the filters and radiator soon is recommended.
+7ed2ece5	It now cools better than before. That's fine if you cleaned, replaced parts or added fans.
+58d9c8ca	It cools the same as before.
+fcc150e0	 (time compared: baseline {0} min, recent {1} min; differences in room temperature are subtracted)
+5ba2a332	ASUS Aura (Armoury Crate LEDs)
+d9bee020	Downloads
+4a049af4	Desktop
+4033fb1e	Temp folder
+e39c4b26	Couldn't copy ProFanController.exe
+d6132623	ProFanController test notification
+7be18f84	This is a test notification from {0}. If you received it, the setup is complete.
+15278ea5	Sent. Check that it arrived on your phone
+4ce2da04	Couldn't send: {0}
+57750df1	Sent at {0:HH:mm}: {1}
+941d644c	Failed to send at {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Enter the Discord webhook URL
+fb1a5ec2	Enter the ntfy topic name
+4b9eae19	The server returned an error ({0})
+727c88fe	Zone {0}
+b889a59c	Can't connect to OpenRGB (timed out)
+ee426337	Invalid response from OpenRGB (device count)
+b49ba6ef	Not connected to OpenRGB
+70ae1eed	No reply from OpenRGB
+640e3e0a	Invalid response from OpenRGB
+eb603574	The response from OpenRGB is too large
+991f1b38	Lost the connection to OpenRGB
+278cffe6	Controller data is too short
+a86cdb33	Controller data is cut off
+a5ce650f	Can't read the controller data
+0027866f	Can't render: {0}
+c790979e	OpenRGB can't keep up, so the rate has been lowered to {0:0} per second
+ffaf3cd2	Connecting to OpenRGB…
+c19da9e8	Waiting for the previous connection to close…
+21503ff4	Lost the connection to OpenRGB (reconnecting in {0} s): {1}
+91c695dc	Can't connect (retrying in {0} s): {1}
+b6c76b3b	Stopped with an error: {0}
+a4a0e7be	The OpenRGB address changed, so reconnecting…
+a12cdd84	Reconnecting to OpenRGB…
+b9eec9ec	The OpenRGB device list changed, so reconnecting…
+ece981c1	Not found in OpenRGB
+303ee7e1	The selected device wasn't found: {0} (check that it appears in OpenRGB)
+f9706898	Connected, but no devices whose colors can be changed were found. Check that the devices appear in OpenRGB
+a4da3fc4	Connected: changing the colors of {0} devices
+007ac9b1	 ({0:0} frames per second)
+db01850a	. The selected device wasn't found: {0}
+9e6acdec	{0} ({1} LEDs · {2})
+ad45bf76	unknown location
+29f94095	PawnIO has been installed. A PC restart is needed to finish. After restarting the PC, the fans can be controlled.
+3364480f	PawnIO has been installed.
+129482fa	PawnIO is already installed.
+222ab2aa	 Restart the app to control the fans (if no fan headers are found even after restarting the app, restart the PC).
+4d3e4c64	 You can keep using it as is.
+27e711c8	winget returned an error ({0}), but PawnIO was found. Restart the app.
+264923af	 If the fan headers still aren't found, restart the PC or reinstall PawnIO with the installer from the official site.
+4a3d7778	winget reported that it finished, but PawnIO wasn't found. Restart the PC and check again.
+b44937c0	 If it still isn't found, use the installer from the official site.
+2f4a62a1	Couldn't install because winget (Windows "App Installer") is missing or won't start.
+1085d16a	 Install or update "App Installer" from the Microsoft Store, or use the installer from the official site.
+df23d3d2	Stopped because it didn't finish after {0:F0} minutes. Check your internet connection and try again, or use the installer from the official site.
+571744e9	The download failed ({0}). Check that you're connected to the internet and try again.
+29df0532	Couldn't read the winget package list ({0}). Try again later, or use the installer from the official site.
+cab95e39	winget couldn't find PawnIO ({0}) ({1}). Use the installer from the official site.
+c2cdbdec	Installing with winget is blocked by this PC's policy (managed by a company, school, etc.) ({0}). Ask your administrator.
+43abeb95	Another installation is running ({0}). Try again after it finishes.
+5e9a061f	Couldn't install because PawnIO is in use ({0}). Close other software that uses PawnIO (FanControl, LibreHardwareMonitor, etc.) or restart the PC, then try again.
+c5885d00	A PC restart is needed ({0}). Restart the PC and install again.
+fdb07eba	The installation was canceled ({0}).
+3f126525	Couldn't install because winget is too old ({0}). Update "App Installer" from the Microsoft Store, or use the installer from the official site.
+66b9357b	Administrator rights are needed ({0}). Restart the app as administrator and try again.
+8725a2c5	The installation failed (winget error {0}). Use the installer from the official site.
+6bb09a84	Uninstall PawnIO from Windows Settings → Apps → Installed apps.
+3436ee7f	PawnIO has been uninstalled. Restart the PC to finish.

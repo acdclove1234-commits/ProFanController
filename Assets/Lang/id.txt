@@ -907,3 +907,103 @@ bb74ce90	Dasbor "{0}"
 d354ab0d	Belum ada sensor suhu CPU yang terlihat
 2a815b01	Belum ada sensor suhu GPU yang terlihat
 98a78d2c	Belum ada sensor suhu motherboard yang terlihat
+7bd6fc4c	{0}  ·  {1} (GPU, eksperimental)
+b961088b	Pendinginan CPU
+a9a03eaf	Pendinginan GPU
+9aa1d93f	Sedang mengumpulkan data ({0:F0} hari lagi sampai bisa dibandingkan). Jika sudah dikalibrasi, penilaian bisa dilakukan mulai 7 hari setelah kalibrasi.
+ad82ee64	kalibrasi {0:M/d}
+171d15ba	sekitar {0:M/d}
+74443afa	Waktu berputar dengan perintah putaran (Duty) yang sama masih sedikit, baik pada rekaman acuan maupun terbaru, jadi belum bisa dibandingkan.
+6c1cd333	{1:N0} rpm pada {0}% ({2}: {3:N0} rpm)
+3b9d1efe	tiba-tiba sejak sekitar {0:M/d}
+eff7a5cf	sedikit demi sedikit
+5b34a396	Putaran pompa turun {0}. Mungkin pompa sudah aus atau cairan pendingin berkurang.
+31b87b50	 Segera periksa.
+78cee055	 Jika terus turun, periksalah.
+6e637e2e	Putaran turun {0}. Periksa apakah ada kabel yang menyentuh bilah kipas dan apakah sambungannya longgar. Jika tetap tidak membaik, kipas mungkin bermasalah.
+736c890f	Putaran turun sedikit demi sedikit. Bersihkan debu pada bilah kipas dan filter. Jika setelah dibersihkan tidak kembali, bantalan mungkin sudah aus, jadi pertimbangkan untuk menggantinya.
+0dd5ebcf	Pompa berputar lebih cepat {0}. Jika pompa diganti atau dipasang ulang, tidak masalah. Jika tidak, periksa apakah cairan pendingin berkurang (berputar kering).
+66fc95af	Kipas berputar lebih cepat {0}. Jika kipas diganti atau dipasang ulang, tidak masalah. Jika tidak, periksa apakah filter udara masuk tersumbat (saat udara sulit mengalir, kipas berputar lebih ringan dan lebih cepat).
+64e8b9f9	Kipas berputar makin cepat sedikit demi sedikit. Filter udara masuk atau radiator mungkin tersumbat sehingga udara sulit mengalir (saat udara sulit mengalir, kipas berputar lebih ringan dan lebih cepat). Bersihkan.
+063b56cb	Putaran sama seperti sebelumnya dan normal.
+e3a78dee	 (waktu yang dibandingkan: terbaru {0} mnt)
+d8fb178b	Sedang mengumpulkan data ({0:F0} hari lagi).
+0d593e94	Rekaman saat beban (gim, dll.) dan saat diam masih sedikit, jadi belum bisa dibandingkan (acuan {0} mnt, terbaru {1} mnt; masing-masing perlu minimal {2} mnt).
+b09085c8	Perintah putaran kipas saat beban berbeda dari sebelumnya ({0:F0}% → {1:F0}%). Jika kurva kipas diubah, perbedaan pendinginan berasal dari situ, jadi
+2ddc0b27	 tidak dinilai apakah karena debu. Untuk membandingkan ulang dengan pengaturan baru, tekan "Sudah dibersihkan (jadikan acuan baru mulai sekarang)".
+ccf3a760	Perintah kipas {0:F0}% → {1:F0}%
+0090bb82	Kenaikan suhu per {0} W: {1:F0}°C (sebelumnya {2:F0}°C)
+0449b7df	Pendinginan jelas lebih buruk dari sebelumnya. Bersihkan debu pada filter, radiator, dan heatsink. Jika tidak membaik, pasta termal mungkin sudah menurun kualitasnya.
+f91be135	Pendinginan sedikit lebih buruk dari sebelumnya. Sebaiknya segera bersihkan filter dan radiator.
+7ed2ece5	Pendinginan lebih baik dari sebelumnya. Jika sudah dibersihkan, ada komponen yang diganti, atau kipas ditambah, tidak masalah.
+58d9c8ca	Pendinginan sama seperti sebelumnya.
+fcc150e0	 (waktu yang dibandingkan: acuan {0} mnt, terbaru {1} mnt; perbedaan suhu ruangan sudah dikurangkan)
+5ba2a332	ASUS Aura (LED Armoury Crate)
+d9bee020	Unduhan
+4a049af4	Desktop
+4033fb1e	Folder sementara
+e39c4b26	Tidak bisa menyalin ProFanController.exe
+d6132623	Notifikasi uji ProFanController
+7be18f84	Ini notifikasi uji dari {0}. Jika notifikasi ini sampai, pengaturan sudah selesai.
+15278ea5	Terkirim. Periksa apakah sudah sampai di ponsel
+4ce2da04	Tidak bisa mengirim: {0}
+57750df1	Terkirim pukul {0:HH:mm}: {1}
+941d644c	Gagal mengirim pukul {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Masukkan URL Webhook Discord
+fb1a5ec2	Masukkan nama topik ntfy
+4b9eae19	Server mengembalikan galat ({0})
+727c88fe	Zona {0}
+b889a59c	Tidak bisa terhubung ke OpenRGB (waktu habis)
+ee426337	Respons OpenRGB tidak valid (jumlah perangkat)
+b49ba6ef	Tidak terhubung ke OpenRGB
+70ae1eed	Tidak ada balasan dari OpenRGB
+640e3e0a	Respons OpenRGB tidak valid
+eb603574	Respons OpenRGB terlalu besar
+991f1b38	Koneksi ke OpenRGB terputus
+278cffe6	Informasi pengontrol terlalu pendek
+a86cdb33	Informasi pengontrol terpotong
+a5ce650f	Tidak bisa membaca informasi pengontrol
+0027866f	Tidak bisa menggambar: {0}
+c790979e	OpenRGB tidak sanggup mengikuti, jadi diturunkan ke {0:0} kali per detik
+ffaf3cd2	Menghubungkan ke OpenRGB…
+c19da9e8	Menunggu koneksi sebelumnya selesai…
+21503ff4	Koneksi ke OpenRGB terputus (menghubungkan ulang dalam {0} dtk): {1}
+91c695dc	Tidak bisa terhubung (mencoba lagi dalam {0} dtk): {1}
+b6c76b3b	Berhenti karena galat: {0}
+a4a0e7be	Alamat OpenRGB berubah, menghubungkan ulang…
+a12cdd84	Menghubungkan ulang ke OpenRGB…
+b9eec9ec	Daftar perangkat OpenRGB berubah, menghubungkan ulang…
+ece981c1	Tidak ditemukan di OpenRGB
+303ee7e1	Perangkat yang dipilih tidak ditemukan: {0} (periksa apakah tampil di OpenRGB)
+f9706898	Terhubung, tetapi tidak ditemukan perangkat yang warnanya bisa diubah. Periksa apakah perangkat tampil di OpenRGB
+a4da3fc4	Terhubung: mengubah warna {0} perangkat
+007ac9b1	 ({0:0} bingkai per detik)
+db01850a	. Perangkat yang dipilih tidak ditemukan: {0}
+9e6acdec	{0} ({1} LED · {2})
+ad45bf76	lokasi tidak diketahui
+29f94095	PawnIO sudah dipasang. Untuk menyelesaikan, PC perlu dimulai ulang. Setelah PC dimulai ulang, kipas bisa dikendalikan.
+3364480f	PawnIO sudah dipasang.
+129482fa	PawnIO sudah terpasang.
+222ab2aa	 Mulai ulang aplikasi untuk mengendalikan kipas (jika setelah dimulai ulang konektor kipas tetap tidak ditemukan, mulai ulang PC).
+4d3e4c64	 Bisa langsung dipakai.
+27e711c8	winget mengembalikan galat ({0}), tetapi PawnIO ditemukan. Mulai ulang aplikasi.
+264923af	 Jika konektor kipas tetap tidak ditemukan, mulai ulang PC atau pasang ulang PawnIO dengan penginstal dari situs resmi.
+4a3d7778	winget melaporkan "selesai", tetapi PawnIO tidak ditemukan. Mulai ulang PC lalu periksa lagi.
+b44937c0	 Jika tetap tidak ditemukan, gunakan penginstal dari situs resmi.
+2f4a62a1	Tidak bisa memasang karena winget ("Penginstal Aplikasi" Windows) tidak ditemukan atau tidak bisa dijalankan.
+1085d16a	 Pasang atau perbarui "Penginstal Aplikasi" di Microsoft Store, atau gunakan penginstal dari situs resmi.
+df23d3d2	Dihentikan karena belum selesai setelah {0:F0} menit. Periksa koneksi internet lalu coba lagi, atau gunakan penginstal dari situs resmi.
+571744e9	Unduhan gagal ({0}). Periksa apakah terhubung ke internet lalu coba lagi.
+29df0532	Tidak bisa membaca daftar paket winget ({0}). Coba lagi nanti, atau gunakan penginstal dari situs resmi.
+cab95e39	winget tidak menemukan PawnIO ({0}) ({1}). Gunakan penginstal dari situs resmi.
+c2cdbdec	Kebijakan PC ini (dikelola perusahaan, sekolah, dll.) memblokir pemasangan dengan winget ({0}). Hubungi pengelolanya.
+43abeb95	Pemasangan perangkat lunak lain sedang berjalan ({0}). Coba lagi setelah selesai.
+5e9a061f	Tidak bisa memasang karena PawnIO sedang dipakai ({0}). Tutup perangkat lunak lain yang memakai PawnIO (FanControl, LibreHardwareMonitor, dll.) atau mulai ulang PC, lalu coba lagi.
+c5885d00	PC perlu dimulai ulang ({0}). Mulai ulang PC lalu pasang lagi.
+fdb07eba	Pemasangan dibatalkan ({0}).
+3f126525	Tidak bisa memasang karena winget sudah usang ({0}). Perbarui "Penginstal Aplikasi" di Microsoft Store, atau gunakan penginstal dari situs resmi.
+66b9357b	Perlu hak administrator ({0}). Mulai ulang aplikasi sebagai administrator lalu coba lagi.
+8725a2c5	Pemasangan gagal (galat winget {0}). Gunakan penginstal dari situs resmi.
+6bb09a84	Copot PawnIO dari "Pengaturan" Windows → "Aplikasi" → "Aplikasi terinstal".
+3436ee7f	PawnIO sudah dicopot. Untuk menyelesaikan, mulai ulang PC.

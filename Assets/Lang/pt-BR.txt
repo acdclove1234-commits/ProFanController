@@ -907,3 +907,103 @@ bb74ce90	Painel "{0}"
 d354ab0d	Nenhum sensor de temperatura da CPU visível ainda
 2a815b01	Nenhum sensor de temperatura da GPU visível ainda
 98a78d2c	Nenhum sensor de temperatura da placa-mãe visível ainda
+7bd6fc4c	{0}  ·  {1} (GPU, experimental)
+b961088b	Resfriamento da CPU
+a9a03eaf	Resfriamento da GPU
+9aa1d93f	Coletando dados (faltam {0:F0} dias para poder comparar). Se a calibração já foi feita, a avaliação é possível 7 dias depois dela.
+ad82ee64	calibração de {0:M/d}
+171d15ba	por volta de {0:M/d}
+74443afa	Ainda há pouco tempo com o mesmo comando de rotação (Duty) tanto nos registros de referência quanto nos recentes, então não é possível comparar.
+6c1cd333	{1:N0} rpm em {0}% ({2}: {3:N0} rpm)
+3b9d1efe	de repente desde por volta de {0:M/d}
+eff7a5cf	aos poucos
+5b34a396	A rotação da bomba caiu {0}. Pode ser desgaste da bomba ou falta de líquido de arrefecimento.
+31b87b50	 Verifique logo.
+78cee055	 Se continuar caindo, faça uma verificação.
+6e637e2e	A rotação caiu {0}. Verifique se algum cabo está encostando nas pás e se a conexão não está frouxa. Se não resolver, a ventoinha pode estar com defeito.
+736c890f	A rotação está caindo aos poucos. Limpe a poeira das pás e dos filtros. Se não voltar ao normal depois da limpeza, o rolamento pode estar desgastado; considere a troca.
+0dd5ebcf	A bomba passou a girar mais rápido {0}. Se você trocou ou reconectou a bomba, não há problema. Caso contrário, verifique se falta líquido de arrefecimento (girando a seco).
+66fc95af	Passou a girar mais rápido {0}. Se você trocou ou reconectou a ventoinha, não há problema. Caso contrário, verifique se o filtro de entrada de ar não está entupido (quando o ar passa com dificuldade, a ventoinha gira mais solta e acelera).
+64e8b9f9	Está girando cada vez mais rápido. O filtro de entrada ou o radiador podem estar entupidos e o ar passa com dificuldade (quando o ar passa com dificuldade, a ventoinha gira mais solta e acelera). Faça a limpeza.
+063b56cb	A rotação está igual a antes e normal.
+e3a78dee	 (tempo comparado: recente {0} min)
+d8fb178b	Coletando dados (faltam {0:F0} dias).
+0d593e94	Ainda há poucos registros sob carga (jogos etc.) e em repouso, então não é possível comparar (referência {0} min, recente {1} min; são necessários pelo menos {2} min de cada).
+b09085c8	O comando de rotação das ventoinhas sob carga mudou ({0:F0}% → {1:F0}%). Se você alterou a curva das ventoinhas, a diferença no resfriamento vem disso, por isso
+2ddc0b27	 não se avalia se é poeira. Para comparar de novo com as novas configurações, clique em "Limpei (usar daqui como nova referência)".
+ccf3a760	Comando das ventoinhas {0:F0}% → {1:F0}%
+0090bb82	Aumento de temperatura por {0} W: {1:F0} °C (antes {2:F0} °C)
+0449b7df	Agora resfria claramente pior do que antes. Limpe a poeira dos filtros, do radiador e do dissipador. Se não melhorar, a pasta térmica pode ter se degradado.
+f91be135	Resfria um pouco pior do que antes. Recomenda-se limpar em breve os filtros e o radiador.
+7ed2ece5	Agora resfria melhor do que antes. Se você fez limpeza, trocou peças ou adicionou ventoinhas, não há problema.
+58d9c8ca	Resfria como antes.
+fcc150e0	 (tempo comparado: referência {0} min, recente {1} min; as diferenças de temperatura ambiente são descontadas)
+5ba2a332	ASUS Aura (LEDs do Armoury Crate)
+d9bee020	Downloads
+4a049af4	Área de trabalho
+4033fb1e	Pasta temporária
+e39c4b26	Não foi possível copiar o ProFanController.exe
+d6132623	Notificação de teste do ProFanController
+7be18f84	Esta é uma notificação de teste de {0}. Se ela chegou, a configuração está concluída.
+15278ea5	Enviada. Verifique se chegou no celular
+4ce2da04	Não foi possível enviar: {0}
+57750df1	Enviada às {0:HH:mm}: {1}
+941d644c	Falha no envio às {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Digite a URL do webhook do Discord
+fb1a5ec2	Digite o nome do tópico do ntfy
+4b9eae19	O servidor retornou um erro ({0})
+727c88fe	Zona {0}
+b889a59c	Não é possível conectar ao OpenRGB (tempo esgotado)
+ee426337	Resposta inválida do OpenRGB (número de dispositivos)
+b49ba6ef	Não conectado ao OpenRGB
+70ae1eed	O OpenRGB não responde
+640e3e0a	Resposta inválida do OpenRGB
+eb603574	A resposta do OpenRGB é grande demais
+991f1b38	A conexão com o OpenRGB caiu
+278cffe6	Os dados do controlador são curtos demais
+a86cdb33	Os dados do controlador estão incompletos
+a5ce650f	Não é possível ler os dados do controlador
+0027866f	Não é possível desenhar: {0}
+c790979e	O OpenRGB não está dando conta, então a taxa foi reduzida para {0:0} por segundo
+ffaf3cd2	Conectando ao OpenRGB…
+c19da9e8	Aguardando a conexão anterior terminar…
+21503ff4	A conexão com o OpenRGB caiu (reconectando em {0} s): {1}
+91c695dc	Não é possível conectar (nova tentativa em {0} s): {1}
+b6c76b3b	Parou por um erro: {0}
+a4a0e7be	O endereço do OpenRGB mudou; reconectando…
+a12cdd84	Reconectando ao OpenRGB…
+b9eec9ec	A lista de dispositivos do OpenRGB mudou; reconectando…
+ece981c1	Não encontrado no OpenRGB
+303ee7e1	O dispositivo escolhido não foi encontrado: {0} (verifique se ele aparece no OpenRGB)
+f9706898	Conectado, mas nenhum dispositivo com cor ajustável foi encontrado. Verifique se os dispositivos aparecem no OpenRGB
+a4da3fc4	Conectado: mudando a cor de {0} dispositivos
+007ac9b1	 ({0:0} quadros por segundo)
+db01850a	. O dispositivo escolhido não foi encontrado: {0}
+9e6acdec	{0} ({1} LEDs · {2})
+ad45bf76	local desconhecido
+29f94095	O PawnIO foi instalado. Para concluir, é preciso reiniciar o PC. Depois de reiniciar o PC, as ventoinhas poderão ser controladas.
+3364480f	O PawnIO foi instalado.
+129482fa	O PawnIO já está instalado.
+222ab2aa	 Reinicie o app para controlar as ventoinhas (se mesmo depois disso os conectores das ventoinhas não forem encontrados, reinicie o PC).
+4d3e4c64	 Você pode continuar usando assim.
+27e711c8	O winget retornou um erro ({0}), mas o PawnIO foi encontrado. Reinicie o app.
+264923af	 Se os conectores das ventoinhas ainda não forem encontrados, reinicie o PC ou reinstale o PawnIO com o instalador do site oficial.
+4a3d7778	O winget informou que terminou, mas o PawnIO não foi encontrado. Reinicie o PC e verifique de novo.
+b44937c0	 Se ainda não for encontrado, use o instalador do site oficial.
+2f4a62a1	Não foi possível instalar porque o winget (o "Instalador de Aplicativo" do Windows) não existe ou não inicia.
+1085d16a	 Instale ou atualize o "Instalador de Aplicativo" na Microsoft Store, ou use o instalador do site oficial.
+df23d3d2	Interrompido porque não terminou em {0:F0} minutos. Verifique a conexão com a internet e tente de novo, ou use o instalador do site oficial.
+571744e9	O download falhou ({0}). Verifique se está conectado à internet e tente de novo.
+29df0532	Não foi possível ler a lista de pacotes do winget ({0}). Tente de novo mais tarde ou use o instalador do site oficial.
+cab95e39	O winget não encontrou o PawnIO ({0}) ({1}). Use o instalador do site oficial.
+c2cdbdec	A política deste PC (gerenciamento de empresa, escola etc.) bloqueia a instalação pelo winget ({0}). Fale com o administrador.
+43abeb95	Outra instalação está em andamento ({0}). Tente de novo quando ela terminar.
+5e9a061f	Não foi possível instalar porque o PawnIO está em uso ({0}). Feche outros programas que usam o PawnIO (FanControl, LibreHardwareMonitor etc.) ou reinicie o PC e tente de novo.
+c5885d00	É preciso reiniciar o PC ({0}). Reinicie o PC e instale de novo.
+fdb07eba	A instalação foi cancelada ({0}).
+3f126525	Não foi possível instalar porque o winget está desatualizado ({0}). Atualize o "Instalador de Aplicativo" na Microsoft Store ou use o instalador do site oficial.
+66b9357b	São necessárias permissões de administrador ({0}). Reinicie o app como administrador e tente de novo.
+8725a2c5	A instalação falhou (erro do winget {0}). Use o instalador do site oficial.
+6bb09a84	Desinstale o PawnIO em Configurações do Windows → Aplicativos → Aplicativos instalados.
+3436ee7f	O PawnIO foi desinstalado. Para concluir, reinicie o PC.

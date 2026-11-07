@@ -907,3 +907,103 @@ bb74ce90	Übersicht „{0}“
 d354ab0d	Noch kein CPU-Temperatursensor sichtbar
 2a815b01	Noch kein GPU-Temperatursensor sichtbar
 98a78d2c	Noch kein Mainboard-Temperatursensor sichtbar
+7bd6fc4c	{0}  ·  {1} (GPU, experimentell)
+b961088b	Kühlung der CPU
+a9a03eaf	Kühlung der GPU
+9aa1d93f	Daten werden gesammelt (noch {0:F0} Tage bis zum Vergleich). Nach einer Kalibrierung ist eine Bewertung ab 7 Tagen danach möglich.
+ad82ee64	Kalibrierung am {0:M/d}
+171d15ba	um den {0:M/d}
+74443afa	In den Basis- und den neuesten Aufzeichnungen gibt es noch zu wenig Zeit mit derselben Drehzahlvorgabe (Duty), daher ist kein Vergleich möglich.
+6c1cd333	{1:N0} rpm bei {0} % ({2}: {3:N0} rpm)
+3b9d1efe	seit etwa {0:M/d} plötzlich
+eff7a5cf	allmählich
+5b34a396	Die Pumpendrehzahl ist {0} gesunken. Mögliche Ursachen sind Verschleiß der Pumpe oder zu wenig Kühlflüssigkeit.
+31b87b50	 Lassen Sie sie bald prüfen.
+78cee055	 Prüfen Sie sie, falls sie weiter sinkt.
+6e637e2e	Die Drehzahl ist {0} gesunken. Prüfen Sie, ob ein Kabel die Rotorblätter berührt oder die Verkabelung locker ist. Hilft das nicht, ist der Lüfter möglicherweise defekt.
+736c890f	Die Drehzahl sinkt allmählich. Entfernen Sie den Staub von Rotorblättern und Filtern. Wird es danach nicht besser, ist möglicherweise das Lager verschlissen – erwägen Sie einen Austausch.
+0dd5ebcf	Die Pumpe dreht {0} schneller. Wenn Sie die Pumpe getauscht oder neu angeschlossen haben, ist das in Ordnung. Sonst prüfen Sie, ob Kühlflüssigkeit fehlt (Trockenlauf).
+66fc95af	Er dreht {0} schneller. Wenn Sie den Lüfter getauscht oder neu angeschlossen haben, ist das in Ordnung. Sonst prüfen Sie, ob der Ansaugfilter verstopft ist (wenn die Luft schlecht strömt, dreht ein Lüfter leichter und schneller).
+64e8b9f9	Er dreht allmählich schneller. Möglicherweise sind Ansaugfilter oder Radiator verstopft und die Luft strömt schlecht (wenn die Luft schlecht strömt, dreht ein Lüfter leichter und schneller). Reinigen Sie sie.
+063b56cb	Die Drehzahl ist unverändert und normal.
+e3a78dee	 (verglichene Zeit: zuletzt {0} min)
+d8fb178b	Daten werden gesammelt (noch {0:F0} Tage).
+0d593e94	Es gibt noch zu wenig Aufzeichnungen unter Last (z. B. Spiele) und im Leerlauf, daher ist kein Vergleich möglich (Basis {0} min, zuletzt {1} min; jeweils mindestens {2} min nötig).
+b09085c8	Die Drehzahlvorgabe der Lüfter unter Last hat sich geändert ({0:F0} % → {1:F0} %). Wenn Sie die Lüfterkurve geändert haben, geht der Unterschied bei der Kühlung darauf zurück, deshalb
+2ddc0b27	 wird nicht beurteilt, ob Staub die Ursache ist. Um mit den neuen Einstellungen neu zu vergleichen, klicken Sie auf „Gereinigt (ab hier neue Vergleichsbasis)“.
+ccf3a760	Lüftervorgabe {0:F0} % → {1:F0} %
+0090bb82	Temperaturanstieg pro {0} W: {1:F0} °C (vorher {2:F0} °C)
+0449b7df	Die Kühlung ist deutlich schlechter als früher. Entfernen Sie den Staub von Filtern, Radiator und Kühlkörper. Hilft das nicht, ist möglicherweise die Wärmeleitpaste gealtert.
+f91be135	Die Kühlung ist etwas schlechter als früher. Es empfiehlt sich, bald Filter und Radiator zu reinigen.
+7ed2ece5	Die Kühlung ist besser als früher. Wenn Sie gereinigt, Teile getauscht oder Lüfter ergänzt haben, ist das in Ordnung.
+58d9c8ca	Die Kühlung ist so gut wie früher.
+fcc150e0	 (verglichene Zeit: Basis {0} min, zuletzt {1} min; Unterschiede der Raumtemperatur sind herausgerechnet)
+5ba2a332	ASUS Aura (LEDs von Armoury Crate)
+d9bee020	Downloads
+4a049af4	Desktop
+4033fb1e	Temporärer Ordner
+e39c4b26	ProFanController.exe konnte nicht kopiert werden
+d6132623	ProFanController-Testbenachrichtigung
+7be18f84	Dies ist eine Testbenachrichtigung von {0}. Wenn sie ankommt, ist die Einrichtung abgeschlossen.
+15278ea5	Gesendet. Prüfen Sie, ob sie auf dem Handy angekommen ist
+4ce2da04	Senden fehlgeschlagen: {0}
+57750df1	Gesendet um {0:HH:mm}: {1}
+941d644c	Senden um {0:HH:mm} fehlgeschlagen: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Geben Sie die Discord-Webhook-URL ein
+fb1a5ec2	Geben Sie den ntfy-Themennamen ein
+4b9eae19	Der Server hat einen Fehler gemeldet ({0})
+727c88fe	Zone {0}
+b889a59c	Keine Verbindung zu OpenRGB (Zeitüberschreitung)
+ee426337	Ungültige Antwort von OpenRGB (Geräteanzahl)
+b49ba6ef	Nicht mit OpenRGB verbunden
+70ae1eed	Keine Antwort von OpenRGB
+640e3e0a	Ungültige Antwort von OpenRGB
+eb603574	Die Antwort von OpenRGB ist zu groß
+991f1b38	Die Verbindung zu OpenRGB wurde getrennt
+278cffe6	Controllerdaten sind zu kurz
+a86cdb33	Controllerdaten sind abgeschnitten
+a5ce650f	Controllerdaten können nicht gelesen werden
+0027866f	Darstellung nicht möglich: {0}
+c790979e	OpenRGB kommt nicht hinterher, daher wurde auf {0:0} pro Sekunde gesenkt
+ffaf3cd2	Verbindung zu OpenRGB wird hergestellt…
+c19da9e8	Warten, bis die vorige Verbindung beendet ist…
+21503ff4	Die Verbindung zu OpenRGB wurde getrennt (neuer Versuch in {0} s): {1}
+91c695dc	Keine Verbindung (neuer Versuch in {0} s): {1}
+b6c76b3b	Wegen eines Fehlers gestoppt: {0}
+a4a0e7be	Die OpenRGB-Adresse hat sich geändert, Verbindung wird neu hergestellt…
+a12cdd84	Verbindung zu OpenRGB wird neu hergestellt…
+b9eec9ec	Die Geräteliste von OpenRGB hat sich geändert, Verbindung wird neu hergestellt…
+ece981c1	In OpenRGB nicht gefunden
+303ee7e1	Das gewählte Gerät wurde nicht gefunden: {0} (prüfen Sie, ob es in OpenRGB angezeigt wird)
+f9706898	Verbunden, aber keine Geräte gefunden, deren Farbe sich ändern lässt. Prüfen Sie, ob die Geräte in OpenRGB angezeigt werden
+a4da3fc4	Verbunden: Farbe von {0} Geräten wird geändert
+007ac9b1	 ({0:0} Bilder pro Sekunde)
+db01850a	. Das gewählte Gerät wurde nicht gefunden: {0}
+9e6acdec	{0} ({1} LEDs · {2})
+ad45bf76	Position unbekannt
+29f94095	PawnIO wurde installiert. Zum Abschluss ist ein Neustart des PCs nötig. Nach dem Neustart lassen sich die Lüfter steuern.
+3364480f	PawnIO wurde installiert.
+129482fa	PawnIO ist bereits installiert.
+222ab2aa	 Starten Sie die App neu, um die Lüfter zu steuern (werden auch danach keine Lüfteranschlüsse gefunden, starten Sie den PC neu).
+4d3e4c64	 Sie können die App so weiterverwenden.
+27e711c8	winget hat einen Fehler gemeldet ({0}), PawnIO wurde aber gefunden. Starten Sie die App neu.
+264923af	 Werden die Lüfteranschlüsse trotzdem nicht gefunden, starten Sie den PC neu oder installieren Sie PawnIO mit dem Installer der offiziellen Website neu.
+4a3d7778	winget hat „fertig“ gemeldet, PawnIO wurde aber nicht gefunden. Starten Sie den PC neu und prüfen Sie es erneut.
+b44937c0	 Wird es trotzdem nicht gefunden, verwenden Sie den Installer der offiziellen Website.
+2f4a62a1	Installation nicht möglich, weil winget (der Windows-„App-Installer“) fehlt oder nicht startet.
+1085d16a	 Installieren oder aktualisieren Sie den „App-Installer“ im Microsoft Store oder verwenden Sie den Installer der offiziellen Website.
+df23d3d2	Abgebrochen, weil es nach {0:F0} Minuten nicht fertig war. Prüfen Sie die Internetverbindung und versuchen Sie es erneut oder verwenden Sie den Installer der offiziellen Website.
+571744e9	Der Download ist fehlgeschlagen ({0}). Prüfen Sie die Internetverbindung und versuchen Sie es erneut.
+29df0532	Die Paketliste von winget konnte nicht gelesen werden ({0}). Versuchen Sie es später erneut oder verwenden Sie den Installer der offiziellen Website.
+cab95e39	winget hat PawnIO ({0}) nicht gefunden ({1}). Verwenden Sie den Installer der offiziellen Website.
+c2cdbdec	Die Richtlinie dieses PCs (Verwaltung durch Firma, Schule usw.) verhindert die Installation mit winget ({0}). Wenden Sie sich an Ihren Administrator.
+43abeb95	Eine andere Installation läuft gerade ({0}). Versuchen Sie es danach erneut.
+5e9a061f	Installation nicht möglich, weil PawnIO verwendet wird ({0}). Beenden Sie andere Software, die PawnIO nutzt (FanControl, LibreHardwareMonitor usw.), oder starten Sie den PC neu und versuchen Sie es dann erneut.
+c5885d00	Ein Neustart des PCs ist nötig ({0}). Starten Sie den PC neu und installieren Sie erneut.
+fdb07eba	Die Installation wurde abgebrochen ({0}).
+3f126525	Installation nicht möglich, weil winget zu alt ist ({0}). Aktualisieren Sie den „App-Installer“ im Microsoft Store oder verwenden Sie den Installer der offiziellen Website.
+66b9357b	Administratorrechte sind nötig ({0}). Starten Sie die App als Administrator neu und versuchen Sie es erneut.
+8725a2c5	Die Installation ist fehlgeschlagen (winget-Fehler {0}). Verwenden Sie den Installer der offiziellen Website.
+6bb09a84	Deinstallieren Sie PawnIO unter Windows-Einstellungen → Apps → Installierte Apps.
+3436ee7f	PawnIO wurde deinstalliert. Starten Sie zum Abschluss den PC neu.

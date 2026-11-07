@@ -907,3 +907,103 @@ bb74ce90	Dashboard "{0}"
 d354ab0d	Nog geen CPU-temperatuursensor zichtbaar
 2a815b01	Nog geen GPU-temperatuursensor zichtbaar
 98a78d2c	Nog geen temperatuursensor van het moederbord zichtbaar
+7bd6fc4c	{0}  ·  {1} (GPU, experimenteel)
+b961088b	Koeling van de CPU
+a9a03eaf	Koeling van de GPU
+9aa1d93f	Gegevens worden verzameld (nog {0:F0} dagen tot een vergelijking mogelijk is). Na een kalibratie is een oordeel mogelijk vanaf 7 dagen daarna.
+ad82ee64	kalibratie van {0:M/d}
+171d15ba	rond {0:M/d}
+74443afa	Er is in zowel de basis- als de recente metingen nog te weinig tijd met dezelfde toerentalopdracht (Duty), dus ze kunnen niet worden vergeleken.
+6c1cd333	{1:N0} rpm bij {0}% ({2}: {3:N0} rpm)
+3b9d1efe	sinds ongeveer {0:M/d} plotseling
+eff7a5cf	geleidelijk
+5b34a396	Het pomptoerental is {0} gedaald. Mogelijk slijt de pomp of daalt het koelvloeistofniveau.
+31b87b50	 Laat hem snel nakijken.
+78cee055	 Laat hem nakijken als het verder daalt.
+6e637e2e	Het toerental is {0} gedaald. Controleer of er geen kabel tegen de bladen komt en of de bedrading niet los zit. Helpt dat niet, dan is de ventilator mogelijk defect.
+736c890f	Het toerental daalt geleidelijk. Verwijder het stof van de bladen en filters. Herstelt het niet na het schoonmaken, dan slijt mogelijk het lager; overweeg vervanging.
+0dd5ebcf	De pomp draait {0} sneller. Als je de pomp hebt vervangen of opnieuw aangesloten, is dat geen probleem. Zo niet, controleer dan of er koelvloeistof ontbreekt (drooglopen).
+66fc95af	Hij draait {0} sneller. Als je de ventilator hebt vervangen of opnieuw aangesloten, is dat geen probleem. Zo niet, controleer dan of het aanzuigfilter niet verstopt is (als de lucht moeilijk stroomt, draait een ventilator lichter en sneller).
+64e8b9f9	Hij draait geleidelijk sneller. Het aanzuigfilter of de radiator is mogelijk verstopt, waardoor de lucht moeilijk stroomt (als de lucht moeilijk stroomt, draait een ventilator lichter en sneller). Maak ze schoon.
+063b56cb	Het toerental is hetzelfde als eerder en normaal.
+e3a78dee	 (vergeleken tijd: recent {0} min)
+d8fb178b	Gegevens worden verzameld (nog {0:F0} dagen).
+0d593e94	Er zijn nog te weinig metingen onder belasting (games enz.) en in rust, dus vergelijken kan niet (basis {0} min, recent {1} min; voor elk minstens {2} min nodig).
+b09085c8	De toerentalopdracht van de ventilatoren onder belasting is veranderd ({0:F0}% → {1:F0}%). Als je de ventilatorcurve hebt aangepast, komt het verschil in koeling daardoor, dus
+2ddc0b27	 wordt niet beoordeeld of het aan stof ligt. Om opnieuw te vergelijken met de nieuwe instellingen, klik je op "Schoongemaakt (vanaf hier nieuwe basis)".
+ccf3a760	Ventilatoropdracht {0:F0}% → {1:F0}%
+0090bb82	Temperatuurstijging per {0} W: {1:F0} °C (eerder {2:F0} °C)
+0449b7df	Het koelt duidelijk slechter dan eerder. Verwijder het stof van filters, radiator en koellichaam. Helpt dat niet, dan is de koelpasta mogelijk verouderd.
+f91be135	Het koelt iets slechter dan eerder. Het is aan te raden binnenkort de filters en radiator schoon te maken.
+7ed2ece5	Het koelt beter dan eerder. Als je hebt schoongemaakt, onderdelen hebt vervangen of ventilatoren hebt toegevoegd, is dat geen probleem.
+58d9c8ca	Het koelt net zo goed als eerder.
+fcc150e0	 (vergeleken tijd: basis {0} min, recent {1} min; verschillen in kamertemperatuur zijn verrekend)
+5ba2a332	ASUS Aura (leds van Armoury Crate)
+d9bee020	Downloads
+4a049af4	Bureaublad
+4033fb1e	Tijdelijke map
+e39c4b26	Kan ProFanController.exe niet kopiëren
+d6132623	Testmelding van ProFanController
+7be18f84	Dit is een testmelding van {0}. Als je deze ontvangt, is de installatie klaar.
+15278ea5	Verzonden. Controleer of hij op je telefoon is aangekomen
+4ce2da04	Verzenden mislukt: {0}
+57750df1	Verzonden om {0:HH:mm}: {1}
+941d644c	Verzenden mislukt om {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Voer de Discord-webhook-URL in
+fb1a5ec2	Voer de naam van het ntfy-onderwerp in
+4b9eae19	De server gaf een fout terug ({0})
+727c88fe	Zone {0}
+b889a59c	Kan geen verbinding maken met OpenRGB (time-out)
+ee426337	Ongeldig antwoord van OpenRGB (aantal apparaten)
+b49ba6ef	Niet verbonden met OpenRGB
+70ae1eed	Geen antwoord van OpenRGB
+640e3e0a	Ongeldig antwoord van OpenRGB
+eb603574	Het antwoord van OpenRGB is te groot
+991f1b38	De verbinding met OpenRGB is verbroken
+278cffe6	Controllergegevens zijn te kort
+a86cdb33	Controllergegevens zijn afgekapt
+a5ce650f	Kan de controllergegevens niet lezen
+0027866f	Kan niet tekenen: {0}
+c790979e	OpenRGB kan het niet bijhouden, dus is verlaagd naar {0:0} keer per seconde
+ffaf3cd2	Verbinden met OpenRGB…
+c19da9e8	Wachten tot de vorige verbinding is gesloten…
+21503ff4	De verbinding met OpenRGB is verbroken (opnieuw verbinden over {0} s): {1}
+91c695dc	Kan geen verbinding maken (nieuwe poging over {0} s): {1}
+b6c76b3b	Gestopt door een fout: {0}
+a4a0e7be	Het OpenRGB-adres is gewijzigd, opnieuw verbinden…
+a12cdd84	Opnieuw verbinden met OpenRGB…
+b9eec9ec	De apparatenlijst van OpenRGB is gewijzigd, opnieuw verbinden…
+ece981c1	Niet gevonden in OpenRGB
+303ee7e1	Het gekozen apparaat is niet gevonden: {0} (controleer of het in OpenRGB wordt getoond)
+f9706898	Verbonden, maar er zijn geen apparaten gevonden waarvan de kleur kan worden gewijzigd. Controleer of de apparaten in OpenRGB worden getoond
+a4da3fc4	Verbonden: kleur van {0} apparaten wordt gewijzigd
+007ac9b1	 ({0:0} beelden per seconde)
+db01850a	. Het gekozen apparaat is niet gevonden: {0}
+9e6acdec	{0} ({1} leds · {2})
+ad45bf76	onbekende locatie
+29f94095	PawnIO is geïnstalleerd. Om af te ronden moet de pc opnieuw worden opgestart. Daarna kunnen de ventilatoren worden geregeld.
+3364480f	PawnIO is geïnstalleerd.
+129482fa	PawnIO is al geïnstalleerd.
+222ab2aa	 Start de app opnieuw om de ventilatoren te regelen (worden er ook daarna geen ventilatoraansluitingen gevonden, start dan de pc opnieuw op).
+4d3e4c64	 Je kunt hem gewoon blijven gebruiken.
+27e711c8	winget gaf een fout terug ({0}), maar PawnIO is gevonden. Start de app opnieuw.
+264923af	 Worden de ventilatoraansluitingen nog steeds niet gevonden, start dan de pc opnieuw op of installeer PawnIO opnieuw met het installatieprogramma van de officiële website.
+4a3d7778	winget meldde dat het klaar was, maar PawnIO is niet gevonden. Start de pc opnieuw op en controleer het nog eens.
+b44937c0	 Wordt het nog steeds niet gevonden, gebruik dan het installatieprogramma van de officiële website.
+2f4a62a1	Installeren is niet gelukt, omdat winget (het Windows-"App-installatieprogramma") ontbreekt of niet start.
+1085d16a	 Installeer of update het "App-installatieprogramma" via de Microsoft Store, of gebruik het installatieprogramma van de officiële website.
+df23d3d2	Gestopt, omdat het na {0:F0} minuten nog niet klaar was. Controleer de internetverbinding en probeer het opnieuw, of gebruik het installatieprogramma van de officiële website.
+571744e9	Het downloaden is mislukt ({0}). Controleer of je met internet bent verbonden en probeer het opnieuw.
+29df0532	Kan de pakketlijst van winget niet lezen ({0}). Probeer het later opnieuw of gebruik het installatieprogramma van de officiële website.
+cab95e39	winget heeft PawnIO ({0}) niet gevonden ({1}). Gebruik het installatieprogramma van de officiële website.
+c2cdbdec	Het beleid van deze pc (beheer door bedrijf, school enz.) blokkeert installeren met winget ({0}). Neem contact op met je beheerder.
+43abeb95	Er loopt al een andere installatie ({0}). Probeer het opnieuw als die klaar is.
+5e9a061f	Installeren is niet gelukt, omdat PawnIO in gebruik is ({0}). Sluit andere software die PawnIO gebruikt (FanControl, LibreHardwareMonitor enz.) of start de pc opnieuw op en probeer het dan opnieuw.
+c5885d00	De pc moet opnieuw worden opgestart ({0}). Start de pc opnieuw op en installeer opnieuw.
+fdb07eba	De installatie is geannuleerd ({0}).
+3f126525	Installeren is niet gelukt, omdat winget te oud is ({0}). Update het "App-installatieprogramma" via de Microsoft Store of gebruik het installatieprogramma van de officiële website.
+66b9357b	Beheerdersrechten zijn nodig ({0}). Start de app opnieuw als administrator en probeer het opnieuw.
+8725a2c5	De installatie is mislukt (winget-fout {0}). Gebruik het installatieprogramma van de officiële website.
+6bb09a84	Verwijder PawnIO via Windows-instellingen → Apps → Geïnstalleerde apps.
+3436ee7f	PawnIO is verwijderd. Start de pc opnieuw op om af te ronden.

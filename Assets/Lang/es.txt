@@ -907,3 +907,103 @@ bb74ce90	Panel «{0}»
 d354ab0d	Aún no se ve ningún sensor de temperatura de la CPU
 2a815b01	Aún no se ve ningún sensor de temperatura de la GPU
 98a78d2c	Aún no se ve ningún sensor de temperatura de la placa base
+7bd6fc4c	{0}  ·  {1} (GPU, experimental)
+b961088b	Refrigeración de la CPU
+a9a03eaf	Refrigeración de la GPU
+9aa1d93f	Recopilando datos (faltan {0:F0} días para poder comparar). Si ya se calibró, se podrá evaluar 7 días después de la calibración.
+ad82ee64	calibración del {0:M/d}
+171d15ba	hacia el {0:M/d}
+74443afa	Todavía hay poco tiempo con la misma orden de velocidad (Duty) tanto en los registros de referencia como en los recientes, así que no se pueden comparar.
+6c1cd333	{1:N0} rpm al {0} % ({2}: {3:N0} rpm)
+3b9d1efe	de golpe desde el {0:M/d} aproximadamente
+eff7a5cf	poco a poco
+5b34a396	La velocidad de la bomba ha bajado {0}. Puede deberse al desgaste de la bomba o a que falta líquido refrigerante.
+31b87b50	 Revísela pronto.
+78cee055	 Si sigue bajando, revísela.
+6e637e2e	La velocidad ha bajado {0}. Compruebe que ningún cable roce las aspas y que la conexión no esté floja. Si no se arregla, el ventilador puede estar fallando.
+736c890f	La velocidad está bajando poco a poco. Limpie el polvo de las aspas y los filtros. Si no se recupera tras limpiar, el rodamiento puede estar desgastado; plantéese cambiarlo.
+0dd5ebcf	La bomba gira más rápido {0}. Si cambió o volvió a conectar la bomba, no hay problema. Si no, compruebe que no falte líquido refrigerante (giro en seco).
+66fc95af	Gira más rápido {0}. Si cambió o volvió a conectar el ventilador, no hay problema. Si no, compruebe que el filtro de admisión no esté obstruido (cuando el aire circula mal, el ventilador gira con más soltura y acelera).
+64e8b9f9	Gira cada vez más rápido. El filtro de admisión o el radiador pueden estar obstruidos y el aire circula mal (cuando el aire circula mal, el ventilador gira con más soltura y acelera). Límpielos.
+063b56cb	La velocidad es la misma que antes y es normal.
+e3a78dee	 (tiempo comparado: reciente {0} min)
+d8fb178b	Recopilando datos (faltan {0:F0} días).
+0d593e94	Todavía hay pocos registros con carga (juegos, etc.) y en reposo, así que no se pueden comparar (referencia {0} min, reciente {1} min; se necesitan al menos {2} min de cada uno).
+b09085c8	La orden de velocidad de los ventiladores con carga ha cambiado ({0:F0} % → {1:F0} %). Si cambió la curva de ventiladores, la diferencia de refrigeración se debe a eso, por lo que
+2ddc0b27	 no se evalúa si hay polvo. Para volver a comparar con los nuevos ajustes, pulse «Lo limpié (usar desde aquí como nueva referencia)».
+ccf3a760	Orden de ventiladores {0:F0} % → {1:F0} %
+0090bb82	Subida de temperatura por {0} W: {1:F0} °C (antes {2:F0} °C)
+0449b7df	Ahora enfría claramente peor que antes. Limpie el polvo de los filtros, el radiador y el disipador. Si no mejora, la pasta térmica puede estar degradada.
+f91be135	Enfría algo peor que antes. Se recomienda limpiar pronto los filtros y el radiador.
+7ed2ece5	Ahora enfría mejor que antes. Si limpió, cambió piezas o añadió ventiladores, no hay problema.
+58d9c8ca	Enfría igual que antes.
+fcc150e0	 (tiempo comparado: referencia {0} min, reciente {1} min; se descuentan las diferencias de temperatura ambiente)
+5ba2a332	ASUS Aura (LED de Armoury Crate)
+d9bee020	Descargas
+4a049af4	Escritorio
+4033fb1e	Carpeta temporal
+e39c4b26	No se pudo copiar ProFanController.exe
+d6132623	Notificación de prueba de ProFanController
+7be18f84	Es una notificación de prueba de {0}. Si le llega, la configuración está completa.
+15278ea5	Enviado. Compruebe que llegó al teléfono
+4ce2da04	No se pudo enviar: {0}
+57750df1	Enviado a las {0:HH:mm}: {1}
+941d644c	Error al enviar a las {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Introduzca la URL del webhook de Discord
+fb1a5ec2	Introduzca el nombre del tema de ntfy
+4b9eae19	El servidor devolvió un error ({0})
+727c88fe	Zona {0}
+b889a59c	No se puede conectar con OpenRGB (tiempo agotado)
+ee426337	Respuesta no válida de OpenRGB (número de dispositivos)
+b49ba6ef	No conectado a OpenRGB
+70ae1eed	OpenRGB no responde
+640e3e0a	Respuesta no válida de OpenRGB
+eb603574	La respuesta de OpenRGB es demasiado grande
+991f1b38	Se perdió la conexión con OpenRGB
+278cffe6	Los datos del controlador son demasiado cortos
+a86cdb33	Los datos del controlador están incompletos
+a5ce650f	No se pueden leer los datos del controlador
+0027866f	No se puede dibujar: {0}
+c790979e	OpenRGB no da abasto, así que se ha bajado a {0:0} por segundo
+ffaf3cd2	Conectando con OpenRGB…
+c19da9e8	Esperando a que termine la conexión anterior…
+21503ff4	Se perdió la conexión con OpenRGB (reconectando en {0} s): {1}
+91c695dc	No se puede conectar (reintento en {0} s): {1}
+b6c76b3b	Se detuvo por un error: {0}
+a4a0e7be	La dirección de OpenRGB cambió; reconectando…
+a12cdd84	Reconectando con OpenRGB…
+b9eec9ec	La lista de dispositivos de OpenRGB cambió; reconectando…
+ece981c1	No se encuentra en OpenRGB
+303ee7e1	No se encuentra el dispositivo elegido: {0} (compruebe que aparece en OpenRGB)
+f9706898	Conectado, pero no se encontraron dispositivos cuyo color se pueda cambiar. Compruebe que los dispositivos aparecen en OpenRGB
+a4da3fc4	Conectado: cambiando el color de {0} dispositivos
+007ac9b1	 ({0:0} fotogramas por segundo)
+db01850a	. No se encuentra el dispositivo elegido: {0}
+9e6acdec	{0} ({1} LED · {2})
+ad45bf76	ubicación desconocida
+29f94095	PawnIO se ha instalado. Para terminar hay que reiniciar el PC. Tras reiniciar el PC, se podrán controlar los ventiladores.
+3364480f	PawnIO se ha instalado.
+129482fa	PawnIO ya está instalado.
+222ab2aa	 Reinicie la aplicación para controlar los ventiladores (si aun así no se encuentran conectores de ventilador, reinicie el PC).
+4d3e4c64	 Puede seguir usándola tal cual.
+27e711c8	winget devolvió un error ({0}), pero se encontró PawnIO. Reinicie la aplicación.
+264923af	 Si aun así no se encuentran los conectores de ventilador, reinicie el PC o vuelva a instalar PawnIO con el instalador del sitio oficial.
+4a3d7778	winget indicó que terminó, pero no se encuentra PawnIO. Reinicie el PC y vuelva a comprobarlo.
+b44937c0	 Si aun así no aparece, use el instalador del sitio oficial.
+2f4a62a1	No se pudo instalar porque winget (el «Instalador de aplicación» de Windows) no está o no se inicia.
+1085d16a	 Instale o actualice el «Instalador de aplicación» desde Microsoft Store, o use el instalador del sitio oficial.
+df23d3d2	Se detuvo porque no terminó en {0:F0} minutos. Compruebe la conexión a Internet y vuelva a intentarlo, o use el instalador del sitio oficial.
+571744e9	La descarga falló ({0}). Compruebe que está conectado a Internet y vuelva a intentarlo.
+29df0532	No se pudo leer la lista de paquetes de winget ({0}). Vuelva a intentarlo más tarde o use el instalador del sitio oficial.
+cab95e39	winget no encontró PawnIO ({0}) ({1}). Use el instalador del sitio oficial.
+c2cdbdec	La directiva de este PC (gestión de una empresa, centro educativo, etc.) impide instalar con winget ({0}). Consulte al administrador.
+43abeb95	Hay otra instalación en curso ({0}). Vuelva a intentarlo cuando termine.
+5e9a061f	No se pudo instalar porque PawnIO está en uso ({0}). Cierre otros programas que usen PawnIO (FanControl, LibreHardwareMonitor, etc.) o reinicie el PC y vuelva a intentarlo.
+c5885d00	Hay que reiniciar el PC ({0}). Reinicie el PC y vuelva a instalar.
+fdb07eba	La instalación se canceló ({0}).
+3f126525	No se pudo instalar porque winget es demasiado antiguo ({0}). Actualice el «Instalador de aplicación» desde Microsoft Store o use el instalador del sitio oficial.
+66b9357b	Se necesitan permisos de administrador ({0}). Reinicie la aplicación como administrador y vuelva a intentarlo.
+8725a2c5	La instalación falló (error de winget {0}). Use el instalador del sitio oficial.
+6bb09a84	Desinstale PawnIO desde Configuración de Windows → Aplicaciones → Aplicaciones instaladas.
+3436ee7f	PawnIO se ha desinstalado. Para terminar, reinicie el PC.

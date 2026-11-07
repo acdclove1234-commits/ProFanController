@@ -907,3 +907,103 @@ bb74ce90	Pannello «{0}»
 d354ab0d	Nessun sensore di temperatura della CPU ancora visibile
 2a815b01	Nessun sensore di temperatura della GPU ancora visibile
 98a78d2c	Nessun sensore di temperatura della scheda madre ancora visibile
+7bd6fc4c	{0}  ·  {1} (GPU, sperimentale)
+b961088b	Raffreddamento della CPU
+a9a03eaf	Raffreddamento della GPU
+9aa1d93f	Raccolta dati in corso (mancano {0:F0} giorni per poter confrontare). Se le ventole sono calibrate, la valutazione è possibile 7 giorni dopo la calibrazione.
+ad82ee64	calibrazione del {0:M/d}
+171d15ba	verso il {0:M/d}
+74443afa	Il tempo con lo stesso comando di velocità (Duty) è ancora poco sia nelle registrazioni di riferimento sia in quelle recenti, quindi non è possibile confrontarle.
+6c1cd333	{1:N0} rpm al {0}% ({2}: {3:N0} rpm)
+3b9d1efe	all'improvviso dal {0:M/d} circa
+eff7a5cf	gradualmente
+5b34a396	La velocità della pompa è scesa {0}. La pompa potrebbe essere usurata o il liquido di raffreddamento in calo.
+31b87b50	 Falla controllare presto.
+78cee055	 Se scende ancora, falla controllare.
+6e637e2e	La velocità è scesa {0}. Controlla che nessun cavo tocchi le pale e che il collegamento non sia allentato. Se non si risolve, la ventola potrebbe essere guasta.
+736c890f	La velocità sta scendendo gradualmente. Pulisci la polvere da pale e filtri. Se dopo la pulizia non torna normale, il cuscinetto potrebbe essere usurato: valuta la sostituzione.
+0dd5ebcf	La pompa gira più velocemente {0}. Se hai sostituito o ricollegato la pompa, va bene. Altrimenti controlla che il liquido di raffreddamento non sia calato (funzionamento a secco).
+66fc95af	Gira più velocemente {0}. Se hai sostituito o ricollegato la ventola, va bene. Altrimenti controlla che il filtro di aspirazione non sia ostruito (quando l'aria passa a fatica, la ventola gira più libera e accelera).
+64e8b9f9	Gira sempre più velocemente. Il filtro di aspirazione o il radiatore potrebbero essere intasati e l'aria passa a fatica (quando l'aria passa a fatica, la ventola gira più libera e accelera). Puliscili.
+063b56cb	La velocità è invariata e normale.
+e3a78dee	 (tempo confrontato: recente {0} min)
+d8fb178b	Raccolta dati in corso (mancano {0:F0} giorni).
+0d593e94	Le registrazioni sotto carico (giochi, ecc.) e a riposo sono ancora poche, quindi non è possibile confrontarle (riferimento {0} min, recente {1} min; servono almeno {2} min per ciascuno).
+b09085c8	Il comando di velocità delle ventole sotto carico è cambiato ({0:F0}% → {1:F0}%). Se hai modificato la curva delle ventole, la differenza di raffreddamento dipende da questo, quindi
+2ddc0b27	 non viene valutato se si tratta di polvere. Per confrontare di nuovo con le nuove impostazioni, premi «Ho pulito (nuovo riferimento da qui)».
+ccf3a760	Comando ventole {0:F0}% → {1:F0}%
+0090bb82	Aumento di temperatura per {0} W: {1:F0} °C (prima {2:F0} °C)
+0449b7df	Ora raffredda decisamente peggio di prima. Pulisci la polvere da filtri, radiatore e dissipatore. Se non migliora, la pasta termica potrebbe essere degradata.
+f91be135	Raffredda un po' peggio di prima. È consigliabile pulire presto filtri e radiatore.
+7ed2ece5	Ora raffredda meglio di prima. Se hai pulito, sostituito componenti o aggiunto ventole, va bene.
+58d9c8ca	Raffredda come prima.
+fcc150e0	 (tempo confrontato: riferimento {0} min, recente {1} min; le differenze di temperatura ambiente sono sottratte)
+5ba2a332	ASUS Aura (LED di Armoury Crate)
+d9bee020	Download
+4a049af4	Desktop
+4033fb1e	Cartella temporanea
+e39c4b26	Impossibile copiare ProFanController.exe
+d6132623	Notifica di prova di ProFanController
+7be18f84	Questa è una notifica di prova da {0}. Se ti arriva, la configurazione è completa.
+15278ea5	Inviata. Controlla che sia arrivata sul telefono
+4ce2da04	Invio non riuscito: {0}
+57750df1	Inviata alle {0:HH:mm}: {1}
+941d644c	Invio non riuscito alle {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Inserisci l'URL del webhook di Discord
+fb1a5ec2	Inserisci il nome dell'argomento ntfy
+4b9eae19	Il server ha restituito un errore ({0})
+727c88fe	Zona {0}
+b889a59c	Impossibile connettersi a OpenRGB (timeout)
+ee426337	Risposta non valida da OpenRGB (numero di dispositivi)
+b49ba6ef	Non connesso a OpenRGB
+70ae1eed	Nessuna risposta da OpenRGB
+640e3e0a	Risposta non valida da OpenRGB
+eb603574	La risposta di OpenRGB è troppo grande
+991f1b38	Connessione con OpenRGB persa
+278cffe6	I dati del controller sono troppo corti
+a86cdb33	I dati del controller sono troncati
+a5ce650f	Impossibile leggere i dati del controller
+0027866f	Impossibile disegnare: {0}
+c790979e	OpenRGB non riesce a stare al passo, quindi la frequenza è stata ridotta a {0:0} al secondo
+ffaf3cd2	Connessione a OpenRGB…
+c19da9e8	In attesa che termini la connessione precedente…
+21503ff4	Connessione con OpenRGB persa (riconnessione tra {0} s): {1}
+91c695dc	Impossibile connettersi (nuovo tentativo tra {0} s): {1}
+b6c76b3b	Interrotto per un errore: {0}
+a4a0e7be	L'indirizzo di OpenRGB è cambiato, riconnessione…
+a12cdd84	Riconnessione a OpenRGB…
+b9eec9ec	L'elenco dei dispositivi di OpenRGB è cambiato, riconnessione…
+ece981c1	Non trovato in OpenRGB
+303ee7e1	Dispositivo selezionato non trovato: {0} (controlla che compaia in OpenRGB)
+f9706898	Connesso, ma non sono stati trovati dispositivi di cui cambiare il colore. Controlla che i dispositivi compaiano in OpenRGB
+a4da3fc4	Connesso: cambio colore di {0} dispositivi
+007ac9b1	 ({0:0} fotogrammi al secondo)
+db01850a	. Dispositivo selezionato non trovato: {0}
+9e6acdec	{0} ({1} LED · {2})
+ad45bf76	posizione sconosciuta
+29f94095	PawnIO è stato installato. Per completare serve un riavvio del PC. Dopo il riavvio sarà possibile controllare le ventole.
+3364480f	PawnIO è stato installato.
+129482fa	PawnIO è già installato.
+222ab2aa	 Riavvia l'app per controllare le ventole (se anche dopo il riavvio non si trovano connettori delle ventole, riavvia il PC).
+4d3e4c64	 Puoi continuare a usarla così.
+27e711c8	winget ha restituito un errore ({0}), ma PawnIO è stato trovato. Riavvia l'app.
+264923af	 Se i connettori delle ventole non si trovano ancora, riavvia il PC o reinstalla PawnIO con il programma di installazione del sito ufficiale.
+4a3d7778	winget ha segnalato il completamento, ma PawnIO non è stato trovato. Riavvia il PC e controlla di nuovo.
+b44937c0	 Se ancora non si trova, usa il programma di installazione del sito ufficiale.
+2f4a62a1	Impossibile installare perché winget (il «Programma di installazione app» di Windows) manca o non si avvia.
+1085d16a	 Installa o aggiorna il «Programma di installazione app» da Microsoft Store, oppure usa il programma di installazione del sito ufficiale.
+df23d3d2	Interrotto perché dopo {0:F0} minuti non era finito. Controlla la connessione a Internet e riprova, oppure usa il programma di installazione del sito ufficiale.
+571744e9	Download non riuscito ({0}). Controlla di essere connesso a Internet e riprova.
+29df0532	Impossibile leggere l'elenco dei pacchetti di winget ({0}). Riprova più tardi o usa il programma di installazione del sito ufficiale.
+cab95e39	winget non ha trovato PawnIO ({0}) ({1}). Usa il programma di installazione del sito ufficiale.
+c2cdbdec	I criteri di questo PC (gestione aziendale, scolastica, ecc.) bloccano l'installazione con winget ({0}). Rivolgiti all'amministratore.
+43abeb95	È in corso un'altra installazione ({0}). Riprova al termine.
+5e9a061f	Impossibile installare perché PawnIO è in uso ({0}). Chiudi gli altri software che usano PawnIO (FanControl, LibreHardwareMonitor, ecc.) o riavvia il PC, poi riprova.
+c5885d00	Serve un riavvio del PC ({0}). Riavvia il PC e installa di nuovo.
+fdb07eba	L'installazione è stata annullata ({0}).
+3f126525	Impossibile installare perché winget è troppo vecchio ({0}). Aggiorna il «Programma di installazione app» da Microsoft Store o usa il programma di installazione del sito ufficiale.
+66b9357b	Servono i diritti di amministratore ({0}). Riavvia l'app come amministratore e riprova.
+8725a2c5	Installazione non riuscita (errore winget {0}). Usa il programma di installazione del sito ufficiale.
+6bb09a84	Disinstalla PawnIO da Impostazioni di Windows → App → App installate.
+3436ee7f	PawnIO è stato disinstallato. Per completare, riavvia il PC.

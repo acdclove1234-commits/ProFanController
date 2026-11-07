@@ -907,3 +907,103 @@ bb74ce90	Tableau de bord « {0} »
 d354ab0d	Aucun capteur de température du CPU n'est encore visible
 2a815b01	Aucun capteur de température du GPU n'est encore visible
 98a78d2c	Aucun capteur de température de la carte mère n'est encore visible
+7bd6fc4c	{0}  ·  {1} (GPU, expérimental)
+b961088b	Refroidissement du CPU
+a9a03eaf	Refroidissement du GPU
+9aa1d93f	Collecte de données en cours (encore {0:F0} jours avant de pouvoir comparer). Après un calibrage, l'évaluation est possible 7 jours plus tard.
+ad82ee64	calibrage du {0:M/d}
+171d15ba	vers le {0:M/d}
+74443afa	Il n'y a pas encore assez de temps passé avec la même consigne de vitesse (Duty) à la fois dans les enregistrements de référence et les récents ; la comparaison est impossible.
+6c1cd333	{1:N0} rpm à {0} % ({2} : {3:N0} rpm)
+3b9d1efe	brusquement depuis le {0:M/d} environ
+eff7a5cf	progressivement
+5b34a396	La vitesse de la pompe a baissé {0}. La pompe s'use peut-être, ou le liquide de refroidissement diminue.
+31b87b50	 Faites-la vérifier rapidement.
+78cee055	 Si elle baisse encore, faites-la vérifier.
+6e637e2e	La vitesse a baissé {0}. Vérifiez qu'aucun câble ne touche les pales et que le branchement n'est pas desserré. Si cela ne règle rien, le ventilateur est peut-être défaillant.
+736c890f	La vitesse baisse progressivement. Dépoussiérez les pales et les filtres. Si elle ne revient pas après le nettoyage, le roulement s'use peut-être : envisagez un remplacement.
+0dd5ebcf	La pompe tourne plus vite {0}. Si vous avez remplacé ou rebranché la pompe, ce n'est pas un problème. Sinon, vérifiez que le liquide de refroidissement ne manque pas (fonctionnement à sec).
+66fc95af	Il tourne plus vite {0}. Si vous avez remplacé ou rebranché le ventilateur, ce n'est pas un problème. Sinon, vérifiez que le filtre d'admission n'est pas obstrué (quand l'air circule mal, un ventilateur tourne plus librement et accélère).
+64e8b9f9	Il tourne progressivement plus vite. Le filtre d'admission ou le radiateur est peut-être encrassé et l'air circule mal (quand l'air circule mal, un ventilateur tourne plus librement et accélère). Nettoyez-les.
+063b56cb	La vitesse n'a pas changé ; tout est normal.
+e3a78dee	 (durée comparée : récente {0} min)
+d8fb178b	Collecte de données en cours (encore {0:F0} jours).
+0d593e94	Il n'y a pas encore assez d'enregistrements en charge (jeux, etc.) et au repos ; la comparaison est impossible (référence {0} min, récente {1} min ; {2} min minimum nécessaires pour chacune).
+b09085c8	La consigne de vitesse des ventilateurs en charge a changé ({0:F0} % → {1:F0} %). Si vous avez modifié la courbe des ventilateurs, la différence de refroidissement en découle ; c'est pourquoi
+2ddc0b27	 la présence de poussière n'est pas évaluée. Pour refaire la comparaison avec les nouveaux réglages, cliquez sur « Nettoyé (nouvelle référence à partir d'ici) ».
+ccf3a760	Consigne des ventilateurs {0:F0} % → {1:F0} %
+0090bb82	Hausse de température pour {0} W : {1:F0} °C (avant {2:F0} °C)
+0449b7df	Le refroidissement est nettement moins bon qu'avant. Dépoussiérez les filtres, le radiateur et le dissipateur. Si rien ne change, la pâte thermique s'est peut-être dégradée.
+f91be135	Le refroidissement est un peu moins bon qu'avant. Il est conseillé de nettoyer bientôt les filtres et le radiateur.
+7ed2ece5	Le refroidissement est meilleur qu'avant. Si vous avez nettoyé, remplacé des pièces ou ajouté des ventilateurs, ce n'est pas un problème.
+58d9c8ca	Le refroidissement est le même qu'avant.
+fcc150e0	 (durée comparée : référence {0} min, récente {1} min ; les écarts de température ambiante sont déduits)
+5ba2a332	ASUS Aura (LED d'Armoury Crate)
+d9bee020	Téléchargements
+4a049af4	Bureau
+4033fb1e	Dossier temporaire
+e39c4b26	Impossible de copier ProFanController.exe
+d6132623	Notification de test ProFanController
+7be18f84	Ceci est une notification de test de {0}. Si vous la recevez, la configuration est terminée.
+15278ea5	Envoyé. Vérifiez qu'elle est arrivée sur le téléphone
+4ce2da04	Envoi impossible : {0}
+57750df1	Envoyé à {0:HH:mm} : {1}
+941d644c	Échec de l'envoi à {0:HH:mm} : {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Saisissez l'URL du webhook Discord
+fb1a5ec2	Saisissez le nom du sujet ntfy
+4b9eae19	Le serveur a renvoyé une erreur ({0})
+727c88fe	Zone {0}
+b889a59c	Connexion à OpenRGB impossible (délai dépassé)
+ee426337	Réponse invalide d'OpenRGB (nombre d'appareils)
+b49ba6ef	Non connecté à OpenRGB
+70ae1eed	Aucune réponse d'OpenRGB
+640e3e0a	Réponse invalide d'OpenRGB
+eb603574	La réponse d'OpenRGB est trop volumineuse
+991f1b38	La connexion à OpenRGB a été perdue
+278cffe6	Les données du contrôleur sont trop courtes
+a86cdb33	Les données du contrôleur sont tronquées
+a5ce650f	Impossible de lire les données du contrôleur
+0027866f	Affichage impossible : {0}
+c790979e	OpenRGB ne suit pas ; la fréquence a été réduite à {0:0} par seconde
+ffaf3cd2	Connexion à OpenRGB…
+c19da9e8	Attente de la fin de la connexion précédente…
+21503ff4	La connexion à OpenRGB a été perdue (reconnexion dans {0} s) : {1}
+91c695dc	Connexion impossible (nouvel essai dans {0} s) : {1}
+b6c76b3b	Arrêté à cause d'une erreur : {0}
+a4a0e7be	L'adresse d'OpenRGB a changé, reconnexion…
+a12cdd84	Reconnexion à OpenRGB…
+b9eec9ec	La liste des appareils d'OpenRGB a changé, reconnexion…
+ece981c1	Introuvable dans OpenRGB
+303ee7e1	L'appareil choisi est introuvable : {0} (vérifiez qu'il apparaît dans OpenRGB)
+f9706898	Connecté, mais aucun appareil dont la couleur peut être modifiée n'a été trouvé. Vérifiez que les appareils apparaissent dans OpenRGB
+a4da3fc4	Connecté : modification de la couleur de {0} appareils
+007ac9b1	 ({0:0} images par seconde)
+db01850a	. L'appareil choisi est introuvable : {0}
+9e6acdec	{0} ({1} LED · {2})
+ad45bf76	emplacement inconnu
+29f94095	PawnIO a été installé. Un redémarrage du PC est nécessaire pour terminer. Après le redémarrage, les ventilateurs pourront être contrôlés.
+3364480f	PawnIO a été installé.
+129482fa	PawnIO est déjà installé.
+222ab2aa	 Redémarrez l'application pour contrôler les ventilateurs (si aucun connecteur de ventilateur n'est trouvé même après, redémarrez le PC).
+4d3e4c64	 Vous pouvez continuer à l'utiliser tel quel.
+27e711c8	winget a renvoyé une erreur ({0}), mais PawnIO a été trouvé. Redémarrez l'application.
+264923af	 Si les connecteurs de ventilateur restent introuvables, redémarrez le PC ou réinstallez PawnIO avec le programme d'installation du site officiel.
+4a3d7778	winget a indiqué que c'était terminé, mais PawnIO est introuvable. Redémarrez le PC et vérifiez à nouveau.
+b44937c0	 S'il reste introuvable, utilisez le programme d'installation du site officiel.
+2f4a62a1	Installation impossible : winget (le « Programme d'installation d'application » de Windows) est absent ou ne démarre pas.
+1085d16a	 Installez ou mettez à jour le « Programme d'installation d'application » depuis le Microsoft Store, ou utilisez le programme d'installation du site officiel.
+df23d3d2	Arrêté car l'opération n'était pas terminée après {0:F0} minutes. Vérifiez la connexion Internet et réessayez, ou utilisez le programme d'installation du site officiel.
+571744e9	Le téléchargement a échoué ({0}). Vérifiez que vous êtes connecté à Internet et réessayez.
+29df0532	Impossible de lire la liste des paquets winget ({0}). Réessayez plus tard ou utilisez le programme d'installation du site officiel.
+cab95e39	winget n'a pas trouvé PawnIO ({0}) ({1}). Utilisez le programme d'installation du site officiel.
+c2cdbdec	La stratégie de ce PC (gestion par une entreprise, une école, etc.) bloque l'installation avec winget ({0}). Adressez-vous à votre administrateur.
+43abeb95	Une autre installation est en cours ({0}). Réessayez quand elle sera terminée.
+5e9a061f	Installation impossible car PawnIO est utilisé ({0}). Fermez les autres logiciels qui utilisent PawnIO (FanControl, LibreHardwareMonitor, etc.) ou redémarrez le PC, puis réessayez.
+c5885d00	Un redémarrage du PC est nécessaire ({0}). Redémarrez le PC puis relancez l'installation.
+fdb07eba	L'installation a été annulée ({0}).
+3f126525	Installation impossible car winget est trop ancien ({0}). Mettez à jour le « Programme d'installation d'application » depuis le Microsoft Store, ou utilisez le programme d'installation du site officiel.
+66b9357b	Les droits d'administrateur sont nécessaires ({0}). Relancez l'application en tant qu'administrateur et réessayez.
+8725a2c5	L'installation a échoué (erreur winget {0}). Utilisez le programme d'installation du site officiel.
+6bb09a84	Désinstallez PawnIO depuis Paramètres Windows → Applications → Applications installées.
+3436ee7f	PawnIO a été désinstallé. Redémarrez le PC pour terminer.

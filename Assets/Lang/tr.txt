@@ -907,3 +907,103 @@ bb74ce90	Pano "{0}"
 d354ab0d	Henüz hiçbir CPU sıcaklık sensörü görünmüyor
 2a815b01	Henüz hiçbir GPU sıcaklık sensörü görünmüyor
 98a78d2c	Henüz hiçbir anakart sıcaklık sensörü görünmüyor
+7bd6fc4c	{0}  ·  {1} (GPU, deneysel)
+b961088b	CPU soğuma durumu
+a9a03eaf	GPU soğuma durumu
+9aa1d93f	Veri toplanıyor (karşılaştırmaya {0:F0} gün kaldı). Kalibrasyon yapıldıysa, ondan 7 gün sonra değerlendirme yapılabilir.
+ad82ee64	{0:M/d} kalibrasyonu
+171d15ba	{0:M/d} civarı
+74443afa	Aynı devir komutuyla (Duty) dönülen süre hem referans hem de son kayıtlarda henüz az olduğu için karşılaştırılamıyor.
+6c1cd333	%{0} değerinde {1:N0} rpm ({2}: {3:N0} rpm)
+3b9d1efe	{0:M/d} civarından beri birden
+eff7a5cf	yavaş yavaş
+5b34a396	Pompa devri {0} düşüyor. Pompa aşınmış veya soğutma sıvısı azalmış olabilir.
+31b87b50	 Kısa süre içinde kontrol ettirin.
+78cee055	 Daha da düşerse kontrol ettirin.
+6e637e2e	Devir {0} düşüyor. Kanatlara kablo vb. değmediğinden ve bağlantının gevşemediğinden emin olun. Düzelmezse fan arızalı olabilir.
+736c890f	Devir yavaş yavaş düşüyor. Kanatlardaki ve filtrelerdeki tozu temizleyin. Temizledikten sonra da düzelmezse rulman aşınmış olabilir; değiştirmeyi düşünün.
+0dd5ebcf	Pompa {0} daha hızlı dönmeye başladı. Pompayı değiştirdiyseniz veya yeniden bağladıysanız sorun yok. Aksi hâlde soğutma sıvısının azalıp azalmadığını (kuru çalışma) kontrol edin.
+66fc95af	Fan {0} daha hızlı dönmeye başladı. Fanı değiştirdiyseniz veya yeniden bağladıysanız sorun yok. Aksi hâlde giriş filtresinin tıkanmadığını kontrol edin (hava zor aktığında fan daha hafif döner ve hızlanır).
+64e8b9f9	Fan yavaş yavaş daha hızlı dönmeye başladı. Giriş filtresi veya radyatör tıkanmış ve hava zor akıyor olabilir (hava zor aktığında fan daha hafif döner ve hızlanır). Temizleyin.
+063b56cb	Devir öncekiyle aynı ve normal.
+e3a78dee	 (karşılaştırılan süre: son {0} dk)
+d8fb178b	Veri toplanıyor ({0:F0} gün kaldı).
+0d593e94	Yük altındaki (oyun vb.) ve boştaki kayıtlar henüz az olduğu için karşılaştırılamıyor (referans {0} dk, son {1} dk; her biri için en az {2} dk gerekir).
+b09085c8	Yük altındaki fan devir komutu öncekinden farklı (%{0:F0} → %{1:F0}). Fan eğrisini değiştirdiyseniz soğumadaki fark bundan kaynaklanır; bu yüzden
+2ddc0b27	 toz olup olmadığı değerlendirilmedi. Yeni ayarlarla yeniden karşılaştırmak için "Temizledim (buradan itibaren yeni referans)" düğmesine basın.
+ccf3a760	Fan komutu %{0:F0} → %{1:F0}
+0090bb82	{0} W başına sıcaklık artışı {1:F0}°C (önceden {2:F0}°C)
+0449b7df	Öncekinden belirgin şekilde daha kötü soğutuyor. Filtre, radyatör ve soğutucudaki tozu temizleyin. Düzelmezse termal macun bozulmuş olabilir.
+f91be135	Öncekinden biraz daha kötü soğutuyor. Yakında filtre ve radyatörü temizlemeniz önerilir.
+7ed2ece5	Öncekinden daha iyi soğutuyor. Temizlik, parça değişimi veya fan ekleme yaptıysanız sorun yok.
+58d9c8ca	Önceki gibi soğutuyor.
+fcc150e0	 (karşılaştırılan süre: referans {0} dk, son {1} dk; oda sıcaklığı farkları çıkarıldı)
+5ba2a332	ASUS Aura (Armoury Crate LED'leri)
+d9bee020	İndirilenler
+4a049af4	Masaüstü
+4033fb1e	Geçici klasör
+e39c4b26	ProFanController.exe kopyalanamadı
+d6132623	ProFanController test bildirimi
+7be18f84	Bu, {0} kaynaklı bir test bildirimidir. Bu bildirim geldiyse kurulum tamamdır.
+15278ea5	Gönderildi. Telefonunuza gelip gelmediğini kontrol edin
+4ce2da04	Gönderilemedi: {0}
+57750df1	{0:HH:mm} gönderildi: {1}
+941d644c	{0:HH:mm} gönderme başarısız: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Discord Webhook URL'sini girin
+fb1a5ec2	ntfy konu adını girin
+4b9eae19	Sunucu bir hata döndürdü ({0})
+727c88fe	Bölge {0}
+b889a59c	OpenRGB'ye bağlanılamıyor (zaman aşımı)
+ee426337	OpenRGB'den geçersiz yanıt (cihaz sayısı)
+b49ba6ef	OpenRGB'ye bağlı değil
+70ae1eed	OpenRGB yanıt vermiyor
+640e3e0a	OpenRGB'den geçersiz yanıt
+eb603574	OpenRGB'nin yanıtı çok büyük
+991f1b38	OpenRGB bağlantısı koptu
+278cffe6	Denetleyici bilgisi çok kısa
+a86cdb33	Denetleyici bilgisi yarıda kesilmiş
+a5ce650f	Denetleyici bilgisi okunamıyor
+0027866f	Çizilemiyor: {0}
+c790979e	OpenRGB yetişemediği için saniyede {0:0} kereye düşürüldü
+ffaf3cd2	OpenRGB'ye bağlanılıyor…
+c19da9e8	Önceki bağlantının bitmesi bekleniyor…
+21503ff4	OpenRGB bağlantısı koptu ({0} sn sonra yeniden bağlanılacak): {1}
+91c695dc	Bağlanılamıyor ({0} sn sonra yeniden denenecek): {1}
+b6c76b3b	Bir hata nedeniyle durdu: {0}
+a4a0e7be	OpenRGB bağlantı adresi değiştiği için yeniden bağlanılıyor…
+a12cdd84	OpenRGB'ye yeniden bağlanılıyor…
+b9eec9ec	OpenRGB cihaz listesi değiştiği için yeniden bağlanılıyor…
+ece981c1	OpenRGB'de bulunamadı
+303ee7e1	Seçilen cihaz bulunamadı: {0} (OpenRGB ekranında göründüğünü kontrol edin)
+f9706898	Bağlanıldı, ancak rengi değiştirilebilen cihaz bulunamadı. Cihazların OpenRGB ekranında göründüğünü kontrol edin
+a4da3fc4	Bağlı: {0} cihazın rengi değiştiriliyor
+007ac9b1	 (saniyede {0:0} kare)
+db01850a	. Seçilen cihaz bulunamadı: {0}
+9e6acdec	{0} ({1} LED · {2})
+ad45bf76	konum bilinmiyor
+29f94095	PawnIO kuruldu. Tamamlamak için bilgisayarı yeniden başlatmanız gerekiyor. Bilgisayarı yeniden başlattıktan sonra fanlar kontrol edilebilir.
+3364480f	PawnIO kuruldu.
+129482fa	PawnIO zaten kurulu.
+222ab2aa	 Fanları kontrol etmek için uygulamayı yeniden başlatın (yeniden başlattıktan sonra da fan konnektörleri bulunamazsa bilgisayarı yeniden başlatın).
+4d3e4c64	 Bu hâliyle kullanabilirsiniz.
+27e711c8	winget bir hata ({0}) döndürdü, ancak PawnIO bulundu. Uygulamayı yeniden başlatın.
+264923af	 Fan konnektörleri yine de bulunamazsa bilgisayarı yeniden başlatın veya resmî sitedeki kurulum programıyla yeniden kurun.
+4a3d7778	winget "tamamlandı" dedi, ancak PawnIO bulunamadı. Bilgisayarı yeniden başlatıp tekrar kontrol edin.
+b44937c0	 Yine de bulunamazsa resmî sitedeki kurulum programını kullanın.
+2f4a62a1	winget (Windows "Uygulama Yükleyicisi") bulunamadığı veya başlatılamadığı için kurulum yapılamadı.
+1085d16a	 Microsoft Store'dan "Uygulama Yükleyicisi"ni kurun veya güncelleyin ya da resmî sitedeki kurulum programını kullanın.
+df23d3d2	{0:F0} dakika geçtiği hâlde bitmediği için durduruldu. İnternet bağlantısını kontrol edip tekrar deneyin veya resmî sitedeki kurulum programını kullanın.
+571744e9	İndirme başarısız oldu ({0}). İnternete bağlı olduğunuzu kontrol edip tekrar deneyin.
+29df0532	winget paket listesi okunamadı ({0}). Bir süre sonra tekrar deneyin veya resmî sitedeki kurulum programını kullanın.
+cab95e39	winget, PawnIO'yu ({0}) bulamadı ({1}). Resmî sitedeki kurulum programını kullanın.
+c2cdbdec	Bu bilgisayarın ilkesi (şirket, okul vb. yönetimi) winget ile kurulumu engelliyor ({0}). Yöneticinize danışın.
+43abeb95	Başka bir yazılımın kurulumu sürüyor ({0}). Bittikten sonra tekrar deneyin.
+5e9a061f	PawnIO kullanımda olduğu için kurulamadı ({0}). PawnIO kullanan diğer yazılımları (FanControl, LibreHardwareMonitor vb.) kapatın veya bilgisayarı yeniden başlatıp tekrar deneyin.
+c5885d00	Bilgisayarın yeniden başlatılması gerekiyor ({0}). Bilgisayarı yeniden başlatıp tekrar kurun.
+fdb07eba	Kurulum iptal edildi ({0}).
+3f126525	winget eski olduğu için kurulum yapılamadı ({0}). Microsoft Store'dan "Uygulama Yükleyicisi"ni güncelleyin veya resmî sitedeki kurulum programını kullanın.
+66b9357b	Yönetici yetkisi gerekiyor ({0}). Uygulamayı yönetici olarak yeniden başlatıp tekrar deneyin.
+8725a2c5	Kurulum başarısız oldu (winget hatası {0}). Resmî sitedeki kurulum programını kullanın.
+6bb09a84	PawnIO'yu Windows "Ayarlar" → "Uygulamalar" → "Yüklü uygulamalar" bölümünden kaldırın.
+3436ee7f	PawnIO kaldırıldı. Tamamlamak için bilgisayarı yeniden başlatın.

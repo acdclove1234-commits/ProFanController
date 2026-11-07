@@ -907,3 +907,103 @@ bb74ce90	Bảng điều khiển "{0}"
 d354ab0d	Chưa thấy cảm biến nhiệt độ CPU nào
 2a815b01	Chưa thấy cảm biến nhiệt độ GPU nào
 98a78d2c	Chưa thấy cảm biến nhiệt độ bo mạch chủ nào
+7bd6fc4c	{0}  ·  {1} (GPU, thử nghiệm)
+b961088b	Khả năng làm mát CPU
+a9a03eaf	Khả năng làm mát GPU
+9aa1d93f	Đang thu thập dữ liệu (còn {0:F0} ngày nữa mới so sánh được). Nếu đã hiệu chỉnh, có thể đánh giá từ 7 ngày sau khi hiệu chỉnh.
+ad82ee64	lần hiệu chỉnh {0:M/d}
+171d15ba	khoảng {0:M/d}
+74443afa	Thời gian chạy với cùng lệnh tốc độ (Duty) ở cả bản ghi mốc lẫn bản ghi gần đây vẫn còn ít nên chưa so sánh được.
+6c1cd333	{1:N0} rpm ở {0}% ({2}: {3:N0} rpm)
+3b9d1efe	đột ngột từ khoảng {0:M/d}
+eff7a5cf	dần dần
+5b34a396	Tốc độ bơm đã giảm {0}. Có thể bơm đã xuống cấp hoặc chất lỏng làm mát bị hao hụt.
+31b87b50	 Hãy kiểm tra sớm.
+78cee055	 Nếu còn giảm nữa, hãy kiểm tra.
+6e637e2e	Tốc độ đã giảm {0}. Hãy kiểm tra xem có dây cáp nào chạm vào cánh quạt không và dây cắm có bị lỏng không. Nếu vẫn không được, có thể quạt bị trục trặc.
+736c890f	Tốc độ đang giảm dần. Hãy vệ sinh bụi trên cánh quạt và tấm lọc. Nếu vệ sinh rồi vẫn không trở lại, có thể ổ trục đã xuống cấp, hãy cân nhắc thay quạt.
+0dd5ebcf	Bơm đã quay nhanh hơn {0}. Nếu bạn đã thay hoặc cắm lại bơm thì không sao. Nếu không, hãy kiểm tra xem chất lỏng làm mát có bị hao hụt (bơm chạy khô) không.
+66fc95af	Quạt đã quay nhanh hơn {0}. Nếu bạn đã thay hoặc cắm lại quạt thì không sao. Nếu không, hãy kiểm tra xem tấm lọc hút gió có bị bít không (khi gió khó lưu thông, quạt quay nhẹ hơn và nhanh lên).
+64e8b9f9	Quạt đang quay nhanh dần. Có thể tấm lọc hút gió hoặc két tản nhiệt bị tắc khiến gió khó lưu thông (khi gió khó lưu thông, quạt quay nhẹ hơn và nhanh lên). Hãy vệ sinh.
+063b56cb	Tốc độ vẫn như trước, bình thường.
+e3a78dee	 (thời gian so sánh: gần đây {0} phút)
+d8fb178b	Đang thu thập dữ liệu (còn {0:F0} ngày).
+0d593e94	Bản ghi lúc có tải (chơi game…) và lúc nghỉ vẫn còn ít nên chưa so sánh được (mốc {0} phút, gần đây {1} phút; mỗi loại cần từ {2} phút trở lên).
+b09085c8	Lệnh tốc độ quạt khi có tải đã khác trước ({0:F0}% → {1:F0}%). Nếu bạn đã thay đổi đường cong quạt, chênh lệch làm mát là do điều đó, nên
+2ddc0b27	 không đánh giá có phải do bụi hay không. Để so sánh lại với cài đặt mới, hãy nhấn "Đã vệ sinh (lấy mốc mới từ đây)".
+ccf3a760	Lệnh quạt {0:F0}% → {1:F0}%
+0090bb82	Mức tăng nhiệt cho {0} W: {1:F0}°C (trước đây {2:F0}°C)
+0449b7df	Làm mát kém hơn trước rõ rệt. Hãy vệ sinh bụi ở tấm lọc, két tản nhiệt và bộ tản nhiệt. Nếu không cải thiện, có thể keo tản nhiệt đã xuống cấp.
+f91be135	Làm mát kém hơn trước một chút. Nên sớm vệ sinh tấm lọc và két tản nhiệt.
+7ed2ece5	Làm mát tốt hơn trước. Nếu bạn đã vệ sinh, thay linh kiện hoặc lắp thêm quạt thì không sao.
+58d9c8ca	Làm mát vẫn như trước.
+fcc150e0	 (thời gian so sánh: mốc {0} phút, gần đây {1} phút; đã trừ chênh lệch nhiệt độ phòng)
+5ba2a332	ASUS Aura (LED của Armoury Crate)
+d9bee020	Tải xuống
+4a049af4	Màn hình nền
+4033fb1e	Thư mục tạm
+e39c4b26	Không sao chép được ProFanController.exe
+d6132623	Thông báo thử của ProFanController
+7be18f84	Đây là thông báo thử từ {0}. Nếu nhận được thông báo này là đã cài đặt xong.
+15278ea5	Đã gửi. Hãy kiểm tra xem điện thoại đã nhận được chưa
+4ce2da04	Không gửi được: {0}
+57750df1	Đã gửi lúc {0:HH:mm}: {1}
+941d644c	Gửi thất bại lúc {0:HH:mm}: {1}
+4d3cb3b3	{0}\n({1} · {2:MM/dd HH:mm})
+145323e4	Hãy nhập URL Webhook của Discord
+fb1a5ec2	Hãy nhập tên chủ đề ntfy
+4b9eae19	Máy chủ trả về lỗi ({0})
+727c88fe	Vùng {0}
+b889a59c	Không kết nối được OpenRGB (hết thời gian chờ)
+ee426337	Phản hồi từ OpenRGB không hợp lệ (số thiết bị)
+b49ba6ef	Chưa kết nối OpenRGB
+70ae1eed	OpenRGB không phản hồi
+640e3e0a	Phản hồi từ OpenRGB không hợp lệ
+eb603574	Phản hồi từ OpenRGB quá lớn
+991f1b38	Mất kết nối với OpenRGB
+278cffe6	Thông tin bộ điều khiển quá ngắn
+a86cdb33	Thông tin bộ điều khiển bị cắt giữa chừng
+a5ce650f	Không đọc được thông tin bộ điều khiển
+0027866f	Không vẽ được: {0}
+c790979e	OpenRGB xử lý không kịp nên đã giảm xuống {0:0} lần mỗi giây
+ffaf3cd2	Đang kết nối OpenRGB…
+c19da9e8	Đang chờ kết nối trước kết thúc…
+21503ff4	Mất kết nối với OpenRGB (kết nối lại sau {0} giây): {1}
+91c695dc	Không kết nối được (thử lại sau {0} giây): {1}
+b6c76b3b	Đã dừng do lỗi: {0}
+a4a0e7be	Địa chỉ OpenRGB đã thay đổi, đang kết nối lại…
+a12cdd84	Đang kết nối lại OpenRGB…
+b9eec9ec	Danh sách thiết bị của OpenRGB đã thay đổi, đang kết nối lại…
+ece981c1	Không tìm thấy trong OpenRGB
+303ee7e1	Không tìm thấy thiết bị đã chọn: {0} (hãy kiểm tra xem thiết bị có hiển thị trong OpenRGB không)
+f9706898	Đã kết nối nhưng không tìm thấy thiết bị nào đổi màu được. Hãy kiểm tra xem thiết bị có hiển thị trong OpenRGB không
+a4da3fc4	Đã kết nối: đang đổi màu {0} thiết bị
+007ac9b1	 ({0:0} khung hình/giây)
+db01850a	. Không tìm thấy thiết bị đã chọn: {0}
+9e6acdec	{0} ({1} LED · {2})
+ad45bf76	không rõ vị trí
+29f94095	Đã cài đặt PawnIO. Cần khởi động lại PC để hoàn tất. Sau khi khởi động lại PC, có thể điều khiển quạt.
+3364480f	Đã cài đặt PawnIO.
+129482fa	PawnIO đã được cài đặt sẵn.
+222ab2aa	 Khởi động lại ứng dụng để điều khiển quạt (nếu khởi động lại rồi vẫn không thấy cổng quạt, hãy khởi động lại PC).
+4d3e4c64	 Có thể dùng luôn như vậy.
+27e711c8	winget trả về lỗi ({0}) nhưng đã tìm thấy PawnIO. Hãy khởi động lại ứng dụng.
+264923af	 Nếu vẫn không thấy cổng quạt, hãy khởi động lại PC hoặc cài lại PawnIO bằng trình cài đặt trên trang chính thức.
+4a3d7778	winget báo "đã xong" nhưng không tìm thấy PawnIO. Hãy khởi động lại PC rồi kiểm tra lại.
+b44937c0	 Nếu vẫn không thấy, hãy dùng trình cài đặt trên trang chính thức.
+2f4a62a1	Không cài đặt được vì không tìm thấy hoặc không chạy được winget ("Trình cài đặt ứng dụng" của Windows).
+1085d16a	 Hãy cài đặt hoặc cập nhật "Trình cài đặt ứng dụng" trên Microsoft Store, hoặc dùng trình cài đặt trên trang chính thức.
+df23d3d2	Đã dừng vì sau {0:F0} phút vẫn chưa xong. Hãy kiểm tra kết nối Internet rồi thử lại, hoặc dùng trình cài đặt trên trang chính thức.
+571744e9	Tải xuống thất bại ({0}). Hãy kiểm tra kết nối Internet rồi thử lại.
+29df0532	Không đọc được danh sách gói của winget ({0}). Hãy thử lại sau, hoặc dùng trình cài đặt trên trang chính thức.
+cab95e39	winget không tìm thấy PawnIO ({0}) ({1}). Hãy dùng trình cài đặt trên trang chính thức.
+c2cdbdec	Chính sách của PC này (do công ty, trường học… quản lý) chặn cài đặt bằng winget ({0}). Hãy hỏi người quản lý.
+43abeb95	Một chương trình khác đang cài đặt ({0}). Hãy thử lại sau khi nó xong.
+5e9a061f	Không cài được vì PawnIO đang được dùng ({0}). Hãy thoát các phần mềm khác dùng PawnIO (FanControl, LibreHardwareMonitor…) hoặc khởi động lại PC rồi thử lại.
+c5885d00	Cần khởi động lại PC ({0}). Hãy khởi động lại PC rồi cài đặt lại.
+fdb07eba	Đã hủy cài đặt ({0}).
+3f126525	Không cài đặt được vì winget đã cũ ({0}). Hãy cập nhật "Trình cài đặt ứng dụng" trên Microsoft Store, hoặc dùng trình cài đặt trên trang chính thức.
+66b9357b	Cần quyền quản trị ({0}). Hãy chạy lại ứng dụng với quyền quản trị rồi thử lại.
+8725a2c5	Cài đặt thất bại (lỗi winget {0}). Hãy dùng trình cài đặt trên trang chính thức.
+6bb09a84	Hãy gỡ PawnIO trong "Cài đặt" của Windows → "Ứng dụng" → "Ứng dụng đã cài đặt".
+3436ee7f	Đã gỡ PawnIO. Hãy khởi động lại PC để hoàn tất.
