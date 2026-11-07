@@ -1200,3 +1200,103 @@ aa2f7c05	Pilih gambar…
 30ef4ec2	Pilih gambar untuk "{0}"
 3d493cb5	File gambar (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Gambar tidak bisa diatur.\n{0}
+1c845124	Lama rekaman: {0:hh\\:mm\\:ss} ({1:N0} sampel)  /  Arahkan mouse ke grafik untuk melihat nilai pada waktu itu
+67fc1b84	{0} (virtual) [°C]
+7f375751	Belum ada rekaman.
+9ac98f99	Ekspor riwayat ke CSV
+6cf9940d	File CSV (*.csv)|*.csv
+394a0c84	{0:N0} baris diekspor: {1}
+4c897111	Ekspor gagal.\n{0}
+f6719722	Belum ada cadangan
+41c3b6de	Cadangan terbaru: {0} · total {1} ({2})
+157c5131	Buat ulang nama topik?\n\nDi aplikasi ntfy pada ponsel, Anda perlu berlangganan ulang ke nama topik yang baru.
+a09fc803	Mengirim…
+0d845e4d	Tidak bisa mengirim: {0}
+7e4e7bd2	Otomatis (yang lebih tinggi antara CPU dan GPU)
+97682f4b	Pengaturan dicadangkan: {0}
+51e56e6f	Tidak ada cadangan
+5cb6d892	Kembalikan pengaturan dari {0}?\n\nPengaturan saat ini juga dicadangkan lebih dulu, jadi nanti bisa diurungkan.
+ca58240b	Pulihkan dari cadangan
+0a066c64	Pengaturan dari {0} dipulihkan (bisa dibatalkan dengan "Urungkan").
+4a2fd247	Cadangan ini tidak bisa dibaca.\n{0}
+1b7a6d56	Ekspor pengaturan
+d3b9501f	Pengaturan ProFanController (*.profan.json)|*.profan.json
+8c168c4d	ProFan-pengaturan_{0}_{1:yyyyMMdd}{2}
+dd581e02	{0} profil diekspor. Kirim file ini ke orang lain dan minta mereka memuatnya lewat Pengaturan → "Keamanan & cadangan" → "Impor pengaturan".
+25f3627c	Tidak bisa mengekspor.\n{0}
+e6cdafd7	Tunggu sampai inisialisasi perangkat keras selesai.
+de0ce3c8	Impor pengaturan
+e259cc0d	Pengaturan ProFanController (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	File ini tidak bisa dimuat.\n{0}
+d01ee250	. Bisa dibatalkan dengan "Urungkan". Periksa kurva kipas yang diimpor sebelum memakainya.
+565076e7	Periksa kurva
+e5decd8b	Pengaturan diganti agar sesuai dengan perangkat keras baru (bisa dikembalikan dengan "Urungkan"). Untuk berjaga-jaga, periksa kurva kipas.
+49a0ae7a	Perangkat keras berubah. Kurva yang memakai sensor yang tidak ditemukan berputar dengan putaran tetap demi keamanan.
+dff7789c	Buka pencocokan
+cd091397	Sama dengan perangkat
+0592e9ca	Nyala
+1f9312b8	Mati
+b9b3d3ce	Biarkan
+ce8e2c71	{0} LED
+55059eac	Tidak ditentukan (menyala sesuai urutan di dalam perangkat)
+0a0e4a97	{0} · {1}
+c14c8eef	Otomatis (simetris jika 30 atau lebih)
+87b3c1e5	4 kali
+a3cdd021	8 kali
+d156a2e0	12 kali
+b36e663d	15 kali
+e7e154a9	20 kali
+0981fbf4	30 kali
+9c06e78d	60 kali
+cd131a9e	1 kali
+165d9de3	2 kali
+677e1948	3 kali
+d94ab30a	5 kali
+c1f61982	0 md
+bb064292	20 md
+a005fa30	40 md
+5058b4c6	60 md
+4ddb9494	80 md
+82d5d569	100 md
+64846588	150 md
+18d8483c	200 md
+6e3ebc87	Antikedip aktif (hanya mengirim saat warna berubah)
+33747dd6	Kartu grafis: penulisan seminimal mungkin (maksimal {0} per detik)
+4295e02e	Perangkat yang lambat diperbarui ({0} per detik{1})
+47cc8c5f	, otomatis
+a6d44dde	Kartu grafis ini mungkin berkedip sesaat setiap kali warna ditulis (kemungkinan karena cara OpenRGB 1.1 menulis, tetapi untuk model ini masih diperiksa). Agar penulisan seminimal mungkin, kecerahan tidak diubah, warna hanya dikirim saat berubah jelas (berjarak minimal 0,25 detik), dan warna yang sama tidak dikirim ulang. Pelangi (mengalir) menjadi pelangi diam dan napas menjadi warna tetap (setiap area yang menyala hanya bisa menampilkan satu warna). Saat suara berhenti dalam sinkron musik, warna berganti setiap 20 detik. Jika mengganggu, atur efek ke "Warna tetap"
+0488c9d7	OpenRGB menulis LED kartu grafis satu per satu, jadi satu pergantian warna butuh sekitar 20–200 md. Penulisan terus-menerus menyebabkan kedipan dan keterlambatan, jadi penulisan dibuat seminimal mungkin: 
+cf0c037b	kecerahan tetap (ketukan ditunjukkan lewat pergantian warna), warna hanya dikirim saat berubah jelas (maksimal 5 kali per detik), mode suhu hanya berganti saat tingkat suhu berubah,
+fb923916	 pelangi (mengalir) dan napas menjadi pelangi diam dan warna tetap (bisa diubah dengan "Animasikan juga pelangi dan napas"), dan warna yang sama dikirim ulang setiap 60 detik.
+8ed6eae0	Jika waktunya tidak pas dengan perangkat lain, sesuaikan dengan "Nyalakan lebih awal"
+8444c4be	LED yang terhubung lewat jalur di dalam papan (I2C), seperti memori, butuh waktu untuk setiap pengiriman, jadi dalam mode otomatis dibatasi maksimal 8 kali per detik (bisa diubah di "Pengiriman per detik" di kanan). Pergantian warna sinkron musik langsung dikirim tanpa menunggu pengiriman rutin. Warna yang sama dikirim ulang setiap 60 detik
+2a5ce6d5	Otomatis (pengaturan umum)
+7a4362e3	 (kedipan intens)
+2e7616aa	Ungu
+d624abb5	Biru
+1740eec3	Biru muda
+5474bf7c	Hijau
+77065b38	Oranye
+e02e2d73	Merah
+e0684d2d	Merah muda
+f88712a8	Putih
+f73d92df	Mati (padamkan LED)
+faccb7c6	Warna tetap (warna yang dipilih di "Warna")
+8261ae67	Biarkan (berhenti di warna terakhir)
+d24118e5	\nJangan gunakan jika Anda peka terhadap cahaya berkedip. Tidak bisa dipilih selama "Kurangi kedipan" aktif
+fa397c65	⚠ Berkedip intens
+5812e0db	Menyala hanya dengan warna yang dipilih di "Warna & kecerahan". Warna tidak berubah; hanya kecerahan yang mengikuti suara
+a3ff6ad5	Menyala dengan warna yang dipilih di "Warna & kecerahan" serta warna di kedua sisinya
+a0c6bf54	Menyala dengan warna-warna {0}. Pada setiap ketukan, berganti ke warna berikutnya di dalamnya
+b4e8382b	Otomatis (prediktif)
+3084a002	Setelah menangkap tempo lagu, memprediksi ketukan berikutnya dan menyala tanpa jeda (disarankan)
+90659e1d	Hanya kick
+86ca4d12	Tanpa prediksi; menyala hanya saat drum bass berbunyi. Untuk lagu dengan tempo berubah-ubah
+12e78249	Tidak memakai tempo maupun ketukan; menyala hanya menurut kerasnya suara
+80f08891	Warna-warna palet berganti perlahan
+df788b17	Warna yang dipilih di "Warna" perlahan menjadi terang dan redup
+680555ce	Terus menyala dengan warna yang dipilih di "Warna"
+3b1d43a4	Mematikan LED saat suara berhenti
+25525b81	{0} ({1})
+bb1834e5	Anda menyesuaikan sendiri pengaturan di bawah. Memilih preset lain akan kembali ke kombinasinya
+1cf255e8	Untuk bekerja atau malam hari. Warna berganti perlahan dan lembut

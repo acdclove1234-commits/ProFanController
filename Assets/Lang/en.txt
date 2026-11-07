@@ -1200,3 +1200,103 @@ aa2f7c05	Choose image…
 30ef4ec2	Choose an image for "{0}"
 3d493cb5	Image files (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Couldn't set the image.\n{0}
+1c845124	Recorded: {0:hh\\:mm\\:ss} ({1:N0} samples)  /  Hover over the graph to see the values at that time
+67fc1b84	{0} (virtual) [°C]
+7f375751	No records yet.
+9ac98f99	Export history to CSV
+6cf9940d	CSV file (*.csv)|*.csv
+394a0c84	Exported {0:N0} rows: {1}
+4c897111	Export failed.\n{0}
+f6719722	No backups yet
+41c3b6de	Latest backup: {0} · {1} in total ({2})
+157c5131	Create a new topic name?\n\nIn the ntfy app on your phone, you will need to subscribe to the new topic name.
+a09fc803	Sending…
+0d845e4d	Couldn't send: {0}
+7e4e7bd2	Auto (the higher of CPU and GPU)
+97682f4b	Settings backed up: {0}
+51e56e6f	No backups
+5cb6d892	Restore the settings from {0}?\n\nThe current settings are backed up first, so you can undo this later.
+ca58240b	Restore from backup
+0a066c64	Restored the settings from {0} (you can undo this with "Undo").
+4a2fd247	This backup couldn't be read.\n{0}
+1b7a6d56	Export settings
+d3b9501f	ProFanController settings (*.profan.json)|*.profan.json
+8c168c4d	ProFan-settings_{0}_{1:yyyyMMdd}{2}
+dd581e02	Exported {0} profiles. Send this file to the other person and have them load it with Settings → "Safety & backup" → "Import settings".
+25f3627c	Couldn't export.\n{0}
+e6cdafd7	Please wait until hardware initialization finishes.
+de0ce3c8	Import settings
+e259cc0d	ProFanController settings (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	This file can't be loaded.\n{0}
+d01ee250	. You can undo this with "Undo". Check the curves of the imported fans before using them.
+565076e7	Check curves
+e5decd8b	The settings were replaced to match the new hardware (you can undo this with "Undo"). Check the fan curves just in case.
+49a0ae7a	The hardware has changed. Curves that use sensors that can't be found run at a constant speed for safety.
+dff7789c	Open the mapping
+cd091397	Same as device
+0592e9ca	On
+1f9312b8	Off
+b9b3d3ce	Leave as is
+ce8e2c71	{0} LEDs
+55059eac	Not set (lights in the device's own order)
+0a0e4a97	{0} · {1}
+c14c8eef	Auto (symmetric with 30 or more)
+87b3c1e5	4 times
+a3cdd021	8 times
+d156a2e0	12 times
+b36e663d	15 times
+e7e154a9	20 times
+0981fbf4	30 times
+9c06e78d	60 times
+cd131a9e	1 time
+165d9de3	2 times
+677e1948	3 times
+d94ab30a	5 times
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Anti-flicker on (sends only when the color changes)
+33747dd6	Graphics card: minimal writes (up to {0} per second)
+4295e02e	Slow-updating device ({0} per second{1})
+47cc8c5f	, auto
+a6d44dde	This graphics card may flicker briefly each time a color is written (likely caused by how OpenRGB 1.1 writes, though this is still being checked for this model). To keep writes to a minimum, brightness is not changed, colors are sent only when they clearly change (at least 0.25 seconds apart), and the same color is not resent. Rainbow (flowing) becomes a still rainbow and breathing becomes a static color (each lit area can show only one color). When the sound stops in music sync, the color changes every 20 seconds. If it bothers you, set the effect to "Static color"
+0488c9d7	Graphics card LEDs are written one by one by OpenRGB, so one color change takes about 20–200 ms. Continuous writing causes flicker and delays, so writes are kept to a minimum: 
+cf0c037b	brightness stays constant (the beat is shown by color changes), colors are sent only when they clearly change (up to 5 per second), temperature mode switches only when the temperature step changes,
+fb923916	 rainbow (flowing) and breathing become a still rainbow and a static color (change this with "Animate rainbow and breathing too"), and the same color is resent every 60 seconds.
+8ed6eae0	If the timing differs from other devices, adjust it with "Light earlier"
+8444c4be	LEDs connected through on-board wiring (I2C), such as memory, take time for each send, so in auto mode they are limited to 8 updates per second (change this with "Updates per second" on the right). Color changes in music sync are sent right away without waiting for the regular update. The same color is resent every 60 seconds
+2a5ce6d5	Auto (global setting)
+7a4362e3	 (intense flashing)
+2e7616aa	Purple
+d624abb5	Blue
+1740eec3	Light blue
+5474bf7c	Green
+77065b38	Orange
+e02e2d73	Red
+e0684d2d	Pink
+f88712a8	White
+f73d92df	Off (turn the LEDs off)
+faccb7c6	Static color (use the color chosen in "Color")
+8261ae67	Leave as is (stop at the last color)
+d24118e5	\nDo not use this if you are sensitive to flashing light. It can't be chosen while "Reduce flashing" is on
+fa397c65	⚠ Flashes intensely
+5812e0db	Lights up only in the color chosen in "Color & brightness". The color stays the same; only the brightness follows the sound
+a3ff6ad5	Lights up in the color chosen in "Color & brightness" and its neighboring colors on both sides
+a0c6bf54	Lights up in the colors of {0}. On every beat, it switches to the next color in the set
+b4e8382b	Auto (predictive)
+3084a002	Once it has caught the song's tempo, it predicts the next beat and lights up without delay (recommended)
+90659e1d	Kick only
+86ca4d12	No prediction; lights up only when the bass drum hits. For songs with changing tempo
+12e78249	Uses neither tempo nor beats; lights up by loudness only
+80f08891	Colors shift slowly through the palette
+df788b17	The color chosen in "Color" slowly brightens and dims
+680555ce	Keeps lighting in the color chosen in "Color"
+3b1d43a4	Turns the LEDs off when the sound stops
+25525b81	{0} ({1})
+bb1834e5	You have adjusted the settings below yourself. Choosing another preset returns to its combination
+1cf255e8	For work or night time. Colors shift slowly and gently

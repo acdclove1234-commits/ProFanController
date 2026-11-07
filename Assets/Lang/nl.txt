@@ -1200,3 +1200,103 @@ aa2f7c05	Afbeelding kiezen…
 30ef4ec2	Afbeelding kiezen voor "{0}"
 3d493cb5	Afbeeldingsbestanden (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Kan de afbeelding niet instellen.\n{0}
+1c845124	Opnameduur: {0:hh\\:mm\\:ss} ({1:N0} metingen)  /  Beweeg de muis over de grafiek om de waarden op dat moment te zien
+67fc1b84	{0} (virtueel) [°C]
+7f375751	Nog geen metingen.
+9ac98f99	Geschiedenis exporteren naar CSV
+6cf9940d	CSV-bestand (*.csv)|*.csv
+394a0c84	{0:N0} regels geëxporteerd: {1}
+4c897111	Exporteren mislukt.\n{0}
+f6719722	Nog geen back-ups
+41c3b6de	Nieuwste back-up: {0} · in totaal {1} ({2})
+157c5131	Een nieuwe onderwerpnaam maken?\n\nIn de ntfy-app op je telefoon moet je je opnieuw abonneren op de nieuwe onderwerpnaam.
+a09fc803	Verzenden…
+0d845e4d	Verzenden mislukt: {0}
+7e4e7bd2	Automatisch (de hoogste van CPU en GPU)
+97682f4b	Instellingen geback-upt: {0}
+51e56e6f	Geen back-ups
+5cb6d892	Terug naar de instellingen van {0}?\n\nDe huidige instellingen worden eerst geback-upt, dus je kunt het later ongedaan maken.
+ca58240b	Terugzetten uit back-up
+0a066c64	De instellingen van {0} zijn teruggezet (ongedaan te maken met "Ongedaan maken").
+4a2fd247	Deze back-up kan niet worden gelezen.\n{0}
+1b7a6d56	Instellingen exporteren
+d3b9501f	ProFanController-instellingen (*.profan.json)|*.profan.json
+8c168c4d	ProFan-instellingen_{0}_{1:yyyyMMdd}{2}
+dd581e02	{0} profielen geëxporteerd. Stuur dit bestand naar de ander en laat het laden via Instellingen → "Veiligheid & back-up" → "Instellingen importeren".
+25f3627c	Exporteren is niet gelukt.\n{0}
+e6cdafd7	Wacht tot de hardware is geïnitialiseerd.
+de0ce3c8	Instellingen importeren
+e259cc0d	ProFanController-instellingen (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Dit bestand kan niet worden geladen.\n{0}
+d01ee250	. Ongedaan te maken met "Ongedaan maken". Controleer de curves van de geïmporteerde ventilatoren voordat je ze gebruikt.
+565076e7	Curves controleren
+e5decd8b	De instellingen zijn aangepast aan de nieuwe hardware (ongedaan te maken met "Ongedaan maken"). Controleer voor de zekerheid de ventilatorcurves.
+49a0ae7a	De hardware is gewijzigd. Curves die niet gevonden sensoren gebruiken, draaien voor de veiligheid op een constant toerental.
+dff7789c	Koppeling openen
+cd091397	Zelfde als apparaat
+0592e9ca	Aan
+1f9312b8	Uit
+b9b3d3ce	Ongewijzigd
+ce8e2c71	{0} leds
+55059eac	Niet ingesteld (licht op in de volgorde van het apparaat)
+0a0e4a97	{0} · {1}
+c14c8eef	Automatisch (symmetrisch vanaf 30)
+87b3c1e5	4 keer
+a3cdd021	8 keer
+d156a2e0	12 keer
+b36e663d	15 keer
+e7e154a9	20 keer
+0981fbf4	30 keer
+9c06e78d	60 keer
+cd131a9e	1 keer
+165d9de3	2 keer
+677e1948	3 keer
+d94ab30a	5 keer
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Antiflikkeren actief (verstuurt alleen bij kleurwissel)
+33747dd6	Videokaart: zo min mogelijk schrijven (hooguit {0} per seconde)
+4295e02e	Traag bijgewerkt apparaat ({0} per seconde{1})
+47cc8c5f	, automatisch
+a6d44dde	Deze videokaart kan bij elke keer dat er een kleur wordt geschreven even flikkeren (waarschijnlijk door de manier waarop OpenRGB 1.1 schrijft, maar dat wordt voor dit model nog onderzocht). Om zo min mogelijk te schrijven, blijft de helderheid gelijk, worden kleuren alleen verstuurd als ze duidelijk veranderen (met minstens 0,25 seconde ertussen) en wordt dezelfde kleur niet opnieuw verstuurd. Regenboog (stromend) wordt een stilstaande regenboog en ademen een vaste kleur (elk oplichtend gebied kan maar één kleur tonen). Valt bij muzieksynchronisatie het geluid weg, dan wisselt de kleur elke 20 seconden. Stoort het je, stel het effect dan in op "Vaste kleur"
+0488c9d7	OpenRGB schrijft de leds van de videokaart één voor één, dus één kleurwissel duurt ongeveer 20–200 ms. Voortdurend schrijven veroorzaakt flikkeren en vertraging, daarom wordt zo min mogelijk geschreven: 
+cf0c037b	helderheid blijft gelijk (de beat wordt getoond met kleurwissels), kleuren worden alleen verstuurd als ze duidelijk veranderen (hooguit 5 keer per seconde), de temperatuurmodus wisselt alleen als de temperatuurstap verandert,
+fb923916	 regenboog (stromend) en ademen worden stilstaande regenboog en vaste kleur (te wijzigen met "Regenboog en ademen ook animeren"), en dezelfde kleur wordt elke 60 seconden opnieuw verstuurd.
+8ed6eae0	Loopt de timing niet gelijk met andere apparaten, stem die dan af met "Eerder oplichten"
+8444c4be	Leds die via de bedrading op de printplaat (I2C) zijn aangesloten, zoals bij geheugen, hebben tijd nodig per verzending; daarom zijn ze automatisch beperkt tot 8 keer per seconde (te wijzigen met "Updates per seconde" rechts). Kleurwissels bij muzieksynchronisatie worden meteen verstuurd, zonder op de vaste update te wachten. Dezelfde kleur wordt elke 60 seconden opnieuw verstuurd
+2a5ce6d5	Automatisch (algemene instelling)
+7a4362e3	 (heftig knipperen)
+2e7616aa	Paars
+d624abb5	Blauw
+1740eec3	Lichtblauw
+5474bf7c	Groen
+77065b38	Oranje
+e02e2d73	Rood
+e0684d2d	Roze
+f88712a8	Wit
+f73d92df	Uit (leds uitzetten)
+faccb7c6	Vaste kleur (de kleur die bij "Kleur" is gekozen)
+8261ae67	Ongewijzigd (op de laatste kleur blijven staan)
+d24118e5	\nNiet gebruiken als je gevoelig bent voor knipperend licht. Niet te kiezen zolang "Flitsen beperken" aan staat
+fa397c65	⚠ Knippert heftig
+5812e0db	Licht alleen op in de kleur die bij "Kleur & helderheid" is gekozen. De kleur blijft gelijk; alleen de helderheid volgt het geluid
+a3ff6ad5	Licht op in de kleur die bij "Kleur & helderheid" is gekozen en de kleuren ernaast aan beide kanten
+a0c6bf54	Licht op in de kleuren van {0}. Bij elke beat wisselt het naar de volgende kleur uit de set
+b4e8382b	Automatisch (vooruitlopend)
+3084a002	Zodra het tempo van het nummer is gevonden, wordt de volgende beat voorspeld en zonder vertraging opgelicht (aanbevolen)
+90659e1d	Alleen kick
+86ca4d12	Zonder voorspelling; licht alleen op als de basdrum klinkt. Voor nummers met wisselend tempo
+12e78249	Gebruikt geen tempo of beats; licht alleen op naar luidheid
+80f08891	De kleuren van het palet lopen langzaam in elkaar over
+df788b17	De kleur die bij "Kleur" is gekozen, wordt langzaam lichter en donkerder
+680555ce	Blijft oplichten in de kleur die bij "Kleur" is gekozen
+3b1d43a4	Zet de leds uit als het geluid wegvalt
+25525b81	{0} ({1})
+bb1834e5	Je hebt de instellingen hieronder zelf aangepast. Kies je een andere voorinstelling, dan geldt weer de combinatie daarvan
+1cf255e8	Voor werk of 's nachts. De kleuren wisselen langzaam en rustig

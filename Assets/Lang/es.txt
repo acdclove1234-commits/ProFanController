@@ -1200,3 +1200,103 @@ aa2f7c05	Elegir imagen…
 30ef4ec2	Elegir imagen para «{0}»
 3d493cb5	Archivos de imagen (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	No se pudo establecer la imagen.\n{0}
+1c845124	Periodo registrado: {0:hh\\:mm\\:ss} ({1:N0} muestras)  /  Pase el ratón por el gráfico para ver los valores en ese momento
+67fc1b84	{0} (virtual) [°C]
+7f375751	Todavía no hay registros.
+9ac98f99	Exportar el historial a CSV
+6cf9940d	Archivo CSV (*.csv)|*.csv
+394a0c84	Se exportaron {0:N0} filas: {1}
+4c897111	No se pudo exportar.\n{0}
+f6719722	Todavía no hay copias de seguridad
+41c3b6de	Última copia: {0} · {1} en total ({2})
+157c5131	¿Crear un nuevo nombre de tema?\n\nEn la aplicación ntfy del teléfono tendrá que volver a suscribirse al nuevo nombre de tema.
+a09fc803	Enviando…
+0d845e4d	No se pudo enviar: {0}
+7e4e7bd2	Automático (la mayor de CPU y GPU)
+97682f4b	Se hizo una copia de seguridad de los ajustes: {0}
+51e56e6f	No hay copias de seguridad
+5cb6d892	¿Volver a los ajustes del {0}?\n\nAntes se guarda una copia de los ajustes actuales, así que podrá deshacerlo después.
+ca58240b	Restaurar desde una copia
+0a066c64	Se restauraron los ajustes del {0} (se puede deshacer con «Deshacer»).
+4a2fd247	No se pudo leer esta copia de seguridad.\n{0}
+1b7a6d56	Exportar ajustes
+d3b9501f	Ajustes de ProFanController (*.profan.json)|*.profan.json
+8c168c4d	ProFan-ajustes_{0}_{1:yyyyMMdd}{2}
+dd581e02	Se exportaron {0} perfiles. Envíe este archivo a la otra persona y pídale que lo cargue en Ajustes → «Seguridad y copia de seguridad» → «Importar ajustes».
+25f3627c	No se pudo exportar.\n{0}
+e6cdafd7	Espere a que termine la inicialización del hardware.
+de0ce3c8	Importar ajustes
+e259cc0d	Ajustes de ProFanController (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Este archivo no se puede cargar.\n{0}
+d01ee250	. Se puede deshacer con «Deshacer». Revise las curvas de los ventiladores importados antes de usarlos.
+565076e7	Revisar curvas
+e5decd8b	Se reemplazaron los ajustes para el nuevo hardware (se puede deshacer con «Deshacer»). Por si acaso, revise las curvas de ventiladores.
+49a0ae7a	El hardware ha cambiado. Las curvas que usan sensores que no se encuentran giran a velocidad constante por seguridad.
+dff7789c	Abrir la correspondencia
+cd091397	Igual que el dispositivo
+0592e9ca	Activado
+1f9312b8	Desactivado
+b9b3d3ce	Sin cambios
+ce8e2c71	{0} LED
+55059eac	Sin definir (se ilumina en el orden del dispositivo)
+0a0e4a97	{0} · {1}
+c14c8eef	Automático (simétrico a partir de 30)
+87b3c1e5	4 veces
+a3cdd021	8 veces
+d156a2e0	12 veces
+b36e663d	15 veces
+e7e154a9	20 veces
+0981fbf4	30 veces
+9c06e78d	60 veces
+cd131a9e	1 vez
+165d9de3	2 veces
+677e1948	3 veces
+d94ab30a	5 veces
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Antiparpadeo activo (solo envía cuando cambia el color)
+33747dd6	Tarjeta gráfica: escrituras mínimas (como máximo {0} por segundo)
+4295e02e	Dispositivo de actualización lenta ({0} por segundo{1})
+47cc8c5f	, automático
+a6d44dde	Esta tarjeta gráfica puede parpadear un instante cada vez que se escribe un color (probablemente por la forma de escribir de OpenRGB 1.1, aunque en este modelo aún se está comprobando). Para escribir lo menos posible, no se cambia el brillo, los colores solo se envían cuando cambian claramente (con al menos 0,25 segundos entre envíos) y no se reenvía el mismo color. El arcoíris (fluyendo) pasa a ser un arcoíris fijo y la respiración un color fijo (cada zona iluminada solo puede mostrar un color). Cuando el sonido se detiene en la sincronización musical, el color cambia cada 20 segundos. Si le molesta, ponga el efecto en «Color fijo»
+0488c9d7	OpenRGB escribe los LED de la tarjeta gráfica uno a uno, así que cada cambio de color tarda unos 20–200 ms. Si las escrituras se suceden, aparecen parpadeos y retrasos, por eso se escriben lo mínimo: 
+cf0c037b	brillo constante (el ritmo se muestra con cambios de color), colores enviados solo cuando cambian claramente (como máximo 5 veces por segundo), modo de temperatura que solo cambia cuando cambia el escalón de temperatura,
+fb923916	 el arcoíris (fluyendo) y la respiración pasan a ser un arcoíris fijo y un color fijo (se cambia con «Animar también arcoíris y respiración») y el mismo color se reenvía cada 60 segundos.
+8ed6eae0	Si el momento no coincide con otros dispositivos, ajústelo con «Iluminar antes»
+8444c4be	Los LED conectados por el cableado interno de la placa (I2C), como los de la memoria, tardan en cada envío, así que en automático se limitan a 8 envíos por segundo (se cambia en «Envíos por segundo» a la derecha). Los cambios de color de la sincronización musical se envían enseguida, sin esperar al envío periódico. El mismo color se reenvía cada 60 segundos
+2a5ce6d5	Automático (ajuste general)
+7a4362e3	 (parpadeo intenso)
+2e7616aa	Morado
+d624abb5	Azul
+1740eec3	Celeste
+5474bf7c	Verde
+77065b38	Naranja
+e02e2d73	Rojo
+e0684d2d	Rosa
+f88712a8	Blanco
+f73d92df	Apagado (apagar los LED)
+faccb7c6	Color fijo (el color elegido en «Color»)
+8261ae67	Sin cambios (se queda en el último color)
+d24118e5	\nNo lo use si es sensible a las luces intermitentes. No se puede elegir mientras «Reducir destellos» esté activado
+fa397c65	⚠ Parpadea intensamente
+5812e0db	Se ilumina solo con el color elegido en «Color y brillo». El color no cambia; solo el brillo sigue al sonido
+a3ff6ad5	Se ilumina con el color elegido en «Color y brillo» y sus colores vecinos a ambos lados
+a0c6bf54	Se ilumina con los colores de {0}. En cada golpe cambia al siguiente color del conjunto
+b4e8382b	Automático (anticipación)
+3084a002	Cuando capta el tempo de la canción, anticipa el siguiente golpe y se ilumina sin retraso (recomendado)
+90659e1d	Solo bombo
+86ca4d12	Sin anticipación; se ilumina solo cuando suena el bombo. Para canciones con tempo variable
+12e78249	No usa ni tempo ni golpes; se ilumina solo según el volumen
+80f08891	Los colores de la paleta cambian despacio
+df788b17	El color elegido en «Color» se aclara y oscurece despacio
+680555ce	Se mantiene iluminado con el color elegido en «Color»
+3b1d43a4	Apaga los LED cuando se detiene el sonido
+25525b81	{0} ({1})
+bb1834e5	Ha ajustado usted mismo los ajustes de abajo. Si elige otro preajuste, se vuelve a su combinación
+1cf255e8	Para trabajar o de noche. Los colores cambian despacio y con suavidad

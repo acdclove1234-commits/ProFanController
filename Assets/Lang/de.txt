@@ -1200,3 +1200,103 @@ aa2f7c05	Bild auswählen…
 30ef4ec2	Bild für „{0}“ auswählen
 3d493cb5	Bilddateien (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Das Bild konnte nicht festgelegt werden.\n{0}
+1c845124	Aufzeichnungsdauer: {0:hh\\:mm\\:ss} ({1:N0} Messwerte)  /  Fahren Sie mit der Maus über das Diagramm, um die Werte zu diesem Zeitpunkt zu sehen
+67fc1b84	{0} (virtuell) [°C]
+7f375751	Noch keine Aufzeichnungen.
+9ac98f99	Verlauf als CSV exportieren
+6cf9940d	CSV-Datei (*.csv)|*.csv
+394a0c84	{0:N0} Zeilen exportiert: {1}
+4c897111	Export fehlgeschlagen.\n{0}
+f6719722	Noch keine Sicherungen
+41c3b6de	Neueste Sicherung: {0} · insgesamt {1} ({2})
+157c5131	Neuen Themennamen erzeugen?\n\nIn der ntfy-App auf dem Handy müssen Sie den neuen Themennamen erneut abonnieren.
+a09fc803	Wird gesendet…
+0d845e4d	Senden fehlgeschlagen: {0}
+7e4e7bd2	Automatisch (der höhere Wert von CPU und GPU)
+97682f4b	Einstellungen gesichert: {0}
+51e56e6f	Keine Sicherungen
+5cb6d892	Die Einstellungen vom {0} wiederherstellen?\n\nDie aktuellen Einstellungen werden vorher ebenfalls gesichert, Sie können das also später rückgängig machen.
+ca58240b	Aus Sicherung wiederherstellen
+0a066c64	Die Einstellungen vom {0} wurden wiederhergestellt (mit „Rückgängig“ zurücknehmbar).
+4a2fd247	Diese Sicherung konnte nicht gelesen werden.\n{0}
+1b7a6d56	Einstellungen exportieren
+d3b9501f	ProFanController-Einstellungen (*.profan.json)|*.profan.json
+8c168c4d	ProFan-Einstellungen_{0}_{1:yyyyMMdd}{2}
+dd581e02	{0} Profile exportiert. Senden Sie die Datei an die andere Person und lassen Sie sie über Einstellungen → „Sicherheit & Sicherung“ → „Einstellungen importieren“ laden.
+25f3627c	Export nicht möglich.\n{0}
+e6cdafd7	Bitte warten Sie, bis die Hardware initialisiert ist.
+de0ce3c8	Einstellungen importieren
+e259cc0d	ProFanController-Einstellungen (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Diese Datei kann nicht geladen werden.\n{0}
+d01ee250	. Mit „Rückgängig“ zurücknehmbar. Prüfen Sie die Kurven der importierten Lüfter, bevor Sie sie verwenden.
+565076e7	Kurven prüfen
+e5decd8b	Die Einstellungen wurden an die neue Hardware angepasst (mit „Rückgängig“ zurücknehmbar). Prüfen Sie sicherheitshalber die Lüfterkurven.
+49a0ae7a	Die Hardware hat sich geändert. Kurven mit nicht gefundenen Sensoren laufen zur Sicherheit mit konstanter Drehzahl.
+dff7789c	Zuordnung öffnen
+cd091397	Wie Gerät
+0592e9ca	Ein
+1f9312b8	Aus
+b9b3d3ce	Unverändert
+ce8e2c71	{0} LEDs
+55059eac	Nicht festgelegt (leuchtet in der Reihenfolge des Geräts)
+0a0e4a97	{0} · {1}
+c14c8eef	Automatisch (symmetrisch ab 30)
+87b3c1e5	4-mal
+a3cdd021	8-mal
+d156a2e0	12-mal
+b36e663d	15-mal
+e7e154a9	20-mal
+0981fbf4	30-mal
+9c06e78d	60-mal
+cd131a9e	1-mal
+165d9de3	2-mal
+677e1948	3-mal
+d94ab30a	5-mal
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Flimmerschutz aktiv (sendet nur bei Farbwechsel)
+33747dd6	Grafikkarte: minimale Schreibvorgänge (höchstens {0} pro Sekunde)
+4295e02e	Langsam aktualisiertes Gerät ({0} pro Sekunde{1})
+47cc8c5f	, automatisch
+a6d44dde	Diese Grafikkarte kann bei jedem Schreiben einer Farbe kurz flimmern (vermutlich wegen der Schreibweise von OpenRGB 1.1; für dieses Modell wird das noch geprüft). Um möglichst wenig zu schreiben, bleibt die Helligkeit unverändert, Farben werden nur bei deutlichem Wechsel gesendet (mit mindestens 0,25 Sekunden Abstand) und gleiche Farben nicht erneut gesendet. Regenbogen (fließend) wird zu einem stehenden Regenbogen, Atmen zu einer festen Farbe (jeder Leuchtbereich kann nur eine Farbe zeigen). Wenn bei der Musiksynchronisation der Ton aussetzt, wechselt die Farbe alle 20 Sekunden. Wenn es Sie stört, stellen Sie den Effekt auf „Feste Farbe“
+0488c9d7	Die LEDs der Grafikkarte schreibt OpenRGB einzeln, daher dauert ein Farbwechsel etwa 20–200 ms. Ständiges Schreiben verursacht Flimmern und Verzögerungen, daher wird möglichst wenig geschrieben: 
+cf0c037b	Helligkeit bleibt konstant (der Beat wird durch Farbwechsel gezeigt), Farben werden nur bei deutlichem Wechsel gesendet (höchstens 5-mal pro Sekunde), der Temperaturmodus wechselt nur, wenn sich die Temperaturstufe ändert,
+fb923916	 Regenbogen (fließend) und Atmen werden zu stehendem Regenbogen und fester Farbe (änderbar mit „Regenbogen und Atmen auch animieren“), gleiche Farben werden alle 60 Sekunden erneut gesendet.
+8ed6eae0	Wenn das Timing von anderen Geräten abweicht, gleichen Sie es mit „Früher leuchten“ an
+8444c4be	LEDs, die über die Leitungen auf der Platine (I2C) angebunden sind, etwa beim Arbeitsspeicher, brauchen für jedes Senden Zeit, daher sind es automatisch höchstens 8 pro Sekunde (änderbar unter „Aktualisierungen pro Sekunde“ rechts). Farbwechsel der Musiksynchronisation werden sofort gesendet, ohne auf die regelmäßige Aktualisierung zu warten. Gleiche Farben werden alle 60 Sekunden erneut gesendet
+2a5ce6d5	Automatisch (globale Einstellung)
+7a4362e3	 (heftiges Blinken)
+2e7616aa	Lila
+d624abb5	Blau
+1740eec3	Hellblau
+5474bf7c	Grün
+77065b38	Orange
+e02e2d73	Rot
+e0684d2d	Pink
+f88712a8	Weiß
+f73d92df	Aus (LEDs ausschalten)
+faccb7c6	Feste Farbe (die unter „Farbe“ gewählte Farbe)
+8261ae67	Unverändert (bei der letzten Farbe stehen bleiben)
+d24118e5	\nNicht verwenden, wenn Sie empfindlich auf blinkendes Licht reagieren. Nicht wählbar, solange „Blitzen reduzieren“ aktiv ist
+fa397c65	⚠ Blinkt heftig
+5812e0db	Leuchtet nur in der unter „Farbe & Helligkeit“ gewählten Farbe. Die Farbe bleibt gleich, nur die Helligkeit folgt dem Klang
+a3ff6ad5	Leuchtet in der unter „Farbe & Helligkeit“ gewählten Farbe und ihren beiden Nachbarfarben
+a0c6bf54	Leuchtet in den Farben von {0}. Bei jedem Beat wechselt es zur nächsten Farbe daraus
+b4e8382b	Automatisch (vorausschauend)
+3084a002	Sobald das Tempo des Songs erfasst ist, wird der nächste Beat vorhergesagt und ohne Verzögerung geleuchtet (empfohlen)
+90659e1d	Nur Kick
+86ca4d12	Ohne Vorhersage; leuchtet nur, wenn die Bassdrum schlägt. Für Songs mit wechselndem Tempo
+12e78249	Nutzt weder Tempo noch Beats; leuchtet nur nach Lautstärke
+80f08891	Die Farben der Palette gehen langsam ineinander über
+df788b17	Die unter „Farbe“ gewählte Farbe wird langsam heller und dunkler
+680555ce	Leuchtet dauerhaft in der unter „Farbe“ gewählten Farbe
+3b1d43a4	Schaltet die LEDs aus, wenn der Ton aussetzt
+25525b81	{0} ({1})
+bb1834e5	Sie haben die Einstellungen unten selbst angepasst. Wählen Sie eine andere Voreinstellung, gilt wieder deren Kombination
+1cf255e8	Für die Arbeit oder die Nacht. Die Farben wechseln langsam und ruhig

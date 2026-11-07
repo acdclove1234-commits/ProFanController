@@ -1200,3 +1200,103 @@ aa2f7c05	Resim seç…
 30ef4ec2	"{0}" için resim seç
 3d493cb5	Resim dosyaları (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Resim ayarlanamadı.\n{0}
+1c845124	Kayıt süresi: {0:hh\\:mm\\:ss} ({1:N0} örnek)  /  O andaki değerleri görmek için fareyi grafiğin üzerine getirin
+67fc1b84	{0} (sanal) [°C]
+7f375751	Henüz kayıt yok.
+9ac98f99	Geçmişi CSV olarak dışa aktar
+6cf9940d	CSV dosyası (*.csv)|*.csv
+394a0c84	{0:N0} satır dışa aktarıldı: {1}
+4c897111	Dışa aktarma başarısız oldu.\n{0}
+f6719722	Henüz yedek yok
+41c3b6de	Son yedek: {0} · toplam {1} ({2})
+157c5131	Konu adı yeniden oluşturulsun mu?\n\nTelefondaki ntfy uygulamasında yeni konu adına yeniden abone olmanız gerekir.
+a09fc803	Gönderiliyor…
+0d845e4d	Gönderilemedi: {0}
+7e4e7bd2	Otomatik (CPU ve GPU'dan yüksek olanı)
+97682f4b	Ayarlar yedeklendi: {0}
+51e56e6f	Yedek yok
+5cb6d892	{0} tarihli ayarlara dönülsün mü?\n\nÖnce mevcut ayarlar da yedeklendiği için daha sonra geri alabilirsiniz.
+ca58240b	Yedekten geri yükle
+0a066c64	{0} tarihli ayarlara dönüldü ("Geri al" ile geri alabilirsiniz).
+4a2fd247	Bu yedek okunamadı.\n{0}
+1b7a6d56	Ayarları dışa aktar
+d3b9501f	ProFanController ayarları (*.profan.json)|*.profan.json
+8c168c4d	ProFan-ayarlari_{0}_{1:yyyyMMdd}{2}
+dd581e02	{0} profil dışa aktarıldı. Bu dosyayı karşı tarafa gönderin ve Ayarlar → "Güvenlik ve yedekleme" → "Ayarları içe aktar" ile yüklemesini isteyin.
+25f3627c	Dışa aktarılamadı.\n{0}
+e6cdafd7	Lütfen donanımın başlatılması bitene kadar bekleyin.
+de0ce3c8	Ayarları içe aktar
+e259cc0d	ProFanController ayarları (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Bu dosya yüklenemiyor.\n{0}
+d01ee250	. "Geri al" ile geri alabilirsiniz. İçe aktarılan fanları kullanmadan önce eğrilerini kontrol edin.
+565076e7	Eğrileri kontrol et
+e5decd8b	Ayarlar yeni donanıma göre değiştirildi ("Geri al" ile geri alabilirsiniz). Ne olur ne olmaz, fan eğrilerini kontrol edin.
+49a0ae7a	Donanım değişti. Bulunamayan sensörleri kullanan eğriler güvenlik için sabit devirde dönüyor.
+dff7789c	Eşleştirmeyi aç
+cd091397	Cihazla aynı
+0592e9ca	Açık
+1f9312b8	Kapalı
+b9b3d3ce	Olduğu gibi bırak
+ce8e2c71	{0} LED
+55059eac	Belirlenmedi (cihazın kendi sırasıyla yanar)
+0a0e4a97	{0} · {1}
+c14c8eef	Otomatik (30 ve üzerinde simetrik)
+87b3c1e5	4 kez
+a3cdd021	8 kez
+d156a2e0	12 kez
+b36e663d	15 kez
+e7e154a9	20 kez
+0981fbf4	30 kez
+9c06e78d	60 kez
+cd131a9e	1 kez
+165d9de3	2 kez
+677e1948	3 kez
+d94ab30a	5 kez
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Titreme önleme açık (yalnızca renk değişince gönderir)
+33747dd6	Ekran kartı: yazma en aza indirildi (saniyede en fazla {0})
+4295e02e	Yavaş güncellenen cihaz (saniyede {0}{1})
+47cc8c5f	, otomatik
+a6d44dde	Bu ekran kartı her renk yazıldığında bir an titreyebilir (muhtemelen OpenRGB 1.1'in yazma biçiminden kaynaklanıyor, ancak bu model için henüz doğrulanıyor). Yazmayı en aza indirmek için parlaklık değiştirilmez, renkler yalnızca belirgin şekilde değiştiğinde (en az 0,25 saniye arayla) gönderilir ve aynı renk yeniden gönderilmez. Gökkuşağı (akan) duran bir gökkuşağına, nefes sabit renge dönüşür (her ışık alanı yalnızca bir renk gösterebilir). Müzik senkronunda ses kesildiğinde renk her 20 saniyede değişir. Rahatsız ederse efekti "Sabit renk" yapın
+0488c9d7	Ekran kartının LED'leri OpenRGB tarafından tek tek yazıldığı için bir renk değişimi yaklaşık 20–200 ms sürer. Sürekli yazma titremeye ve gecikmeye yol açtığından yazma en aza indirildi: 
+cf0c037b	parlaklık sabit (vuruş renk değişimiyle gösterilir), renkler yalnızca belirgin şekilde değiştiğinde gönderilir (saniyede en fazla 5 kez), sıcaklık modu yalnızca sıcaklık kademesi değişince geçiş yapar,
+fb923916	 gökkuşağı (akan) ve nefes, duran gökkuşağı ve sabit renk olur ("Gökkuşağı ve nefesi de canlandır" ile değiştirilebilir), aynı renk her 60 saniyede yeniden gönderilir.
+8ed6eae0	Diğer cihazlarla zamanlama kayıyorsa "Daha erken yak" ile ayarlayın
+8444c4be	Bellek gibi kart üzerindeki iç bağlantıyla (I2C) bağlanan LED'ler her gönderimde zaman aldığından otomatikte saniyede en fazla 8 kezle sınırlıdır (sağdaki "Saniyedeki güncelleme" ile değiştirilebilir). Müzik senkronundaki renk değişimleri düzenli gönderimi beklemeden hemen gönderilir. Aynı renk her 60 saniyede yeniden gönderilir
+2a5ce6d5	Otomatik (genel ayar)
+7a4362e3	 (yoğun yanıp sönme)
+2e7616aa	Mor
+d624abb5	Mavi
+1740eec3	Açık mavi
+5474bf7c	Yeşil
+77065b38	Turuncu
+e02e2d73	Kırmızı
+e0684d2d	Pembe
+f88712a8	Beyaz
+f73d92df	Kapalı (LED'leri söndür)
+faccb7c6	Sabit renk ("Renk" ile seçilen renk)
+8261ae67	Olduğu gibi bırak (son renkte kal)
+d24118e5	\nIşığa duyarlıysanız kullanmayın. "Yanıp sönmeyi azalt" açıkken seçilemez
+fa397c65	⚠ Yoğun yanıp söner
+5812e0db	Yalnızca "Renk ve parlaklık" ile seçilen renkte yanar. Renk değişmez, sese göre yalnızca parlaklık değişir
+a3ff6ad5	"Renk ve parlaklık" ile seçilen renk ve iki yanındaki renklerle yanar
+a0c6bf54	{0} renkleriyle yanar. Her vuruşta bunların içindeki sonraki renge geçer
+b4e8382b	Otomatik (öngörülü)
+3084a002	Şarkının temposunu yakaladığında sonraki vuruşu öngörür ve gecikmesiz yanar (önerilir)
+90659e1d	Yalnızca kick
+86ca4d12	Öngörü yapmaz; yalnızca bas davul vurduğunda yanar. Temposu değişen şarkılar için
+12e78249	Ne tempoyu ne vuruşları kullanır; yalnızca ses yüksekliğiyle yanar
+80f08891	Paletteki renkler yavaşça birbirine geçer
+df788b17	"Renk" ile seçilen renk yavaşça parlayıp kararır
+680555ce	"Renk" ile seçilen renkte sürekli yanar
+3b1d43a4	Ses kesilince LED'leri söndürür
+25525b81	{0} ({1})
+bb1834e5	Aşağıdaki ayarları kendiniz değiştirdiniz. Başka bir ön ayar seçerseniz onun birleşimine dönülür
+1cf255e8	Çalışırken veya gece için. Renkler yavaşça ve sakince değişir

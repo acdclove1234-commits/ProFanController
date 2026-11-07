@@ -1200,3 +1200,103 @@ aa2f7c05	Scegli immagine…
 30ef4ec2	Scegli un'immagine per «{0}»
 3d493cb5	File immagine (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Impossibile impostare l'immagine.\n{0}
+1c845124	Periodo registrato: {0:hh\\:mm\\:ss} ({1:N0} campioni)  /  Passa il mouse sul grafico per vedere i valori in quel momento
+67fc1b84	{0} (virtuale) [°C]
+7f375751	Nessuna registrazione per ora.
+9ac98f99	Esporta la cronologia in CSV
+6cf9940d	File CSV (*.csv)|*.csv
+394a0c84	Esportate {0:N0} righe: {1}
+4c897111	Esportazione non riuscita.\n{0}
+f6719722	Nessun backup per ora
+41c3b6de	Ultimo backup: {0} · {1} in totale ({2})
+157c5131	Creare un nuovo nome di argomento?\n\nNell'app ntfy sul telefono dovrai iscriverti di nuovo al nuovo nome di argomento.
+a09fc803	Invio in corso…
+0d845e4d	Invio non riuscito: {0}
+7e4e7bd2	Automatico (il valore più alto tra CPU e GPU)
+97682f4b	Backup delle impostazioni eseguito: {0}
+51e56e6f	Nessun backup
+5cb6d892	Ripristinare le impostazioni del {0}?\n\nPrima viene eseguito il backup delle impostazioni attuali, quindi potrai annullare in seguito.
+ca58240b	Ripristina da backup
+0a066c64	Impostazioni del {0} ripristinate (annullabile con «Annulla»).
+4a2fd247	Impossibile leggere questo backup.\n{0}
+1b7a6d56	Esporta impostazioni
+d3b9501f	Impostazioni di ProFanController (*.profan.json)|*.profan.json
+8c168c4d	ProFan-impostazioni_{0}_{1:yyyyMMdd}{2}
+dd581e02	Esportati {0} profili. Invia questo file all'altra persona e chiedile di caricarlo da Impostazioni → «Sicurezza e backup» → «Importa impostazioni».
+25f3627c	Impossibile esportare.\n{0}
+e6cdafd7	Attendi il termine dell'inizializzazione dell'hardware.
+de0ce3c8	Importa impostazioni
+e259cc0d	Impostazioni di ProFanController (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Impossibile caricare questo file.\n{0}
+d01ee250	. Annullabile con «Annulla». Controlla le curve delle ventole importate prima di usarle.
+565076e7	Controlla curve
+e5decd8b	Le impostazioni sono state adattate al nuovo hardware (annullabile con «Annulla»). Per sicurezza, controlla le curve delle ventole.
+49a0ae7a	L'hardware è cambiato. Le curve che usano sensori non trovati girano a velocità costante per sicurezza.
+dff7789c	Apri la corrispondenza
+cd091397	Come il dispositivo
+0592e9ca	Attivo
+1f9312b8	Disattivo
+b9b3d3ce	Lascia invariato
+ce8e2c71	{0} LED
+55059eac	Non impostato (si illumina nell'ordine del dispositivo)
+0a0e4a97	{0} · {1}
+c14c8eef	Automatico (simmetrico da 30 in su)
+87b3c1e5	4 volte
+a3cdd021	8 volte
+d156a2e0	12 volte
+b36e663d	15 volte
+e7e154a9	20 volte
+0981fbf4	30 volte
+9c06e78d	60 volte
+cd131a9e	1 volta
+165d9de3	2 volte
+677e1948	3 volte
+d94ab30a	5 volte
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Antisfarfallio attivo (invia solo quando il colore cambia)
+33747dd6	Scheda video: scritture minime (al massimo {0} al secondo)
+4295e02e	Dispositivo ad aggiornamento lento ({0} al secondo{1})
+47cc8c5f	, automatico
+a6d44dde	Questa scheda video può sfarfallare per un istante a ogni scrittura del colore (probabilmente per il modo in cui scrive OpenRGB 1.1, ma per questo modello è ancora in verifica). Per scrivere il meno possibile, la luminosità non cambia, i colori vengono inviati solo quando cambiano nettamente (ad almeno 0,25 secondi di distanza) e lo stesso colore non viene reinviato. L'arcobaleno (scorrevole) diventa un arcobaleno fermo e il respiro un colore fisso (ogni zona luminosa può mostrare un solo colore). Quando nella sincronizzazione musicale il suono si ferma, il colore cambia ogni 20 secondi. Se ti dà fastidio, imposta l'effetto su «Colore fisso»
+0488c9d7	OpenRGB scrive i LED della scheda video uno alla volta, quindi un cambio di colore richiede circa 20–200 ms. Le scritture continue causano sfarfallio e ritardi, perciò le scritture sono ridotte al minimo: 
+cf0c037b	luminosità costante (il ritmo è mostrato dai cambi di colore), colori inviati solo quando cambiano nettamente (al massimo 5 volte al secondo), modalità temperatura che cambia solo quando cambia il livello di temperatura,
+fb923916	 arcobaleno (scorrevole) e respiro diventano arcobaleno fermo e colore fisso (modificabile con «Anima anche arcobaleno e respiro»), lo stesso colore viene reinviato ogni 60 secondi.
+8ed6eae0	Se la sincronia con gli altri dispositivi non coincide, regolala con «Illumina prima»
+8444c4be	I LED collegati tramite le piste interne della scheda (I2C), come quelli della memoria, richiedono tempo per ogni invio, quindi in automatico sono limitati a 8 invii al secondo (modificabile con «Invii al secondo» a destra). I cambi di colore della sincronizzazione musicale vengono inviati subito, senza attendere l'invio periodico. Lo stesso colore viene reinviato ogni 60 secondi
+2a5ce6d5	Automatico (impostazione generale)
+7a4362e3	 (lampeggio intenso)
+2e7616aa	Viola
+d624abb5	Blu
+1740eec3	Azzurro
+5474bf7c	Verde
+77065b38	Arancione
+e02e2d73	Rosso
+e0684d2d	Rosa
+f88712a8	Bianco
+f73d92df	Spento (spegni i LED)
+faccb7c6	Colore fisso (il colore scelto in «Colore»)
+8261ae67	Lascia invariato (fermati sull'ultimo colore)
+d24118e5	\nNon usarlo se sei sensibile alle luci lampeggianti. Non selezionabile finché «Riduci i lampeggi» è attivo
+fa397c65	⚠ Lampeggia intensamente
+5812e0db	Si illumina solo con il colore scelto in «Colore e luminosità». Il colore non cambia; solo la luminosità segue il suono
+a3ff6ad5	Si illumina con il colore scelto in «Colore e luminosità» e con i colori vicini ai due lati
+a0c6bf54	Si illumina con i colori di {0}. A ogni battito passa al colore successivo del gruppo
+b4e8382b	Automatico (anticipo)
+3084a002	Quando ha colto il tempo del brano, anticipa il battito successivo e si illumina senza ritardo (consigliato)
+90659e1d	Solo cassa
+86ca4d12	Senza anticipo; si illumina solo quando suona la cassa. Per brani con tempo variabile
+12e78249	Non usa né tempo né battiti; si illumina solo in base al volume
+80f08891	I colori della tavolozza cambiano lentamente
+df788b17	Il colore scelto in «Colore» si schiarisce e si scurisce lentamente
+680555ce	Resta illuminato con il colore scelto in «Colore»
+3b1d43a4	Spegne i LED quando il suono si ferma
+25525b81	{0} ({1})
+bb1834e5	Hai regolato tu le impostazioni qui sotto. Scegliendo un'altra preimpostazione si torna alla sua combinazione
+1cf255e8	Per il lavoro o la notte. I colori cambiano lentamente e con calma

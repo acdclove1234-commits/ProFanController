@@ -1200,3 +1200,103 @@ aa2f7c05	Wybierz obraz…
 30ef4ec2	Wybierz obraz dla „{0}”
 3d493cb5	Pliki obrazów (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Nie udało się ustawić obrazu.\n{0}
+1c845124	Okres zapisu: {0:hh\\:mm\\:ss} ({1:N0} próbek)  /  Najedź myszą na wykres, aby zobaczyć wartości w danej chwili
+67fc1b84	{0} (wirtualny) [°C]
+7f375751	Brak zapisów.
+9ac98f99	Eksportuj historię do CSV
+6cf9940d	Plik CSV (*.csv)|*.csv
+394a0c84	Wyeksportowano wiersze ({0:N0}): {1}
+4c897111	Eksport nie powiódł się.\n{0}
+f6719722	Brak kopii zapasowych
+41c3b6de	Najnowsza kopia: {0} · łącznie {1} ({2})
+157c5131	Utworzyć nową nazwę tematu?\n\nW aplikacji ntfy na telefonie trzeba będzie ponownie zasubskrybować nową nazwę tematu.
+a09fc803	Wysyłanie…
+0d845e4d	Nie udało się wysłać: {0}
+7e4e7bd2	Automatycznie (wyższa z CPU i GPU)
+97682f4b	Utworzono kopię zapasową ustawień: {0}
+51e56e6f	Brak kopii zapasowych
+5cb6d892	Przywrócić ustawienia z {0}?\n\nNajpierw zostanie zrobiona kopia bieżących ustawień, więc później można to cofnąć.
+ca58240b	Przywróć z kopii
+0a066c64	Przywrócono ustawienia z {0} (można cofnąć przyciskiem „Cofnij”).
+4a2fd247	Nie udało się odczytać tej kopii.\n{0}
+1b7a6d56	Eksportuj ustawienia
+d3b9501f	Ustawienia ProFanController (*.profan.json)|*.profan.json
+8c168c4d	ProFan-ustawienia_{0}_{1:yyyyMMdd}{2}
+dd581e02	Wyeksportowano profile ({0}). Wyślij ten plik drugiej osobie i poproś, by wczytała go w Ustawienia → „Bezpieczeństwo i kopie zapasowe” → „Importuj ustawienia”.
+25f3627c	Nie udało się wyeksportować.\n{0}
+e6cdafd7	Poczekaj na zakończenie inicjalizacji sprzętu.
+de0ce3c8	Importuj ustawienia
+e259cc0d	Ustawienia ProFanController (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Nie można wczytać tego pliku.\n{0}
+d01ee250	. Można to cofnąć przyciskiem „Cofnij”. Przed użyciem zaimportowanych wentylatorów sprawdź ich krzywe.
+565076e7	Sprawdź krzywe
+e5decd8b	Ustawienia dopasowano do nowego sprzętu (można cofnąć przyciskiem „Cofnij”). Na wszelki wypadek sprawdź krzywe wentylatorów.
+49a0ae7a	Sprzęt się zmienił. Krzywe korzystające z nieznalezionych czujników dla bezpieczeństwa pracują na stałych obrotach.
+dff7789c	Otwórz przypisanie
+cd091397	Jak urządzenie
+0592e9ca	Wł.
+1f9312b8	Wył.
+b9b3d3ce	Bez zmian
+ce8e2c71	LED: {0}
+55059eac	Nie ustalono (świeci w kolejności urządzenia)
+0a0e4a97	{0} · {1}
+c14c8eef	Automatycznie (symetrycznie od 30)
+87b3c1e5	4 razy
+a3cdd021	8 razy
+d156a2e0	12 razy
+b36e663d	15 razy
+e7e154a9	20 razy
+0981fbf4	30 razy
+9c06e78d	60 razy
+cd131a9e	1 raz
+165d9de3	2 razy
+677e1948	3 razy
+d94ab30a	5 razy
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Ochrona przed migotaniem (wysyła tylko przy zmianie koloru)
+33747dd6	Karta graficzna: minimum zapisów (najwyżej {0} na sekundę)
+4295e02e	Urządzenie z wolnym odświeżaniem ({0} na sekundę{1})
+47cc8c5f	, automatycznie
+a6d44dde	Ta karta graficzna może na chwilę migotać przy każdym zapisie koloru (prawdopodobnie przez sposób zapisu w OpenRGB 1.1, ale dla tego modelu jest to jeszcze sprawdzane). Aby ograniczyć zapisy, jasność się nie zmienia, kolory są wysyłane tylko przy wyraźnej zmianie (co najmniej 0,25 s odstępu), a ten sam kolor nie jest wysyłany ponownie. Tęcza (płynąca) staje się nieruchomą tęczą, a oddychanie stałym kolorem (każda świecąca strefa może pokazać tylko jeden kolor). Gdy w synchronizacji z muzyką dźwięk ucichnie, kolor zmienia się co 20 sekund. Jeśli to przeszkadza, ustaw efekt „Stały kolor”
+0488c9d7	OpenRGB zapisuje diody karty graficznej po jednej, więc jedna zmiana koloru trwa około 20–200 ms. Ciągłe zapisy powodują migotanie i opóźnienia, dlatego zapisy są ograniczone do minimum: 
+cf0c037b	stała jasność (rytm pokazują zmiany koloru), kolory wysyłane tylko przy wyraźnej zmianie (najwyżej 5 razy na sekundę), tryb temperatury przełącza się tylko przy zmianie progu temperatury,
+fb923916	 tęcza (płynąca) i oddychanie stają się nieruchomą tęczą i stałym kolorem (zmienisz to opcją „Animuj także tęczę i oddychanie”), a ten sam kolor jest ponownie wysyłany co 60 sekund.
+8ed6eae0	Jeśli moment świecenia rozjeżdża się z innymi urządzeniami, dopasuj go opcją „Świeć wcześniej”
+8444c4be	Diody podłączone wewnętrznym okablowaniem płytki (I2C), np. w pamięci, potrzebują czasu na każde wysłanie, dlatego w trybie automatycznym są ograniczone do 8 odświeżeń na sekundę (zmienisz to w „Odświeżeń na sekundę” po prawej). Zmiany koloru w synchronizacji z muzyką są wysyłane od razu, bez czekania na regularne odświeżenie. Ten sam kolor jest ponownie wysyłany co 60 sekund
+2a5ce6d5	Automatycznie (ustawienie ogólne)
+7a4362e3	 (intensywne miganie)
+2e7616aa	Fioletowy
+d624abb5	Niebieski
+1740eec3	Błękitny
+5474bf7c	Zielony
+77065b38	Pomarańczowy
+e02e2d73	Czerwony
+e0684d2d	Różowy
+f88712a8	Biały
+f73d92df	Wyłączone (zgaś diody)
+faccb7c6	Stały kolor (kolor wybrany w „Kolor”)
+8261ae67	Bez zmian (zatrzymaj na ostatnim kolorze)
+d24118e5	\nNie używaj w przypadku wrażliwości na migające światło. Nie można wybrać, gdy „Ogranicz miganie” jest włączone
+fa397c65	⚠ Intensywnie miga
+5812e0db	Świeci tylko kolorem wybranym w „Kolor i jasność”. Kolor się nie zmienia, w rytm dźwięku zmienia się tylko jasność
+a3ff6ad5	Świeci kolorem wybranym w „Kolor i jasność” oraz sąsiednimi kolorami po obu stronach
+a0c6bf54	Świeci kolorami zestawu {0}. Przy każdym uderzeniu przechodzi do następnego koloru z zestawu
+b4e8382b	Automatycznie (z wyprzedzeniem)
+3084a002	Po uchwyceniu tempa utworu przewiduje następne uderzenie i świeci bez opóźnienia (zalecane)
+90659e1d	Tylko stopa
+86ca4d12	Bez przewidywania; świeci tylko przy uderzeniu stopy perkusji. Do utworów ze zmiennym tempem
+12e78249	Nie używa ani tempa, ani uderzeń; świeci tylko według głośności
+80f08891	Kolory palety powoli przechodzą jeden w drugi
+df788b17	Kolor wybrany w „Kolor” powoli się rozjaśnia i przyciemnia
+680555ce	Stale świeci kolorem wybranym w „Kolor”
+3b1d43a4	Gasi diody, gdy dźwięk ucichnie
+25525b81	{0} ({1})
+bb1834e5	Ustawienia poniżej zostały dostosowane ręcznie. Wybranie innego ustawienia wstępnego przywraca jego kombinację
+1cf255e8	Do pracy lub w nocy. Kolory zmieniają się powoli i łagodnie

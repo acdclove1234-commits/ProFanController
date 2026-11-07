@@ -1200,3 +1200,103 @@ aa2f7c05	Chọn hình…
 30ef4ec2	Chọn hình cho "{0}"
 3d493cb5	Tệp hình ảnh (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Không đặt được hình.\n{0}
+1c845124	Thời gian ghi: {0:hh\\:mm\\:ss} ({1:N0} mẫu)  /  Di chuột lên biểu đồ để xem giá trị tại thời điểm đó
+67fc1b84	{0} (ảo) [°C]
+7f375751	Chưa có bản ghi.
+9ac98f99	Xuất lịch sử ra CSV
+6cf9940d	Tệp CSV (*.csv)|*.csv
+394a0c84	Đã xuất {0:N0} dòng: {1}
+4c897111	Xuất thất bại.\n{0}
+f6719722	Chưa có bản sao lưu
+41c3b6de	Bản sao lưu mới nhất: {0} · tổng cộng {1} ({2})
+157c5131	Tạo lại tên chủ đề?\n\nTrong ứng dụng ntfy trên điện thoại, bạn sẽ cần đăng ký lại tên chủ đề mới.
+a09fc803	Đang gửi…
+0d845e4d	Không gửi được: {0}
+7e4e7bd2	Tự động (bên cao hơn giữa CPU và GPU)
+97682f4b	Đã sao lưu cài đặt: {0}
+51e56e6f	Không có bản sao lưu
+5cb6d892	Trở về cài đặt lúc {0}?\n\nCài đặt hiện tại cũng được sao lưu trước, nên sau này có thể hoàn tác.
+ca58240b	Khôi phục từ bản sao lưu
+0a066c64	Đã trở về cài đặt lúc {0} (có thể hủy bằng "Hoàn tác").
+4a2fd247	Không đọc được bản sao lưu này.\n{0}
+1b7a6d56	Xuất cài đặt
+d3b9501f	Cài đặt ProFanController (*.profan.json)|*.profan.json
+8c168c4d	ProFan-caidat_{0}_{1:yyyyMMdd}{2}
+dd581e02	Đã xuất {0} cấu hình. Hãy gửi tệp này cho người kia và nhờ họ nhập bằng Cài đặt → "An toàn & sao lưu" → "Nhập cài đặt".
+25f3627c	Không xuất được.\n{0}
+e6cdafd7	Hãy đợi đến khi khởi tạo phần cứng xong.
+de0ce3c8	Nhập cài đặt
+e259cc0d	Cài đặt ProFanController (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Không nhập được tệp này.\n{0}
+d01ee250	. Có thể hủy bằng "Hoàn tác". Hãy xem đường cong của các quạt đã nhập trước khi dùng.
+565076e7	Xem đường cong
+e5decd8b	Đã thay cài đặt cho phù hợp với phần cứng mới (có thể khôi phục bằng "Hoàn tác"). Để chắc chắn, hãy xem lại đường cong quạt.
+49a0ae7a	Phần cứng đã thay đổi. Các đường cong dùng cảm biến không tìm thấy đang chạy ở tốc độ cố định để an toàn.
+dff7789c	Mở phần đối chiếu
+cd091397	Giống thiết bị
+0592e9ca	Bật
+1f9312b8	Tắt
+b9b3d3ce	Giữ nguyên
+ce8e2c71	{0} LED
+55059eac	Không đặt (sáng theo thứ tự bên trong thiết bị)
+0a0e4a97	{0} · {1}
+c14c8eef	Tự động (đối xứng khi từ 30 trở lên)
+87b3c1e5	4 lần
+a3cdd021	8 lần
+d156a2e0	12 lần
+b36e663d	15 lần
+e7e154a9	20 lần
+0981fbf4	30 lần
+9c06e78d	60 lần
+cd131a9e	1 lần
+165d9de3	2 lần
+677e1948	3 lần
+d94ab30a	5 lần
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Đang chống nháy (chỉ gửi khi màu thay đổi)
+33747dd6	Card đồ họa: ghi ở mức tối thiểu (tối đa {0} lần mỗi giây)
+4295e02e	Thiết bị cập nhật chậm ({0} lần mỗi giây{1})
+47cc8c5f	, tự động
+a6d44dde	Card đồ họa này có thể nháy trong tích tắc mỗi lần ghi màu (có lẽ do cách ghi của OpenRGB 1.1, nhưng với mẫu này vẫn đang được kiểm tra). Để ghi ở mức tối thiểu, độ sáng không thay đổi, màu chỉ được gửi khi thay đổi rõ rệt (cách nhau ít nhất 0,25 giây) và không gửi lại cùng một màu. Cầu vồng (chảy) trở thành cầu vồng đứng yên, nhịp thở trở thành màu cố định (mỗi vùng sáng chỉ hiển thị được một màu). Khi âm thanh dừng trong chế độ đồng bộ nhạc, màu đổi mỗi 20 giây. Nếu thấy khó chịu, hãy đặt hiệu ứng là "Màu cố định"
+0488c9d7	OpenRGB ghi từng LED của card đồ họa một, nên mỗi lần đổi màu mất khoảng 20–200 ms. Ghi liên tục sẽ gây nháy và chậm trễ, vì vậy việc ghi được giữ ở mức tối thiểu: 
+cf0c037b	độ sáng không đổi (thể hiện nhịp bằng việc đổi màu), chỉ gửi khi màu thay đổi rõ rệt (tối đa 5 lần mỗi giây), chế độ nhiệt độ chỉ chuyển khi bậc nhiệt độ thay đổi,
+fb923916	 cầu vồng (chảy) và nhịp thở trở thành cầu vồng đứng yên và màu cố định (đổi bằng "Cho cả cầu vồng và nhịp thở chuyển động"), cùng một màu được gửi lại mỗi 60 giây.
+8ed6eae0	Nếu thời điểm sáng lệch với thiết bị khác, hãy chỉnh bằng "Sáng sớm hơn"
+8444c4be	Các LED nối qua đường dây bên trong bo mạch (I2C), như RAM, mất thời gian cho mỗi lần gửi, nên ở chế độ tự động bị giới hạn tối đa 8 lần mỗi giây (đổi trong "Số lần gửi mỗi giây" bên phải). Việc đổi màu khi đồng bộ nhạc được gửi ngay, không chờ lượt gửi định kỳ. Cùng một màu được gửi lại mỗi 60 giây
+2a5ce6d5	Tự động (cài đặt chung)
+7a4362e3	 (nhấp nháy mạnh)
+2e7616aa	Tím
+d624abb5	Xanh dương
+1740eec3	Xanh nhạt
+5474bf7c	Xanh lá
+77065b38	Cam
+e02e2d73	Đỏ
+e0684d2d	Hồng
+f88712a8	Trắng
+f73d92df	Tắt đèn (tắt LED)
+faccb7c6	Màu cố định (màu đã chọn trong "Màu")
+8261ae67	Giữ nguyên (dừng ở màu cuối cùng)
+d24118e5	\nKhông dùng nếu bạn nhạy cảm với ánh sáng nhấp nháy. Không chọn được khi đang bật "Giảm nhấp nháy"
+fa397c65	⚠ Nhấp nháy mạnh
+5812e0db	Chỉ sáng bằng màu đã chọn trong "Màu và độ sáng". Màu không đổi, chỉ độ sáng thay đổi theo âm thanh
+a3ff6ad5	Sáng bằng màu đã chọn trong "Màu và độ sáng" và các màu kề hai bên
+a0c6bf54	Sáng bằng các màu của {0}. Mỗi nhịp chuyển sang màu kế tiếp trong nhóm
+b4e8382b	Tự động (đoán trước)
+3084a002	Khi đã nắm được tempo của bài, sẽ đoán trước nhịp tiếp theo và sáng không trễ (khuyên dùng)
+90659e1d	Chỉ trống kick
+86ca4d12	Không đoán trước; chỉ sáng khi trống bass vang. Dành cho bài có tempo thay đổi
+12e78249	Không dùng tempo hay nhịp; chỉ sáng theo độ lớn âm thanh
+80f08891	Màu chuyển dần chậm rãi theo bảng màu
+df788b17	Màu đã chọn trong "Màu" từ từ sáng lên rồi tối đi
+680555ce	Sáng liên tục bằng màu đã chọn trong "Màu"
+3b1d43a4	Tắt LED khi âm thanh dừng
+25525b81	{0} ({1})
+bb1834e5	Bạn đã tự chỉnh các cài đặt bên dưới. Chọn cài sẵn khác sẽ trở về tổ hợp của cài sẵn đó
+1cf255e8	Khi làm việc hoặc ban đêm. Màu chuyển đổi chậm rãi, nhẹ nhàng

@@ -1200,3 +1200,103 @@ aa2f7c05	Choisir une image…
 30ef4ec2	Choisir une image pour « {0} »
 3d493cb5	Images (*.png;*.jpg;*.jpeg;*.bmp;*.webp)|*.png;*.jpg;*.jpeg;*.bmp;*.webp
 927e8083	Impossible de définir l'image.\n{0}
+1c845124	Durée enregistrée : {0:hh\\:mm\\:ss} ({1:N0} mesures)  /  Survolez le graphique pour voir les valeurs à cet instant
+67fc1b84	{0} (virtuel) [°C]
+7f375751	Aucun enregistrement pour l'instant.
+9ac98f99	Exporter l'historique en CSV
+6cf9940d	Fichier CSV (*.csv)|*.csv
+394a0c84	{0:N0} lignes exportées : {1}
+4c897111	L'export a échoué.\n{0}
+f6719722	Aucune sauvegarde pour l'instant
+41c3b6de	Dernière sauvegarde : {0} · {1} au total ({2})
+157c5131	Créer un nouveau nom de sujet ?\n\nDans l'application ntfy du téléphone, il faudra s'abonner à nouveau au nouveau nom de sujet.
+a09fc803	Envoi…
+0d845e4d	Envoi impossible : {0}
+7e4e7bd2	Auto (la plus élevée du CPU et du GPU)
+97682f4b	Paramètres sauvegardés : {0}
+51e56e6f	Aucune sauvegarde
+5cb6d892	Revenir aux paramètres du {0} ?\n\nLes paramètres actuels sont sauvegardés avant, vous pourrez donc annuler plus tard.
+ca58240b	Restaurer une sauvegarde
+0a066c64	Paramètres du {0} restaurés (annulable avec « Annuler »).
+4a2fd247	Impossible de lire cette sauvegarde.\n{0}
+1b7a6d56	Exporter les paramètres
+d3b9501f	Paramètres ProFanController (*.profan.json)|*.profan.json
+8c168c4d	ProFan-parametres_{0}_{1:yyyyMMdd}{2}
+dd581e02	{0} profils exportés. Envoyez ce fichier à l'autre personne et demandez-lui de le charger via Paramètres → « Sécurité et sauvegarde » → « Importer les paramètres ».
+25f3627c	Export impossible.\n{0}
+e6cdafd7	Patientez jusqu'à la fin de l'initialisation du matériel.
+de0ce3c8	Importer les paramètres
+e259cc0d	Paramètres ProFanController (*.profan.json;*.json)|*.profan.json;*.json
+49c7511d	Ce fichier ne peut pas être chargé.\n{0}
+d01ee250	. Annulable avec « Annuler ». Vérifiez les courbes des ventilateurs importés avant de les utiliser.
+565076e7	Vérifier les courbes
+e5decd8b	Les paramètres ont été adaptés au nouveau matériel (annulable avec « Annuler »). Par précaution, vérifiez les courbes des ventilateurs.
+49a0ae7a	Le matériel a changé. Les courbes qui utilisent des capteurs introuvables tournent à vitesse constante par sécurité.
+dff7789c	Ouvrir la correspondance
+cd091397	Comme l'appareil
+0592e9ca	Activé
+1f9312b8	Désactivé
+b9b3d3ce	Laisser tel quel
+ce8e2c71	{0} LED
+55059eac	Non défini (s'allume dans l'ordre de l'appareil)
+0a0e4a97	{0} · {1}
+c14c8eef	Auto (symétrique à partir de 30)
+87b3c1e5	4 fois
+a3cdd021	8 fois
+d156a2e0	12 fois
+b36e663d	15 fois
+e7e154a9	20 fois
+0981fbf4	30 fois
+9c06e78d	60 fois
+cd131a9e	1 fois
+165d9de3	2 fois
+677e1948	3 fois
+d94ab30a	5 fois
+c1f61982	0 ms
+bb064292	20 ms
+a005fa30	40 ms
+5058b4c6	60 ms
+4ddb9494	80 ms
+82d5d569	100 ms
+64846588	150 ms
+18d8483c	200 ms
+6e3ebc87	Anti-scintillement actif (envoi seulement quand la couleur change)
+33747dd6	Carte graphique : écritures minimales ({0} par seconde au maximum)
+4295e02e	Appareil à mise à jour lente ({0} par seconde{1})
+47cc8c5f	, auto
+a6d44dde	Cette carte graphique peut scintiller brièvement à chaque écriture de couleur (probablement à cause de la façon dont OpenRGB 1.1 écrit, mais cela reste à confirmer pour ce modèle). Pour écrire le moins possible, la luminosité ne change pas, les couleurs ne sont envoyées que lorsqu'elles changent nettement (à 0,25 seconde d'intervalle au moins) et une même couleur n'est pas renvoyée. L'arc-en-ciel (défilant) devient un arc-en-ciel figé et la respiration une couleur fixe (chaque zone lumineuse ne peut afficher qu'une couleur). Quand le son s'arrête en synchro musicale, la couleur change toutes les 20 secondes. Si cela vous gêne, réglez l'effet sur « Couleur fixe »
+0488c9d7	OpenRGB écrit les LED de la carte graphique une par une, si bien qu'un changement de couleur prend environ 20 à 200 ms. Des écritures continues provoquent scintillements et retards, c'est pourquoi les écritures sont réduites au minimum : 
+cf0c037b	luminosité constante (le rythme est montré par les changements de couleur), couleurs envoyées seulement lorsqu'elles changent nettement (5 fois par seconde au maximum), mode température commuté seulement quand le palier de température change,
+fb923916	 l'arc-en-ciel (défilant) et la respiration deviennent un arc-en-ciel figé et une couleur fixe (modifiable avec « Animer aussi l'arc-en-ciel et la respiration »), une même couleur est renvoyée toutes les 60 secondes.
+8ed6eae0	Si la synchronisation avec les autres appareils est décalée, ajustez-la avec « Allumer plus tôt »
+8444c4be	Les LED reliées par le câblage interne de la carte (I2C), comme celles de la mémoire, mettent du temps à chaque envoi ; en mode auto, elles sont donc limitées à 8 envois par seconde (modifiable avec « Envois par seconde » à droite). Les changements de couleur de la synchro musicale sont envoyés immédiatement, sans attendre l'envoi régulier. Une même couleur est renvoyée toutes les 60 secondes
+2a5ce6d5	Auto (réglage global)
+7a4362e3	 (clignotement intense)
+2e7616aa	Violet
+d624abb5	Bleu
+1740eec3	Bleu clair
+5474bf7c	Vert
+77065b38	Orange
+e02e2d73	Rouge
+e0684d2d	Rose
+f88712a8	Blanc
+f73d92df	Éteint (éteindre les LED)
+faccb7c6	Couleur fixe (la couleur choisie dans « Couleur »)
+8261ae67	Laisser tel quel (s'arrêter sur la dernière couleur)
+d24118e5	\nNe l'utilisez pas si vous êtes sensible aux lumières clignotantes. Impossible à choisir tant que « Réduire les flashs » est activé
+fa397c65	⚠ Clignote intensément
+5812e0db	S'allume uniquement dans la couleur choisie dans « Couleur et luminosité ». La couleur ne change pas ; seule la luminosité suit le son
+a3ff6ad5	S'allume dans la couleur choisie dans « Couleur et luminosité » et ses deux couleurs voisines
+a0c6bf54	S'allume dans les couleurs de {0}. À chaque temps, passe à la couleur suivante de cet ensemble
+b4e8382b	Auto (anticipation)
+3084a002	Une fois le tempo du morceau saisi, anticipe le temps suivant et s'allume sans retard (recommandé)
+90659e1d	Grosse caisse seulement
+86ca4d12	Sans anticipation ; s'allume seulement quand la grosse caisse frappe. Pour les morceaux au tempo changeant
+12e78249	N'utilise ni le tempo ni les temps ; s'allume seulement selon le volume
+80f08891	Les couleurs de la palette se succèdent lentement
+df788b17	La couleur choisie dans « Couleur » s'éclaircit et s'assombrit lentement
+680555ce	Reste allumé dans la couleur choisie dans « Couleur »
+3b1d43a4	Éteint les LED quand le son s'arrête
+25525b81	{0} ({1})
+bb1834e5	Vous avez ajusté vous-même les réglages ci-dessous. Choisir un autre préréglage rétablit sa combinaison
+1cf255e8	Pour le travail ou la nuit. Les couleurs changent lentement et en douceur
