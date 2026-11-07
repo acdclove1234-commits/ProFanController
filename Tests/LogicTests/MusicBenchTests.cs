@@ -62,9 +62,8 @@ public static class MusicBench
         g.Pink(-36 + 20 * Math.Log10(Math.Max(1e-3, level)), from, to);
     }
 
-    public static IEnumerable<MusicCase> Cases()
+    public static IEnumerable<MusicCase> Cases(int fs = 48000)
     {
-        const int fs = 48000;
         MusicCase Make(string name, double bpm, Func<SignalGen, List<double>> build, bool halfOk = true, bool doubleOk = false, int seed = 1)
         {
             var g = new SignalGen(fs, Seconds, seed);
